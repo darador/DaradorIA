@@ -137,10 +137,18 @@ Consolidar los resultados en el archivo `picks_hoy.json` en la raíz del proyect
 
 ---
 
-### PASO 4: Visualización y Reporte al Usuario
-1. Escribir o actualizar el archivo `picks_hoy.json`.
-2. Notificar al usuario que la información está lista para ser visualizada de manera interactiva en `dashboard.html`.
-3. Brindar en la respuesta del chat un **Resumen Ejecutivo** claro que incluya:
+### PASO 4: Visualización, Git Push Automático y Reporte al Usuario
+1. Escribir o actualizar el archivo `picks_hoy.json` y sincronizar los respaldos en `dashboard.html` e `index.html`.
+2. **Push Automático a GitHub / Vercel**:
+   - Ejecutar automáticamente:
+     ```bash
+     git add picks_hoy.json dashboard.html index.html
+     git commit -m "feat(picks): actualizar pronosticos EV para la fecha YYYY-MM-DD"
+     git push origin main
+     ```
+   - Esto dispara el despliegue automático e instantáneo en **Vercel** para que la web quede actualizada en vivo.
+3. Notificar al usuario que la información está lista y disponible tanto en el enlace de Vercel como en `dashboard.html`.
+4. Brindar en la respuesta del chat un **Resumen Ejecutivo** claro que incluya:
    - Tabla ordenada de los Top Picks Individuales (Partido, Jugador/Línea, Cuota bet365, Racha y Edge).
    - Detalle de las 2 Combinadas Sugeridas (cuota total y desglose de selecciones).
    - Recomendación de gestión de banca (Stake sugerido: 1% - 2% para simples, 0.5% para combinadas).
