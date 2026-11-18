@@ -15,6 +15,20 @@ Identificar oportunidades de valor esperado positivo (**+EV**) en mercados de ju
 
 ## 📋 Flujo de Trabajo en 4 Pasos
 
+### PASO 0: Auditoría y Optimización Continua (Track Record & Backtesting)
+Antes de generar nuevos pronósticos (o cuando el usuario indique *"Auditá los resultados de ayer"* o *"Cómo salieron las apuestas"*):
+1. **Verificación de Resultados en StatsHub**:
+   - Consultar los partidos terminados con `getMatchDetails(matchId)` o estadísticas de jugador `getPlayerStats(playerId)`.
+   - Comparar el resultado real con la línea fijada (ej. Gabriel Barbosa registró 5 remates ➔ superó la línea de Más de 3.5 ➔ **ACERTADA ✅**).
+2. **Actualización de `historial_picks.json`**:
+   - Marcar el estado: `GANADA` (suma `cuota - 1` unidades), `PERDIDA` (resta `1` unidad) o `ANULADA` (`0` unidades).
+   - Recalcular automáticamente:
+     $$\text{Win Rate (\%)} = \left( \frac{\text{Apuestas Ganadas}}{\text{Apuestas Cerradas}} \right) \times 100$$
+     $$\text{Yield / ROI (\%)} = \left( \frac{\text{Ganancia Neta en Unidades}}{\text{Total Unidades Apostadas}} \right) \times 100$$
+3. **Retroalimentación de la Estrategia**:
+   - Evaluar qué mercados rinden con mayor consistencia (ej. Remates al arco y Faltas recibidas vs Tarjetas).
+   - Si un mercado desciende del $70\%$ de acierto histórico, ajustar las líneas mínimas o suspenderlo temporalmente para proteger el bankroll.
+
 ### PASO 1: Relevamiento de Partidos y Fixtures
 1. **Determinar la fecha objetivo**:
    - Usar la fecha actual del sistema (y partidos de la madrugada/mañana siguiente si corresponde por huso horario).

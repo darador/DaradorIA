@@ -24,6 +24,7 @@
       --neon-gold: #f59e0b;
       --neon-gold-glow: rgba(245, 158, 11, 0.25);
       --neon-purple: #a855f7;
+      --neon-red: #ef4444;
 
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -69,7 +70,6 @@
       padding: 0 1.25rem;
     }
 
-    /* Header Deportivo / Estadio */
     header {
       background: rgba(10, 16, 28, 0.85);
       backdrop-filter: blur(14px);
@@ -200,7 +200,7 @@
       background: linear-gradient(135deg, #22c55e, #16a34a);
     }
 
-    /* Marcador / Resumen KPI */
+    /* KPIs */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -267,7 +267,7 @@
       color: var(--text-dim);
     }
 
-    /* Barra de Filtros Fútbol */
+    /* Controls Bar */
     .controls-bar {
       background: rgba(15, 23, 42, 0.75);
       border: 1px solid var(--pitch-border);
@@ -314,9 +314,10 @@
       box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
     }
 
-    /* Pestañas de Navegación */
+    /* Tabs */
     .view-tabs {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.75rem;
       margin-bottom: 1.75rem;
     }
@@ -326,7 +327,7 @@
       border: 1px solid var(--pitch-border);
       color: var(--text-muted);
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       padding: 0.65rem 1.35rem;
       border-radius: 9999px;
@@ -352,7 +353,7 @@
       border-radius: 9999px;
     }
 
-    /* Cartas de Top Picks (Estilo Match Day Card) */
+    /* Picks Grid */
     .picks-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -373,17 +374,6 @@
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(12px);
-    }
-
-    .pick-card::before {
-      content: "";
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(34, 197, 94, 0.12), transparent 70%);
-      pointer-events: none;
     }
 
     .pick-card:hover {
@@ -525,7 +515,7 @@
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
 
-    /* Sección de Combinadas / Parlays */
+    /* Parlays */
     .parlays-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
@@ -694,7 +684,143 @@
       box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
     }
 
-    /* Toast */
+    /* ESTILOS DEL TRACK RECORD & HISTORIAL */
+    .history-card-header {
+      background: var(--pitch-card);
+      border: 1px solid var(--pitch-border);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .markets-breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .market-perf-box {
+      background: rgba(10, 16, 28, 0.7);
+      border: 1px solid var(--pitch-border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .market-perf-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .market-progress-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 0.2rem;
+    }
+
+    .market-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      border-radius: 9999px;
+    }
+
+    /* Tabla Historial */
+    .history-table-container {
+      background: var(--pitch-card);
+      border: 1px solid var(--pitch-border);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 2.5rem;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .history-table th {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 1rem 1.15rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      border-bottom: 2px solid var(--pitch-border);
+    }
+
+    .history-table td {
+      padding: 0.95rem 1.15rem;
+      border-bottom: 1px solid var(--pitch-border);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+
+    .history-table tr:hover {
+      background: rgba(30, 41, 59, 0.4);
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-status.ganada {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .badge-status.perdida {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .badge-status.pendiente {
+      background: rgba(245, 158, 11, 0.15);
+      color: #facc15;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .profit-positive {
+      color: #4ade80;
+      font-weight: 800;
+      font-family: var(--font-display);
+    }
+
+    .profit-negative {
+      color: #f87171;
+      font-weight: 800;
+      font-family: var(--font-display);
+    }
+
+    .profit-neutral {
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
     .toast {
       position: fixed;
       bottom: 2rem;
@@ -731,6 +857,7 @@
       .header-content { flex-direction: column; align-items: flex-start; }
       .parlays-container { grid-template-columns: 1fr; }
       .controls-bar { flex-direction: column; align-items: stretch; }
+      .history-table { font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -749,38 +876,54 @@
       <div class="header-badges">
         <span class="pill-badge live" id="statusBadge">StatsHub Conectado</span>
         <span class="pill-badge" id="bookieBadge">Casa: bet365</span>
-        <button class="btn-refresh" onclick="loadPicksData()">🔄 Actualizar</button>
+        <button class="btn-refresh" onclick="refreshAllData()">🔄 Actualizar</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Marcador / KPIs Principales -->
-    <section class="kpi-grid">
+    <!-- Marcador / KPIs Principales Dinámicos según la pestaña -->
+    <section class="kpi-grid" id="mainKpiGrid">
       <div class="kpi-card">
-        <span class="kpi-label">Picks Activos</span>
+        <span class="kpi-label" id="kpiLabel1">Picks Activos</span>
         <div class="kpi-value" id="kpiTotalPicks">0</div>
         <span class="kpi-sub" id="kpiAnalyzed">0 evaluados</span>
       </div>
       <div class="kpi-card">
-        <span class="kpi-label">Edge Promedio (+EV)</span>
+        <span class="kpi-label" id="kpiLabel2">Edge Promedio (+EV)</span>
         <div class="kpi-value" id="kpiAvgEdge">0%</div>
-        <span class="kpi-sub">Ventaja s/ probabilidad implícita</span>
+        <span class="kpi-sub" id="kpiSub2">Ventaja s/ probabilidad implícita</span>
       </div>
       <div class="kpi-card">
-        <span class="kpi-label">Acierto Reciente (L5)</span>
+        <span class="kpi-label" id="kpiLabel3">Acierto Reciente (L5)</span>
         <div class="kpi-value" id="kpiAvgHitRate">0%</div>
-        <span class="kpi-sub">Efectividad últimos 5 partidos</span>
+        <span class="kpi-sub" id="kpiSub3">Efectividad últimos 5 partidos</span>
       </div>
       <div class="kpi-card">
-        <span class="kpi-label">Cuota Media bet365</span>
+        <span class="kpi-label" id="kpiLabel4">Cuota Media bet365</span>
         <div class="kpi-value" id="kpiAvgOdds">0.00</div>
-        <span class="kpi-sub">Multiplicador promedio</span>
+        <span class="kpi-sub" id="kpiSub4">Multiplicador promedio</span>
       </div>
     </section>
 
-    <!-- Filtros de Partido -->
-    <section class="controls-bar">
+    <!-- Pestañas de Navegación -->
+    <div class="view-tabs">
+      <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
+        🎯 Top Picks Individuales (+EV)
+        <span class="tab-counter" id="tabPicksCount">0</span>
+      </button>
+      <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')">
+        🧩 Combinadas / Parlays Sugeridos
+        <span class="tab-counter" id="tabParlaysCount">0</span>
+      </button>
+      <button class="tab-btn" id="tabHistory" onclick="switchView('history')">
+        📈 Track Record & Historial (+ROI)
+        <span class="tab-counter" id="tabHistoryCount">0</span>
+      </button>
+    </div>
+
+    <!-- Filtros de Partido (para Top Picks) -->
+    <section class="controls-bar" id="picksControls">
       <div class="filter-group">
         <label class="control-label" for="filterLeague">🏆 Liga:</label>
         <select id="filterLeague" class="select-control" onchange="renderPicks()">
@@ -806,65 +949,111 @@
       </div>
     </section>
 
-    <!-- Pestañas -->
-    <div class="view-tabs">
-      <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
-        🎯 Top Picks Individuales (+EV)
-        <span class="tab-counter" id="tabPicksCount">0</span>
-      </button>
-      <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')">
-        🧩 Combinadas / Parlays Sugeridos
-        <span class="tab-counter" id="tabParlaysCount">0</span>
-      </button>
-    </div>
+    <!-- Filtros de Historial (para Track Record) -->
+    <section class="controls-bar" id="historyControls" style="display: none;">
+      <div class="filter-group">
+        <label class="control-label" for="filterHistoryStatus">⚖️ Estado:</label>
+        <select id="filterHistoryStatus" class="select-control" onchange="renderHistory()">
+          <option value="all">Todos los Resultados</option>
+          <option value="GANADA">✅ Solo Ganadas</option>
+          <option value="PERDIDA">❌ Solo Perdidas</option>
+          <option value="PENDIENTE">⏳ Solo Pendientes</option>
+        </select>
+      </div>
 
-    <!-- Vista: Picks Individuales -->
+      <div class="filter-group">
+        <input type="text" id="searchHistoryInput" class="input-control" placeholder="🔍 Filtrar por jugador o partido..." oninput="renderHistory()" style="min-width: 250px;">
+      </div>
+    </section>
+
+    <!-- Vista 1: Picks Individuales -->
     <section id="viewPicks">
       <div class="picks-grid" id="picksGrid"></div>
     </section>
 
-    <!-- Vista: Parlays -->
+    <!-- Vista 2: Parlays -->
     <section id="viewParlays" style="display: none;">
       <div class="parlays-container" id="parlaysGrid"></div>
     </section>
+
+    <!-- Vista 3: Track Record & Historial -->
+    <section id="viewHistory" style="display: none;">
+      <!-- Desglose por Mercados -->
+      <div class="history-card-header">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: #ffffff;">
+            📊 Rendimiento por Mercado (Optimización de Estrategia)
+          </h3>
+          <span style="font-size: 0.8rem; color: var(--text-dim);">Datos verificados con StatsHub</span>
+        </div>
+        <div class="markets-breakdown-grid" id="marketsBreakdownGrid"></div>
+      </div>
+
+      <!-- Tabla de Auditoría Histórica -->
+      <div class="history-table-container">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Partido</th>
+              <th>Selección / Mercado</th>
+              <th>Cuota bet365</th>
+              <th>Resultado Registrado</th>
+              <th>Estado</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
-  <div id="toast" class="toast">¡Ticket copiado al portapapeles!</div>
+  <div id="toast" class="toast">¡Información actualizada!</div>
 
-  <!-- Script de lectura y renderizado -->
   <script>
-    let globalData = null;
+    let globalPicksData = null;
+    let globalHistoryData = null;
     let currentView = 'picks';
 
     async function loadPicksData() {
-      const headerSubtitle = document.getElementById('headerSubtitle');
       try {
         const response = await fetch('./picks_hoy.json?t=' + Date.now());
-        if (!response.ok) throw new Error('No se pudo cargar picks_hoy.json');
-        globalData = await response.json();
-        setupDashboard(globalData);
-        showToast('Pronósticos actualizados en vivo');
+        if (!response.ok) throw new Error('Error al leer picks_hoy.json');
+        globalPicksData = await response.json();
+        setupPicks(globalPicksData);
       } catch (err) {
-        console.warn('Error al leer picks_hoy.json directamente:', err);
-        headerSubtitle.textContent = 'Error de lectura. Asegurate de recargar o ejecutar el servidor.';
+        console.warn('Fallo fetch de picks_hoy.json:', err);
       }
     }
 
-    function setupDashboard(data) {
+    async function loadHistoryData() {
+      try {
+        const response = await fetch('./historial_picks.json?t=' + Date.now());
+        if (!response.ok) throw new Error('Error al leer historial_picks.json');
+        globalHistoryData = await response.json();
+        setupHistory(globalHistoryData);
+      } catch (err) {
+        console.warn('Fallo fetch de historial_picks.json:', err);
+      }
+    }
+
+    async function refreshAllData() {
+      await loadPicksData();
+      await loadHistoryData();
+      showToast('Pronósticos e historial actualizados');
+    }
+
+    function setupPicks(data) {
       const formattedDate = data.date || new Date().toISOString().split('T')[0];
       document.getElementById('headerSubtitle').textContent = `Jornada ${formattedDate} • ${data.top_picks?.length || 0} picks de alto valor analizados`;
       document.getElementById('bookieBadge').textContent = `Casa: ${data.bookmaker || 'bet365'}`;
 
-      if (data.summary_metrics) {
-        document.getElementById('kpiTotalPicks').textContent = data.summary_metrics.total_picks || (data.top_picks ? data.top_picks.length : 0);
-        document.getElementById('kpiAvgEdge').textContent = data.summary_metrics.avg_edge_pct || '0%';
-        document.getElementById('kpiAvgHitRate').textContent = data.summary_metrics.avg_hit_rate_l5 || '0%';
-        document.getElementById('kpiAvgOdds').textContent = data.summary_metrics.avg_odds ? data.summary_metrics.avg_odds.toFixed(2) : '0.00';
-        document.getElementById('kpiAnalyzed').textContent = `${data.total_analyzed || 0} analizados`;
+      if (currentView !== 'history') {
+        updateKpisForPicks(data);
       }
 
-      populateFilters(data.top_picks || []);
-
+      populatePicksFilters(data.top_picks || []);
       document.getElementById('tabPicksCount').textContent = data.top_picks?.length || 0;
       document.getElementById('tabParlaysCount').textContent = data.parlays?.length || 0;
 
@@ -872,7 +1061,55 @@
       renderParlays();
     }
 
-    function populateFilters(picks) {
+    function updateKpisForPicks(data) {
+      document.getElementById('kpiLabel1').textContent = 'Picks Activos';
+      document.getElementById('kpiTotalPicks').textContent = data.summary_metrics?.total_picks || (data.top_picks ? data.top_picks.length : 0);
+      document.getElementById('kpiAnalyzed').textContent = `${data.total_analyzed || 0} evaluados`;
+
+      document.getElementById('kpiLabel2').textContent = 'Edge Promedio (+EV)';
+      document.getElementById('kpiAvgEdge').textContent = data.summary_metrics?.avg_edge_pct || '0%';
+      document.getElementById('kpiSub2').textContent = 'Ventaja s/ probabilidad implícita';
+
+      document.getElementById('kpiLabel3').textContent = 'Acierto Reciente (L5)';
+      document.getElementById('kpiAvgHitRate').textContent = data.summary_metrics?.avg_hit_rate_l5 || '0%';
+      document.getElementById('kpiSub3').textContent = 'Efectividad últimos 5 partidos';
+
+      document.getElementById('kpiLabel4').textContent = 'Cuota Media bet365';
+      document.getElementById('kpiAvgOdds').textContent = data.summary_metrics?.avg_odds ? data.summary_metrics.avg_odds.toFixed(2) : '0.00';
+      document.getElementById('kpiSub4').textContent = 'Multiplicador promedio';
+    }
+
+    function setupHistory(data) {
+      if (!data || !data.summary) return;
+      document.getElementById('tabHistoryCount').textContent = data.summary.total_bets || (data.history ? data.history.length : 0);
+
+      if (currentView === 'history') {
+        updateKpisForHistory(data.summary);
+      }
+
+      renderMarketsBreakdown(data.summary.by_market || {});
+      renderHistory();
+    }
+
+    function updateKpisForHistory(sum) {
+      document.getElementById('kpiLabel1').textContent = 'Win Rate Total';
+      document.getElementById('kpiTotalPicks').textContent = `${sum.win_rate_pct}%`;
+      document.getElementById('kpiAnalyzed').textContent = `${sum.won_bets}G / ${sum.lost_bets}P / ${sum.pending_bets} Pend.`;
+
+      document.getElementById('kpiLabel2').textContent = 'Yield / ROI Total';
+      document.getElementById('kpiAvgEdge').textContent = `+${sum.roi_pct}%`;
+      document.getElementById('kpiSub2').textContent = 'Retorno neto de inversión';
+
+      document.getElementById('kpiLabel3').textContent = 'Ganancia Neta';
+      document.getElementById('kpiAvgHitRate').textContent = `+${sum.net_profit_units} U`;
+      document.getElementById('kpiSub3').textContent = `Apostadas: ${sum.total_staked_units} U`;
+
+      document.getElementById('kpiLabel4').textContent = 'Apuestas Resueltas';
+      document.getElementById('kpiAvgOdds').textContent = `${sum.settled_bets}`;
+      document.getElementById('kpiSub4').textContent = `De ${sum.total_bets} registradas`;
+    }
+
+    function populatePicksFilters(picks) {
       const leagueSelect = document.getElementById('filterLeague');
       const marketSelect = document.getElementById('filterMarket');
 
@@ -898,7 +1135,7 @@
 
     function renderPicks() {
       const container = document.getElementById('picksGrid');
-      if (!globalData || !globalData.top_picks) {
+      if (!globalPicksData || !globalPicksData.top_picks) {
         container.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
         return;
       }
@@ -908,7 +1145,7 @@
       const minHitFilter = parseFloat(document.getElementById('filterMinHit').value);
       const searchFilter = document.getElementById('searchInput').value.toLowerCase().trim();
 
-      const filtered = globalData.top_picks.filter(pick => {
+      const filtered = globalPicksData.top_picks.filter(pick => {
         if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
         if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
 
@@ -928,7 +1165,7 @@
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales. Probá reduciendo el filtro de "Mín. Racha".</div>';
+        container.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales.</div>';
         return;
       }
 
@@ -980,12 +1217,12 @@
 
     function renderParlays() {
       const container = document.getElementById('parlaysGrid');
-      if (!globalData || !globalData.parlays || globalData.parlays.length === 0) {
+      if (!globalPicksData || !globalPicksData.parlays || globalPicksData.parlays.length === 0) {
         container.innerHTML = '<div class="empty-state">No hay combinadas sugeridas para hoy.</div>';
         return;
       }
 
-      container.innerHTML = globalData.parlays.map(parlay => {
+      container.innerHTML = globalPicksData.parlays.map(parlay => {
         const isConservative = parlay.type && parlay.type.toLowerCase().includes('conservador');
         const cardClass = isConservative ? 'conservative' : 'value';
 
@@ -1028,16 +1265,110 @@
       }).join('');
     }
 
+    function renderMarketsBreakdown(byMarket) {
+      const container = document.getElementById('marketsBreakdownGrid');
+      const entries = Object.entries(byMarket);
+      if (entries.length === 0) {
+        container.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-dim);">Sin datos suficientes aún.</div>';
+        return;
+      }
+
+      container.innerHTML = entries.map(([marketName, stats]) => {
+        const rateNum = parseFloat(stats.win_rate) || 0;
+        return `
+          <div class="market-perf-box">
+            <div class="market-perf-header">
+              <span>${marketName}</span>
+              <span style="color: ${rateNum >= 75 ? '#4ade80' : '#facc15'};">${stats.win_rate} (${stats.won}/${stats.total})</span>
+            </div>
+            <div class="market-progress-bg">
+              <div class="market-progress-fill" style="width: ${rateNum}%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-dim); margin-top: 0.2rem;">
+              <span>Rendimiento neto:</span>
+              <strong style="color: ${stats.profit.startsWith('+') ? '#4ade80' : '#f87171'};">${stats.profit}</strong>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderHistory() {
+      const tbody = document.getElementById('historyTableBody');
+      if (!globalHistoryData || !globalHistoryData.history) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No hay registros en el historial.</td></tr>';
+        return;
+      }
+
+      const statusFilter = document.getElementById('filterHistoryStatus').value;
+      const searchFilter = document.getElementById('searchHistoryInput').value.toLowerCase().trim();
+
+      const filtered = globalHistoryData.history.filter(item => {
+        if (statusFilter !== 'all' && item.status !== statusFilter) return false;
+        if (searchFilter) {
+          const space = `${item.player} ${item.match} ${item.league} ${item.market} ${item.line}`.toLowerCase();
+          if (!space.includes(searchFilter)) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No se encontraron apuestas con los filtros seleccionados.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(item => {
+        const statusClass = item.status.toLowerCase();
+        let statusBadge = '';
+        let profitDisplay = '';
+
+        if (item.status === 'GANADA') {
+          statusBadge = '<span class="badge-status ganada">✅ Acertada</span>';
+          profitDisplay = `<span class="profit-positive">+${item.profit.toFixed(2)} U</span>`;
+        } else if (item.status === 'PERDIDA') {
+          statusBadge = '<span class="badge-status perdida">❌ Fallada</span>';
+          profitDisplay = `<span class="profit-negative">${item.profit.toFixed(2)} U</span>`;
+        } else {
+          statusBadge = '<span class="badge-status pendiente">⏳ Pendiente</span>';
+          profitDisplay = '<span class="profit-neutral">0.00 U</span>';
+        }
+
+        return `
+          <tr>
+            <td style="font-size: 0.8rem; color: var(--text-dim); font-weight: 600;">${item.date}</td>
+            <td style="font-weight: 700;">${item.match} <br><span style="font-size: 0.75rem; color: var(--neon-cyan);">${item.league}</span></td>
+            <td><strong>${item.player}</strong> <br><span style="font-size: 0.78rem; color: var(--text-muted);">${item.market}: ${item.line}</span></td>
+            <td style="font-family: var(--font-display); font-weight: 900; color: #facc15;">${item.odds.toFixed(2)}</td>
+            <td style="font-size: 0.82rem; color: var(--text-muted);">${item.actual_stat}</td>
+            <td>${statusBadge}</td>
+            <td>${profitDisplay}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
     function switchView(view) {
       currentView = view;
       document.getElementById('tabPicks').classList.toggle('active', view === 'picks');
       document.getElementById('tabParlays').classList.toggle('active', view === 'parlays');
+      document.getElementById('tabHistory').classList.toggle('active', view === 'history');
+
       document.getElementById('viewPicks').style.display = view === 'picks' ? 'block' : 'none';
       document.getElementById('viewParlays').style.display = view === 'parlays' ? 'block' : 'none';
+      document.getElementById('viewHistory').style.display = view === 'history' ? 'block' : 'none';
+
+      document.getElementById('picksControls').style.display = view === 'picks' ? 'flex' : 'none';
+      document.getElementById('historyControls').style.display = view === 'history' ? 'flex' : 'none';
+
+      if (view === 'history' && globalHistoryData?.summary) {
+        updateKpisForHistory(globalHistoryData.summary);
+      } else if (globalPicksData) {
+        updateKpisForPicks(globalPicksData);
+      }
     }
 
     function copyParlay(parlayId) {
-      const parlay = globalData.parlays.find(p => p.id === parlayId);
+      const parlay = globalPicksData.parlays.find(p => p.id === parlayId);
       if (!parlay) return;
 
       const text = `🎟️ ${parlay.name} (Cuota bet365: ${parlay.target_odds.toFixed(2)})\n` +
@@ -1056,7 +1387,10 @@
       setTimeout(() => toast.classList.remove('show'), 3200);
     }
 
-    document.addEventListener('DOMContentLoaded', loadPicksData);
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadPicksData();
+      await loadHistoryData();
+    });
   </script>
 </body>
 </html>
