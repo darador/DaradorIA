@@ -82,8 +82,8 @@
       "player": "Josué Pesqueira",
       "team": "Coritiba",
       "opponent": "Santos",
-      "market": "Faltas recibidas",
-      "line": "Más de 2.5 faltas recibidas",
+      "market": "Faltas ganadas",
+      "line": "Más de 2.5 faltas ganadas",
       "odds": 1.73,
       "hit_rate_l5": "5/5 (100%)",
       "hit_rate_l10": "7/10 (70%)",
@@ -183,7 +183,7 @@
         },
         {
           "match": "Coritiba vs Santos",
-          "selection": "Josué Pesqueira - Más de 2.5 faltas recibidas",
+          "selection": "Josué Pesqueira - Más de 2.5 faltas ganadas",
           "odds": 1.73,
           "stat_snapshot": "100% L6 | Promedio 3.8 faltas sufridas"
         }

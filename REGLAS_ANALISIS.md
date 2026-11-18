@@ -52,12 +52,26 @@ Antes de generar nuevos pronósticos (o cuando el usuario indique *"Auditá los 
 Consultar las herramientas analíticas del MCP (`getPropScreener`, `getPlayerStatsWithOdds`, `getPlayerTrends`, `getTeamPropScreener`, `getReferee`, `getOutliers`) cruzando los mercados de **bet365**.
 
 #### Mercados Analizados
-* 🎯 **Remates Totales** (ej. Más de 1.5, Más de 2.5)
-* ⚽ **Remates al Arco** (ej. Más de 0.5, Más de 1.5)
-* 🛑 **Faltas Cometidas / Sufridas** (ej. Más de 1.5 faltas)
-* 🟨 **Tarjetas** (Jugador amonestado / Over de tarjetas del partido según árbitro)
-* 🚩 **Córners** (Líneas de equipo y totales)
-* 🥅 **Goles y Asistencias** (Goleador en cualquier momento o Asistencia)
+* 🎯 **Remates Totales** (`shots`, ej. Más de 1.5, Más de 2.5)
+* ⚽ **Remates al Arco** (`shotsOnTarget`, ej. Más de 0.5, Más de 1.5)
+* 🛑 **Faltas Cometidas** (`fouls`, ej. Más de 1.5 o 2.5 faltas cometidas por el jugador)
+* 🧲 **Faltas Ganadas / Recibidas** (`foulsWon`, ej. Más de 1.5 o 2.5 faltas sufridas por el jugador)
+* ⚔️ **Entradas / Tackles** (`tackles`, ej. Más de 1.5 o 2.5 entradas/recuperaciones exitosas)
+* 🟨 **Tarjetas** (`yellowCards`, Jugador amonestado / Over de tarjetas según árbitro)
+* 🚩 **Córners** (`corners`, Líneas de equipo y totales)
+* 🥅 **Goles y Asistencias** (`scoredOrAssisted`, Goleador en cualquier momento o Asistencia)
+
+#### Directrices Específicas para Faltas y Tackles
+1. **Faltas Cometidas (`fouls`)**:
+   - Priorizar mediocampistas de contención (pivotes defensivos) y laterales que marcan a extremos desequilibrantes.
+   - El equipo rival debe estar en el percentil superior de faltas provocadas en la zona de influencia del jugador.
+   - Arbitraje: Validar con `getReferee` que el colegiado promedie $\ge 23$ faltas pitadas por partido.
+2. **Faltas Ganadas / Recibidas (`foulsWon`)**:
+   - Priorizar enganches, extremos regateadores y delanteros de espaldas con alta retención de balón.
+   - El rival debe caracterizarse por presión alta o corte táctico agresivo en la zona media.
+3. **Entradas / Tackles (`tackles`)**:
+   - Priorizar laterales que defienden contra equipos que atacan mayoritariamente por las bandas, o mediocampistas centrales ante equipos con alto porcentaje de posesión.
+   - El rival debe conceder en promedio $\ge 14$ entradas por partido en su condición de local/visitante.
 
 #### Criterios Estrictos de Aprobación (+EV)
 Una selección solo se considera válida si cumple con **TODOS** los siguientes requisitos:

@@ -13,9 +13,10 @@
     "by_market": {
       "Remates totales": { "total": 2, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
       "Remates de equipo": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Gol o Asistencia": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Faltas recibidas": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Entradas (Tackles)": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" }
+      "Faltas cometidas": { "total": 0, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
+      "Faltas ganadas": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
+      "Entradas (Tackles)": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
+      "Gol o Asistencia": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" }
     }
   },
   "history": [
@@ -70,7 +71,7 @@
       "league": "Brasileirão",
       "match": "Coritiba vs Santos",
       "player": "Josué Pesqueira",
-      "market": "Faltas recibidas",
+      "market": "Faltas ganadas",
       "line": "Más de 2.5",
       "odds": 1.73,
       "stake": 1.0,
