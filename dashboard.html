@@ -926,8 +926,13 @@
     <section class="controls-bar" id="picksControls">
       <div class="filter-group">
         <label class="control-label" for="filterLeague">🏆 Liga:</label>
-        <select id="filterLeague" class="select-control" onchange="renderPicks()">
+        <select id="filterLeague" class="select-control" onchange="onLeagueChange()">
           <option value="all">Todas las Ligas</option>
+        </select>
+
+        <label class="control-label" for="filterMatch">⚽ Partido:</label>
+        <select id="filterMatch" class="select-control" onchange="renderPicks()">
+          <option value="all">Todos los Partidos</option>
         </select>
 
         <label class="control-label" for="filterMarket">🎯 Mercado:</label>
@@ -1111,9 +1116,11 @@
 
     function populatePicksFilters(picks) {
       const leagueSelect = document.getElementById('filterLeague');
+      const matchSelect = document.getElementById('filterMatch');
       const marketSelect = document.getElementById('filterMarket');
 
       const leagues = [...new Set(picks.map(p => p.league))].filter(Boolean);
+      const matches = [...new Set(picks.map(p => p.match))].filter(Boolean);
       const markets = [...new Set(picks.map(p => p.market))].filter(Boolean);
 
       leagueSelect.innerHTML = '<option value="all">Todas las Ligas</option>';
@@ -1122,6 +1129,14 @@
         opt.value = l;
         opt.textContent = l;
         leagueSelect.appendChild(opt);
+      });
+
+      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
+      matches.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        matchSelect.appendChild(opt);
       });
 
       marketSelect.innerHTML = '<option value="all">Todos los Mercados</option>';
@@ -1133,6 +1148,27 @@
       });
     }
 
+    function onLeagueChange() {
+      const leagueFilter = document.getElementById('filterLeague').value;
+      const matchSelect = document.getElementById('filterMatch');
+      
+      const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
+      const filteredByLeague = (leagueFilter === 'all') 
+        ? availablePicks 
+        : availablePicks.filter(p => p.league === leagueFilter);
+
+      const matches = [...new Set(filteredByLeague.map(p => p.match))].filter(Boolean);
+      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
+      matches.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        matchSelect.appendChild(opt);
+      });
+
+      renderPicks();
+    }
+
     function renderPicks() {
       const container = document.getElementById('picksGrid');
       if (!globalPicksData || !globalPicksData.top_picks) {
@@ -1141,12 +1177,14 @@
       }
 
       const leagueFilter = document.getElementById('filterLeague').value;
+      const matchFilter = document.getElementById('filterMatch').value;
       const marketFilter = document.getElementById('filterMarket').value;
       const minHitFilter = parseFloat(document.getElementById('filterMinHit').value);
       const searchFilter = document.getElementById('searchInput').value.toLowerCase().trim();
 
       const filtered = globalPicksData.top_picks.filter(pick => {
         if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
+        if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
         if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
 
         let hitRateNum = 0;
