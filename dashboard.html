@@ -4,37 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
-  <title>StatsHub Ã— bet365 | Dashboard de AnÃ¡lisis +EV</title>
+  <title>StatsHub × bet365 | Radar Futbolero +EV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
-      --bg-canvas: #090d16;
-      --bg-surface: #111827;
-      --bg-surface-elevated: #1f2937;
-      --bg-card: rgba(17, 24, 39, 0.85);
-      --border-subtle: #374151;
-      --border-accent: rgba(16, 185, 129, 0.35);
-      
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
+      --pitch-dark: #070c14;
+      --pitch-surface: #0e1726;
+      --pitch-card: rgba(15, 23, 42, 0.88);
+      --pitch-card-hover: rgba(22, 34, 60, 0.95);
+      --pitch-border: #1e293b;
+      --pitch-border-light: rgba(51, 65, 85, 0.7);
 
-      --accent-green: #10b981;
-      --accent-green-bg: rgba(16, 185, 129, 0.12);
-      --accent-blue: #3b82f6;
-      --accent-blue-bg: rgba(59, 130, 246, 0.12);
-      --accent-amber: #f59e0b;
-      --accent-amber-bg: rgba(245, 158, 11, 0.12);
-      --accent-purple: #8b5cf6;
-      --accent-purple-bg: rgba(139, 92, 246, 0.12);
-      --accent-cyan: #06b6d4;
+      --neon-turf: #22c55e;
+      --neon-turf-glow: rgba(34, 197, 94, 0.35);
+      --neon-cyan: #06b6d4;
+      --neon-gold: #f59e0b;
+      --neon-gold-glow: rgba(245, 158, 11, 0.25);
+      --neon-purple: #a855f7;
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
 
-      --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+
+      --font-display: 'Outfit', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
     }
 
     * {
@@ -44,17 +44,24 @@
     }
 
     body {
-      font-family: var(--font-family);
-      background-color: var(--bg-canvas);
+      font-family: var(--font-body);
+      background-color: var(--pitch-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.15) 0%, rgba(6, 182, 212, 0.08) 25%, transparent 65%),
+        radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, rgba(7, 12, 20, 0.82) 0%, rgba(7, 12, 20, 0.96) 100%),
+        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
       color: var(--text-main);
       line-height: 1.5;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: 3rem;
+      padding-bottom: 3.5rem;
     }
 
-    /* Container */
     .container {
       width: 100%;
       max-width: 1240px;
@@ -62,15 +69,16 @@
       padding: 0 1.25rem;
     }
 
-    /* Header */
+    /* Header Deportivo / Estadio */
     header {
-      background: linear-gradient(180deg, rgba(31, 41, 55, 0.8) 0%, rgba(9, 13, 22, 0.95) 100%);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.5rem 0;
-      backdrop-filter: blur(8px);
+      background: rgba(10, 16, 28, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+      padding: 1.25rem 0;
       position: sticky;
       top: 0;
       z-index: 50;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
     }
 
     .header-content {
@@ -84,32 +92,47 @@
     .brand-title {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.9rem;
     }
 
-    .brand-icon {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, #10b981, #06b6d4);
-      border-radius: var(--radius-sm);
+    .brand-ball {
+      width: 44px;
+      height: 44px;
+      background: radial-gradient(circle at 30% 30%, #4ade80, #15803d);
+      border: 2px solid #86efac;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: #fff;
-      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
+      font-size: 1.4rem;
+      box-shadow: 0 0 20px var(--neon-turf-glow);
+      animation: floatBall 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBall {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
 
     .brand-text h1 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      background: linear-gradient(90deg, #ffffff 30%, #86efac 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .brand-text p {
-      font-size: 0.82rem;
+      font-size: 0.83rem;
       color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     .header-badges {
@@ -122,18 +145,20 @@
     .pill-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.35rem 0.75rem;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 9999px;
       font-size: 0.8rem;
       font-weight: 600;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--pitch-border);
+      color: var(--text-muted);
     }
 
     .pill-badge.live {
-      border-color: rgba(16, 185, 129, 0.4);
-      color: var(--accent-green);
+      border-color: rgba(34, 197, 94, 0.4);
+      color: var(--neon-turf);
+      background: rgba(34, 197, 94, 0.1);
     }
 
     .pill-badge.live::before {
@@ -141,35 +166,66 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--accent-green);
-      animation: pulse 2s infinite;
+      background: var(--neon-turf);
+      box-shadow: 0 0 10px var(--neon-turf);
+      animation: pulse 1.8s infinite;
     }
 
     @keyframes pulse {
       0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+      50% { opacity: 0.4; transform: scale(0.8); }
       100% { opacity: 1; transform: scale(1); }
     }
 
-    /* Summary KPI Bar */
+    .btn-refresh {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: #ffffff;
+      border: 1px solid #4ade80;
+      border-radius: 9999px;
+      padding: 0.45rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    .btn-refresh:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.5);
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    /* Marcador / Resumen KPI */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin: 1.75rem 0 2rem 0;
+      gap: 1.15rem;
+      margin: 2rem 0 2rem 0;
     }
 
     .kpi-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--pitch-card);
+      border: 1px solid var(--pitch-border);
       border-radius: var(--radius-md);
-      padding: 1.25rem;
+      padding: 1.25rem 1.4rem;
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(34, 197, 94, 0.4);
     }
 
     .kpi-card::after {
@@ -179,39 +235,42 @@
       left: 0;
       width: 4px;
       height: 100%;
-      background: var(--accent-green);
+      background: var(--neon-turf);
+      box-shadow: 0 0 10px var(--neon-turf);
     }
 
-    .kpi-card:nth-child(2)::after { background: var(--accent-blue); }
-    .kpi-card:nth-child(3)::after { background: var(--accent-purple); }
-    .kpi-card:nth-child(4)::after { background: var(--accent-amber); }
+    .kpi-card:nth-child(2)::after { background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+    .kpi-card:nth-child(3)::after { background: var(--neon-gold); box-shadow: 0 0 10px var(--neon-gold); }
+    .kpi-card:nth-child(4)::after { background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple); }
 
     .kpi-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      font-family: var(--font-display);
     }
 
     .kpi-value {
-      font-size: 1.85rem;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 900;
       color: var(--text-main);
       display: flex;
       align-items: baseline;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .kpi-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-dim);
     }
 
-    /* Filters Bar */
+    /* Barra de Filtros Fútbol */
     .controls-bar {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--pitch-border);
       border-radius: var(--radius-md);
       padding: 1rem 1.25rem;
       margin-bottom: 2rem;
@@ -220,6 +279,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      backdrop-filter: blur(8px);
     }
 
     .filter-group {
@@ -231,174 +291,168 @@
 
     .control-label {
       font-size: 0.82rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .select-control, .input-control {
-      background: var(--bg-surface-elevated);
+      background: rgba(30, 41, 59, 0.8);
       color: var(--text-main);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--pitch-border-light);
       border-radius: var(--radius-sm);
-      padding: 0.5rem 0.85rem;
+      padding: 0.55rem 0.9rem;
       font-size: 0.88rem;
       outline: none;
-      transition: border-color 0.2s;
+      font-family: var(--font-body);
+      transition: all 0.2s;
     }
 
     .select-control:focus, .input-control:focus {
-      border-color: var(--accent-green);
+      border-color: var(--neon-turf);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
     }
 
-    .btn {
-      background: var(--bg-surface-elevated);
-      color: var(--text-main);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 0.5rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.2s ease;
-    }
-
-    .btn:hover {
-      background: var(--border-subtle);
-    }
-
-    .btn-primary {
-      background: var(--accent-green);
-      color: #052e16;
-      border-color: var(--accent-green);
-    }
-
-    .btn-primary:hover {
-      background: #059669;
-      color: #ffffff;
-    }
-
-    /* Tabs */
+    /* Pestañas de Navegación */
     .view-tabs {
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 0.5rem;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
     }
 
     .tab-btn {
-      background: none;
-      border: none;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--pitch-border);
       color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.65rem 1.35rem;
+      border-radius: 9999px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .tab-btn.active {
-      background: var(--bg-surface-elevated);
-      color: var(--text-main);
-      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(6, 182, 212, 0.15) 100%);
+      color: #ffffff;
+      border-color: var(--neon-turf);
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.25);
     }
 
     .tab-counter {
-      background: var(--border-subtle);
-      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
       font-size: 0.75rem;
-      padding: 0.15rem 0.45rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 9999px;
     }
 
-    /* Top Picks Grid */
+    /* Cartas de Top Picks (Estilo Match Day Card) */
     .picks-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.25rem;
+      gap: 1.4rem;
       margin-bottom: 2.5rem;
     }
 
     .pick-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--pitch-card);
+      border: 1px solid var(--pitch-border);
       border-radius: var(--radius-md);
-      padding: 1.25rem;
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      gap: 0.95rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .pick-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.12), transparent 70%);
+      pointer-events: none;
     }
 
     .pick-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      border-color: rgba(34, 197, 94, 0.5);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 197, 94, 0.2);
     }
 
     .pick-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.5rem;
+      align-items: center;
     }
 
     .pick-league {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .pick-time {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-dim);
+      font-weight: 600;
     }
 
     .pick-match {
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
       color: var(--text-muted);
+      border-bottom: 1px dashed var(--pitch-border);
+      padding-bottom: 0.4rem;
     }
 
     .pick-player {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text-main);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
     .pick-market-badge {
       display: inline-block;
-      padding: 0.3rem 0.65rem;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.75rem;
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--pitch-border-light);
       border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #e5e7eb;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #e2e8f0;
+      letter-spacing: 0.01em;
     }
 
     .pick-stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      background: rgba(0, 0, 0, 0.25);
-      padding: 0.75rem;
+      gap: 0.65rem;
+      background: rgba(10, 16, 28, 0.65);
+      padding: 0.85rem;
       border-radius: var(--radius-sm);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.04);
     }
 
     .stat-item {
@@ -410,82 +464,94 @@
       font-size: 0.72rem;
       color: var(--text-dim);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
 
     .stat-item .val {
-      font-size: 0.95rem;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .stat-item .val.hit-rate {
-      color: var(--accent-green);
+      color: var(--neon-turf);
+      text-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
     }
 
     .stat-item .val.edge {
-      color: var(--accent-cyan);
+      color: var(--neon-cyan);
     }
 
     .odds-badge {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.6rem 0.85rem;
-      background: var(--accent-green-bg);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.65rem 1rem;
+      background: linear-gradient(90deg, rgba(34, 197, 94, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%);
+      border: 1px solid rgba(34, 197, 94, 0.35);
       border-radius: var(--radius-sm);
     }
 
     .odds-bookie {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #34d399;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #86efac;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     .odds-number {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--accent-green);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #facc15;
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
     }
 
     .pick-rationale {
-      font-size: 0.82rem;
+      font-size: 0.83rem;
       color: var(--text-muted);
-      border-left: 2px solid var(--accent-green);
-      padding-left: 0.65rem;
-      line-height: 1.4;
-      font-style: italic;
+      border-left: 3px solid var(--neon-turf);
+      padding-left: 0.75rem;
+      line-height: 1.45;
+      background: rgba(15, 23, 42, 0.4);
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
 
-    /* Parlays Section */
+    /* Sección de Combinadas / Parlays */
     .parlays-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 1.6rem;
       margin-bottom: 2.5rem;
     }
 
     .parlay-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--pitch-card);
+      border: 1px solid var(--pitch-border);
       border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-card);
+      padding: 1.6rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
       position: relative;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
+      backdrop-filter: blur(14px);
     }
 
     .parlay-card.conservative {
-      border-color: rgba(59, 130, 246, 0.4);
+      border-color: rgba(6, 182, 212, 0.4);
     }
 
     .parlay-card.value {
-      border-color: rgba(139, 92, 246, 0.4);
+      border-color: rgba(168, 85, 247, 0.4);
     }
 
     .parlay-header {
@@ -495,58 +561,65 @@
     }
 
     .parlay-title {
-      font-size: 1.2rem;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .parlay-type-badge {
       font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.6rem;
+      font-weight: 800;
+      padding: 0.3rem 0.75rem;
       border-radius: 9999px;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .parlay-card.conservative .parlay-type-badge {
-      background: var(--accent-blue-bg);
-      color: var(--accent-blue);
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      background: rgba(6, 182, 212, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(6, 182, 212, 0.4);
     }
 
     .parlay-card.value .parlay-type-badge {
-      background: var(--accent-purple-bg);
-      color: var(--accent-purple);
-      border: 1px solid rgba(139, 92, 246, 0.3);
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.4);
     }
 
     .parlay-odds-row {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
-      background: var(--bg-surface-elevated);
-      padding: 0.85rem 1.25rem;
+      background: rgba(10, 16, 28, 0.75);
+      padding: 0.95rem 1.4rem;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--pitch-border);
     }
 
     .parlay-odds-total {
-      font-size: 2rem;
+      font-family: var(--font-display);
+      font-size: 2.2rem;
       font-weight: 900;
-      color: var(--accent-green);
+      color: #facc15;
+      text-shadow: 0 0 16px rgba(250, 204, 21, 0.4);
     }
 
     .legs-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.8rem;
     }
 
     .leg-item {
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--pitch-border);
       border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1.1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -556,31 +629,34 @@
     .leg-info {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
 
     .leg-match {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-dim);
+      font-weight: 600;
     }
 
     .leg-pick {
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.93rem;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .leg-stats {
-      font-size: 0.75rem;
-      color: var(--accent-cyan);
+      font-size: 0.78rem;
+      color: var(--neon-cyan);
     }
 
     .leg-odd {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--accent-green);
-      background: var(--accent-green-bg);
-      padding: 0.2rem 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #86efac;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      padding: 0.25rem 0.65rem;
       border-radius: var(--radius-sm);
     }
 
@@ -589,60 +665,66 @@
       justify-content: space-between;
       align-items: center;
       margin-top: auto;
-      padding-top: 0.5rem;
+      padding-top: 0.75rem;
     }
 
     .parlay-stake-info {
-      font-size: 0.8rem;
+      font-size: 0.83rem;
       color: var(--text-muted);
     }
 
-    /* Fallback / Upload Bar */
-    .file-loader-bar {
-      margin-top: 1.5rem;
-      padding: 0.85rem 1.25rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      display: flex;
+    .btn-copy {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      border: 1px solid #38bdf8;
+      border-radius: 9999px;
+      padding: 0.5rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
+      gap: 0.4rem;
+      transition: all 0.2s;
     }
 
-    /* Empty state */
-    .empty-state {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-muted);
-      background: var(--bg-surface);
-      border: 1px dashed var(--border-subtle);
-      border-radius: var(--radius-md);
+    .btn-copy:hover {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
     }
 
-    /* Toast Notification */
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background: var(--accent-green);
-      color: #052e16;
+      background: #15803d;
+      border: 1px solid #4ade80;
+      color: #ffffff;
       font-weight: 700;
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--radius-sm);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       transform: translateY(100px);
       opacity: 0;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 100;
+      font-family: var(--font-display);
     }
 
     .toast.show {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--text-muted);
+      background: var(--pitch-card);
+      border: 1px dashed var(--pitch-border);
+      border-radius: var(--radius-md);
     }
 
     @media (max-width: 768px) {
@@ -654,359 +736,123 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header con Estilo Estadio -->
   <header>
     <div class="container header-content">
       <div class="brand-title">
-        <div class="brand-icon">âš¡</div>
+        <div class="brand-ball">⚽</div>
         <div class="brand-text">
-          <h1>StatsHub Ã— bet365 | Radar +EV</h1>
-          <p id="headerSubtitle">Cargando pronÃ³sticos...</p>
+          <h1>StatsHub × bet365 <span style="font-size: 0.9rem; font-weight: 600; color: #4ade80;">RADAR +EV</span></h1>
+          <p id="headerSubtitle">Cargando pronósticos de la fecha...</p>
         </div>
       </div>
       <div class="header-badges">
-        <span class="pill-badge live" id="statusBadge">Conectado a StatsHub</span>
-        <span class="pill-badge" id="sourceBadge">Origen: picks_hoy.json</span>
+        <span class="pill-badge live" id="statusBadge">StatsHub Conectado</span>
         <span class="pill-badge" id="bookieBadge">Casa: bet365</span>
-        <button class="btn btn-primary" onclick="loadPicksData()">ðŸ”„ Actualizar</button>
+        <button class="btn-refresh" onclick="loadPicksData()">🔄 Actualizar</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- KPI Summary Bar -->
+    <!-- Marcador / KPIs Principales -->
     <section class="kpi-grid">
       <div class="kpi-card">
-        <span class="kpi-label">Top Picks Activos</span>
+        <span class="kpi-label">Picks Activos</span>
         <div class="kpi-value" id="kpiTotalPicks">0</div>
         <span class="kpi-sub" id="kpiAnalyzed">0 evaluados</span>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">Edge Promedio (+EV)</span>
         <div class="kpi-value" id="kpiAvgEdge">0%</div>
-        <span class="kpi-sub">Ventaja s/ probabilidad implÃ­cita</span>
+        <span class="kpi-sub">Ventaja s/ probabilidad implícita</span>
       </div>
       <div class="kpi-card">
-        <span class="kpi-label">Tasa de Acierto (L5)</span>
+        <span class="kpi-label">Acierto Reciente (L5)</span>
         <div class="kpi-value" id="kpiAvgHitRate">0%</div>
-        <span class="kpi-sub">Efectividad reciente</span>
+        <span class="kpi-sub">Efectividad últimos 5 partidos</span>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">Cuota Media bet365</span>
         <div class="kpi-value" id="kpiAvgOdds">0.00</div>
-        <span class="kpi-sub">Retorno ponderado</span>
+        <span class="kpi-sub">Multiplicador promedio</span>
       </div>
     </section>
 
-    <!-- Controls & Filters -->
+    <!-- Filtros de Partido -->
     <section class="controls-bar">
       <div class="filter-group">
-        <label class="control-label" for="filterLeague">Liga:</label>
+        <label class="control-label" for="filterLeague">🏆 Liga:</label>
         <select id="filterLeague" class="select-control" onchange="renderPicks()">
           <option value="all">Todas las Ligas</option>
         </select>
 
-        <label class="control-label" for="filterMarket">Mercado:</label>
+        <label class="control-label" for="filterMarket">🎯 Mercado:</label>
         <select id="filterMarket" class="select-control" onchange="renderPicks()">
           <option value="all">Todos los Mercados</option>
         </select>
 
-        <label class="control-label" for="filterMinHit">MÃ­n. Hit Rate:</label>
+        <label class="control-label" for="filterMinHit">🔥 Mín. Racha:</label>
         <select id="filterMinHit" class="select-control" onchange="renderPicks()">
           <option value="0">Cualquiera</option>
-          <option value="75">â‰¥ 75% L5</option>
-          <option value="80" selected>â‰¥ 80% L5</option>
-          <option value="90">â‰¥ 90% L5</option>
+          <option value="75">≥ 75% L5</option>
+          <option value="80" selected>≥ 80% L5</option>
+          <option value="90">≥ 90% L5</option>
         </select>
       </div>
 
       <div class="filter-group">
-        <input type="text" id="searchInput" class="input-control" placeholder="Buscar jugador, equipo..." oninput="renderPicks()" style="min-width: 220px;">
+        <input type="text" id="searchInput" class="input-control" placeholder="🔍 Buscar jugador, equipo..." oninput="renderPicks()" style="min-width: 230px;">
       </div>
     </section>
 
-    <!-- Navigation Tabs -->
+    <!-- Pestañas -->
     <div class="view-tabs">
       <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
-        ðŸŽ¯ Top Picks Individuales (+EV)
+        🎯 Top Picks Individuales (+EV)
         <span class="tab-counter" id="tabPicksCount">0</span>
       </button>
       <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')">
-        ðŸ§© Combinadas / Parlays Sugeridos
+        🧩 Combinadas / Parlays Sugeridos
         <span class="tab-counter" id="tabParlaysCount">0</span>
       </button>
     </div>
 
-    <!-- View: Individual Picks -->
+    <!-- Vista: Picks Individuales -->
     <section id="viewPicks">
-      <div class="picks-grid" id="picksGrid">
-        <!-- Rendered dynamically -->
-      </div>
+      <div class="picks-grid" id="picksGrid"></div>
     </section>
 
-    <!-- View: Parlays -->
+    <!-- Vista: Parlays -->
     <section id="viewParlays" style="display: none;">
-      <div class="parlays-container" id="parlaysGrid">
-        <!-- Rendered dynamically -->
-      </div>
+      <div class="parlays-container" id="parlaysGrid"></div>
     </section>
-
-    <!-- File loader fallback (For when file:// CORS restrictions apply) -->
-    <div class="file-loader-bar">
-      <span>ðŸ“ Si estÃ¡s en protocolo local (<code>file://</code>) podÃ©s forzar la carga seleccionando <code>picks_hoy.json</code>:</span>
-      <input type="file" id="manualFileInput" accept=".json" onchange="handleManualFile(event)">
-    </div>
   </main>
 
-  <div id="toast" class="toast">Ticket copiado al portapapeles</div>
+  <div id="toast" class="toast">¡Ticket copiado al portapapeles!</div>
 
-  <!-- EMBEDDED BACKUP DATA: Ensures data is rendered even if opened directly via file:// -->
-  <script id="embedded-data" type="application/json">
-{
-  "updated_at": "2026-11-18T19:15:00Z",
-  "date": "2026-11-18",
-  "bookmaker": "bet365",
-  "total_analyzed": 66,
-  "summary_metrics": {
-    "total_picks": 6,
-    "avg_odds": 1.71,
-    "avg_hit_rate_l5": "93.3%",
-    "avg_edge_pct": "21.6%"
-  },
-  "top_picks": [
-    {
-      "id": "prop-real-1",
-      "league": "BrasileirÃ£o SÃ©rie A",
-      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
-      "match": "Coritiba vs Santos",
-      "time": "19:30 ARG / 22:30 UTC",
-      "player": "Gabriel Barbosa",
-      "team": "Santos",
-      "opponent": "Coritiba",
-      "market": "Remates totales",
-      "line": "MÃ¡s de 3.5 remates",
-      "odds": 1.67,
-      "hit_rate_l5": "5/5 (100%)",
-      "hit_rate_l10": "7/10 (70%)",
-      "avg_per_game": 4.9,
-      "implied_prob": 59.9,
-      "real_prob": 80.0,
-      "edge_pct": 20.1,
-      "confidence": "Muy Alta",
-      "rationale": "Gabriel Barbosa viene con una racha de 6 titularidades consecutivas superando la lÃ­nea (con registros recientes de 5, 7, 9, 4, 5, 6 tiros). Coritiba concede en promedio 16.24 disparos por partido como local frente a la media del torneo (12.11)."
-    },
-    {
-      "id": "prop-real-2",
-      "league": "BrasileirÃ£o SÃ©rie A",
-      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
-      "match": "Flamengo vs Athletico Paranaense",
-      "time": "20:30 ARG / 23:30 UTC",
-      "player": "Athletico Paranaense (Equipo)",
-      "team": "Athletico Paranaense",
-      "opponent": "Flamengo",
-      "market": "Remates de equipo",
-      "line": "MÃ¡s de 8.5 remates totales",
-      "odds": 1.73,
-      "hit_rate_l5": "5/5 (100%)",
-      "hit_rate_l10": "10/10 (100%)",
-      "avg_per_game": 11.4,
-      "implied_prob": 57.8,
-      "real_prob": 90.0,
-      "edge_pct": 32.2,
-      "confidence": "MÃ¡xima",
-      "rationale": "Efectividad perfecta: superÃ³ la lÃ­nea de 8.5 tiros en 10 de sus Ãºltimos 10 encuentros en todas las competiciones (promediando 11.4 disparos por juego)."
-    },
-    {
-      "id": "prop-real-3",
-      "league": "BrasileirÃ£o SÃ©rie A",
-      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
-      "match": "Cruzeiro vs Palmeiras",
-      "time": "20:30 ARG / 23:30 UTC",
-      "player": "Kaio Jorge",
-      "team": "Cruzeiro",
-      "opponent": "Palmeiras",
-      "market": "Gol o Asistencia (G/A)",
-      "line": "MÃ¡s de 0.5 G/A",
-      "odds": 1.80,
-      "hit_rate_l5": "4/5 (80%)",
-      "hit_rate_l10": "8/10 (80%)",
-      "avg_per_game": 0.9,
-      "implied_prob": 55.6,
-      "real_prob": 80.0,
-      "edge_pct": 24.4,
-      "confidence": "Alta",
-      "rationale": "Kaio Jorge aportÃ³ gol o asistencia en 8 de sus Ãºltimas 10 presentaciones en todas las competiciones. Es el eje ofensivo y ejecutor de penales de Cruzeiro."
-    },
-    {
-      "id": "prop-real-4",
-      "league": "BrasileirÃ£o SÃ©rie A",
-      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
-      "match": "Coritiba vs Santos",
-      "time": "19:30 ARG / 22:30 UTC",
-      "player": "JosuÃ© Pesqueira",
-      "team": "Coritiba",
-      "opponent": "Santos",
-      "market": "Faltas recibidas",
-      "line": "MÃ¡s de 2.5 faltas recibidas",
-      "odds": 1.73,
-      "hit_rate_l5": "5/5 (100%)",
-      "hit_rate_l10": "7/10 (70%)",
-      "avg_per_game": 3.3,
-      "implied_prob": 57.8,
-      "real_prob": 78.0,
-      "edge_pct": 20.2,
-      "confidence": "Alta",
-      "rationale": "Racha vigente de 6 partidos seguidos recibiendo al menos 3 infracciones (Ãºltimos juegos: 4, 3, 4, 4, 3, 5 faltas recibidas). Conductor de la salida de Coritiba de local."
-    },
-    {
-      "id": "prop-real-5",
-      "league": "BrasileirÃ£o SÃ©rie A",
-      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
-      "match": "Cruzeiro vs Palmeiras",
-      "time": "20:30 ARG / 23:30 UTC",
-      "player": "Alexander Barboza",
-      "team": "Palmeiras",
-      "opponent": "Cruzeiro",
-      "market": "Entradas (Tackles)",
-      "line": "MÃ¡s de 1.5 entradas",
-      "odds": 1.67,
-      "hit_rate_l5": "4/5 (80%)",
-      "hit_rate_l10": "8/10 (80%)",
-      "avg_per_game": 2.1,
-      "implied_prob": 59.9,
-      "real_prob": 80.0,
-      "edge_pct": 20.1,
-      "confidence": "Alta",
-      "rationale": "Barboza cumpliÃ³ la lÃ­nea de 1.5 entradas en 8 de sus Ãºltimos 10 partidos en todas las competiciones, promediando 2.1 recuperaciones limpias."
-    },
-    {
-      "id": "prop-real-6",
-      "league": "BrasileirÃ£o SÃ©rie A",
-      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
-      "match": "VitÃ³ria vs Red Bull Bragantino",
-      "time": "Jueves 19:30 ARG / 22:30 UTC",
-      "player": "Wallace Yan",
-      "team": "Red Bull Bragantino",
-      "opponent": "VitÃ³ria",
-      "market": "Remates totales",
-      "line": "MÃ¡s de 2.5 remates",
-      "odds": 1.67,
-      "hit_rate_l5": "5/5 (100%)",
-      "hit_rate_l10": "7/10 (70%)",
-      "avg_per_game": 3.3,
-      "implied_prob": 59.9,
-      "real_prob": 75.0,
-      "edge_pct": 15.1,
-      "confidence": "Media-Alta",
-      "rationale": "Wallace Yan superÃ³ la lÃ­nea en sus Ãºltimos 5 partidos seguidos (promediando 4.6 tiros en dicha racha). VitÃ³ria permite 13.4 tiros por partido en Salvador."
-    }
-  ],
-  "parlays": [
-    {
-      "id": "parlay-real-safe",
-      "name": "Combinada Conservadora",
-      "type": "Conservadora",
-      "target_odds": 2.78,
-      "confidence": "Muy Alta (Rachas 80-100%)",
-      "suggested_stake": "1.5% del bankroll",
-      "legs": [
-        {
-          "match": "Coritiba vs Santos",
-          "selection": "Gabriel Barbosa - MÃ¡s de 3.5 remates",
-          "odds": 1.67,
-          "stat_snapshot": "6/6 L6 | Promedio 4.9 tiros | Coritiba concede 16.2 tiros"
-        },
-        {
-          "match": "Cruzeiro vs Palmeiras",
-          "selection": "Alexander Barboza - MÃ¡s de 1.5 entradas",
-          "odds": 1.67,
-          "stat_snapshot": "80% L10 | Promedio 2.1 entradas"
-        }
-      ],
-      "rationale": "Doble de consistencia probada. Barbosa rematando ante una de las defensas mÃ¡s permisivas del torneo y Barboza sosteniendo un 80% de acierto en duelos directos."
-    },
-    {
-      "id": "parlay-real-value",
-      "name": "Combinada de Valor (+EV)",
-      "type": "Valor",
-      "target_odds": 5.38,
-      "confidence": "Media-Alta (+EV 25%)",
-      "suggested_stake": "0.5% del bankroll",
-      "legs": [
-        {
-          "match": "Flamengo vs Athletico Paranaense",
-          "selection": "Athletico - MÃ¡s de 8.5 remates totales",
-          "odds": 1.73,
-          "stat_snapshot": "100% L10 | Promedio 11.4 remates"
-        },
-        {
-          "match": "Cruzeiro vs Palmeiras",
-          "selection": "Kaio Jorge - MÃ¡s de 0.5 G/A",
-          "odds": 1.80,
-          "stat_snapshot": "80% L10 | Referente de ataque"
-        },
-        {
-          "match": "Coritiba vs Santos",
-          "selection": "JosuÃ© Pesqueira - MÃ¡s de 2.5 faltas recibidas",
-          "odds": 1.73,
-          "stat_snapshot": "100% L6 | Promedio 3.8 faltas sufridas"
-        }
-      ],
-      "rationale": "TrÃ­ptico con valor matemÃ¡tico destacado. Cruzamos el 100% histÃ³rico de tiros de Athletico con dos props de alta incidencia en el juego ofensivo a cuota acumulada superior a 5.00."
-    }
-  ]
-}
-
-  </script>
-
+  <!-- Script de lectura y renderizado -->
   <script>
     let globalData = null;
     let currentView = 'picks';
 
     async function loadPicksData() {
       const headerSubtitle = document.getElementById('headerSubtitle');
-      const sourceBadge = document.getElementById('sourceBadge');
-
       try {
         const response = await fetch('./picks_hoy.json?t=' + Date.now());
-        if (!response.ok) throw new Error('Status no ok');
+        if (!response.ok) throw new Error('No se pudo cargar picks_hoy.json');
         globalData = await response.json();
-        sourceBadge.textContent = 'Origen: picks_hoy.json (Live)';
         setupDashboard(globalData);
-        showToast('Datos actualizados desde picks_hoy.json');
+        showToast('Pronósticos actualizados en vivo');
       } catch (err) {
-        console.warn('Fetch local bloqueado por polÃ­tica CORS file://. Usando datos embebidos/fallback.');
-        try {
-          const rawEmbedded = document.getElementById('embedded-data').textContent;
-          globalData = JSON.parse(rawEmbedded);
-          sourceBadge.textContent = 'Origen: Local / Embebido';
-          setupDashboard(globalData);
-        } catch (embeddedErr) {
-          headerSubtitle.textContent = 'Aviso: SeleccionÃ¡ picks_hoy.json abajo si estÃ¡s usando protocolo file://';
-        }
+        console.warn('Error al leer picks_hoy.json directamente:', err);
+        headerSubtitle.textContent = 'Error de lectura. Asegurate de recargar o ejecutar el servidor.';
       }
-    }
-
-    function handleManualFile(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          globalData = JSON.parse(e.target.result);
-          document.getElementById('sourceBadge').textContent = 'Origen: Archivo cargado';
-          setupDashboard(globalData);
-          showToast('picks_hoy.json cargado exitosamente');
-        } catch (error) {
-          alert('Error al leer el archivo JSON: ' + error.message);
-        }
-      };
-      reader.readAsText(file);
     }
 
     function setupDashboard(data) {
       const formattedDate = data.date || new Date().toISOString().split('T')[0];
-      document.getElementById('headerSubtitle').textContent = `Jornada ${formattedDate} â€¢ ${data.top_picks?.length || 0} picks de alto valor filtrados`;
+      document.getElementById('headerSubtitle').textContent = `Jornada ${formattedDate} • ${data.top_picks?.length || 0} picks de alto valor analizados`;
       document.getElementById('bookieBadge').textContent = `Casa: ${data.bookmaker || 'bet365'}`;
 
       if (data.summary_metrics) {
@@ -1053,7 +899,7 @@
     function renderPicks() {
       const container = document.getElementById('picksGrid');
       if (!globalData || !globalData.top_picks) {
-        container.innerHTML = '<div class="empty-state">No hay picks cargados en este momento.</div>';
+        container.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
         return;
       }
 
@@ -1082,7 +928,7 @@
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div class="empty-state">No se encontraron picks que coincidan con los filtros seleccionados. ProbÃ¡ bajando el "MÃ­n. Hit Rate" a "Cualquiera".</div>';
+        container.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales. Probá reduciendo el filtro de "Mín. Racha".</div>';
         return;
       }
 
@@ -1093,7 +939,7 @@
             <span class="pick-time">${pick.time || ''}</span>
           </div>
 
-          <div class="pick-match">${pick.match}</div>
+          <div class="pick-match">⚽ ${pick.match}</div>
 
           <div class="pick-player">
             <span>${pick.player}</span>
@@ -1117,13 +963,13 @@
               <span class="val">${pick.avg_per_game}</span>
             </div>
             <div class="stat-item">
-              <span class="label">Edge +EV</span>
+              <span class="label">Ventaja +EV</span>
               <span class="val edge">+${pick.edge_pct}%</span>
             </div>
           </div>
 
           <div class="odds-badge">
-            <span class="odds-bookie">bet365</span>
+            <span class="odds-bookie">🟢 bet365</span>
             <span class="odds-number">${pick.odds.toFixed(2)}</span>
           </div>
 
@@ -1147,14 +993,14 @@
           <article class="parlay-card ${cardClass}">
             <div class="parlay-header">
               <div>
-                <h3 class="parlay-title">${parlay.name}</h3>
+                <h3 class="parlay-title">${isConservative ? '🛡️' : '🚀'} ${parlay.name}</h3>
                 <span style="font-size: 0.8rem; color: var(--text-muted);">${parlay.confidence || ''}</span>
               </div>
               <span class="parlay-type-badge">${parlay.type}</span>
             </div>
 
             <div class="parlay-odds-row">
-              <span style="font-weight: 700; font-size: 0.9rem;">Cuota Combinada bet365:</span>
+              <span style="font-weight: 700; font-size: 0.95rem;">Cuota Combinada bet365:</span>
               <span class="parlay-odds-total">${parlay.target_odds ? parlay.target_odds.toFixed(2) : ''}</span>
             </div>
 
@@ -1162,7 +1008,7 @@
               ${parlay.legs.map(leg => `
                 <li class="leg-item">
                   <div class="leg-info">
-                    <span class="leg-match">${leg.match}</span>
+                    <span class="leg-match">⚽ ${leg.match}</span>
                     <span class="leg-pick">${leg.selection}</span>
                     ${leg.stat_snapshot ? `<span class="leg-stats">${leg.stat_snapshot}</span>` : ''}
                   </div>
@@ -1171,11 +1017,11 @@
               `).join('')}
             </ul>
 
-            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">${parlay.rationale || ''}</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.45;">${parlay.rationale || ''}</p>
 
             <div class="parlay-footer">
               <span class="parlay-stake-info">Stake sugerido: <strong>${parlay.suggested_stake || '1%'}</strong></span>
-              <button class="btn btn-primary" onclick="copyParlay('${parlay.id}')">ðŸ“‹ Copiar CupÃ³n</button>
+              <button class="btn-copy" onclick="copyParlay('${parlay.id}')">📋 Copiar Cupón</button>
             </div>
           </article>
         `;
@@ -1194,12 +1040,12 @@
       const parlay = globalData.parlays.find(p => p.id === parlayId);
       if (!parlay) return;
 
-      const text = `ðŸŽŸï¸ ${parlay.name} (Cuota bet365: ${parlay.target_odds.toFixed(2)})\n` +
-        parlay.legs.map(l => `â€¢ ${l.match} âž” ${l.selection} (@${l.odds.toFixed(2)})`).join('\n') +
-        `\nðŸ’¡ Stake: ${parlay.suggested_stake || '1%'}`;
+      const text = `🎟️ ${parlay.name} (Cuota bet365: ${parlay.target_odds.toFixed(2)})\n` +
+        parlay.legs.map(l => `• ${l.match} ➔ ${l.selection} (@${l.odds.toFixed(2)})`).join('\n') +
+        `\n💡 Stake: ${parlay.suggested_stake || '1%'}`;
 
       navigator.clipboard.writeText(text).then(() => {
-        showToast('Â¡CupÃ³n de combinada copiado al portapapeles!');
+        showToast('¡Cupón de combinada copiado al portapapeles!');
       });
     }
 
@@ -1214,4 +1060,3 @@
   </script>
 </body>
 </html>
-
