@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
-  <title>StatsHub × bet365 | Dashboard de Análisis +EV</title>
+  <title>StatsHub Ã— bet365 | Dashboard de AnÃ¡lisis +EV</title>
   <style>
     :root {
       color-scheme: dark;
@@ -658,17 +658,17 @@
   <header>
     <div class="container header-content">
       <div class="brand-title">
-        <div class="brand-icon">⚡</div>
+        <div class="brand-icon">âš¡</div>
         <div class="brand-text">
-          <h1>StatsHub × bet365 | Radar +EV</h1>
-          <p id="headerSubtitle">Cargando pronósticos...</p>
+          <h1>StatsHub Ã— bet365 | Radar +EV</h1>
+          <p id="headerSubtitle">Cargando pronÃ³sticos...</p>
         </div>
       </div>
       <div class="header-badges">
         <span class="pill-badge live" id="statusBadge">Conectado a StatsHub</span>
         <span class="pill-badge" id="sourceBadge">Origen: picks_hoy.json</span>
         <span class="pill-badge" id="bookieBadge">Casa: bet365</span>
-        <button class="btn btn-primary" onclick="loadPicksData()">🔄 Actualizar</button>
+        <button class="btn btn-primary" onclick="loadPicksData()">ðŸ”„ Actualizar</button>
       </div>
     </div>
   </header>
@@ -684,7 +684,7 @@
       <div class="kpi-card">
         <span class="kpi-label">Edge Promedio (+EV)</span>
         <div class="kpi-value" id="kpiAvgEdge">0%</div>
-        <span class="kpi-sub">Ventaja s/ probabilidad implícita</span>
+        <span class="kpi-sub">Ventaja s/ probabilidad implÃ­cita</span>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">Tasa de Acierto (L5)</span>
@@ -711,12 +711,12 @@
           <option value="all">Todos los Mercados</option>
         </select>
 
-        <label class="control-label" for="filterMinHit">Mín. Hit Rate:</label>
+        <label class="control-label" for="filterMinHit">MÃ­n. Hit Rate:</label>
         <select id="filterMinHit" class="select-control" onchange="renderPicks()">
           <option value="0">Cualquiera</option>
-          <option value="75">≥ 75% L5</option>
-          <option value="80" selected>≥ 80% L5</option>
-          <option value="90">≥ 90% L5</option>
+          <option value="75">â‰¥ 75% L5</option>
+          <option value="80" selected>â‰¥ 80% L5</option>
+          <option value="90">â‰¥ 90% L5</option>
         </select>
       </div>
 
@@ -728,11 +728,11 @@
     <!-- Navigation Tabs -->
     <div class="view-tabs">
       <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
-        🎯 Top Picks Individuales (+EV)
+        ðŸŽ¯ Top Picks Individuales (+EV)
         <span class="tab-counter" id="tabPicksCount">0</span>
       </button>
       <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')">
-        🧩 Combinadas / Parlays Sugeridos
+        ðŸ§© Combinadas / Parlays Sugeridos
         <span class="tab-counter" id="tabParlaysCount">0</span>
       </button>
     </div>
@@ -753,7 +753,7 @@
 
     <!-- File loader fallback (For when file:// CORS restrictions apply) -->
     <div class="file-loader-bar">
-      <span>📁 Si estás en protocolo local (<code>file://</code>) podés forzar la carga seleccionando <code>picks_hoy.json</code>:</span>
+      <span>ðŸ“ Si estÃ¡s en protocolo local (<code>file://</code>) podÃ©s forzar la carga seleccionando <code>picks_hoy.json</code>:</span>
       <input type="file" id="manualFileInput" accept=".json" onchange="handleManualFile(event)">
     </div>
   </main>
@@ -763,199 +763,200 @@
   <!-- EMBEDDED BACKUP DATA: Ensures data is rendered even if opened directly via file:// -->
   <script id="embedded-data" type="application/json">
 {
-  "updated_at": "2026-11-18T18:30:00Z",
+  "updated_at": "2026-11-18T19:15:00Z",
   "date": "2026-11-18",
   "bookmaker": "bet365",
-  "total_analyzed": 52,
+  "total_analyzed": 66,
   "summary_metrics": {
     "total_picks": 6,
-    "avg_odds": 1.83,
-    "avg_hit_rate_l5": "86.7%",
-    "avg_edge_pct": "18.4%"
+    "avg_odds": 1.71,
+    "avg_hit_rate_l5": "93.3%",
+    "avg_edge_pct": "21.6%"
   },
   "top_picks": [
     {
-      "id": "prop-1",
-      "league": "Premier League",
-      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
-      "match": "Arsenal vs Chelsea",
-      "time": "16:30",
-      "player": "Bukayo Saka",
-      "team": "Arsenal",
-      "opponent": "Chelsea",
-      "market": "Remates al arco",
-      "line": "Más de 0.5 tiros al arco",
-      "odds": 1.72,
+      "id": "prop-real-1",
+      "league": "BrasileirÃ£o SÃ©rie A",
+      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
+      "match": "Coritiba vs Santos",
+      "time": "19:30 ARG / 22:30 UTC",
+      "player": "Gabriel Barbosa",
+      "team": "Santos",
+      "opponent": "Coritiba",
+      "market": "Remates totales",
+      "line": "MÃ¡s de 3.5 remates",
+      "odds": 1.67,
       "hit_rate_l5": "5/5 (100%)",
-      "hit_rate_l10": "8/10 (80%)",
-      "avg_per_game": 1.5,
-      "implied_prob": 58.1,
+      "hit_rate_l10": "7/10 (70%)",
+      "avg_per_game": 4.9,
+      "implied_prob": 59.9,
       "real_prob": 80.0,
-      "edge_pct": 21.9,
-      "confidence": "Alta",
-      "rationale": "Saka promedia 1.5 disparos a portería en los últimos 10 encuentros. Chelsea concede 4.8 tiros a puerta por partido como visitante y Saka cobra tiros libres directos."
+      "edge_pct": 20.1,
+      "confidence": "Muy Alta",
+      "rationale": "Gabriel Barbosa viene con una racha de 6 titularidades consecutivas superando la lÃ­nea (con registros recientes de 5, 7, 9, 4, 5, 6 tiros). Coritiba concede en promedio 16.24 disparos por partido como local frente a la media del torneo (12.11)."
     },
     {
-      "id": "prop-2",
-      "league": "LaLiga",
-      "league_badge": "🇪🇸 LaLiga",
-      "match": "Atlético de Madrid vs Real Betis",
-      "time": "17:00",
-      "player": "Rodrigo De Paul",
-      "team": "Atlético de Madrid",
-      "opponent": "Real Betis",
-      "market": "Faltas cometidas",
-      "line": "Más de 1.5 faltas cometidas",
+      "id": "prop-real-2",
+      "league": "BrasileirÃ£o SÃ©rie A",
+      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
+      "match": "Flamengo vs Athletico Paranaense",
+      "time": "20:30 ARG / 23:30 UTC",
+      "player": "Athletico Paranaense (Equipo)",
+      "team": "Athletico Paranaense",
+      "opponent": "Flamengo",
+      "market": "Remates de equipo",
+      "line": "MÃ¡s de 8.5 remates totales",
+      "odds": 1.73,
+      "hit_rate_l5": "5/5 (100%)",
+      "hit_rate_l10": "10/10 (100%)",
+      "avg_per_game": 11.4,
+      "implied_prob": 57.8,
+      "real_prob": 90.0,
+      "edge_pct": 32.2,
+      "confidence": "MÃ¡xima",
+      "rationale": "Efectividad perfecta: superÃ³ la lÃ­nea de 8.5 tiros en 10 de sus Ãºltimos 10 encuentros en todas las competiciones (promediando 11.4 disparos por juego)."
+    },
+    {
+      "id": "prop-real-3",
+      "league": "BrasileirÃ£o SÃ©rie A",
+      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
+      "match": "Cruzeiro vs Palmeiras",
+      "time": "20:30 ARG / 23:30 UTC",
+      "player": "Kaio Jorge",
+      "team": "Cruzeiro",
+      "opponent": "Palmeiras",
+      "market": "Gol o Asistencia (G/A)",
+      "line": "MÃ¡s de 0.5 G/A",
       "odds": 1.80,
       "hit_rate_l5": "4/5 (80%)",
       "hit_rate_l10": "8/10 (80%)",
-      "avg_per_game": 2.2,
+      "avg_per_game": 0.9,
       "implied_prob": 55.6,
       "real_prob": 80.0,
       "edge_pct": 24.4,
       "confidence": "Alta",
-      "rationale": "De Paul promedia 2.2 faltas en el Metropolitano en partidos de alta fricción. El Betis es el 3er equipo de LaLiga que más faltas recibe en zona media."
+      "rationale": "Kaio Jorge aportÃ³ gol o asistencia en 8 de sus Ãºltimas 10 presentaciones en todas las competiciones. Es el eje ofensivo y ejecutor de penales de Cruzeiro."
     },
     {
-      "id": "prop-3",
-      "league": "Liga Profesional Argentina",
-      "league_badge": "🇦🇷 Liga Profesional",
-      "match": "Boca Juniors vs Racing Club",
-      "time": "21:00",
-      "player": "Edinson Cavani",
-      "team": "Boca Juniors",
-      "opponent": "Racing Club",
-      "market": "Remates totales",
-      "line": "Más de 2.5 remates totales",
-      "odds": 1.90,
-      "hit_rate_l5": "4/5 (80%)",
-      "hit_rate_l10": "7/10 (70%)",
-      "avg_per_game": 3.1,
-      "implied_prob": 52.6,
-      "real_prob": 75.0,
-      "edge_pct": 22.4,
-      "confidence": "Media-Alta",
-      "rationale": "Cavani remata al menos 3 veces en La Bombonera por cotejo. Racing llega con bajas sensibles en la zaga central y suele ceder la posesión al rival de visitante."
-    },
-    {
-      "id": "prop-4",
-      "league": "Brasileirão",
-      "league_badge": "🇧🇷 Brasileirão",
-      "match": "Palmeiras vs Flamengo",
-      "time": "19:00",
-      "player": "Gerson",
-      "team": "Flamengo",
-      "opponent": "Palmeiras",
-      "market": "Faltas cometidas",
-      "line": "Más de 1.5 faltas",
-      "odds": 1.75,
+      "id": "prop-real-4",
+      "league": "BrasileirÃ£o SÃ©rie A",
+      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
+      "match": "Coritiba vs Santos",
+      "time": "19:30 ARG / 22:30 UTC",
+      "player": "JosuÃ© Pesqueira",
+      "team": "Coritiba",
+      "opponent": "Santos",
+      "market": "Faltas recibidas",
+      "line": "MÃ¡s de 2.5 faltas recibidas",
+      "odds": 1.73,
       "hit_rate_l5": "5/5 (100%)",
-      "hit_rate_l10": "9/10 (90%)",
-      "avg_per_game": 2.4,
-      "implied_prob": 57.1,
-      "real_prob": 90.0,
-      "edge_pct": 32.9,
-      "confidence": "Muy Alta",
-      "rationale": "Racha perfecta de 5/5 en sus últimos 5 clásicos. El árbitro designado (Wilton Sampaio) sanciona en promedio 27.4 faltas por partido."
+      "hit_rate_l10": "7/10 (70%)",
+      "avg_per_game": 3.3,
+      "implied_prob": 57.8,
+      "real_prob": 78.0,
+      "edge_pct": 20.2,
+      "confidence": "Alta",
+      "rationale": "Racha vigente de 6 partidos seguidos recibiendo al menos 3 infracciones (Ãºltimos juegos: 4, 3, 4, 4, 3, 5 faltas recibidas). Conductor de la salida de Coritiba de local."
     },
     {
-      "id": "prop-5",
-      "league": "Premier League",
-      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
-      "match": "Manchester City vs Tottenham",
-      "time": "14:30",
-      "player": "Manchester City (Equipo)",
-      "team": "Manchester City",
-      "opponent": "Tottenham",
-      "market": "Córners",
-      "line": "Más de 6.5 córners equipo",
-      "odds": 1.83,
+      "id": "prop-real-5",
+      "league": "BrasileirÃ£o SÃ©rie A",
+      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
+      "match": "Cruzeiro vs Palmeiras",
+      "time": "20:30 ARG / 23:30 UTC",
+      "player": "Alexander Barboza",
+      "team": "Palmeiras",
+      "opponent": "Cruzeiro",
+      "market": "Entradas (Tackles)",
+      "line": "MÃ¡s de 1.5 entradas",
+      "odds": 1.67,
       "hit_rate_l5": "4/5 (80%)",
       "hit_rate_l10": "8/10 (80%)",
-      "avg_per_game": 8.2,
-      "implied_prob": 54.6,
+      "avg_per_game": 2.1,
+      "implied_prob": 59.9,
       "real_prob": 80.0,
-      "edge_pct": 25.4,
+      "edge_pct": 20.1,
       "confidence": "Alta",
-      "rationale": "City en el Etihad genera un promedio de 8.2 saques de esquina. Tottenham suele replegarse con bloque bajo permitiendo desbordes por las bandas."
+      "rationale": "Barboza cumpliÃ³ la lÃ­nea de 1.5 entradas en 8 de sus Ãºltimos 10 partidos en todas las competiciones, promediando 2.1 recuperaciones limpias."
     },
     {
-      "id": "prop-6",
-      "league": "LaLiga",
-      "league_badge": "🇪🇸 LaLiga",
-      "match": "Athletic Club vs Real Sociedad",
-      "time": "18:30",
-      "player": "Dani Vivian",
-      "team": "Athletic Club",
-      "opponent": "Real Sociedad",
-      "market": "Tarjetas",
-      "line": "Será amonestado (Tarjeta Sí)",
-      "odds": 2.87,
-      "hit_rate_l5": "3/5 (60%)",
-      "hit_rate_l10": "5/10 (50%)",
-      "avg_per_game": 0.5,
-      "implied_prob": 34.8,
-      "real_prob": 50.0,
-      "edge_pct": 15.2,
-      "confidence": "Valor / Cuota Alta",
-      "rationale": "Derbi Vasco con Gil Manzano como árbitro (5.8 amarillas/partido). Vivian marca directamente a Oyarzabal y promedia 1 tarjeta cada 2 derbis."
+      "id": "prop-real-6",
+      "league": "BrasileirÃ£o SÃ©rie A",
+      "league_badge": "ðŸ‡§ðŸ‡· BrasileirÃ£o",
+      "match": "VitÃ³ria vs Red Bull Bragantino",
+      "time": "Jueves 19:30 ARG / 22:30 UTC",
+      "player": "Wallace Yan",
+      "team": "Red Bull Bragantino",
+      "opponent": "VitÃ³ria",
+      "market": "Remates totales",
+      "line": "MÃ¡s de 2.5 remates",
+      "odds": 1.67,
+      "hit_rate_l5": "5/5 (100%)",
+      "hit_rate_l10": "7/10 (70%)",
+      "avg_per_game": 3.3,
+      "implied_prob": 59.9,
+      "real_prob": 75.0,
+      "edge_pct": 15.1,
+      "confidence": "Media-Alta",
+      "rationale": "Wallace Yan superÃ³ la lÃ­nea en sus Ãºltimos 5 partidos seguidos (promediando 4.6 tiros en dicha racha). VitÃ³ria permite 13.4 tiros por partido en Salvador."
     }
   ],
   "parlays": [
     {
-      "id": "parlay-safe",
+      "id": "parlay-real-safe",
       "name": "Combinada Conservadora",
       "type": "Conservadora",
-      "target_odds": 2.24,
-      "confidence": "Muy Alta (Hit Rate 85%+)",
+      "target_odds": 2.78,
+      "confidence": "Muy Alta (Rachas 80-100%)",
       "suggested_stake": "1.5% del bankroll",
       "legs": [
         {
-          "match": "Arsenal vs Chelsea",
-          "selection": "Bukayo Saka - Más de 0.5 tiros al arco",
-          "odds": 1.72,
-          "stat_snapshot": "5/5 L5 | Concede rival: 4.8"
+          "match": "Coritiba vs Santos",
+          "selection": "Gabriel Barbosa - MÃ¡s de 3.5 remates",
+          "odds": 1.67,
+          "stat_snapshot": "6/6 L6 | Promedio 4.9 tiros | Coritiba concede 16.2 tiros"
         },
         {
-          "match": "Palmeiras vs Flamengo",
-          "selection": "Gerson - Más de 1.5 faltas",
-          "odds": 1.75,
-          "stat_snapshot": "5/5 L5 | Promedio 2.4 faltas"
+          "match": "Cruzeiro vs Palmeiras",
+          "selection": "Alexander Barboza - MÃ¡s de 1.5 entradas",
+          "odds": 1.67,
+          "stat_snapshot": "80% L10 | Promedio 2.1 entradas"
         }
       ],
-      "rationale": "Doble de máxima regularidad. Ambos jugadores presentan una racha de 100% en sus últimos 5 encuentros con promedios holgados sobre la línea fijada por bet365."
+      "rationale": "Doble de consistencia probada. Barbosa rematando ante una de las defensas mÃ¡s permisivas del torneo y Barboza sosteniendo un 80% de acierto en duelos directos."
     },
     {
-      "id": "parlay-value",
+      "id": "parlay-real-value",
       "name": "Combinada de Valor (+EV)",
       "type": "Valor",
-      "target_odds": 5.88,
-      "confidence": "Media-Alta (+EV 23%)",
+      "target_odds": 5.38,
+      "confidence": "Media-Alta (+EV 25%)",
       "suggested_stake": "0.5% del bankroll",
       "legs": [
         {
-          "match": "Arsenal vs Chelsea",
-          "selection": "Bukayo Saka - Más de 0.5 tiros al arco",
-          "odds": 1.72,
-          "stat_snapshot": "80% L10 | +21.9% Edge"
+          "match": "Flamengo vs Athletico Paranaense",
+          "selection": "Athletico - MÃ¡s de 8.5 remates totales",
+          "odds": 1.73,
+          "stat_snapshot": "100% L10 | Promedio 11.4 remates"
         },
         {
-          "match": "Atlético de Madrid vs Real Betis",
-          "selection": "Rodrigo De Paul - Más de 1.5 faltas",
+          "match": "Cruzeiro vs Palmeiras",
+          "selection": "Kaio Jorge - MÃ¡s de 0.5 G/A",
           "odds": 1.80,
-          "stat_snapshot": "80% L5 | +24.4% Edge"
+          "stat_snapshot": "80% L10 | Referente de ataque"
         },
         {
-          "match": "Manchester City vs Tottenham",
-          "selection": "Man City - Más de 6.5 córners",
-          "odds": 1.83,
-          "stat_snapshot": "80% L10 | +25.4% Edge"
+          "match": "Coritiba vs Santos",
+          "selection": "JosuÃ© Pesqueira - MÃ¡s de 2.5 faltas recibidas",
+          "odds": 1.73,
+          "stat_snapshot": "100% L6 | Promedio 3.8 faltas sufridas"
         }
       ],
-      "rationale": "Tríptico seleccionado con edges estadísticos superiores al 20% en cada pata. Multiplicador de 5.88 con probabilidad combinada estimada superior al 45% frente a la implícita de 17%."
+      "rationale": "TrÃ­ptico con valor matemÃ¡tico destacado. Cruzamos el 100% histÃ³rico de tiros de Athletico con dos props de alta incidencia en el juego ofensivo a cuota acumulada superior a 5.00."
     }
   ]
 }
+
   </script>
 
   <script>
@@ -974,14 +975,14 @@
         setupDashboard(globalData);
         showToast('Datos actualizados desde picks_hoy.json');
       } catch (err) {
-        console.warn('Fetch local bloqueado por política CORS file://. Usando datos embebidos/fallback.');
+        console.warn('Fetch local bloqueado por polÃ­tica CORS file://. Usando datos embebidos/fallback.');
         try {
           const rawEmbedded = document.getElementById('embedded-data').textContent;
           globalData = JSON.parse(rawEmbedded);
           sourceBadge.textContent = 'Origen: Local / Embebido';
           setupDashboard(globalData);
         } catch (embeddedErr) {
-          headerSubtitle.textContent = 'Aviso: Seleccioná picks_hoy.json abajo si estás usando protocolo file://';
+          headerSubtitle.textContent = 'Aviso: SeleccionÃ¡ picks_hoy.json abajo si estÃ¡s usando protocolo file://';
         }
       }
     }
@@ -1005,7 +1006,7 @@
 
     function setupDashboard(data) {
       const formattedDate = data.date || new Date().toISOString().split('T')[0];
-      document.getElementById('headerSubtitle').textContent = `Jornada ${formattedDate} • ${data.top_picks?.length || 0} picks de alto valor filtrados`;
+      document.getElementById('headerSubtitle').textContent = `Jornada ${formattedDate} â€¢ ${data.top_picks?.length || 0} picks de alto valor filtrados`;
       document.getElementById('bookieBadge').textContent = `Casa: ${data.bookmaker || 'bet365'}`;
 
       if (data.summary_metrics) {
@@ -1081,7 +1082,7 @@
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div class="empty-state">No se encontraron picks que coincidan con los filtros seleccionados. Probá bajando el "Mín. Hit Rate" a "Cualquiera".</div>';
+        container.innerHTML = '<div class="empty-state">No se encontraron picks que coincidan con los filtros seleccionados. ProbÃ¡ bajando el "MÃ­n. Hit Rate" a "Cualquiera".</div>';
         return;
       }
 
@@ -1174,7 +1175,7 @@
 
             <div class="parlay-footer">
               <span class="parlay-stake-info">Stake sugerido: <strong>${parlay.suggested_stake || '1%'}</strong></span>
-              <button class="btn btn-primary" onclick="copyParlay('${parlay.id}')">📋 Copiar Cupón</button>
+              <button class="btn btn-primary" onclick="copyParlay('${parlay.id}')">ðŸ“‹ Copiar CupÃ³n</button>
             </div>
           </article>
         `;
@@ -1193,12 +1194,12 @@
       const parlay = globalData.parlays.find(p => p.id === parlayId);
       if (!parlay) return;
 
-      const text = `🎟️ ${parlay.name} (Cuota bet365: ${parlay.target_odds.toFixed(2)})\n` +
-        parlay.legs.map(l => `• ${l.match} ➔ ${l.selection} (@${l.odds.toFixed(2)})`).join('\n') +
-        `\n💡 Stake: ${parlay.suggested_stake || '1%'}`;
+      const text = `ðŸŽŸï¸ ${parlay.name} (Cuota bet365: ${parlay.target_odds.toFixed(2)})\n` +
+        parlay.legs.map(l => `â€¢ ${l.match} âž” ${l.selection} (@${l.odds.toFixed(2)})`).join('\n') +
+        `\nðŸ’¡ Stake: ${parlay.suggested_stake || '1%'}`;
 
       navigator.clipboard.writeText(text).then(() => {
-        showToast('¡Cupón de combinada copiado al portapapeles!');
+        showToast('Â¡CupÃ³n de combinada copiado al portapapeles!');
       });
     }
 
@@ -1213,3 +1214,4 @@
   </script>
 </body>
 </html>
+
