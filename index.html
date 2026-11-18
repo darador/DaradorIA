@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>StatsHub × bet365 | Dashboard de Análisis +EV</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-canvas: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f2937;
+      --bg-card: rgba(17, 24, 39, 0.85);
+      --border-subtle: #374151;
+      --border-accent: rgba(16, 185, 129, 0.35);
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+
+      --accent-green: #10b981;
+      --accent-green-bg: rgba(16, 185, 129, 0.12);
+      --accent-blue: #3b82f6;
+      --accent-blue-bg: rgba(59, 130, 246, 0.12);
+      --accent-amber: #f59e0b;
+      --accent-amber-bg: rgba(245, 158, 11, 0.12);
+      --accent-purple: #8b5cf6;
+      --accent-purple-bg: rgba(139, 92, 246, 0.12);
+      --accent-cyan: #06b6d4;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+
+      --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 3rem;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(180deg, rgba(31, 41, 55, 0.8) 0%, rgba(9, 13, 22, 0.95) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.5rem 0;
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #fff;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
+    }
+
+    .brand-text h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .pill-badge.live {
+      border-color: rgba(16, 185, 129, 0.4);
+      color: var(--accent-green);
+    }
+
+    .pill-badge.live::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Summary KPI Bar */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.75rem 0 2rem 0;
+    }
+
+    .kpi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .kpi-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-green);
+    }
+
+    .kpi-card:nth-child(2)::after { background: var(--accent-blue); }
+    .kpi-card:nth-child(3)::after { background: var(--accent-purple); }
+    .kpi-card:nth-child(4)::after { background: var(--accent-amber); }
+
+    .kpi-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .kpi-sub {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* Filters Bar */
+    .controls-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .control-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .select-control, .input-control {
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.85rem;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .select-control:focus, .input-control:focus {
+      border-color: var(--accent-green);
+    }
+
+    .btn {
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--border-subtle);
+    }
+
+    .btn-primary {
+      background: var(--accent-green);
+      color: #052e16;
+      border-color: var(--accent-green);
+    }
+
+    .btn-primary:hover {
+      background: #059669;
+      color: #ffffff;
+    }
+
+    /* Tabs */
+    .view-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn.active {
+      background: var(--bg-surface-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-counter {
+      background: var(--border-subtle);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 9999px;
+    }
+
+    /* Top Picks Grid */
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pick-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .pick-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-accent);
+    }
+
+    .pick-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .pick-league {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pick-time {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .pick-match {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .pick-player {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pick-market-badge {
+      display: inline-block;
+      padding: 0.3rem 0.65rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .pick-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-item .label {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .stat-item .val {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stat-item .val.hit-rate {
+      color: var(--accent-green);
+    }
+
+    .stat-item .val.edge {
+      color: var(--accent-cyan);
+    }
+
+    .odds-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0.85rem;
+      background: var(--accent-green-bg);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-sm);
+    }
+
+    .odds-bookie {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #34d399;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .odds-number {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-green);
+    }
+
+    .pick-rationale {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--accent-green);
+      padding-left: 0.65rem;
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* Parlays Section */
+    .parlays-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .parlay-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .parlay-card.conservative {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .parlay-card.value {
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+
+    .parlay-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .parlay-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .parlay-type-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+
+    .parlay-card.conservative .parlay-type-badge {
+      background: var(--accent-blue-bg);
+      color: var(--accent-blue);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .parlay-card.value .parlay-type-badge {
+      background: var(--accent-purple-bg);
+      color: var(--accent-purple);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .parlay-odds-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      background: var(--bg-surface-elevated);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .parlay-odds-total {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent-green);
+    }
+
+    .legs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .leg-item {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .leg-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .leg-match {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .leg-pick {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .leg-stats {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+    }
+
+    .leg-odd {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent-green);
+      background: var(--accent-green-bg);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .parlay-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .parlay-stake-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Fallback / Upload Bar */
+    .file-loader-bar {
+      margin-top: 1.5rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent-green);
+      color: #052e16;
+      font-weight: 700;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; align-items: flex-start; }
+      .parlays-container { grid-template-columns: 1fr; }
+      .controls-bar { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="brand-title">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>StatsHub × bet365 | Radar +EV</h1>
+          <p id="headerSubtitle">Cargando pronósticos...</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="pill-badge live" id="statusBadge">Conectado a StatsHub</span>
+        <span class="pill-badge" id="sourceBadge">Origen: picks_hoy.json</span>
+        <span class="pill-badge" id="bookieBadge">Casa: bet365</span>
+        <button class="btn btn-primary" onclick="loadPicksData()">🔄 Actualizar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- KPI Summary Bar -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">Top Picks Activos</span>
+        <div class="kpi-value" id="kpiTotalPicks">0</div>
+        <span class="kpi-sub" id="kpiAnalyzed">0 evaluados</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Edge Promedio (+EV)</span>
+        <div class="kpi-value" id="kpiAvgEdge">0%</div>
+        <span class="kpi-sub">Ventaja s/ probabilidad implícita</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Tasa de Acierto (L5)</span>
+        <div class="kpi-value" id="kpiAvgHitRate">0%</div>
+        <span class="kpi-sub">Efectividad reciente</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Cuota Media bet365</span>
+        <div class="kpi-value" id="kpiAvgOdds">0.00</div>
+        <span class="kpi-sub">Retorno ponderado</span>
+      </div>
+    </section>
+
+    <!-- Controls & Filters -->
+    <section class="controls-bar">
+      <div class="filter-group">
+        <label class="control-label" for="filterLeague">Liga:</label>
+        <select id="filterLeague" class="select-control" onchange="renderPicks()">
+          <option value="all">Todas las Ligas</option>
+        </select>
+
+        <label class="control-label" for="filterMarket">Mercado:</label>
+        <select id="filterMarket" class="select-control" onchange="renderPicks()">
+          <option value="all">Todos los Mercados</option>
+        </select>
+
+        <label class="control-label" for="filterMinHit">Mín. Hit Rate:</label>
+        <select id="filterMinHit" class="select-control" onchange="renderPicks()">
+          <option value="0">Cualquiera</option>
+          <option value="75">≥ 75% L5</option>
+          <option value="80" selected>≥ 80% L5</option>
+          <option value="90">≥ 90% L5</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="searchInput" class="input-control" placeholder="Buscar jugador, equipo..." oninput="renderPicks()" style="min-width: 220px;">
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="view-tabs">
+      <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
+        🎯 Top Picks Individuales (+EV)
+        <span class="tab-counter" id="tabPicksCount">0</span>
+      </button>
+      <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')">
+        🧩 Combinadas / Parlays Sugeridos
+        <span class="tab-counter" id="tabParlaysCount">0</span>
+      </button>
+    </div>
+
+    <!-- View: Individual Picks -->
+    <section id="viewPicks">
+      <div class="picks-grid" id="picksGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- View: Parlays -->
+    <section id="viewParlays" style="display: none;">
+      <div class="parlays-container" id="parlaysGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- File loader fallback (For when file:// CORS restrictions apply) -->
+    <div class="file-loader-bar">
+      <span>📁 Si estás en protocolo local (<code>file://</code>) podés forzar la carga seleccionando <code>picks_hoy.json</code>:</span>
+      <input type="file" id="manualFileInput" accept=".json" onchange="handleManualFile(event)">
+    </div>
+  </main>
+
+  <div id="toast" class="toast">Ticket copiado al portapapeles</div>
+
+  <!-- EMBEDDED BACKUP DATA: Ensures data is rendered even if opened directly via file:// -->
+  <script id="embedded-data" type="application/json">
+{
+  "updated_at": "2026-11-18T18:30:00Z",
+  "date": "2026-11-18",
+  "bookmaker": "bet365",
+  "total_analyzed": 52,
+  "summary_metrics": {
+    "total_picks": 6,
+    "avg_odds": 1.83,
+    "avg_hit_rate_l5": "86.7%",
+    "avg_edge_pct": "18.4%"
+  },
+  "top_picks": [
+    {
+      "id": "prop-1",
+      "league": "Premier League",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Arsenal vs Chelsea",
+      "time": "16:30",
+      "player": "Bukayo Saka",
+      "team": "Arsenal",
+      "opponent": "Chelsea",
+      "market": "Remates al arco",
+      "line": "Más de 0.5 tiros al arco",
+      "odds": 1.72,
+      "hit_rate_l5": "5/5 (100%)",
+      "hit_rate_l10": "8/10 (80%)",
+      "avg_per_game": 1.5,
+      "implied_prob": 58.1,
+      "real_prob": 80.0,
+      "edge_pct": 21.9,
+      "confidence": "Alta",
+      "rationale": "Saka promedia 1.5 disparos a portería en los últimos 10 encuentros. Chelsea concede 4.8 tiros a puerta por partido como visitante y Saka cobra tiros libres directos."
+    },
+    {
+      "id": "prop-2",
+      "league": "LaLiga",
+      "league_badge": "🇪🇸 LaLiga",
+      "match": "Atlético de Madrid vs Real Betis",
+      "time": "17:00",
+      "player": "Rodrigo De Paul",
+      "team": "Atlético de Madrid",
+      "opponent": "Real Betis",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5 faltas cometidas",
+      "odds": 1.80,
+      "hit_rate_l5": "4/5 (80%)",
+      "hit_rate_l10": "8/10 (80%)",
+      "avg_per_game": 2.2,
+      "implied_prob": 55.6,
+      "real_prob": 80.0,
+      "edge_pct": 24.4,
+      "confidence": "Alta",
+      "rationale": "De Paul promedia 2.2 faltas en el Metropolitano en partidos de alta fricción. El Betis es el 3er equipo de LaLiga que más faltas recibe en zona media."
+    },
+    {
+      "id": "prop-3",
+      "league": "Liga Profesional Argentina",
+      "league_badge": "🇦🇷 Liga Profesional",
+      "match": "Boca Juniors vs Racing Club",
+      "time": "21:00",
+      "player": "Edinson Cavani",
+      "team": "Boca Juniors",
+      "opponent": "Racing Club",
+      "market": "Remates totales",
+      "line": "Más de 2.5 remates totales",
+      "odds": 1.90,
+      "hit_rate_l5": "4/5 (80%)",
+      "hit_rate_l10": "7/10 (70%)",
+      "avg_per_game": 3.1,
+      "implied_prob": 52.6,
+      "real_prob": 75.0,
+      "edge_pct": 22.4,
+      "confidence": "Media-Alta",
+      "rationale": "Cavani remata al menos 3 veces en La Bombonera por cotejo. Racing llega con bajas sensibles en la zaga central y suele ceder la posesión al rival de visitante."
+    },
+    {
+      "id": "prop-4",
+      "league": "Brasileirão",
+      "league_badge": "🇧🇷 Brasileirão",
+      "match": "Palmeiras vs Flamengo",
+      "time": "19:00",
+      "player": "Gerson",
+      "team": "Flamengo",
+      "opponent": "Palmeiras",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5 faltas",
+      "odds": 1.75,
+      "hit_rate_l5": "5/5 (100%)",
+      "hit_rate_l10": "9/10 (90%)",
+      "avg_per_game": 2.4,
+      "implied_prob": 57.1,
+      "real_prob": 90.0,
+      "edge_pct": 32.9,
+      "confidence": "Muy Alta",
+      "rationale": "Racha perfecta de 5/5 en sus últimos 5 clásicos. El árbitro designado (Wilton Sampaio) sanciona en promedio 27.4 faltas por partido."
+    },
+    {
+      "id": "prop-5",
+      "league": "Premier League",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Manchester City vs Tottenham",
+      "time": "14:30",
+      "player": "Manchester City (Equipo)",
+      "team": "Manchester City",
+      "opponent": "Tottenham",
+      "market": "Córners",
+      "line": "Más de 6.5 córners equipo",
+      "odds": 1.83,
+      "hit_rate_l5": "4/5 (80%)",
+      "hit_rate_l10": "8/10 (80%)",
+      "avg_per_game": 8.2,
+      "implied_prob": 54.6,
+      "real_prob": 80.0,
+      "edge_pct": 25.4,
+      "confidence": "Alta",
+      "rationale": "City en el Etihad genera un promedio de 8.2 saques de esquina. Tottenham suele replegarse con bloque bajo permitiendo desbordes por las bandas."
+    },
+    {
+      "id": "prop-6",
+      "league": "LaLiga",
+      "league_badge": "🇪🇸 LaLiga",
+      "match": "Athletic Club vs Real Sociedad",
+      "time": "18:30",
+      "player": "Dani Vivian",
+      "team": "Athletic Club",
+      "opponent": "Real Sociedad",
+      "market": "Tarjetas",
+      "line": "Será amonestado (Tarjeta Sí)",
+      "odds": 2.87,
+      "hit_rate_l5": "3/5 (60%)",
+      "hit_rate_l10": "5/10 (50%)",
+      "avg_per_game": 0.5,
+      "implied_prob": 34.8,
+      "real_prob": 50.0,
+      "edge_pct": 15.2,
+      "confidence": "Valor / Cuota Alta",
+      "rationale": "Derbi Vasco con Gil Manzano como árbitro (5.8 amarillas/partido). Vivian marca directamente a Oyarzabal y promedia 1 tarjeta cada 2 derbis."
+    }
+  ],
+  "parlays": [
+    {
+      "id": "parlay-safe",
+      "name": "Combinada Conservadora",
+      "type": "Conservadora",
+      "target_odds": 2.24,
+      "confidence": "Muy Alta (Hit Rate 85%+)",
+      "suggested_stake": "1.5% del bankroll",
+      "legs": [
+        {
+          "match": "Arsenal vs Chelsea",
+          "selection": "Bukayo Saka - Más de 0.5 tiros al arco",
+          "odds": 1.72,
+          "stat_snapshot": "5/5 L5 | Concede rival: 4.8"
+        },
+        {
+          "match": "Palmeiras vs Flamengo",
+          "selection": "Gerson - Más de 1.5 faltas",
+          "odds": 1.75,
+          "stat_snapshot": "5/5 L5 | Promedio 2.4 faltas"
+        }
+      ],
+      "rationale": "Doble de máxima regularidad. Ambos jugadores presentan una racha de 100% en sus últimos 5 encuentros con promedios holgados sobre la línea fijada por bet365."
+    },
+    {
+      "id": "parlay-value",
+      "name": "Combinada de Valor (+EV)",
+      "type": "Valor",
+      "target_odds": 5.88,
+      "confidence": "Media-Alta (+EV 23%)",
+      "suggested_stake": "0.5% del bankroll",
+      "legs": [
+        {
+          "match": "Arsenal vs Chelsea",
+          "selection": "Bukayo Saka - Más de 0.5 tiros al arco",
+          "odds": 1.72,
+          "stat_snapshot": "80% L10 | +21.9% Edge"
+        },
+        {
+          "match": "Atlético de Madrid vs Real Betis",
+          "selection": "Rodrigo De Paul - Más de 1.5 faltas",
+          "odds": 1.80,
+          "stat_snapshot": "80% L5 | +24.4% Edge"
+        },
+        {
+          "match": "Manchester City vs Tottenham",
+          "selection": "Man City - Más de 6.5 córners",
+          "odds": 1.83,
+          "stat_snapshot": "80% L10 | +25.4% Edge"
+        }
+      ],
+      "rationale": "Tríptico seleccionado con edges estadísticos superiores al 20% en cada pata. Multiplicador de 5.88 con probabilidad combinada estimada superior al 45% frente a la implícita de 17%."
+    }
+  ]
+}
+  </script>
+
+  <script>
+    let globalData = null;
+    let currentView = 'picks';
+
+    async function loadPicksData() {
+      const headerSubtitle = document.getElementById('headerSubtitle');
+      const sourceBadge = document.getElementById('sourceBadge');
+
+      try {
+        const response = await fetch('./picks_hoy.json?t=' + Date.now());
+        if (!response.ok) throw new Error('Status no ok');
+        globalData = await response.json();
+        sourceBadge.textContent = 'Origen: picks_hoy.json (Live)';
+        setupDashboard(globalData);
+        showToast('Datos actualizados desde picks_hoy.json');
+      } catch (err) {
+        console.warn('Fetch local bloqueado por política CORS file://. Usando datos embebidos/fallback.');
+        try {
+          const rawEmbedded = document.getElementById('embedded-data').textContent;
+          globalData = JSON.parse(rawEmbedded);
+          sourceBadge.textContent = 'Origen: Local / Embebido';
+          setupDashboard(globalData);
+        } catch (embeddedErr) {
+          headerSubtitle.textContent = 'Aviso: Seleccioná picks_hoy.json abajo si estás usando protocolo file://';
+        }
+      }
+    }
+
+    function handleManualFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          globalData = JSON.parse(e.target.result);
+          document.getElementById('sourceBadge').textContent = 'Origen: Archivo cargado';
+          setupDashboard(globalData);
+          showToast('picks_hoy.json cargado exitosamente');
+        } catch (error) {
+          alert('Error al leer el archivo JSON: ' + error.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function setupDashboard(data) {
+      const formattedDate = data.date || new Date().toISOString().split('T')[0];
+      document.getElementById('headerSubtitle').textContent = `Jornada ${formattedDate} • ${data.top_picks?.length || 0} picks de alto valor filtrados`;
+      document.getElementById('bookieBadge').textContent = `Casa: ${data.bookmaker || 'bet365'}`;
+
+      if (data.summary_metrics) {
+        document.getElementById('kpiTotalPicks').textContent = data.summary_metrics.total_picks || (data.top_picks ? data.top_picks.length : 0);
+        document.getElementById('kpiAvgEdge').textContent = data.summary_metrics.avg_edge_pct || '0%';
+        document.getElementById('kpiAvgHitRate').textContent = data.summary_metrics.avg_hit_rate_l5 || '0%';
+        document.getElementById('kpiAvgOdds').textContent = data.summary_metrics.avg_odds ? data.summary_metrics.avg_odds.toFixed(2) : '0.00';
+        document.getElementById('kpiAnalyzed').textContent = `${data.total_analyzed || 0} analizados`;
+      }
+
+      populateFilters(data.top_picks || []);
+
+      document.getElementById('tabPicksCount').textContent = data.top_picks?.length || 0;
+      document.getElementById('tabParlaysCount').textContent = data.parlays?.length || 0;
+
+      renderPicks();
+      renderParlays();
+    }
+
+    function populateFilters(picks) {
+      const leagueSelect = document.getElementById('filterLeague');
+      const marketSelect = document.getElementById('filterMarket');
+
+      const leagues = [...new Set(picks.map(p => p.league))].filter(Boolean);
+      const markets = [...new Set(picks.map(p => p.market))].filter(Boolean);
+
+      leagueSelect.innerHTML = '<option value="all">Todas las Ligas</option>';
+      leagues.forEach(l => {
+        const opt = document.createElement('option');
+        opt.value = l;
+        opt.textContent = l;
+        leagueSelect.appendChild(opt);
+      });
+
+      marketSelect.innerHTML = '<option value="all">Todos los Mercados</option>';
+      markets.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        marketSelect.appendChild(opt);
+      });
+    }
+
+    function renderPicks() {
+      const container = document.getElementById('picksGrid');
+      if (!globalData || !globalData.top_picks) {
+        container.innerHTML = '<div class="empty-state">No hay picks cargados en este momento.</div>';
+        return;
+      }
+
+      const leagueFilter = document.getElementById('filterLeague').value;
+      const marketFilter = document.getElementById('filterMarket').value;
+      const minHitFilter = parseFloat(document.getElementById('filterMinHit').value);
+      const searchFilter = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = globalData.top_picks.filter(pick => {
+        if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
+        if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
+
+        let hitRateNum = 0;
+        if (pick.hit_rate_l5) {
+          const match = pick.hit_rate_l5.match(/(\d+)%/);
+          if (match) hitRateNum = parseFloat(match[1]);
+        }
+        if (hitRateNum < minHitFilter) return false;
+
+        if (searchFilter) {
+          const searchSpace = `${pick.player} ${pick.team} ${pick.opponent} ${pick.match} ${pick.market} ${pick.line}`.toLowerCase();
+          if (!searchSpace.includes(searchFilter)) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="empty-state">No se encontraron picks que coincidan con los filtros seleccionados. Probá bajando el "Mín. Hit Rate" a "Cualquiera".</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(pick => `
+        <article class="pick-card">
+          <div class="pick-header">
+            <span class="pick-league">${pick.league_badge || pick.league}</span>
+            <span class="pick-time">${pick.time || ''}</span>
+          </div>
+
+          <div class="pick-match">${pick.match}</div>
+
+          <div class="pick-player">
+            <span>${pick.player}</span>
+          </div>
+
+          <div>
+            <span class="pick-market-badge">${pick.market}: ${pick.line}</span>
+          </div>
+
+          <div class="pick-stats-grid">
+            <div class="stat-item">
+              <span class="label">Racha L5</span>
+              <span class="val hit-rate">${pick.hit_rate_l5}</span>
+            </div>
+            <div class="stat-item">
+              <span class="label">Racha L10</span>
+              <span class="val">${pick.hit_rate_l10}</span>
+            </div>
+            <div class="stat-item">
+              <span class="label">Promedio p/p</span>
+              <span class="val">${pick.avg_per_game}</span>
+            </div>
+            <div class="stat-item">
+              <span class="label">Edge +EV</span>
+              <span class="val edge">+${pick.edge_pct}%</span>
+            </div>
+          </div>
+
+          <div class="odds-badge">
+            <span class="odds-bookie">bet365</span>
+            <span class="odds-number">${pick.odds.toFixed(2)}</span>
+          </div>
+
+          <p class="pick-rationale">"${pick.rationale}"</p>
+        </article>
+      `).join('');
+    }
+
+    function renderParlays() {
+      const container = document.getElementById('parlaysGrid');
+      if (!globalData || !globalData.parlays || globalData.parlays.length === 0) {
+        container.innerHTML = '<div class="empty-state">No hay combinadas sugeridas para hoy.</div>';
+        return;
+      }
+
+      container.innerHTML = globalData.parlays.map(parlay => {
+        const isConservative = parlay.type && parlay.type.toLowerCase().includes('conservador');
+        const cardClass = isConservative ? 'conservative' : 'value';
+
+        return `
+          <article class="parlay-card ${cardClass}">
+            <div class="parlay-header">
+              <div>
+                <h3 class="parlay-title">${parlay.name}</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">${parlay.confidence || ''}</span>
+              </div>
+              <span class="parlay-type-badge">${parlay.type}</span>
+            </div>
+
+            <div class="parlay-odds-row">
+              <span style="font-weight: 700; font-size: 0.9rem;">Cuota Combinada bet365:</span>
+              <span class="parlay-odds-total">${parlay.target_odds ? parlay.target_odds.toFixed(2) : ''}</span>
+            </div>
+
+            <ul class="legs-list">
+              ${parlay.legs.map(leg => `
+                <li class="leg-item">
+                  <div class="leg-info">
+                    <span class="leg-match">${leg.match}</span>
+                    <span class="leg-pick">${leg.selection}</span>
+                    ${leg.stat_snapshot ? `<span class="leg-stats">${leg.stat_snapshot}</span>` : ''}
+                  </div>
+                  <span class="leg-odd">${leg.odds ? leg.odds.toFixed(2) : ''}</span>
+                </li>
+              `).join('')}
+            </ul>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">${parlay.rationale || ''}</p>
+
+            <div class="parlay-footer">
+              <span class="parlay-stake-info">Stake sugerido: <strong>${parlay.suggested_stake || '1%'}</strong></span>
+              <button class="btn btn-primary" onclick="copyParlay('${parlay.id}')">📋 Copiar Cupón</button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function switchView(view) {
+      currentView = view;
+      document.getElementById('tabPicks').classList.toggle('active', view === 'picks');
+      document.getElementById('tabParlays').classList.toggle('active', view === 'parlays');
+      document.getElementById('viewPicks').style.display = view === 'picks' ? 'block' : 'none';
+      document.getElementById('viewParlays').style.display = view === 'parlays' ? 'block' : 'none';
+    }
+
+    function copyParlay(parlayId) {
+      const parlay = globalData.parlays.find(p => p.id === parlayId);
+      if (!parlay) return;
+
+      const text = `🎟️ ${parlay.name} (Cuota bet365: ${parlay.target_odds.toFixed(2)})\n` +
+        parlay.legs.map(l => `• ${l.match} ➔ ${l.selection} (@${l.odds.toFixed(2)})`).join('\n') +
+        `\n💡 Stake: ${parlay.suggested_stake || '1%'}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('¡Cupón de combinada copiado al portapapeles!');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPicksData);
+  </script>
+</body>
+</html>

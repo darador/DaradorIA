@@ -1,0 +1,194 @@
+{
+  "updated_at": "2026-11-18T18:30:00Z",
+  "date": "2026-11-18",
+  "bookmaker": "bet365",
+  "total_analyzed": 52,
+  "summary_metrics": {
+    "total_picks": 6,
+    "avg_odds": 1.83,
+    "avg_hit_rate_l5": "86.7%",
+    "avg_edge_pct": "18.4%"
+  },
+  "top_picks": [
+    {
+      "id": "prop-1",
+      "league": "Premier League",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Arsenal vs Chelsea",
+      "time": "16:30",
+      "player": "Bukayo Saka",
+      "team": "Arsenal",
+      "opponent": "Chelsea",
+      "market": "Remates al arco",
+      "line": "Más de 0.5 tiros al arco",
+      "odds": 1.72,
+      "hit_rate_l5": "5/5 (100%)",
+      "hit_rate_l10": "8/10 (80%)",
+      "avg_per_game": 1.5,
+      "implied_prob": 58.1,
+      "real_prob": 80.0,
+      "edge_pct": 21.9,
+      "confidence": "Alta",
+      "rationale": "Saka promedia 1.5 disparos a portería en los últimos 10 encuentros. Chelsea concede 4.8 tiros a puerta por partido como visitante y Saka cobra tiros libres directos."
+    },
+    {
+      "id": "prop-2",
+      "league": "LaLiga",
+      "league_badge": "🇪🇸 LaLiga",
+      "match": "Atlético de Madrid vs Real Betis",
+      "time": "17:00",
+      "player": "Rodrigo De Paul",
+      "team": "Atlético de Madrid",
+      "opponent": "Real Betis",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5 faltas cometidas",
+      "odds": 1.80,
+      "hit_rate_l5": "4/5 (80%)",
+      "hit_rate_l10": "8/10 (80%)",
+      "avg_per_game": 2.2,
+      "implied_prob": 55.6,
+      "real_prob": 80.0,
+      "edge_pct": 24.4,
+      "confidence": "Alta",
+      "rationale": "De Paul promedia 2.2 faltas en el Metropolitano en partidos de alta fricción. El Betis es el 3er equipo de LaLiga que más faltas recibe en zona media."
+    },
+    {
+      "id": "prop-3",
+      "league": "Liga Profesional Argentina",
+      "league_badge": "🇦🇷 Liga Profesional",
+      "match": "Boca Juniors vs Racing Club",
+      "time": "21:00",
+      "player": "Edinson Cavani",
+      "team": "Boca Juniors",
+      "opponent": "Racing Club",
+      "market": "Remates totales",
+      "line": "Más de 2.5 remates totales",
+      "odds": 1.90,
+      "hit_rate_l5": "4/5 (80%)",
+      "hit_rate_l10": "7/10 (70%)",
+      "avg_per_game": 3.1,
+      "implied_prob": 52.6,
+      "real_prob": 75.0,
+      "edge_pct": 22.4,
+      "confidence": "Media-Alta",
+      "rationale": "Cavani remata al menos 3 veces en La Bombonera por cotejo. Racing llega con bajas sensibles en la zaga central y suele ceder la posesión al rival de visitante."
+    },
+    {
+      "id": "prop-4",
+      "league": "Brasileirão",
+      "league_badge": "🇧🇷 Brasileirão",
+      "match": "Palmeiras vs Flamengo",
+      "time": "19:00",
+      "player": "Gerson",
+      "team": "Flamengo",
+      "opponent": "Palmeiras",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5 faltas",
+      "odds": 1.75,
+      "hit_rate_l5": "5/5 (100%)",
+      "hit_rate_l10": "9/10 (90%)",
+      "avg_per_game": 2.4,
+      "implied_prob": 57.1,
+      "real_prob": 90.0,
+      "edge_pct": 32.9,
+      "confidence": "Muy Alta",
+      "rationale": "Racha perfecta de 5/5 en sus últimos 5 clásicos. El árbitro designado (Wilton Sampaio) sanciona en promedio 27.4 faltas por partido."
+    },
+    {
+      "id": "prop-5",
+      "league": "Premier League",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Manchester City vs Tottenham",
+      "time": "14:30",
+      "player": "Manchester City (Equipo)",
+      "team": "Manchester City",
+      "opponent": "Tottenham",
+      "market": "Córners",
+      "line": "Más de 6.5 córners equipo",
+      "odds": 1.83,
+      "hit_rate_l5": "4/5 (80%)",
+      "hit_rate_l10": "8/10 (80%)",
+      "avg_per_game": 8.2,
+      "implied_prob": 54.6,
+      "real_prob": 80.0,
+      "edge_pct": 25.4,
+      "confidence": "Alta",
+      "rationale": "City en el Etihad genera un promedio de 8.2 saques de esquina. Tottenham suele replegarse con bloque bajo permitiendo desbordes por las bandas."
+    },
+    {
+      "id": "prop-6",
+      "league": "LaLiga",
+      "league_badge": "🇪🇸 LaLiga",
+      "match": "Athletic Club vs Real Sociedad",
+      "time": "18:30",
+      "player": "Dani Vivian",
+      "team": "Athletic Club",
+      "opponent": "Real Sociedad",
+      "market": "Tarjetas",
+      "line": "Será amonestado (Tarjeta Sí)",
+      "odds": 2.87,
+      "hit_rate_l5": "3/5 (60%)",
+      "hit_rate_l10": "5/10 (50%)",
+      "avg_per_game": 0.5,
+      "implied_prob": 34.8,
+      "real_prob": 50.0,
+      "edge_pct": 15.2,
+      "confidence": "Valor / Cuota Alta",
+      "rationale": "Derbi Vasco con Gil Manzano como árbitro (5.8 amarillas/partido). Vivian marca directamente a Oyarzabal y promedia 1 tarjeta cada 2 derbis."
+    }
+  ],
+  "parlays": [
+    {
+      "id": "parlay-safe",
+      "name": "Combinada Conservadora",
+      "type": "Conservadora",
+      "target_odds": 2.24,
+      "confidence": "Muy Alta (Hit Rate 85%+)",
+      "suggested_stake": "1.5% del bankroll",
+      "legs": [
+        {
+          "match": "Arsenal vs Chelsea",
+          "selection": "Bukayo Saka - Más de 0.5 tiros al arco",
+          "odds": 1.72,
+          "stat_snapshot": "5/5 L5 | Concede rival: 4.8"
+        },
+        {
+          "match": "Palmeiras vs Flamengo",
+          "selection": "Gerson - Más de 1.5 faltas",
+          "odds": 1.75,
+          "stat_snapshot": "5/5 L5 | Promedio 2.4 faltas"
+        }
+      ],
+      "rationale": "Doble de máxima regularidad. Ambos jugadores presentan una racha de 100% en sus últimos 5 encuentros con promedios holgados sobre la línea fijada por bet365."
+    },
+    {
+      "id": "parlay-value",
+      "name": "Combinada de Valor (+EV)",
+      "type": "Valor",
+      "target_odds": 5.88,
+      "confidence": "Media-Alta (+EV 23%)",
+      "suggested_stake": "0.5% del bankroll",
+      "legs": [
+        {
+          "match": "Arsenal vs Chelsea",
+          "selection": "Bukayo Saka - Más de 0.5 tiros al arco",
+          "odds": 1.72,
+          "stat_snapshot": "80% L10 | +21.9% Edge"
+        },
+        {
+          "match": "Atlético de Madrid vs Real Betis",
+          "selection": "Rodrigo De Paul - Más de 1.5 faltas",
+          "odds": 1.80,
+          "stat_snapshot": "80% L5 | +24.4% Edge"
+        },
+        {
+          "match": "Manchester City vs Tottenham",
+          "selection": "Man City - Más de 6.5 córners",
+          "odds": 1.83,
+          "stat_snapshot": "80% L10 | +25.4% Edge"
+        }
+      ],
+      "rationale": "Tríptico seleccionado con edges estadísticos superiores al 20% en cada pata. Multiplicador de 5.88 con probabilidad combinada estimada superior al 45% frente a la implícita de 17%."
+    }
+  ]
+}
