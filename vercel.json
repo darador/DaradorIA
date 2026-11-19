@@ -1,8 +1,27 @@
 {
+  "outputDirectory": ".",
   "cleanUrls": true,
   "headers": [
     {
       "source": "/picks_hoy.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/historial_picks.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/engine/storage_data/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
