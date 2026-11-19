@@ -174,6 +174,7 @@ async function runTests() {
     process.exit(1);
   } else {
     console.log('🎉 FASE 6 COMPLETAMENTE VERIFICADA Y SUPERADA CON ÉXITO.');
+    process.exit(0);
   }
 }
 

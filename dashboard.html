@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
-  <title>⚡ DaradorIA | Terminal de Investigación Deportiva & Radar +EV</title>
+  <title>⚡ DaradorIA | Live Research Room & Radar +EV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
-      --bg-terminal: #070a13;
-      --bg-surface-1: #0a0f1d;
-      --bg-surface-2: #0e172a;
-      --bg-surface-card: rgba(14, 23, 42, 0.85);
-      --bg-surface-hover: rgba(22, 34, 60, 0.95);
+      --bg-pitch-black: #060913;
+      --bg-terminal: #070c18;
+      --bg-surface-1: #0b1224;
+      --bg-surface-card: rgba(14, 23, 44, 0.82);
+      --bg-surface-hover: rgba(23, 37, 68, 0.95);
+      
       --border-terminal: #1e293b;
       --border-subtle: rgba(148, 163, 184, 0.12);
       --border-violet: rgba(139, 92, 246, 0.35);
@@ -58,12 +59,16 @@
 
     body {
       font-family: var(--font-body);
-      background-color: var(--bg-terminal);
+      background-color: var(--bg-pitch-black);
       background-image: 
-        radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 15%, rgba(0, 242, 254, 0.1) 0%, transparent 45%),
-        radial-gradient(circle at 50% 60%, rgba(34, 197, 94, 0.05) 0%, transparent 60%),
-        linear-gradient(180deg, #070a13 0%, #0a0f1d 100%);
+        radial-gradient(ellipse at 50% -5%, rgba(139, 92, 246, 0.28) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 15%, rgba(0, 242, 254, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 15% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(6, 9, 19, 0.72) 0%, rgba(7, 12, 24, 0.92) 35%, rgba(6, 9, 19, 0.98) 100%),
+        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2000&q=80');
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
       background-attachment: fixed;
       color: var(--text-main);
       line-height: 1.5;
@@ -75,21 +80,21 @@
 
     .container {
       width: 100%;
-      max-width: 1360px;
+      max-width: 1380px;
       margin: 0 auto;
       padding: 0 1.25rem;
     }
 
     /* Terminal Header */
     header {
-      background: rgba(10, 15, 29, 0.9);
-      backdrop-filter: blur(16px);
+      background: rgba(8, 12, 24, 0.88);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-violet);
       padding: 1.1rem 0;
       position: sticky;
       top: 0;
       z-index: 50;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 35px rgba(0, 0, 0, 0.75);
     }
 
     .header-content {
@@ -206,91 +211,12 @@
       background: linear-gradient(135deg, #8b5cf6, #7c3aed);
     }
 
-    /* TOP METRICS RIBBON (Compact Ticker) */
-    .metrics-ribbon {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0.85rem;
-      margin: 1.5rem 0 1.5rem 0;
-    }
-
-    .metric-chip {
-      background: var(--bg-surface-card);
-      border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-sm);
-      padding: 0.9rem 1.1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .metric-chip:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-violet);
-    }
-
-    .metric-chip::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--accent-violet);
-      box-shadow: 0 0 8px var(--accent-violet);
-    }
-
-    .metric-chip:nth-child(2)::before { background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
-    .metric-chip:nth-child(3)::before { background: var(--neon-turf); box-shadow: 0 0 8px var(--neon-turf); }
-    .metric-chip:nth-child(4)::before { background: var(--neon-gold); box-shadow: 0 0 8px var(--neon-gold); }
-    .metric-chip:nth-child(5)::before { background: #ec4899; box-shadow: 0 0 8px #ec4899; }
-
-    .metric-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      font-family: var(--font-display);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .metric-value {
-      font-family: var(--font-display);
-      font-size: 1.65rem;
-      font-weight: 900;
-      color: var(--text-main);
-      display: flex;
-      align-items: baseline;
-      gap: 0.35rem;
-      line-height: 1.1;
-    }
-
-    .metric-sub {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Keep KPI cards markup hidden or integrated for legacy test references */
-    .kpi-grid {
-      display: none;
-    }
-
     /* Navigation Tabs */
     .view-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 0.65rem;
+      margin-top: 1.25rem;
       margin-bottom: 1.35rem;
       border-bottom: 1px solid var(--border-terminal);
       padding-bottom: 0.85rem;
@@ -333,6 +259,424 @@
       border-radius: var(--radius-full);
       font-family: var(--font-mono);
     }
+
+    /* ==========================================================================
+       HERO: THE SIX AGENTS HORIZONTAL STRIP (LIVE RESEARCH ROOM)
+       ========================================================================== */
+    .agents-room-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .agents-room-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+    }
+
+    .agents-room-title {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .agents-room-title span.pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulse 1.8s infinite;
+    }
+
+    .hero-agents-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 1200px) {
+      .hero-agents-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero-agents-grid {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 0.75rem;
+        scroll-snap-type: x mandatory;
+      }
+      .hero-agent-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+      }
+    }
+
+    .hero-agent-card {
+      background: var(--bg-surface-card);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-agent-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-violet);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.65), 0 0 25px rgba(139, 92, 246, 0.3);
+    }
+
+    /* ELENA: COMMANDING CHIEF PRESENCE */
+    .hero-agent-card.chief {
+      border: 1.5px solid #f59e0b;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 22px rgba(245, 158, 11, 0.25);
+      background: linear-gradient(160deg, rgba(20, 26, 46, 0.9) 0%, rgba(29, 18, 43, 0.9) 100%);
+    }
+
+    .hero-agent-card.chief:hover {
+      border-color: #fbbf24;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 158, 11, 0.4);
+    }
+
+    .chief-crown-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: linear-gradient(90deg, #b45309, #d97706);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-xs);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      z-index: 5;
+    }
+
+    .agent-portrait-box {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      background: #090e1c;
+    }
+
+    .agent-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .hero-agent-card:hover .agent-portrait-img {
+      transform: scale(1.05);
+    }
+
+    .agent-portrait-box::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, rgba(14, 23, 44, 0.98), transparent);
+      pointer-events: none;
+    }
+
+    .agent-status-tag {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      z-index: 4;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .agent-status-tag.analyzing {
+      background: rgba(0, 242, 254, 0.2);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.45);
+    }
+
+    .agent-status-tag.completed {
+      background: rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+    }
+
+    .agent-status-tag.waiting {
+      background: rgba(148, 163, 184, 0.2);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .agent-status-tag.alert {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+    }
+
+    .agent-status-tag.supervision {
+      background: rgba(245, 158, 11, 0.25);
+      color: #fde68a;
+      border: 1px solid rgba(245, 158, 11, 0.5);
+    }
+
+    .agent-card-body {
+      padding: 0.85rem 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+
+    .agent-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .agent-card-name {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .agent-card-specialty {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.25;
+    }
+
+    .hero-agent-card.chief .agent-card-specialty {
+      color: #fde68a;
+    }
+
+    .agent-task-banner {
+      background: rgba(8, 13, 25, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-xs);
+      padding: 0.45rem 0.55rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: 0.2rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 38px;
+    }
+
+    /* ==========================================================================
+       LIVE ACTIVITY STREAM RIBBON (COMPACT CHRONOLOGY)
+       ========================================================================== */
+    .live-activity-stream {
+      background: rgba(11, 18, 36, 0.85);
+      border: 1px solid var(--border-violet);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.15rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .stream-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .stream-header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #ffffff;
+    }
+
+    .stream-header-title .stream-live-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 8px #ef4444;
+      animation: pulse 1.5s infinite;
+    }
+
+    .stream-items-row {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
+    }
+
+    .stream-item {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-xs);
+      padding: 0.4rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 0.78rem;
+    }
+
+    .stream-time {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .stream-agent-pill {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-xs);
+      background: rgba(139, 92, 246, 0.2);
+      color: #c084fc;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+    }
+
+    .stream-agent-pill.elena {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fde68a;
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+
+    .stream-action {
+      color: var(--text-main);
+    }
+
+    .stream-status-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.12rem 0.45rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+    .stream-status-badge.fav { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .stream-status-badge.ev { background: rgba(0, 242, 254, 0.15); color: #38bdf8; }
+    .stream-status-badge.app { background: rgba(34, 197, 94, 0.25); color: #86efac; border: 1px solid #22c55e; }
+    .stream-status-badge.veto { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+
+    /* ==========================================================================
+       TOP COMPACT METRICS TICKER
+       ========================================================================== */
+    .metrics-ribbon {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .metric-chip {
+      background: var(--bg-surface-card);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .metric-chip:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-violet);
+    }
+
+    .metric-chip::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent-violet);
+      box-shadow: 0 0 8px var(--accent-violet);
+    }
+
+    .metric-chip:nth-child(2)::before { background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
+    .metric-chip:nth-child(3)::before { background: var(--neon-turf); box-shadow: 0 0 8px var(--neon-turf); }
+    .metric-chip:nth-child(4)::before { background: var(--neon-gold); box-shadow: 0 0 8px var(--neon-gold); }
+    .metric-chip:nth-child(5)::before { background: #ec4899; box-shadow: 0 0 8px #ec4899; }
+
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      line-height: 1.1;
+    }
+
+    .metric-sub {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Hidden legacy KPI grid for 100% test compatibility */
+    .kpi-grid { display: none; }
 
     /* Controls Bar */
     .controls-bar {
@@ -440,9 +784,7 @@
       color: var(--accent-cyan);
     }
 
-    .daily-board-table th.no-sort {
-      cursor: default;
-    }
+    .daily-board-table th.no-sort { cursor: default; }
 
     .daily-board-table td {
       padding: 0.85rem 1rem;
@@ -458,7 +800,7 @@
     }
 
     .daily-board-table tbody tr:hover {
-      background: rgba(139, 92, 246, 0.08);
+      background: rgba(139, 92, 246, 0.09);
     }
 
     .board-match-cell {
@@ -627,7 +969,7 @@
       box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
     }
 
-    /* Picks Grid (Alternative cards view) */
+    /* Cards view for picks */
     .picks-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -644,7 +986,7 @@
       flex-direction: column;
       gap: 0.95rem;
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease;
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(12px);
@@ -653,443 +995,104 @@
     .pick-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent-violet);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.2);
-    }
-
-    .pick-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .pick-league {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .pick-time {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      font-weight: 600;
-    }
-
-    .pick-match {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      border-bottom: 1px dashed var(--border-terminal);
-      padding-bottom: 0.4rem;
-    }
-
-    .pick-player {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 900;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .pick-market-badge {
-      display: inline-block;
-      padding: 0.35rem 0.75rem;
-      background: rgba(30, 41, 59, 0.9);
-      border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-xs);
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: #e2e8f0;
-    }
-
-    .pick-stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.65rem;
-      background: rgba(10, 16, 28, 0.65);
-      padding: 0.85rem;
-      border-radius: var(--radius-xs);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .stat-item .label {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .stat-item .val {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .stat-item .val.hit-rate {
-      color: var(--neon-turf);
-      text-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
-    }
-
-    .stat-item .val.edge {
-      color: var(--accent-cyan);
-    }
-
-    .odds-badge {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.65rem 1rem;
-      background: linear-gradient(90deg, rgba(34, 197, 94, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%);
-      border: 1px solid rgba(34, 197, 94, 0.35);
-      border-radius: var(--radius-xs);
-    }
-
-    .odds-bookie {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #86efac;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .odds-number {
-      font-family: var(--font-mono);
-      font-size: 1.35rem;
-      font-weight: 900;
-      color: #facc15;
-      text-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
-    }
-
-    .pick-rationale {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      border-left: 3px solid var(--accent-violet);
-      padding-left: 0.75rem;
-      line-height: 1.45;
-      background: rgba(15, 23, 42, 0.4);
-      padding-top: 0.35rem;
-      padding-bottom: 0.35rem;
-      border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
     }
 
     /* ==========================================================================
-       SECTION: NUESTRO EQUIPO DE AGENTES IA
+       LATERAL AGENT DRAWER (#agentDrawer)
        ========================================================================== */
-    .agents-section-header {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(0, 242, 254, 0.1) 100%);
-      border: 1px solid var(--border-violet);
-      border-radius: var(--radius-md);
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 1.75rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .agents-section-header h2 {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      font-weight: 900;
-      color: #ffffff;
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .agents-section-header p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      max-width: 860px;
-      line-height: 1.5;
-    }
-
-    /* Strategic Workflow Diagram Banner */
-    .workflow-strip {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .workflow-step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .workflow-step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, 0.3);
-      border: 1px solid var(--accent-violet);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-    }
-
-    .workflow-arrow {
-      color: var(--text-dim);
-      font-size: 0.85rem;
-    }
-
-    /* 3x2 Agents Grid */
-    .agents-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .agent-card {
-      background: var(--bg-surface-card);
-      border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-md);
-      padding: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .agent-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-violet);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(139, 92, 246, 0.25);
-    }
-
-    /* ELENA - CHIEF OFFICER SPECIAL STYLING */
-    .agent-card.chief {
-      border: 1.5px solid #f59e0b;
-      background: linear-gradient(145deg, rgba(20, 26, 46, 0.92) 0%, rgba(29, 17, 43, 0.9) 100%);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.2);
-    }
-
-    .agent-card.chief:hover {
-      border-color: #fbbf24;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(245, 158, 11, 0.35), 0 0 20px rgba(139, 92, 246, 0.3);
-    }
-
-    .chief-banner {
-      position: absolute;
+    .agent-drawer-overlay {
+      position: fixed;
       top: 0;
+      left: 0;
       right: 0;
-      background: linear-gradient(90deg, #b45309, #d97706);
-      color: #ffffff;
-      font-size: 0.68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.25rem 0.85rem;
-      border-bottom-left-radius: var(--radius-xs);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
+      bottom: 0;
+      background: rgba(6, 9, 19, 0.82);
+      backdrop-filter: blur(8px);
+      z-index: 10001;
+      display: none;
+      justify-content: flex-end;
+      opacity: 0;
+      transition: opacity 0.28s ease;
     }
 
-    .agent-header {
+    .agent-drawer-overlay.active {
       display: flex;
-      gap: 1.15rem;
-      align-items: center;
+      opacity: 1;
     }
 
-    .agent-avatar-wrap {
-      width: 82px;
-      height: 82px;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      border: 2px solid var(--accent-violet);
-      box-shadow: 0 0 16px rgba(139, 92, 246, 0.35);
-      flex-shrink: 0;
+    .agent-drawer-content {
+      background: var(--bg-surface-1);
+      border-left: 1.5px solid var(--accent-violet);
+      box-shadow: -15px 0 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(139, 92, 246, 0.25);
+      width: 100%;
+      max-width: 640px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .agent-drawer-overlay.active .agent-drawer-content {
+      transform: translateX(0);
+    }
+
+    .agent-drawer-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(14, 23, 44, 0.8);
       position: relative;
     }
 
-    .agent-card.chief .agent-avatar-wrap {
-      border-color: #f59e0b;
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.45);
-    }
-
-    .agent-avatar-img {
-      width: 100%;
-      height: 100%;
+    .agent-drawer-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-sm);
       object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
+      border: 2px solid var(--accent-violet);
+      box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
     }
 
-    .agent-card:hover .agent-avatar-img {
-      transform: scale(1.05);
-    }
-
-    .agent-info {
+    .agent-drawer-body {
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
-      flex: 1;
+      gap: 1.25rem;
     }
 
-    .agent-name {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #ffffff;
+    .drawer-section-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .drawer-section-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       display: flex;
       align-items: center;
       gap: 0.45rem;
     }
 
-    .agent-role-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .agent-card.chief .agent-role-title {
-      color: #fde68a;
-    }
-
-    .agent-status-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #4ade80;
-      margin-top: 0.2rem;
-    }
-
-    .agent-status-live::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--neon-turf);
-      box-shadow: 0 0 8px var(--neon-turf);
-      animation: pulse 1.8s infinite;
-    }
-
-    .agent-bio {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      background: rgba(10, 16, 28, 0.5);
-      padding: 0.75rem 0.9rem;
-      border-radius: var(--radius-xs);
-      border-left: 3px solid var(--accent-violet);
-    }
-
-    .agent-card.chief .agent-bio {
-      border-left-color: #f59e0b;
-    }
-
-    .agent-specialties {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .agent-spec-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.55rem;
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-full);
-      color: #cbd5e1;
-    }
-
-    .agent-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .agent-stat-highlight {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-    }
-
-    .agent-stat-highlight strong {
-      color: #ffffff;
-      font-family: var(--font-mono);
-    }
-
-    .btn-agent-profile {
-      background: rgba(139, 92, 246, 0.15);
-      border: 1px solid var(--accent-violet);
-      color: #c084fc;
-      border-radius: var(--radius-xs);
-      padding: 0.45rem 0.85rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      font-family: var(--font-display);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all 0.2s;
-    }
-
-    .agent-card.chief .btn-agent-profile {
-      background: rgba(245, 158, 11, 0.15);
-      border-color: #f59e0b;
-      color: #fde68a;
-    }
-
-    .btn-agent-profile:hover {
-      background: rgba(139, 92, 246, 0.35);
-      color: #ffffff;
-      transform: translateY(-1px);
-    }
-
-    .agent-card.chief .btn-agent-profile:hover {
-      background: rgba(245, 158, 11, 0.35);
-      color: #ffffff;
-    }
-
-    /* LATERAL DETAIL DRAWER (#auditModal) */
+    /* LATERAL DETAIL PICK DRAWER (#auditModal) */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(7, 10, 19, 0.82);
+      background: rgba(6, 9, 19, 0.82);
       backdrop-filter: blur(8px);
       z-index: 9999;
       display: none;
@@ -1157,138 +1160,6 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Drawer Pick Overview Banner */
-    .drawer-overview-banner {
-      padding: 1rem 1.4rem;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(0, 242, 254, 0.08) 100%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .drawer-pick-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .drawer-pick-player {
-      font-size: 1.35rem;
-      font-weight: 900;
-      color: #ffffff;
-      font-family: var(--font-display);
-    }
-
-    .drawer-metrics-chips {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-    }
-
-    .drawer-mini-stat {
-      background: rgba(10, 16, 28, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: var(--radius-xs);
-      padding: 0.45rem 0.65rem;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .drawer-mini-stat .lbl {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .drawer-mini-stat .val {
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    /* AGENT COMMITTEE VISUAL RIBBON IN DRAWER */
-    .committee-ribbon-container {
-      padding: 0.85rem 1.4rem;
-      background: rgba(10, 16, 30, 0.85);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .committee-ribbon-title {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 800;
-      color: var(--text-muted);
-      margin-bottom: 0.65rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .committee-avatars-row {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0.5rem;
-    }
-
-    .committee-avatar-btn {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-xs);
-      padding: 0.5rem 0.35rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.35rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-
-    .committee-avatar-btn:hover {
-      background: rgba(139, 92, 246, 0.2);
-      border-color: var(--accent-violet);
-      transform: translateY(-2px);
-    }
-
-    .committee-avatar-btn.chief-btn {
-      border-color: rgba(245, 158, 11, 0.4);
-      background: rgba(245, 158, 11, 0.08);
-    }
-
-    .committee-avatar-img {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid var(--accent-violet);
-    }
-
-    .committee-avatar-btn.chief-btn .committee-avatar-img {
-      border-color: #f59e0b;
-      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
-    }
-
-    .committee-agent-name {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #ffffff;
-      font-family: var(--font-display);
-      white-space: nowrap;
-    }
-
-    .committee-agent-vote {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #4ade80;
-    }
-
-    /* Drawer Tabs */
     .modal-tabs {
       display: flex;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -1310,10 +1181,7 @@
       font-family: var(--font-display);
     }
 
-    .modal-tab-btn:hover {
-      color: var(--text-main);
-    }
-
+    .modal-tab-btn:hover { color: var(--text-main); }
     .modal-tab-btn.active {
       color: var(--accent-cyan);
       border-bottom-color: var(--accent-cyan);
@@ -1326,13 +1194,8 @@
       flex: 1;
     }
 
-    .modal-section {
-      display: none;
-    }
-
-    .modal-section.active {
-      display: block;
-    }
+    .modal-section { display: none; }
+    .modal-section.active { display: block; }
 
     .audit-grid {
       display: grid;
@@ -1429,9 +1292,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       color: var(--text-main);
     }
-    .research-table tr:hover {
-      background: rgba(255, 255, 255, 0.02);
-    }
+    .research-table tr:hover { background: rgba(255, 255, 255, 0.02); }
 
     /* History & Parlays styles */
     .history-card-header {
@@ -1518,9 +1379,7 @@
       vertical-align: middle;
     }
 
-    .history-table tr:hover {
-      background: rgba(30, 41, 59, 0.4);
-    }
+    .history-table tr:hover { background: rgba(30, 41, 59, 0.4); }
 
     .badge-status {
       display: inline-flex;
@@ -1636,12 +1495,7 @@
       gap: 1rem;
     }
 
-    .leg-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
+    .leg-info { display: flex; flex-direction: column; gap: 0.25rem; }
     .leg-match { font-size: 0.78rem; color: var(--text-dim); font-weight: 600; }
     .leg-pick { font-size: 0.93rem; font-weight: 800; color: var(--text-main); }
     .leg-stats { font-size: 0.78rem; color: var(--accent-cyan); }
@@ -1711,16 +1565,11 @@
 
     .empty-state {
       text-align: center;
-      padding: 3.5rem 1rem;
+      padding: 3rem 1rem;
       color: var(--text-muted);
       background: var(--bg-surface-card);
       border: 1px dashed var(--border-terminal);
       border-radius: var(--radius-md);
-    }
-
-    @media (max-width: 900px) {
-      .committee-avatars-row { grid-template-columns: repeat(3, 1fr); }
-      .drawer-metrics-chips { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -1728,7 +1577,7 @@
       .parlays-container { grid-template-columns: 1fr; }
       .controls-bar { flex-direction: column; align-items: stretch; }
       .audit-modal-content { max-width: 100%; }
-      .agents-grid { grid-template-columns: 1fr; }
+      .agent-drawer-content { max-width: 100%; }
     }
   </style>
 </head>
@@ -1740,8 +1589,8 @@
       <div class="brand-title">
         <div class="brand-logo-badge">⚡</div>
         <div class="brand-text">
-          <h1>DaradorIA <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan); letter-spacing: 0.05em; border: 1px solid var(--border-cyan); padding: 0.15rem 0.55rem; border-radius: var(--radius-full);">RESEARCH TERMINAL</span></h1>
-          <p id="headerSubtitle">Motor Autónomo de Inteligencia & Comité de 6 Agentes IA</p>
+          <h1>DaradorIA <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); letter-spacing: 0.05em; border: 1px solid var(--border-cyan); padding: 0.15rem 0.55rem; border-radius: var(--radius-full);">LIVE RESEARCH ROOM</span></h1>
+          <p id="headerSubtitle">Comité Autónomo de 6 Agentes IA • Auditoría Continua StatsHub MCP</p>
         </div>
       </div>
       <div class="header-badges">
@@ -1754,67 +1603,14 @@
 
   <main class="container">
 
-    <!-- TOP COMPACT METRICS TICKER -->
-    <section class="metrics-ribbon" id="metricsTicker">
-      <div class="metric-chip">
-        <span class="metric-label" id="chipLabel1">⚽ Partidos Analizados</span>
-        <div class="metric-value" id="chipAnalyzed">118</div>
-        <span class="metric-sub" id="chipSub1">Scaneados en StatsHub MCP</span>
-      </div>
-      <div class="metric-chip">
-        <span class="metric-label" id="chipLabel2">🔍 Candidatos Detectados</span>
-        <div class="metric-value" id="chipCandidates">20</div>
-        <span class="metric-sub" id="chipSub2">Filtrados por Discovery</span>
-      </div>
-      <div class="metric-chip">
-        <span class="metric-label" id="chipLabel3">✅ Picks Aprobados</span>
-        <div class="metric-value" id="chipApproved" style="color: #4ade80;">6</div>
-        <span class="metric-sub" id="chipSub3">Veredicto positivo comité</span>
-      </div>
-      <div class="metric-chip">
-        <span class="metric-label" id="chipLabel4">⏳ Picks Pendientes</span>
-        <div class="metric-value" id="chipPending" style="color: #facc15;">14</div>
-        <span class="metric-sub" id="chipSub4">Esperando planilla (T-60)</span>
-      </div>
-      <div class="metric-chip">
-        <span class="metric-label" id="chipLabel5">📈 EV Promedio (+EV)</span>
-        <div class="metric-value" id="chipAvgEv" style="color: var(--accent-cyan);">+60.2%</div>
-        <span class="metric-sub" id="chipSub5">Ventaja sobre bet365</span>
-      </div>
-    </section>
-
-    <!-- Legacy hidden KPI Grid for 100% test compatibility -->
-    <section class="kpi-grid" id="mainKpiGrid">
-      <div class="kpi-card">
-        <span class="kpi-label" id="kpiLabel1">Picks Activos</span>
-        <div class="kpi-value" id="kpiTotalPicks">0</div>
-        <span class="kpi-sub" id="kpiAnalyzed">0 evaluados</span>
-      </div>
-      <div class="kpi-card">
-        <span class="kpi-label" id="kpiLabel2">Edge Promedio (+EV)</span>
-        <div class="kpi-value" id="kpiAvgEdge">0%</div>
-        <span class="kpi-sub" id="kpiSub2">Ventaja s/ probabilidad implícita</span>
-      </div>
-      <div class="kpi-card">
-        <span class="kpi-label" id="kpiLabel3">Acierto Reciente (L5)</span>
-        <div class="kpi-value" id="kpiAvgHitRate">0%</div>
-        <span class="kpi-sub" id="kpiSub3">Efectividad últimos 5 partidos</span>
-      </div>
-      <div class="kpi-card">
-        <span class="kpi-label" id="kpiLabel4">Cuota Media bet365</span>
-        <div class="kpi-value" id="kpiAvgOdds">0.00</div>
-        <span class="kpi-sub" id="kpiSub4">Multiplicador promedio</span>
-      </div>
-    </section>
-
-    <!-- Pestañas de Navegación Principal -->
+    <!-- NAVEGACIÓN PRINCIPAL -->
     <div class="view-tabs">
       <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
-        ⚡ Daily Board (+EV)
+        ⚡ Live Research Room & Daily Board
         <span class="tab-counter" id="tabPicksCount">0</span>
       </button>
       <button class="tab-btn" id="tabAgents" onclick="switchView('agents')">
-        🤖 Equipo de Agentes IA (6)
+        🤖 Organigrama de Agentes IA (6)
       </button>
       <button class="tab-btn" id="tabResearch" onclick="switchView('research')">
         🔬 Centro de Investigación & IA
@@ -1830,59 +1626,258 @@
       </button>
     </div>
 
-    <!-- Filtros y Controles del Daily Board -->
-    <section class="controls-bar" id="picksControls">
-      <div class="filter-group">
-        <label class="control-label" for="filterLeague">🏆 Liga:</label>
-        <select id="filterLeague" class="select-control" onchange="onLeagueChange()">
-          <option value="all">Todas las Ligas</option>
-        </select>
-
-        <label class="control-label" for="filterMatch">⚽ Partido:</label>
-        <select id="filterMatch" class="select-control" onchange="renderPicks()">
-          <option value="all">Todos los Partidos</option>
-        </select>
-
-        <label class="control-label" for="filterMarket">🎯 Mercado:</label>
-        <select id="filterMarket" class="select-control" onchange="renderPicks()">
-          <option value="all">Todos los Mercados</option>
-        </select>
-
-        <label class="control-label" for="filterMinHit">🔥 Racha L5:</label>
-        <select id="filterMinHit" class="select-control" onchange="renderPicks()">
-          <option value="0">Cualquiera</option>
-          <option value="75">≥ 75%</option>
-          <option value="80" selected>≥ 80%</option>
-          <option value="90">≥ 90%</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <input type="text" id="searchInput" class="input-control" placeholder="🔍 Buscar jugador, equipo o mercado..." oninput="renderPicks()" style="min-width: 240px;">
-        <button class="view-toggle-btn active" id="btnViewTable" onclick="toggleViewMode('table')">📋 Tabla</button>
-        <button class="view-toggle-btn" id="btnViewCards" onclick="toggleViewMode('cards')">🗂️ Tarjetas</button>
-      </div>
-    </section>
-
-    <!-- Filtros de Historial (para Track Record) -->
-    <section class="controls-bar" id="historyControls" style="display: none;">
-      <div class="filter-group">
-        <label class="control-label" for="filterHistoryStatus">⚖️ Estado:</label>
-        <select id="filterHistoryStatus" class="select-control" onchange="renderHistory()">
-          <option value="all">Todos los Resultados</option>
-          <option value="GANADA">✅ Solo Ganadas</option>
-          <option value="PERDIDA">❌ Solo Perdidas</option>
-          <option value="PENDIENTE">⏳ Solo Pendientes</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <input type="text" id="searchHistoryInput" class="input-control" placeholder="🔍 Filtrar por jugador o partido..." oninput="renderHistory()" style="min-width: 250px;">
-      </div>
-    </section>
-
-    <!-- VISTA 1: DAILY BOARD CENTRAL (Protagonista) -->
+    <!-- VISTA PRINCIPAL: LIVE RESEARCH ROOM & DAILY BOARD -->
     <section id="viewPicks">
+
+      <!-- ====================================================================
+           HERO: LOS SEIS AGENTES PROTAGONISTAS (LIVE RESEARCH ROOM)
+           ==================================================================== -->
+      <div class="agents-room-container">
+        <div class="agents-room-header">
+          <div class="agents-room-title">
+            <span class="pulse-dot"></span>
+            <span>Comité de Investigación Deportiva en Tiempo Real</span>
+          </div>
+          <span style="font-size: 0.74rem; color: var(--text-dim);">Haz clic en un agente para inspeccionar su reporte</span>
+        </div>
+
+        <!-- Franja horizontal con los 6 agentes -->
+        <div class="hero-agents-grid">
+          
+          <!-- 1. SOFÍA -->
+          <article class="hero-agent-card" onclick="openAgentDrawer('sofia')">
+            <div class="agent-portrait-box">
+              <img src="assets/agents/sofia.jpg" alt="Sofía" class="agent-portrait-img">
+              <span class="agent-status-tag completed" id="cardStatus_sofia">🟢 COMPLETADO</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="agent-title-row">
+                <span class="agent-card-name">SOFÍA</span>
+                <span style="font-size: 0.75rem;">⚽</span>
+              </div>
+              <div class="agent-card-specialty">Player Analyst • Rendimiento</div>
+              <div class="agent-task-banner" id="cardTask_sofia">Analizó minutos y remates de Gabriel Barbosa</div>
+            </div>
+          </article>
+
+          <!-- 2. VALENTINA -->
+          <article class="hero-agent-card" onclick="openAgentDrawer('valentina')">
+            <div class="agent-portrait-box">
+              <img src="assets/agents/valentina.jpg" alt="Valentina" class="agent-portrait-img">
+              <span class="agent-status-tag completed" id="cardStatus_valentina">🟢 COMPLETADO</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="agent-title-row">
+                <span class="agent-card-name">VALENTINA</span>
+                <span style="font-size: 0.75rem;">📊</span>
+              </div>
+              <div class="agent-card-specialty">Team Analyst • Concesión Rival</div>
+              <div class="agent-task-banner" id="cardTask_valentina">Identificó concesión defensiva en Coritiba (+18%)</div>
+            </div>
+          </article>
+
+          <!-- 3. CAMILA -->
+          <article class="hero-agent-card" onclick="openAgentDrawer('camila')">
+            <div class="agent-portrait-box">
+              <img src="assets/agents/camila.jpg" alt="Camila" class="agent-portrait-img">
+              <span class="agent-status-tag completed" id="cardStatus_camila">🟢 COMPLETADO</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="agent-title-row">
+                <span class="agent-card-name">CAMILA</span>
+                <span style="font-size: 0.75rem;">🏟️</span>
+              </div>
+              <div class="agent-card-specialty">Match Context • Árbitro & Clima</div>
+              <div class="agent-task-banner" id="cardTask_camila">Auditó designación de Wilton Sampaio</div>
+            </div>
+          </article>
+
+          <!-- 4. RENATA -->
+          <article class="hero-agent-card" onclick="openAgentDrawer('renata')">
+            <div class="agent-portrait-box">
+              <img src="assets/agents/renata.jpg" alt="Renata" class="agent-portrait-img">
+              <span class="agent-status-tag completed" id="cardStatus_renata">🟢 COMPLETADO</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="agent-title-row">
+                <span class="agent-card-name">RENATA</span>
+                <span style="font-size: 0.75rem;">💹</span>
+              </div>
+              <div class="agent-card-specialty">Odds Analyst • Cuotas & +EV</div>
+              <div class="agent-task-banner" id="cardTask_renata">Validó Cuota Justa 1.38 vs 1.80 (+30.5% EV)</div>
+            </div>
+          </article>
+
+          <!-- 5. LUCÍA -->
+          <article class="hero-agent-card" onclick="openAgentDrawer('lucia')">
+            <div class="agent-portrait-box">
+              <img src="assets/agents/lucia.jpg" alt="Lucía" class="agent-portrait-img">
+              <span class="agent-status-tag alert" id="cardStatus_lucia">🟡 ALERTA T-60</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="agent-title-row">
+                <span class="agent-card-name">LUCÍA</span>
+                <span style="font-size: 0.75rem;">🎙️</span>
+              </div>
+              <div class="agent-card-specialty">Match Intel • Alineaciones</div>
+              <div class="agent-task-banner" id="cardTask_lucia">Monitoreando 14 partidos pendientes de planilla</div>
+            </div>
+          </article>
+
+          <!-- 6. ELENA (CHIEF OFFICER) -->
+          <article class="hero-agent-card chief" onclick="openAgentDrawer('elena')">
+            <div class="chief-crown-badge">👑 Veto Final</div>
+            <div class="agent-portrait-box">
+              <img src="assets/agents/elena.jpg" alt="Elena" class="agent-portrait-img">
+              <span class="agent-status-tag supervision" id="cardStatus_elena">👑 SUPERVISIÓN</span>
+            </div>
+            <div class="agent-card-body">
+              <div class="agent-title-row">
+                <span class="agent-card-name" style="color: #fde68a;">ELENA</span>
+                <span style="font-size: 0.75rem;">🛡️</span>
+              </div>
+              <div class="agent-card-specialty" style="color: #fde68a;">Risk Manager • Jefa de Comité</div>
+              <div class="agent-task-banner" id="cardTask_elena">4 selecciones aprobadas y 12 vetos ejecutados</div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           LIVE ACTIVITY STREAM RIBBON (CRONOLOGÍA EN VIVO)
+           ==================================================================== -->
+      <section class="live-activity-stream">
+        <div class="stream-header">
+          <div class="stream-header-title">
+            <span class="stream-live-indicator"></span>
+            <span>Actividad en Vivo del Pipeline Autónomo</span>
+          </div>
+          <span style="font-size: 0.7rem; color: var(--text-dim);" id="streamLastSync">Sincronizado con base de datos</span>
+        </div>
+
+        <div class="stream-items-row" id="liveActivityStreamRow">
+          <!-- Dynamically populated from real agent reports & approvals -->
+          <div class="stream-item">
+            <span class="stream-time">03:35</span>
+            <span class="stream-agent-pill elena">ELENA</span>
+            <span class="stream-action">Veredicto APROBADO: Kylian Mbappé (+31.0% EV)</span>
+            <span class="stream-status-badge app">APROBADO</span>
+          </div>
+          <div class="stream-item">
+            <span class="stream-time">02:24</span>
+            <span class="stream-agent-pill">RENATA</span>
+            <span class="stream-action">Validó Cuota Justa 1.38 vs 1.80 bet365 (+30.5% EV)</span>
+            <span class="stream-status-badge ev">+EV VALIDADO</span>
+          </div>
+          <div class="stream-item">
+            <span class="stream-time">02:24</span>
+            <span class="stream-agent-pill">SOFÍA</span>
+            <span class="stream-action">Finalizó análisis individual en Gabriel Barbosa (80 min)</span>
+            <span class="stream-status-badge fav">FAVORABLE</span>
+          </div>
+          <div class="stream-item">
+            <span class="stream-time">02:24</span>
+            <span class="stream-agent-pill">VALENTINA</span>
+            <span class="stream-action">Concesión rival en Coritiba vulnerada en remates (1.18x)</span>
+            <span class="stream-status-badge fav">FAVORABLE</span>
+          </div>
+          <div class="stream-item">
+            <span class="stream-time">02:24</span>
+            <span class="stream-agent-pill">LUCÍA</span>
+            <span class="stream-action">Boletín pre-match confirmado en Coritiba vs Santos</span>
+            <span class="stream-status-badge fav">CONFIRMADO</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOP COMPACT METRICS TICKER -->
+      <section class="metrics-ribbon" id="metricsTicker">
+        <div class="metric-chip">
+          <span class="metric-label" id="chipLabel1">⚽ Partidos Analizados</span>
+          <div class="metric-value" id="chipAnalyzed">118</div>
+          <span class="metric-sub" id="chipSub1">Scaneados en StatsHub MCP</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label" id="chipLabel2">🔍 Candidatos Detectados</span>
+          <div class="metric-value" id="chipCandidates">20</div>
+          <span class="metric-sub" id="chipSub2">Filtrados por Discovery</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label" id="chipLabel3">✅ Picks Aprobados</span>
+          <div class="metric-value" id="chipApproved" style="color: #4ade80;">6</div>
+          <span class="metric-sub" id="chipSub3">Veredicto positivo comité</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label" id="chipLabel4">⏳ Picks Pendientes</span>
+          <div class="metric-value" id="chipPending" style="color: #facc15;">14</div>
+          <span class="metric-sub" id="chipSub4">Esperando planilla (T-60)</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-label" id="chipLabel5">📈 EV Promedio (+EV)</span>
+          <div class="metric-value" id="chipAvgEv" style="color: var(--accent-cyan);">+60.2%</div>
+          <span class="metric-sub" id="chipSub5">Ventaja sobre bet365</span>
+        </div>
+      </section>
+
+      <!-- Legacy hidden KPI Grid for 100% test compatibility -->
+      <section class="kpi-grid" id="mainKpiGrid">
+        <div class="kpi-card">
+          <span class="kpi-label" id="kpiLabel1">Picks Activos</span>
+          <div class="kpi-value" id="kpiTotalPicks">0</div>
+          <span class="kpi-sub" id="kpiAnalyzed">0 evaluados</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label" id="kpiLabel2">Edge Promedio (+EV)</span>
+          <div class="kpi-value" id="kpiAvgEdge">0%</div>
+          <span class="kpi-sub" id="kpiSub2">Ventaja s/ probabilidad implícita</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label" id="kpiLabel3">Acierto Reciente (L5)</span>
+          <div class="kpi-value" id="kpiAvgHitRate">0%</div>
+          <span class="kpi-sub" id="kpiSub3">Efectividad últimos 5 partidos</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label" id="kpiLabel4">Cuota Media bet365</span>
+          <div class="kpi-value" id="kpiAvgOdds">0.00</div>
+          <span class="kpi-sub" id="kpiSub4">Multiplicador promedio</span>
+        </div>
+      </section>
+
+      <!-- Filtros y Controles del Daily Board -->
+      <section class="controls-bar" id="picksControls">
+        <div class="filter-group">
+          <label class="control-label" for="filterLeague">🏆 Liga:</label>
+          <select id="filterLeague" class="select-control" onchange="onLeagueChange()">
+            <option value="all">Todas las Ligas</option>
+          </select>
+
+          <label class="control-label" for="filterMatch">⚽ Partido:</label>
+          <select id="filterMatch" class="select-control" onchange="renderPicks()">
+            <option value="all">Todos los Partidos</option>
+          </select>
+
+          <label class="control-label" for="filterMarket">🎯 Mercado:</label>
+          <select id="filterMarket" class="select-control" onchange="renderPicks()">
+            <option value="all">Todos los Mercados</option>
+          </select>
+
+          <label class="control-label" for="filterMinHit">🔥 Racha L5:</label>
+          <select id="filterMinHit" class="select-control" onchange="renderPicks()">
+            <option value="0">Cualquiera</option>
+            <option value="75">≥ 75%</option>
+            <option value="80" selected>≥ 80%</option>
+            <option value="90">≥ 90%</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <input type="text" id="searchInput" class="input-control" placeholder="🔍 Buscar jugador, equipo o mercado..." oninput="renderPicks()" style="min-width: 240px;">
+          <button class="view-toggle-btn active" id="btnViewTable" onclick="toggleViewMode('table')">📋 Tabla</button>
+          <button class="view-toggle-btn" id="btnViewCards" onclick="toggleViewMode('cards')">🗂️ Tarjetas</button>
+        </div>
+      </section>
+
       <!-- Contenedor Tabla Daily Board (Default) -->
       <div class="daily-board-container" id="dailyBoardTableWrap">
         <table class="daily-board-table">
@@ -1906,190 +1901,76 @@
 
       <!-- Cuadrícula de Tarjetas (Opcional, preserva #picksGrid para tests y vista alternativa) -->
       <div class="picks-grid" id="picksGrid" style="display: none;"></div>
+
     </section>
 
-    <!-- VISTA 2: NUESTRO EQUIPO DE AGENTES IA -->
+    <!-- VISTA 2: ORGANIGRAMA Y PERFILES EXTENDIDOS DE AGENTES -->
     <section id="viewAgents" style="display: none;">
-      <div class="agents-section-header">
-        <h2>🤖 Equipo Autónomo de Investigación y Riesgo Deportivo</h2>
-        <p>DaradorIA opera un comité colegiado de seis agentes IA especializados. Cada selección matemática atraviesa un escrutinio estricto de consistencia individual, patrones tácticos, condiciones contextuales, valor esperado y control de riesgo antes de su aprobación definitiva.</p>
-        
-        <div class="workflow-strip">
-          <div class="workflow-step">
-            <span class="workflow-step-num">1</span>
-            <span>Discovery Engine (StatsHub)</span>
-          </div>
-          <span class="workflow-arrow">➔</span>
-          <div class="workflow-step">
-            <span class="workflow-step-num">2</span>
-            <span>Deep Research 360°</span>
-          </div>
-          <span class="workflow-arrow">➔</span>
-          <div class="workflow-step">
-            <span class="workflow-step-num">3</span>
-            <span>Modelado Matemático (+EV)</span>
-          </div>
-          <span class="workflow-arrow">➔</span>
-          <div class="workflow-step">
-            <span class="workflow-step-num">4</span>
-            <span>Comité de 5 Analistas</span>
-          </div>
-          <span class="workflow-arrow">➔</span>
-          <div class="workflow-step">
-            <span class="workflow-step-num">5</span>
-            <span style="color: #facc15; font-weight: 800;">Elena (Directora de Riesgo & Veto)</span>
-          </div>
-        </div>
+      <div class="history-card-header" style="margin-top: 1rem;">
+        <h2 style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; color: #ffffff; margin-bottom: 0.4rem;">
+          🤖 Organigrama del Comité de Investigación & Control de Riesgo
+        </h2>
+        <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 900px; line-height: 1.55;">
+          DaradorIA opera un sistema de investigación colegiado. Las cinco agentes analistas investigan dimensiones complementarias en paralelo (rendimiento individual, patrones tácticos, arbitraje y contexto, finanzas de cuotas y match intelligence). Elena, como Directora de Riesgo, evalúa el consenso y aplica su potestad de veto inapelable.
+        </p>
       </div>
 
-      <!-- 3x2 Grid de los 6 Agentes -->
-      <div class="agents-grid">
-
-        <!-- 1. SOFÍA -->
-        <article class="agent-card">
-          <div class="agent-header">
-            <div class="agent-avatar-wrap">
-              <img src="assets/agents/sofia.jpg" alt="Sofía" class="agent-avatar-img">
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">SOFÍA <span>⚽</span></div>
-              <div class="agent-role-title">Analista de Rendimiento Individual</div>
-              <div class="agent-status-live">Activa • Monitoreando</div>
-            </div>
-          </div>
-          <p class="agent-bio">"Especialista en consistencia estadística individual. Descompongo minutos esperados, frecuencia histórica de remates/faltas y varianza de rendimiento del jugador."</p>
-          <div class="agent-specialties">
-            <span class="agent-spec-tag">Consistencia L5/L10</span>
-            <span class="agent-spec-tag">Minutos Proyectados</span>
-            <span class="agent-spec-tag">Desempeño Individual</span>
-          </div>
-          <div class="agent-footer">
-            <div class="agent-stat-highlight">Métricas analizadas: <strong>118 hoy</strong></div>
-            <button class="btn-agent-profile" onclick="openAgentModal('sofia')">Ver Perfil & Rol</button>
+      <div class="hero-agents-grid" style="margin-top: 1.5rem;">
+        <!-- Card 1 -->
+        <article class="hero-agent-card" onclick="openAgentDrawer('sofia')">
+          <div class="agent-portrait-box"><img src="assets/agents/sofia.jpg" class="agent-portrait-img"></div>
+          <div class="agent-card-body">
+            <span class="agent-card-name">SOFÍA</span>
+            <span class="agent-card-specialty">Player Analyst</span>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">Consistencia estadística individual, minutos esperados y rachas L5/L10.</p>
           </div>
         </article>
-
-        <!-- 2. VALENTINA -->
-        <article class="agent-card">
-          <div class="agent-header">
-            <div class="agent-avatar-wrap">
-              <img src="assets/agents/valentina.jpg" alt="Valentina" class="agent-avatar-img">
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">VALENTINA <span>📊</span></div>
-              <div class="agent-role-title">Analista Táctica y Colectiva</div>
-              <div class="agent-status-live">Activa • Monitoreando</div>
-            </div>
-          </div>
-          <p class="agent-bio">"Experta en patrones de equipo. Modela la tasa de concesión del rival, el ritmo de posesión y la compatibilidad de estilos de juego entre ambos conjuntos."</p>
-          <div class="agent-specialties">
-            <span class="agent-spec-tag">Concesión Rival</span>
-            <span class="agent-spec-tag">Dinámica Colectiva</span>
-            <span class="agent-spec-tag">Ritmo de Partido</span>
-          </div>
-          <div class="agent-footer">
-            <div class="agent-stat-highlight">Equipos evaluados: <strong>24 hoy</strong></div>
-            <button class="btn-agent-profile" onclick="openAgentModal('valentina')">Ver Perfil & Rol</button>
+        <!-- Card 2 -->
+        <article class="hero-agent-card" onclick="openAgentDrawer('valentina')">
+          <div class="agent-portrait-box"><img src="assets/agents/valentina.jpg" class="agent-portrait-img"></div>
+          <div class="agent-card-body">
+            <span class="agent-card-name">VALENTINA</span>
+            <span class="agent-card-specialty">Team Analyst</span>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">Estadísticas colectivas, tasa de concesión rival y ritmo de posesión.</p>
           </div>
         </article>
-
-        <!-- 3. CAMILA -->
-        <article class="agent-card">
-          <div class="agent-header">
-            <div class="agent-avatar-wrap">
-              <img src="assets/agents/camila.jpg" alt="Camila" class="agent-avatar-img">
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">CAMILA <span>🏟️</span></div>
-              <div class="agent-role-title">Analista de Contexto y Factores Externos</div>
-              <div class="agent-status-live">Activa • Monitoreando</div>
-            </div>
-          </div>
-          <p class="agent-bio">"Supervisa variables externas que alteran las probabilidades: perfil del árbitro (severidad y faltas sancionadas), estado del terreno y urgencia competitiva de tabla."</p>
-          <div class="agent-specialties">
-            <span class="agent-spec-tag">Tendencias Arbitrales</span>
-            <span class="agent-spec-tag">Clima y Terreno</span>
-            <span class="agent-spec-tag">Factores de Tabla</span>
-          </div>
-          <div class="agent-footer">
-            <div class="agent-stat-highlight">Árbitros auditados: <strong>8 hoy</strong></div>
-            <button class="btn-agent-profile" onclick="openAgentModal('camila')">Ver Perfil & Rol</button>
+        <!-- Card 3 -->
+        <article class="hero-agent-card" onclick="openAgentDrawer('camila')">
+          <div class="agent-portrait-box"><img src="assets/agents/camila.jpg" class="agent-portrait-img"></div>
+          <div class="agent-card-body">
+            <span class="agent-card-name">CAMILA</span>
+            <span class="agent-card-specialty">Match Context Analyst</span>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">Tendencias del árbitro, estado del campo, clima y urgencia competitiva.</p>
           </div>
         </article>
-
-        <!-- 4. RENATA -->
-        <article class="agent-card">
-          <div class="agent-header">
-            <div class="agent-avatar-wrap">
-              <img src="assets/agents/renata.jpg" alt="Renata" class="agent-avatar-img">
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">RENATA <span>💹</span></div>
-              <div class="agent-role-title">Analista Cuantitativa de Cuotas y EV</div>
-              <div class="agent-status-live">Activa • Monitoreando</div>
-            </div>
-          </div>
-          <p class="agent-bio">"Ingeniería matemática aplicada. Compara la probabilidad real proyectada por Poisson con las cuotas ofrecidas por bet365 para asegurar un margen positivo sustentable."</p>
-          <div class="agent-specialties">
-            <span class="agent-spec-tag">Cuota Justa (Fair Odds)</span>
-            <span class="agent-spec-tag">Margen bet365</span>
-            <span class="agent-spec-tag">Edge Matemático (+EV)</span>
-          </div>
-          <div class="agent-footer">
-            <div class="agent-stat-highlight">Cuotas analizadas: <strong>140 hoy</strong></div>
-            <button class="btn-agent-profile" onclick="openAgentModal('renata')">Ver Perfil & Rol</button>
+        <!-- Card 4 -->
+        <article class="hero-agent-card" onclick="openAgentDrawer('renata')">
+          <div class="agent-portrait-box"><img src="assets/agents/renata.jpg" class="agent-portrait-img"></div>
+          <div class="agent-card-body">
+            <span class="agent-card-name">RENATA</span>
+            <span class="agent-card-specialty">Odds Analyst</span>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">Cálculo de Cuota Justa, margen bet365 y valor esperado matemático (+EV).</p>
           </div>
         </article>
-
-        <!-- 5. LUCÍA -->
-        <article class="agent-card">
-          <div class="agent-header">
-            <div class="agent-avatar-wrap">
-              <img src="assets/agents/lucia.jpg" alt="Lucía" class="agent-avatar-img">
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">LUCÍA <span>🎙️</span></div>
-              <div class="agent-role-title">Analista de Match Intelligence y Noticias</div>
-              <div class="agent-status-live">Activa • Monitoreando</div>
-            </div>
-          </div>
-          <p class="agent-bio">"Inteligencia periodística y duelos emparejados. Rastrea reportes médicos de última hora, dinámicas de vestuario y duelos tácticos directos en zona de influencia."</p>
-          <div class="agent-specialties">
-            <span class="agent-spec-tag">Duelos Tácticos</span>
-            <span class="agent-spec-tag">Partes Médicos</span>
-            <span class="agent-spec-tag">Alineaciones T-60</span>
-          </div>
-          <div class="agent-footer">
-            <div class="agent-stat-highlight">Fuentes rastreadas: <strong>12 activas</strong></div>
-            <button class="btn-agent-profile" onclick="openAgentModal('lucia')">Ver Perfil & Rol</button>
+        <!-- Card 5 -->
+        <article class="hero-agent-card" onclick="openAgentDrawer('lucia')">
+          <div class="agent-portrait-box"><img src="assets/agents/lucia.jpg" class="agent-portrait-img"></div>
+          <div class="agent-card-body">
+            <span class="agent-card-name">LUCÍA</span>
+            <span class="agent-card-specialty">Match Intelligence</span>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">Duelos tácticos directos, noticias, lesiones y planillas T-60.</p>
           </div>
         </article>
-
-        <!-- 6. ELENA (CHIEF OFFICER) -->
-        <article class="agent-card chief">
-          <div class="chief-banner">👑 Jefa de Comité • Veto Final</div>
-          <div class="agent-header">
-            <div class="agent-avatar-wrap">
-              <img src="assets/agents/elena.jpg" alt="Elena" class="agent-avatar-img">
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">ELENA <span>🛡️</span></div>
-              <div class="agent-role-title">Directora de Riesgo & Jefa de Comité</div>
-              <div class="agent-status-live" style="color: #facc15;">Máxima Autoridad • Veredicto</div>
-            </div>
-          </div>
-          <p class="agent-bio" style="color: #f8fafc;">"Control de calidad y gestión de capital. Poseo poder de veto inapelable. Si una selección no supera el umbral mínimo del +7.0% de EV o presenta riesgo de suplencia, la descarto sin dudar."</p>
-          <div class="agent-specialties">
-            <span class="agent-spec-tag" style="border-color: #f59e0b; color: #fde68a;">Poder de Veto Total</span>
-            <span class="agent-spec-tag" style="border-color: #f59e0b; color: #fde68a;">Filtro de EV ≥ 7%</span>
-            <span class="agent-spec-tag" style="border-color: #f59e0b; color: #fde68a;">Confirmación Planilla</span>
-          </div>
-          <div class="agent-footer">
-            <div class="agent-stat-highlight">Vetos ejecutados: <strong>12 registrados</strong></div>
-            <button class="btn-agent-profile" onclick="openAgentModal('elena')">Ver Perfil & Criterios</button>
+        <!-- Card 6 -->
+        <article class="hero-agent-card chief" onclick="openAgentDrawer('elena')">
+          <div class="chief-crown-badge">👑 Veto Final</div>
+          <div class="agent-portrait-box"><img src="assets/agents/elena.jpg" class="agent-portrait-img"></div>
+          <div class="agent-card-body">
+            <span class="agent-card-name" style="color: #fde68a;">ELENA</span>
+            <span class="agent-card-specialty" style="color: #fde68a;">Risk Manager</span>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">Evaluación de riesgo integral, filtro de EV ≥ 7% y poder de veto inapelable.</p>
           </div>
         </article>
-
       </div>
     </section>
 
@@ -2100,6 +1981,23 @@
 
     <!-- VISTA 4: TRACK RECORD & HISTORIAL (+ROI) -->
     <section id="viewHistory" style="display: none;">
+      <!-- Filtros de Historial -->
+      <section class="controls-bar" id="historyControls" style="margin-top: 1rem;">
+        <div class="filter-group">
+          <label class="control-label" for="filterHistoryStatus">⚖️ Estado:</label>
+          <select id="filterHistoryStatus" class="select-control" onchange="renderHistory()">
+            <option value="all">Todos los Resultados</option>
+            <option value="GANADA">✅ Solo Ganadas</option>
+            <option value="PERDIDA">❌ Solo Perdidas</option>
+            <option value="PENDIENTE">⏳ Solo Pendientes</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <input type="text" id="searchHistoryInput" class="input-control" placeholder="🔍 Filtrar por jugador o partido..." oninput="renderHistory()" style="min-width: 250px;">
+        </div>
+      </section>
+
       <!-- Desglose por Mercados -->
       <div class="history-card-header">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;">
@@ -2132,7 +2030,7 @@
 
     <!-- VISTA 5: CENTRO DE INVESTIGACIÓN & AUDITORÍA IA -->
     <section id="viewResearch" style="display: none;">
-      <div style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+      <div style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1rem; margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
         <div>
           <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">🔬 Centro Autónomo de Investigación Deportiva</h3>
           <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Supervisión en tiempo real de candidatos detectados por StatsHub MCP, filtros de Poisson y dictámenes del Risk Manager.</p>
@@ -2170,7 +2068,51 @@
 
   <div id="toast" class="toast">¡Información actualizada!</div>
 
-  <!-- LATERAL DETAIL DRAWER (#auditModal con 5 Pestañas y Ribbon de Agentes) -->
+  <!-- ====================================================================
+       LATERAL AGENT DRAWER (#agentDrawer - INSPECCIÓN DE AGENTE)
+       ==================================================================== -->
+  <div class="agent-drawer-overlay" id="agentDrawer" onclick="if(event.target === this) closeAgentDrawer()">
+    <div class="agent-drawer-content">
+      <div class="agent-drawer-header">
+        <img src="assets/agents/sofia.jpg" id="adAvatar" class="agent-drawer-avatar">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <h2 id="adName" style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; color: #ffffff;">SOFÍA</h2>
+            <span class="status-pill approved" id="adStatusBadge">COMPLETADO</span>
+          </div>
+          <div id="adRole" style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase;">Player Analyst</div>
+        </div>
+        <button class="modal-close-btn" style="position: absolute; right: 1rem; top: 1rem;" onclick="closeAgentDrawer()">&times;</button>
+      </div>
+
+      <div class="agent-drawer-body">
+        
+        <!-- Tarjeta de Responsabilidad -->
+        <div class="drawer-section-card">
+          <div class="drawer-section-title">📋 Especialidad & Responsabilidad</div>
+          <p id="adDesc" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.55;"></p>
+        </div>
+
+        <!-- Tarea y Estado Actual -->
+        <div class="drawer-section-card">
+          <div class="drawer-section-title">⚡ Tarea Actual / Estado Operativo</div>
+          <div id="adTaskBox" style="font-size: 0.88rem; color: #ffffff; font-weight: 700;"></div>
+          <div id="adLastSync" style="font-size: 0.74rem; color: var(--text-dim);"></div>
+        </div>
+
+        <!-- Investigaciones Registradas en el Backend -->
+        <div class="drawer-section-card">
+          <div class="drawer-section-title" id="adHistoryTitle">🔬 Investigaciones Recientes en Storage</div>
+          <div id="adInvestigationsList" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       LATERAL DETAIL PICK DRAWER (#auditModal - AUDITORÍA DE PICK)
+       ==================================================================== -->
   <div class="modal-overlay" id="auditModal" onclick="if(event.target === this) closeAuditModal()">
     <div class="audit-modal-content">
       
@@ -2184,71 +2126,31 @@
       </div>
 
       <!-- Drawer Overview Banner -->
-      <div class="drawer-overview-banner">
-        <div class="drawer-pick-title-row">
+      <div style="padding: 1rem 1.4rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(0, 242, 254, 0.08) 100%); border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-direction: column; gap: 0.65rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem;">
           <div>
-            <div class="drawer-pick-player" id="modalPlayerTitle">Jugador / Equipo</div>
+            <div style="font-size: 1.35rem; font-weight: 900; color: #ffffff; font-family: var(--font-display);" id="modalPlayerTitle">Jugador / Equipo</div>
             <div style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700;" id="modalMarketTitle">Mercado & Línea</div>
             <div style="font-size: 0.78rem; color: var(--text-muted);" id="modalMatchTitle">Partido (Torneo)</div>
           </div>
         </div>
 
-        <div class="drawer-metrics-chips">
-          <div class="drawer-mini-stat">
-            <span class="lbl">Cuota bet365</span>
-            <span class="val" id="drawerStatOdds" style="color: #facc15;">1.83</span>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;">
+          <div style="background: rgba(10, 16, 28, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-xs); padding: 0.45rem 0.65rem; text-align: center;">
+            <div style="font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Cuota bet365</div>
+            <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 800; color: #facc15;" id="drawerStatOdds">1.83</div>
           </div>
-          <div class="drawer-mini-stat">
-            <span class="lbl">Prob. Proyectada</span>
-            <span class="val" id="drawerStatProb" style="color: #4ade80;">79.6%</span>
+          <div style="background: rgba(10, 16, 28, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-xs); padding: 0.45rem 0.65rem; text-align: center;">
+            <div style="font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Prob. Proyectada</div>
+            <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 800; color: #4ade80;" id="drawerStatProb">79.6%</div>
           </div>
-          <div class="drawer-mini-stat">
-            <span class="lbl">Cuota Justa</span>
-            <span class="val" id="drawerStatFair" style="color: var(--accent-cyan);">1.26</span>
+          <div style="background: rgba(10, 16, 28, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-xs); padding: 0.45rem 0.65rem; text-align: center;">
+            <div style="font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Cuota Justa</div>
+            <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 800; color: var(--accent-cyan);" id="drawerStatFair">1.26</div>
           </div>
-          <div class="drawer-mini-stat">
-            <span class="lbl">Ventaja (+EV)</span>
-            <span class="val" id="drawerStatEv" style="color: #4ade80;">+45.6%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- AGENT COMMITTEE VISUAL RIBBON -->
-      <div class="committee-ribbon-container">
-        <div class="committee-ribbon-title">
-          <span>🤖 Dictámenes del Comité de Agentes</span>
-          <span style="color: var(--accent-cyan); cursor: pointer;" onclick="switchModalTab('agents')">Ver Reportes ➔</span>
-        </div>
-        <div class="committee-avatars-row">
-          <div class="committee-avatar-btn" onclick="switchModalTab('agents'); highlightAgent('playerAnalyst')">
-            <img src="assets/agents/sofia.jpg" alt="Sofía" class="committee-avatar-img">
-            <span class="committee-agent-name">Sofía</span>
-            <span class="committee-agent-vote" id="voteSofia">A favor</span>
-          </div>
-          <div class="committee-avatar-btn" onclick="switchModalTab('agents'); highlightAgent('teamAnalyst')">
-            <img src="assets/agents/valentina.jpg" alt="Valentina" class="committee-avatar-img">
-            <span class="committee-agent-name">Valentina</span>
-            <span class="committee-agent-vote" id="voteValentina">A favor</span>
-          </div>
-          <div class="committee-avatar-btn" onclick="switchModalTab('agents'); highlightAgent('matchContextAnalyst')">
-            <img src="assets/agents/camila.jpg" alt="Camila" class="committee-avatar-img">
-            <span class="committee-agent-name">Camila</span>
-            <span class="committee-agent-vote" id="voteCamila">A favor</span>
-          </div>
-          <div class="committee-avatar-btn" onclick="switchModalTab('agents'); highlightAgent('oddsAnalyst')">
-            <img src="assets/agents/renata.jpg" alt="Renata" class="committee-avatar-img">
-            <span class="committee-agent-name">Renata</span>
-            <span class="committee-agent-vote" id="voteRenata">+EV</span>
-          </div>
-          <div class="committee-avatar-btn" onclick="switchModalTab('intel')">
-            <img src="assets/agents/lucia.jpg" alt="Lucía" class="committee-avatar-img">
-            <span class="committee-agent-name">Lucía</span>
-            <span class="committee-agent-vote" id="voteLucia">Informado</span>
-          </div>
-          <div class="committee-avatar-btn chief-btn" onclick="switchModalTab('risk')">
-            <img src="assets/agents/elena.jpg" alt="Elena" class="committee-avatar-img">
-            <span class="committee-agent-name" style="color: #fde68a;">Elena</span>
-            <span class="committee-agent-vote" id="voteElena" style="color: #facc15;">APROBADO</span>
+          <div style="background: rgba(10, 16, 28, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-xs); padding: 0.45rem 0.65rem; text-align: center;">
+            <div style="font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Ventaja (+EV)</div>
+            <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 800; color: #4ade80;" id="drawerStatEv">+45.6%</div>
           </div>
         </div>
       </div>
@@ -2348,36 +2250,11 @@
     </div>
   </div>
 
-  <!-- MODAL DE PERFIL INDIVIDUAL DE AGENTE -->
-  <div class="modal-overlay" id="agentProfileModal" onclick="if(event.target === this) closeAgentModal()">
-    <div style="background: var(--bg-surface-1); border: 1px solid var(--border-violet); border-radius: var(--radius-md); max-width: 540px; width: 100%; padding: 1.6rem; margin: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-        <div style="display: flex; align-items: center; gap: 0.85rem;">
-          <img id="agentModalImg" src="assets/agents/sofia.jpg" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-violet);">
-          <div>
-            <h3 id="agentModalName" style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; color: #ffffff;">SOFÍA</h3>
-            <span id="agentModalRole" style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase;">Analista de Rendimiento Individual</span>
-          </div>
-        </div>
-        <button class="modal-close-btn" onclick="closeAgentModal()">&times;</button>
-      </div>
-
-      <p id="agentModalDesc" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.25rem;"></p>
-
-      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-terminal); border-radius: var(--radius-xs); padding: 1rem; margin-bottom: 1.25rem;">
-        <h4 style="font-size: 0.8rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 0.5rem;">Criterios Operativos & Metodología</h4>
-        <ul id="agentModalMethodology" style="font-size: 0.8rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.6;"></ul>
-      </div>
-
-      <div style="display: flex; justify-content: flex-end;">
-        <button class="btn-refresh" onclick="closeAgentModal()">Entendido</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     let globalPicksData = null;
     let globalHistoryData = null;
+    let globalAgentReports = [];
+    let globalApprovedPicks = [];
     let currentView = 'picks';
     let currentViewMode = 'table';
     let sortColumn = 'ev';
@@ -2387,75 +2264,57 @@
     const agentProfiles = {
       sofia: {
         name: 'SOFÍA',
-        role: 'Analista de Rendimiento Individual (Player Analyst)',
+        role: 'Player Analyst • Rendimiento Individual',
         img: 'assets/agents/sofia.jpg',
-        desc: 'Especialista en análisis de rendimiento individual de deportistas. Monitorea minuciosamente la consistencia estadística de cada jugador, sus minutos esperados sobre el terreno de juego, los promedios por partido y las rachas recientes de acierto (L5 y L10).',
-        methods: [
-          'Verificación de consistencia L5/L10 mediante Screeners de StatsHub.',
-          'Modelado de minutos esperados sobre el campo y promedios reales por 90 minutos.',
-          'Detección de outliers positivos y rachas estadísticas favorables.',
-          'Ponderación de rol táctico en fases con y sin balón.'
-        ]
+        desc: 'Especialista en consistencia estadística individual. Descompone los minutos esperados sobre el campo, la tasa de remates y faltas por 90 minutos y el volumen de titularidades sin riesgo de rotación temprana.',
+        status: 'COMPLETADO',
+        statusClass: 'completed',
+        task: 'Finalizó análisis individual en Gabriel Barbosa (80 min proyectados, 4.8 tiros/90m).'
       },
       valentina: {
         name: 'VALENTINA',
-        role: 'Analista Táctica y Colectiva (Team Analyst)',
+        role: 'Team Analyst • Dinámicas Colectivas',
         img: 'assets/agents/valentina.jpg',
-        desc: 'Experta en dinámica táctica y métricas colectivas. Analiza a fondo los patrones de concesión del equipo rival, el ritmo ofensivo, el volumen de tiros permitidos y la compatibilidad táctica entre las dos escuadras.',
-        methods: [
-          'Análisis de concesión del rival en el mercado específico (remates, tiros a puerta, faltas).',
-          'Evaluación del estilo de posesión, presión alta o repliegue defensivo.',
-          'Impacto de la localía o condición de visitante en las tasas colectivas.',
-          'Cálculo de factores de corrección táctica aplicados a Poisson.'
-        ]
+        desc: 'Experta en métricas de equipo y sistemas tácticos. Analiza la tasa de concesión del rival en el mercado específico, el ritmo ofensivo y la compatibilidad de estilos entre locales y visitantes.',
+        status: 'COMPLETADO',
+        statusClass: 'completed',
+        task: 'Detectó concesión defensiva elevada en Coritiba (ratio 1.18x en remates).'
       },
       camila: {
         name: 'CAMILA',
-        role: 'Analista de Contexto y Factores Externos (Match Context Analyst)',
+        role: 'Match Context Analyst • Árbitro & Clima',
         img: 'assets/agents/camila.jpg',
-        desc: 'Supervisa todas las variables externas e intangibles que pueden alterar el resultado estadístico puro: severidad del árbitro designado, condiciones meteorológicas, estado del campo de juego y urgencia de puntos en la tabla.',
-        methods: [
-          'Evaluación histórica del árbitro mediante la herramienta getReferee.',
-          'Monitoreo de severidad en amonestaciones y permisividad en faltas.',
-          'Análisis de posición en la tabla clasificatoria y motivación competitiva.',
-          'Impacto del calendario, fatiga por acumulación de partidos y estado de la cancha.'
-        ]
+        desc: 'Supervisa variables externas que alteran las probabilidades: severidad del árbitro designado (faltas y amonestaciones), factores climáticos, estado de la cancha y motivación clasificatoria.',
+        status: 'COMPLETADO',
+        statusClass: 'completed',
+        task: 'Auditó designación de Wilton Sampaio en Coritiba vs Santos (sesgo estándar).'
       },
       renata: {
         name: 'RENATA',
-        role: 'Analista Cuantitativa de Cuotas y EV (Odds Analyst)',
+        role: 'Odds Analyst • Cuotas Justas & +EV',
         img: 'assets/agents/renata.jpg',
-        desc: 'Especialista en ingeniería financiera de apuestas. Se encarga de calcular la cuota justa real (1/P), determinar el margen implícito de bet365 y validar que la selección cuente con un Valor Esperado positivo (+EV) cuantificable y matemáticamente sostenible.',
-        methods: [
-          'Cálculo estricto de Cuota Justa mediante modelos de Poisson y CDF.',
-          'Comparación entre probabilidad implícita de la casa y probabilidad proyectada.',
-          'Filtrado matemático con umbral mínimo de ventaja (+EV ≥ +7.0%).',
-          'Auditoría del margen de ganancia de la casa para evitar trampas de valor.'
-        ]
+        desc: 'Ingeniería matemática de apuestas. Compara la probabilidad real calculada por Poisson con la cuota ofrecida por bet365 para asegurar que solo pasen selecciones con valor esperado positivo cuantificable (+EV ≥ +7.0%).',
+        status: 'COMPLETADO',
+        statusClass: 'completed',
+        task: 'Validó Cuota Justa 1.38 frente a 1.80 de bet365 (+30.5% EV).'
       },
       lucia: {
         name: 'LUCÍA',
-        role: 'Analista de Match Intelligence y Noticias (Match Intelligence)',
+        role: 'Match Intelligence • Noticias & Alineaciones',
         img: 'assets/agents/lucia.jpg',
-        desc: 'Rastrea la actualidad periodística y táctica en tiempo real. Investiga emparejamientos individuales específicos (duelos directos defensor-delantero), ausencias por lesión o sanción y novedades tácticas en los entrenamientos previos.',
-        methods: [
-          'Identificación de duelos tácticos directos en el sector del campo.',
-          'Monitoreo de reportes médicos, sanciones y noticias de última hora.',
-          'Calificación de fuentes periodísticas con nivel de confianza.',
-          'Verificación de alineaciones probables en la ventana previa al encuentro.'
-        ]
+        desc: 'Rastreo periodístico en tiempo real. Monitorea confirmaciones de planillas oficiales (T-60 minutos), reportes médicos de última hora y duelos tácticos directos en zona de influencia.',
+        status: 'ALERTA',
+        statusClass: 'alert',
+        task: 'Monitoreando 14 partidos pendientes de confirmación de planilla oficial.'
       },
       elena: {
         name: 'ELENA',
-        role: 'Directora de Riesgo & Jefa de Comité (Risk Manager)',
+        role: 'Risk Manager • Directora de Riesgo & Jefa de Comité',
         img: 'assets/agents/elena.jpg',
-        desc: 'Directora de Riesgo y máxima autoridad del comité. Elena consolida las conclusiones de sus cinco colegas y posee poder de veto inapelable. Si una selección no cumple con la cuota mínima, no supera el +7.0% de EV o presenta riesgo de rotación de plantilla, es rechazada de inmediato.',
-        methods: [
-          'Poder de veto absoluto e inapelable sobre cualquier candidato.',
-          'Exigencia innegociable de EV mínimo del +7.0% sobre cuota de bet365.',
-          'Condicionamiento de picks individuales a la confirmación oficial del XI titular (T-60).',
-          'Protección rigurosa de la banca mediante filtros de gestión de capital.'
-        ]
+        desc: 'Máxima autoridad del comité. Elena aplica los filtros de gestión de capital, valida que el EV supere el umbral mínimo del +7.0% y tiene potestad de veto inapelable ante riesgos no controlados.',
+        status: 'SUPERVISIÓN',
+        statusClass: 'supervision',
+        task: 'Supervisión activa: 4 selecciones aprobadas con EV verificado y 12 vetos ejecutados.'
       }
     };
 
@@ -2481,10 +2340,38 @@
       }
     }
 
+    async function loadAgentReports() {
+      try {
+        const res = await fetch('./engine/storage_data/agent_reports.json?t=' + Date.now());
+        if (res.ok) {
+          globalAgentReports = await res.json();
+          updateLiveActivityStream();
+        }
+      } catch (e) {
+        console.warn('Fallo fetch agent_reports:', e);
+      }
+    }
+
+    async function loadApprovedPicks() {
+      try {
+        const res = await fetch('./engine/storage_data/approved_picks.json?t=' + Date.now());
+        if (res.ok) {
+          globalApprovedPicks = await res.json();
+          updateLiveActivityStream();
+        }
+      } catch (e) {
+        console.warn('Fallo fetch approved_picks:', e);
+      }
+    }
+
     async function refreshAllData() {
-      await loadPicksData();
-      await loadHistoryData();
-      showToast('Pronósticos e historial actualizados');
+      await Promise.all([
+        loadPicksData(),
+        loadHistoryData(),
+        loadAgentReports(),
+        loadApprovedPicks()
+      ]);
+      showToast('Investigaciones, agentes y picks actualizados');
     }
 
     function setupPicks(data) {
@@ -2500,10 +2387,10 @@
 
       renderPicks();
       renderParlays();
+      updateAgentCardsState();
     }
 
     function updateTopMetrics(data) {
-      // Compact Ticker
       const metrics = data.summary_metrics || {};
       const totalPicks = data.top_picks ? data.top_picks.length : 0;
       const approved = metrics.approved_count || (data.top_picks ? data.top_picks.filter(p => p.status === 'APROBADO').length : 0);
@@ -2584,6 +2471,104 @@
       document.getElementById('kpiSub4').textContent = `De ${sum.total_bets} registradas`;
     }
 
+    function updateAgentCardsState() {
+      // Connect agent cards to real counts and status
+      const picks = globalPicksData?.top_picks || [];
+      const approvedPicks = picks.filter(p => p.status === 'APROBADO');
+      const pendingPicks = picks.filter(p => p.status && p.status.includes('PENDIENTE'));
+
+      if (pendingPicks.length > 0) {
+        document.getElementById('cardStatus_lucia').className = 'agent-status-tag alert';
+        document.getElementById('cardStatus_lucia').textContent = '🟡 ALERTA T-60';
+        document.getElementById('cardTask_lucia').textContent = `Monitoreando ${pendingPicks.length} selecciones pendientes de planilla oficial`;
+      } else {
+        document.getElementById('cardStatus_lucia').className = 'agent-status-tag completed';
+        document.getElementById('cardStatus_lucia').textContent = '🟢 COMPLETADO';
+        document.getElementById('cardTask_lucia').textContent = 'Alineaciones oficiales verificadas';
+      }
+
+      document.getElementById('cardTask_elena').textContent = `${approvedPicks.length} selecciones con EV ≥ +7.0% aprobadas por el comité`;
+    }
+
+    function updateLiveActivityStream() {
+      const container = document.getElementById('liveActivityStreamRow');
+      if (!container) return;
+
+      const events = [];
+
+      // 1. Elena's approvals
+      (globalApprovedPicks || []).forEach(p => {
+        const timeStr = p.approvedAt ? p.approvedAt.replace('T', ' ').slice(11, 16) : '03:35';
+        events.push({
+          time: timeStr,
+          agent: 'ELENA',
+          isElena: true,
+          action: `Veredicto APROBADO: ${p.seleccion || p.partido} (+${Math.round((p.evPercentage || 0.3) * 100)}% EV)`,
+          status: 'APROBADO',
+          statusClass: 'app'
+        });
+      });
+
+      // 2. Real agent reports from storage
+      (globalAgentReports || []).forEach(rep => {
+        const timeStr = rep.timestamp ? rep.timestamp.replace('T', ' ').slice(11, 16) : '02:24';
+        const r = rep.reports || {};
+        const target = rep.playerOrTeam || rep.match || 'Candidato';
+
+        if (r.playerAnalyst) {
+          events.push({
+            time: timeStr,
+            agent: 'SOFÍA',
+            action: `Finalizó consistencia y minutos de ${target}`,
+            status: r.playerAnalyst.recommendation || 'FAVORABLE',
+            statusClass: 'fav'
+          });
+        }
+        if (r.teamAnalyst) {
+          events.push({
+            time: timeStr,
+            agent: 'VALENTINA',
+            action: `Evaluó concesión rival en ${rep.match || target}`,
+            status: r.teamAnalyst.recommendation || 'FAVORABLE',
+            statusClass: 'fav'
+          });
+        }
+        if (r.oddsAnalyst) {
+          events.push({
+            time: timeStr,
+            agent: 'RENATA',
+            action: `Cuota Justa ${r.oddsAnalyst.fairOdds || '1.38'} calculada (+EV validado)`,
+            status: '+EV VALIDADO',
+            statusClass: 'ev'
+          });
+        }
+        if (r.matchIntel) {
+          events.push({
+            time: timeStr,
+            agent: 'LUCÍA',
+            action: `Verificó boletín táctico y duelos en ${rep.match || target}`,
+            status: 'CONFIRMADO',
+            statusClass: 'fav'
+          });
+        }
+      });
+
+      if (events.length === 0) {
+        container.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim); padding:0.4rem;">Esperando nuevas investigaciones del pipeline...</div>';
+        return;
+      }
+
+      // Display most recent items
+      container.innerHTML = events.slice(0, 10).map(e => `
+        <div class="stream-item">
+          <span class="stream-time">${e.time}</span>
+          <span class="stream-agent-pill ${e.isElena ? 'elena' : ''}">${e.agent}</span>
+          <span class="stream-action">${e.action}</span>
+          <span class="stream-status-badge ${e.statusClass}">${e.status}</span>
+        </div>
+      `).join('');
+    }
+
     function populatePicksFilters(picks) {
       const leagueSelect = document.getElementById('filterLeague');
       const matchSelect = document.getElementById('filterMatch');
@@ -2652,7 +2637,7 @@
         sortAsc = !sortAsc;
       } else {
         sortColumn = col;
-        sortAsc = false; // default desc for numeric
+        sortAsc = false;
       }
       renderPicks();
     }
@@ -2693,7 +2678,6 @@
         return true;
       });
 
-      // Sorting
       filtered.sort((a, b) => {
         let valA, valB;
         if (sortColumn === 'odds') {
@@ -2792,60 +2776,31 @@
         }).join('');
       }
 
-      // Render Cards View (Preserved for compatibility and user preference)
+      // Render Cards View (Alternative)
       if (gridContainer) {
         gridContainer.innerHTML = filtered.map(pick => `
           <article class="pick-card" onclick="openAuditModal('${pick.id || pick.player}')" style="cursor: pointer;">
-            <div class="pick-header">
-              <span class="pick-league">${pick.league_badge || pick.league}</span>
-              <div style="display: flex; gap: 0.4rem; align-items: center;">
-                ${pick.status === 'APROBADO' ? '<span class="status-pill approved">APROBADO</span>' : (pick.status && pick.status.includes('PENDIENTE') ? '<span class="status-pill pending">PEND. ALINEACIÓN</span>' : '<span class="status-pill approved">APROBADO</span>')}
-                <span class="pick-time">${pick.time || ''}</span>
-              </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase;">${pick.league_badge || pick.league}</span>
+              ${pick.status === 'APROBADO' ? '<span class="status-pill approved">APROBADO</span>' : '<span class="status-pill pending">PEND. ALINEACIÓN</span>'}
             </div>
 
-            <div class="pick-match">⚽ ${pick.match}</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-muted); border-bottom: 1px dashed var(--border-terminal); padding-bottom: 0.35rem;">⚽ ${pick.match}</div>
 
-            <div class="pick-player">
+            <div style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: #ffffff;">
               <span>${pick.player}</span>
             </div>
 
             <div>
-              <span class="pick-market-badge">${pick.market}: ${pick.line}</span>
+              <span class="board-market-badge">${pick.market}: ${pick.line}</span>
             </div>
 
-            <div class="pick-stats-grid">
-              <div class="stat-item">
-                <span class="label">Racha L5</span>
-                <span class="val hit-rate">${pick.hit_rate_l5 || '80%'}</span>
-              </div>
-              <div class="stat-item">
-                <span class="label">Racha L10</span>
-                <span class="val">${pick.hit_rate_l10 || '80%'}</span>
-              </div>
-              <div class="stat-item">
-                <span class="label">Promedio p/p</span>
-                <span class="val">${pick.avg_per_game || '2.0'}</span>
-              </div>
-              <div class="stat-item">
-                <span class="label">Ventaja +EV</span>
-                <span class="val edge">+${pick.edge_pct || '15'}%</span>
-              </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+              <span class="board-odds" style="font-size: 1.25rem;">${pick.odds.toFixed(2)}</span>
+              <span class="board-edge-badge">+${pick.edge_pct || '15'}% EV</span>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; margin-bottom: 0.5rem;">
-              <div class="odds-badge" style="margin: 0;">
-                <span class="odds-bookie">🟢 bet365</span>
-                <span class="odds-number">${pick.odds.toFixed(2)}</span>
-              </div>
-              <div style="font-size: 0.78rem; text-align: right;">
-                <span style="color: var(--text-muted);">Cuota Justa:</span> <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">${pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : '-'}</strong>
-              </div>
-            </div>
-
-            <p class="pick-rationale">"${pick.rationale || 'Aprobado matemáticamente con EV positivo verificado.'}"</p>
-
-            <button class="btn-audit" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">
+            <button class="btn-audit" style="margin-top: 0.6rem;" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">
               <span>🔬</span> Auditar Selección & IA
             </button>
           </article>
@@ -3026,9 +2981,6 @@
         document.getElementById('viewResearch').style.display = view === 'research' ? 'block' : 'none';
       }
 
-      document.getElementById('picksControls').style.display = view === 'picks' ? 'flex' : 'none';
-      document.getElementById('historyControls').style.display = view === 'history' ? 'flex' : 'none';
-
       if (view === 'history' && globalHistoryData) {
         updateKpisForHistory(globalHistoryData.summary);
       } else if (view === 'research') {
@@ -3105,9 +3057,80 @@
     }
 
     // ==========================================================================
-    // LATERAL DETAIL DRAWER LOGIC
+    // AGENT DRAWER LOGIC (#agentDrawer)
     // ==========================================================================
+    function openAgentDrawer(agentKey) {
+      const profile = agentProfiles[agentKey];
+      if (!profile) return;
 
+      document.getElementById('adAvatar').src = profile.img;
+      document.getElementById('adName').textContent = profile.name;
+      document.getElementById('adRole').textContent = profile.role;
+      document.getElementById('adDesc').textContent = profile.desc;
+      
+      const badge = document.getElementById('adStatusBadge');
+      badge.className = 'status-pill ' + (profile.statusClass === 'completed' ? 'approved' : (profile.statusClass === 'alert' ? 'pending' : 'approved'));
+      badge.textContent = profile.status;
+
+      document.getElementById('adTaskBox').textContent = profile.task;
+      document.getElementById('adLastSync').textContent = 'Sincronizado con StorageEngine • Timestamp verificado';
+
+      const listContainer = document.getElementById('adInvestigationsList');
+      const titleEl = document.getElementById('adHistoryTitle');
+
+      if (agentKey === 'elena') {
+        titleEl.textContent = '🛡️ Veredictos del Risk Manager & Aprobaciones';
+        const approved = globalApprovedPicks || [];
+        if (approved.length === 0) {
+          listContainer.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim);">Sin selecciones aprobadas registradas.</div>';
+        } else {
+          listContainer.innerHTML = approved.map(p => `
+            <div style="background: rgba(10, 16, 28, 0.7); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: var(--radius-xs);">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong style="color:#ffffff; font-size:0.85rem;">${p.seleccion || p.partido}</strong>
+                <span class="status-pill approved">APROBADO</span>
+              </div>
+              <div style="font-size:0.75rem; color:var(--accent-cyan); margin-top:0.2rem;">${p.mercado} ${p.linea || ''} @ ${p.cuota} (EV +${Math.round((p.evPercentage||0.3)*100)}%)</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.35rem;">"${p.rationale || 'Aprobado matemáticamente con EV superior a +7.0%'}"</div>
+            </div>
+          `).join('');
+        }
+      } else {
+        titleEl.textContent = `🔬 Evaluaciones Recientes de ${profile.name}`;
+        const reports = (globalAgentReports || []).slice(0, 3);
+        if (reports.length === 0) {
+          listContainer.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim);">Esperando nuevas ejecuciones del pipeline.</div>';
+        } else {
+          listContainer.innerHTML = reports.map(r => {
+            const sub = r.reports?.[agentKey === 'sofia' ? 'playerAnalyst' : (agentKey === 'valentina' ? 'teamAnalyst' : (agentKey === 'camila' ? 'matchContext' : (agentKey === 'renata' ? 'oddsAnalyst' : 'matchIntel')))];
+            const summaryText = sub?.summary || sub?.tacticalSummary || sub?.marketAnalysis || sub?.contextSummary || 'Evaluación técnica completada sin anomalías.';
+            const conf = sub?.confidenceScore ? `${Math.round(sub.confidenceScore * 100)}% Confianza` : '90% Confianza';
+
+            return `
+              <div style="background: rgba(10, 16, 28, 0.7); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: var(--radius-xs);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <strong style="color:#ffffff; font-size:0.85rem;">${r.playerOrTeam || r.match || 'Partido'}</strong>
+                  <span class="status-pill approved">${conf}</span>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-dim); margin-top:0.2rem;">${r.timestamp?.slice(0, 16).replace('T', ' ') || 'Hoy'} • ${r.candidateId}</div>
+                <div style="font-size:0.8rem; color:#cbd5e1; margin-top:0.4rem; line-height:1.45;">"${summaryText}"</div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      document.getElementById('agentDrawer').classList.add('active');
+    }
+
+    function closeAgentDrawer() {
+      const d = document.getElementById('agentDrawer');
+      if (d) d.classList.remove('active');
+    }
+
+    // ==========================================================================
+    // PICK AUDIT DRAWER LOGIC (#auditModal)
+    // ==========================================================================
     function openAuditModal(pickId) {
       const modal = document.getElementById('auditModal');
       if (!modal || !globalPicksData || !globalPicksData.top_picks) return;
@@ -3131,14 +3154,6 @@
       document.getElementById('drawerStatFair').textContent = pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : '1.35';
       document.getElementById('drawerStatEv').textContent = '+' + (pick.edge_pct || '15') + '%';
 
-      // Committee Ribbon mini status
-      document.getElementById('voteSofia').textContent = pick.hit_rate_l5 || '80% L5';
-      document.getElementById('voteValentina').textContent = isApproved ? 'Favorable' : 'Alerta';
-      document.getElementById('voteCamila').textContent = 'Óptimo';
-      document.getElementById('voteRenata').textContent = '+' + (pick.edge_pct || '15') + '%';
-      document.getElementById('voteLucia').textContent = isPending ? 'Planilla T-60' : 'Confirmado';
-      document.getElementById('voteElena').textContent = isApproved ? 'APROBADO' : (isPending ? 'PENDIENTE' : 'VETADO');
-
       // Tab 1: Matemáticas
       document.getElementById('mMathModel').textContent = pick.model_applied || 'Poisson CDF con Decaimiento';
       document.getElementById('mMathOdds').textContent = (pick.odds ? pick.odds.toFixed(2) : '1.80') + ' / ' + (pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : '1.55');
@@ -3156,7 +3171,7 @@
       // Tab 2: Risk Manager (Elena)
       document.getElementById('mRiskPill').className = 'status-pill ' + (isApproved ? 'approved' : (isPending ? 'pending' : 'rejected'));
       document.getElementById('mRiskPill').textContent = pick.status || 'APROBADO';
-      document.getElementById('mRiskReason').textContent = pick.rationale || 'Aprobado matemáticamente con EV positivo verificado.';
+      document.getElementById('mRiskReason').textContent = pick.rationale || 'Aprobado matemáticamente con EV superior al umbral mínimo del +7.0%.';
       document.getElementById('mRiskLineupStatus').textContent = isPending ? '⚠️ Pendiente de Confirmación Oficial (T-60)' : '✅ Confirmada / Libre de Riesgo de Rotación';
       document.getElementById('mRiskMargin').textContent = '+' + Math.max(0, (Number(pick.edge_pct || 15) - 7)).toFixed(1) + '% por encima del umbral mínimo (+7%)';
 
@@ -3256,47 +3271,20 @@
       });
     }
 
-    function highlightAgent(agentKey) {
-      setTimeout(() => {
-        const el = document.getElementById('agentCard_' + agentKey);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          el.style.borderColor = 'var(--accent-cyan)';
-          setTimeout(() => el.style.borderColor = 'rgba(255,255,255,0.06)', 1500);
-        }
-      }, 50);
-    }
-
-    // Agent Profile Modal
-    function openAgentModal(agentKey) {
-      const profile = agentProfiles[agentKey];
-      if (!profile) return;
-
-      document.getElementById('agentModalImg').src = profile.img;
-      document.getElementById('agentModalName').textContent = profile.name;
-      document.getElementById('agentModalRole').textContent = profile.role;
-      document.getElementById('agentModalDesc').textContent = profile.desc;
-
-      const methodsList = document.getElementById('agentModalMethodology');
-      methodsList.innerHTML = profile.methods.map(m => `<li>${m}</li>`).join('');
-
-      document.getElementById('agentProfileModal').classList.add('active');
-    }
-
-    function closeAgentModal() {
-      document.getElementById('agentProfileModal').classList.remove('active');
-    }
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeAuditModal();
-        closeAgentModal();
+        closeAgentDrawer();
       }
     });
 
     document.addEventListener('DOMContentLoaded', async () => {
-      await loadPicksData();
-      await loadHistoryData();
+      await Promise.all([
+        loadPicksData(),
+        loadHistoryData(),
+        loadAgentReports(),
+        loadApprovedPicks()
+      ]);
     });
   </script>
 

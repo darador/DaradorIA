@@ -147,4 +147,5 @@ if (failed > 0) {
   process.exit(1);
 } else {
   console.log('🎉 FASE 7 COMPLETAMENTE VERIFICADA Y SUPERADA CON ÉXITO.');
+  process.exit(0);
 }

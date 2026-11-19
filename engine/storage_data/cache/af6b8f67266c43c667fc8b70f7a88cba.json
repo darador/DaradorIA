@@ -1,0 +1,1 @@
+{"toolName":"getTeamStatistics","args":{"teamName":"Vasco da Gama"},"cachedAt":"2026-11-19T16:23:28.138Z","expiresAt":1795148608138,"data":"getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."}

@@ -5529,7 +5529,11 @@
       "outlier_pricing"
     ],
     "mcpToolsQueried": [
-      "outlier_pricing"
+      "outlier_pricing",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getReferee",
+      "getLineups"
     ],
     "rawSourceData": {
       "playerId": "chris-fuhrich.0mlf85z",
@@ -5561,7 +5565,7 @@
       "impliedChance": 44.4
     },
     "priority": "MEDIA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Discrepancia de cuota en el mercado (39.9%) frente a otros bookmakers.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5569,8 +5573,114 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:12:15.791Z",
-    "createdAt": "2026-11-19T02:12:15.791Z"
+    "updatedAt": "2026-11-19T15:53:07.315Z",
+    "createdAt": "2026-11-19T02:12:15.791Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T15:52:57.560Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getReferee",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Chris Führich",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "VfB Stuttgart",
+        "concededPerGame": 14.5,
+        "leagueAvg": 12.8,
+        "concessionRatio": 1.133,
+        "isVulnerable": true,
+        "defensiveRank": "ESTÁNDAR",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": {
+        "refereeName": "Árbitro Designado",
+        "avgFouls": 26.4,
+        "avgCards": 4.5,
+        "foulStrictnessRatio": 1.09,
+        "favorsOvers": true,
+        "raw": "getReferee does not take the argument matchName, so nothing was run. It takes: refereeId, recentGames, seasonId, stageId, competitionId, profileOnly."
+      },
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85,
+        "raw": "getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T15:53:02.716Z",
+    "prediction": {
+      "candidateId": "cand_1795054335771_asjuxa",
+      "playerOrTeam": "Chris Führich",
+      "match": "FC Schalke 04 vs VfB Stuttgart",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 2.25,
+      "impliedProb": 0.4444,
+      "fairOdds": 1.04,
+      "pPoisson": 0.9305,
+      "pEmpirical": 1,
+      "pProjected": 0.9652,
+      "ev": 1.1717,
+      "evPercentage": 117.2,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0695,
+      "uncertaintyIndex": 0.093,
+      "confidenceScore": 90.7,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+117.2%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.133,
+        "venueFactor": 1.06,
+        "lambdaAdjusted": 2.67,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T15:53:07.310Z"
+    },
+    "decisionReason": "EV positivo (+117.2%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054335771_t50hrj",
@@ -5599,7 +5709,10 @@
       "outlier_pricing"
     ],
     "mcpToolsQueried": [
-      "outlier_pricing"
+      "outlier_pricing",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "playerId": "luca-marianucci.14re157",
@@ -5635,7 +5748,7 @@
       "impliedChance": 43.5
     },
     "priority": "MEDIA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Discrepancia de cuota en el mercado (38.8%) frente a otros bookmakers.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5643,8 +5756,106 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:12:15.793Z",
-    "createdAt": "2026-11-19T02:12:15.793Z"
+    "updatedAt": "2026-11-19T15:53:07.322Z",
+    "createdAt": "2026-11-19T02:12:15.793Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T15:53:02.722Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Luca Marianucci",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Torino",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85,
+        "raw": "getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T15:53:04.082Z",
+    "prediction": {
+      "candidateId": "cand_1795054335771_t50hrj",
+      "playerOrTeam": "Luca Marianucci",
+      "match": "Napoli vs Torino",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 2.3,
+      "impliedProb": 0.4348,
+      "fairOdds": 1.03,
+      "pPoisson": 0.9369,
+      "pEmpirical": 1,
+      "pProjected": 0.9684,
+      "ev": 1.2273,
+      "evPercentage": 122.7,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0631,
+      "uncertaintyIndex": 0.087,
+      "confidenceScore": 91.3,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+122.7%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 1.06,
+        "lambdaAdjusted": 2.76,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T15:53:07.318Z"
+    },
+    "decisionReason": "EV positivo (+122.7%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_test_agent_01",
@@ -5707,7 +5918,7 @@
       "vetoReasons": [],
       "pendingReasons": [],
       "approvalReasons": [],
-      "decidedAt": "2026-11-19T03:35:37.273Z"
+      "decidedAt": "2026-11-19T16:23:30.033Z"
     },
     "agentReports": {
       "playerAnalyst": {
@@ -5789,9 +6000,9 @@
           {
             "source": "Boletín Táctico y Deportivo Pre-Match",
             "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
-            "publishedDate": "2026-11-19T03:35:37.271Z",
-            "eventDate": "2026-11-19T03:35:37.271Z",
-            "queryDate": "2026-11-19T03:35:37.271Z",
+            "publishedDate": "2026-11-19T16:23:30.030Z",
+            "eventDate": "2026-11-19T16:23:30.030Z",
+            "queryDate": "2026-11-19T16:23:30.030Z",
             "status": "CONFIRMADO",
             "confidence": 0.85,
             "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
@@ -5807,7 +6018,7 @@
         "recommendation": "FAVORABLE"
       }
     },
-    "updatedAt": "2026-11-19T03:35:37.277Z",
+    "updatedAt": "2026-11-19T16:23:30.036Z",
     "createdAt": "2026-11-19T02:24:44.086Z"
   },
   {
@@ -5850,7 +6061,10 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Wallace Yan",
@@ -5870,7 +6084,7 @@
       "trendPercentage": 100
     },
     "priority": "ALTA",
-    "status": "DETECTADO",
+    "status": "RECHAZADO",
     "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.91.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5878,8 +6092,106 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:45:29.078Z",
-    "createdAt": "2026-11-19T02:45:29.078Z"
+    "updatedAt": "2026-11-19T15:53:07.332Z",
+    "createdAt": "2026-11-19T02:45:29.078Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T15:53:04.088Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Wallace Yan",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vitória",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85,
+        "raw": "getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T15:53:07.303Z",
+    "prediction": {
+      "candidateId": "cand_1795056329076_cgxh0s",
+      "playerOrTeam": "Wallace Yan",
+      "match": "Vitória vs Red Bull Bragantino",
+      "market": "Remates totales",
+      "line": "Más de 2.5",
+      "targetK": 3,
+      "bookmakerOdds": 1.91,
+      "impliedProb": 0.5236,
+      "fairOdds": 1.91,
+      "pPoisson": 0.45,
+      "pEmpirical": 0.5954,
+      "pProjected": 0.5227,
+      "ev": -0.0016,
+      "evPercentage": -0.2,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1454,
+      "uncertaintyIndex": 0.153,
+      "confidenceScore": 84.7,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "RECHAZADO",
+      "decisionReason": "EV insuficiente (+-0.2% frente al umbral requerido de +7.0%)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.48,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T15:53:07.325Z"
+    },
+    "decisionReason": "EV insuficiente (+-0.2% frente al umbral requerido de +7.0%)"
   },
   {
     "id": "cand_1795056329076_lwkxms",
@@ -5908,7 +6220,10 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Vitor Hugo Vitinho",
@@ -5928,7 +6243,7 @@
       "trendPercentage": 100
     },
     "priority": "ALTA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.83.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5936,8 +6251,106 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:45:29.080Z",
-    "createdAt": "2026-11-19T02:45:29.080Z"
+    "updatedAt": "2026-11-19T16:23:29.888Z",
+    "createdAt": "2026-11-19T02:45:29.080Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T16:23:23.280Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Vitor Hugo Vitinho",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vasco da Gama",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85,
+        "raw": "getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T16:23:28.486Z",
+    "prediction": {
+      "candidateId": "cand_1795056329076_lwkxms",
+      "playerOrTeam": "Vitor Hugo Vitinho",
+      "match": "Vasco da Gama vs Internacional",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "targetK": 2,
+      "bookmakerOdds": 1.83,
+      "impliedProb": 0.5464,
+      "fairOdds": 1.26,
+      "pPoisson": 0.7077,
+      "pEmpirical": 0.8842,
+      "pProjected": 0.7959,
+      "ev": 0.4565,
+      "evPercentage": 45.6,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1764,
+      "uncertaintyIndex": 0.178,
+      "confidenceScore": 82.2,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+45.6%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.48,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T16:23:29.884Z"
+    },
+    "decisionReason": "EV positivo (+45.6%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795056329076_m4t8e9",
@@ -5966,7 +6379,11 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getReferee",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Gustavo Marques",
@@ -5986,7 +6403,7 @@
       "trendPercentage": 100
     },
     "priority": "ALTA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.65.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5994,8 +6411,114 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:45:29.082Z",
-    "createdAt": "2026-11-19T02:45:29.082Z"
+    "updatedAt": "2026-11-19T16:23:29.897Z",
+    "createdAt": "2026-11-19T02:45:29.082Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T16:23:28.493Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getReferee",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Gustavo Marques",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vitória",
+        "concededPerGame": 14.5,
+        "leagueAvg": 12.8,
+        "concessionRatio": 1.133,
+        "isVulnerable": true,
+        "defensiveRank": "ESTÁNDAR",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": {
+        "refereeName": "Árbitro Designado",
+        "avgFouls": 26.4,
+        "avgCards": 4.5,
+        "foulStrictnessRatio": 1.09,
+        "favorsOvers": true,
+        "raw": "getReferee does not take the argument matchName, so nothing was run. It takes: refereeId, recentGames, seasonId, stageId, competitionId, profileOnly."
+      },
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85,
+        "raw": "getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T16:23:29.375Z",
+    "prediction": {
+      "candidateId": "cand_1795056329076_m4t8e9",
+      "playerOrTeam": "Gustavo Marques",
+      "match": "Vitória vs Red Bull Bragantino",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 1.65,
+      "impliedProb": 0.6061,
+      "fairOdds": 1.05,
+      "pPoisson": 0.9083,
+      "pEmpirical": 1,
+      "pProjected": 0.9542,
+      "ev": 0.5744,
+      "evPercentage": 57.4,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0917,
+      "uncertaintyIndex": 0.11,
+      "confidenceScore": 89,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+57.4%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.133,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.39,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T16:23:29.892Z"
+    },
+    "decisionReason": "EV positivo (+57.4%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795056329076_25yr66",
@@ -6024,7 +6547,10 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Alerrandro",
@@ -6044,7 +6570,7 @@
       "trendPercentage": 100
     },
     "priority": "ALTA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.62.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -6052,8 +6578,106 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:45:29.084Z",
-    "createdAt": "2026-11-19T02:45:29.084Z"
+    "updatedAt": "2026-11-19T16:23:29.905Z",
+    "createdAt": "2026-11-19T02:45:29.084Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T16:23:29.384Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Alerrandro",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vasco da Gama",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85,
+        "raw": "getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T16:23:29.873Z",
+    "prediction": {
+      "candidateId": "cand_1795056329076_25yr66",
+      "playerOrTeam": "Alerrandro",
+      "match": "Vasco da Gama vs Internacional",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "targetK": 2,
+      "bookmakerOdds": 1.62,
+      "impliedProb": 0.6173,
+      "fairOdds": 1.26,
+      "pPoisson": 0.7077,
+      "pEmpirical": 0.8842,
+      "pProjected": 0.7959,
+      "ev": 0.2894,
+      "evPercentage": 28.9,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1764,
+      "uncertaintyIndex": 0.178,
+      "confidenceScore": 82.2,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+28.9%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.48,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T16:23:29.901Z"
+    },
+    "decisionReason": "EV positivo (+28.9%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795056329076_91rpju",
@@ -14060,5 +14684,2374 @@
     ],
     "updatedAt": "2026-11-19T03:35:03.845Z",
     "createdAt": "2026-11-19T03:35:03.845Z"
+  },
+  {
+    "match_id": "match-test-01",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "status": "INVESTIGADO",
+    "id": "cand_1795103402237_g2irj",
+    "updatedAt": "2026-11-19T15:50:02.237Z",
+    "createdAt": "2026-11-19T15:50:02.237Z"
+  },
+  {
+    "match_id": "match-test-01",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "status": "INVESTIGADO",
+    "id": "cand_1795103566146_ihne9",
+    "updatedAt": "2026-11-19T15:52:46.146Z",
+    "createdAt": "2026-11-19T15:52:46.146Z"
+  },
+  {
+    "id": "cand_1795103577353_yjqdt1",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Wallace Yan",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Remates totales",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 1.67,
+    "bookmaker": "Bet365",
+    "trendL5": "5/5",
+    "trendL10": "7/10, avg 3.3",
+    "statsSummary": {
+      "streak": "5/5",
+      "trendPercentage": 100,
+      "windowAvg": 4.6,
+      "matchup": "favours the over: allows 13.41 a game at home v a league avg of 12.06 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Wallace Yan",
+      "playerId": "wallace-yan.1yhqlnd",
+      "position": "F",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "shots over 2.5",
+      "hits": "5/5",
+      "hitRate": 100,
+      "windowAvg": 4.6,
+      "last10": "7/10, avg 3.3",
+      "recent": [
+        4,
+        6,
+        4,
+        5,
+        4,
+        1,
+        2,
+        3,
+        3,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.67,
+        "bookmaker": "Bet365"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 13.41 a game at home v a league avg of 12.06 for home sides",
+      "impliedChance": 59.9
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 3.3) a cuota 1.67.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.356Z",
+    "createdAt": "2026-11-19T15:52:57.356Z"
+  },
+  {
+    "id": "cand_1795103577353_cks3r6",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Vitor Hugo Vitinho",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.67,
+    "bookmaker": "BetMGM UK",
+    "trendL5": "4/4",
+    "trendL10": "7/10, avg 2.4",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 3.5,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Vitor Hugo Vitinho",
+      "playerId": "vitor-hugo-vitinho.1v1u4ax",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "shots over 1.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 3.5,
+      "last10": "7/10, avg 2.4",
+      "recent": [
+        4,
+        2,
+        5,
+        3,
+        1,
+        0,
+        1,
+        3,
+        3,
+        2
+      ],
+      "bestOdds": {
+        "odds": 1.67,
+        "bookmaker": "BetMGM UK"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides",
+      "impliedChance": 59.9
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 2.4) a cuota 1.67.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.362Z",
+    "createdAt": "2026-11-19T15:52:57.362Z"
+  },
+  {
+    "id": "cand_1795103577353_qnishp",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Gustavo Marques",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.65,
+    "bookmaker": "Coral",
+    "trendL5": "4/4",
+    "trendL10": "7/10, avg 0.9",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 1,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Gustavo Marques",
+      "playerId": "gustavo-marques.1pjm7hg",
+      "position": "D",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "fouls over 0.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 1,
+      "last10": "7/10, avg 0.9",
+      "recent": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        3,
+        0,
+        1,
+        1,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.65,
+        "bookmaker": "Coral",
+        "age": "5 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides",
+      "impliedChance": 60.6
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 0.9) a cuota 1.65.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.370Z",
+    "createdAt": "2026-11-19T15:52:57.370Z"
+  },
+  {
+    "id": "cand_1795103577353_4bspth",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vitória vs Red Bull Bragantino",
+    "matchTime": null,
+    "playerOrTeam": "Jamerson",
+    "isTeamProp": false,
+    "team": "Vitória",
+    "opponent": "Red Bull Bragantino",
+    "market": "Faltas ganadas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.62,
+    "bookmaker": "Paddy Power",
+    "trendL5": "5/6",
+    "trendL10": "7/10, avg 1",
+    "statsSummary": {
+      "streak": "5/6",
+      "trendPercentage": 83,
+      "windowAvg": 1.17,
+      "matchup": "neutral: allows 13.76 a game away v a league avg of 13.22 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Jamerson",
+      "playerId": "jamerson.1ej51bc",
+      "position": "D",
+      "team": "Vitória",
+      "opponent": "Red Bull Bragantino",
+      "venue": "home",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "foulsWon over 0.5",
+      "hits": "5/6",
+      "hitRate": 83,
+      "windowAvg": 1.17,
+      "last10": "7/10, avg 1",
+      "recent": [
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        1,
+        2,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.62,
+        "bookmaker": "Paddy Power"
+      },
+      "predictedXI": true,
+      "matchup": "neutral: allows 13.76 a game away v a league avg of 13.22 for away sides",
+      "impliedChance": 61.7
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 1) a cuota 1.62.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.378Z",
+    "createdAt": "2026-11-19T15:52:57.378Z"
+  },
+  {
+    "id": "cand_1795103577353_mz1fs4",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Johan Carbonero",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates al arco",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.75,
+    "bookmaker": "Coral",
+    "trendL5": "4/5",
+    "trendL10": "7/10, avg 0.9",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 1,
+      "matchup": "favours the over: allows 4.24 a game at home v a league avg of 3.92 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Johan Carbonero",
+      "playerId": "johan-carbonero.0xs5lcn",
+      "position": "F",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "shotsOnTarget over 0.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 1,
+      "last10": "7/10, avg 0.9",
+      "recent": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.75,
+        "bookmaker": "Coral",
+        "age": "4 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 4.24 a game at home v a league avg of 3.92 for home sides",
+      "impliedChance": 57.1
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 0.9) a cuota 1.75.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.385Z",
+    "createdAt": "2026-11-19T15:52:57.385Z"
+  },
+  {
+    "id": "cand_1795103577353_8jt8wa",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Guzman Rodriguez",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.55,
+    "bookmaker": "Coral",
+    "trendL5": "5/5",
+    "trendL10": "6/10, avg 1.2",
+    "statsSummary": {
+      "streak": "5/5",
+      "trendPercentage": 100,
+      "windowAvg": 2,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Guzman Rodriguez",
+      "playerId": "guzman-rodriguez.0r0qdmn",
+      "position": "D",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "fouls over 0.5",
+      "hits": "5/5",
+      "hitRate": 100,
+      "windowAvg": 2,
+      "last10": "6/10, avg 1.2",
+      "recent": [
+        1,
+        1,
+        3,
+        4,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.55,
+        "bookmaker": "Coral",
+        "age": "an hour old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides",
+      "impliedChance": 64.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 1.2) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.391Z",
+    "createdAt": "2026-11-19T15:52:57.391Z"
+  },
+  {
+    "id": "cand_1795103577353_8pf607",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Vitor Hugo Vitinho",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Faltas cometidas",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.3,
+    "bookmaker": "BetMGM UK",
+    "trendL5": "4/4",
+    "trendL10": "6/10, avg 2",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 3.25,
+      "matchup": "favours the under: allows 12.24 a game at home v a league avg of 13.22 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Vitor Hugo Vitinho",
+      "playerId": "vitor-hugo-vitinho.1v1u4ax",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "fouls over 1.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 3.25,
+      "last10": "6/10, avg 2",
+      "recent": [
+        2,
+        2,
+        6,
+        3,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1
+      ],
+      "bestOdds": {
+        "odds": 2.3,
+        "bookmaker": "BetMGM UK"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 12.24 a game at home v a league avg of 13.22 for home sides",
+      "impliedChance": 43.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.397Z",
+    "createdAt": "2026-11-19T15:52:57.397Z"
+  },
+  {
+    "id": "cand_1795103577353_duc017",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alan Saldivia",
+    "isTeamProp": false,
+    "team": "Vasco da Gama",
+    "opponent": "Internacional",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.85,
+    "bookmaker": "Coral",
+    "trendL5": "4/4",
+    "trendL10": "6/10, avg 1.9",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 2.75,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alan Saldivia",
+      "playerId": "alan-saldivia.1ilcrt9",
+      "position": "D",
+      "team": "Vasco da Gama",
+      "opponent": "Internacional",
+      "venue": "home",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "tackles over 1.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 2.75,
+      "last10": "6/10, avg 1.9",
+      "recent": [
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        3,
+        0,
+        1,
+        3
+      ],
+      "bestOdds": {
+        "odds": 1.85,
+        "bookmaker": "Coral"
+      },
+      "predictedXI": true,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides",
+      "impliedChance": 54.1
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 1.9) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.404Z",
+    "createdAt": "2026-11-19T15:52:57.404Z"
+  },
+  {
+    "id": "cand_1795103577353_j2dh7u",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alan Saldivia",
+    "isTeamProp": false,
+    "team": "Vasco da Gama",
+    "opponent": "Internacional",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.55,
+    "bookmaker": "Coral",
+    "trendL5": "3/3",
+    "trendL10": "9/10, avg 1.4",
+    "statsSummary": {
+      "streak": "3/3",
+      "trendPercentage": 100,
+      "windowAvg": 2.33,
+      "matchup": "favours the over: allows 14.24 a game away v a league avg of 13.18 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alan Saldivia",
+      "playerId": "alan-saldivia.1ilcrt9",
+      "position": "D",
+      "team": "Vasco da Gama",
+      "opponent": "Internacional",
+      "venue": "home",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "fouls over 0.5",
+      "hits": "3/3",
+      "hitRate": 100,
+      "windowAvg": 2.33,
+      "last10": "9/10, avg 1.4",
+      "recent": [
+        3,
+        1,
+        3,
+        0,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.55,
+        "bookmaker": "Coral"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 14.24 a game away v a league avg of 13.18 for away sides",
+      "impliedChance": 64.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 9/10, avg 1.4) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.409Z",
+    "createdAt": "2026-11-19T15:52:57.409Z"
+  },
+  {
+    "id": "cand_1795103577353_zyil63",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alan Lescano",
+    "isTeamProp": false,
+    "team": "Vasco da Gama",
+    "opponent": "Internacional",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2,
+    "bookmaker": "Bet365",
+    "trendL5": "5/6",
+    "trendL10": "6/10, avg 2.1",
+    "statsSummary": {
+      "streak": "5/6",
+      "trendPercentage": 83,
+      "windowAvg": 2.5,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alan Lescano",
+      "playerId": "alan-lescano.17rp1kc",
+      "position": "M",
+      "team": "Vasco da Gama",
+      "opponent": "Internacional",
+      "venue": "home",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "tackles over 1.5",
+      "hits": "5/6",
+      "hitRate": 83,
+      "windowAvg": 2.5,
+      "last10": "6/10, avg 2.1",
+      "recent": [
+        3,
+        4,
+        1,
+        2,
+        2,
+        3,
+        1,
+        3,
+        1,
+        1
+      ],
+      "bestOdds": {
+        "odds": 2,
+        "bookmaker": "Bet365"
+      },
+      "predictedXI": true,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides",
+      "impliedChance": 50
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2.1) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.417Z",
+    "createdAt": "2026-11-19T15:52:57.417Z"
+  },
+  {
+    "id": "cand_1795103577353_kpj392",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Rodrigo Villagra",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.67,
+    "bookmaker": "Bet365",
+    "trendL5": "4/5",
+    "trendL10": "6/10, avg 2.3",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 3,
+      "matchup": "favours the over: allows 17.76 a game at home v a league avg of 14.74 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Rodrigo Villagra",
+      "playerId": "rodrigo-villagra.0gp3w7g",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "tackles over 1.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 3,
+      "last10": "6/10, avg 2.3",
+      "recent": [
+        3,
+        2,
+        1,
+        7,
+        2,
+        0,
+        2,
+        4,
+        1,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.67,
+        "bookmaker": "Bet365"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 17.76 a game at home v a league avg of 14.74 for home sides",
+      "impliedChance": 59.9
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2.3) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.425Z",
+    "createdAt": "2026-11-19T15:52:57.425Z"
+  },
+  {
+    "id": "cand_1795103577353_v6q8ak",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Johan Carbonero",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates totales",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 2.45,
+    "bookmaker": "Coral",
+    "trendL5": "4/5",
+    "trendL10": "6/10, avg 2.2",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 2.6,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Johan Carbonero",
+      "playerId": "johan-carbonero.0xs5lcn",
+      "position": "F",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "shots over 2.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 2.6,
+      "last10": "6/10, avg 2.2",
+      "recent": [
+        3,
+        0,
+        3,
+        4,
+        3,
+        1,
+        4,
+        1,
+        0,
+        3
+      ],
+      "bestOdds": {
+        "odds": 2.45,
+        "bookmaker": "Coral",
+        "age": "3 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides",
+      "impliedChance": 40.8
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2.2) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.430Z",
+    "createdAt": "2026-11-19T15:52:57.430Z"
+  },
+  {
+    "id": "cand_1795103577353_d7ywb8",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Jose Herrera",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Remates al arco",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.7,
+    "bookmaker": "Coral",
+    "trendL5": "4/5",
+    "trendL10": "6/10, avg 0.7",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 1,
+      "matchup": "favours the under: allows 3.41 a game at home v a league avg of 3.92 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Jose Herrera",
+      "playerId": "jose-herrera.02flpo4",
+      "position": "M",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "shotsOnTarget over 0.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 1,
+      "last10": "6/10, avg 0.7",
+      "recent": [
+        1,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.7,
+        "bookmaker": "Coral",
+        "age": "3 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 3.41 a game at home v a league avg of 3.92 for home sides",
+      "impliedChance": 58.8
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 0.7) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.437Z",
+    "createdAt": "2026-11-19T15:52:57.437Z"
+  },
+  {
+    "id": "cand_1795103577353_ipt1qz",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Paris FC vs Angers",
+    "matchTime": null,
+    "playerOrTeam": "Moses Simon",
+    "isTeamProp": false,
+    "team": "Paris FC",
+    "opponent": "Angers",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.15,
+    "bookmaker": "Unibet",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.9%",
+      "averageOdds": 1.47
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "moses-simon.1g149ib",
+      "playerName": "Moses Simon",
+      "homeTeam": "Paris FC",
+      "awayTeam": "Angers",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "Unibet",
+      "bestOdds": 2.15,
+      "averageOdds": 1.47,
+      "edge": 0.459,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.222
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.444
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.29
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.38
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Unibet",
+          "odd": 2.15
+        }
+      ],
+      "impliedChance": 46.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.9%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.443Z",
+    "createdAt": "2026-11-19T15:52:57.443Z"
+  },
+  {
+    "id": "cand_1795103577353_rnkyf4",
+    "discoveredAt": "2026-11-19T15:52:57.353Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Como vs Cagliari",
+    "matchTime": null,
+    "playerOrTeam": "Maxence Caqueret",
+    "isTeamProp": false,
+    "team": "Como",
+    "opponent": "Cagliari",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.25,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.6%",
+      "averageOdds": 1.545
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "maxence-caqueret.0m7hfqe",
+      "playerName": "Maxence Caqueret",
+      "homeTeam": "Como",
+      "awayTeam": "Cagliari",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.25,
+      "averageOdds": 1.545,
+      "edge": 0.456,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.36
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.25
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.53
+        }
+      ],
+      "impliedChance": 44.4
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.6%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T15:52:57.450Z",
+    "createdAt": "2026-11-19T15:52:57.450Z"
+  },
+  {
+    "match_id": "match-test-01",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "status": "INVESTIGADO",
+    "id": "cand_1795105402936_0x4ba",
+    "updatedAt": "2026-11-19T16:23:22.936Z",
+    "createdAt": "2026-11-19T16:23:22.936Z"
+  },
+  {
+    "id": "cand_1795105403060_ijfvrf",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Wallace Yan",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Remates totales",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 1.67,
+    "bookmaker": "Bet365",
+    "trendL5": "5/5",
+    "trendL10": "7/10, avg 3.3",
+    "statsSummary": {
+      "streak": "5/5",
+      "trendPercentage": 100,
+      "windowAvg": 4.6,
+      "matchup": "favours the over: allows 13.41 a game at home v a league avg of 12.06 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Wallace Yan",
+      "playerId": "wallace-yan.1yhqlnd",
+      "position": "F",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "shots over 2.5",
+      "hits": "5/5",
+      "hitRate": 100,
+      "windowAvg": 4.6,
+      "last10": "7/10, avg 3.3",
+      "recent": [
+        4,
+        6,
+        4,
+        5,
+        4,
+        1,
+        2,
+        3,
+        3,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.67,
+        "bookmaker": "Bet365"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 13.41 a game at home v a league avg of 12.06 for home sides",
+      "impliedChance": 59.9
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 3.3) a cuota 1.67.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.064Z",
+    "createdAt": "2026-11-19T16:23:23.064Z"
+  },
+  {
+    "id": "cand_1795105403060_slw695",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Vitor Hugo Vitinho",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.67,
+    "bookmaker": "BetMGM UK",
+    "trendL5": "4/4",
+    "trendL10": "7/10, avg 2.4",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 3.5,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Vitor Hugo Vitinho",
+      "playerId": "vitor-hugo-vitinho.1v1u4ax",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "shots over 1.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 3.5,
+      "last10": "7/10, avg 2.4",
+      "recent": [
+        4,
+        2,
+        5,
+        3,
+        1,
+        0,
+        1,
+        3,
+        3,
+        2
+      ],
+      "bestOdds": {
+        "odds": 1.67,
+        "bookmaker": "BetMGM UK"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides",
+      "impliedChance": 59.9
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 2.4) a cuota 1.67.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.071Z",
+    "createdAt": "2026-11-19T16:23:23.071Z"
+  },
+  {
+    "id": "cand_1795105403060_odmoaq",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Gustavo Marques",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.65,
+    "bookmaker": "Coral",
+    "trendL5": "4/4",
+    "trendL10": "7/10, avg 0.9",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 1,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Gustavo Marques",
+      "playerId": "gustavo-marques.1pjm7hg",
+      "position": "D",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "fouls over 0.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 1,
+      "last10": "7/10, avg 0.9",
+      "recent": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        3,
+        0,
+        1,
+        1,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.65,
+        "bookmaker": "Coral",
+        "age": "5 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides",
+      "impliedChance": 60.6
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 0.9) a cuota 1.65.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.078Z",
+    "createdAt": "2026-11-19T16:23:23.078Z"
+  },
+  {
+    "id": "cand_1795105403060_0qim28",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vitória vs Red Bull Bragantino",
+    "matchTime": null,
+    "playerOrTeam": "Jamerson",
+    "isTeamProp": false,
+    "team": "Vitória",
+    "opponent": "Red Bull Bragantino",
+    "market": "Faltas ganadas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.62,
+    "bookmaker": "Paddy Power",
+    "trendL5": "5/6",
+    "trendL10": "7/10, avg 1",
+    "statsSummary": {
+      "streak": "5/6",
+      "trendPercentage": 83,
+      "windowAvg": 1.17,
+      "matchup": "neutral: allows 13.76 a game away v a league avg of 13.22 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Jamerson",
+      "playerId": "jamerson.1ej51bc",
+      "position": "D",
+      "team": "Vitória",
+      "opponent": "Red Bull Bragantino",
+      "venue": "home",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "foulsWon over 0.5",
+      "hits": "5/6",
+      "hitRate": 83,
+      "windowAvg": 1.17,
+      "last10": "7/10, avg 1",
+      "recent": [
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        1,
+        2,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.62,
+        "bookmaker": "Paddy Power"
+      },
+      "predictedXI": true,
+      "matchup": "neutral: allows 13.76 a game away v a league avg of 13.22 for away sides",
+      "impliedChance": 61.7
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 1) a cuota 1.62.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.085Z",
+    "createdAt": "2026-11-19T16:23:23.085Z"
+  },
+  {
+    "id": "cand_1795105403060_68v3v8",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Johan Carbonero",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates al arco",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.75,
+    "bookmaker": "Coral",
+    "trendL5": "4/5",
+    "trendL10": "7/10, avg 0.9",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 1,
+      "matchup": "favours the over: allows 4.24 a game at home v a league avg of 3.92 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Johan Carbonero",
+      "playerId": "johan-carbonero.0xs5lcn",
+      "position": "F",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "shotsOnTarget over 0.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 1,
+      "last10": "7/10, avg 0.9",
+      "recent": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.75,
+        "bookmaker": "Coral",
+        "age": "4 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 4.24 a game at home v a league avg of 3.92 for home sides",
+      "impliedChance": 57.1
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10, avg 0.9) a cuota 1.75.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.091Z",
+    "createdAt": "2026-11-19T16:23:23.091Z"
+  },
+  {
+    "id": "cand_1795105403060_fcbmu5",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Guzman Rodriguez",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.55,
+    "bookmaker": "Coral",
+    "trendL5": "5/5",
+    "trendL10": "6/10, avg 1.2",
+    "statsSummary": {
+      "streak": "5/5",
+      "trendPercentage": 100,
+      "windowAvg": 2,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Guzman Rodriguez",
+      "playerId": "guzman-rodriguez.0r0qdmn",
+      "position": "D",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "fouls over 0.5",
+      "hits": "5/5",
+      "hitRate": 100,
+      "windowAvg": 2,
+      "last10": "6/10, avg 1.2",
+      "recent": [
+        1,
+        1,
+        3,
+        4,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.55,
+        "bookmaker": "Coral",
+        "age": "an hour old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 15.53 a game at home v a league avg of 13.22 for home sides",
+      "impliedChance": 64.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 1.2) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.101Z",
+    "createdAt": "2026-11-19T16:23:23.101Z"
+  },
+  {
+    "id": "cand_1795105403060_b9pd0s",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Vitor Hugo Vitinho",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Faltas cometidas",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.3,
+    "bookmaker": "BetMGM UK",
+    "trendL5": "4/4",
+    "trendL10": "6/10, avg 2",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 3.25,
+      "matchup": "favours the under: allows 12.24 a game at home v a league avg of 13.22 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Vitor Hugo Vitinho",
+      "playerId": "vitor-hugo-vitinho.1v1u4ax",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "fouls over 1.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 3.25,
+      "last10": "6/10, avg 2",
+      "recent": [
+        2,
+        2,
+        6,
+        3,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1
+      ],
+      "bestOdds": {
+        "odds": 2.3,
+        "bookmaker": "BetMGM UK"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 12.24 a game at home v a league avg of 13.22 for home sides",
+      "impliedChance": 43.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.108Z",
+    "createdAt": "2026-11-19T16:23:23.108Z"
+  },
+  {
+    "id": "cand_1795105403060_mxu4lc",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alan Saldivia",
+    "isTeamProp": false,
+    "team": "Vasco da Gama",
+    "opponent": "Internacional",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.85,
+    "bookmaker": "Coral",
+    "trendL5": "4/4",
+    "trendL10": "6/10, avg 1.9",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100,
+      "windowAvg": 2.75,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alan Saldivia",
+      "playerId": "alan-saldivia.1ilcrt9",
+      "position": "D",
+      "team": "Vasco da Gama",
+      "opponent": "Internacional",
+      "venue": "home",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "tackles over 1.5",
+      "hits": "4/4",
+      "hitRate": 100,
+      "windowAvg": 2.75,
+      "last10": "6/10, avg 1.9",
+      "recent": [
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        3,
+        0,
+        1,
+        3
+      ],
+      "bestOdds": {
+        "odds": 1.85,
+        "bookmaker": "Coral"
+      },
+      "predictedXI": true,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides",
+      "impliedChance": 54.1
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 1.9) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.115Z",
+    "createdAt": "2026-11-19T16:23:23.115Z"
+  },
+  {
+    "id": "cand_1795105403060_y7zpqd",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alan Saldivia",
+    "isTeamProp": false,
+    "team": "Vasco da Gama",
+    "opponent": "Internacional",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.55,
+    "bookmaker": "Coral",
+    "trendL5": "3/3",
+    "trendL10": "9/10, avg 1.4",
+    "statsSummary": {
+      "streak": "3/3",
+      "trendPercentage": 100,
+      "windowAvg": 2.33,
+      "matchup": "favours the over: allows 14.24 a game away v a league avg of 13.18 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alan Saldivia",
+      "playerId": "alan-saldivia.1ilcrt9",
+      "position": "D",
+      "team": "Vasco da Gama",
+      "opponent": "Internacional",
+      "venue": "home",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "fouls over 0.5",
+      "hits": "3/3",
+      "hitRate": 100,
+      "windowAvg": 2.33,
+      "last10": "9/10, avg 1.4",
+      "recent": [
+        3,
+        1,
+        3,
+        0,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.55,
+        "bookmaker": "Coral"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 14.24 a game away v a league avg of 13.18 for away sides",
+      "impliedChance": 64.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 9/10, avg 1.4) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.122Z",
+    "createdAt": "2026-11-19T16:23:23.122Z"
+  },
+  {
+    "id": "cand_1795105403060_or0xu8",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alan Lescano",
+    "isTeamProp": false,
+    "team": "Vasco da Gama",
+    "opponent": "Internacional",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2,
+    "bookmaker": "Bet365",
+    "trendL5": "5/6",
+    "trendL10": "6/10, avg 2.1",
+    "statsSummary": {
+      "streak": "5/6",
+      "trendPercentage": 83,
+      "windowAvg": 2.5,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alan Lescano",
+      "playerId": "alan-lescano.17rp1kc",
+      "position": "M",
+      "team": "Vasco da Gama",
+      "opponent": "Internacional",
+      "venue": "home",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "tackles over 1.5",
+      "hits": "5/6",
+      "hitRate": 83,
+      "windowAvg": 2.5,
+      "last10": "6/10, avg 2.1",
+      "recent": [
+        3,
+        4,
+        1,
+        2,
+        2,
+        3,
+        1,
+        3,
+        1,
+        1
+      ],
+      "bestOdds": {
+        "odds": 2,
+        "bookmaker": "Bet365"
+      },
+      "predictedXI": true,
+      "matchup": "neutral: allows 15.29 a game away v a league avg of 15.31 for away sides",
+      "impliedChance": 50
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2.1) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.129Z",
+    "createdAt": "2026-11-19T16:23:23.129Z"
+  },
+  {
+    "id": "cand_1795105403060_mkddol",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Rodrigo Villagra",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.67,
+    "bookmaker": "Bet365",
+    "trendL5": "4/5",
+    "trendL10": "6/10, avg 2.3",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 3,
+      "matchup": "favours the over: allows 17.76 a game at home v a league avg of 14.74 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Rodrigo Villagra",
+      "playerId": "rodrigo-villagra.0gp3w7g",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "tackles over 1.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 3,
+      "last10": "6/10, avg 2.3",
+      "recent": [
+        3,
+        2,
+        1,
+        7,
+        2,
+        0,
+        2,
+        4,
+        1,
+        1
+      ],
+      "bestOdds": {
+        "odds": 1.67,
+        "bookmaker": "Bet365"
+      },
+      "predictedXI": true,
+      "matchup": "favours the over: allows 17.76 a game at home v a league avg of 14.74 for home sides",
+      "impliedChance": 59.9
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2.3) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.136Z",
+    "createdAt": "2026-11-19T16:23:23.136Z"
+  },
+  {
+    "id": "cand_1795105403060_iq04lm",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs Vasco da Gama",
+    "matchTime": null,
+    "playerOrTeam": "Johan Carbonero",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates totales",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 2.45,
+    "bookmaker": "Coral",
+    "trendL5": "4/5",
+    "trendL10": "6/10, avg 2.2",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 2.6,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Johan Carbonero",
+      "playerId": "johan-carbonero.0xs5lcn",
+      "position": "F",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "venue": "away",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "market": "shots over 2.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 2.6,
+      "last10": "6/10, avg 2.2",
+      "recent": [
+        3,
+        0,
+        3,
+        4,
+        3,
+        1,
+        4,
+        1,
+        0,
+        3
+      ],
+      "bestOdds": {
+        "odds": 2.45,
+        "bookmaker": "Coral",
+        "age": "3 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides",
+      "impliedChance": 40.8
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 2.2) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.144Z",
+    "createdAt": "2026-11-19T16:23:23.144Z"
+  },
+  {
+    "id": "cand_1795105403060_kasw88",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Red Bull Bragantino vs Vitória",
+    "matchTime": null,
+    "playerOrTeam": "Jose Herrera",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Remates al arco",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.7,
+    "bookmaker": "Coral",
+    "trendL5": "4/5",
+    "trendL10": "6/10, avg 0.7",
+    "statsSummary": {
+      "streak": "4/5",
+      "trendPercentage": 80,
+      "windowAvg": 1,
+      "matchup": "favours the under: allows 3.41 a game at home v a league avg of 3.92 for home sides"
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Jose Herrera",
+      "playerId": "jose-herrera.02flpo4",
+      "position": "M",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "venue": "away",
+      "matchId": "vitoria-v-red-bull-bragantino.1ncz14x",
+      "market": "shotsOnTarget over 0.5",
+      "hits": "4/5",
+      "hitRate": 80,
+      "windowAvg": 1,
+      "last10": "6/10, avg 0.7",
+      "recent": [
+        1,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "bestOdds": {
+        "odds": 1.7,
+        "bookmaker": "Coral",
+        "age": "3 hours old"
+      },
+      "predictedXI": true,
+      "matchup": "favours the under: allows 3.41 a game at home v a league avg of 3.92 for home sides",
+      "impliedChance": 58.8
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Tendencia favorable (L10: 6/10, avg 0.7) en rango de valor.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.150Z",
+    "createdAt": "2026-11-19T16:23:23.151Z"
+  },
+  {
+    "id": "cand_1795105403060_7i2f8q",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Paris FC vs Angers",
+    "matchTime": null,
+    "playerOrTeam": "Moses Simon",
+    "isTeamProp": false,
+    "team": "Paris FC",
+    "opponent": "Angers",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.15,
+    "bookmaker": "Unibet",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.9%",
+      "averageOdds": 1.47
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "moses-simon.1g149ib",
+      "playerName": "Moses Simon",
+      "homeTeam": "Paris FC",
+      "awayTeam": "Angers",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "Unibet",
+      "bestOdds": 2.15,
+      "averageOdds": 1.47,
+      "edge": 0.459,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.222
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.444
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.29
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.38
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Unibet",
+          "odd": 2.15
+        }
+      ],
+      "impliedChance": 46.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.9%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.157Z",
+    "createdAt": "2026-11-19T16:23:23.157Z"
+  },
+  {
+    "id": "cand_1795105403060_og6ei0",
+    "discoveredAt": "2026-11-19T16:23:23.060Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Como vs Cagliari",
+    "matchTime": null,
+    "playerOrTeam": "Maxence Caqueret",
+    "isTeamProp": false,
+    "team": "Como",
+    "opponent": "Cagliari",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.25,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.6%",
+      "averageOdds": 1.545
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "maxence-caqueret.0m7hfqe",
+      "playerName": "Maxence Caqueret",
+      "homeTeam": "Como",
+      "awayTeam": "Cagliari",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.25,
+      "averageOdds": 1.545,
+      "edge": 0.456,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.36
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.25
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.53
+        }
+      ],
+      "impliedChance": 44.4
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.6%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T16:23:23.165Z",
+    "createdAt": "2026-11-19T16:23:23.165Z"
   }
 ]

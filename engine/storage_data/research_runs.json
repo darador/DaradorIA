@@ -1,5 +1,60 @@
 [
   {
+    "id": "run_1795105403169",
+    "timestamp": "2026-11-19T16:23:23.169Z",
+    "fixturesScanned": 31,
+    "candidatesFound": 15,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 15 candidatos priorizados (ALTA: 5, MEDIA: 10, BAJA: 0)"
+  },
+  {
+    "id": "run_1795105402930",
+    "timestamp": "2026-11-19T16:23:22.930Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
+    "id": "run_1795103577457",
+    "timestamp": "2026-11-19T15:52:57.457Z",
+    "fixturesScanned": 31,
+    "candidatesFound": 15,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 15 candidatos priorizados (ALTA: 5, MEDIA: 10, BAJA: 0)"
+  },
+  {
+    "id": "run_1795103566141",
+    "timestamp": "2026-11-19T15:52:46.141Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
+    "id": "run_1795103402233",
+    "timestamp": "2026-11-19T15:50:02.233Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
     "id": "run_1795059303850",
     "timestamp": "2026-11-19T03:35:03.850Z",
     "fixturesScanned": 31,

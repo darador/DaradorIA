@@ -13,8 +13,8 @@
     "status": "GANADA",
     "stakedUnits": 1,
     "profitUnits": 0.9,
-    "settledAt": "2026-11-19T03:35:37.471Z",
-    "id": "res_1795059337471"
+    "settledAt": "2026-11-19T16:23:30.233Z",
+    "id": "res_1795105410233"
   },
   {
     "pickId": "pick_test_settle_loss",
@@ -30,7 +30,7 @@
     "status": "PERDIDA",
     "stakedUnits": 1,
     "profitUnits": -1,
-    "settledAt": "2026-11-19T03:35:37.472Z",
-    "id": "res_1795059337472"
+    "settledAt": "2026-11-19T16:23:30.234Z",
+    "id": "res_1795105410234"
   }
 ]

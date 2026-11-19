@@ -1,0 +1,1 @@
+{"toolName":"getReferee","args":{"matchName":"Vitória vs Red Bull Bragantino"},"cachedAt":"2026-11-19T16:23:29.373Z","expiresAt":1795710209373,"data":"getReferee does not take the argument matchName, so nothing was run. It takes: refereeId, recentGames, seasonId, stageId, competitionId, profileOnly."}
