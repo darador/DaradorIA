@@ -1,1 +1,0 @@
-{"toolName":"getLineups","args":{"matchName":"FC Schalke 04 vs VfB Stuttgart"},"cachedAt":"2026-11-19T15:53:02.715Z","expiresAt":1795110782715,"data":"getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."}

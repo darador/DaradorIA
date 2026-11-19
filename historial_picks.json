@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-19T16:23:30.236Z",
+  "picks": [],
   "summary": {
-    "total_bets": 8,
+    "total_bets": 2,
     "settled_bets": 2,
     "won_bets": 1,
     "lost_bets": 1,
-    "pending_bets": 6,
+    "pending_bets": 0,
     "win_rate_pct": 50,
     "total_staked_units": 2,
     "net_profit_units": -0.1,
@@ -17,160 +17,8 @@
         "lost": 1,
         "win_rate": "50.0%",
         "profit": "0.00U"
-      },
-      "Remates totales": {
-        "total": 2,
-        "won": 0,
-        "lost": 0,
-        "win_rate": "0.0%",
-        "profit": "0.00U"
-      },
-      "Remates de equipo": {
-        "total": 1,
-        "won": 0,
-        "lost": 0,
-        "win_rate": "0.0%",
-        "profit": "0.00U"
-      },
-      "Gol o Asistencia": {
-        "total": 1,
-        "won": 0,
-        "lost": 0,
-        "win_rate": "0.0%",
-        "profit": "0.00U"
-      },
-      "Faltas ganadas": {
-        "total": 1,
-        "won": 0,
-        "lost": 0,
-        "win_rate": "0.0%",
-        "profit": "0.00U"
-      },
-      "Entradas (Tackles)": {
-        "total": 1,
-        "won": 0,
-        "lost": 0,
-        "win_rate": "0.0%",
-        "profit": "0.00U"
       }
     }
   },
-  "history": [
-    {
-      "id": "pick_test_settle_loss",
-      "date": "2026-11-18",
-      "match": "Liverpool vs Everton",
-      "player": "Darwin Núñez",
-      "market": "Remates al arco",
-      "line": "Más de 2.5",
-      "odds": 2.1,
-      "stake": 1,
-      "actual_stat": 1,
-      "status": "FALLADA",
-      "profit": -1
-    },
-    {
-      "id": "pick_test_settle_win",
-      "date": "2026-11-18",
-      "match": "Arsenal vs Chelsea",
-      "player": "Bukayo Saka",
-      "market": "Remates al arco",
-      "line": "Más de 1.5",
-      "odds": 1.9,
-      "stake": 1,
-      "actual_stat": 3,
-      "status": "ACERTADA",
-      "profit": 0.9
-    },
-    {
-      "id": "bet-real-001",
-      "date": "2026-11-18",
-      "league": "Brasileirão",
-      "match": "Coritiba vs Santos",
-      "player": "Gabriel Barbosa",
-      "market": "Remates totales",
-      "line": "Más de 3.5",
-      "odds": 1.67,
-      "stake": 1,
-      "status": "PENDIENTE",
-      "actual_stat": "En juego / Próximo",
-      "profit": 0,
-      "notes": "Pronóstico real de la fecha 18-Nov."
-    },
-    {
-      "id": "bet-real-002",
-      "date": "2026-11-18",
-      "league": "Brasileirão",
-      "match": "Flamengo vs Athletico Paranaense",
-      "player": "Athletico Paranaense",
-      "market": "Remates de equipo",
-      "line": "Más de 8.5",
-      "odds": 1.73,
-      "stake": 1,
-      "status": "PENDIENTE",
-      "actual_stat": "En juego / Próximo",
-      "profit": 0,
-      "notes": "Pronóstico real de la fecha 18-Nov."
-    },
-    {
-      "id": "bet-real-003",
-      "date": "2026-11-18",
-      "league": "Brasileirão",
-      "match": "Cruzeiro vs Palmeiras",
-      "player": "Kaio Jorge",
-      "market": "Gol o Asistencia",
-      "line": "Más de 0.5 G/A",
-      "odds": 1.8,
-      "stake": 1,
-      "status": "PENDIENTE",
-      "actual_stat": "En juego / Próximo",
-      "profit": 0,
-      "notes": "Pronóstico real de la fecha 18-Nov."
-    },
-    {
-      "id": "bet-real-004",
-      "date": "2026-11-18",
-      "league": "Brasileirão",
-      "match": "Coritiba vs Santos",
-      "player": "Josué Pesqueira",
-      "market": "Faltas ganadas",
-      "line": "Más de 2.5",
-      "odds": 1.73,
-      "stake": 1,
-      "status": "PENDIENTE",
-      "actual_stat": "En juego / Próximo",
-      "profit": 0,
-      "notes": "Pronóstico real de la fecha 18-Nov."
-    },
-    {
-      "id": "bet-real-005",
-      "date": "2026-11-18",
-      "league": "Brasileirão",
-      "match": "Cruzeiro vs Palmeiras",
-      "player": "Alexander Barboza",
-      "market": "Entradas (Tackles)",
-      "line": "Más de 1.5",
-      "odds": 1.67,
-      "stake": 1,
-      "status": "PENDIENTE",
-      "actual_stat": "En juego / Próximo",
-      "profit": 0,
-      "notes": "Pronóstico real de la fecha 18-Nov."
-    },
-    {
-      "id": "bet-real-006",
-      "date": "2026-11-19",
-      "league": "Brasileirão",
-      "match": "Vitória vs Red Bull Bragantino",
-      "player": "Wallace Yan",
-      "market": "Remates totales",
-      "line": "Más de 2.5",
-      "odds": 1.67,
-      "stake": 1,
-      "status": "PENDIENTE",
-      "actual_stat": "En juego / Próximo",
-      "profit": 0,
-      "notes": "Pronóstico real de la fecha 19-Nov."
-    }
-  ]
+  "updated_at": "2026-11-19T17:56:55.575Z"
 }

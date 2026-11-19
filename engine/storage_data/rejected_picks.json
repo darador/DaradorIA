@@ -225,5 +225,225 @@
     },
     "id": "rej_1795057638008_rxnvs",
     "rejectedAt": "2026-11-19T03:07:18.008Z"
+  },
+  {
+    "candidateId": "cand_1795110774831_qdwh16",
+    "partido": "Red Bull Bragantino vs",
+    "seleccion": "Wallace Yan",
+    "mercado": "Remates totales",
+    "cuota": 1.67,
+    "reason": "VETADO: VETO MATEMÁTICO: EV insuficiente (+-6.7% < +7.0%). | VETO DE PRECIO: Odds Analyst determinó que la cuota actual carece de margen frente a la línea justa.",
+    "vetoApplied": true,
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795110774831_qdwh16",
+        "target": "Wallace Yan",
+        "summary": "Wallace Yan proyecta 74 min con una tasa de 2.7 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 76.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (2.7 por 90 min) superando holgadamente la línea exigida (Más de 2.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795110774831_qdwh16",
+        "match": "Red Bull Bragantino vs",
+        "tacticalSummary": "Matchup táctico entre Red Bull Bragantino y Rival. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Rival: concede un 17.4% más de Remates totales que la media del torneo.",
+          "Red Bull Bragantino ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795110774831_qdwh16",
+        "match": "Red Bull Bragantino vs",
+        "contextSummary": "Contexto del partido Red Bull Bragantino vs. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795110774831_qdwh16",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.67 (bet365). Cuota justa: 1.79. EV: +-6.7%.",
+        "referenceOdds": 1.67,
+        "bestOdds": 1.67,
+        "fairOdds": 1.79,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.67) no cubre la probabilidad real proyectada (cuota justa: 1.79)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795110774831_qdwh16",
+        "match": "Red Bull Bragantino vs",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Red Bull Bragantino vs.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Wallace Yan vs bloque defensivo de ",
+            "tacticalContext": "El planteo de  suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Red%20Bull%20Bragantino%20vs",
+            "publishedDate": "2026-11-19T17:52:58.573Z",
+            "eventDate": "2026-11-19T17:52:58.573Z",
+            "queryDate": "2026-11-19T17:52:58.573Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Wallace Yan mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rej_1795110778577_if62m",
+    "rejectedAt": "2026-11-19T17:52:58.577Z"
+  },
+  {
+    "candidateId": "cand_1795110774831_i3a6e5",
+    "partido": "Red Bull Bragantino vs Vitória",
+    "seleccion": "Red Bull Bragantino (Equipo)",
+    "mercado": "Remates de equipo",
+    "cuota": 1.83,
+    "reason": "VETADO: VETO MATEMÁTICO: EV insuficiente (+-70.8% < +7.0%). | VETO DE PRECIO: Odds Analyst determinó que la cuota actual carece de margen frente a la línea justa.",
+    "vetoApplied": true,
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795110774831_i3a6e5",
+        "target": "Red Bull Bragantino (Equipo)",
+        "summary": "Mercado colectivo (Remates de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795110774831_i3a6e5",
+        "match": "Red Bull Bragantino vs Vitória",
+        "tacticalSummary": "Matchup táctico entre Red Bull Bragantino y Vitória. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Vitória: concede un 17.4% más de Remates de equipo que la media del torneo.",
+          "Red Bull Bragantino ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795110774831_i3a6e5",
+        "match": "Red Bull Bragantino vs Vitória",
+        "contextSummary": "Contexto del partido Red Bull Bragantino vs Vitória. Alineación: CONFIRMADA. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795110774831_i3a6e5",
+        "marketAnalysis": "Análisis de mercado para Remates de equipo @ 1.83 (Bet365). Cuota justa: 6.27. EV: +-70.8%.",
+        "referenceOdds": 1.83,
+        "bestOdds": 1.83,
+        "fairOdds": 6.27,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.83) no cubre la probabilidad real proyectada (cuota justa: 6.27)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795110774831_i3a6e5",
+        "match": "Red Bull Bragantino vs Vitória",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates de equipo respalda la selección en Red Bull Bragantino vs Vitória.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Red Bull Bragantino (Equipo) vs bloque defensivo de Vitória",
+            "tacticalContext": "El planteo de Vitória suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Red%20Bull%20Bragantino%20vs%20Vit%C3%B3ria",
+            "publishedDate": "2026-11-19T17:57:35.763Z",
+            "eventDate": "2026-11-19T17:57:35.763Z",
+            "queryDate": "2026-11-19T17:57:35.763Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Red Bull Bragantino (Equipo) mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rej_1795111055769_5imk5",
+    "rejectedAt": "2026-11-19T17:57:35.769Z"
   }
 ]

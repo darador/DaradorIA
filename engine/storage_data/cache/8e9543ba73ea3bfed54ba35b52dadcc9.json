@@ -1,0 +1,1 @@
+{"toolName":"getLineups","args":{"matchName":"Internacional vs"},"cachedAt":"2026-11-19T17:52:57.319Z","expiresAt":1795117977319,"data":"getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."}

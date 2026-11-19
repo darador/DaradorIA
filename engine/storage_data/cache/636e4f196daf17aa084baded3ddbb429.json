@@ -1,1 +1,0 @@
-{"toolName":"getLineups","args":{"matchName":"Napoli vs Torino"},"cachedAt":"2026-11-19T15:53:04.081Z","expiresAt":1795110784081,"data":"getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."}

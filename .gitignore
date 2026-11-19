@@ -7,3 +7,6 @@ yarn-error.log*
 # Sistema operativo
 .DS_Store
 Thumbs.db
+
+# Resguardos locales
+backups/
