@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T02:47:17.876Z",
+  "updated_at": "2026-11-19T02:52:22.429Z",
   "date": "2026-11-18",
   "bookmaker": "bet365",
   "total_analyzed": 66,
@@ -415,7 +415,7 @@
       }
     },
     {
-      "id": "cand_1795056437867_k03o4",
+      "id": "cand_1795056742421_sg2un",
       "league": "Champions League",
       "league_badge": "🏆 Champions League",
       "match": "Real Madrid vs Inter",
@@ -1473,6 +1473,20 @@
     {
       "id": "cand_1795056437867_k03o4",
       "discoveredAt": "2026-11-19T02:47:17.867Z",
+      "sport": "football",
+      "competition": "Liga",
+      "odds": 1.75,
+      "priority": "MEDIA",
+      "status": "INVESTIGADO",
+      "discoveryReason": "Identificado por screener",
+      "decisionReason": "En proceso de evaluación",
+      "evPercentage": null,
+      "fairOdds": null,
+      "agentReports": {}
+    },
+    {
+      "id": "cand_1795056742421_sg2un",
+      "discoveredAt": "2026-11-19T02:52:22.421Z",
       "sport": "football",
       "competition": "Liga",
       "odds": 1.75,
