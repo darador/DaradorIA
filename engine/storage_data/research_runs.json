@@ -1,5 +1,71 @@
 [
   {
+    "id": "run_1795057747257",
+    "timestamp": "2026-11-19T03:09:07.257Z",
+    "fixturesScanned": 31,
+    "candidatesFound": 15,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 15 candidatos priorizados (ALTA: 4, MEDIA: 11, BAJA: 0)"
+  },
+  {
+    "id": "run_1795057747058",
+    "timestamp": "2026-11-19T03:09:07.058Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
+    "id": "run_1795057662685",
+    "timestamp": "2026-11-19T03:07:42.685Z",
+    "fixturesScanned": 31,
+    "candidatesFound": 15,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 15 candidatos priorizados (ALTA: 4, MEDIA: 11, BAJA: 0)"
+  },
+  {
+    "id": "run_1795057662493",
+    "timestamp": "2026-11-19T03:07:42.493Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
+    "id": "run_1795057580638",
+    "timestamp": "2026-11-19T03:06:20.638Z",
+    "fixturesScanned": 31,
+    "candidatesFound": 20,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 20 candidatos priorizados (ALTA: 4, MEDIA: 16, BAJA: 0)"
+  },
+  {
+    "id": "run_1795057573079",
+    "timestamp": "2026-11-19T03:06:13.079Z",
+    "fixturesScanned": 31,
+    "candidatesFound": 15,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 15 candidatos priorizados (ALTA: 4, MEDIA: 11, BAJA: 0)"
+  },
+  {
     "id": "run_1795056742568",
     "timestamp": "2026-11-19T02:52:22.568Z",
     "fixturesScanned": 31,

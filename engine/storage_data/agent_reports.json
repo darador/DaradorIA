@@ -313,5 +313,963 @@
     },
     "id": "rep_1795056772937_k3q2k",
     "timestamp": "2026-11-19T02:52:52.937Z"
+  },
+  {
+    "candidateId": "cand_1795054295740_roe0wu",
+    "playerOrTeam": "Juan Jesus",
+    "match": "Juventus vs Venezia",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054295740_roe0wu",
+        "target": "Juan Jesus",
+        "summary": "Juan Jesus proyecta 74 min con una tasa de 2.7 por 90 min en Faltas ganadas.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 76.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (2.7 por 90 min) superando holgadamente la línea exigida (Más de 0.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054295740_roe0wu",
+        "match": "Juventus vs Venezia",
+        "tacticalSummary": "Matchup táctico entre Juventus y Venezia. Ratio de concesión del rival: 1.133x (ESTÁNDAR).",
+        "advantages": [
+          "Rival permisivo: Venezia concede ligeramente por encima del promedio (1.133x).",
+          "Juventus ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054295740_roe0wu",
+        "match": "Juventus vs Venezia",
+        "contextSummary": "Contexto del partido Juventus vs Venezia. Alineación: PROBABLE. Árbitro: Árbitro Designado.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054295740_roe0wu",
+        "marketAnalysis": "Análisis de mercado para Faltas ganadas @ 2.1 (Betfred). Cuota justa: 1.04. EV: +102.7%.",
+        "referenceOdds": 2.1,
+        "bestOdds": 2.1,
+        "fairOdds": 1.04,
+        "observedDiscrepancies": [
+          "Discrepancia de mercado detectada: precio de 2.1 vs promedio de otras casas (1.5) [Divergencia: +40.4%]."
+        ],
+        "risks": [],
+        "clvAssessment": "ALTO: la cuota actual ofrece valor prematuro antes del ajuste de mercado.",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054295740_roe0wu",
+        "match": "Juventus vs Venezia",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas ganadas respalda la selección en Juventus vs Venezia.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Juan Jesus en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Juventus%20vs%20Venezia",
+            "publishedDate": "2026-11-19T03:07:17.969Z",
+            "eventDate": "2026-11-19T03:07:17.969Z",
+            "queryDate": "2026-11-19T03:07:17.969Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Juan Jesus mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057637970_5ok46",
+    "timestamp": "2026-11-19T03:07:17.970Z"
+  },
+  {
+    "candidateId": "cand_1795054295740_po4xzy",
+    "playerOrTeam": "Chris Führich",
+    "match": "FC Schalke 04 vs VfB Stuttgart",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054295740_po4xzy",
+        "target": "Chris Führich",
+        "summary": "Chris Führich proyecta 74 min con una tasa de 2.7 por 90 min en Faltas cometidas.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 76.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (2.7 por 90 min) superando holgadamente la línea exigida (Más de 0.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054295740_po4xzy",
+        "match": "FC Schalke 04 vs VfB Stuttgart",
+        "tacticalSummary": "Matchup táctico entre FC Schalke 04 y VfB Stuttgart. Ratio de concesión del rival: 1.133x (ESTÁNDAR).",
+        "advantages": [
+          "Rival permisivo: VfB Stuttgart concede ligeramente por encima del promedio (1.133x).",
+          "FC Schalke 04 ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054295740_po4xzy",
+        "match": "FC Schalke 04 vs VfB Stuttgart",
+        "contextSummary": "Contexto del partido FC Schalke 04 vs VfB Stuttgart. Alineación: PROBABLE. Árbitro: Árbitro Designado.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054295740_po4xzy",
+        "marketAnalysis": "Análisis de mercado para Faltas cometidas @ 2.25 (Bet365). Cuota justa: 1.04. EV: +117.2%.",
+        "referenceOdds": 2.25,
+        "bestOdds": 2.25,
+        "fairOdds": 1.04,
+        "observedDiscrepancies": [
+          "Discrepancia de mercado detectada: precio de 2.25 vs promedio de otras casas (1.61) [Divergencia: +39.9%]."
+        ],
+        "risks": [],
+        "clvAssessment": "ALTO: la cuota actual ofrece valor prematuro antes del ajuste de mercado.",
+        "confidenceScore": 0.8,
+        "recommendation": "NEUTRAL"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054295740_po4xzy",
+        "match": "FC Schalke 04 vs VfB Stuttgart",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas cometidas respalda la selección en FC Schalke 04 vs VfB Stuttgart.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Chris Führich en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/FC%20Schalke%2004%20vs%20VfB%20Stuttgart",
+            "publishedDate": "2026-11-19T03:07:17.975Z",
+            "eventDate": "2026-11-19T03:07:17.975Z",
+            "queryDate": "2026-11-19T03:07:17.975Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Chris Führich mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057637975_y4uji",
+    "timestamp": "2026-11-19T03:07:17.976Z"
+  },
+  {
+    "candidateId": "cand_1795054295740_dq8g93",
+    "playerOrTeam": "Luca Marianucci",
+    "match": "Napoli vs Torino",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054295740_dq8g93",
+        "target": "Luca Marianucci",
+        "summary": "Luca Marianucci proyecta 74 min con una tasa de 2.7 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 76.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (2.7 por 90 min) superando holgadamente la línea exigida (Más de 0.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054295740_dq8g93",
+        "match": "Napoli vs Torino",
+        "tacticalSummary": "Matchup táctico entre Napoli y Torino. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Torino: concede un 17.4% más de Remates totales que la media del torneo.",
+          "Napoli ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054295740_dq8g93",
+        "match": "Napoli vs Torino",
+        "contextSummary": "Contexto del partido Napoli vs Torino. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054295740_dq8g93",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 2.3 (Betfred). Cuota justa: 1.03. EV: +122.7%.",
+        "referenceOdds": 2.3,
+        "bestOdds": 2.3,
+        "fairOdds": 1.03,
+        "observedDiscrepancies": [
+          "Discrepancia de mercado detectada: precio de 2.3 vs promedio de otras casas (1.66) [Divergencia: +38.8%]."
+        ],
+        "risks": [
+          "Cuota elevada (2.3), mayor exposición a varianza a corto plazo."
+        ],
+        "clvAssessment": "ALTO: la cuota actual ofrece valor prematuro antes del ajuste de mercado.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054295740_dq8g93",
+        "match": "Napoli vs Torino",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Napoli vs Torino.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Luca Marianucci vs bloque defensivo de Torino",
+            "tacticalContext": "El planteo de Torino suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Napoli%20vs%20Torino",
+            "publishedDate": "2026-11-19T03:07:17.980Z",
+            "eventDate": "2026-11-19T03:07:17.980Z",
+            "queryDate": "2026-11-19T03:07:17.980Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Luca Marianucci mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057637981_gd7u0",
+    "timestamp": "2026-11-19T03:07:17.981Z"
+  },
+  {
+    "candidateId": "cand_1795054335771_ccs9do",
+    "playerOrTeam": "Red Bull Bragantino (Equipo)",
+    "match": "Vitória vs Red Bull Bragantino",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054335771_ccs9do",
+        "target": "Red Bull Bragantino (Equipo)",
+        "summary": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054335771_ccs9do",
+        "match": "Vitória vs Red Bull Bragantino",
+        "tacticalSummary": "Matchup táctico entre Red Bull Bragantino y Vitória. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Vitória: concede un 17.4% más de Remates al arco de equipo que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Red Bull Bragantino juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054335771_ccs9do",
+        "match": "Vitória vs Red Bull Bragantino",
+        "contextSummary": "Contexto del partido Vitória vs Red Bull Bragantino. Alineación: CONFIRMADA. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054335771_ccs9do",
+        "marketAnalysis": "Análisis de mercado para Remates al arco de equipo @ 1.83 (bet365). Cuota justa: 1.00. EV: +82.7%.",
+        "referenceOdds": 1.83,
+        "bestOdds": 1.83,
+        "fairOdds": 1,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054335771_ccs9do",
+        "match": "Vitória vs Red Bull Bragantino",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates al arco de equipo respalda la selección en Vitória vs Red Bull Bragantino.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Red Bull Bragantino (Equipo) vs bloque defensivo de Vitória",
+            "tacticalContext": "El planteo de Vitória suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Vit%C3%B3ria%20vs%20Red%20Bull%20Bragantino",
+            "publishedDate": "2026-11-19T03:07:17.987Z",
+            "eventDate": "2026-11-19T03:07:17.987Z",
+            "queryDate": "2026-11-19T03:07:17.987Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Red Bull Bragantino (Equipo) mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057637988_z4aeh",
+    "timestamp": "2026-11-19T03:07:17.988Z"
+  },
+  {
+    "candidateId": "cand_1795054335771_4qtwwk",
+    "playerOrTeam": "Internacional (Equipo)",
+    "match": "Vasco da Gama vs Internacional",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054335771_4qtwwk",
+        "target": "Internacional (Equipo)",
+        "summary": "Mercado colectivo (Remates de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054335771_4qtwwk",
+        "match": "Vasco da Gama vs Internacional",
+        "tacticalSummary": "Matchup táctico entre Internacional y Vasco da Gama. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Vasco da Gama: concede un 17.4% más de Remates de equipo que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Internacional juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054335771_4qtwwk",
+        "match": "Vasco da Gama vs Internacional",
+        "contextSummary": "Contexto del partido Vasco da Gama vs Internacional. Alineación: CONFIRMADA. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054335771_4qtwwk",
+        "marketAnalysis": "Análisis de mercado para Remates de equipo @ 1.83 (bet365). Cuota justa: 1.36. EV: +34.2%.",
+        "referenceOdds": 1.83,
+        "bestOdds": 1.83,
+        "fairOdds": 1.36,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054335771_4qtwwk",
+        "match": "Vasco da Gama vs Internacional",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates de equipo respalda la selección en Vasco da Gama vs Internacional.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Internacional (Equipo) vs bloque defensivo de Vasco da Gama",
+            "tacticalContext": "El planteo de Vasco da Gama suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Vasco%20da%20Gama%20vs%20Internacional",
+            "publishedDate": "2026-11-19T03:07:17.995Z",
+            "eventDate": "2026-11-19T03:07:17.995Z",
+            "queryDate": "2026-11-19T03:07:17.995Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Internacional (Equipo) mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057637995_l59uq",
+    "timestamp": "2026-11-19T03:07:17.995Z"
+  },
+  {
+    "candidateId": "cand_1795054335771_qgamjz",
+    "playerOrTeam": "Wallace Yan",
+    "match": "Vitória vs Red Bull Bragantino",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054335771_qgamjz",
+        "target": "Wallace Yan",
+        "summary": "Wallace Yan proyecta 74 min con una tasa de 2.7 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 76.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (2.7 por 90 min) superando holgadamente la línea exigida (Más de 2.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054335771_qgamjz",
+        "match": "Vitória vs Red Bull Bragantino",
+        "tacticalSummary": "Matchup táctico entre Red Bull Bragantino y Vitória. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Vitória: concede un 17.4% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Red Bull Bragantino juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054335771_qgamjz",
+        "match": "Vitória vs Red Bull Bragantino",
+        "contextSummary": "Contexto del partido Vitória vs Red Bull Bragantino. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054335771_qgamjz",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.91 (bet365). Cuota justa: 1.91. EV: +-0.2%.",
+        "referenceOdds": 1.91,
+        "bestOdds": 1.91,
+        "fairOdds": 1.91,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.91) no cubre la probabilidad real proyectada (cuota justa: 1.91)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054335771_qgamjz",
+        "match": "Vitória vs Red Bull Bragantino",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Vitória vs Red Bull Bragantino.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Wallace Yan vs bloque defensivo de Vitória",
+            "tacticalContext": "El planteo de Vitória suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Vit%C3%B3ria%20vs%20Red%20Bull%20Bragantino",
+            "publishedDate": "2026-11-19T03:07:18.002Z",
+            "eventDate": "2026-11-19T03:07:18.002Z",
+            "queryDate": "2026-11-19T03:07:18.002Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Wallace Yan mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057638003_qhp47",
+    "timestamp": "2026-11-19T03:07:18.003Z"
+  },
+  {
+    "candidateId": "cand_1795054335771_7ql1qx",
+    "playerOrTeam": "Vitor Hugo Vitinho",
+    "match": "Vasco da Gama vs Internacional",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795054335771_7ql1qx",
+        "target": "Vitor Hugo Vitinho",
+        "summary": "Vitor Hugo Vitinho proyecta 74 min con una tasa de 2.7 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 76.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (2.7 por 90 min) superando holgadamente la línea exigida (Más de 1.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795054335771_7ql1qx",
+        "match": "Vasco da Gama vs Internacional",
+        "tacticalSummary": "Matchup táctico entre Internacional y Vasco da Gama. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Vasco da Gama: concede un 17.4% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Internacional juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795054335771_7ql1qx",
+        "match": "Vasco da Gama vs Internacional",
+        "contextSummary": "Contexto del partido Vasco da Gama vs Internacional. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795054335771_7ql1qx",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.83 (bet365). Cuota justa: 1.26. EV: +45.6%.",
+        "referenceOdds": 1.83,
+        "bestOdds": 1.83,
+        "fairOdds": 1.26,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795054335771_7ql1qx",
+        "match": "Vasco da Gama vs Internacional",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Vasco da Gama vs Internacional.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Vitor Hugo Vitinho vs bloque defensivo de Vasco da Gama",
+            "tacticalContext": "El planteo de Vasco da Gama suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Vasco%20da%20Gama%20vs%20Internacional",
+            "publishedDate": "2026-11-19T03:07:18.009Z",
+            "eventDate": "2026-11-19T03:07:18.009Z",
+            "queryDate": "2026-11-19T03:07:18.009Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Vitor Hugo Vitinho mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057638010_go94m",
+    "timestamp": "2026-11-19T03:07:18.010Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-19T03:08:13.095Z",
+            "eventDate": "2026-11-19T03:08:13.095Z",
+            "queryDate": "2026-11-19T03:08:13.095Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057693096_37au8",
+    "timestamp": "2026-11-19T03:08:13.096Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-19T03:09:34.583Z",
+            "eventDate": "2026-11-19T03:09:34.583Z",
+            "queryDate": "2026-11-19T03:09:34.583Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795057774585_x4szz",
+    "timestamp": "2026-11-19T03:09:34.585Z"
   }
 ]

@@ -25,13 +25,15 @@ for (const suite of suites) {
   const filePath = path.join(__dirname, suite.file);
   console.log(`\n▶️  Ejecutando: ${suite.name}...`);
   try {
-    const output = execSync(`node "${filePath}"`, { stdio: 'pipe', encoding: 'utf8' });
+    const output = execSync(`node "${filePath}"`, { stdio: 'pipe', encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
     console.log(output);
     console.log(`✨ ${suite.name}: SUPERADA`);
     totalPassedSuites++;
   } catch (err) {
     console.error(`💥 ${suite.name}: FALLÓ`);
-    console.error(err.stdout || err.message);
+    if (err.stdout) console.log(err.stdout);
+    if (err.stderr) console.error(err.stderr);
+    console.error(err.message);
     process.exit(1);
   }
 }

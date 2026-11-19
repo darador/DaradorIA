@@ -37,8 +37,9 @@ async function main() {
       case '--discovery': {
         const dateArg = args[1] || new Date().toISOString().slice(0, 10);
         console.log(`Ejecutando Discovery Engine para: ${dateArg}`);
-        const result = await discoveryEngine.run({ date: dateArg });
-        console.log(`\nCandidatos detectados: ${result.candidatesCount}`);
+        const result = await discoveryEngine.runDiscovery({ targetDate: dateArg });
+        const count = result.candidates ? result.candidates.length : 0;
+        console.log(`\nCandidatos detectados: ${count}`);
         break;
       }
 

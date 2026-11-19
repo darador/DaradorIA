@@ -19,7 +19,7 @@ class DiscoveryEngine {
    * @param {Object} options { targetDate: 'YYYY-MM-DD', maxCandidates: 20 }
    */
   async runDiscovery(options = {}) {
-    const today = options.targetDate || new Date().toISOString().slice(0, 10);
+    const today = options.targetDate || options.date || new Date().toISOString().slice(0, 10);
     const maxCandidates = options.maxCandidates || 20;
 
     console.log(`[Discovery] Iniciando escaneo de candidatos para la fecha: ${today}`);

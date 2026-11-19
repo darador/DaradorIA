@@ -1,6 +1,6 @@
 [
   {
-    "id": "cand_1795056742421_sg2un",
+    "id": "cand_1795057747062_dpxxb",
     "partido": "Real Madrid vs Inter",
     "liga": "Champions League",
     "seleccion": "Kylian Mbappé",
@@ -12,7 +12,7 @@
     "fair_odds": 1.41,
     "status": "APROBADO",
     "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
-    "approvedAt": "2026-11-19T02:52:22.424Z"
+    "approvedAt": "2026-11-19T03:09:07.067Z"
   },
   {
     "id": "cand_test_agent_01",
@@ -31,6 +31,44 @@
     "team_analysis": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
     "player_analysis": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
     "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
-    "approvedAt": "2026-11-19T02:52:52.943Z"
+    "approvedAt": "2026-11-19T03:09:34.593Z"
+  },
+  {
+    "id": "cand_1795054335771_ccs9do",
+    "partido": "Vitória vs Red Bull Bragantino",
+    "liga": "Brasileirão Série A",
+    "seleccion": "Red Bull Bragantino (Equipo)",
+    "mercado": "Remates al arco de equipo",
+    "linea": "Más de 4.5",
+    "cuota": 1.83,
+    "pProjected": 0.9982,
+    "evPercentage": 82.7,
+    "fair_odds": 1,
+    "status": "APROBADO",
+    "rationale": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +82.7% (Cuota: 1.83), baja incertidumbre (10.3%) y consenso favorable de los analistas.",
+    "analyst_verdict": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +82.7% (Cuota: 1.83), baja incertidumbre (10.3%) y consenso favorable de los analistas.",
+    "team_analysis": "Matchup táctico entre Red Bull Bragantino y Vitória. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+    "player_analysis": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
+    "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates al arco de equipo respalda la selección en Vitória vs Red Bull Bragantino.",
+    "approvedAt": "2026-11-19T03:07:17.994Z"
+  },
+  {
+    "id": "cand_1795054335771_4qtwwk",
+    "partido": "Vasco da Gama vs Internacional",
+    "liga": "Brasileirão Série A",
+    "seleccion": "Internacional (Equipo)",
+    "mercado": "Remates de equipo",
+    "linea": "Más de 10.5",
+    "cuota": 1.83,
+    "pProjected": 0.7331,
+    "evPercentage": 34.2,
+    "fair_odds": 1.36,
+    "status": "APROBADO",
+    "rationale": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +34.2% (Cuota: 1.83), baja incertidumbre (13.1%) y consenso favorable de los analistas.",
+    "analyst_verdict": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +34.2% (Cuota: 1.83), baja incertidumbre (13.1%) y consenso favorable de los analistas.",
+    "team_analysis": "Matchup táctico entre Internacional y Vasco da Gama. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
+    "player_analysis": "Mercado colectivo (Remates de equipo). La contribución se evalúa como bloque de equipo.",
+    "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates de equipo respalda la selección en Vasco da Gama vs Internacional.",
+    "approvedAt": "2026-11-19T03:07:18.001Z"
   }
 ]

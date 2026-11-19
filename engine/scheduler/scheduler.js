@@ -35,24 +35,28 @@ class PipelineScheduler {
 
     // 1. Fase 2: Discovery Engine
     console.log('--- 1. Discovery Engine ---');
-    const discoveryResult = await discoveryEngine.run({ date: targetDate });
-    console.log(`[Discovery] ${discoveryResult.candidatesCount} candidatos detectados.`);
+    const discoveryResult = await discoveryEngine.runDiscovery({ targetDate, maxCandidates: 20 });
+    const discoveredCandidates = discoveryResult.candidates || [];
+    console.log(`[Discovery] ${discoveredCandidates.length} candidatos detectados.`);
 
     // 2. Fase 3: Deep Research Engine
     console.log('\n--- 2. Deep Research Engine ---');
     const candidatesToResearch = storage.getCandidates().filter(c => c.status === 'DETECTADO' || c.status === 'INVESTIGADO');
-    const researchedCandidates = await deepResearchEngine.runResearch(candidatesToResearch.slice(0, 8));
+    const targetIds = candidatesToResearch.slice(0, 8).map(c => c.id);
+    const researchedCandidates = await deepResearchEngine.runDeepResearch({ candidateIds: targetIds });
     console.log(`[DeepResearch] ${researchedCandidates.length} candidatos enriquecidos estadísticamente.`);
 
     // 3. Fase 3: Prediction Engine (Modelado Matemático)
     console.log('\n--- 3. Prediction Engine ---');
-    const predictions = await predictionEngine.runEvaluation(researchedCandidates);
+    const predictions = await predictionEngine.evaluateCandidates(researchedCandidates);
     console.log(`[Prediction] ${predictions.length} predicciones calculadas.`);
 
     // 4. Fase 4: AI Research Team & Risk Manager
     console.log('\n--- 4. AI Research Team (Comité de Agentes) ---');
-    const aiResult = await agentOrchestrator.evaluateCandidates(researchedCandidates);
-    console.log(`[AITeam] Aprobados: ${aiResult.approved.length} | Rechazados: ${aiResult.rejected.length}`);
+    const aiEvaluations = await agentOrchestrator.processCandidates(predictions);
+    const approvedPicks = aiEvaluations.filter(e => e.riskVerdict?.finalStatus === 'APROBADO');
+    const rejectedPicks = aiEvaluations.filter(e => e.riskVerdict?.finalStatus === 'RECHAZADO');
+    console.log(`[AITeam] Aprobados: ${approvedPicks.length} | Rechazados: ${rejectedPicks.length}`);
 
     // 5. Fase 5: Sincronización con el Radar Web
     console.log('\n--- 5. Sincronización con Radar Web ---');
@@ -65,11 +69,11 @@ class PipelineScheduler {
     return {
       date: targetDate,
       durationSeconds: Number(duration),
-      discoveryCount: discoveryResult.candidatesCount,
+      discoveryCount: discoveredCandidates.length,
       researchedCount: researchedCandidates.length,
       predictionsCount: predictions.length,
-      approvedCount: aiResult.approved.length,
-      rejectedCount: aiResult.rejected.length,
+      approvedCount: approvedPicks.length,
+      rejectedCount: rejectedPicks.length,
       topPicksActive: syncedData.top_picks.length
     };
   }
