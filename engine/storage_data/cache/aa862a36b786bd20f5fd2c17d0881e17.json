@@ -1,1 +1,0 @@
-{"toolName":"getLineups","args":{"matchName":"Red Bull Bragantino vs"},"cachedAt":"2026-11-19T17:52:58.177Z","expiresAt":1795117978177,"data":"getLineups does not take the argument matchName (did you mean matchId?), so nothing was run. It takes: matchId, teamId, startingLineup, allPlayers, formations, limit, games, competitionIds, page, pageSize."}
