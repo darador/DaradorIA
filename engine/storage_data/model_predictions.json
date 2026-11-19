@@ -1,0 +1,20 @@
+[
+  {
+    "id": "pred_1795053624007_wat9o",
+    "candidateId": "cand_1795053624007_vva7i",
+    "timestamp": "2026-11-19T02:00:24.007Z",
+    "market": "Remates al arco",
+    "line": "Más de 1.5",
+    "bookmakerOdds": 1.85,
+    "pEmpirical": 0.72,
+    "pPoisson": 0.7,
+    "pProjected": 0.71,
+    "fairOdds": 1.41,
+    "evPercentage": 0.31,
+    "sampleSize": 22,
+    "confidenceScore": 0.88,
+    "modelDivergence": 0.02,
+    "featuresUsed": {},
+    "status": "PENDING"
+  }
+]

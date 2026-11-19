@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-18T19:15:00Z",
+  "updated_at": "2026-11-19T02:00:24.010Z",
   "date": "2026-11-18",
   "bookmaker": "bet365",
   "total_analyzed": 66,
   "summary_metrics": {
     "total_picks": 6,
-    "avg_odds": 1.71,
-    "avg_hit_rate_l5": "93.3%",
-    "avg_edge_pct": "21.6%"
+    "avg_odds": 1.73,
+    "avg_hit_rate_l5": "88.0%",
+    "avg_edge_pct": "23.3%"
   },
   "top_picks": [
     {
@@ -26,7 +26,7 @@
       "hit_rate_l10": "7/10 (70%)",
       "avg_per_game": 4.9,
       "implied_prob": 59.9,
-      "real_prob": 80.0,
+      "real_prob": 80,
       "edge_pct": 20.1,
       "confidence": "Muy Alta",
       "rationale": "Gabriel Barbosa viene con una racha de 6 titularidades consecutivas superando la línea (con registros recientes de 5, 7, 9, 4, 5, 6 tiros). Coritiba concede en promedio 16.24 disparos por partido como local frente a la media del torneo (12.11)."
@@ -47,7 +47,7 @@
       "hit_rate_l10": "10/10 (100%)",
       "avg_per_game": 11.4,
       "implied_prob": 57.8,
-      "real_prob": 90.0,
+      "real_prob": 90,
       "edge_pct": 32.2,
       "confidence": "Máxima",
       "rationale": "Efectividad perfecta: superó la línea de 8.5 tiros en 10 de sus últimos 10 encuentros en todas las competiciones (promediando 11.4 disparos por juego)."
@@ -63,12 +63,12 @@
       "opponent": "Palmeiras",
       "market": "Gol o Asistencia (G/A)",
       "line": "Más de 0.5 G/A",
-      "odds": 1.80,
+      "odds": 1.8,
       "hit_rate_l5": "4/5 (80%)",
       "hit_rate_l10": "8/10 (80%)",
       "avg_per_game": 0.9,
       "implied_prob": 55.6,
-      "real_prob": 80.0,
+      "real_prob": 80,
       "edge_pct": 24.4,
       "confidence": "Alta",
       "rationale": "Kaio Jorge aportó gol o asistencia en 8 de sus últimas 10 presentaciones en todas las competiciones. Es el eje ofensivo y ejecutor de penales de Cruzeiro."
@@ -89,7 +89,7 @@
       "hit_rate_l10": "7/10 (70%)",
       "avg_per_game": 3.3,
       "implied_prob": 57.8,
-      "real_prob": 78.0,
+      "real_prob": 78,
       "edge_pct": 20.2,
       "confidence": "Alta",
       "rationale": "Racha vigente de 6 partidos seguidos recibiendo al menos 3 infracciones (últimos juegos: 4, 3, 4, 4, 3, 5 faltas recibidas). Conductor de la salida de Coritiba de local."
@@ -110,7 +110,7 @@
       "hit_rate_l10": "8/10 (80%)",
       "avg_per_game": 2.1,
       "implied_prob": 59.9,
-      "real_prob": 80.0,
+      "real_prob": 80,
       "edge_pct": 20.1,
       "confidence": "Alta",
       "rationale": "Barboza cumplió la línea de 1.5 entradas en 8 de sus últimos 10 partidos en todas las competiciones, promediando 2.1 recuperaciones limpias."
@@ -131,7 +131,7 @@
       "hit_rate_l10": "7/10 (70%)",
       "avg_per_game": 3.3,
       "implied_prob": 59.9,
-      "real_prob": 75.0,
+      "real_prob": 75,
       "edge_pct": 15.1,
       "confidence": "Media-Alta",
       "rationale": "Wallace Yan superó la línea en sus últimos 5 partidos seguidos (promediando 4.6 tiros en dicha racha). Vitória permite 13.4 tiros por partido en Salvador."
@@ -178,7 +178,7 @@
         {
           "match": "Cruzeiro vs Palmeiras",
           "selection": "Kaio Jorge - Más de 0.5 G/A",
-          "odds": 1.80,
+          "odds": 1.8,
           "stat_snapshot": "80% L10 | Referente de ataque"
         },
         {

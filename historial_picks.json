@@ -1,22 +1,51 @@
 {
-  "updated_at": "2026-11-18T19:40:00Z",
+  "updated_at": "2026-11-19T02:00:24.011Z",
   "summary": {
     "total_bets": 6,
     "settled_bets": 0,
     "won_bets": 0,
     "lost_bets": 0,
     "pending_bets": 6,
-    "win_rate_pct": 0.0,
-    "total_staked_units": 0.0,
-    "net_profit_units": 0.0,
-    "roi_pct": 0.0,
+    "win_rate_pct": 0,
+    "total_staked_units": 0,
+    "net_profit_units": 0,
+    "roi_pct": 0,
     "by_market": {
-      "Remates totales": { "total": 2, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Remates de equipo": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Faltas cometidas": { "total": 0, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Faltas ganadas": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Entradas (Tackles)": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" },
-      "Gol o Asistencia": { "total": 1, "won": 0, "lost": 0, "win_rate": "0.0%", "profit": "0.00U" }
+      "Remates totales": {
+        "total": 2,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      },
+      "Remates de equipo": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      },
+      "Gol o Asistencia": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      },
+      "Faltas ganadas": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      },
+      "Entradas (Tackles)": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      }
     }
   },
   "history": [
@@ -29,10 +58,10 @@
       "market": "Remates totales",
       "line": "Más de 3.5",
       "odds": 1.67,
-      "stake": 1.0,
+      "stake": 1,
       "status": "PENDIENTE",
       "actual_stat": "En juego / Próximo",
-      "profit": 0.0,
+      "profit": 0,
       "notes": "Pronóstico real de la fecha 18-Nov."
     },
     {
@@ -44,10 +73,10 @@
       "market": "Remates de equipo",
       "line": "Más de 8.5",
       "odds": 1.73,
-      "stake": 1.0,
+      "stake": 1,
       "status": "PENDIENTE",
       "actual_stat": "En juego / Próximo",
-      "profit": 0.0,
+      "profit": 0,
       "notes": "Pronóstico real de la fecha 18-Nov."
     },
     {
@@ -58,11 +87,11 @@
       "player": "Kaio Jorge",
       "market": "Gol o Asistencia",
       "line": "Más de 0.5 G/A",
-      "odds": 1.80,
-      "stake": 1.0,
+      "odds": 1.8,
+      "stake": 1,
       "status": "PENDIENTE",
       "actual_stat": "En juego / Próximo",
-      "profit": 0.0,
+      "profit": 0,
       "notes": "Pronóstico real de la fecha 18-Nov."
     },
     {
@@ -74,10 +103,10 @@
       "market": "Faltas ganadas",
       "line": "Más de 2.5",
       "odds": 1.73,
-      "stake": 1.0,
+      "stake": 1,
       "status": "PENDIENTE",
       "actual_stat": "En juego / Próximo",
-      "profit": 0.0,
+      "profit": 0,
       "notes": "Pronóstico real de la fecha 18-Nov."
     },
     {
@@ -89,10 +118,10 @@
       "market": "Entradas (Tackles)",
       "line": "Más de 1.5",
       "odds": 1.67,
-      "stake": 1.0,
+      "stake": 1,
       "status": "PENDIENTE",
       "actual_stat": "En juego / Próximo",
-      "profit": 0.0,
+      "profit": 0,
       "notes": "Pronóstico real de la fecha 18-Nov."
     },
     {
@@ -104,10 +133,10 @@
       "market": "Remates totales",
       "line": "Más de 2.5",
       "odds": 1.67,
-      "stake": 1.0,
+      "stake": 1,
       "status": "PENDIENTE",
       "actual_stat": "En juego / Próximo",
-      "profit": 0.0,
+      "profit": 0,
       "notes": "Pronóstico real de la fecha 19-Nov."
     }
   ]

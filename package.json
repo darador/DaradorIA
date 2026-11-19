@@ -1,0 +1,13 @@
+{
+  "name": "darador-ia-engine",
+  "version": "1.0.0",
+  "description": "Autonomous Sports Research Engine - DaradorIA",
+  "main": "engine/index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test:data-engine": "node engine/tests/test_data_engine.js"
+  },
+  "keywords": ["sports-betting", "mcp", "statshub", "predictive-analytics"],
+  "author": "DaradorIA",
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "cand_1795053624007_vva7i",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "evPercentage": 0.31,
+    "pProjected": 0.71,
+    "fair_odds": 1.41,
+    "status": "APROBADO",
+    "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
+    "approvedAt": "2026-11-19T02:00:24.008Z"
+  }
+]
