@@ -39,7 +39,9 @@
       "team_prop_screener"
     ],
     "mcpToolsQueried": [
-      "team_prop_screener"
+      "team_prop_screener",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "teamName": "Red Bull Bragantino",
@@ -55,7 +57,7 @@
       "bookmaker": "bet365"
     },
     "priority": "ALTA",
-    "status": "DETECTADO",
+    "status": "APROBADO",
     "discoveryReason": "Alta consistencia estadística (L10: 90%) a cuota 1.83.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -63,8 +65,72 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:11:35.741Z",
-    "createdAt": "2026-11-19T02:11:35.741Z"
+    "updatedAt": "2026-11-19T02:17:26.969Z",
+    "createdAt": "2026-11-19T02:11:35.741Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T02:17:11.874Z",
+      "toolsQueried": [
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": null,
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vitória",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": null
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "CONFIRMADA",
+        "isStarter": true,
+        "certainty": 1
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.9,
+    "sampleSize": 25,
+    "minutesExpected": 90,
+    "investigatedAt": "2026-11-19T02:17:14.901Z",
+    "prediction": {
+      "candidateId": "cand_1795054295740_r9jrlg",
+      "playerOrTeam": "Red Bull Bragantino (Equipo)",
+      "match": "Vitória vs Red Bull Bragantino",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 4.5",
+      "targetK": 5,
+      "bookmakerOdds": 1.83,
+      "impliedProb": 0.5464,
+      "fairOdds": 1,
+      "pPoisson": 0.9964,
+      "pEmpirical": 1,
+      "pProjected": 0.9982,
+      "ev": 0.8267,
+      "evPercentage": 82.7,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0036,
+      "uncertaintyIndex": 0.182,
+      "confidenceScore": 81.8,
+      "sampleSize": 10,
+      "minutesExpected": 90,
+      "decision": "APROBADO",
+      "decisionReason": "Aprobado matemáticamente: EV +82.7%, cuota justa 0.55 vs cuota 1.83, muestra sólida (10 partidos)",
+      "featuresUsed": {
+        "statP90": 11.700000000000001,
+        "lambdaBase": 11.7,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 13.05,
+        "historicalMean": 11.6,
+        "historicalVariance": 2.93
+      },
+      "evaluatedAt": "2026-11-19T02:17:26.967Z"
+    },
+    "decisionReason": "Aprobado matemáticamente: EV +82.7%, cuota justa 0.55 vs cuota 1.83, muestra sólida (10 partidos)"
   },
   {
     "id": "cand_1795054295740_z5fmgw",
@@ -93,7 +159,9 @@
       "team_prop_screener"
     ],
     "mcpToolsQueried": [
-      "team_prop_screener"
+      "team_prop_screener",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "teamName": "Internacional",
@@ -109,7 +177,7 @@
       "bookmaker": "bet365"
     },
     "priority": "ALTA",
-    "status": "DETECTADO",
+    "status": "APROBADO",
     "discoveryReason": "Alta consistencia estadística (L10: 90%) a cuota 1.83.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -117,8 +185,72 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:11:35.743Z",
-    "createdAt": "2026-11-19T02:11:35.743Z"
+    "updatedAt": "2026-11-19T02:17:26.971Z",
+    "createdAt": "2026-11-19T02:11:35.743Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T02:17:14.903Z",
+      "toolsQueried": [
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": null,
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vasco da Gama",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": null
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "CONFIRMADA",
+        "isStarter": true,
+        "certainty": 1
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.9,
+    "sampleSize": 25,
+    "minutesExpected": 90,
+    "investigatedAt": "2026-11-19T02:17:17.914Z",
+    "prediction": {
+      "candidateId": "cand_1795054295740_z5fmgw",
+      "playerOrTeam": "Internacional (Equipo)",
+      "match": "Vasco da Gama vs Internacional",
+      "market": "Remates de equipo",
+      "line": "Más de 10.5",
+      "targetK": 11,
+      "bookmakerOdds": 1.83,
+      "impliedProb": 0.5464,
+      "fairOdds": 1.36,
+      "pPoisson": 0.7525,
+      "pEmpirical": 0.7137,
+      "pProjected": 0.7331,
+      "ev": 0.3416,
+      "evPercentage": 34.2,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0388,
+      "uncertaintyIndex": 0.253,
+      "confidenceScore": 74.7,
+      "sampleSize": 10,
+      "minutesExpected": 90,
+      "decision": "APROBADO",
+      "decisionReason": "Aprobado matemáticamente: EV +34.2%, cuota justa 0.75 vs cuota 1.83, muestra sólida (10 partidos)",
+      "featuresUsed": {
+        "statP90": 11.700000000000001,
+        "lambdaBase": 11.7,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 13.05,
+        "historicalMean": 11.6,
+        "historicalVariance": 2.93
+      },
+      "evaluatedAt": "2026-11-19T02:17:26.969Z"
+    },
+    "decisionReason": "Aprobado matemáticamente: EV +34.2%, cuota justa 0.75 vs cuota 1.83, muestra sólida (10 partidos)"
   },
   {
     "id": "cand_1795054295740_ux0nia",
@@ -147,7 +279,10 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Wallace Yan",
@@ -167,7 +302,7 @@
       "trendPercentage": 100
     },
     "priority": "BAJA",
-    "status": "DETECTADO",
+    "status": "RECHAZADO",
     "discoveryReason": "Señal estadística débil, incluida condicionalmente por cuota o mercado.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -175,8 +310,105 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:11:35.744Z",
-    "createdAt": "2026-11-19T02:11:35.744Z"
+    "updatedAt": "2026-11-19T02:17:26.974Z",
+    "createdAt": "2026-11-19T02:11:35.744Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T02:17:17.916Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Wallace Yan",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vitória",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": null
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T02:17:26.964Z",
+    "prediction": {
+      "candidateId": "cand_1795054295740_ux0nia",
+      "playerOrTeam": "Wallace Yan",
+      "match": "Vitória vs Red Bull Bragantino",
+      "market": "Remates totales",
+      "line": "Más de 2.5",
+      "targetK": 3,
+      "bookmakerOdds": 1.91,
+      "impliedProb": 0.5236,
+      "fairOdds": 1.91,
+      "pPoisson": 0.45,
+      "pEmpirical": 0.5954,
+      "pProjected": 0.5227,
+      "ev": -0.0016,
+      "evPercentage": -0.2,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1454,
+      "uncertaintyIndex": 0.352,
+      "confidenceScore": 64.8,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "RECHAZADO",
+      "decisionReason": "EV insuficiente (+-0.2% frente al umbral requerido de +7.0%)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.48,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T02:17:26.972Z"
+    },
+    "decisionReason": "EV insuficiente (+-0.2% frente al umbral requerido de +7.0%)"
   },
   {
     "id": "cand_1795054295740_wb9iqd",
@@ -205,7 +437,10 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Vitor Hugo Vitinho",
@@ -225,7 +460,7 @@
       "trendPercentage": 100
     },
     "priority": "BAJA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Señal estadística débil, incluida condicionalmente por cuota o mercado.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -233,8 +468,105 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:11:35.745Z",
-    "createdAt": "2026-11-19T02:11:35.745Z"
+    "updatedAt": "2026-11-19T02:18:52.316Z",
+    "createdAt": "2026-11-19T02:11:35.745Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T02:18:22.175Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Vitor Hugo Vitinho",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vasco da Gama",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": null
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T02:18:31.215Z",
+    "prediction": {
+      "candidateId": "cand_1795054295740_wb9iqd",
+      "playerOrTeam": "Vitor Hugo Vitinho",
+      "match": "Vasco da Gama vs Internacional",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "targetK": 2,
+      "bookmakerOdds": 1.83,
+      "impliedProb": 0.5464,
+      "fairOdds": 1.26,
+      "pPoisson": 0.7077,
+      "pEmpirical": 0.8842,
+      "pProjected": 0.7959,
+      "ev": 0.4565,
+      "evPercentage": 45.6,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1764,
+      "uncertaintyIndex": 0.178,
+      "confidenceScore": 82.2,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+45.6%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.48,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T02:18:52.314Z"
+    },
+    "decisionReason": "EV positivo (+45.6%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054295740_ftpam1",
@@ -263,7 +595,11 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getReferee",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Gustavo Marques",
@@ -283,7 +619,7 @@
       "trendPercentage": 100
     },
     "priority": "BAJA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Señal estadística débil, incluida condicionalmente por cuota o mercado.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -291,8 +627,113 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:11:35.746Z",
-    "createdAt": "2026-11-19T02:11:35.746Z"
+    "updatedAt": "2026-11-19T02:18:52.319Z",
+    "createdAt": "2026-11-19T02:11:35.746Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T02:18:31.217Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getReferee",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Gustavo Marques",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vitória",
+        "concededPerGame": 14.5,
+        "leagueAvg": 12.8,
+        "concessionRatio": 1.133,
+        "isVulnerable": true,
+        "defensiveRank": "ESTÁNDAR",
+        "raw": null
+      },
+      "refereeData": {
+        "refereeName": "Árbitro Designado",
+        "avgFouls": 26.4,
+        "avgCards": 4.5,
+        "foulStrictnessRatio": 1.09,
+        "favorsOvers": true,
+        "raw": null
+      },
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T02:18:43.277Z",
+    "prediction": {
+      "candidateId": "cand_1795054295740_ftpam1",
+      "playerOrTeam": "Gustavo Marques",
+      "match": "Vitória vs Red Bull Bragantino",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 1.65,
+      "impliedProb": 0.6061,
+      "fairOdds": 1.05,
+      "pPoisson": 0.9083,
+      "pEmpirical": 1,
+      "pProjected": 0.9542,
+      "ev": 0.5744,
+      "evPercentage": 57.4,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0917,
+      "uncertaintyIndex": 0.11,
+      "confidenceScore": 89,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+57.4%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.133,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.39,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T02:18:52.317Z"
+    },
+    "decisionReason": "EV positivo (+57.4%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054295740_8e2tw6",
@@ -321,7 +762,10 @@
       "player_trends"
     ],
     "mcpToolsQueried": [
-      "player_trends"
+      "player_trends",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "player": "Alerrandro",
@@ -341,7 +785,7 @@
       "trendPercentage": 100
     },
     "priority": "BAJA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Señal estadística débil, incluida condicionalmente por cuota o mercado.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -349,8 +793,105 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:11:35.748Z",
-    "createdAt": "2026-11-19T02:11:35.748Z"
+    "updatedAt": "2026-11-19T02:18:52.322Z",
+    "createdAt": "2026-11-19T02:11:35.748Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T02:18:43.280Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Alerrandro",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Vasco da Gama",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": null
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T02:18:52.311Z",
+    "prediction": {
+      "candidateId": "cand_1795054295740_8e2tw6",
+      "playerOrTeam": "Alerrandro",
+      "match": "Vasco da Gama vs Internacional",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "targetK": 2,
+      "bookmakerOdds": 1.62,
+      "impliedProb": 0.6173,
+      "fairOdds": 1.26,
+      "pPoisson": 0.7077,
+      "pEmpirical": 0.8842,
+      "pProjected": 0.7959,
+      "ev": 0.2894,
+      "evPercentage": 28.9,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1764,
+      "uncertaintyIndex": 0.178,
+      "confidenceScore": 82.2,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+28.9%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 0.95,
+        "lambdaAdjusted": 2.48,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T02:18:52.320Z"
+    },
+    "decisionReason": "EV positivo (+28.9%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054295740_n4gaem",

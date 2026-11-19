@@ -10,6 +10,8 @@ const storage = require('./data/storage');
 const radarSync = require('./data/syncRadar');
 const supabaseClient = require('./data/supabaseClient');
 const discoveryEngine = require('./discovery/discoveryEngine');
+const deepResearchEngine = require('./research/deepResearchEngine');
+const predictionEngine = require('./prediction/predictionEngine');
 
 module.exports = {
   config,
@@ -19,5 +21,7 @@ module.exports = {
   storage,
   radarSync,
   supabaseClient,
-  discoveryEngine
+  discoveryEngine,
+  deepResearchEngine,
+  predictionEngine
 };
