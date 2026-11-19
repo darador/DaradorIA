@@ -38,7 +38,7 @@
     "approvedAt": "2026-11-19T17:52:58.591Z"
   },
   {
-    "id": "cand_1795110996812_m9ku6",
+    "id": "cand_1795120672547_m4j28",
     "partido": "Real Madrid vs Inter",
     "liga": "Champions League",
     "seleccion": "Kylian Mbappé",
@@ -50,7 +50,7 @@
     "fair_odds": 1.41,
     "status": "APROBADO",
     "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
-    "approvedAt": "2026-11-19T17:56:36.817Z"
+    "approvedAt": "2026-11-19T20:37:52.552Z"
   },
   {
     "id": "cand_test_agent_01",
@@ -69,7 +69,7 @@
     "team_analysis": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
     "player_analysis": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
     "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
-    "approvedAt": "2026-11-19T17:56:55.344Z"
+    "approvedAt": "2026-11-19T20:38:34.099Z"
   },
   {
     "id": "cand_1795110774831_uhvh6d",
@@ -203,5 +203,173 @@
     "player_analysis": "Mercado colectivo (Córners de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
     "approvedAt": "2026-11-19T17:57:35.808Z"
+  },
+  {
+    "id": "cand_1795111034541_doqilz",
+    "discoveredAt": "2026-11-19T17:57:14.541Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Internacional vs",
+    "matchTime": null,
+    "playerOrTeam": "Bruno Gomes",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "",
+    "market": "Remates totales",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.83,
+    "bookmaker": "bet365",
+    "trendL5": "60%",
+    "trendL10": "70%",
+    "statsSummary": {
+      "starts": null,
+      "avg": null,
+      "rawRate": 70
+    },
+    "lineupStatus": "CONFIRMADA",
+    "discoverySources": [
+      "prop_screener"
+    ],
+    "mcpToolsQueried": [
+      "prop_screener",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
+    ],
+    "rawSourceData": {
+      "playerId": "bruno-gomes.198ch3a",
+      "playerName": "Bruno Gomes",
+      "statType": "shots",
+      "line": 0.5,
+      "oddsType": "over",
+      "matchId": "vasco-da-gama-v-internacional.08r39vt",
+      "teamId": "internacional.060ldg4",
+      "teamName": "Internacional",
+      "opponentTeamName": "Vasco da Gama",
+      "venue": "away",
+      "matchup": "favours the under: allows 10.94 a game at home v a league avg of 12.06 for home sides",
+      "bestOdds": 1.83,
+      "bestBookmakerName": "Bet365",
+      "hitRateL5": 60,
+      "hitRateL10": 70,
+      "hitRateL15": 60,
+      "allCompsHitRateL5": 60,
+      "allCompsHitRateL10": 70,
+      "allCompsHitRateL15": 67,
+      "inPredictedLineup": true,
+      "startedLastGame": true,
+      "lastGameWithTeam": 0,
+      "impliedChance": 54.6
+    },
+    "priority": "ALTA",
+    "status": "APROBADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 70%) a cuota 1.83.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T20:38:33.971Z",
+    "createdAt": "2026-11-19T17:57:14.546Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T20:38:30.944Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Bruno Gomes",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "",
+        "concededPerGame": 14.2,
+        "leagueAvg": 12.1,
+        "concessionRatio": 1.174,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)",
+        "raw": "getTeamStatistics does not take the argument teamName (did you mean teamId?), so nothing was run. It takes: teamId, seasonId."
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T20:38:33.953Z",
+    "prediction": {
+      "candidateId": "cand_1795111034541_doqilz",
+      "playerOrTeam": "Bruno Gomes",
+      "match": "Internacional vs",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 1.83,
+      "impliedProb": 0.5464,
+      "fairOdds": 1.03,
+      "pPoisson": 0.9369,
+      "pEmpirical": 1,
+      "pProjected": 0.9684,
+      "ev": 0.7722,
+      "evPercentage": 77.2,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0631,
+      "uncertaintyIndex": 0.087,
+      "confidenceScore": 91.3,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+77.2%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.174,
+        "venueFactor": 1.06,
+        "lambdaAdjusted": 2.76,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T20:38:33.967Z"
+    },
+    "decisionReason": "Alineación oficial confirmada: Jugador parte en el XI titular. Condición levantada por el Risk Manager.",
+    "approvedAt": "2026-11-19T22:18:53.260Z"
   }
 ]

@@ -44,7 +44,7 @@ class LineupWatcher {
           storage.saveCandidate(cand);
           storage.saveApprovedPick(cand);
           promoted.push(cand);
-          console.log(`[LineupWatcher] ✅ Promovido a APROBADO: ${cand.player || cand.seleccion} (Titular confirmado)`);
+          console.log(`[LineupWatcher] ✅ Promovido a APROBADO: ${cand.player || cand.seleccion || cand.playerOrTeam} (Titular confirmado)`);
         } else if (result.action === 'VETO') {
           cand.status = 'RECHAZADO';
           cand.lineupStatus = 'SUPLENTE';
@@ -52,10 +52,10 @@ class LineupWatcher {
           storage.saveCandidate(cand);
           storage.saveRejectedPick(cand, result.reason);
           vetoed.push(cand);
-          console.log(`[LineupWatcher] ❌ Veto de Risk Manager: ${cand.player || cand.seleccion} (${result.reason})`);
+          console.log(`[LineupWatcher] ❌ Veto de Risk Manager: ${cand.player || cand.seleccion || cand.playerOrTeam} (${result.reason})`);
         } else {
           stillPending.push(cand);
-          console.log(`[LineupWatcher] ⏳ Aún sin alineación oficial: ${cand.player || cand.seleccion}`);
+          console.log(`[LineupWatcher] ⏳ Aún sin alineación oficial: ${cand.player || cand.seleccion || cand.playerOrTeam}`);
         }
       } catch (err) {
         console.warn(`[LineupWatcher] Error evaluando alineación para ${cand.id}: ${err.message}`);
@@ -81,7 +81,7 @@ class LineupWatcher {
    * Evalúa la alineación de un candidato individual
    */
   async evaluateCandidateLineup(candidate, mockLineups = null) {
-    const playerName = (candidate.player || candidate.seleccion || '').toLowerCase().trim();
+    const playerName = (candidate.player || candidate.seleccion || candidate.playerOrTeam || '').toLowerCase().trim();
     const matchId = candidate.matchId || candidate.partido;
 
     let lineupData = null;
