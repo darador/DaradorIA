@@ -4989,7 +4989,11 @@
       "outlier_pricing"
     ],
     "mcpToolsQueried": [
-      "outlier_pricing"
+      "outlier_pricing",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getReferee",
+      "getLineups"
     ],
     "rawSourceData": {
       "playerId": "chris-richards.12m31oa",
@@ -5025,7 +5029,7 @@
       "impliedChance": 45.5
     },
     "priority": "MEDIA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Discrepancia de cuota en el mercado (42.4%) frente a otros bookmakers.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5033,8 +5037,113 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:12:15.787Z",
-    "createdAt": "2026-11-19T02:12:15.787Z"
+    "updatedAt": "2026-11-19T03:35:37.143Z",
+    "createdAt": "2026-11-19T02:12:15.787Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T03:35:03.962Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getReferee",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Chris Richards",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Crystal Palace",
+        "concededPerGame": 14.5,
+        "leagueAvg": 12.8,
+        "concessionRatio": 1.133,
+        "isVulnerable": true,
+        "defensiveRank": "ESTÁNDAR",
+        "raw": null
+      },
+      "refereeData": {
+        "refereeName": "Árbitro Designado",
+        "avgFouls": 26.4,
+        "avgCards": 4.5,
+        "foulStrictnessRatio": 1.09,
+        "favorsOvers": true,
+        "raw": null
+      },
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T03:35:16.020Z",
+    "prediction": {
+      "candidateId": "cand_1795054335771_t99edp",
+      "playerOrTeam": "Chris Richards",
+      "match": "Coventry City vs Crystal Palace",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 2.2,
+      "impliedProb": 0.4545,
+      "fairOdds": 1.04,
+      "pPoisson": 0.9305,
+      "pEmpirical": 1,
+      "pProjected": 0.9652,
+      "ev": 1.1234,
+      "evPercentage": 112.3,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0695,
+      "uncertaintyIndex": 0.093,
+      "confidenceScore": 90.7,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+112.3%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.133,
+        "venueFactor": 1.06,
+        "lambdaAdjusted": 2.67,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T03:35:37.138Z"
+    },
+    "decisionReason": "EV positivo (+112.3%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054335771_x7tf9g",
@@ -5063,7 +5172,10 @@
       "outlier_pricing"
     ],
     "mcpToolsQueried": [
-      "outlier_pricing"
+      "outlier_pricing",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getLineups"
     ],
     "rawSourceData": {
       "playerId": "harrison-reed.1w0v3tq",
@@ -5099,7 +5211,7 @@
       "impliedChance": 50
     },
     "priority": "MEDIA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Discrepancia de cuota en el mercado (40.4%) frente a otros bookmakers.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5107,8 +5219,105 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:12:15.788Z",
-    "createdAt": "2026-11-19T02:12:15.788Z"
+    "updatedAt": "2026-11-19T03:35:37.151Z",
+    "createdAt": "2026-11-19T02:12:15.788Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T03:35:16.027Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Harrison Reed",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Fulham",
+        "concededPerGame": 16.2,
+        "leagueAvg": 14.5,
+        "concessionRatio": 1.12,
+        "isVulnerable": true,
+        "defensiveRank": "ESTÁNDAR",
+        "raw": null
+      },
+      "refereeData": null,
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T03:35:25.070Z",
+    "prediction": {
+      "candidateId": "cand_1795054335771_x7tf9g",
+      "playerOrTeam": "Harrison Reed",
+      "match": "Manchester City vs Fulham",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 1.5",
+      "targetK": 2,
+      "bookmakerOdds": 2,
+      "impliedProb": 0.5,
+      "fairOdds": 1.23,
+      "pPoisson": 0.7394,
+      "pEmpirical": 0.8842,
+      "pProjected": 0.8118,
+      "ev": 0.6236,
+      "evPercentage": 62.4,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.1447,
+      "uncertaintyIndex": 0.153,
+      "confidenceScore": 84.7,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+62.4%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.12,
+        "venueFactor": 1.06,
+        "lambdaAdjusted": 2.64,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T03:35:37.146Z"
+    },
+    "decisionReason": "EV positivo (+62.4%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054335771_go6tkl",
@@ -5137,7 +5346,11 @@
       "outlier_pricing"
     ],
     "mcpToolsQueried": [
-      "outlier_pricing"
+      "outlier_pricing",
+      "getPlayerStats",
+      "getTeamStatistics",
+      "getReferee",
+      "getLineups"
     ],
     "rawSourceData": {
       "playerId": "juan-jesus.0bag61r",
@@ -5173,7 +5386,7 @@
       "impliedChance": 47.6
     },
     "priority": "MEDIA",
-    "status": "DETECTADO",
+    "status": "PENDIENTE",
     "discoveryReason": "Discrepancia de cuota en el mercado (40.4%) frente a otros bookmakers.",
     "pendingInvestigation": [
       "Minutos esperados y titularidad reciente",
@@ -5181,8 +5394,113 @@
       "Ajuste matemático Poisson / Distribución empírica",
       "Noticias de última hora y bajas"
     ],
-    "updatedAt": "2026-11-19T02:12:15.790Z",
-    "createdAt": "2026-11-19T02:12:15.790Z"
+    "updatedAt": "2026-11-19T03:35:37.159Z",
+    "createdAt": "2026-11-19T02:12:15.790Z",
+    "researchData": {
+      "queriedAt": "2026-11-19T03:35:25.076Z",
+      "toolsQueried": [
+        "getPlayerStats",
+        "getTeamStatistics",
+        "getReferee",
+        "getLineups"
+      ],
+      "playerData": {
+        "playerName": "Juan Jesus",
+        "matches": 22,
+        "starts": 18,
+        "subAppearances": 4,
+        "totalMinutes": 1450,
+        "avgMinutes": 76.5,
+        "projectedMinutes": 74,
+        "statPerGame": 2.3,
+        "statPer90": 2.7,
+        "homeAvg": 2.9,
+        "awayAvg": 2.4,
+        "historicalValues": [
+          3,
+          2,
+          4,
+          1,
+          3,
+          2,
+          5,
+          2,
+          3,
+          4,
+          2,
+          3,
+          1,
+          4,
+          3,
+          2,
+          4,
+          3
+        ]
+      },
+      "teamData": null,
+      "opponentData": {
+        "opponentName": "Venezia",
+        "concededPerGame": 14.5,
+        "leagueAvg": 12.8,
+        "concessionRatio": 1.133,
+        "isVulnerable": true,
+        "defensiveRank": "ESTÁNDAR",
+        "raw": null
+      },
+      "refereeData": {
+        "refereeName": "Árbitro Designado",
+        "avgFouls": 26.4,
+        "avgCards": 4.5,
+        "foulStrictnessRatio": 1.09,
+        "favorsOvers": true,
+        "raw": null
+      },
+      "lineupData": {
+        "status": "PROBABLE",
+        "isStarter": true,
+        "certainty": 0.85
+      },
+      "missingData": []
+    },
+    "sampleQuality": 0.78,
+    "sampleSize": 18,
+    "minutesExpected": 74,
+    "investigatedAt": "2026-11-19T03:35:37.131Z",
+    "prediction": {
+      "candidateId": "cand_1795054335771_go6tkl",
+      "playerOrTeam": "Juan Jesus",
+      "match": "Juventus vs Venezia",
+      "market": "Faltas ganadas",
+      "line": "Más de 0.5",
+      "targetK": 1,
+      "bookmakerOdds": 2.1,
+      "impliedProb": 0.4762,
+      "fairOdds": 1.04,
+      "pPoisson": 0.9305,
+      "pEmpirical": 1,
+      "pProjected": 0.9652,
+      "ev": 1.0269,
+      "evPercentage": 102.7,
+      "modelApplied": "Poisson Ajustado",
+      "modelDivergence": 0.0695,
+      "uncertaintyIndex": 0.093,
+      "confidenceScore": 90.7,
+      "sampleSize": 18,
+      "minutesExpected": 74,
+      "decision": "PENDIENTE",
+      "decisionReason": "EV positivo (+102.7%) validado, pendiente de alineación oficial confirmada (T-60 min)",
+      "featuresUsed": {
+        "statP90": 2.7,
+        "lambdaBase": 2.22,
+        "opponentRatio": 1.133,
+        "venueFactor": 1.06,
+        "lambdaAdjusted": 2.67,
+        "historicalMean": 2.83,
+        "historicalVariance": 1.21
+      },
+      "evaluatedAt": "2026-11-19T03:35:37.154Z"
+    },
+    "decisionReason": "EV positivo (+102.7%) validado, pendiente de alineación oficial confirmada (T-60 min)"
   },
   {
     "id": "cand_1795054335771_asjuxa",
@@ -5389,7 +5707,7 @@
       "vetoReasons": [],
       "pendingReasons": [],
       "approvalReasons": [],
-      "decidedAt": "2026-11-19T03:09:34.585Z"
+      "decidedAt": "2026-11-19T03:35:37.273Z"
     },
     "agentReports": {
       "playerAnalyst": {
@@ -5471,9 +5789,9 @@
           {
             "source": "Boletín Táctico y Deportivo Pre-Match",
             "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
-            "publishedDate": "2026-11-19T03:09:34.583Z",
-            "eventDate": "2026-11-19T03:09:34.583Z",
-            "queryDate": "2026-11-19T03:09:34.583Z",
+            "publishedDate": "2026-11-19T03:35:37.271Z",
+            "eventDate": "2026-11-19T03:35:37.271Z",
+            "queryDate": "2026-11-19T03:35:37.271Z",
             "status": "CONFIRMADO",
             "confidence": 0.85,
             "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
@@ -5489,7 +5807,7 @@
         "recommendation": "FAVORABLE"
       }
     },
-    "updatedAt": "2026-11-19T03:09:34.588Z",
+    "updatedAt": "2026-11-19T03:35:37.277Z",
     "createdAt": "2026-11-19T02:24:44.086Z"
   },
   {
@@ -12619,5 +12937,1128 @@
     ],
     "updatedAt": "2026-11-19T03:09:07.253Z",
     "createdAt": "2026-11-19T03:09:07.253Z"
+  },
+  {
+    "match_id": "match-test-01",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "status": "INVESTIGADO",
+    "id": "cand_1795059303633_favsj",
+    "updatedAt": "2026-11-19T03:35:03.633Z",
+    "createdAt": "2026-11-19T03:35:03.633Z"
+  },
+  {
+    "id": "cand_1795059303752_rxdxjk",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Brasileirão Série A",
+    "match": "Vitória vs Red Bull Bragantino",
+    "matchTime": null,
+    "playerOrTeam": "Wallace Yan",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Remates totales",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 1.91,
+    "bookmaker": "bet365",
+    "trendL5": "5/5",
+    "trendL10": "7/10",
+    "statsSummary": {
+      "streak": "5/5",
+      "trendPercentage": 100
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Wallace Yan",
+      "playerId": "wallace-yan.1yhqlnd",
+      "position": "F",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "matchName": "Vitória vs Red Bull Bragantino",
+      "competitionName": "Brasileirão Série A",
+      "statType": "shots",
+      "line": 2.5,
+      "bestOdds": 1.91,
+      "bestBookmaker": "bet365",
+      "hits": "5/5",
+      "last10": "7/10",
+      "predictedXI": true,
+      "trendPercentage": 100
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.91.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.756Z",
+    "createdAt": "2026-11-19T03:35:03.756Z"
+  },
+  {
+    "id": "cand_1795059303752_tm0orp",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Brasileirão Série A",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Vitor Hugo Vitinho",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.83,
+    "bookmaker": "bet365",
+    "trendL5": "4/4",
+    "trendL10": "7/10",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Vitor Hugo Vitinho",
+      "playerId": "vitor-hugo-vitinho.1v1u4ax",
+      "position": "M",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "matchName": "Vasco da Gama vs Internacional",
+      "competitionName": "Brasileirão Série A",
+      "statType": "shots",
+      "line": 1.5,
+      "bestOdds": 1.83,
+      "bestBookmaker": "bet365",
+      "hits": "4/4",
+      "last10": "7/10",
+      "predictedXI": true,
+      "trendPercentage": 100
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.83.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.762Z",
+    "createdAt": "2026-11-19T03:35:03.762Z"
+  },
+  {
+    "id": "cand_1795059303752_zdg80x",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Brasileirão Série A",
+    "match": "Vitória vs Red Bull Bragantino",
+    "matchTime": null,
+    "playerOrTeam": "Gustavo Marques",
+    "isTeamProp": false,
+    "team": "Red Bull Bragantino",
+    "opponent": "Vitória",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.65,
+    "bookmaker": "bet365",
+    "trendL5": "4/4",
+    "trendL10": "7/10",
+    "statsSummary": {
+      "streak": "4/4",
+      "trendPercentage": 100
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Gustavo Marques",
+      "playerId": "gustavo-marques.1pjm7hg",
+      "position": "D",
+      "team": "Red Bull Bragantino",
+      "opponent": "Vitória",
+      "matchName": "Vitória vs Red Bull Bragantino",
+      "competitionName": "Brasileirão Série A",
+      "statType": "fouls",
+      "line": 0.5,
+      "bestOdds": 1.65,
+      "bestBookmaker": "bet365",
+      "hits": "4/4",
+      "last10": "7/10",
+      "predictedXI": true,
+      "trendPercentage": 100
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.65.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.768Z",
+    "createdAt": "2026-11-19T03:35:03.768Z"
+  },
+  {
+    "id": "cand_1795059303752_pqoma7",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Brasileirão Série A",
+    "match": "Vasco da Gama vs Internacional",
+    "matchTime": null,
+    "playerOrTeam": "Alerrandro",
+    "isTeamProp": false,
+    "team": "Internacional",
+    "opponent": "Vasco da Gama",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.62,
+    "bookmaker": "bet365",
+    "trendL5": "3/3",
+    "trendL10": "7/10",
+    "statsSummary": {
+      "streak": "3/3",
+      "trendPercentage": 100
+    },
+    "lineupStatus": "PREDICTED",
+    "discoverySources": [
+      "player_trends"
+    ],
+    "mcpToolsQueried": [
+      "player_trends"
+    ],
+    "rawSourceData": {
+      "player": "Alerrandro",
+      "playerId": "alerrandro.0h4bzn8",
+      "position": "F",
+      "team": "Internacional",
+      "opponent": "Vasco da Gama",
+      "matchName": "Vasco da Gama vs Internacional",
+      "competitionName": "Brasileirão Série A",
+      "statType": "shots",
+      "line": 1.5,
+      "bestOdds": 1.62,
+      "bestBookmaker": "bet365",
+      "hits": "3/3",
+      "last10": "7/10",
+      "predictedXI": true,
+      "trendPercentage": 100
+    },
+    "priority": "ALTA",
+    "status": "DETECTADO",
+    "discoveryReason": "Alta consistencia estadística (L10: 7/10) a cuota 1.62.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.774Z",
+    "createdAt": "2026-11-19T03:35:03.774Z"
+  },
+  {
+    "id": "cand_1795059303752_kgtu7s",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Paris FC vs Angers",
+    "matchTime": null,
+    "playerOrTeam": "Moses Simon",
+    "isTeamProp": false,
+    "team": "Paris FC",
+    "opponent": "Angers",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.15,
+    "bookmaker": "Unibet",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.9%",
+      "averageOdds": 1.47
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "moses-simon.1g149ib",
+      "playerName": "Moses Simon",
+      "homeTeam": "Paris FC",
+      "awayTeam": "Angers",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "Unibet",
+      "bestOdds": 2.15,
+      "averageOdds": 1.47,
+      "edge": 0.459,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.222
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.444
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.29
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.38
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Unibet",
+          "odd": 2.15
+        }
+      ],
+      "impliedChance": 46.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.9%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.781Z",
+    "createdAt": "2026-11-19T03:35:03.781Z"
+  },
+  {
+    "id": "cand_1795059303752_v4kgka",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Como vs Cagliari",
+    "matchTime": null,
+    "playerOrTeam": "Maxence Caqueret",
+    "isTeamProp": false,
+    "team": "Como",
+    "opponent": "Cagliari",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.25,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.6%",
+      "averageOdds": 1.545
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "maxence-caqueret.0m7hfqe",
+      "playerName": "Maxence Caqueret",
+      "homeTeam": "Como",
+      "awayTeam": "Cagliari",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.25,
+      "averageOdds": 1.545,
+      "edge": 0.456,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.36
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.25
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.53
+        }
+      ],
+      "impliedChance": 44.4
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.6%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.788Z",
+    "createdAt": "2026-11-19T03:35:03.788Z"
+  },
+  {
+    "id": "cand_1795059303752_53u6sx",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Atalanta vs Inter",
+    "matchTime": null,
+    "playerOrTeam": "Francesco Pio Esposito",
+    "isTeamProp": false,
+    "team": "Atalanta",
+    "opponent": "Inter",
+    "market": "Remates totales",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 2.1,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "42.9%",
+      "averageOdds": 1.47
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "francesco-pio-esposito.1t38g3a",
+      "playerName": "Francesco Pio Esposito",
+      "homeTeam": "Atalanta",
+      "awayTeam": "Inter",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 2.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.1,
+      "averageOdds": 1.47,
+      "edge": 0.429,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.181
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.533
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.33
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.1
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.55
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.44
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.18
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.44
+        }
+      ],
+      "impliedChance": 47.6
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (42.9%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.794Z",
+    "createdAt": "2026-11-19T03:35:03.794Z"
+  },
+  {
+    "id": "cand_1795059303752_fsd6i5",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Napoli vs Torino",
+    "matchTime": null,
+    "playerOrTeam": "Rasmus Højlund",
+    "isTeamProp": false,
+    "team": "Napoli",
+    "opponent": "Torino",
+    "market": "Remates totales",
+    "line": "Más de 3.5",
+    "rawLine": 3.5,
+    "bookmakerOdds": 2.4,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "42.5%",
+      "averageOdds": 1.68
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "rasmus-hojlund.1dpji41",
+      "playerName": "Rasmus Højlund",
+      "homeTeam": "Napoli",
+      "awayTeam": "Torino",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 3.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.4,
+      "averageOdds": 1.68,
+      "edge": 0.425,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.533
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 2
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.4
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.57
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.22
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.22
+        }
+      ],
+      "impliedChance": 41.7
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (42.5%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.800Z",
+    "createdAt": "2026-11-19T03:35:03.800Z"
+  },
+  {
+    "id": "cand_1795059303752_ggf16g",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Coventry City vs Crystal Palace",
+    "matchTime": null,
+    "playerOrTeam": "Chris Richards",
+    "isTeamProp": false,
+    "team": "Coventry City",
+    "opponent": "Crystal Palace",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.2,
+    "bookmaker": "Bet365",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "42.4%",
+      "averageOdds": 1.545
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "chris-richards.12m31oa",
+      "playerName": "Chris Richards",
+      "homeTeam": "Coventry City",
+      "awayTeam": "Crystal Palace",
+      "market": "Fouls Committed",
+      "marketKey": "fouls",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Bet365",
+      "bestOdds": 2.2,
+      "averageOdds": 1.545,
+      "edge": 0.424,
+      "bookmakers": [
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.2
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.57
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.18
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.23
+        }
+      ],
+      "impliedChance": 45.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (42.4%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.807Z",
+    "createdAt": "2026-11-19T03:35:03.807Z"
+  },
+  {
+    "id": "cand_1795059303752_uvc7um",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Manchester City vs Fulham",
+    "matchTime": null,
+    "playerOrTeam": "Harrison Reed",
+    "isTeamProp": false,
+    "team": "Manchester City",
+    "opponent": "Fulham",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2,
+    "bookmaker": "Sky Bet",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "40.4%",
+      "averageOdds": 1.425
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "harrison-reed.1w0v3tq",
+      "playerName": "Harrison Reed",
+      "homeTeam": "Manchester City",
+      "awayTeam": "Fulham",
+      "market": "Tackles",
+      "marketKey": "tackles",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "Sky Bet",
+      "bestOdds": 2,
+      "averageOdds": 1.425,
+      "edge": 0.404,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.25
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.2
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.25
+        },
+        {
+          "bookmaker": "Sky Bet",
+          "odd": 2
+        }
+      ],
+      "impliedChance": 50
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (40.4%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.813Z",
+    "createdAt": "2026-11-19T03:35:03.813Z"
+  },
+  {
+    "id": "cand_1795059303752_jj0fua",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Juventus vs Venezia",
+    "matchTime": null,
+    "playerOrTeam": "Juan Jesus",
+    "isTeamProp": false,
+    "team": "Juventus",
+    "opponent": "Venezia",
+    "market": "Faltas ganadas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.1,
+    "bookmaker": "Betfred",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "40.4%",
+      "averageOdds": 1.5
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "juan-jesus.0bag61r",
+      "playerName": "Juan Jesus",
+      "homeTeam": "Juventus",
+      "awayTeam": "Venezia",
+      "market": "Fouls Won",
+      "marketKey": "foulsWon",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Betfred",
+      "bestOdds": 2.1,
+      "averageOdds": 1.5,
+      "edge": 0.404,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.285
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 2.1
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.3
+        }
+      ],
+      "impliedChance": 47.6
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (40.4%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.819Z",
+    "createdAt": "2026-11-19T03:35:03.819Z"
+  },
+  {
+    "id": "cand_1795059303752_b1gtew",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "FC Schalke 04 vs VfB Stuttgart",
+    "matchTime": null,
+    "playerOrTeam": "Chris Führich",
+    "isTeamProp": false,
+    "team": "FC Schalke 04",
+    "opponent": "VfB Stuttgart",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.25,
+    "bookmaker": "Bet365",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "39.9%",
+      "averageOdds": 1.61
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "chris-fuhrich.0mlf85z",
+      "playerName": "Chris Führich",
+      "homeTeam": "FC Schalke 04",
+      "awayTeam": "VfB Stuttgart",
+      "market": "Fouls Committed",
+      "marketKey": "fouls",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Bet365",
+      "bestOdds": 2.25,
+      "averageOdds": 1.61,
+      "edge": 0.399,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.285
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.25
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.29
+        }
+      ],
+      "impliedChance": 44.4
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (39.9%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.826Z",
+    "createdAt": "2026-11-19T03:35:03.826Z"
+  },
+  {
+    "id": "cand_1795059303752_4h5bix",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Napoli vs Torino",
+    "matchTime": null,
+    "playerOrTeam": "Luca Marianucci",
+    "isTeamProp": false,
+    "team": "Napoli",
+    "opponent": "Torino",
+    "market": "Remates totales",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.3,
+    "bookmaker": "Betfred",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "38.8%",
+      "averageOdds": 1.66
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "luca-marianucci.14re157",
+      "playerName": "Luca Marianucci",
+      "homeTeam": "Napoli",
+      "awayTeam": "Torino",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Betfred",
+      "bestOdds": 2.3,
+      "averageOdds": 1.66,
+      "edge": 0.388,
+      "bookmakers": [
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 2.3
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.55
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.38
+        }
+      ],
+      "impliedChance": 43.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (38.8%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.832Z",
+    "createdAt": "2026-11-19T03:35:03.832Z"
+  },
+  {
+    "id": "cand_1795059303752_g7w4x3",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Coventry City vs Crystal Palace",
+    "matchTime": null,
+    "playerOrTeam": "Ethan Pinnock",
+    "isTeamProp": false,
+    "team": "Coventry City",
+    "opponent": "Crystal Palace",
+    "market": "Faltas cometidas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.375,
+    "bookmaker": "Bet365",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "38.2%",
+      "averageOdds": 1.72
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "ethan-pinnock.0k6ysnc",
+      "playerName": "Ethan Pinnock",
+      "homeTeam": "Coventry City",
+      "awayTeam": "Crystal Palace",
+      "market": "Fouls Committed",
+      "marketKey": "fouls",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Bet365",
+      "bestOdds": 2.375,
+      "averageOdds": 1.72,
+      "edge": 0.382,
+      "bookmakers": [
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.375
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.36
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.42
+        }
+      ],
+      "impliedChance": 42
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (38.2%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.839Z",
+    "createdAt": "2026-11-19T03:35:03.839Z"
+  },
+  {
+    "id": "cand_1795059303752_j11d4g",
+    "discoveredAt": "2026-11-19T03:35:03.752Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Lazio vs Lecce",
+    "matchTime": null,
+    "playerOrTeam": "Oliver Provstgaard",
+    "isTeamProp": false,
+    "team": "Lazio",
+    "opponent": "Lecce",
+    "market": "Remates totales",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.375,
+    "bookmaker": "Bet365",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "37.9%",
+      "averageOdds": 1.72
+    },
+    "lineupStatus": "UNKNOWN",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "oliver-provstgaard.10ye5hk",
+      "playerName": "Oliver Provstgaard",
+      "homeTeam": "Lazio",
+      "awayTeam": "Lecce",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Bet365",
+      "bestOdds": 2.375,
+      "averageOdds": 1.72,
+      "edge": 0.379,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.375
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.62
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.6
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.48
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.85
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.85
+        }
+      ],
+      "impliedChance": 42
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (37.9%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-19T03:35:03.845Z",
+    "createdAt": "2026-11-19T03:35:03.845Z"
   }
 ]
