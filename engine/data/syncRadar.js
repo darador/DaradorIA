@@ -275,6 +275,8 @@ class RadarSync {
       byMarket[k].win_rate = rate;
     }
 
+    historialData.history = history;
+    historialData.picks = history;
     historialData.updated_at = new Date().toISOString();
     historialData.summary = {
       total_bets: history.length,

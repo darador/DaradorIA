@@ -1,5 +1,32 @@
 {
-  "picks": [],
+  "picks": [
+    {
+      "id": "pick_test_settle_loss",
+      "date": "2026-11-18",
+      "match": "Liverpool vs Everton",
+      "player": "Darwin Núñez",
+      "market": "Remates al arco",
+      "line": "Más de 2.5",
+      "odds": 2.1,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "pick_test_settle_win",
+      "date": "2026-11-18",
+      "match": "Arsenal vs Chelsea",
+      "player": "Bukayo Saka",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.9,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.9
+    }
+  ],
   "summary": {
     "total_bets": 2,
     "settled_bets": 2,
@@ -20,5 +47,33 @@
       }
     }
   },
-  "updated_at": "2026-11-19T17:56:55.575Z"
+  "updated_at": "2026-11-19T18:53:23.304Z",
+  "history": [
+    {
+      "id": "pick_test_settle_loss",
+      "date": "2026-11-18",
+      "match": "Liverpool vs Everton",
+      "player": "Darwin Núñez",
+      "market": "Remates al arco",
+      "line": "Más de 2.5",
+      "odds": 2.1,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "pick_test_settle_win",
+      "date": "2026-11-18",
+      "match": "Arsenal vs Chelsea",
+      "player": "Bukayo Saka",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.9,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.9
+    }
+  ]
 }
