@@ -1,14 +1,14 @@
 {
   "name": "darador-ia-engine",
   "version": "1.0.0",
-  "description": "Autonomous Sports Research Engine - DaradorIA",
+  "description": "Autonomous Sports Research Engine - DaradorBET",
   "main": "engine/index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "node -e \"console.log('Build OK: DaradorIA Live Research Room ready.')\"",
+    "build": "node -e \"console.log('Build OK: DaradorBET Live Research Room ready.')\"",
     "test:data-engine": "node engine/tests/test_data_engine.js"
   },
   "keywords": ["sports-betting", "mcp", "statshub", "predictive-analytics"],
-  "author": "DaradorIA",
+  "author": "DaradorBET",
   "license": "MIT"
 }
