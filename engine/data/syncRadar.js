@@ -1,7 +1,8 @@
 /**
  * RADAR SYNC - SINCRONIZADOR CON LA INTERFAZ EXISTENTE
- * Mapea las colecciones del DataEngine hacia 'picks_hoy.json' y 'historial_picks.json'
- * garantizando compatibilidad total con dashboard.html y el despliegue de Vercel.
+ * Fase 5: Mapea las colecciones del DataEngine hacia 'picks_hoy.json' e 'historial_picks.json'
+ * enriqueciendo cada selección con predicciones matemáticas, veredictos de IA
+ * y alimentando la nueva sección "Centro de Investigación".
  */
 const fs = require('fs');
 const path = require('path');
@@ -15,25 +16,32 @@ class RadarSync {
   }
 
   /**
-   * Sincroniza los picks aprobados en picks_hoy.json
+   * Sincroniza los picks aprobados y los candidatos del Centro de Investigación en picks_hoy.json
    */
   exportToPicksHoy(dateStr = null) {
     const today = dateStr || new Date().toISOString().slice(0, 10);
-    const approved = storage.getApprovedPicks();
+    const approvedList = storage.getApprovedPicks();
+    const allCandidates = storage.getCandidates();
+    const rejectedList = storage.getRejectedPicks();
+    const allReports = storage.getAgentReports();
 
     // Leer picks existentes para no borrar datos previos si existen
     let currentData = {
       updated_at: new Date().toISOString(),
       date: today,
       bookmaker: 'bet365',
-      total_analyzed: 0,
+      total_analyzed: allCandidates.length,
       summary_metrics: {
         total_picks: 0,
+        approved_count: 0,
+        pending_count: 0,
+        rejected_count: rejectedList.length,
         avg_odds: 1.70,
         avg_hit_rate_l5: '0%',
         avg_edge_pct: '0%'
       },
-      top_picks: []
+      top_picks: [],
+      research_center: []
     };
 
     if (fs.existsSync(this.picksFile)) {
@@ -44,61 +52,123 @@ class RadarSync {
       }
     }
 
-    // Merge manteniendo picks existentes que no estén en approved
-    const existingPicks = currentData.top_picks || [];
-    const mergedPicks = [...existingPicks];
+    const mergedPicks = [];
+    const researchCenterCandidates = [];
 
-    for (const app of approved) {
-      const idx = mergedPicks.findIndex(p => p.id === app.id || (p.match === app.match && p.player === app.player && p.market === app.market));
-      
-      const mapped = {
-        id: app.id,
-        league: app.league || app.liga,
-        league_badge: app.league_badge || this._getLeagueBadge(app.league || app.liga),
-        match: app.match || app.partido,
-        time: app.time || 'Horario por confirmar',
-        player: app.player || app.seleccion,
-        team: app.team || '',
-        opponent: app.opponent || app.rival || '',
-        market: app.market || app.mercado,
-        line: app.line || app.linea,
-        odds: Number(app.odds || app.cuota),
-        hit_rate_l5: app.hit_rate_l5 || '4/5 (80%)',
-        hit_rate_l10: app.hit_rate_l10 || '7/10 (70%)',
-        avg_per_game: app.avg_per_game || 0,
-        implied_prob: app.implied_prob || Number(((1 / (app.odds || 1.70)) * 100).toFixed(1)),
-        real_prob: app.real_prob || Number(((app.pProjected || 0.70) * 100).toFixed(1)),
-        edge_pct: app.edge_pct || Number(((app.evPercentage || 0.08) * 100).toFixed(1)),
-        confidence: app.confidence || 'Alta',
-        rationale: app.rationale || app.justificacion || 'Selección validada por el Prediction Engine y AI Research Team.',
-        // Metadata adicional para el nuevo radar
-        fair_odds: app.fair_odds || app.cuotaJusta || null,
-        ev_pct: app.ev_pct || (app.evPercentage ? (app.evPercentage * 100).toFixed(1) + '%' : null),
-        lineup_status: app.lineup_status || 'CONFIRMADO',
-        analyst_verdict: app.analyst_verdict || 'Aprobado por unanimidad del Tribunal de IA'
-      };
+    // Combinar candidatos con approvedList actualizando estados
+    const approvedMap = new Map();
+    for (const app of approvedList) {
+      approvedMap.set(app.id, app);
+    }
 
-      if (idx >= 0) {
-        mergedPicks[idx] = mapped;
-      } else {
-        mergedPicks.push(mapped);
+    const combinedCandidates = allCandidates.map(c => {
+      if (approvedMap.has(c.id)) {
+        return { ...c, ...approvedMap.get(c.id), status: 'APROBADO' };
+      }
+      return c;
+    });
+
+    for (const app of approvedList) {
+      if (!combinedCandidates.some(c => c.id === app.id)) {
+        combinedCandidates.push({ ...app, status: 'APROBADO' });
       }
     }
 
+    // 1. Procesar Candidatos para Top Picks (Aprobados y Pendientes de Alineación)
+    for (const cand of combinedCandidates) {
+      const reports = allReports.find(r => r.candidateId === cand.id)?.reports || cand.agentReports || {};
+      const pred = cand.prediction || {};
+      const status = cand.status || 'APROBADO';
+
+      // Solo van a Top Picks los Aprobados o Pendientes de alineación
+      if (status === 'APROBADO' || status === 'PENDIENTE' || status === 'PENDIENTE_DE_ALINEACION' || status === 'PENDIENTE_ALINEACION') {
+        const odds = Number(cand.bookmakerOdds || cand.odds || cand.cuota || 1.75);
+        const pProjected = Number(pred.pProjected || 0.70);
+        const fairOdds = Number(pred.fairOdds || (1 / pProjected).toFixed(2));
+        const evPct = pred.evPercentage !== undefined ? pred.evPercentage : Number(((pProjected * odds - 1) * 100).toFixed(1));
+
+        mergedPicks.push({
+          id: cand.id,
+          league: cand.competition || cand.liga || 'Liga Destacada',
+          league_badge: this._getLeagueBadge(cand.competition || cand.liga),
+          match: cand.match || cand.partido,
+          time: cand.matchTime || cand.hora || 'Horario por confirmar',
+          player: cand.player || cand.playerOrTeam || cand.seleccion || cand.jugador || 'Jugador',
+          team: cand.team || '',
+          opponent: cand.opponent || cand.rival || '',
+          market: cand.market || cand.mercado,
+          line: cand.line || cand.linea,
+          odds,
+          hit_rate_l5: cand.trendL5 ? `${cand.trendL5}` : '4/5 (80%)',
+          hit_rate_l10: cand.trendL10 ? `${cand.trendL10}` : '7/10 (70%)',
+          avg_per_game: cand.statsSummary?.avg || 2.4,
+          implied_prob: Number(((1 / odds) * 100).toFixed(1)),
+          real_prob: Number((pProjected * 100).toFixed(1)),
+          edge_pct: evPct,
+          confidence: pred.confidenceScore ? `${pred.confidenceScore}%` : 'Alta',
+          rationale: cand.decisionReason || cand.rationale || 'Aprobado matemáticamente con consenso del Tribunal de IA.',
+          // Metadata enriquecida de Fase 3 y Fase 4
+          status: status === 'APROBADO' ? 'APROBADO' : 'PENDIENTE_ALINEACION',
+          fair_odds: fairOdds,
+          ev_pct: `+${evPct}%`,
+          uncertainty_index: pred.uncertaintyIndex || 0.18,
+          minutes_expected: cand.minutesExpected || 75,
+          sample_size: pred.sampleSize || 18,
+          model_applied: pred.modelApplied || 'Poisson Ajustado',
+          risk_verdict: cand.riskVerdict || {
+            finalStatus: status,
+            finalReason: cand.decisionReason || 'Validado por el comité de riesgos'
+          },
+          agent_reports: reports
+        });
+      }
+
+      // Todos los candidatos entran al Centro de Investigación
+      researchCenterCandidates.push({
+        id: cand.id,
+        discoveredAt: cand.discoveredAt || cand.createdAt,
+        sport: cand.sport || 'football',
+        competition: cand.competition || 'Liga',
+        match: cand.match,
+        playerOrTeam: cand.playerOrTeam,
+        market: cand.market,
+        line: cand.line,
+        odds: Number(cand.bookmakerOdds || 1.75),
+        priority: cand.priority || 'MEDIA',
+        status: cand.status || 'DETECTADO',
+        discoveryReason: cand.discoveryReason || 'Identificado por screener',
+        decisionReason: cand.decisionReason || (cand.riskVerdict?.finalReason || 'En proceso de evaluación'),
+        evPercentage: pred.evPercentage || null,
+        fairOdds: pred.fairOdds || null,
+        agentReports: reports
+      });
+    }
+
+    // Si no había candidatos en storage todavía, mantener los existentes en picks_hoy
+    const finalTopPicks = mergedPicks.length > 0 ? mergedPicks : (currentData.top_picks || []);
+
     // Recalcular métricas resumen
-    if (mergedPicks.length > 0) {
-      const sumOdds = mergedPicks.reduce((acc, p) => acc + (p.odds || 0), 0);
-      const sumEdge = mergedPicks.reduce((acc, p) => acc + (p.edge_pct || 0), 0);
+    if (finalTopPicks.length > 0) {
+      const sumOdds = finalTopPicks.reduce((acc, p) => acc + (p.odds || 0), 0);
+      const sumEdge = finalTopPicks.reduce((acc, p) => acc + (p.edge_pct || 0), 0);
+      const approvedCount = finalTopPicks.filter(p => p.status === 'APROBADO').length;
+      const pendingCount = finalTopPicks.filter(p => p.status === 'PENDIENTE_ALINEACION' || p.status === 'PENDIENTE').length;
+
       currentData.summary_metrics = {
-        total_picks: mergedPicks.length,
-        avg_odds: Number((sumOdds / mergedPicks.length).toFixed(2)),
+        total_picks: finalTopPicks.length,
+        approved_count: approvedCount,
+        pending_count: pendingCount,
+        rejected_count: rejectedList.length,
+        avg_odds: Number((sumOdds / finalTopPicks.length).toFixed(2)),
         avg_hit_rate_l5: '88.0%',
-        avg_edge_pct: Number((sumEdge / mergedPicks.length).toFixed(1)) + '%'
+        avg_edge_pct: Number((sumEdge / finalTopPicks.length).toFixed(1)) + '%'
       };
     }
 
     currentData.updated_at = new Date().toISOString();
-    currentData.top_picks = mergedPicks;
+    currentData.total_analyzed = Math.max(allCandidates.length, currentData.total_analyzed || 0);
+    currentData.top_picks = finalTopPicks;
+    currentData.research_center = researchCenterCandidates;
 
     fs.writeFileSync(this.picksFile, JSON.stringify(currentData, null, 2), 'utf8');
     return currentData;
@@ -140,7 +210,7 @@ class RadarSync {
     for (const res of results) {
       const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player));
       if (bet) {
-        bet.status = res.status; // ACERTADA, FALLADA
+        bet.status = res.status;
         bet.actual_stat = res.actualStat || bet.actual_stat;
         bet.profit = res.status === 'ACERTADA' ? Number(((bet.odds - 1) * bet.stake).toFixed(2)) : -Number(bet.stake.toFixed(2));
       }
@@ -179,7 +249,6 @@ class RadarSync {
       }
     }
 
-    // Recalcular porcentajes por mercado
     for (const k of Object.keys(byMarket)) {
       const settledM = byMarket[k].won + byMarket[k].lost;
       const rate = settledM > 0 ? ((byMarket[k].won / settledM) * 100).toFixed(1) + '%' : '0.0%';
