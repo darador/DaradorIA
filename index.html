@@ -107,14 +107,21 @@
     .brand-logo-ball {
       width: 44px;
       height: 44px;
-      background: radial-gradient(circle at 30% 30%, #a855f7, #6d28d9 60%, #1e1b4b 100%);
-      border: 2px solid var(--accent-cyan);
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cbd5e1 55%, #64748b 100%);
+      border: 2px solid #ffffff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 10px rgba(0, 242, 254, 0.4);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 4px 12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .classic-ball-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .brand-text h1 {
@@ -354,6 +361,56 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
+    }
+
+    .agent-card-role {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-xs);
+      display: inline-block;
+      margin-top: -0.1rem;
+      margin-bottom: 0.15rem;
+      white-space: nowrap;
+    }
+
+    .agent-card-role.role-sofia {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .agent-card-role.role-valentina {
+      color: #c084fc;
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.35);
+    }
+
+    .agent-card-role.role-camila {
+      color: #fb923c;
+      background: rgba(251, 146, 60, 0.12);
+      border: 1px solid rgba(251, 146, 60, 0.35);
+    }
+
+    .agent-card-role.role-renata {
+      color: #60a5fa;
+      background: rgba(96, 165, 250, 0.12);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+    }
+
+    .agent-card-role.role-lucia {
+      color: #f87171;
+      background: rgba(248, 113, 113, 0.12);
+      border: 1px solid rgba(248, 113, 113, 0.35);
+    }
+
+    .agent-card-role.role-elena {
+      color: #facc15;
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.45);
     }
 
     .agent-status-pill {
@@ -1173,10 +1230,51 @@
   <header>
     <div class="container header-content">
       <div class="brand-title">
-        <div class="brand-logo-ball">⚽</div>
+        <div class="brand-logo-ball" title="DaradorBET - Inteligencia Deportiva">
+          <!-- Classic Black & White Soccer Ball SVG -->
+          <svg viewBox="0 0 100 100" class="classic-ball-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="classicBallGrad" cx="35%" cy="30%" r="65%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="65%" stop-color="#e2e8f0"/>
+                <stop offset="100%" stop-color="#94a3b8"/>
+              </radialGradient>
+            </defs>
+            <!-- White base leather sphere -->
+            <circle cx="50" cy="50" r="46" fill="url(#classicBallGrad)" stroke="#0f172a" stroke-width="2.5"/>
+            <!-- Center black pentagon -->
+            <polygon points="50,33 63,42 58,58 42,58 37,42" fill="#0f172a" stroke="#0f172a" stroke-linejoin="round" stroke-width="1.2"/>
+            
+            <!-- Seam lines & outer black pentagons -->
+            <line x1="50" y1="33" x2="50" y2="17" stroke="#1e293b" stroke-width="2"/>
+            <polygon points="42,5 58,5 50,17" fill="#0f172a" stroke="#0f172a" stroke-linejoin="round" stroke-width="1"/>
+
+            <line x1="63" y1="42" x2="77" y2="35" stroke="#1e293b" stroke-width="2"/>
+            <polygon points="77,35 89,27 95,40 83,47" fill="#0f172a" stroke="#0f172a" stroke-linejoin="round" stroke-width="1"/>
+
+            <line x1="58" y1="58" x2="71" y2="69" stroke="#1e293b" stroke-width="2"/>
+            <polygon points="71,69 77,83 65,92 58,80" fill="#0f172a" stroke="#0f172a" stroke-linejoin="round" stroke-width="1"/>
+
+            <line x1="42" y1="58" x2="29" y2="69" stroke="#1e293b" stroke-width="2"/>
+            <polygon points="29,69 23,83 35,92 42,80" fill="#0f172a" stroke="#0f172a" stroke-linejoin="round" stroke-width="1"/>
+
+            <line x1="37" y1="42" x2="23" y2="35" stroke="#1e293b" stroke-width="2"/>
+            <polygon points="23,35 11,27 5,40 17,47" fill="#0f172a" stroke="#0f172a" stroke-linejoin="round" stroke-width="1"/>
+
+            <!-- Connective seam lines -->
+            <line x1="50" y1="17" x2="77" y2="35" stroke="#1e293b" stroke-width="1.8"/>
+            <line x1="83" y1="47" x2="71" y2="69" stroke="#1e293b" stroke-width="1.8"/>
+            <line x1="58" y1="80" x2="42" y2="80" stroke="#1e293b" stroke-width="1.8"/>
+            <line x1="29" y1="69" x2="17" y2="47" stroke="#1e293b" stroke-width="1.8"/>
+            <line x1="23" y1="35" x2="50" y2="17" stroke="#1e293b" stroke-width="1.8"/>
+
+            <!-- Subtle 3D gloss highlight -->
+            <ellipse cx="38" cy="27" rx="14" ry="7" fill="#ffffff" opacity="0.45" transform="rotate(-30 38 27)"/>
+          </svg>
+        </div>
         <div class="brand-text">
           <h1>DaradorBET</h1>
-          <p id="headerSubtitle">Autonomous Sports Research Engine</p>
+          <p id="headerSubtitle">Motor de Análisis e Inteligencia Deportiva</p>
         </div>
       </div>
 
@@ -1205,9 +1303,8 @@
 
       <!-- Right Badges -->
       <div class="header-badges">
-        <span class="pill-badge live" id="statusBadge">StatsHub • Conectado</span>
         <span class="pill-badge" id="bookieBadge">bet365</span>
-        <div class="user-btn-avatar" title="Panel de Usuario" onclick="refreshAllData()">🔄</div>
+        <div class="user-btn-avatar" title="Actualizar datos" onclick="refreshAllData()">🔄</div>
       </div>
     </div>
   </header>
@@ -1230,6 +1327,7 @@
             </div>
             <div class="agent-card-body">
               <span class="agent-card-name">SOFÍA</span>
+              <span class="agent-card-role role-sofia">ANALISTA DE JUGADORES</span>
               <span class="agent-status-pill analyzing" id="cardStatus_sofia">🟢 ANALIZANDO</span>
               <div class="agent-card-specialty">📊 Rendimiento individual y minutos proyectados</div>
             </div>
@@ -1242,6 +1340,7 @@
             </div>
             <div class="agent-card-body">
               <span class="agent-card-name">VALENTINA</span>
+              <span class="agent-card-role role-valentina">ANALISTA DE EQUIPOS</span>
               <span class="agent-status-pill analyzing" id="cardStatus_valentina">🟢 ANALIZANDO</span>
               <div class="agent-card-specialty">👥 Estadísticas del equipo y tendencias colectivas</div>
             </div>
@@ -1254,6 +1353,7 @@
             </div>
             <div class="agent-card-body">
               <span class="agent-card-name">CAMILA</span>
+              <span class="agent-card-role role-camila">ANALISTA DE CONTEXTO</span>
               <span class="agent-status-pill waiting" id="cardStatus_camila">⏸️ EN ESPERA</span>
               <div class="agent-card-specialty">🥅 Contexto del partido, rotaciones y calendario</div>
             </div>
@@ -1266,6 +1366,7 @@
             </div>
             <div class="agent-card-body">
               <span class="agent-card-name">RENATA</span>
+              <span class="agent-card-role role-renata">ANALISTA DE CUOTAS Y EV</span>
               <span class="agent-status-pill analyzing" id="cardStatus_renata">🟢 ANALIZANDO</span>
               <div class="agent-card-specialty">🪙 Cuotas, mercado y valor esperado (EV)</div>
             </div>
@@ -1278,6 +1379,7 @@
             </div>
             <div class="agent-card-body">
               <span class="agent-card-name">LUCÍA</span>
+              <span class="agent-card-role role-lucia">INTELIGENCIA Y NOTICIAS</span>
               <span class="agent-status-pill completed" id="cardStatus_lucia">✔️ COMPLETADO</span>
               <div class="agent-card-specialty">📰 Noticias, lesiones y alineaciones</div>
             </div>
@@ -1290,7 +1392,7 @@
             </div>
             <div class="agent-card-body">
               <div class="agent-card-name">👑 ELENA</div>
-              <div style="font-size: 0.68rem; font-weight: 800; color: #facc15; letter-spacing: 0.08em; text-transform: uppercase;">RISK MANAGER</div>
+              <span class="agent-card-role role-elena">GESTORA DE RIESGO</span>
               <span class="agent-status-pill supervision" id="cardStatus_elena">🛡️ SUPERVISIÓN</span>
               <div class="agent-card-specialty">🛡️ Evaluación de riesgo y decisión final</div>
             </div>
@@ -1780,25 +1882,25 @@
     const agentProfiles = {
       sofia: {
         name: 'SOFÍA',
-        role: 'Player Analyst • Rendimiento Individual',
+        role: 'Analista de Jugadores • Rendimiento Individual',
         img: 'assets/agents/sofia.jpg',
         desc: 'Especialista en consistencia estadística individual. Descompone los minutos esperados sobre el campo, la tasa de remates y faltas por 90 minutos y el volumen de titularidades sin riesgo de rotación temprana.',
         status: 'ANALIZANDO',
         statusClass: 'analyzing',
-        task: 'Analizó consistencia y minutos proyectados de Chris Führich (80 min proyectados, titular).'
+        task: 'Analizó consistencia y minutos proyectados de jugadores titulares en la jornada.'
       },
       valentina: {
         name: 'VALENTINA',
-        role: 'Team Analyst • Dinámicas Colectivas',
+        role: 'Analista de Equipos • Dinámicas Colectivas',
         img: 'assets/agents/valentina.jpg',
         desc: 'Experta en métricas de equipo y sistemas tácticos. Analiza la tasa de concesión del rival en el mercado específico, el ritmo ofensivo y la compatibilidad de estilos entre locales y visitantes.',
         status: 'ANALIZANDO',
         statusClass: 'analyzing',
-        task: 'Detectó concesión defensiva elevada en Schalke 04 (+20% faltas cometidas).'
+        task: 'Supervisando concesión defensiva y sistemas tácticos 4-3-3 de equipos en competencia.'
       },
       camila: {
         name: 'CAMILA',
-        role: 'Match Context Analyst • Árbitro & Clima',
+        role: 'Analista de Contexto • Árbitro y Condiciones',
         img: 'assets/agents/camila.jpg',
         desc: 'Supervisa variables externas que alteran las probabilidades: severidad del árbitro designado (faltas y amonestaciones), factores climáticos, estado de la cancha y motivación clasificatoria.',
         status: 'EN ESPERA',
@@ -1807,30 +1909,30 @@
       },
       renata: {
         name: 'RENATA',
-        role: 'Odds Analyst • Cuotas Justas & +EV',
+        role: 'Analista de Cuotas y EV • Modelado Matemático',
         img: 'assets/agents/renata.jpg',
-        desc: 'Ingeniería matemática de apuestas. Compara la probabilidad real calculada por Poisson con la cuota ofrecida por bet365 para asegurar que solo pasen selecciones con valor esperado positivo cuantificable (+EV ≥ +7.0%).',
+        desc: 'Cálculo e ingeniería matemática de probabilidades. Aplica distribuciones Poisson ajustadas, descompone cuotas justas y audita el valor esperado positivo (+EV ≥ +7.0%) frente a las líneas del mercado.',
         status: 'ANALIZANDO',
         statusClass: 'analyzing',
-        task: 'Detectó +112.3% EV en el mercado frente a cuota 2.20 de bet365.'
+        task: 'Calculó distribuciones Poisson y detectó valor esperado positivo (+EV) en las líneas del día.'
       },
       lucia: {
         name: 'LUCÍA',
-        role: 'Match Intelligence • Noticias & Alineaciones',
+        role: 'Inteligencia y Noticias • Alineaciones Oficiales',
         img: 'assets/agents/lucia.jpg',
         desc: 'Rastreo periodístico en tiempo real. Monitorea confirmaciones de planillas oficiales (T-60 minutos), reportes médicos de última hora y duelos tácticos directos en zona de influencia.',
         status: 'COMPLETADO',
         statusClass: 'completed',
-        task: 'Verificó alineaciones oficiales confirmadas en Bundesliga y Serie A.'
+        task: 'Verificó alineaciones oficiales confirmadas y reportes médicos de última hora.'
       },
       elena: {
         name: 'ELENA',
-        role: 'Risk Manager • Directora de Riesgo & Jefa de Comité',
+        role: '👑 Gestora de Riesgo • Decisión Final y Veto',
         img: 'assets/agents/elena.jpg',
         desc: 'Máxima autoridad del comité. Elena aplica los filtros de gestión de capital, valida que el EV supere el umbral mínimo del +7.0% y tiene potestad de veto inapelable ante riesgos no controlados.',
         status: 'SUPERVISIÓN',
         statusClass: 'supervision',
-        task: 'Supervisión activa: 6 selecciones aprobadas con EV verificado y 16 pendientes de T-60.'
+        task: 'Supervisión activa: validando selecciones aprobadas con EV verificado y monitoreo T-60.'
       }
     };
 
