@@ -8,10 +8,8 @@
     "lost_bets": 0,
     "pending_bets": 0,
     "win_rate_pct": 0,
-    "total_staked_units": 0,
-    "net_profit_units": 0,
     "roi_pct": 0,
+    "net_profit_units": 0,
     "by_market": {}
-  },
-  "updated_at": "2026-11-19T19:22:16.982Z"
+  }
 }
