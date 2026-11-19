@@ -2152,7 +2152,7 @@
         <table class="research-table">
           <thead>
             <tr>
-              <th>ID Candidato</th>
+              <th>Candidato & ID</th>
               <th>Fecha / Hora</th>
               <th>Competición / Deporte</th>
               <th>Cuota bet365</th>
@@ -3071,15 +3071,34 @@
 
         const dateStr = c.discoveredAt ? c.discoveredAt.replace('T', ' ').slice(0, 16) : 'Hoy';
 
+        const matchingTopPick = (globalPicksData?.top_picks || []).find(p => p.id === c.id);
+        const playerOrTeam = c.playerOrTeam || matchingTopPick?.player || (c.discoveryReason && c.discoveryReason.includes(':') ? c.discoveryReason.split(':')[0] : 'Candidato');
+        const shortId = c.id ? '#' + c.id.split('_').pop() : '#ID';
+        const matchInfo = c.match || matchingTopPick?.match || '';
+        const marketInfo = c.market ? (c.market + (c.line ? ': ' + c.line : '')) : (matchingTopPick ? (matchingTopPick.market + ': ' + matchingTopPick.line) : '');
+
         return `
           <tr>
-            <td style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">${c.id || 'N/A'}</td>
-            <td style="color: var(--text-muted);">${dateStr}</td>
+            <td title="${c.id || ''}">
+              <div style="display: flex; flex-direction: column; gap: 0.15rem;">
+                <div style="font-weight: 800; color: #ffffff; font-size: 0.88rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <span>${playerOrTeam}</span>
+                  <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.25); padding: 0.08rem 0.4rem; border-radius: var(--radius-xs);">${shortId}</span>
+                </div>
+                ${(matchInfo || marketInfo) ? `
+                  <div style="font-size: 0.74rem; color: var(--text-dim); display: flex; gap: 0.35rem; align-items: center; margin-top: 0.1rem;">
+                    ${matchInfo ? `<span>⚽ ${matchInfo}</span>` : ''}
+                    ${marketInfo ? `<span style="color: #cbd5e1;">• ${marketInfo}</span>` : ''}
+                  </div>
+                ` : ''}
+              </div>
+            </td>
+            <td style="color: var(--text-muted); font-size: 0.8rem;">${dateStr}</td>
             <td style="font-weight: 600;">${c.competition || 'Fútbol'}</td>
-            <td style="font-family: var(--font-mono); font-weight: 700;">${c.odds ? c.odds.toFixed(2) : '-'}</td>
+            <td style="font-family: var(--font-mono); font-weight: 700; color: #facc15;">${c.odds ? c.odds.toFixed(2) : '-'}</td>
             <td><span class="status-pill ${prioClass}">${c.priority || 'MEDIA'}</span></td>
             <td>${statusBadge}</td>
-            <td style="color: var(--text-muted); font-size: 0.8rem;">${c.decisionReason || c.discoveryReason || 'Candidato en proceso'}</td>
+            <td style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.4;">${c.decisionReason || c.discoveryReason || 'Candidato en proceso'}</td>
           </tr>
         `;
       }).join('');
