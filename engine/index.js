@@ -9,6 +9,7 @@ const cache = require('./mcp/cache');
 const storage = require('./data/storage');
 const radarSync = require('./data/syncRadar');
 const supabaseClient = require('./data/supabaseClient');
+const discoveryEngine = require('./discovery/discoveryEngine');
 
 module.exports = {
   config,
@@ -17,5 +18,6 @@ module.exports = {
   cache,
   storage,
   radarSync,
-  supabaseClient
+  supabaseClient,
+  discoveryEngine
 };

@@ -57,17 +57,19 @@ class StatsHubMCPClient {
 
     this.initPromise = new Promise((resolve, reject) => {
       try {
-        let cmd = this.mcpBinary;
-        let args = [config.mcp.serverUrl];
+        const isWin = process.platform === 'win32';
+        let spawnCmd = this.mcpBinary;
+        let spawnArgs = [config.mcp.serverUrl];
 
-        if (cmd.endsWith('npx') || cmd.endsWith('npx.cmd')) {
-          args = ['--prefer-offline', '-y', 'mcp-remote', config.mcp.serverUrl];
+        if (isWin && (spawnCmd.endsWith('.cmd') || spawnCmd.endsWith('.bat') || spawnCmd.endsWith('npx'))) {
+          spawnArgs = ['/c', spawnCmd, config.mcp.serverUrl];
+          spawnCmd = process.env.ComSpec || 'cmd.exe';
         }
 
-        this.process = spawn(cmd, args, {
+        this.process = spawn(spawnCmd, spawnArgs, {
           stdio: ['pipe', 'pipe', 'pipe'],
           env: process.env,
-          shell: false
+          windowsHide: true
         });
 
         this.rl = readline.createInterface({
@@ -176,7 +178,7 @@ class StatsHubMCPClient {
    * Invoca una herramienta MCP con caché automático y control de cuotas
    */
   async callTool(toolName, args = {}, options = {}) {
-    const { bypassCache = false, entityId = null, timeoutMs = 25000 } = options;
+    const { bypassCache = false, entityId = null, timeoutMs = 4000 } = options;
 
     // 1. Revisar Caché
     if (!bypassCache) {
@@ -240,8 +242,8 @@ class StatsHubMCPClient {
 
       return { data: parsedData, source: 'live' };
     } catch (err) {
-      console.error(`[MCP] Error ejecutando ${toolName}:`, err.message);
-      throw err;
+      console.warn(`[MCP] Fallo en ${toolName}: ${err.message}`);
+      return { data: null, source: 'error', error: err.message };
     } finally {
       // 6. Liberar semáforo
       rateGovernor.release();
