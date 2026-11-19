@@ -209,10 +209,27 @@ class RadarSync {
     // Actualizar estados según resultados almacenados
     for (const res of results) {
       const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player));
+      const normalizedStatus = (res.status === 'GANADA' || res.status === 'ACERTADA') ? 'ACERTADA' : ((res.status === 'PERDIDA' || res.status === 'FALLADA') ? 'FALLADA' : res.status);
+      const profitVal = res.profitUnits !== undefined ? res.profitUnits : (normalizedStatus === 'ACERTADA' ? Number((((res.odds || 1.8) - 1) * 1.0).toFixed(2)) : -1.0);
+
       if (bet) {
-        bet.status = res.status;
+        bet.status = normalizedStatus;
         bet.actual_stat = res.actualStat || bet.actual_stat;
-        bet.profit = res.status === 'ACERTADA' ? Number(((bet.odds - 1) * bet.stake).toFixed(2)) : -Number(bet.stake.toFixed(2));
+        bet.profit = profitVal;
+      } else {
+        history.unshift({
+          id: res.pickId || `bet_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+          date: res.date || new Date().toISOString().slice(0, 10),
+          match: res.match || 'Partido',
+          player: res.player || 'Jugador',
+          market: res.market || 'Mercado',
+          line: res.line || 'Línea',
+          odds: res.odds || 1.80,
+          stake: res.stakedUnits || 1.0,
+          actual_stat: res.actualStat,
+          status: normalizedStatus,
+          profit: profitVal
+        });
       }
     }
 
@@ -232,17 +249,20 @@ class RadarSync {
       }
       byMarket[m].total++;
 
-      if (b.status === 'ACERTADA') {
+      const isWon = b.status === 'ACERTADA' || b.status === 'GANADA';
+      const isLost = b.status === 'FALLADA' || b.status === 'PERDIDA';
+
+      if (isWon) {
         settled++;
         won++;
-        staked += b.stake;
-        profit += b.profit;
+        staked += (b.stake || 1.0);
+        profit += (b.profit || 0);
         byMarket[m].won++;
-      } else if (b.status === 'FALLADA') {
+      } else if (isLost) {
         settled++;
         lost++;
-        staked += b.stake;
-        profit += b.profit;
+        staked += (b.stake || 1.0);
+        profit += (b.profit || 0);
         byMarket[m].lost++;
       } else {
         pending++;
