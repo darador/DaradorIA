@@ -2668,5 +2668,169 @@
     ],
     "updatedAt": "2026-11-19T02:12:15.793Z",
     "createdAt": "2026-11-19T02:12:15.793Z"
+  },
+  {
+    "id": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "isTeamProp": false,
+    "match": "Coritiba vs Santos",
+    "team": "Santos",
+    "opponent": "Coritiba",
+    "competition": "Brasileirão Série A",
+    "market": "Remates totales",
+    "line": "Más de 3.5",
+    "rawLine": 3.5,
+    "bookmakerOdds": 1.8,
+    "bookmaker": "bet365",
+    "researchData": {
+      "playerData": {
+        "playerName": "Gabriel Barbosa",
+        "starts": 18,
+        "avgMinutes": 79.5,
+        "projectedMinutes": 80,
+        "statPer90": 4.8,
+        "historicalValues": [
+          5,
+          4,
+          6,
+          3,
+          5,
+          4,
+          7,
+          3,
+          4,
+          5,
+          4,
+          6
+        ]
+      },
+      "opponentData": {
+        "opponentName": "Coritiba",
+        "concessionRatio": 1.18,
+        "isVulnerable": true,
+        "defensiveRank": "VULNERABLE (Percentil bajo)"
+      },
+      "lineupData": {
+        "status": "CONFIRMADA",
+        "certainty": 1
+      },
+      "refereeData": {
+        "refereeName": "Wilton Sampaio",
+        "avgFouls": 27.5,
+        "favorsOvers": true
+      }
+    },
+    "status": "APROBADO",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "candidateId": "cand_test_agent_01",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +30.5% (Cuota: 1.8), baja incertidumbre (18.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-19T02:24:44.084Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-19T02:24:44.084Z",
+            "eventDate": "2026-11-19T02:24:44.084Z",
+            "queryDate": "2026-11-19T02:24:44.084Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "updatedAt": "2026-11-19T02:24:44.086Z",
+    "createdAt": "2026-11-19T02:24:44.086Z"
   }
 ]

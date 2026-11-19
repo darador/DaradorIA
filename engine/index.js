@@ -13,6 +13,15 @@ const discoveryEngine = require('./discovery/discoveryEngine');
 const deepResearchEngine = require('./research/deepResearchEngine');
 const predictionEngine = require('./prediction/predictionEngine');
 
+// AI Research Team
+const playerAnalyst = require('./agents/playerAnalyst');
+const teamAnalyst = require('./agents/teamAnalyst');
+const matchContextAnalyst = require('./agents/matchContextAnalyst');
+const oddsAnalyst = require('./agents/oddsAnalyst');
+const matchIntelligenceAnalyst = require('./agents/matchIntelligenceAnalyst');
+const riskManager = require('./agents/riskManager');
+const orchestrator = require('./agents/orchestrator');
+
 module.exports = {
   config,
   mcpClient,
@@ -23,5 +32,14 @@ module.exports = {
   supabaseClient,
   discoveryEngine,
   deepResearchEngine,
-  predictionEngine
+  predictionEngine,
+  agents: {
+    playerAnalyst,
+    teamAnalyst,
+    matchContextAnalyst,
+    oddsAnalyst,
+    matchIntelligenceAnalyst,
+    riskManager,
+    orchestrator
+  }
 };

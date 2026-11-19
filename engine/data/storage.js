@@ -159,6 +159,24 @@ class StorageEngine {
     return this._readCollection('rejected_picks');
   }
 
+  // --- AGENT REPORTS ---
+  saveAgentReport(report) {
+    const reports = this._readCollection('agent_reports');
+    const entry = {
+      ...report,
+      id: report.id || `rep_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+      timestamp: new Date().toISOString()
+    };
+    reports.push(entry);
+    this._writeCollection('agent_reports', reports);
+    return entry;
+  }
+
+  getAgentReports(candidateId = null) {
+    const reports = this._readCollection('agent_reports');
+    return candidateId ? reports.filter(r => r.candidateId === candidateId) : reports;
+  }
+
   // --- RESULTS & SETTLEMENT ---
   saveResult(result) {
     const results = this._readCollection('pick_results');
