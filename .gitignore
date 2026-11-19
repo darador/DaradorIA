@@ -10,3 +10,6 @@ Thumbs.db
 
 # Resguardos locales
 backups/
+
+# Cache temporal MCP
+engine/storage_data/cache/
