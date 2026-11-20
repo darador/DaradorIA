@@ -208,14 +208,16 @@ class RadarSync {
 
     // Actualizar estados según resultados almacenados
     for (const res of results) {
-      const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player && b.market === res.market));
+      const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player && b.market === res.market && (!res.line || b.line === res.line)));
       const normalizedStatus = (res.status === 'GANADA' || res.status === 'ACERTADA') ? 'ACERTADA' : ((res.status === 'PERDIDA' || res.status === 'FALLADA') ? 'FALLADA' : res.status);
       const profitVal = res.profitUnits !== undefined ? res.profitUnits : (normalizedStatus === 'ACERTADA' ? Number((((res.odds || 1.8) - 1) * 1.0).toFixed(2)) : -1.0);
 
       if (bet) {
         bet.status = normalizedStatus;
-        bet.actual_stat = res.actualStat || bet.actual_stat;
+        bet.actual_stat = res.actualStat !== undefined ? res.actualStat : bet.actual_stat;
         bet.profit = profitVal;
+        if (res.odds) bet.odds = res.odds;
+        if (res.line) bet.line = res.line;
       } else {
         history.unshift({
           id: res.pickId || `bet_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
@@ -245,7 +247,7 @@ class RadarSync {
     for (const b of history) {
       const m = b.market || 'Otros';
       if (!byMarket[m]) {
-        byMarket[m] = { total: 0, won: 0, lost: 0, win_rate: '0.0%', profit: '0.00U' };
+        byMarket[m] = { total: 0, won: 0, lost: 0, win_rate: '0.0%', profit: '0.00U', net_profit: 0 };
       }
       byMarket[m].total++;
 
@@ -258,12 +260,14 @@ class RadarSync {
         staked += (b.stake || 1.0);
         profit += (b.profit || 0);
         byMarket[m].won++;
+        byMarket[m].net_profit = (byMarket[m].net_profit || 0) + (b.profit || 0);
       } else if (isLost) {
         settled++;
         lost++;
         staked += (b.stake || 1.0);
         profit += (b.profit || 0);
         byMarket[m].lost++;
+        byMarket[m].net_profit = (byMarket[m].net_profit || 0) + (b.profit || 0);
       } else {
         pending++;
       }
@@ -273,6 +277,9 @@ class RadarSync {
       const settledM = byMarket[k].won + byMarket[k].lost;
       const rate = settledM > 0 ? ((byMarket[k].won / settledM) * 100).toFixed(1) + '%' : '0.0%';
       byMarket[k].win_rate = rate;
+      const net = byMarket[k].net_profit || 0;
+      byMarket[k].profit = (net >= 0 ? '+' : '') + net.toFixed(2) + 'U';
+      delete byMarket[k].net_profit;
     }
 
     historialData.history = history;

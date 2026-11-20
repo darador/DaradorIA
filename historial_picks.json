@@ -1,6 +1,162 @@
 {
   "picks": [
     {
+      "id": "cand_1795110774831_6rsb2k",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 3.5",
+      "odds": 2,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_0x1sao",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Gustavo Marques Alves dos Santos",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
+      "id": "cand_1795110774831_6k1oex",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Bruno Gomes",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.83,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.83
+    },
+    {
+      "id": "cand_1795110774831_fa98d7",
+      "date": "2026-11-19",
+      "match": "USM Alger vs JS Kabylie",
+      "player": "USM Alger (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 0.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_3q13a7",
+      "date": "2026-11-19",
+      "match": "Progreso vs Montevideo City Torque",
+      "player": "Progreso (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.73,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "ACERTADA",
+      "profit": 0.73
+    },
+    {
+      "id": "cand_1795110774831_b9lame",
+      "date": "2026-11-19",
+      "match": "Cerro Largo vs Peñarol",
+      "player": "Cerro Largo (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 2.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 7,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
+      "id": "cand_1795110774831_hmkyeq",
+      "date": "2026-11-19",
+      "match": "Hillerød vs FC Fredericia",
+      "player": "Hillerød (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 0.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_1795110774831_uhvh6d",
+      "date": "2026-11-19",
+      "match": "AS Roma vs Benfica",
+      "player": "AS Roma (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 1.5",
+      "odds": 2.2,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 1.2
+    },
+    {
+      "id": "cand_1795110774831_56ms2b",
+      "date": "2026-11-19",
+      "match": "Arsenal vs Olympique Lyonnais",
+      "player": "Arsenal (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.76,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_9pw61t",
+      "date": "2026-11-19",
+      "match": "Arsenal vs Olympique Lyonnais",
+      "player": "Arsenal (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 4.5",
+      "odds": 2.07,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_05zbdy",
+      "date": "2026-11-19",
+      "match": "Olympique Lyonnais vs Arsenal",
+      "player": "Olympique Lyonnais (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 5.5",
+      "odds": 1.72,
+      "stake": 1,
+      "actual_stat": 8,
+      "status": "ACERTADA",
+      "profit": 0.72
+    },
+    {
+      "id": "cand_1795110774831_f1vj6i",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Remates de equipo",
+      "line": "Más de 11.5",
+      "odds": 2.08,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
       "id": "cand_1795110774831_xxa5io",
       "date": "2026-11-19",
       "match": "Internacional vs Vasco da Gama",
@@ -81,6 +237,162 @@
   ],
   "history": [
     {
+      "id": "cand_1795110774831_6rsb2k",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 3.5",
+      "odds": 2,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_0x1sao",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Gustavo Marques Alves dos Santos",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
+      "id": "cand_1795110774831_6k1oex",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Bruno Gomes",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.83,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.83
+    },
+    {
+      "id": "cand_1795110774831_fa98d7",
+      "date": "2026-11-19",
+      "match": "USM Alger vs JS Kabylie",
+      "player": "USM Alger (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 0.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_3q13a7",
+      "date": "2026-11-19",
+      "match": "Progreso vs Montevideo City Torque",
+      "player": "Progreso (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.73,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "ACERTADA",
+      "profit": 0.73
+    },
+    {
+      "id": "cand_1795110774831_b9lame",
+      "date": "2026-11-19",
+      "match": "Cerro Largo vs Peñarol",
+      "player": "Cerro Largo (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 2.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 7,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
+      "id": "cand_1795110774831_hmkyeq",
+      "date": "2026-11-19",
+      "match": "Hillerød vs FC Fredericia",
+      "player": "Hillerød (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 0.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_1795110774831_uhvh6d",
+      "date": "2026-11-19",
+      "match": "AS Roma vs Benfica",
+      "player": "AS Roma (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 1.5",
+      "odds": 2.2,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 1.2
+    },
+    {
+      "id": "cand_1795110774831_56ms2b",
+      "date": "2026-11-19",
+      "match": "Arsenal vs Olympique Lyonnais",
+      "player": "Arsenal (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.76,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_9pw61t",
+      "date": "2026-11-19",
+      "match": "Arsenal vs Olympique Lyonnais",
+      "player": "Arsenal (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 4.5",
+      "odds": 2.07,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_05zbdy",
+      "date": "2026-11-19",
+      "match": "Olympique Lyonnais vs Arsenal",
+      "player": "Olympique Lyonnais (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 5.5",
+      "odds": 1.72,
+      "stake": 1,
+      "actual_stat": 8,
+      "status": "ACERTADA",
+      "profit": 0.72
+    },
+    {
+      "id": "cand_1795110774831_f1vj6i",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Remates de equipo",
+      "line": "Más de 11.5",
+      "odds": 2.08,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
       "id": "cand_1795110774831_xxa5io",
       "date": "2026-11-19",
       "match": "Internacional vs Vasco da Gama",
@@ -160,59 +472,73 @@
     }
   ],
   "summary": {
-    "total_bets": 6,
-    "settled_bets": 6,
-    "won_bets": 4,
-    "lost_bets": 2,
+    "total_bets": 18,
+    "settled_bets": 18,
+    "won_bets": 11,
+    "lost_bets": 7,
     "pending_bets": 0,
-    "win_rate_pct": 66.7,
-    "total_staked_units": 6,
-    "net_profit_units": 0.74,
-    "roi_pct": 12.3,
+    "win_rate_pct": 61.1,
+    "total_staked_units": 18,
+    "net_profit_units": 1.49,
+    "roi_pct": 8.3,
     "by_market": {
-      "Remates de equipo": {
-        "total": 1,
-        "won": 0,
-        "lost": 1,
-        "win_rate": "0.0%",
-        "profit": "0.00U"
-      },
       "Remates al arco de equipo": {
-        "total": 1,
-        "won": 0,
+        "total": 4,
+        "won": 1,
+        "lost": 3,
+        "win_rate": "25.0%",
+        "profit": "-2.28U"
+      },
+      "Remates totales": {
+        "total": 2,
+        "won": 2,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+1.63U"
+      },
+      "Goles de equipo": {
+        "total": 3,
+        "won": 2,
         "lost": 1,
+        "win_rate": "66.7%",
+        "profit": "+0.87U"
+      },
+      "Córners de equipo": {
+        "total": 4,
+        "won": 3,
+        "lost": 1,
+        "win_rate": "75.0%",
+        "profit": "+1.27U"
+      },
+      "Remates de equipo": {
+        "total": 2,
+        "won": 0,
+        "lost": 2,
         "win_rate": "0.0%",
-        "profit": "0.00U"
+        "profit": "-2.00U"
       },
       "Faltas cometidas": {
         "total": 1,
         "won": 1,
         "lost": 0,
         "win_rate": "100.0%",
-        "profit": "0.00U"
+        "profit": "+0.65U"
       },
       "Faltas ganadas": {
         "total": 1,
         "won": 1,
         "lost": 0,
         "win_rate": "100.0%",
-        "profit": "0.00U"
+        "profit": "+0.62U"
       },
       "Tarjetas": {
         "total": 1,
         "won": 1,
         "lost": 0,
         "win_rate": "100.0%",
-        "profit": "0.00U"
-      },
-      "Córners de equipo": {
-        "total": 1,
-        "won": 1,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "0.00U"
+        "profit": "+0.73U"
       }
     }
   },
-  "updated_at": "2026-11-20T00:36:03.790Z"
+  "updated_at": "2026-11-20T00:46:28.934Z"
 }
