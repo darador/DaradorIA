@@ -142,7 +142,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_6k1oex",
@@ -284,7 +285,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_0x1sao",
@@ -426,7 +428,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_jmovuk",
@@ -568,7 +571,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_9ip2qz",
@@ -704,7 +708,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_xxa5io",
@@ -840,7 +845,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_f1vj6i",
@@ -976,7 +982,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_b9lame",
@@ -1011,7 +1018,8 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado matemáticamente: EV +80.0%, cuota justa 0.56 vs cuota 1.8, muestra sólida (10 partidos)"
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_05zbdy",
@@ -1046,7 +1054,8 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado matemáticamente: EV +71.7%, cuota justa 0.58 vs cuota 1.72, muestra sólida (10 partidos)"
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_kqoizj",
@@ -1081,7 +1090,8 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado matemáticamente: EV +72.7%, cuota justa 0.58 vs cuota 1.74, muestra sólida (10 partidos)"
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_uhvh6d",
@@ -1195,7 +1205,8 @@
           "confidenceScore": 0.7,
           "recommendation": "NEUTRAL"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_fa98d7",
@@ -1309,7 +1320,8 @@
           "confidenceScore": 0.7,
           "recommendation": "NEUTRAL"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_5nnp8v",
@@ -1423,7 +1435,8 @@
           "confidenceScore": 0.7,
           "recommendation": "NEUTRAL"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_9pw61t",
@@ -1537,7 +1550,8 @@
           "confidenceScore": 0.7,
           "recommendation": "NEUTRAL"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_56ms2b",
@@ -1673,7 +1687,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_hmkyeq",
@@ -1787,7 +1802,8 @@
           "confidenceScore": 0.7,
           "recommendation": "NEUTRAL"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795110774831_3q13a7",
@@ -1901,7 +1917,8 @@
           "confidenceScore": 0.7,
           "recommendation": "NEUTRAL"
         }
-      }
+      },
+      "date": "2026-11-19"
     },
     {
       "id": "cand_test_agent_01",
@@ -2041,7 +2058,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-20"
     },
     {
       "id": "cand_1795111034541_doqilz",
@@ -2076,7 +2094,8 @@
         "finalStatus": "APROBADO",
         "finalReason": "Alineación oficial confirmada: Jugador parte en el XI titular. Condición levantada por el Risk Manager."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795140929393_zq72a",
@@ -2111,7 +2130,8 @@
         "finalStatus": "APROBADO",
         "finalReason": "Validado por el comité de riesgos"
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "date": "2026-11-19"
     },
     {
       "id": "cand_1795187331561_zeldy6",
@@ -2252,7 +2272,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-20"
     },
     {
       "id": "cand_1795187331561_xmcbes",
@@ -2393,7 +2414,8 @@
           "confidenceScore": 0.85,
           "recommendation": "FAVORABLE"
         }
-      }
+      },
+      "date": "2026-11-20"
     }
   ],
   "research_center": [
