@@ -3672,13 +3672,20 @@
     }
 
     function onLeagueChange() {
-      const leagueFilter = document.getElementById('filterLeague').value;
+      const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
       const matchSelect = document.getElementById('filterMatch');
       const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
 
+      let filtered = availablePicks;
+      if (dateFilter === 'today') {
+        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-20');
+      } else if (dateFilter === 'yesterday') {
+        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-19');
+      }
       const filteredByLeague = (leagueFilter === 'all') 
-        ? availablePicks 
-        : availablePicks.filter(p => p.league === leagueFilter);
+        ? filtered 
+        : filtered.filter(p => p.league === leagueFilter);
 
       const matches = [...new Set(filteredByLeague.map(p => p.match))].filter(Boolean);
       matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
@@ -3722,14 +3729,20 @@
         return;
       }
 
-      const leagueFilter = document.getElementById('filterLeague').value;
-      const matchFilter = document.getElementById('filterMatch').value;
-      const marketFilter = document.getElementById('filterMarket').value;
-      const minHitFilter = parseFloat(document.getElementById('filterMinHit').value);
-      const searchFilter = document.getElementById('searchInput').value.toLowerCase().trim();
+      const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
+      const matchFilter = document.getElementById('filterMatch')?.value || 'all';
+      const marketFilter = document.getElementById('filterMarket')?.value || 'all';
+      const minHitFilter = parseFloat(document.getElementById('filterMinHit')?.value || '0');
+      const searchFilter = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
       const statusFilter = document.getElementById('filterStatus')?.value || 'all';
 
       let filtered = globalPicksData.top_picks.filter(pick => {
+        // FILTRADO ESTRICTO POR FECHA
+        const pickDate = getPickDateKey(pick);
+        if (dateFilter === 'today' && pickDate !== '2026-11-20') return false;
+        if (dateFilter === 'yesterday' && pickDate !== '2026-11-19') return false;
+
         if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
         if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
         if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
