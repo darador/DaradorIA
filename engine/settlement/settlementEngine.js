@@ -97,8 +97,9 @@ class SettlementEngine {
     }
 
     // Determinar resultado: GANADA vs PERDIDA
-    const targetLineNum = parseFloat(pick.line?.replace(/[^\d.]/g, '') || '0.5');
-    const isOver = !pick.line || pick.line.toLowerCase().includes('más') || pick.line.toLowerCase().includes('over') || pick.line.includes('>');
+    const lineStr = String(pick.line || pick.linea || '0.5');
+    const targetLineNum = parseFloat(lineStr.replace(/[^\d.]/g, '') || '0.5');
+    const isOver = !lineStr || lineStr.toLowerCase().includes('más') || lineStr.toLowerCase().includes('over') || lineStr.includes('>');
 
     let status = 'PERDIDA';
     if (isOver) {

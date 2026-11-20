@@ -1,15 +1,218 @@
 {
-  "picks": [],
-  "history": [],
+  "picks": [
+    {
+      "id": "cand_1795110774831_xxa5io",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Remates de equipo",
+      "line": "Más de 10.5",
+      "odds": 1.83,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_9ip2qz",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Red Bull Bragantino (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 4.5",
+      "odds": 1.82,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_jmovuk",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Gustavo Marques",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "odds": 1.65,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.65
+    },
+    {
+      "id": "cand_1795110774831_w9sj8j",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Jamerson",
+      "market": "Faltas ganadas",
+      "line": "Más de 0.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.62
+    },
+    {
+      "id": "cand_1795110774831_5nnp8v",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Tarjetas",
+      "line": "Más de 2.5",
+      "odds": 1.73,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": 0.73
+    },
+    {
+      "id": "cand_1795110774831_kqoizj",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Red Bull Bragantino (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 4.5",
+      "odds": 1.74,
+      "stake": 1,
+      "actual_stat": 7,
+      "status": "ACERTADA",
+      "profit": 0.74
+    }
+  ],
+  "history": [
+    {
+      "id": "cand_1795110774831_xxa5io",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Remates de equipo",
+      "line": "Más de 10.5",
+      "odds": 1.83,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_9ip2qz",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Red Bull Bragantino (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 4.5",
+      "odds": 1.82,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_1795110774831_jmovuk",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Gustavo Marques",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "odds": 1.65,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.65
+    },
+    {
+      "id": "cand_1795110774831_w9sj8j",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Jamerson",
+      "market": "Faltas ganadas",
+      "line": "Más de 0.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.62
+    },
+    {
+      "id": "cand_1795110774831_5nnp8v",
+      "date": "2026-11-19",
+      "match": "Internacional vs Vasco da Gama",
+      "player": "Internacional (Equipo)",
+      "market": "Tarjetas",
+      "line": "Más de 2.5",
+      "odds": 1.73,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": 0.73
+    },
+    {
+      "id": "cand_1795110774831_kqoizj",
+      "date": "2026-11-19",
+      "match": "Red Bull Bragantino vs Vitória",
+      "player": "Red Bull Bragantino (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 4.5",
+      "odds": 1.74,
+      "stake": 1,
+      "actual_stat": 7,
+      "status": "ACERTADA",
+      "profit": 0.74
+    }
+  ],
   "summary": {
-    "total_bets": 0,
-    "settled_bets": 0,
-    "won_bets": 0,
-    "lost_bets": 0,
+    "total_bets": 6,
+    "settled_bets": 6,
+    "won_bets": 4,
+    "lost_bets": 2,
     "pending_bets": 0,
-    "win_rate_pct": 0,
-    "roi_pct": 0,
-    "net_profit_units": 0,
-    "by_market": {}
-  }
+    "win_rate_pct": 66.7,
+    "total_staked_units": 6,
+    "net_profit_units": 0.74,
+    "roi_pct": 12.3,
+    "by_market": {
+      "Remates de equipo": {
+        "total": 1,
+        "won": 0,
+        "lost": 1,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      },
+      "Remates al arco de equipo": {
+        "total": 1,
+        "won": 0,
+        "lost": 1,
+        "win_rate": "0.0%",
+        "profit": "0.00U"
+      },
+      "Faltas cometidas": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "0.00U"
+      },
+      "Faltas ganadas": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "0.00U"
+      },
+      "Tarjetas": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "0.00U"
+      },
+      "Córners de equipo": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "0.00U"
+      }
+    }
+  },
+  "updated_at": "2026-11-20T00:36:03.790Z"
 }

@@ -208,7 +208,7 @@ class RadarSync {
 
     // Actualizar estados según resultados almacenados
     for (const res of results) {
-      const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player));
+      const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player && b.market === res.market));
       const normalizedStatus = (res.status === 'GANADA' || res.status === 'ACERTADA') ? 'ACERTADA' : ((res.status === 'PERDIDA' || res.status === 'FALLADA') ? 'FALLADA' : res.status);
       const profitVal = res.profitUnits !== undefined ? res.profitUnits : (normalizedStatus === 'ACERTADA' ? Number((((res.odds || 1.8) - 1) * 1.0).toFixed(2)) : -1.0);
 
