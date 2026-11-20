@@ -1118,198 +1118,788 @@
       padding: 1.4rem;
       margin-bottom: 1.75rem;
     }
-    .markets-breakdown-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .market-perf-box {
-      background: rgba(10, 16, 28, 0.7);
+    /* ==========================================================================
+       STATS & HISTORICAL PERFORMANCE DASHBOARD (REDESIGN UX/UI)
+       ========================================================================== */
+    .stats-section-header {
+      background: rgba(14, 21, 42, 0.75);
       border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-xs);
-      padding: 0.85rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .market-perf-header {
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.82rem;
-      font-weight: 700;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
-    .market-progress-bg {
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-full);
-      overflow: hidden;
-      margin-top: 0.2rem;
-    }
-    .market-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #10b981, #06b6d4);
-      border-radius: var(--radius-full);
-    }
-    .history-table-container {
-      background: var(--bg-surface-card);
-      border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-md);
-      overflow-x: auto;
-      margin-bottom: 2.5rem;
-    }
-    .history-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.85rem;
-    }
-    .history-table th {
-      background: rgba(10, 16, 28, 0.95);
-      padding: 1rem 1.15rem;
-      font-family: var(--font-display);
-      font-weight: 800;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-size: 0.74rem;
-      letter-spacing: 0.06em;
-      border-bottom: 2px solid var(--border-terminal);
-    }
-    .history-table td {
-      padding: 0.95rem 1.15rem;
-      border-bottom: 1px solid var(--border-terminal);
-      color: var(--text-main);
-      vertical-align: middle;
-    }
-    .history-table tr:hover { background: rgba(30, 41, 59, 0.4); }
 
-    .badge-status {
-      display: inline-flex;
+    .stats-header-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-violet);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .stats-header-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 0.25rem 0;
+      letter-spacing: -0.01em;
+    }
+
+    .stats-header-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .stats-header-pills {
+      display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-sample-pill {
+      font-size: 11px;
+      font-weight: 700;
       padding: 0.25rem 0.65rem;
       border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid var(--border-terminal);
+      font-variant-numeric: tabular-nums;
     }
-    .badge-status.ganada { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
-    .badge-status.perdida { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
-    .badge-status.pendiente { background: rgba(245, 158, 11, 0.15); color: #facc15; border: 1px solid rgba(245, 158, 11, 0.4); }
 
-    .profit-positive { color: #4ade80; font-weight: 800; font-family: var(--font-mono); }
-    .profit-negative { color: #f87171; font-weight: 800; font-family: var(--font-mono); }
-    .profit-neutral { color: var(--text-dim); font-weight: 700; }
-
-    /* ==========================================================================
-       STATS & HISTORICAL PERFORMANCE DASHBOARD
-       ========================================================================== */
+    /* BLOQUE 1: 4 KPIS COMPACTOS */
     .stats-overview-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .stats-kpi-card {
-      background: rgba(14, 21, 42, 0.75);
+      background: rgba(11, 18, 33, 0.85);
       border: 1px solid var(--border-terminal);
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.4rem;
-      position: relative;
-      overflow: hidden;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      backdrop-filter: blur(10px);
-      transition: all 0.25s ease;
+      justify-content: space-between;
+      gap: 0.2rem;
+      transition: all 0.2s ease;
+      position: relative;
     }
 
     .stats-kpi-card:hover {
-      border-color: var(--border-violet);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      border-color: rgba(139, 92, 246, 0.35);
+      background: rgba(14, 23, 44, 0.95);
     }
 
     .stats-kpi-label {
-      font-size: 0.78rem;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+    }
+
+    .stats-kpi-icon {
+      width: 13px;
+      height: 13px;
+      stroke: var(--accent-violet);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
     }
 
     .stats-kpi-val {
       font-family: var(--font-display);
-      font-size: 1.85rem;
-      font-weight: 900;
+      font-size: 22px;
+      font-weight: 800;
       color: #ffffff;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+      margin: 0.15rem 0;
     }
 
     .stats-kpi-sub {
-      font-size: 0.78rem;
+      font-size: 11px;
       color: var(--text-dim);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-kpi-note {
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.7);
+      margin-top: 0.15rem;
     }
 
     .stats-kpi-bar {
       width: 100%;
-      height: 6px;
+      height: 3px;
       background: rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-full);
+      border-radius: 999px;
       overflow: hidden;
       margin-top: 0.35rem;
     }
 
     .stats-kpi-fill {
       height: 100%;
-      background: linear-gradient(90deg, #10b981, #00f2fe);
-      border-radius: var(--radius-full);
-      transition: width 0.5s ease;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      border-radius: 999px;
+      transition: width 0.4s ease;
     }
 
     .stats-split-vals {
       display: flex;
       align-items: baseline;
-      gap: 0.85rem;
+      gap: 0.35rem;
+      margin: 0.15rem 0;
     }
 
     .stats-split-won {
       display: flex;
       align-items: baseline;
-      gap: 0.35rem;
+      gap: 0.2rem;
     }
+
     .stats-won-num {
       font-family: var(--font-display);
-      font-size: 1.85rem;
-      font-weight: 900;
+      font-size: 22px;
+      font-weight: 800;
       color: #4ade80;
+      font-variant-numeric: tabular-nums;
     }
+
     .stats-lost-num {
       font-family: var(--font-display);
-      font-size: 1.85rem;
-      font-weight: 900;
-      color: #f87171;
-    }
-    .stats-split-divider {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.2);
-    }
-    .stats-split-lbl {
-      font-size: 0.72rem;
+      font-size: 22px;
       font-weight: 800;
+      color: #f87171;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-split-divider {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .stats-split-lbl {
+      font-size: 9px;
+      font-weight: 700;
       letter-spacing: 0.05em;
       color: var(--text-muted);
     }
 
-    /* Parlays */
+    /* BLOQUE 2: EVOLUCIÓN HISTÓRICA (EQUITY CURVE) */
+    .stats-chart-card {
+      background: rgba(11, 18, 33, 0.85);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-sm);
+      padding: 0.95rem 1.15rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .stats-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .stats-block-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-violet);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .stats-chart-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .stats-chart-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .chart-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .chart-pill.current {
+      background: rgba(16, 185, 129, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .chart-pill.peak {
+      background: rgba(6, 182, 212, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .chart-pill.sample {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-dim);
+      border: 1px solid var(--border-terminal);
+    }
+
+    .equity-chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: var(--radius-xs);
+      background: rgba(8, 13, 25, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .equity-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .equity-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(10, 16, 30, 0.95);
+      border: 1px solid var(--border-violet);
+      border-radius: 6px;
+      padding: 0.45rem 0.65rem;
+      font-size: 11px;
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+      z-index: 10;
+      white-space: nowrap;
+      transform: translate(-50%, -115%);
+      transition: opacity 0.12s ease;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* BLOQUE 3: RENDIMIENTO POR MERCADO */
+    .stats-markets-card {
+      background: rgba(11, 18, 33, 0.85);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-sm);
+      padding: 0.95rem 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    .stats-markets-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .markets-breakdown-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .market-row-item {
+      display: grid;
+      grid-template-columns: minmax(180px, 2fr) 140px 1.4fr 80px 85px;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.45rem 0.75rem;
+      background: rgba(14, 21, 40, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 6px;
+      font-size: 12px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .market-row-item:hover {
+      background: rgba(139, 92, 246, 0.08);
+      border-color: rgba(139, 92, 246, 0.25);
+    }
+
+    .market-name {
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sample-pill {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .sample-pill.limited {
+      background: rgba(245, 158, 11, 0.14);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .sample-pill.prelim {
+      background: rgba(148, 163, 184, 0.12);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .sample-pill.solid {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .market-ratio-box {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .market-bar-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .market-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .market-rate-val {
+      font-weight: 700;
+      font-size: 12px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .market-profit-val {
+      font-weight: 800;
+      font-size: 12px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-family: var(--font-mono);
+    }
+
+    .markets-footnote {
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      padding-top: 0.4rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    }
+
+    /* BLOQUE 4: HISTORIAL & FILTROS */
+    .history-section-card {
+      background: rgba(11, 18, 33, 0.85);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-sm);
+      padding: 0.95rem 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+    .history-controls-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .history-controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding: 0.65rem 0.85rem;
+      background: rgba(14, 21, 40, 0.5);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-xs);
+      margin-bottom: 0.85rem;
+    }
+
+    .history-filter-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .history-filter-item .control-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .history-filter-item.search-wrap {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .btn-mobile-filter-toggle {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(22, 33, 60, 0.85);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-xs);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      cursor: pointer;
+    }
+
+    .btn-mobile-filter-toggle:active {
+      border-color: var(--accent-violet);
+      background: rgba(139, 92, 246, 0.2);
+    }
+
+    .icon-filter-svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .mobile-filter-badge {
+      background: var(--accent-violet);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .history-mobile-filter-panel {
+      display: none;
+      flex-direction: column;
+      gap: 0.65rem;
+      background: rgba(11, 18, 36, 0.98);
+      border: 1px solid var(--border-violet);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      margin-bottom: 0.85rem;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .hm-filter-panel-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      width: 100%;
+    }
+
+    .hm-filter-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hm-filter-field label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hm-filter-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .history-desktop-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-xs);
+      background: rgba(9, 14, 26, 0.6);
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .history-table th {
+      background: rgba(10, 16, 28, 0.95);
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-terminal);
+      white-space: nowrap;
+    }
+
+    .history-table td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      vertical-align: middle;
+      font-size: 13px;
+    }
+
+    .history-table tr:hover {
+      background: rgba(139, 92, 246, 0.06);
+    }
+
+    /* MÓVIL: LISTA COMPACTA DE OPORTUNIDADES */
+    .history-mobile-list {
+      display: none;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .history-mobile-card {
+      background: rgba(11, 18, 33, 0.85);
+      border: 1px solid var(--border-terminal);
+      border-left: 3px solid var(--accent-violet);
+      border-radius: var(--radius-xs);
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .history-mobile-card.won {
+      border-left-color: #10b981;
+    }
+
+    .history-mobile-card.lost {
+      border-left-color: #ef4444;
+    }
+
+    .history-mobile-card.pending {
+      border-left-color: #f59e0b;
+    }
+
+    .hm-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hm-header-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 10px;
+    }
+
+    .hm-date {
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .hm-league {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hm-card-match {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .hm-card-pick-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hm-selection {
+      font-size: 12px;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .hm-market-line {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hm-card-kpi-bar {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr auto;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+      padding-top: 0.35rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .hm-kpi-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .hm-kpi-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hm-kpi-val {
+      font-size: 12px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hm-kpi-val.odds {
+      color: #facc15;
+      font-family: var(--font-mono);
+    }
+
+    .hm-kpi-val.stat {
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .hm-accordion-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+    }
+
+    .chevron-svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+
+    .history-mobile-card.is-expanded .chevron-svg {
+      transform: rotate(180deg);
+      color: var(--accent-violet);
+    }
+
+    .hm-card-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+      opacity: 0;
+    }
+
+    .history-mobile-card.is-expanded .hm-card-accordion-content {
+      max-height: 180px;
+      opacity: 1;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+
+    .hm-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 0.65rem;
+      font-size: 11px;
+    }
+
+    .hm-detail-lbl {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .hm-detail-val {
+      color: #ffffff;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge-status.ganada { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+    .badge-status.perdida { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .badge-status.pendiente { background: rgba(245, 158, 11, 0.15); color: #facc15; border: 1px solid rgba(245, 158, 11, 0.4); }
+
+    .profit-positive { color: #4ade80; font-weight: 800; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .profit-negative { color: #f87171; font-weight: 800; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .profit-neutral { color: var(--text-dim); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+        /* Parlays */
     .parlays-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
@@ -1847,6 +2437,53 @@
         cursor: pointer;
       }
 
+      /* STATS TRACK RECORD MOBILE OVERRIDES */
+      .stats-overview-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.45rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+      .stats-kpi-card {
+        padding: 0.65rem 0.75rem !important;
+      }
+      .stats-kpi-val {
+        font-size: 19px !important;
+      }
+      .stats-won-num, .stats-lost-num {
+        font-size: 19px !important;
+      }
+      .stats-section-header {
+        padding: 0.75rem !important;
+        margin-top: 0.65rem !important;
+      }
+      .stats-header-title {
+        font-size: 16px !important;
+      }
+      .stats-chart-card, .stats-markets-card, .history-section-card {
+        padding: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+      .equity-chart-wrapper {
+        height: 170px !important;
+      }
+      .history-desktop-table-wrap {
+        display: none !important;
+      }
+      .history-mobile-list {
+        display: flex !important;
+      }
+      .history-controls-bar#historyControls {
+        display: none !important;
+      }
+      .btn-mobile-filter-toggle {
+        display: inline-flex !important;
+      }
+      .market-row-item {
+        grid-template-columns: 1fr auto !important;
+        gap: 0.35rem 0.65rem !important;
+        padding: 0.55rem 0.65rem !important;
+      }
+      
       .btn-reset-filters {
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid var(--border-terminal);
@@ -2294,39 +2931,69 @@
       <div class="parlays-container" id="parlaysGrid"></div>
     </section>
 
-    <!-- VISTA 4: PANTALLA DE ESTADÍSTICAS & HISTORIAL -->
+    <!-- VISTA 4: PANTALLA DE ESTADÍSTICAS & HISTORIAL (TRACK RECORD AUDITADO) -->
     <section id="viewHistory" style="display: none;">
       
       <!-- ENCABEZADO DE SECCIÓN -->
-      <div style="background: rgba(14, 21, 42, 0.7); border: 1px solid var(--border-terminal); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-top: 1rem; margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
-        <div>
-          <h2 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.25rem 0;">
-            📈 Panel de Estadísticas & Histórico de Rendimiento
-          </h2>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
-            Registro auditado de aciertos y errores del motor autónomo. Liquidación verificada contra resultados oficiales post-partido.
-          </p>
+      <div class="stats-section-header">
+        <div class="stats-header-main">
+          <div class="stats-header-tag">AUDITORÍA Y TRACK RECORD OFICIAL</div>
+          <h2 class="stats-header-title">Centro de Rendimiento Deportivo</h2>
+          <p class="stats-header-desc">Registro auditado de aciertos y errores del motor autónomo. Liquidación verificada contra resultados oficiales post-partido.</p>
         </div>
-        <div style="display: flex; align-items: center; gap: 0.6rem;">
-          <span class="status-pill approved" style="font-size: 0.75rem;">✔ Liquidación Automática Activa</span>
+        <div class="stats-header-pills">
+          <span class="status-pill approved" style="font-size: 11px;">
+            <span class="live-dot" style="display: inline-block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; margin-right: 4px; box-shadow: 0 0 8px #10b981;"></span>
+            Liquidación Oficial Verificada
+          </span>
+          <span class="stats-sample-pill" id="statsHeaderSample">18 Apuestas Auditadas</span>
         </div>
       </div>
 
-      <!-- 4 TARJETAS KPI DE RENDIMIENTO GLOBAL -->
+      <!-- BLOQUE 1: RESUMEN DE RENDIMIENTO (4 INDICADORES PRINCIPALES) -->
       <div class="stats-overview-grid">
         <!-- 1. Win Rate -->
         <div class="stats-kpi-card">
-          <div class="stats-kpi-label">🎯 Tasa de Acierto (Win Rate)</div>
+          <div class="stats-kpi-label">
+            <svg class="stats-kpi-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+            Win Rate (Acierto)
+          </div>
           <div class="stats-kpi-val" id="statsWinRate">0.0%</div>
           <div class="stats-kpi-sub" id="statsWinRateSub">0 Acertadas / 0 Resueltas</div>
           <div class="stats-kpi-bar">
             <div class="stats-kpi-fill" id="statsWinRateBar" style="width: 0%;"></div>
           </div>
+          <div class="stats-kpi-note">Proporción s/ apuestas finalizadas</div>
         </div>
 
-        <!-- 2. Aciertos vs Errores -->
+        <!-- 2. Rendimiento ROI / Yield -->
         <div class="stats-kpi-card">
-          <div class="stats-kpi-label">⚖️ Aciertos vs Errores</div>
+          <div class="stats-kpi-label">
+            <svg class="stats-kpi-icon" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            ROI / Yield
+          </div>
+          <div class="stats-kpi-val" id="statsRoiVal">+0.0%</div>
+          <div class="stats-kpi-sub" id="statsRoiSub">Retorno sobre capital arriesgado</div>
+          <div class="stats-kpi-note" id="statsRoiNote">Stake plano 1.00 U por pick</div>
+        </div>
+
+        <!-- 3. Beneficio Neto Acumulado -->
+        <div class="stats-kpi-card">
+          <div class="stats-kpi-label">
+            <svg class="stats-kpi-icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Beneficio Neto
+          </div>
+          <div class="stats-kpi-val" id="statsProfitVal">0.00 U</div>
+          <div class="stats-kpi-sub" id="statsStakedSub">Apostadas: 0.00 U</div>
+          <div class="stats-kpi-note" id="statsProfitPnl">P&L Acumulado en Unidades</div>
+        </div>
+
+        <!-- 4. Aciertos y Fallos -->
+        <div class="stats-kpi-card">
+          <div class="stats-kpi-label">
+            <svg class="stats-kpi-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Aciertos / Fallos
+          </div>
           <div class="stats-split-vals">
             <div class="stats-split-won">
               <span class="stats-won-num" id="statsWonCount">0</span>
@@ -2338,65 +3005,175 @@
               <span class="stats-split-lbl">FALLADAS</span>
             </div>
           </div>
-          <div class="stats-kpi-sub" id="statsPendingSub">0 en juego / pendientes de liquidar</div>
-        </div>
-
-        <!-- 3. Rendimiento ROI / Yield -->
-        <div class="stats-kpi-card">
-          <div class="stats-kpi-label">📈 Rendimiento (ROI / Yield)</div>
-          <div class="stats-kpi-val" id="statsRoiVal">+0.0%</div>
-          <div class="stats-kpi-sub" id="statsRoiSub">Retorno neto sobre capital apostado</div>
-        </div>
-
-        <!-- 4. Beneficio Neto (Unidades) -->
-        <div class="stats-kpi-card">
-          <div class="stats-kpi-label">💰 Beneficio Neto Acumulado</div>
-          <div class="stats-kpi-val" id="statsProfitVal">0.00 U</div>
-          <div class="stats-kpi-sub" id="statsStakedSub">Apostadas: 0.00 U (Stake plano 1U)</div>
+          <div class="stats-kpi-sub" id="statsPendingSub">0 en juego / pendientes</div>
+          <div class="stats-kpi-note" id="statsRatioSub">Muestra de alta fidelidad</div>
         </div>
       </div>
 
-      <!-- DESGLOSE POR MERCADO -->
-      <div class="history-card-header" style="margin-bottom: 1.5rem;">
-        <h3 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 0.75rem;">
-          📊 Efectividad por Tipo de Mercado
-        </h3>
-        <div class="markets-breakdown-grid" id="marketsBreakdownGrid"></div>
+      <!-- BLOQUE 2: EVOLUCIÓN HISTÓRICA DE RENDIMIENTO (EQUITY CURVE) -->
+      <div class="stats-chart-card">
+        <div class="stats-chart-header">
+          <div>
+            <div class="stats-block-tag">CURVA DE RENDIMIENTO TEMPORAL</div>
+            <h3 class="stats-chart-title">Evolución de Beneficio Acumulado (Unidades)</h3>
+          </div>
+          <div class="stats-chart-badges">
+            <span class="chart-pill peak" id="chartPeakPill">Pico: +0.00 U</span>
+            <span class="chart-pill current" id="chartCurrentPill">Balance: 0.00 U</span>
+            <span class="chart-pill sample" id="chartSamplePill">0 picks</span>
+          </div>
+        </div>
+        <div class="equity-chart-wrapper" id="equityChartWrapper">
+          <svg id="equityChartSvg" class="equity-svg" viewBox="0 0 760 210" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="pnlGradPos" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.30"></stop>
+                <stop offset="100%" stop-color="#10b981" stop-opacity="0.02"></stop>
+              </linearGradient>
+              <linearGradient id="pnlGradNeg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f87171" stop-opacity="0.02"></stop>
+                <stop offset="100%" stop-color="#f87171" stop-opacity="0.25"></stop>
+              </linearGradient>
+            </defs>
+            <g id="chartGridGroup"></g>
+            <path id="chartAreaPath" fill="url(#pnlGradPos)" d=""></path>
+            <path id="chartStrokePath" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d=""></path>
+            <g id="chartDotsGroup"></g>
+          </svg>
+          <div id="equityTooltip" class="equity-tooltip" style="display: none;"></div>
+        </div>
       </div>
 
-      <!-- BARRA DE CONTROLES Y FILTROS -->
-      <section class="controls-bar" id="historyControls" style="margin-bottom: 1rem;">
-        <div class="filter-group">
-          <label class="control-label" for="filterHistoryStatus">⚖️ Filtrar Resultado:</label>
-          <select id="filterHistoryStatus" class="select-control" onchange="renderHistory()">
-            <option value="all">Todos los Pronósticos</option>
-            <option value="GANADA">✅ Solo Aciertos (Ganadas)</option>
-            <option value="PERDIDA">❌ Solo Errores (Falladas)</option>
-            <option value="PENDIENTE">⏳ En Juego / Pendientes</option>
-          </select>
+      <!-- BLOQUE 3: RENDIMIENTO POR MERCADO (FILAS COMPACTAS CON TAMAÑO DE MUESTRA) -->
+      <div class="stats-markets-card">
+        <div class="stats-markets-header">
+          <div>
+            <div class="stats-block-tag">DESGLOSE ANALÍTICO</div>
+            <h3 class="stats-chart-title">Rendimiento por Mercado & Tamaño de Muestra</h3>
+          </div>
+          <span style="font-size: 11px; color: var(--text-dim); font-weight: 500;">Haz clic en un mercado para filtrar</span>
         </div>
-        <div class="filter-group">
-          <input type="text" id="searchHistoryInput" class="input-control" placeholder="🔍 Buscar por jugador, equipo o torneo..." oninput="renderHistory()" style="min-width: 280px;">
+        
+        <div class="markets-breakdown-container" id="marketsBreakdownGrid"></div>
+        <div class="markets-footnote">
+          * Indicadores de 100% sobre muestras unitarias (1 pick) se etiquetan como preliminares hasta consolidar un volumen estadísticamente significativo.
         </div>
-      </section>
-
-      <!-- TABLA DETALLADA DE HISTORIAL -->
-      <div class="history-table-container">
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Partido / Competición</th>
-              <th>Selección / Mercado</th>
-              <th>Cuota bet365</th>
-              <th>Estadística Real</th>
-              <th>Veredicto</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody id="historyTableBody"></tbody>
-        </table>
       </div>
+
+      <!-- BLOQUE 4: HISTORIAL DE APUESTAS & FILTROS -->
+      <div class="history-section-card">
+        
+        <!-- HEADER DEL HISTORIAL & CONTROLES -->
+        <div class="history-controls-header">
+          <div>
+            <div class="stats-block-tag">AUDITORÍA PICK A PICK</div>
+            <h3 class="stats-chart-title" style="margin: 0;">Historial de Apuestas y Liquidaciones</h3>
+          </div>
+          
+          <!-- Botón de filtros para móvil -->
+          <button type="button" class="btn-mobile-filter-toggle" id="btnMobileHistoryFilterToggle" onclick="toggleMobileHistoryFilter()">
+            <svg viewBox="0 0 24 24" class="icon-filter-svg"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            <span>Filtros</span>
+            <span class="mobile-filter-badge" id="mobileFilterBadge" style="display: none;">0</span>
+          </button>
+        </div>
+
+        <!-- PANEL DE FILTROS DESKTOP -->
+        <div class="history-controls-bar" id="historyControls">
+          <div class="history-filter-item">
+            <label class="control-label" for="filterHistoryPeriod">Período:</label>
+            <select id="filterHistoryPeriod" class="select-control" onchange="syncHistoryFilterChange('period', this.value)">
+              <option value="all">Todo el Histórico</option>
+              <option value="today">Hoy (19 Nov)</option>
+              <option value="7d">Últimos 7 días</option>
+              <option value="30d">Últimos 30 días</option>
+            </select>
+          </div>
+
+          <div class="history-filter-item">
+            <label class="control-label" for="filterHistoryMarket">Mercado:</label>
+            <select id="filterHistoryMarket" class="select-control" onchange="syncHistoryFilterChange('market', this.value)">
+              <option value="all">Todos los Mercados</option>
+            </select>
+          </div>
+
+          <div class="history-filter-item">
+            <label class="control-label" for="filterHistoryStatus">Resultado:</label>
+            <select id="filterHistoryStatus" class="select-control" onchange="syncHistoryFilterChange('status', this.value)">
+              <option value="all">Todos los Pronósticos</option>
+              <option value="GANADA">✅ Solo Aciertos (Ganadas)</option>
+              <option value="PERDIDA">❌ Solo Errores (Falladas)</option>
+              <option value="PENDIENTE">⏳ En Juego / Pendientes</option>
+            </select>
+          </div>
+
+          <div class="history-filter-item search-wrap">
+            <input type="text" id="searchHistoryInput" class="input-control" placeholder="Buscar por jugador, equipo o torneo..." oninput="syncHistoryFilterChange('search', this.value)">
+          </div>
+
+          <button type="button" class="btn-reset-filters" id="btnResetHistoryFilters" onclick="resetHistoryFilters()">
+            Limpiar
+          </button>
+        </div>
+
+        <!-- PANEL DE FILTROS MÓVIL (DESPLEGABLE / DRAWER) -->
+        <div class="history-mobile-filter-panel" id="historyMobileFilterPanel" style="display: none;">
+          <div class="hm-filter-panel-inner">
+            <div class="hm-filter-field">
+              <label>Período:</label>
+              <select id="mFilterPeriod" class="select-control" onchange="syncHistoryFilterChange('period', this.value)">
+                <option value="all">Todo el Histórico</option>
+                <option value="today">Hoy (19 Nov)</option>
+                <option value="7d">Últimos 7 días</option>
+                <option value="30d">Últimos 30 días</option>
+              </select>
+            </div>
+            <div class="hm-filter-field">
+              <label>Mercado:</label>
+              <select id="mFilterMarket" class="select-control" onchange="syncHistoryFilterChange('market', this.value)">
+                <option value="all">Todos los Mercados</option>
+              </select>
+            </div>
+            <div class="hm-filter-field">
+              <label>Resultado / Estado:</label>
+              <select id="mFilterStatus" class="select-control" onchange="syncHistoryFilterChange('status', this.value)">
+                <option value="all">Todos los Pronósticos</option>
+                <option value="GANADA">Solo Aciertos (Ganadas)</option>
+                <option value="PERDIDA">Solo Errores (Falladas)</option>
+                <option value="PENDIENTE">En Juego / Pendientes</option>
+              </select>
+            </div>
+            <div class="hm-filter-actions">
+              <button type="button" class="btn-clear-filters" onclick="resetHistoryFilters()">Limpiar Filtros</button>
+              <button type="button" class="btn-apply-filters" onclick="toggleMobileHistoryFilter(false)">Cerrar Panel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRESENTACIÓN EN ESCRITORIO: TABLA COMPLETA -->
+        <div class="history-desktop-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Partido / Competición</th>
+                <th>Selección / Mercado</th>
+                <th>Cuota</th>
+                <th>Estadística Real</th>
+                <th>Veredicto</th>
+                <th>Beneficio</th>
+                <th>Stake</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- PRESENTACIÓN EN MÓVIL: LISTA COMPACTA DE OPORTUNIDADES CON ACORDEÓN -->
+        <div class="history-mobile-list" id="historyMobileList"></div>
+
+      </div>
+
     </section>
 
     <!-- VISTA 5: CENTRO DE INVESTIGACIÓN -->
@@ -2768,6 +3545,13 @@
       document.getElementById('kpiSub4').textContent = 'Multiplicador promedio';
     }
 
+    let historyFilterState = {
+      period: 'all',
+      market: 'all',
+      status: 'all',
+      search: ''
+    };
+
     function setupHistory(data) {
       if (!data || !data.summary) return;
       const historyList = data.history || data.picks || [];
@@ -2775,9 +3559,210 @@
       document.getElementById('tabHistoryCount').textContent = histCount;
       if (document.getElementById('mTabHistoryCount')) document.getElementById('mTabHistoryCount').textContent = histCount;
 
-      updateKpisForHistory(data.summary);
-      renderMarketsBreakdown(data.summary.by_market || {});
-      renderHistory();
+      populateHistoryMarketFilter(historyList);
+      applyHistoryFiltersAndRender();
+    }
+
+    function populateHistoryMarketFilter(historyList) {
+      const selectDesktop = document.getElementById('filterHistoryMarket');
+      const selectMobile = document.getElementById('mFilterMarket');
+      if (!selectDesktop || !selectMobile) return;
+
+      const markets = new Set();
+      historyList.forEach(item => {
+        if (item.market) markets.add(item.market);
+      });
+
+      const options = ['<option value="all">Todos los Mercados</option>'];
+      Array.from(markets).sort().forEach(m => {
+        options.push(`<option value="${m}">${m}</option>`);
+      });
+
+      const htmlOpts = options.join('');
+      selectDesktop.innerHTML = htmlOpts;
+      selectMobile.innerHTML = htmlOpts;
+    }
+
+    function syncHistoryFilterChange(key, value) {
+      historyFilterState[key] = value;
+      
+      // Sincronizar desktop y mobile
+      if (key === 'period') {
+        const d = document.getElementById('filterHistoryPeriod');
+        const m = document.getElementById('mFilterPeriod');
+        if (d) d.value = value;
+        if (m) m.value = value;
+      } else if (key === 'market') {
+        const d = document.getElementById('filterHistoryMarket');
+        const m = document.getElementById('mFilterMarket');
+        if (d) d.value = value;
+        if (m) m.value = value;
+      } else if (key === 'status') {
+        const d = document.getElementById('filterHistoryStatus');
+        const m = document.getElementById('mFilterStatus');
+        if (d) d.value = value;
+        if (m) m.value = value;
+      } else if (key === 'search') {
+        const s = document.getElementById('searchHistoryInput');
+        if (s && s.value !== value) s.value = value;
+      }
+
+      // Contador de filtros activos en móvil
+      let activeCount = 0;
+      if (historyFilterState.period !== 'all') activeCount++;
+      if (historyFilterState.market !== 'all') activeCount++;
+      if (historyFilterState.status !== 'all') activeCount++;
+      if (historyFilterState.search.trim() !== '') activeCount++;
+
+      const badge = document.getElementById('mobileFilterBadge');
+      if (badge) {
+        if (activeCount > 0) {
+          badge.textContent = activeCount;
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+
+      applyHistoryFiltersAndRender();
+    }
+
+    function resetHistoryFilters() {
+      historyFilterState = {
+        period: 'all',
+        market: 'all',
+        status: 'all',
+        search: ''
+      };
+
+      const pD = document.getElementById('filterHistoryPeriod'); if (pD) pD.value = 'all';
+      const pM = document.getElementById('mFilterPeriod'); if (pM) pM.value = 'all';
+      const mD = document.getElementById('filterHistoryMarket'); if (mD) mD.value = 'all';
+      const mM = document.getElementById('mFilterMarket'); if (mM) mM.value = 'all';
+      const sD = document.getElementById('filterHistoryStatus'); if (sD) sD.value = 'all';
+      const sM = document.getElementById('mFilterStatus'); if (sM) sM.value = 'all';
+      const q = document.getElementById('searchHistoryInput'); if (q) q.value = '';
+
+      const badge = document.getElementById('mobileFilterBadge');
+      if (badge) badge.style.display = 'none';
+
+      applyHistoryFiltersAndRender();
+      toggleMobileHistoryFilter(false);
+    }
+
+    function toggleMobileHistoryFilter(forceState) {
+      const panel = document.getElementById('historyMobileFilterPanel');
+      if (!panel) return;
+      if (forceState !== undefined) {
+        panel.style.display = forceState ? 'flex' : 'none';
+      } else {
+        panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+
+    function toggleHistoryCardAccordion(cardEl) {
+      if (!cardEl) return;
+      cardEl.classList.toggle('is-expanded');
+    }
+
+    function applyHistoryFiltersAndRender() {
+      const historyList = globalHistoryData ? (globalHistoryData.history || globalHistoryData.picks || []) : [];
+      if (!globalHistoryData || historyList.length === 0) {
+        renderHistoryTableAndCards([]);
+        renderEquityCurve([]);
+        renderMarketsBreakdown({});
+        return;
+      }
+
+      const q = historyFilterState.search.toLowerCase().trim();
+      const statusF = historyFilterState.status;
+      const marketF = historyFilterState.market;
+      const periodF = historyFilterState.period;
+
+      const filtered = historyList.filter(item => {
+        const isWon = item.status === 'GANADA' || item.status === 'ACERTADA';
+        const isLost = item.status === 'PERDIDA' || item.status === 'FALLADA';
+        const isPending = !isWon && !isLost;
+
+        if (statusF === 'GANADA' && !isWon) return false;
+        if (statusF === 'PERDIDA' && !isLost) return false;
+        if (statusF === 'PENDIENTE' && !isPending) return false;
+
+        if (marketF !== 'all' && item.market !== marketF) return false;
+
+        if (periodF === 'today' && item.date !== '2026-11-19') return false;
+
+        if (q) {
+          const space = `${item.player || ''} ${item.match || ''} ${item.league || ''} ${item.market || ''} ${item.line || ''}`.toLowerCase();
+          if (!space.includes(q)) return false;
+        }
+
+        return true;
+      });
+
+      // Recalcular métricas de resumen para la muestra filtrada
+      let settled = 0, won = 0, lost = 0, pending = 0, staked = 0, profit = 0;
+      const byMarket = {};
+
+      filtered.forEach(b => {
+        const m = b.market || 'Otros';
+        if (!byMarket[m]) {
+          byMarket[m] = { total: 0, won: 0, lost: 0, win_rate: '0.0%', profit: '+0.00U', net_profit: 0 };
+        }
+        byMarket[m].total++;
+
+        const isWon = b.status === 'GANADA' || b.status === 'ACERTADA';
+        const isLost = b.status === 'PERDIDA' || b.status === 'FALLADA';
+
+        if (isWon) {
+          settled++;
+          won++;
+          staked += (b.stake || 1.0);
+          profit += (b.profit || 0);
+          byMarket[m].won++;
+          byMarket[m].net_profit += (b.profit || 0);
+        } else if (isLost) {
+          settled++;
+          lost++;
+          staked += (b.stake || 1.0);
+          profit += (b.profit || 0);
+          byMarket[m].lost++;
+          byMarket[m].net_profit += (b.profit || 0);
+        } else {
+          pending++;
+        }
+      });
+
+      for (const k of Object.keys(byMarket)) {
+        const setM = byMarket[k].won + byMarket[k].lost;
+        byMarket[k].win_rate = setM > 0 ? ((byMarket[k].won / setM) * 100).toFixed(1) + '%' : '0.0%';
+        const net = byMarket[k].net_profit || 0;
+        byMarket[k].profit = (net >= 0 ? '+' : '') + net.toFixed(2) + 'U';
+        delete byMarket[k].net_profit;
+      }
+
+      const filteredSummary = {
+        total_bets: filtered.length,
+        settled_bets: settled,
+        won_bets: won,
+        lost_bets: lost,
+        pending_bets: pending,
+        win_rate_pct: settled > 0 ? Number(((won / settled) * 100).toFixed(1)) : 0.0,
+        total_staked_units: Number(staked.toFixed(2)),
+        net_profit_units: Number(profit.toFixed(2)),
+        roi_pct: staked > 0 ? Number(((profit / staked) * 100).toFixed(1)) : 0.0,
+        by_market: byMarket
+      };
+
+      const headerSample = document.getElementById('statsHeaderSample');
+      if (headerSample) {
+        headerSample.textContent = `${filtered.length} de ${historyList.length} Apuestas Auditadas`;
+      }
+
+      updateKpisForHistory(filteredSummary);
+      renderEquityCurve(filtered);
+      renderMarketsBreakdown(byMarket);
+      renderHistoryTableAndCards(filtered);
     }
 
     function updateKpisForHistory(sum) {
@@ -2790,9 +3775,12 @@
       const profit = sum.net_profit_units !== undefined ? sum.net_profit_units : 0;
       const staked = sum.total_staked_units !== undefined ? sum.total_staked_units : (settled * 1.0);
 
-      // 1. Tarjetas dedicadas de la vista de Estadísticas
+      // 1. Tarjetas KPI
       const elWinRate = document.getElementById('statsWinRate');
-      if (elWinRate) elWinRate.textContent = winRate.toFixed(1) + '%';
+      if (elWinRate) {
+        elWinRate.textContent = winRate.toFixed(1) + '%';
+        elWinRate.style.color = winRate >= 55 ? '#4ade80' : (winRate >= 45 ? '#facc15' : '#f87171');
+      }
       
       const elWinRateSub = document.getElementById('statsWinRateSub');
       if (elWinRateSub) elWinRateSub.textContent = `${won} Acertadas de ${settled} Resueltas`;
@@ -2807,13 +3795,22 @@
       if (elLost) elLost.textContent = lost;
 
       const elPending = document.getElementById('statsPendingSub');
-      if (elPending) elPending.textContent = `${pending} en juego / pendientes de liquidar`;
+      if (elPending) elPending.textContent = `${pending} en juego / pendientes`;
+
+      const elRatioSub = document.getElementById('statsRatioSub');
+      if (elRatioSub) {
+        const ratio = lost > 0 ? (won / lost).toFixed(2) + ':1 ratio' : (won > 0 ? '100% efectividad' : 'Sin liquidar');
+        elRatioSub.textContent = ratio;
+      }
 
       const elRoi = document.getElementById('statsRoiVal');
       if (elRoi) {
         elRoi.textContent = (roi >= 0 ? '+' : '') + roi.toFixed(1) + '%';
         elRoi.style.color = roi >= 0 ? '#4ade80' : '#f87171';
       }
+
+      const elRoiSub = document.getElementById('statsRoiSub');
+      if (elRoiSub) elRoiSub.textContent = `Retorno sobre ${staked.toFixed(2)} U`;
 
       const elProfit = document.getElementById('statsProfitVal');
       if (elProfit) {
@@ -2822,9 +3819,9 @@
       }
 
       const elStaked = document.getElementById('statsStakedSub');
-      if (elStaked) elStaked.textContent = `Apostadas: ${staked.toFixed(2)} U (Stake plano 1U)`;
+      if (elStaked) elStaked.textContent = `Apostadas: ${staked.toFixed(2)} U`;
 
-      // 2. Ticker superior
+      // 2. Ticker superior para retrocompatibilidad
       if (document.getElementById('kpiLabel1')) {
         document.getElementById('kpiLabel1').textContent = 'Win Rate Total';
         document.getElementById('kpiTotalPicks').textContent = `${winRate.toFixed(1)}%`;
@@ -2844,513 +3841,228 @@
       }
     }
 
-    function updateLiveActivityStream() {
-      const container = document.getElementById('liveActivityStreamRow');
+    function renderEquityCurve(bets) {
+      const container = document.getElementById('equityChartWrapper');
       if (!container) return;
 
-      const items = [];
-      const now = new Date();
-      const pad = (n) => String(n).padStart(2, '0');
+      const settled = bets.filter(b => b.status === 'GANADA' || b.status === 'ACERTADA' || b.status === 'PERDIDA' || b.status === 'FALLADA');
+      
+      const peakPill = document.getElementById('chartPeakPill');
+      const curPill = document.getElementById('chartCurrentPill');
+      const samplePill = document.getElementById('chartSamplePill');
 
-      const getTimeAgo = (minutesAgo) => {
-        const d = new Date(now.getTime() - minutesAgo * 60000);
-        return pad(d.getHours()) + ':' + pad(d.getMinutes());
-      };
+      if (samplePill) samplePill.textContent = `${settled.length} picks`;
 
-      // 1. Lucía alineaciones
-      items.push({
-        time: getTimeAgo(35),
-        tagClass: 'stream-tag-green',
-        agent: '📰 LUCÍA',
-        text: 'Verificó alineaciones oficiales de Brasileirão (confirmadas)'
-      });
-
-      // 2. Elena levantó condición
-      items.push({
-        time: getTimeAgo(20),
-        tagClass: 'stream-tag-gold',
-        agent: '👑 ELENA',
-        text: 'Levantó condición en Jamerson, Gustavo Marques y Bruno Gomes'
-      });
-
-      // 3. Renata cuota justa Calleri
-      items.push({
-        time: getTimeAgo(12),
-        tagClass: 'stream-tag-cyan',
-        agent: '📊 RENATA',
-        text: 'Detectó +27.0% EV en Jonathan Calleri (São Paulo vs Fluminense)'
-      });
-
-      // 4. Valentina córners
-      items.push({
-        time: getTimeAgo(7),
-        tagClass: 'stream-tag-green',
-        agent: '⚽ VALENTINA',
-        text: 'Validó cuota justa (1.31) en Córners Más de 4.5 de São Paulo'
-      });
-
-      // 5. Elena supervisión
-      items.push({
-        time: getTimeAgo(2),
-        tagClass: 'stream-tag-gold',
-        agent: '👑 ELENA',
-        text: 'Supervisando 14 selecciones aprobadas y control de riesgo'
-      });
-
-      container.innerHTML = items.map(item => 
-        '<div class="stream-item">' +
-          '<span>' + item.time + '</span> ' +
-          '<span class="' + item.tagClass + '">' + item.agent + '</span> ' +
-          '<span>' + item.text + '</span>' +
-        '</div>'
-      ).join('<div style="color: rgba(255,255,255,0.15);">|</div>');
-    }
-
-    function populatePicksFilters(picks) {
-      const leagueSelect = document.getElementById('filterLeague');
-      const matchSelect = document.getElementById('filterMatch');
-      const marketSelect = document.getElementById('filterMarket');
-
-      const leagues = [...new Set(picks.map(p => p.league))].filter(Boolean);
-      const matches = [...new Set(picks.map(p => p.match))].filter(Boolean);
-      const markets = [...new Set(picks.map(p => p.market))].filter(Boolean);
-
-      leagueSelect.innerHTML = '<option value="all">Todas las Ligas</option>';
-      leagues.forEach(l => {
-        const opt = document.createElement('option');
-        opt.value = l;
-        opt.textContent = l;
-        leagueSelect.appendChild(opt);
-      });
-
-      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
-      matches.forEach(m => {
-        const opt = document.createElement('option');
-        opt.value = m;
-        opt.textContent = m;
-        matchSelect.appendChild(opt);
-      });
-
-      marketSelect.innerHTML = '<option value="all">Todos los Mercados</option>';
-      markets.forEach(m => {
-        const opt = document.createElement('option');
-        opt.value = m;
-        opt.textContent = m;
-        marketSelect.appendChild(opt);
-      });
-    }
-
-    function onLeagueChange() {
-      const leagueFilter = document.getElementById('filterLeague').value;
-      const matchSelect = document.getElementById('filterMatch');
-      const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
-
-      const filteredByLeague = (leagueFilter === 'all') 
-        ? availablePicks 
-        : availablePicks.filter(p => p.league === leagueFilter);
-
-      const matches = [...new Set(filteredByLeague.map(p => p.match))].filter(Boolean);
-      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
-      matches.forEach(m => {
-        const opt = document.createElement('option');
-        opt.value = m;
-        opt.textContent = m;
-        matchSelect.appendChild(opt);
-      });
-
-      renderPicks();
-    }
-
-    function toggleViewMode(mode) {
-      currentViewMode = mode;
-      document.getElementById('btnViewTable').classList.toggle('active', mode === 'table');
-      document.getElementById('btnViewCards').classList.toggle('active', mode === 'cards');
-      document.getElementById('dailyBoardTableWrap').style.display = mode === 'table' ? 'block' : 'none';
-      document.getElementById('picksGrid').style.display = mode === 'cards' ? 'grid' : 'none';
-    }
-
-    function sortBoard(col) {
-      if (sortColumn === col) {
-        sortAsc = !sortAsc;
-      } else {
-        sortColumn = col;
-        sortAsc = false;
-      }
-      renderPicks();
-    }
-
-    function renderPicks() {
-      const tableBody = document.getElementById('dailyBoardTableBody');
-      const gridContainer = document.getElementById('picksGrid');
-      const mobileListContainer = document.getElementById('mobilePicksList');
-
-      if (!globalPicksData || !globalPicksData.top_picks) {
-        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">No hay picks disponibles para hoy.</td></tr>';
-        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
-        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
+      if (settled.length === 0) {
+        if (peakPill) peakPill.textContent = 'Pico: 0.00 U';
+        if (curPill) curPill.textContent = 'Balance: 0.00 U';
+        container.innerHTML = '<div style="display: flex; height: 100%; align-items: center; justify-content: center; font-size: 12px; color: var(--text-dim);">No hay apuestas liquidadas para los filtros seleccionados.</div>';
         return;
       }
 
-      const leagueFilter = document.getElementById('filterLeague').value;
-      const matchFilter = document.getElementById('filterMatch').value;
-      const marketFilter = document.getElementById('filterMarket').value;
-      const minHitFilter = parseFloat(document.getElementById('filterMinHit').value);
-      const searchFilter = document.getElementById('searchInput').value.toLowerCase().trim();
-      const statusFilter = document.getElementById('filterStatus')?.value || 'all';
-
-      let filtered = globalPicksData.top_picks.filter(pick => {
-        if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
-        if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
-        if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
-        if (statusFilter !== 'all') {
-          if (statusFilter === 'APROBADO' && pick.status !== 'APROBADO') return false;
-          if (statusFilter === 'PENDIENTE' && (!pick.status || !pick.status.includes('PENDIENTE'))) return false;
-        }
-
-        let hitRateNum = 0;
-        if (pick.hit_rate_l5) {
-          const match = pick.hit_rate_l5.match(/(\d+)%/);
-          if (match) hitRateNum = parseFloat(match[1]);
-        }
-        if (hitRateNum < minHitFilter) return false;
-
-        if (searchFilter) {
-          const searchSpace = `${pick.player} ${pick.team} ${pick.opponent} ${pick.match} ${pick.market} ${pick.line}`.toLowerCase();
-          if (!searchSpace.includes(searchFilter)) return false;
-        }
-
-        return true;
+      // Orden cronológico: el más antiguo primero
+      const chrono = [...settled].reverse();
+      let cum = 0;
+      const points = [{ i: 0, bal: 0, match: 'Punto de Partida', player: 'Inicio', profit: 0, status: 'INICIO', date: '' }];
+      chrono.forEach((b, idx) => {
+        cum = Number((cum + (b.profit || 0)).toFixed(2));
+        points.push({
+          i: idx + 1,
+          bal: cum,
+          match: b.match || 'Partido',
+          player: b.player || 'Selección',
+          profit: b.profit || 0,
+          status: b.status,
+          date: b.date || ''
+        });
       });
 
-      filtered.sort((a, b) => {
-        let valA, valB;
-        if (sortColumn === 'odds') {
-          valA = a.odds || 0; valB = b.odds || 0;
-        } else if (sortColumn === 'prob') {
-          valA = a.real_prob || 0; valB = b.real_prob || 0;
-        } else if (sortColumn === 'fairOdds') {
-          valA = a.fair_odds || 0; valB = b.fair_odds || 0;
-        } else if (sortColumn === 'ev') {
-          valA = a.edge_pct || 0; valB = b.edge_pct || 0;
-        } else if (sortColumn === 'player') {
-          valA = a.player || ''; valB = b.player || '';
-          return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
-        } else if (sortColumn === 'match') {
-          valA = a.match || ''; valB = b.match || '';
-          return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
-        } else if (sortColumn === 'status') {
-          valA = a.status || ''; valB = b.status || '';
-          return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
-        } else {
-          valA = a.edge_pct || 0; valB = b.edge_pct || 0;
-        }
-        return sortAsc ? (valA - valB) : (valB - valA);
-      });
+      const maxBal = Math.max(...points.map(p => p.bal));
+      const minBal = Math.min(...points.map(p => p.bal));
+      const finalBal = points[points.length - 1].bal;
 
-      if (filtered.length === 0) {
-        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">No se encontraron picks con los filtros actuales.</td></tr>';
-        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales.</div>';
-        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales.</div>';
-        return;
+      if (peakPill) peakPill.textContent = `Pico: ${maxBal >= 0 ? '+' : ''}${maxBal.toFixed(2)} U`;
+      if (curPill) {
+        curPill.textContent = `Balance: ${finalBal >= 0 ? '+' : ''}${finalBal.toFixed(2)} U`;
+        curPill.style.color = finalBal >= 0 ? '#4ade80' : '#f87171';
+        curPill.style.borderColor = finalBal >= 0 ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)';
       }
 
-      // League Flag helper
-      function getLeagueFlag(league) {
-        if (!league) return '⚽';
-        if (league.includes('Bundesliga')) return '🇩🇪';
-        if (league.includes('Premier')) return '🏴󠁧󠁢󠁥󠁮󠁧󠁿';
-        if (league.includes('Serie A') || league.includes('Italia')) return '🇮🇹';
-        if (league.includes('Brasileir') || league.includes('Brasil')) return '🇧🇷';
-        if (league.includes('LaLiga') || league.includes('España')) return '🇪🇸';
-        if (league.includes('Champions')) return '🏆';
-        return '⚽';
-      }
+      // Parámetros de proyección SVG
+      const width = 760;
+      const height = 200;
+      const padding = { top: 22, right: 35, bottom: 24, left: 55 };
+      const plotW = width - padding.left - padding.right;
+      const plotH = height - padding.top - padding.bottom;
 
-      // Render Table Rows
-      if (tableBody) {
-        tableBody.innerHTML = filtered.map(pick => {
-          const isApproved = pick.status === 'APROBADO';
-          const isPending = pick.status && pick.status.includes('PENDIENTE');
-          const statusBadge = isApproved 
-            ? '<span class="status-pill approved">✔ APROBADO</span>' 
-            : '<span class="status-pill pending">🕒 PENDIENTE Alineación</span>';
+      let boundMax = Math.max(0, maxBal) + 0.6;
+      let boundMin = Math.min(0, minBal) - 0.6;
+      const range = boundMax - boundMin;
 
-          const realProb = pick.real_prob || (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : 75);
-          const impliedProb = pick.implied_prob || (pick.odds ? (100 / pick.odds).toFixed(1) : 55);
-          const edgeDisplay = pick.edge_pct ? `+${pick.edge_pct}%` : '+15.0%';
-          const fairOddsDisplay = pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : (pick.real_prob ? (100 / pick.real_prob).toFixed(2) : '1.30');
-          const flag = getLeagueFlag(pick.league);
+      const getX = (idx) => padding.left + (idx / (points.length - 1)) * plotW;
+      const getY = (val) => padding.top + plotH - ((val - boundMin) / range) * plotH;
+      const zeroY = getY(0);
 
-          return `
-            <tr onclick="openAuditModal('${pick.id || pick.player}')">
-              <td>
-                <div class="board-match-cell">
-                  <span class="board-match-league">${flag} ${pick.league || 'Competición'}</span>
-                  <span class="board-match-teams">${pick.match}</span>
-                </div>
-              </td>
-              <td>
-                <div class="board-player-cell">
-                  <div class="board-player-avatar">👤</div>
-                  <div class="board-player-name">${pick.player}</div>
-                </div>
-              </td>
-              <td>
-                <div class="board-market-cell">
-                  <span class="board-market-title">${pick.market}</span>
-                  <span class="board-market-line">${pick.line}</span>
-                </div>
-              </td>
-              <td>
-                <span class="board-odds">${pick.odds.toFixed(2)}</span>
-              </td>
-              <td>
-                <div class="board-prob-box">
-                  <div class="board-prob-vals">
-                    <span style="color: #4ade80; font-weight: 800;">${realProb}%</span>
-                    <span style="color: var(--text-dim); font-size: 0.68rem;">Imp. ${impliedProb}%</span>
-                  </div>
-                  <div class="board-prob-bar">
-                    <div class="board-prob-fill" style="width: ${Math.min(100, realProb)}%;"></div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-cyan);">${fairOddsDisplay}</span>
-              </td>
-              <td>
-                <span class="board-edge-badge">${edgeDisplay}</span>
-              </td>
-              <td>
-                <span style="color: var(--neon-turf); font-weight: 800; font-family: var(--font-mono);">${pick.hit_rate_l5 || '4/5 (80%)'}</span>
-              </td>
-              <td>
-                ${statusBadge}
-              </td>
-              <td style="text-align: right;">
-                <button class="btn-audit" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')" title="Ver análisis de agentes e IA">
-                  <span>👁️</span> <span>📊</span>
-                </button>
-              </td>
-            </tr>
-          `;
-        }).join('');
-      }
+      // Grid horizontal
+      let gridHtml = `
+        <line x1="${padding.left}" y1="${zeroY}" x2="${width - padding.right}" y2="${zeroY}" stroke="rgba(255,255,255,0.25)" stroke-dasharray="4,4" stroke-width="1.2" />
+        <text x="${padding.left - 8}" y="${zeroY + 3.5}" fill="rgba(255,255,255,0.6)" font-size="10" font-family="Inter, monospace" text-anchor="end">0.00 U</text>
+        
+        <line x1="${padding.left}" y1="${getY(boundMax - 0.3)}" x2="${width - padding.right}" y2="${getY(boundMax - 0.3)}" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="${padding.left - 8}" y="${getY(boundMax - 0.3) + 3.5}" fill="rgba(255,255,255,0.3)" font-size="9" font-family="Inter, monospace" text-anchor="end">+${(boundMax - 0.3).toFixed(1)}U</text>
 
-      // Render Cards View (Alternative)
-      if (gridContainer) {
-        gridContainer.innerHTML = filtered.map(pick => `
-          <article class="pick-card" onclick="openAuditModal('${pick.id || pick.player}')" style="cursor: pointer;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase;">${pick.league || ''}</span>
-              ${pick.status === 'APROBADO' ? '<span class="status-pill approved">✔ APROBADO</span>' : '<span class="status-pill pending">🕒 PENDIENTE</span>'}
-            </div>
-            <div style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">⚽ ${pick.match}</div>
-            <div style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; color: #ffffff;">👤 ${pick.player}</div>
-            <div style="font-size: 0.85rem; color: #cbd5e1;">${pick.market}: ${pick.line}</div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
-              <span class="board-odds">${pick.odds.toFixed(2)}</span>
-              <span class="board-edge-badge">+${pick.edge_pct || '15'}% EV</span>
-            </div>
-            <button class="btn-audit" style="margin-top: 0.6rem; width: 100%;" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">
-              <span>👁️</span> Auditar Selección & IA
-            </button>
-          </article>
-        `).join('');
-      }
+        <line x1="${padding.left}" y1="${getY(boundMin + 0.3)}" x2="${width - padding.right}" y2="${getY(boundMin + 0.3)}" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="${padding.left - 8}" y="${getY(boundMin + 0.3) + 3.5}" fill="rgba(255,255,255,0.3)" font-size="9" font-family="Inter, monospace" text-anchor="end">${(boundMin + 0.3).toFixed(1)}U</text>
+      `;
 
-      // Render Mobile Opportunity Cards List (Optimized 4-line responsive experience)
-      if (mobileListContainer) {
-        mobileListContainer.innerHTML = filtered.map((pick, idx) => {
-          const pickKey = 'pick_' + (pick.id ? pick.id.replace(/[^a-zA-Z0-9]/g, '_') : idx);
-          const isApproved = pick.status === 'APROBADO';
-          const statusBadge = isApproved 
-            ? '<span class="status-pill approved">✔ APROBADO</span>' 
-            : '<span class="status-pill pending">🕒 PENDIENTE</span>';
+      // Trayectoria de la curva y área
+      const pathPoints = points.map((p, idx) => `${getX(idx).toFixed(1)} ${getY(p.bal).toFixed(1)}`);
+      const strokeD = 'M ' + pathPoints.join(' L ');
+      const areaD = `${strokeD} L ${getX(points.length - 1).toFixed(1)} ${zeroY.toFixed(1)} L ${getX(0).toFixed(1)} ${zeroY.toFixed(1)} Z`;
 
-          const realProb = pick.real_prob || (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : 75);
-          const impliedProb = pick.implied_prob || (pick.odds ? (100 / pick.odds).toFixed(1) : 55);
-          const edgeDisplay = pick.edge_pct ? `+${pick.edge_pct}%` : '+15.0%';
-          const fairOddsDisplay = pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : (pick.real_prob ? (100 / pick.real_prob).toFixed(2) : '1.30');
-          const flag = getLeagueFlag(pick.league);
+      const strokeColor = finalBal >= 0 ? '#10b981' : '#f87171';
+      const fillGradient = finalBal >= 0 ? 'url(#pnlGradPos)' : 'url(#pnlGradNeg)';
 
-          return `
-            <div class="mob-pick-card" id="mobCard_${pickKey}">
-              <!-- Línea 1: Torneo y estado de la selección -->
-              <div class="mob-card-line1" onclick="toggleMobileCard('${pickKey}')">
-                <span class="mob-card-tournament">${flag} ${pick.league || 'Competición'}</span>
-                ${statusBadge}
-              </div>
-
-              <!-- Línea 2: Partido -->
-              <div class="mob-card-line2" onclick="toggleMobileCard('${pickKey}')">${pick.match}</div>
-
-              <!-- Línea 3: Selección / jugador y mercado -->
-              <div class="mob-card-line3" onclick="toggleMobileCard('${pickKey}')">
-                <span class="mob-card-player">👤 ${pick.player}</span>
-                <span class="mob-card-market">· ${pick.market} (${pick.line})</span>
-              </div>
-
-              <!-- Línea 4: Cuota, EV y Probabilidad Proyectada + Indicador de expansión -->
-              <div class="mob-card-line4" onclick="toggleMobileCard('${pickKey}')">
-                <div class="mob-metric-group">
-                  <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">Cuota</span>
-                    <span class="mob-metric-val odds">${pick.odds.toFixed(2)}</span>
-                  </div>
-                  <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">EV</span>
-                    <span class="board-edge-badge">${edgeDisplay}</span>
-                  </div>
-                  <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">Prob. Real</span>
-                    <span class="mob-metric-val prob">${realProb}%</span>
-                  </div>
-                </div>
-                <div class="mob-card-chevron">
-                  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </div>
-
-              <!-- Expansión al tocar: Cuota justa, racha L5/L10, dictamen y auditoría completa -->
-              <div class="mob-card-expanded-content">
-                <div class="mob-expanded-grid">
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Cuota Justa</span>
-                    <span class="mob-expanded-val" style="color: var(--accent-cyan);">${fairOddsDisplay}</span>
-                  </div>
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Racha L5</span>
-                    <span class="mob-expanded-val" style="color: var(--neon-turf);">${pick.hit_rate_l5 || '4/5 (80%)'}</span>
-                  </div>
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Prob. Implícita</span>
-                    <span class="mob-expanded-val" style="color: var(--text-dim);">${impliedProb}%</span>
-                  </div>
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Muestra L10</span>
-                    <span class="mob-expanded-val">10 Partidos Oficiales</span>
-                  </div>
-                </div>
-                ${pick.rationale ? `<div class="mob-card-rationale"><strong>Elena (Risk Manager):</strong> ${pick.rationale}</div>` : ''}
-                <button class="btn-audit mob-card-action-btn" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">
-                  <span>👁️</span> Auditar Selección & IA Completa
-                </button>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-    }
-
-    function renderParlays() {
-      const container = document.getElementById('parlaysGrid');
-      if (!globalPicksData || !globalPicksData.parlays || globalPicksData.parlays.length === 0) {
-        container.innerHTML = '<div class="empty-state">No hay combinadas sugeridas para hoy.</div>';
-        return;
-      }
-
-      container.innerHTML = globalPicksData.parlays.map(parlay => {
-        const isConservative = parlay.type && parlay.type.toLowerCase().includes('conservador');
-        const cardClass = isConservative ? 'conservative' : 'value';
-
-        return `
-          <article class="parlay-card ${cardClass}">
-            <div class="parlay-header">
-              <div>
-                <h3 class="parlay-title">${isConservative ? '🛡️' : '🚀'} ${parlay.name}</h3>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">${parlay.confidence || ''}</span>
-              </div>
-              <span class="status-pill ${isConservative ? 'detected' : 'approved'}">${parlay.type}</span>
-            </div>
-
-            <div class="parlay-odds-row">
-              <span style="font-weight: 700; font-size: 0.95rem;">Cuota Combinada bet365:</span>
-              <span class="parlay-odds-total">${parlay.target_odds ? parlay.target_odds.toFixed(2) : ''}</span>
-            </div>
-
-            <ul class="legs-list">
-              ${parlay.legs.map(leg => `
-                <li class="leg-item">
-                  <div class="leg-info">
-                    <span style="font-size: 0.78rem; color: var(--text-dim);">⚽ ${leg.match}</span>
-                    <span style="font-size: 0.93rem; font-weight: 800; color: #ffffff;">${leg.selection}</span>
-                  </div>
-                  <span class="leg-odd">${leg.odds ? leg.odds.toFixed(2) : ''}</span>
-                </li>
-              `).join('')}
-            </ul>
-
-            <div class="parlay-footer">
-              <span style="font-size: 0.83rem; color: var(--text-muted);">Stake sugerido: <strong>${parlay.suggested_stake || '1%'}</strong></span>
-              <button class="btn-copy" onclick="copyParlay('${parlay.id}')">📋 Copiar Cupón</button>
-            </div>
-          </article>
-        `;
+      // Círculos interactivos
+      const dotsHtml = points.map((p, idx) => {
+        if (idx === 0) return '';
+        const cx = getX(idx).toFixed(1);
+        const cy = getY(p.bal).toFixed(1);
+        const dotColor = (p.status === 'GANADA' || p.status === 'ACERTADA') ? '#4ade80' : '#f87171';
+        return `<circle cx="${cx}" cy="${cy}" r="3.5" fill="${dotColor}" stroke="#0b1221" stroke-width="1.5" class="chart-dot" data-idx="${idx}" style="cursor: pointer; transition: r 0.15s ease;" />`;
       }).join('');
+
+      container.innerHTML = `
+        <svg id="equityChartSvg" class="equity-svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pnlGradPos" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#10b981" stop-opacity="0.30"></stop>
+              <stop offset="100%" stop-color="#10b981" stop-opacity="0.01"></stop>
+            </linearGradient>
+            <linearGradient id="pnlGradNeg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f87171" stop-opacity="0.01"></stop>
+              <stop offset="100%" stop-color="#f87171" stop-opacity="0.25"></stop>
+            </linearGradient>
+          </defs>
+          <g>${gridHtml}</g>
+          <path fill="${fillGradient}" d="${areaD}"></path>
+          <path fill="none" stroke="${strokeColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="${strokeD}"></path>
+          <g>${dotsHtml}</g>
+        </svg>
+        <div id="equityTooltip" class="equity-tooltip" style="display: none;"></div>
+      `;
+
+      // Eventos tooltip
+      const svg = container.querySelector('#equityChartSvg');
+      const tooltip = container.querySelector('#equityTooltip');
+      const dots = container.querySelectorAll('.chart-dot');
+
+      dots.forEach(dot => {
+        const idx = parseInt(dot.getAttribute('data-idx'));
+        const p = points[idx];
+        if (!p) return;
+
+        const showTip = (e) => {
+          dot.setAttribute('r', '6');
+          const pVal = p.profit !== undefined ? (p.profit >= 0 ? '+' : '') + Number(p.profit).toFixed(2) + ' U' : '';
+          const bVal = (p.bal >= 0 ? '+' : '') + p.bal.toFixed(2) + ' U';
+          const isWin = p.status === 'GANADA' || p.status === 'ACERTADA';
+
+          tooltip.innerHTML = `
+            <div style="font-weight: 700; color: #ffffff; margin-bottom: 2px;">${p.match}</div>
+            <div style="color: var(--text-dim); font-size: 10px; margin-bottom: 3px;">${p.player}</div>
+            <div style="display: flex; justify-content: space-between; gap: 8px;">
+              <span>Resultado: <strong style="color: ${isWin ? '#4ade80' : '#f87171'};">${pVal}</strong></span>
+              <span>Balance: <strong style="color: #ffffff;">${bVal}</strong></span>
+            </div>
+          `;
+
+          const rect = container.getBoundingClientRect();
+          const dotCx = parseFloat(dot.getAttribute('cx'));
+          const dotCy = parseFloat(dot.getAttribute('cy'));
+          
+          const xRatio = dotCx / width;
+          const yRatio = dotCy / height;
+
+          tooltip.style.left = (xRatio * rect.width) + 'px';
+          tooltip.style.top = (yRatio * rect.height) + 'px';
+          tooltip.style.display = 'block';
+        };
+
+        const hideTip = () => {
+          dot.setAttribute('r', '3.5');
+          tooltip.style.display = 'none';
+        };
+
+        dot.addEventListener('mouseenter', showTip);
+        dot.addEventListener('mouseleave', hideTip);
+        dot.addEventListener('touchstart', showTip, { passive: true });
+        dot.addEventListener('touchend', hideTip, { passive: true });
+      });
     }
 
     function renderMarketsBreakdown(byMarket) {
       const container = document.getElementById('marketsBreakdownGrid');
+      if (!container) return;
+
       const entries = Object.entries(byMarket);
       if (entries.length === 0) {
-        container.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-dim);">Sin datos suficientes aún.</div>';
+        container.innerHTML = '<div style="font-size: 12px; color: var(--text-dim); padding: 0.5rem 0;">No hay datos de mercados con los filtros seleccionados.</div>';
         return;
       }
 
       container.innerHTML = entries.map(([marketName, stats]) => {
         const rateNum = parseFloat(stats.win_rate) || 0;
+        const total = stats.total || 0;
+        const won = stats.won || 0;
+        
+        let sampleTag = '';
+        let winRateDisplay = stats.win_rate;
+
+        if (total === 1) {
+          sampleTag = '<span class="sample-pill limited">Muestra 1 pick · Preliminar</span>';
+          winRateDisplay = `${stats.win_rate}*`;
+        } else if (total < 4) {
+          sampleTag = `<span class="sample-pill prelim">Muestra limitada (${total} picks)</span>`;
+        } else {
+          sampleTag = `<span class="sample-pill solid">Muestra ${total} picks</span>`;
+        }
+
+        const rateColor = rateNum >= 70 ? '#4ade80' : (rateNum >= 50 ? '#facc15' : '#f87171');
+        const profitColor = stats.profit.startsWith('+') ? '#4ade80' : '#f87171';
+        const barGradient = rateNum >= 60 ? 'linear-gradient(90deg, #10b981, #06b6d4)' : (rateNum >= 40 ? 'linear-gradient(90deg, #f59e0b, #eab308)' : 'linear-gradient(90deg, #ef4444, #f87171)');
+
         return `
-          <div class="market-perf-box">
-            <div class="market-perf-header">
-              <span>${marketName}</span>
-              <span style="color: ${rateNum >= 75 ? '#4ade80' : '#facc15'};">${stats.win_rate} (${stats.won}/${stats.total})</span>
+          <div class="market-row-item" onclick="syncHistoryFilterChange('market', '${marketName}')" title="Filtrar por ${marketName}">
+            <div class="market-name">${marketName}</div>
+            <div>${sampleTag}</div>
+            <div class="market-ratio-box">
+              <span>${won}/${total}</span>
+              <div class="market-bar-track">
+                <div class="market-bar-fill" style="width: ${rateNum}%; background: ${barGradient};"></div>
+              </div>
             </div>
-            <div class="market-progress-bg">
-              <div class="market-progress-fill" style="width: ${rateNum}%;"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-dim); margin-top: 0.2rem;">
-              <span>Rendimiento neto:</span>
-              <strong style="color: ${stats.profit.startsWith('+') ? '#4ade80' : '#f87171'};">${stats.profit}</strong>
-            </div>
+            <div class="market-rate-val" style="color: ${rateColor};">${winRateDisplay}</div>
+            <div class="market-profit-val" style="color: ${profitColor};">${stats.profit}</div>
           </div>
         `;
       }).join('');
     }
 
-    function renderHistory() {
+    function renderHistoryTableAndCards(filtered) {
       const tbody = document.getElementById('historyTableBody');
-      const historyList = globalHistoryData ? (globalHistoryData.history || globalHistoryData.picks || []) : [];
+      const mobileList = document.getElementById('historyMobileList');
 
-      if (!globalHistoryData || historyList.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="empty-state" style="padding: 2.5rem 1rem;">No hay apuestas registradas en el historial todavía. Los resultados se liquidan automáticamente al finalizar los partidos.</td></tr>';
+      if (!tbody || !mobileList) return;
+
+      if (!filtered || filtered.length === 0) {
+        const emptyHtml = '<tr><td colspan="8" class="empty-state" style="padding: 2.5rem 1rem; text-align: center; color: var(--text-dim); font-size: 13px;">No se encontraron apuestas con los filtros seleccionados.</td></tr>';
+        tbody.innerHTML = emptyHtml;
+        mobileList.innerHTML = '<div style="padding: 2.5rem 1rem; text-align: center; color: var(--text-dim); font-size: 13px;">No se encontraron apuestas con los filtros seleccionados.</div>';
         return;
       }
 
-      const statusFilter = document.getElementById('filterHistoryStatus')?.value || 'all';
-      const searchFilter = document.getElementById('searchHistoryInput')?.value.toLowerCase().trim() || '';
-
-      const filtered = historyList.filter(item => {
-        const isWon = item.status === 'GANADA' || item.status === 'ACERTADA';
-        const isLost = item.status === 'PERDIDA' || item.status === 'FALLADA';
-        const isPending = !isWon && !isLost;
-
-        if (statusFilter === 'GANADA' && !isWon) return false;
-        if (statusFilter === 'PERDIDA' && !isLost) return false;
-        if (statusFilter === 'PENDIENTE' && !isPending) return false;
-
-        if (searchFilter) {
-          const space = `${item.player || ''} ${item.match || ''} ${item.league || ''} ${item.market || ''} ${item.line || ''}`.toLowerCase();
-          if (!space.includes(searchFilter)) return false;
-        }
-        return true;
-      });
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No se encontraron apuestas con los filtros seleccionados.</td></tr>';
-        return;
-      }
-
+      // 1. Render Desktop Table
       tbody.innerHTML = filtered.map(item => {
         const isWon = item.status === 'GANADA' || item.status === 'ACERTADA';
         const isLost = item.status === 'PERDIDA' || item.status === 'FALLADA';
@@ -3359,39 +4071,134 @@
         let profitDisplay = '';
 
         if (isWon) {
-          statusBadge = '<span class="badge-status ganada">✅ Acertada</span>';
+          statusBadge = '<span class="badge-status ganada">✔ Acertada</span>';
           const pVal = item.profit !== undefined ? item.profit : ((item.odds || 1.8) - 1.0);
           profitDisplay = `<span class="profit-positive">+${Number(pVal).toFixed(2)} U</span>`;
         } else if (isLost) {
-          statusBadge = '<span class="badge-status perdida">❌ Fallada</span>';
+          statusBadge = '<span class="badge-status perdida">✖ Fallada</span>';
           const pVal = item.profit !== undefined ? item.profit : -1.0;
           profitDisplay = `<span class="profit-negative">${Number(pVal).toFixed(2)} U</span>`;
         } else {
-          statusBadge = '<span class="badge-status pendiente">⏳ En Juego / Pendiente</span>';
+          statusBadge = '<span class="badge-status pendiente">⏳ Pendiente</span>';
           profitDisplay = '<span class="profit-neutral">0.00 U</span>';
         }
 
         const oddsDisplay = item.odds ? Number(item.odds).toFixed(2) : '1.80';
         const actualStatDisplay = item.actual_stat !== undefined ? item.actual_stat : (isWon ? 'Línea superada' : (isLost ? 'No superada' : 'En juego'));
+        const stakeDisplay = (item.stake || 1.0).toFixed(2) + ' U';
 
         return `
           <tr>
-            <td style="font-size: 0.8rem; color: var(--text-dim); font-weight: 600;">${item.date || 'Hoy'}</td>
-            <td style="font-weight: 700;">
-              <div>${item.match || 'Partido'}</div>
-              <span style="font-size: 0.74rem; color: var(--accent-cyan);">${item.league || 'Fútbol'}</span>
+            <td style="font-size: 11px; color: var(--text-dim); font-weight: 600; white-space: nowrap;">${item.date || '19/11'}</td>
+            <td>
+              <div style="font-weight: 700; color: #ffffff;">${item.match || 'Partido'}</div>
+              <span style="font-size: 11px; color: var(--accent-cyan); font-weight: 600;">${item.league || 'Fútbol'}</span>
             </td>
             <td>
-              <div style="font-weight: 800; color: #ffffff;">${item.player || 'Selección'}</div>
-              <span style="font-size: 0.76rem; color: var(--text-muted);">${item.market || 'Mercado'}: ${item.line || ''}</span>
+              <div style="font-weight: 700; color: #ffffff;">${item.player || 'Selección'}</div>
+              <span style="font-size: 11px; color: var(--text-muted);">${item.market || 'Mercado'}: ${item.line || ''}</span>
             </td>
-            <td style="font-family: var(--font-mono); font-weight: 900; color: #facc15;">${oddsDisplay}</td>
-            <td style="font-size: 0.82rem; color: #cbd5e1; font-family: var(--font-mono);">${actualStatDisplay}</td>
+            <td style="font-family: var(--font-mono); font-weight: 800; color: #facc15;">${oddsDisplay}</td>
+            <td style="font-size: 12px; color: #cbd5e1; font-family: var(--font-mono); font-weight: 600;">${actualStatDisplay}</td>
             <td>${statusBadge}</td>
             <td>${profitDisplay}</td>
+            <td style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">${stakeDisplay}</td>
           </tr>
         `;
       }).join('');
+
+      // 2. Render Mobile Cards (Accordion sin scroll horizontal)
+      mobileList.innerHTML = filtered.map(item => {
+        const isWon = item.status === 'GANADA' || item.status === 'ACERTADA';
+        const isLost = item.status === 'PERDIDA' || item.status === 'FALLADA';
+
+        let statusClass = isWon ? 'won' : (isLost ? 'lost' : 'pending');
+        let statusBadge = isWon ? '<span class="badge-status ganada">✔ ACERTADA</span>' : (isLost ? '<span class="badge-status perdida">✖ FALLADA</span>' : '<span class="badge-status pendiente">⏳ EN JUEGO</span>');
+        
+        let profitDisplay = '';
+        if (isWon) {
+          const pVal = item.profit !== undefined ? item.profit : ((item.odds || 1.8) - 1.0);
+          profitDisplay = `<span class="profit-positive">+${Number(pVal).toFixed(2)} U</span>`;
+        } else if (isLost) {
+          const pVal = item.profit !== undefined ? item.profit : -1.0;
+          profitDisplay = `<span class="profit-negative">${Number(pVal).toFixed(2)} U</span>`;
+        } else {
+          profitDisplay = '<span class="profit-neutral">0.00 U</span>';
+        }
+
+        const oddsDisplay = item.odds ? Number(item.odds).toFixed(2) : '1.80';
+        const actualStatDisplay = item.actual_stat !== undefined ? item.actual_stat : (isWon ? 'Línea superada' : (isLost ? 'No superada' : 'En juego'));
+        const stakeDisplay = (item.stake || 1.0).toFixed(2) + ' U';
+
+        return `
+          <div class="history-mobile-card ${statusClass}" onclick="toggleHistoryCardAccordion(this)">
+            <div class="hm-card-header">
+              <div class="hm-header-meta">
+                <span class="hm-date">${item.date || '19/11'}</span>
+                <span class="hm-league">${item.league || 'Fútbol'}</span>
+              </div>
+              <div class="hm-status-wrap">
+                ${statusBadge}
+              </div>
+            </div>
+            
+            <div class="hm-card-match">${item.match || 'Partido'}</div>
+            
+            <div class="hm-card-pick-row">
+              <div class="hm-selection">${item.player || 'Selección'}</div>
+              <div class="hm-market-line">${item.market || 'Mercado'} · <strong style="color: #cbd5e1;">${item.line || ''}</strong></div>
+            </div>
+            
+            <div class="hm-card-kpi-bar">
+              <div class="hm-kpi-box">
+                <span class="hm-kpi-lbl">Cuota</span>
+                <span class="hm-kpi-val odds">${oddsDisplay}</span>
+              </div>
+              <div class="hm-kpi-box">
+                <span class="hm-kpi-lbl">Dato Real</span>
+                <span class="hm-kpi-val stat">${actualStatDisplay}</span>
+              </div>
+              <div class="hm-kpi-box">
+                <span class="hm-kpi-lbl">Balance</span>
+                <span class="hm-kpi-val profit">${profitDisplay}</span>
+              </div>
+              <div class="hm-accordion-icon">
+                <svg viewBox="0 0 24 24" class="chevron-svg"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <!-- Acordeón expandible al tocar -->
+            <div class="hm-card-accordion-content">
+              <div class="hm-detail-grid">
+                <div class="hm-detail-item">
+                  <span class="hm-detail-lbl">Línea Objetivo:</span>
+                  <span class="hm-detail-val">${item.line || 'N/A'}</span>
+                </div>
+                <div class="hm-detail-item">
+                  <span class="hm-detail-lbl">Estadística Oficial:</span>
+                  <span class="hm-detail-val" style="color: ${isWon ? '#4ade80' : '#f87171'};">${actualStatDisplay}</span>
+                </div>
+                <div class="hm-detail-item">
+                  <span class="hm-detail-lbl">Stake Apostado:</span>
+                  <span class="hm-detail-val">${stakeDisplay} (Plano)</span>
+                </div>
+                <div class="hm-detail-item">
+                  <span class="hm-detail-lbl">Retorno / Balance:</span>
+                  <span class="hm-detail-val" style="color: ${isWon ? '#4ade80' : '#f87171'};">${profitDisplay}</span>
+                </div>
+                <div class="hm-detail-item" style="grid-column: span 2;">
+                  <span class="hm-detail-lbl">ID de Liquidación Auditada:</span>
+                  <span class="hm-detail-val" style="font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);">${item.id || 'N/A'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderHistory() {
+      applyHistoryFiltersAndRender();
     }
 
     function copyParlay(parlayId) {
