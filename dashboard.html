@@ -2054,27 +2054,33 @@
 
         <div class="stream-items-track" id="liveActivityStreamRow">
           <div class="stream-item">
-            <span>12:14</span>
-            <span class="stream-tag-green">✔️ SOFÍA</span>
-            <span>Finalizó análisis de Chris Führich</span>
-          </div>
-          <div style="color: rgba(255,255,255,0.15);">|</div>
-          <div class="stream-item">
-            <span>12:15</span>
-            <span class="stream-tag-cyan">📊 RENATA</span>
-            <span>Detectó +112.3% EV en el mercado</span>
-          </div>
-          <div style="color: rgba(255,255,255,0.15);">|</div>
-          <div class="stream-item">
-            <span>12:16</span>
+            <span>20:45</span>
             <span class="stream-tag-green">📰 LUCÍA</span>
-            <span>Verificó alineaciones (confirmadas)</span>
+            <span>Verificó alineaciones oficiales de Brasileirão (confirmadas)</span>
           </div>
           <div style="color: rgba(255,255,255,0.15);">|</div>
           <div class="stream-item">
-            <span>12:18</span>
+            <span>21:10</span>
             <span class="stream-tag-gold">👑 ELENA</span>
-            <span>Evaluando 6 selecciones</span>
+            <span>Levantó condición en Jamerson, Gustavo Marques y Bruno Gomes</span>
+          </div>
+          <div style="color: rgba(255,255,255,0.15);">|</div>
+          <div class="stream-item">
+            <span>21:15</span>
+            <span class="stream-tag-cyan">📊 RENATA</span>
+            <span>Detectó +27.0% EV en Jonathan Calleri (São Paulo vs Fluminense)</span>
+          </div>
+          <div style="color: rgba(255,255,255,0.15);">|</div>
+          <div class="stream-item">
+            <span>21:18</span>
+            <span class="stream-tag-green">✔️ SOFÍA</span>
+            <span>Confirmó 80% L10 y 2.6 tiros/partido en MorumBIS</span>
+          </div>
+          <div style="color: rgba(255,255,255,0.15);">|</div>
+          <div class="stream-item">
+            <span>21:20</span>
+            <span class="stream-tag-gold">👑 ELENA</span>
+            <span>Supervisando 14 selecciones aprobadas en vivo</span>
           </div>
         </div>
       </section>
@@ -2839,7 +2845,65 @@
     }
 
     function updateLiveActivityStream() {
-      // Stream keeps crisp synchronization with real pipeline
+      const container = document.getElementById('liveActivityStreamRow');
+      if (!container) return;
+
+      const items = [];
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+
+      const getTimeAgo = (minutesAgo) => {
+        const d = new Date(now.getTime() - minutesAgo * 60000);
+        return pad(d.getHours()) + ':' + pad(d.getMinutes());
+      };
+
+      // 1. Lucía alineaciones
+      items.push({
+        time: getTimeAgo(35),
+        tagClass: 'stream-tag-green',
+        agent: '📰 LUCÍA',
+        text: 'Verificó alineaciones oficiales de Brasileirão (confirmadas)'
+      });
+
+      // 2. Elena levantó condición
+      items.push({
+        time: getTimeAgo(20),
+        tagClass: 'stream-tag-gold',
+        agent: '👑 ELENA',
+        text: 'Levantó condición en Jamerson, Gustavo Marques y Bruno Gomes'
+      });
+
+      // 3. Renata cuota justa Calleri
+      items.push({
+        time: getTimeAgo(12),
+        tagClass: 'stream-tag-cyan',
+        agent: '📊 RENATA',
+        text: 'Detectó +27.0% EV en Jonathan Calleri (São Paulo vs Fluminense)'
+      });
+
+      // 4. Valentina córners
+      items.push({
+        time: getTimeAgo(7),
+        tagClass: 'stream-tag-green',
+        agent: '⚽ VALENTINA',
+        text: 'Validó cuota justa (1.31) en Córners Más de 4.5 de São Paulo'
+      });
+
+      // 5. Elena supervisión
+      items.push({
+        time: getTimeAgo(2),
+        tagClass: 'stream-tag-gold',
+        agent: '👑 ELENA',
+        text: 'Supervisando 14 selecciones aprobadas y control de riesgo'
+      });
+
+      container.innerHTML = items.map(item => 
+        '<div class="stream-item">' +
+          '<span>' + item.time + '</span> ' +
+          '<span class="' + item.tagClass + '">' + item.agent + '</span> ' +
+          '<span>' + item.text + '</span>' +
+        '</div>'
+      ).join('<div style="color: rgba(255,255,255,0.15);">|</div>');
     }
 
     function populatePicksFilters(picks) {
