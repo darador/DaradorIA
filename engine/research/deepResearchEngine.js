@@ -261,7 +261,21 @@ class DeepResearchEngine {
       });
       const data = res?.data;
 
-      if (!data || !Array.isArray(data.matches) || data.matches.length === 0) {
+      // Adaptador para respuestas tabulares de StatsHub (matchColumns + matchRows) o formato de objetos (matches)
+      let rawMatches = [];
+      if (Array.isArray(data?.matches)) {
+        rawMatches = data.matches;
+      } else if (Array.isArray(data?.matchRows) && Array.isArray(data?.matchColumns)) {
+        rawMatches = data.matchRows.map(row => {
+          const obj = {};
+          data.matchColumns.forEach((col, idx) => {
+            obj[col] = row[idx];
+          });
+          return obj;
+        });
+      }
+
+      if (!data || rawMatches.length === 0) {
         return {
           success: false,
           reason: 'NO_MATCHES_RETURNED',
@@ -282,7 +296,6 @@ class DeepResearchEngine {
             ? parseFloat(String(candidate.line).replace(/[^0-9.]/g, '')) 
             : 0.5);
 
-      const rawMatches = data.matches;
       const parsedMatches = [];
       const validAppearances = [];
       const homeMatches = [];
@@ -449,6 +462,8 @@ class DeepResearchEngine {
         let rawVal = null;
         if (g[statType] !== undefined && g[statType] !== null) {
           rawVal = Number(g[statType]);
+        } else if (g.stats?.[statType] !== undefined && g.stats?.[statType] !== null) {
+          rawVal = Number(g.stats[statType]);
         } else if (g.teamStats?.[statType] !== undefined && g.teamStats?.[statType] !== null) {
           rawVal = Number(g.teamStats[statType]);
         } else if (g.stat !== undefined && g.stat !== null) {
@@ -545,7 +560,9 @@ class DeepResearchEngine {
       }
 
       let concededAvg = null;
-      if (data.opponentTotals && data.games) {
+      if (data.totals?.opponentStats?.[statType]?.avg !== undefined) {
+        concededAvg = Number(data.totals.opponentStats[statType].avg);
+      } else if (data.opponentTotals && data.games) {
         const oppStat = data.opponentTotals[statType];
         if (typeof oppStat === 'number' && data.games > 0) {
           concededAvg = Number((oppStat / data.games).toFixed(2));
