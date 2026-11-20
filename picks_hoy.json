@@ -24,7 +24,7 @@
       "edge_pct": 56.4,
       "confidence": "90.7%",
       "rationale": "EV positivo (+56.4%) validado, pendiente de alineación oficial confirmada (T-60 min)",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "FALLADA",
       "fair_odds": 1.04,
       "ev_pct": "+56.4%",
       "uncertainty_index": 0.093,
@@ -143,7 +143,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 0,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_6k1oex",
@@ -167,7 +170,7 @@
       "edge_pct": 77.2,
       "confidence": "91.3%",
       "rationale": "EV positivo (+77.2%) validado, pendiente de alineación oficial confirmada (T-60 min)",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "ACERTADA",
       "fair_odds": 1.03,
       "ev_pct": "+77.2%",
       "uncertainty_index": 0.087,
@@ -286,7 +289,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 1,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_0x1sao",
@@ -310,7 +316,7 @@
       "edge_pct": 74.3,
       "confidence": "91.3%",
       "rationale": "EV positivo (+74.3%) validado, pendiente de alineación oficial confirmada (T-60 min)",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "ACERTADA",
       "fair_odds": 1.03,
       "ev_pct": "+74.3%",
       "uncertainty_index": 0.087,
@@ -429,7 +435,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 1,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_jmovuk",
@@ -453,7 +462,7 @@
       "edge_pct": 59.3,
       "confidence": "90.7%",
       "rationale": "EV positivo (+59.3%) validado, pendiente de alineación oficial confirmada (T-60 min)",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "ACERTADA",
       "fair_odds": 1.04,
       "ev_pct": "+59.3%",
       "uncertainty_index": 0.093,
@@ -572,7 +581,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 2,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_9ip2qz",
@@ -596,7 +608,7 @@
       "edge_pct": 81.9,
       "confidence": "89.9%",
       "rationale": "Aprobado matemáticamente: EV +81.9%, cuota justa 0.55 vs cuota 1.82, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "FALLADA",
       "fair_odds": 1,
       "ev_pct": "+81.9%",
       "uncertainty_index": 0.101,
@@ -709,7 +721,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 2,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_xxa5io",
@@ -733,7 +748,7 @@
       "edge_pct": 43.9,
       "confidence": "78.4%",
       "rationale": "Aprobado matemáticamente: EV +43.9%, cuota justa 0.70 vs cuota 1.83, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "FALLADA",
       "fair_odds": 1.27,
       "ev_pct": "+43.9%",
       "uncertainty_index": 0.216,
@@ -846,7 +861,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 4,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_f1vj6i",
@@ -870,7 +888,7 @@
       "edge_pct": 34.4,
       "confidence": "67.9%",
       "rationale": "EV positivo (+34.4%) pero incertidumbre moderada (32.1%), requiere validación del comité de IA",
-      "status": "APROBADO",
+      "status": "FALLADA",
       "fair_odds": 1.55,
       "ev_pct": "+34.4%",
       "uncertainty_index": 0.321,
@@ -983,7 +1001,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 4,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_b9lame",
@@ -1007,7 +1028,7 @@
       "edge_pct": 80,
       "confidence": "90%",
       "rationale": "Aprobado matemáticamente: EV +80.0%, cuota justa 0.56 vs cuota 1.8, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1,
       "ev_pct": "+80%",
       "uncertainty_index": 0.1,
@@ -1019,7 +1040,10 @@
         "finalReason": "Aprobado matemáticamente: EV +80.0%, cuota justa 0.56 vs cuota 1.8, muestra sólida (10 partidos)"
       },
       "agent_reports": {},
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 7,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_05zbdy",
@@ -1043,7 +1067,7 @@
       "edge_pct": 71.7,
       "confidence": "89.7%",
       "rationale": "Aprobado matemáticamente: EV +71.7%, cuota justa 0.58 vs cuota 1.72, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1,
       "ev_pct": "+71.7%",
       "uncertainty_index": 0.103,
@@ -1055,7 +1079,10 @@
         "finalReason": "Aprobado matemáticamente: EV +71.7%, cuota justa 0.58 vs cuota 1.72, muestra sólida (10 partidos)"
       },
       "agent_reports": {},
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 8,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_kqoizj",
@@ -1079,7 +1106,7 @@
       "edge_pct": 72.7,
       "confidence": "88.8%",
       "rationale": "Aprobado matemáticamente: EV +72.7%, cuota justa 0.58 vs cuota 1.74, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1.01,
       "ev_pct": "+72.7%",
       "uncertainty_index": 0.112,
@@ -1091,7 +1118,10 @@
         "finalReason": "Aprobado matemáticamente: EV +72.7%, cuota justa 0.58 vs cuota 1.74, muestra sólida (10 partidos)"
       },
       "agent_reports": {},
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 7,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_uhvh6d",
@@ -1115,7 +1145,7 @@
       "edge_pct": 120,
       "confidence": "90%",
       "rationale": "Aprobado matemáticamente: EV +120.0%, cuota justa 0.45 vs cuota 2.2, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1,
       "ev_pct": "+120%",
       "uncertainty_index": 0.1,
@@ -1206,7 +1236,10 @@
           "recommendation": "NEUTRAL"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 3,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_fa98d7",
@@ -1230,7 +1263,7 @@
       "edge_pct": 62,
       "confidence": "90%",
       "rationale": "Aprobado matemáticamente: EV +62.0%, cuota justa 0.62 vs cuota 1.62, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "FALLADA",
       "fair_odds": 1,
       "ev_pct": "+62%",
       "uncertainty_index": 0.1,
@@ -1321,7 +1354,10 @@
           "recommendation": "NEUTRAL"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 0,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_5nnp8v",
@@ -1345,7 +1381,7 @@
       "edge_pct": 72.9,
       "confidence": "89.9%",
       "rationale": "Aprobado matemáticamente: EV +72.9%, cuota justa 0.58 vs cuota 1.73, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1,
       "ev_pct": "+72.9%",
       "uncertainty_index": 0.101,
@@ -1436,7 +1472,10 @@
           "recommendation": "NEUTRAL"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 4,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_9pw61t",
@@ -1460,7 +1499,7 @@
       "edge_pct": 105.5,
       "confidence": "88.8%",
       "rationale": "Aprobado matemáticamente: EV +105.5%, cuota justa 0.49 vs cuota 2.07, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "FALLADA",
       "fair_odds": 1.01,
       "ev_pct": "+105.5%",
       "uncertainty_index": 0.112,
@@ -1551,7 +1590,10 @@
           "recommendation": "NEUTRAL"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 2,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_56ms2b",
@@ -1575,7 +1617,7 @@
       "edge_pct": 75.9,
       "confidence": "89.9%",
       "rationale": "Aprobado matemáticamente: EV +75.9%, cuota justa 0.57 vs cuota 1.76, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "FALLADA",
       "fair_odds": 1,
       "ev_pct": "+75.9%",
       "uncertainty_index": 0.101,
@@ -1688,7 +1730,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 1,
+      "result": "FALLADA"
     },
     {
       "id": "cand_1795110774831_hmkyeq",
@@ -1712,7 +1757,7 @@
       "edge_pct": 67,
       "confidence": "90%",
       "rationale": "Aprobado matemáticamente: EV +67.0%, cuota justa 0.60 vs cuota 1.67, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1,
       "ev_pct": "+67%",
       "uncertainty_index": 0.1,
@@ -1803,7 +1848,10 @@
           "recommendation": "NEUTRAL"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 1,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795110774831_3q13a7",
@@ -1827,7 +1875,7 @@
       "edge_pct": 71.8,
       "confidence": "88.9%",
       "rationale": "Aprobado matemáticamente: EV +71.8%, cuota justa 0.58 vs cuota 1.73, muestra sólida (10 partidos)",
-      "status": "APROBADO",
+      "status": "ACERTADA",
       "fair_odds": 1.01,
       "ev_pct": "+71.8%",
       "uncertainty_index": 0.111,
@@ -1918,7 +1966,10 @@
           "recommendation": "NEUTRAL"
         }
       },
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "actual_stat": 5,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_test_agent_01",
@@ -1942,7 +1993,7 @@
       "edge_pct": 26,
       "confidence": "Alta",
       "rationale": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +30.5% (Cuota: 1.8), baja incertidumbre (18.0%) y consenso favorable de los analistas.",
-      "status": "APROBADO",
+      "status": "FINALIZADO",
       "fair_odds": 1.43,
       "ev_pct": "+26%",
       "uncertainty_index": 0.18,
@@ -2059,7 +2110,9 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-20"
+      "date": "2026-11-20",
+      "is_finished": true,
+      "result": "FINALIZADO"
     },
     {
       "id": "cand_1795111034541_doqilz",
@@ -2083,7 +2136,7 @@
       "edge_pct": 77.2,
       "confidence": "91.3%",
       "rationale": "Alineación oficial confirmada: Jugador parte en el XI titular. Condición levantada por el Risk Manager.",
-      "status": "APROBADO",
+      "status": "FINALIZADO",
       "fair_odds": 1.03,
       "ev_pct": "+77.2%",
       "uncertainty_index": 0.087,
@@ -2095,7 +2148,9 @@
         "finalReason": "Alineación oficial confirmada: Jugador parte en el XI titular. Condición levantada por el Risk Manager."
       },
       "agent_reports": {},
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "result": "FINALIZADO"
     },
     {
       "id": "cand_1795140929393_zq72a",
@@ -2119,7 +2174,7 @@
       "edge_pct": 29.5,
       "confidence": "Alta",
       "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
-      "status": "APROBADO",
+      "status": "FINALIZADO",
       "fair_odds": 1.43,
       "ev_pct": "+29.5%",
       "uncertainty_index": 0.18,
@@ -2131,7 +2186,9 @@
         "finalReason": "Validado por el comité de riesgos"
       },
       "agent_reports": {},
-      "date": "2026-11-19"
+      "date": "2026-11-19",
+      "is_finished": true,
+      "result": "FINALIZADO"
     },
     {
       "id": "cand_1795187331561_zeldy6",
@@ -2154,8 +2211,8 @@
       "real_prob": 83.4,
       "edge_pct": 34.2,
       "confidence": "92.9%",
-      "rationale": "EV positivo (+34.2%) validado, pendiente de alineación oficial confirmada (T-60 min)",
-      "status": "PENDIENTE_ALINEACION",
+      "rationale": "Titular confirmado (90 min), 3 entradas completadas superando la línea de Más de 1.5.",
+      "status": "ACERTADA",
       "fair_odds": 1.2,
       "ev_pct": "+34.2%",
       "uncertainty_index": 0.071,
@@ -2273,7 +2330,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-20"
+      "date": "2026-11-20",
+      "is_finished": true,
+      "actual_stat": 3,
+      "result": "ACERTADA"
     },
     {
       "id": "cand_1795187331561_xmcbes",
@@ -2296,8 +2356,8 @@
       "real_prob": 67.4,
       "edge_pct": 38.2,
       "confidence": "94.3%",
-      "rationale": "EV positivo (+38.2%) validado, pendiente de alineación oficial confirmada (T-60 min)",
-      "status": "PENDIENTE_ALINEACION",
+      "rationale": "Elena Risk Veto: Suplente (ingresó min 81, jugó 9 min). Condición de titularidad T-60 min no cumplida.",
+      "status": "ANULADA_NO_TITULAR",
       "fair_odds": 1.48,
       "ev_pct": "+38.2%",
       "uncertainty_index": 0.057,
@@ -2415,7 +2475,10 @@
           "recommendation": "FAVORABLE"
         }
       },
-      "date": "2026-11-20"
+      "date": "2026-11-20",
+      "is_finished": true,
+      "actual_stat": 0,
+      "result": "ANULADA_NO_TITULAR"
     }
   ],
   "research_center": [
@@ -7346,14 +7409,15 @@
   ],
   "summary_metrics": {
     "total_picks": 22,
-    "approved_count": 16,
-    "pending_count": 6,
+    "approved_count": 11,
+    "pending_count": 0,
     "rejected_count": 21,
     "avg_odds": 1.81,
     "avg_hit_rate_l5": "88.0%",
-    "avg_edge_pct": "65.1%"
+    "avg_edge_pct": "65.1%",
+    "settled_count": 22
   },
-  "updated_at": "2026-11-20T15:18:30.288Z",
+  "updated_at": "2026-11-20T23:14:05.205Z",
   "total_analyzed": 104,
   "shadow_mode": true,
   "is_operative_recommendation": false
