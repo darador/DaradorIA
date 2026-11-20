@@ -246,6 +246,13 @@ class DiscoveryEngine {
         rawRate: r.hitRateL10 || r.hitRateFrom || null
       },
       lineupStatus: r.lineupStatus || (r.predictedStarter ? 'PREDICTED' : 'UNKNOWN'),
+      playerId: r.playerId || r.id || (r.player && r.player.id) || null,
+      teamId: r.teamId || (r.team && r.team.id) || null,
+      opponentTeamId: r.opponentTeamId || r.opponentId || (r.opponent && r.opponent.id) || null,
+      matchId: r.matchId || r.fixtureId || r.gameId || r.eventId || null,
+      competitionId: r.competitionId || r.leagueId || null,
+      seasonId: r.seasonId || null,
+      rawStatType: r.statType || r.stat || null,
       raw: r
     }));
   }
@@ -275,6 +282,13 @@ class DiscoveryEngine {
         opponentConcededRateL10: r.opponentHitRateL10 || null
       },
       lineupStatus: 'TEAM_MARKET',
+      playerId: null,
+      teamId: r.teamId || r.id || (r.team && r.team.id) || null,
+      opponentTeamId: r.opponentTeamId || r.opponentId || (r.opponent && r.opponent.id) || null,
+      matchId: r.matchId || r.fixtureId || r.gameId || r.eventId || null,
+      competitionId: r.competitionId || r.leagueId || null,
+      seasonId: r.seasonId || null,
+      rawStatType: r.statType || r.market || null,
       raw: r
     }));
   }
@@ -306,6 +320,13 @@ class DiscoveryEngine {
         matchup: r.matchup
       },
       lineupStatus: r.predictedXI === false ? 'BENCH_RISK' : 'PREDICTED',
+      playerId: r.playerId || r.id || (r.player && r.player.id) || null,
+      teamId: r.teamId || (r.team && r.team.id) || null,
+      opponentTeamId: r.opponentTeamId || r.opponentId || (r.opponent && r.opponent.id) || null,
+      matchId: r.matchId || r.fixtureId || r.gameId || r.eventId || null,
+      competitionId: r.competitionId || r.leagueId || null,
+      seasonId: r.seasonId || null,
+      rawStatType: r.statType || (r.market ? r.market.split(' ')[0] : null),
       raw: r
     }));
   }
@@ -335,6 +356,13 @@ class DiscoveryEngine {
         averageOdds: r.averageOdds || null
       },
       lineupStatus: 'UNKNOWN',
+      playerId: r.playerId || r.id || (r.player && r.player.id) || null,
+      teamId: r.teamId || (r.team && r.team.id) || null,
+      opponentTeamId: r.opponentTeamId || r.opponentId || (r.opponent && r.opponent.id) || null,
+      matchId: r.matchId || r.fixtureId || r.gameId || r.eventId || null,
+      competitionId: r.competitionId || r.leagueId || null,
+      seasonId: r.seasonId || null,
+      rawStatType: r.statType || r.marketKey || r.market || null,
       raw: r
     }));
   }
@@ -387,6 +415,13 @@ class DiscoveryEngine {
           trendL10: cand.trendL10,
           statsSummary: cand.statsSummary,
           lineupStatus: cand.lineupStatus,
+          playerId: cand.playerId || null,
+          teamId: cand.teamId || null,
+          opponentTeamId: cand.opponentTeamId || null,
+          matchId: cand.matchId || null,
+          competitionId: cand.competitionId || null,
+          seasonId: cand.seasonId || null,
+          rawStatType: cand.rawStatType || null,
           discoverySources: [cand.sourceTool],
           mcpToolsQueried: [cand.sourceTool],
           rawSourceData: cand.raw
@@ -403,6 +438,14 @@ class DiscoveryEngine {
         if (cand.bookmakerOdds && cand.bookmakerOdds > existing.bookmakerOdds) {
           existing.bookmakerOdds = cand.bookmakerOdds; // Conservar mejor cuota detectada
         }
+        // Preservar IDs originales si faltaban
+        if (!existing.playerId && cand.playerId) existing.playerId = cand.playerId;
+        if (!existing.teamId && cand.teamId) existing.teamId = cand.teamId;
+        if (!existing.opponentTeamId && cand.opponentTeamId) existing.opponentTeamId = cand.opponentTeamId;
+        if (!existing.matchId && cand.matchId) existing.matchId = cand.matchId;
+        if (!existing.competitionId && cand.competitionId) existing.competitionId = cand.competitionId;
+        if (!existing.seasonId && cand.seasonId) existing.seasonId = cand.seasonId;
+        if (!existing.rawStatType && cand.rawStatType) existing.rawStatType = cand.rawStatType;
       }
     }
 

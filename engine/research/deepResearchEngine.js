@@ -1,10 +1,12 @@
 /**
  * DEEP RESEARCH ENGINE - INVESTIGACIÓN PROFUNDA DE CANDIDATOS
  * Fase 3: Toma los candidatos detectados y recopila datos exhaustivos:
- * - Estadísticas individuales por 90 min y minutos históricos (getPlayerStats)
- * - Métricas defensivas y concedidas por el rival (getTeamStatistics, getTeamPerformance)
- * - Estadísticas arbitrales en mercados de faltas y tarjetas (getReferee)
+ * - Estadísticas individuales reales por 90 min y minutos históricos (getPlayerStats limit: 20)
+ * - Métricas de rendimiento de equipo y concedidas por el rival (getTeamPerformance limit: 30)
+ * - Estadísticas arbitrales reales en mercados de faltas y tarjetas (getReferee)
  * - Confirmación de alineaciones y rotaciones (getLineups)
+ * - Multi-ventanas estadísticas L5, L10, L15, L20 (y L30 para equipos)
+ * - Trazabilidad e integridad estricta: SIN DATOS SINTÉTICOS NI FALLBACKS SIMULADOS
  */
 const mcpClient = require('../mcp/mcpClient');
 const storage = require('../data/storage');
@@ -12,7 +14,7 @@ const config = require('../config');
 
 class DeepResearchEngine {
   constructor() {
-    this.minSampleMatches = config.prediction?.minSampleMatches || 15;
+    this.minSampleMatches = config.sampling?.minPlayerValidMatches || 8;
   }
 
   /**
@@ -58,7 +60,7 @@ class DeepResearchEngine {
   }
 
   /**
-   * Investiga un único candidato de forma quirúrgica
+   * Investiga un único candidato de forma quirúrgica con datos 100% reales
    */
   async investigateCandidate(candidate) {
     const researchData = {
@@ -77,26 +79,50 @@ class DeepResearchEngine {
 
     // --- 1. INVESTIGACIÓN DE JUGADOR (SI APLICA) ---
     if (!isTeamMarket) {
-      const playerId = candidate.rawSourceData?.playerId || candidate.playerId || null;
-      researchData.playerData = await this._fetchPlayerDetails(candidate.playerOrTeam, playerId, candidate.market);
+      researchData.playerData = await this._fetchPlayerDetails(candidate);
       researchData.toolsQueried.push('getPlayerStats');
+      if (!researchData.playerData.success) {
+        researchData.missingData.push({
+          tool: 'getPlayerStats',
+          reason: researchData.playerData.reason
+        });
+      }
+    } else {
+      // --- INVESTIGACIÓN DE EQUIPO PROPIO (SI ES TEAM PROP) ---
+      researchData.teamData = await this._fetchTeamPerformance(candidate);
+      researchData.toolsQueried.push('getTeamPerformance');
+      if (!researchData.teamData.success) {
+        researchData.missingData.push({
+          tool: 'getTeamPerformance',
+          reason: researchData.teamData.reason
+        });
+      }
     }
 
-    // --- 2. INVESTIGACIÓN DEL EQUIPO Y DEL RIVAL ---
-    const teamName = candidate.team;
-    const opponentName = candidate.opponent;
-
-    researchData.opponentData = await this._fetchOpponentConcededMetrics(opponentName, candidate.market, candidate.competition);
-    researchData.toolsQueried.push('getTeamStatistics');
+    // --- 2. INVESTIGACIÓN DEL RIVAL (CONCESIÓN DEFENSIVA) ---
+    researchData.opponentData = await this._fetchOpponentConcededMetrics(candidate);
+    researchData.toolsQueried.push('getTeamPerformance');
+    if (!researchData.opponentData.isAvailable) {
+      researchData.missingData.push({
+        tool: 'getTeamPerformance_opponent',
+        reason: researchData.opponentData.reason
+      });
+    }
 
     // --- 3. INVESTIGACIÓN ARBITRAL (SOLO EN MERCADOS DE FALTAS / TARJETAS) ---
     if (market.includes('falta') || market.includes('tarjeta') || market.includes('foul') || market.includes('card')) {
-      researchData.refereeData = await this._fetchRefereeMetrics(candidate.match);
+      researchData.refereeData = await this._fetchRefereeMetrics(candidate);
       researchData.toolsQueried.push('getReferee');
+      if (!researchData.refereeData.isAvailable) {
+        researchData.missingData.push({
+          tool: 'getReferee',
+          reason: researchData.refereeData.reason
+        });
+      }
     }
 
     // --- 4. VERIFICACIÓN DE ALINEACIÓN ---
-    researchData.lineupData = await this._fetchLineupStatus(candidate.match, candidate.playerOrTeam, isTeamMarket);
+    researchData.lineupData = await this._fetchLineupStatus(candidate);
     researchData.toolsQueried.push('getLineups');
 
     // --- 5. EVALUACIÓN DE CALIDAD DE DATOS Y ESTADO ---
@@ -104,211 +130,624 @@ class DeepResearchEngine {
     
     // Determinar nuevo estado de investigación
     let newStatus = 'INVESTIGADO';
-    if (researchData.lineupData.status === 'DESCONOCIDA' && !isTeamMarket) {
-      newStatus = 'PENDIENTE_DE_ALINEACION';
-    } else if (quality.sampleSize < 8) {
+    if (quality.qualityStatus === 'INVESTIGACION_INCOMPLETA' || quality.qualityStatus === 'ERROR_DATOS') {
       newStatus = 'INVESTIGACION_INCOMPLETA';
+    } else if (researchData.lineupData.status === 'PENDIENTE_ALINEACION' && !isTeamMarket) {
+      newStatus = 'PENDIENTE_DE_ALINEACION';
     }
 
     // Retornar candidato enriquecido con trazabilidad
     return {
       ...candidate,
       status: newStatus,
-      researchData,
+      researchData: {
+        ...researchData,
+        qualityStatus: quality.qualityStatus
+      },
       mcpToolsQueried: Array.from(new Set([...(candidate.mcpToolsQueried || []), ...researchData.toolsQueried])),
       sampleQuality: quality.score,
       sampleSize: quality.sampleSize,
-      minutesExpected: researchData.playerData?.projectedMinutes || (isTeamMarket ? 90 : 70),
+      minutesExpected: researchData.playerData?.projectedMinutes || (isTeamMarket ? 90 : null),
       investigatedAt: new Date().toISOString()
     };
   }
 
-  // --- MÉTODOS DE RECOLECCIÓN DE DATOS ---
+  // --- MAPEO CANÓNICO DE STATS STATSHUB ---
 
-  async _fetchPlayerDetails(playerName, playerId, marketName) {
+  _getCanonicalStatType(marketName, rawStatType) {
+    const raw = String(rawStatType || marketName || '').toLowerCase().trim();
+    if (raw.includes('shotontarget') || raw === 'shotsontarget' || raw.includes('arco') || raw.includes('puerta')) {
+      return 'shotsOnTarget';
+    }
+    if (raw.includes('foulwon') || raw.includes('foulswon') || raw.includes('ganada')) {
+      return 'foulsWon';
+    }
+    if (raw.includes('foul') || raw.includes('falta')) {
+      return 'fouls';
+    }
+    if (raw.includes('tackle') || raw.includes('entrada')) {
+      return 'tackles';
+    }
+    if (raw.includes('card') || raw.includes('tarjeta') || raw.includes('yellow')) {
+      return 'yellowCards';
+    }
+    if (raw.includes('corner') || raw.includes('córner')) {
+      return 'corners';
+    }
+    if (raw.includes('scoredorassisted') || raw.includes('goalorassist') || raw.includes('gol o asistencia') || raw.includes('xgxa')) {
+      return 'scoredOrAssisted';
+    }
+    if (raw.includes('goal') || raw.includes('gol')) {
+      return 'goals';
+    }
+    if (raw.includes('assist') || raw.includes('asistencia')) {
+      return 'assists';
+    }
+    if (raw.includes('pass') || raw.includes('pase')) {
+      return 'passes';
+    }
+    if (raw.includes('shot') || raw.includes('remate') || raw.includes('tiro')) {
+      return 'shots';
+    }
+    return 'shots';
+  }
+
+  // --- CÁLCULO DE VENTANAS ESTADÍSTICAS ---
+
+  _calculateWindowStats(observations, windowSize, lineThreshold = 0) {
+    if (!observations || observations.length === 0) return null;
+    const windowSlice = observations.slice(0, windowSize);
+    const n = windowSlice.length;
+    if (n === 0) return null;
+
+    const sum = windowSlice.reduce((a, b) => a + b, 0);
+    const mean = Number((sum / n).toFixed(2));
+    
+    let variance = 0;
+    if (n > 1) {
+      const sqDiffs = windowSlice.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0);
+      variance = Number((sqDiffs / (n - 1)).toFixed(3));
+    }
+    const stdDev = Number(Math.sqrt(variance).toFixed(2));
+
+    const sorted = [...windowSlice].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    const median = sorted.length % 2 !== 0 
+      ? sorted[mid] 
+      : Number(((sorted[mid - 1] + sorted[mid]) / 2).toFixed(2));
+
+    const hits = windowSlice.filter(v => v > lineThreshold).length;
+    const hitRate = Number(((hits / n) * 100).toFixed(1));
+
+    return {
+      window: `L${n}`,
+      count: n,
+      mean,
+      variance,
+      stdDev,
+      median,
+      hits,
+      hitRate
+    };
+  }
+
+  // --- MÉTODOS DE RECOLECCIÓN DE DATOS REALES ---
+
+  async _fetchPlayerDetails(candidate) {
+    const playerId = candidate.playerId || candidate.rawSourceData?.playerId || null;
+    const playerName = candidate.playerOrTeam;
+    const statType = this._getCanonicalStatType(candidate.market, candidate.rawStatType);
+    const maxMatches = config.sampling?.maxPlayerMatches || 20;
+
+    if (!playerId) {
+      return {
+        success: false,
+        reason: 'MISSING_PLAYER_ID',
+        playerName,
+        statType,
+        validMatches: 0,
+        observations: [],
+        matches: [],
+        qualityStatus: 'INVESTIGACION_INCOMPLETA'
+      };
+    }
+
     try {
-      const args = playerId ? { playerId } : { search: playerName };
-      const res = await mcpClient.callTool('getPlayerStats', args);
-      const data = res.data;
+      const res = await mcpClient.callTool('getPlayerStats', {
+        playerId,
+        statType,
+        limit: maxMatches,
+        appearances: 'all'
+      });
+      const data = res?.data;
 
-      if (!data) {
-        return this._generateNormalizedPlayerStats(playerName, marketName);
+      if (!data || !Array.isArray(data.matches) || data.matches.length === 0) {
+        return {
+          success: false,
+          reason: 'NO_MATCHES_RETURNED',
+          playerName,
+          playerId,
+          statType,
+          validMatches: 0,
+          observations: [],
+          matches: [],
+          qualityStatus: 'INVESTIGACION_INCOMPLETA'
+        };
       }
 
-      // Normalizar datos de StatsHub si vinieron en vivo o caché
-      const starts = data.starts || data.appearances || 20;
-      const totalMinutes = data.minutesPlayed || (starts * 78);
-      const avgMinutes = starts > 0 ? totalMinutes / starts : 75;
-      const statP90 = data.per90 || data.averagePer90 || (data.totalStat ? (data.totalStat / (totalMinutes / 90)) : 2.5);
+      // Parsear umbral numérico de la línea para aciertos
+      const lineNum = candidate.rawLine 
+        ? parseFloat(candidate.rawLine) 
+        : (candidate.line && !isNaN(parseFloat(String(candidate.line).replace(/[^0-9.]/g, ''))) 
+            ? parseFloat(String(candidate.line).replace(/[^0-9.]/g, '')) 
+            : 0.5);
+
+      const rawMatches = data.matches;
+      const parsedMatches = [];
+      const validAppearances = [];
+      const homeMatches = [];
+      const awayMatches = [];
+
+      for (const m of rawMatches) {
+        // Diferenciar estrictamente 0 real de null/ausente
+        let rawVal = null;
+        if (m[statType] !== undefined && m[statType] !== null) {
+          rawVal = Number(m[statType]);
+        } else if (statType === 'yellowCards' && (m.cards !== undefined && m.cards !== null)) {
+          rawVal = Number(m.cards);
+        } else if (m.stat !== undefined && m.stat !== null) {
+          rawVal = Number(m.stat);
+        }
+
+        const minutes = typeof m.minutes === 'number' ? m.minutes : (m.minutesPlayed || 0);
+        const venue = (m.venue || '').toLowerCase() === 'home' ? 'home' : 'away';
+        const isStarter = minutes >= (config.sampling?.minStarterMinutes || 45);
+
+        const matchRecord = {
+          matchId: m.matchId || null,
+          date: m.date || null,
+          competition: m.competition || null,
+          team: m.team || null,
+          opponent: m.opponent || null,
+          venue,
+          minutes,
+          isStarter,
+          statValue: rawVal // 0 es un valor 100% válido, null es ausente
+        };
+
+        parsedMatches.push(matchRecord);
+
+        // Aparición válida: minutos >= 25 o titularidad, y statValue no nulo
+        if (rawVal !== null && (minutes >= 25 || isStarter)) {
+          validAppearances.push(matchRecord);
+          if (venue === 'home') homeMatches.push(matchRecord);
+          else awayMatches.push(matchRecord);
+        }
+      }
+
+      const observations = validAppearances.map(m => m.statValue);
+      const homeObservations = homeMatches.map(m => m.statValue);
+      const awayObservations = awayMatches.map(m => m.statValue);
+
+      // Multi-ventanas L5, L10, L15, L20
+      const windows = {
+        L5: this._calculateWindowStats(observations, 5, lineNum),
+        L10: this._calculateWindowStats(observations, 10, lineNum),
+        L15: observations.length >= 15 ? this._calculateWindowStats(observations, 15, lineNum) : null,
+        L20: observations.length >= 20 ? this._calculateWindowStats(observations, 20, lineNum) : null
+      };
+
+      // Splits Local y Visitante
+      const homeSplit = this._calculateWindowStats(homeObservations, homeObservations.length, lineNum);
+      const awaySplit = this._calculateWindowStats(awayObservations, awayObservations.length, lineNum);
+
+      const totalMinutes = validAppearances.reduce((acc, m) => acc + m.minutes, 0);
+      const avgMinutes = validAppearances.length > 0 
+        ? Number((totalMinutes / validAppearances.length).toFixed(1)) 
+        : (data.perGame?.minutes || null);
+
+      const totalStat = observations.reduce((acc, v) => acc + v, 0);
+      const statPer90 = (totalMinutes > 0)
+        ? Number(((totalStat / totalMinutes) * 90).toFixed(2))
+        : (data.per90?.[statType] || (data.requestedStat?.per90) || (observations.length > 0 ? Number((totalStat / observations.length).toFixed(2)) : 0));
+
+      const startsCount = parsedMatches.filter(m => m.isStarter).length;
+      const subCount = parsedMatches.filter(m => !m.isStarter && m.minutes > 0).length;
 
       return {
+        success: true,
         playerName,
-        matches: data.matches || starts + 3,
-        starts,
-        subAppearances: data.subAppearances || 3,
+        playerId,
+        statType,
+        totalMatchesRetrieved: rawMatches.length,
+        validMatches: validAppearances.length,
+        starts: startsCount,
+        subAppearances: subCount,
         totalMinutes,
-        avgMinutes: Number(avgMinutes.toFixed(1)),
-        projectedMinutes: Number(Math.min(90, Math.max(55, avgMinutes)).toFixed(1)),
-        statPerGame: data.statPerGame || 2.2,
-        statPer90: Number(statP90.toFixed(2)),
-        homeAvg: data.homeAvg || (statP90 * 1.05),
-        awayAvg: data.awayAvg || (statP90 * 0.95),
-        historicalValues: data.recentValues || [3, 2, 4, 1, 3, 2, 5, 2, 3, 4, 2, 3, 1, 4, 3],
-        raw: data
+        avgMinutes,
+        projectedMinutes: avgMinutes,
+        statPerGame: observations.length > 0 ? Number((totalStat / observations.length).toFixed(2)) : 0,
+        statPer90,
+        observations, // Array numérico real, orden más reciente primero
+        windows,      // L5, L10, L15, L20
+        splits: {
+          home: homeSplit,
+          away: awaySplit
+        },
+        matches: validAppearances,
+        rawContext: data.context || null
       };
     } catch (e) {
-      return this._generateNormalizedPlayerStats(playerName, marketName);
+      console.warn(`[DeepResearch] Error en getPlayerStats para ${playerName}:`, e.message);
+      return {
+        success: false,
+        reason: `MCP_ERROR: ${e.message}`,
+        playerName,
+        playerId,
+        statType,
+        validMatches: 0,
+        observations: [],
+        matches: [],
+        qualityStatus: 'ERROR_DATOS'
+      };
     }
   }
 
-  async _fetchOpponentConcededMetrics(opponentName, marketName, competition) {
+  async _fetchTeamPerformance(candidate) {
+    const teamId = candidate.teamId || candidate.rawSourceData?.teamId || null;
+    const teamName = candidate.team;
+    const statType = this._getCanonicalStatType(candidate.market, candidate.rawStatType);
+    const maxMatches = config.sampling?.maxTeamMatches || 30;
+
+    if (!teamId) {
+      return {
+        success: false,
+        reason: 'MISSING_TEAM_ID',
+        teamName,
+        statType,
+        validMatches: 0,
+        observations: [],
+        matches: [],
+        qualityStatus: 'INVESTIGACION_INCOMPLETA'
+      };
+    }
+
     try {
-      const res = await mcpClient.callTool('getTeamStatistics', { teamName: opponentName });
-      const data = res.data;
+      const res = await mcpClient.callTool('getTeamPerformance', {
+        teamId,
+        limit: maxMatches,
+        venue: 'both'
+      });
+      const data = res?.data;
+      const games = data?.games || data?.matches || (Array.isArray(data) ? data : []);
 
-      // Calcular ratio de concesión respecto a la media de la liga
-      // 1.0 = promedio neutro; > 1.0 = rival concede más que la media (favorable para over)
-      let concessionRatio = 1.0;
-      let concededPerGame = 12.5;
-      let leagueAvg = 12.0;
-
-      const m = marketName.toLowerCase();
-
-      if (m.includes('remate') || m.includes('tiro') || m.includes('shot')) {
-        concededPerGame = data?.shotsAgainstPerGame || 14.2;
-        leagueAvg = 12.1;
-        concessionRatio = concededPerGame / leagueAvg;
-      } else if (m.includes('arco') || m.includes('target')) {
-        concededPerGame = data?.shotsOnTargetAgainstPerGame || 4.8;
-        leagueAvg = 4.1;
-        concessionRatio = concededPerGame / leagueAvg;
-      } else if (m.includes('falta') || m.includes('foul')) {
-        concededPerGame = data?.foulsConcededPerGame || 14.5;
-        leagueAvg = 12.8;
-        concessionRatio = concededPerGame / leagueAvg;
-      } else if (m.includes('corner')) {
-        concededPerGame = data?.cornersAgainstPerGame || 5.8;
-        leagueAvg = 4.9;
-        concessionRatio = concededPerGame / leagueAvg;
-      } else if (m.includes('tackle') || m.includes('entrada')) {
-        concededPerGame = 16.2;
-        leagueAvg = 14.5;
-        concessionRatio = 1.12;
+      if (!games || games.length === 0) {
+        return {
+          success: false,
+          reason: 'NO_TEAM_MATCHES_RETURNED',
+          teamName,
+          teamId,
+          statType,
+          validMatches: 0,
+          observations: [],
+          matches: [],
+          qualityStatus: 'INVESTIGACION_INCOMPLETA'
+        };
       }
 
+      const lineNum = candidate.rawLine 
+        ? parseFloat(candidate.rawLine) 
+        : (candidate.line && !isNaN(parseFloat(String(candidate.line).replace(/[^0-9.]/g, ''))) 
+            ? parseFloat(String(candidate.line).replace(/[^0-9.]/g, '')) 
+            : 0.5);
+
+      const parsedMatches = [];
+      const homeMatches = [];
+      const awayMatches = [];
+
+      for (const g of games) {
+        let rawVal = null;
+        if (g[statType] !== undefined && g[statType] !== null) {
+          rawVal = Number(g[statType]);
+        } else if (g.teamStats?.[statType] !== undefined && g.teamStats?.[statType] !== null) {
+          rawVal = Number(g.teamStats[statType]);
+        } else if (g.stat !== undefined && g.stat !== null) {
+          rawVal = Number(g.stat);
+        }
+
+        const venue = (g.venue || '').toLowerCase() === 'home' ? 'home' : 'away';
+        if (rawVal !== null) {
+          const rec = {
+            matchId: g.matchId || null,
+            date: g.date || null,
+            opponent: g.opponent || null,
+            venue,
+            statValue: rawVal
+          };
+          parsedMatches.push(rec);
+          if (venue === 'home') homeMatches.push(rec);
+          else awayMatches.push(rec);
+        }
+      }
+
+      const observations = parsedMatches.map(m => m.statValue);
+      const homeObs = homeMatches.map(m => m.statValue);
+      const awayObs = awayMatches.map(m => m.statValue);
+
+      const windows = {
+        L5: this._calculateWindowStats(observations, 5, lineNum),
+        L10: this._calculateWindowStats(observations, 10, lineNum),
+        L15: observations.length >= 15 ? this._calculateWindowStats(observations, 15, lineNum) : null,
+        L20: observations.length >= 20 ? this._calculateWindowStats(observations, 20, lineNum) : null,
+        L30: observations.length >= 30 ? this._calculateWindowStats(observations, 30, lineNum) : null
+      };
+
       return {
+        success: true,
+        teamName,
+        teamId,
+        statType,
+        totalMatchesRetrieved: games.length,
+        validMatches: observations.length,
+        observations,
+        windows,
+        splits: {
+          home: this._calculateWindowStats(homeObs, homeObs.length, lineNum),
+          away: this._calculateWindowStats(awayObs, awayObs.length, lineNum)
+        },
+        matches: parsedMatches
+      };
+    } catch (e) {
+      console.warn(`[DeepResearch] Error en getTeamPerformance para ${teamName}:`, e.message);
+      return {
+        success: false,
+        reason: `MCP_ERROR: ${e.message}`,
+        teamName,
+        teamId,
+        statType,
+        validMatches: 0,
+        observations: [],
+        matches: [],
+        qualityStatus: 'ERROR_DATOS'
+      };
+    }
+  }
+
+  async _fetchOpponentConcededMetrics(candidate) {
+    const opponentTeamId = candidate.opponentTeamId || candidate.rawSourceData?.opponentTeamId || null;
+    const opponentName = candidate.opponent;
+    const statType = this._getCanonicalStatType(candidate.market, candidate.rawStatType);
+
+    if (!opponentTeamId) {
+      return {
+        isAvailable: false,
         opponentName,
-        concededPerGame: Number(concededPerGame.toFixed(2)),
-        leagueAvg: Number(leagueAvg.toFixed(2)),
-        concessionRatio: Number(concessionRatio.toFixed(3)),
+        concessionRatio: null,
+        reason: 'MISSING_OPPONENT_ID'
+      };
+    }
+
+    try {
+      const res = await mcpClient.callTool('getTeamPerformance', {
+        teamId: opponentTeamId,
+        limit: config.sampling?.maxTeamMatches || 30,
+        venue: 'both'
+      });
+      const data = res?.data;
+      if (!data) {
+        return {
+          isAvailable: false,
+          opponentName,
+          opponentTeamId,
+          concessionRatio: null,
+          reason: 'NO_DATA_RETURNED'
+        };
+      }
+
+      let concededAvg = null;
+      if (data.opponentTotals && data.games) {
+        const oppStat = data.opponentTotals[statType];
+        if (typeof oppStat === 'number' && data.games > 0) {
+          concededAvg = Number((oppStat / data.games).toFixed(2));
+        }
+      } else if (data.opponentAverages && typeof data.opponentAverages[statType] === 'number') {
+        concededAvg = Number(data.opponentAverages[statType].toFixed(2));
+      } else if (Array.isArray(data.matches) || Array.isArray(data.games)) {
+        const games = data.matches || data.games;
+        const concededVals = games.map(g => g.opponentStats?.[statType] ?? g[`opponent_${statType}`]).filter(v => typeof v === 'number');
+        if (concededVals.length > 0) {
+          concededAvg = Number((concededVals.reduce((a, b) => a + b, 0) / concededVals.length).toFixed(2));
+        }
+      }
+
+      const benchmarks = {
+        shots: 12.0,
+        shotsOnTarget: 4.2,
+        fouls: 12.5,
+        foulsWon: 12.5,
+        corners: 4.8,
+        yellowCards: 2.2,
+        goals: 1.3
+      };
+      const benchmark = benchmarks[statType] || 10.0;
+      const concessionRatio = concededAvg !== null ? Number((concededAvg / benchmark).toFixed(3)) : 1.0;
+
+      return {
+        isAvailable: true,
+        opponentName,
+        opponentTeamId,
+        concededPerGame: concededAvg,
+        leagueAvg: benchmark,
+        concessionRatio,
         isVulnerable: concessionRatio >= 1.05,
         defensiveRank: concessionRatio >= 1.15 ? 'VULNERABLE (Percentil bajo)' : 'ESTÁNDAR',
         raw: data
       };
     } catch (e) {
+      console.warn(`[DeepResearch] Error en getTeamPerformance rival ${opponentName}:`, e.message);
       return {
+        isAvailable: false,
         opponentName,
-        concededPerGame: 13.5,
-        leagueAvg: 12.2,
-        concessionRatio: 1.10,
-        isVulnerable: true,
-        defensiveRank: 'ESTÁNDAR ESTIMADO'
+        opponentTeamId,
+        concessionRatio: null,
+        reason: `MCP_ERROR: ${e.message}`
       };
     }
   }
 
-  async _fetchRefereeMetrics(matchName) {
-    try {
-      const res = await mcpClient.callTool('getReferee', { matchName });
-      const data = res.data;
+  async _fetchRefereeMetrics(candidate) {
+    const refereeId = candidate.refereeId || candidate.rawSourceData?.refereeId || null;
 
-      const avgFouls = data?.foulsPerGame || 26.4;
-      const avgCards = data?.yellowCardsPerGame || 4.5;
+    if (!refereeId) {
+      return {
+        isAvailable: false,
+        refereeData: null,
+        reason: 'REFEREE_UNASSIGNED'
+      };
+    }
+
+    try {
+      const res = await mcpClient.callTool('getReferee', { refereeId });
+      const data = res?.data;
+
+      if (!data) {
+        return {
+          isAvailable: false,
+          refereeData: null,
+          reason: 'REFEREE_DATA_NOT_FOUND'
+        };
+      }
+
+      const avgFouls = typeof data.foulsPerGame === 'number' ? data.foulsPerGame : null;
+      const avgCards = typeof data.yellowCardsPerGame === 'number' ? data.yellowCardsPerGame : null;
       const leagueAvgFouls = 24.2;
 
       return {
-        refereeName: data?.refereeName || 'Árbitro Designado',
-        avgFouls: Number(avgFouls.toFixed(1)),
-        avgCards: Number(avgCards.toFixed(1)),
-        foulStrictnessRatio: Number((avgFouls / leagueAvgFouls).toFixed(2)),
-        favorsOvers: avgFouls >= leagueAvgFouls,
+        isAvailable: true,
+        refereeName: data.name || data.refereeName || 'Árbitro Designado',
+        refereeId,
+        avgFouls,
+        avgCards,
+        foulStrictnessRatio: avgFouls ? Number((avgFouls / leagueAvgFouls).toFixed(2)) : null,
+        favorsOvers: avgFouls ? avgFouls >= leagueAvgFouls : null,
         raw: data
       };
     } catch (e) {
+      console.warn(`[DeepResearch] Error en getReferee para ${refereeId}:`, e.message);
       return {
-        refereeName: 'Árbitro Oficial',
-        avgFouls: 25.5,
-        avgCards: 4.2,
-        foulStrictnessRatio: 1.05,
-        favorsOvers: true
+        isAvailable: false,
+        refereeData: null,
+        reason: `MCP_ERROR: ${e.message}`
       };
     }
   }
 
-  async _fetchLineupStatus(matchName, playerOrTeam, isTeamMarket) {
-    if (isTeamMarket) {
-      return { status: 'CONFIRMADA', isStarter: true, certainty: 1.0 };
+  async _fetchLineupStatus(candidate) {
+    if (candidate.isTeamProp) {
+      return { status: 'CONFIRMADA', isStarter: true, certainty: 1.0, isTeamProp: true };
+    }
+
+    const matchId = candidate.matchId || candidate.rawSourceData?.matchId || null;
+    const playerName = candidate.playerOrTeam;
+
+    if (!matchId) {
+      return {
+        status: 'PENDIENTE_ALINEACION',
+        isStarter: null,
+        certainty: null,
+        reason: 'MISSING_MATCH_ID_FOR_LINEUP'
+      };
     }
 
     try {
-      const res = await mcpClient.callTool('getLineups', { matchName });
-      const data = res.data;
+      const res = await mcpClient.callTool('getLineups', { matchId });
+      const data = res?.data;
 
-      if (!data) {
-        return { status: 'PROBABLE', isStarter: true, certainty: 0.85 };
+      if (!data || !data.confirmed) {
+        return {
+          status: 'PENDIENTE_ALINEACION',
+          isStarter: null,
+          certainty: null,
+          reason: 'LINEUP_PENDING_CONFIRMATION'
+        };
       }
 
-      const isConfirmed = data.confirmed === true;
-      const startingXI = data.startingXI || [];
-      const foundInXI = startingXI.some(p => (p.name || p).toLowerCase().includes(playerOrTeam.toLowerCase()));
+      const startingXI = data.startingXI || data.starters || [];
+      const foundInXI = startingXI.some(p => {
+        const name = typeof p === 'string' ? p : (p.name || p.playerName || '');
+        return name.toLowerCase().includes(playerName.toLowerCase());
+      });
+
+      const bench = data.bench || data.substitutes || [];
+      const foundOnBench = bench.some(p => {
+        const name = typeof p === 'string' ? p : (p.name || p.playerName || '');
+        return name.toLowerCase().includes(playerName.toLowerCase());
+      });
 
       return {
-        status: isConfirmed ? (foundInXI ? 'CONFIRMADA' : 'SUPLENTE_CONFIRMADO') : 'PROBABLE',
-        isStarter: foundInXI || !isConfirmed,
-        certainty: isConfirmed ? 1.0 : 0.85,
+        status: foundInXI ? 'CONFIRMADA' : (foundOnBench ? 'SUPLENTE_CONFIRMADO' : 'DESCONOCIDA'),
+        isStarter: foundInXI,
+        certainty: 1.0,
         raw: data
       };
     } catch (e) {
-      return { status: 'PROBABLE', isStarter: true, certainty: 0.85 };
+      console.warn(`[DeepResearch] Error en getLineups para ${matchId}:`, e.message);
+      return {
+        status: 'PENDIENTE_ALINEACION',
+        isStarter: null,
+        certainty: null,
+        reason: `MCP_ERROR: ${e.message}`
+      };
     }
   }
+
+  // --- EVALUACIÓN DE CALIDAD DE MUESTRA ---
 
   _assessDataQuality(researchData, isTeamMarket) {
-    let score = 0.70;
-    let sampleSize = 18;
+    let sampleSize = 0;
+    let qualityStatus = 'INVESTIGACION_INCOMPLETA';
+    let score = 0.30;
 
-    if (!isTeamMarket && researchData.playerData) {
-      sampleSize = researchData.playerData.starts || 18;
-      if (sampleSize >= 20) score += 0.15;
-      else if (sampleSize >= 12) score += 0.08;
-      else score -= 0.15;
+    if (!isTeamMarket) {
+      sampleSize = researchData.playerData?.observations?.length || 0;
+      if (sampleSize === 0) {
+        qualityStatus = 'ERROR_DATOS';
+        score = 0.10;
+      } else if (sampleSize < (config.sampling?.minPlayerValidMatches || 8)) {
+        qualityStatus = 'INVESTIGACION_INCOMPLETA';
+        score = 0.40;
+      } else if (sampleSize < 15) {
+        qualityStatus = 'PARCIAL';
+        score = Number((0.65 + ((sampleSize - 8) / 7) * 0.20).toFixed(2));
+      } else {
+        qualityStatus = 'COMPLETA';
+        score = Number((0.85 + Math.min(0.15, ((sampleSize - 15) / 5) * 0.15)).toFixed(2));
+      }
 
-      if (researchData.lineupData?.status === 'CONFIRMADA') score += 0.10;
+      if (researchData.lineupData?.status === 'CONFIRMADA' && qualityStatus !== 'INVESTIGACION_INCOMPLETA') {
+        score = Math.min(1.0, Number((score + 0.05).toFixed(2)));
+      }
     } else {
-      sampleSize = 25;
-      score = 0.90;
+      sampleSize = researchData.teamData?.observations?.length || 0;
+      if (sampleSize === 0) {
+        qualityStatus = 'ERROR_DATOS';
+        score = 0.10;
+      } else if (sampleSize < (config.sampling?.minTeamValidMatches || 10)) {
+        qualityStatus = 'INVESTIGACION_INCOMPLETA';
+        score = 0.40;
+      } else if (sampleSize < 20) {
+        qualityStatus = 'PARCIAL';
+        score = Number((0.70 + ((sampleSize - 10) / 10) * 0.15).toFixed(2));
+      } else {
+        qualityStatus = 'COMPLETA';
+        score = 0.95;
+      }
     }
 
     return {
-      score: Math.min(1.0, Math.max(0.3, Number(score.toFixed(2)))),
-      sampleSize
-    };
-  }
-
-  _generateNormalizedPlayerStats(playerName, marketName) {
-    return {
-      playerName,
-      matches: 22,
-      starts: 18,
-      subAppearances: 4,
-      totalMinutes: 1450,
-      avgMinutes: 76.5,
-      projectedMinutes: 74.0,
-      statPerGame: 2.3,
-      statPer90: 2.7,
-      homeAvg: 2.9,
-      awayAvg: 2.4,
-      historicalValues: [3, 2, 4, 1, 3, 2, 5, 2, 3, 4, 2, 3, 1, 4, 3, 2, 4, 3]
+      score,
+      sampleSize,
+      qualityStatus
     };
   }
 }

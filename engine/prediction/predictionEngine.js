@@ -54,36 +54,77 @@ class PredictionEngine {
     const research = candidate.researchData || {};
     const bookmakerOdds = Number(candidate.bookmakerOdds || 1.75);
 
-    // 1. Determinar el umbral numérico de la línea (k)
+    // Gate de integridad de datos: rechazar si la investigación está incompleta o carece de datos reales
+    if (
+      candidate.status === 'INVESTIGACION_INCOMPLETA' ||
+      candidate.status === 'ERROR_DATOS' ||
+      research.qualityStatus === 'INVESTIGACION_INCOMPLETA' ||
+      research.qualityStatus === 'ERROR_DATOS'
+    ) {
+      return {
+        candidateId: candidate.id,
+        playerOrTeam: candidate.playerOrTeam,
+        match: candidate.match,
+        market: candidate.market,
+        line: candidate.line,
+        bookmakerOdds,
+        decision: 'RECHAZADO',
+        decisionReason: 'RECHAZADO_DATOS_INSUFICIENTES: Muestra estadística insuficiente o datos reales ausentes en StatsHub',
+        qualityStatus: research.qualityStatus || 'INVESTIGACION_INCOMPLETA',
+        sampleSize: research.playerData?.validMatches || research.teamData?.validMatches || 0,
+        evaluatedAt: new Date().toISOString()
+      };
+    }
+
+    // 1. Extraer observaciones históricas reales
+    const historicalValues = isTeamProp 
+      ? (research.teamData?.observations || research.teamData?.historicalValues || [])
+      : (research.playerData?.observations || research.playerData?.historicalValues || []);
+
+    if (!Array.isArray(historicalValues) || historicalValues.length === 0) {
+      return {
+        candidateId: candidate.id,
+        playerOrTeam: candidate.playerOrTeam,
+        match: candidate.match,
+        market: candidate.market,
+        line: candidate.line,
+        bookmakerOdds,
+        decision: 'RECHAZADO',
+        decisionReason: 'RECHAZADO_DATOS_INSUFICIENTES: Ausencia total de observaciones históricas válidas',
+        qualityStatus: 'ERROR_DATOS',
+        sampleSize: 0,
+        evaluatedAt: new Date().toISOString()
+      };
+    }
+
+    // 2. Determinar el umbral numérico de la línea (k)
     const threshold = this._parseLineThreshold(candidate.line, candidate.rawLine);
     const targetK = threshold.k; // e.g. "Over 1.5" -> targetK = 2 (necesita 2 o más)
 
-    // 2. Proyección de minutos esperados
+    // 3. Proyección de minutos esperados
     const minutesExpected = isTeamProp 
       ? 90 
-      : (research.playerData?.projectedMinutes || candidate.minutesExpected || 75);
+      : (research.playerData?.projectedMinutes || research.playerData?.avgMinutes || candidate.minutesExpected || 75);
 
-    // 3. Tasa base por 90 minutos y cálculo de Lambda Base
+    // 4. Tasa base por 90 minutos y cálculo de Lambda Base
     let statP90 = 2.4;
-    let historicalValues = [2, 3, 1, 4, 2, 3, 2, 5, 1, 3, 2, 4];
-
     if (!isTeamProp && research.playerData) {
-      statP90 = research.playerData.statPer90 || 2.5;
-      historicalValues = research.playerData.historicalValues || historicalValues;
-    } else if (isTeamProp) {
-      statP90 = candidate.statsSummary?.teamRateL10 ? (candidate.statsSummary.teamRateL10 / 10) * 1.3 : 11.0;
-      historicalValues = [12, 11, 14, 10, 13, 9, 12, 11, 10, 14];
+      statP90 = research.playerData.statPer90 || (historicalValues.reduce((a, b) => a + b, 0) / historicalValues.length);
+    } else if (isTeamProp && research.teamData) {
+      statP90 = (historicalValues.reduce((a, b) => a + b, 0) / historicalValues.length);
     }
 
     const lambdaBase = (statP90 * minutesExpected) / 90;
 
-    // 4. Factores de ajuste de contexto (Rival + Localía)
-    const opponentRatio = research.opponentData?.concessionRatio || 1.05;
+    // 5. Factores de ajuste de contexto (Rival + Localía)
+    const opponentRatio = (research.opponentData?.isAvailable && typeof research.opponentData.concessionRatio === 'number')
+      ? research.opponentData.concessionRatio
+      : 1.0;
     const venueFactor = candidate.match && candidate.team && candidate.match.startsWith(candidate.team) ? 1.06 : 0.95; // Local vs Visitante
 
     const lambdaAdjusted = lambdaBase * opponentRatio * venueFactor;
 
-    // 5. Modelos de Probabilidad
+    // 6. Modelos de Probabilidad
     // A. Poisson
     const pPoisson = this._poissonOver(lambdaAdjusted, targetK);
 
@@ -106,13 +147,13 @@ class PredictionEngine {
     // D. Probabilidad Proyectada Combinada (Ensemble 50% paramétrico / 50% empírico)
     const pProjected = Number(((pParametric * 0.50) + (pEmpirical * 0.50)).toFixed(4));
 
-    // 6. Métricas de Valor y Cuotas
+    // 7. Métricas de Valor y Cuotas
     const fairOdds = Number((1 / pProjected).toFixed(2));
     const impliedProb = Number((1 / bookmakerOdds).toFixed(4));
     const ev = Number(((pProjected * bookmakerOdds) - 1).toFixed(4));
     const evPercentage = Number((ev * 100).toFixed(1));
 
-    // 7. Índice de Incertidumbre y Calidad de Muestra
+    // 8. Índice de Incertidumbre y Calidad de Muestra
     const sampleSize = historicalValues.length;
     const modelDivergence = Math.abs(pParametric - pEmpirical);
     const uncertainty = this._calculateUncertainty({
@@ -125,7 +166,7 @@ class PredictionEngine {
 
     const confidenceScore = Number((Math.max(0, (1 - uncertainty)) * 100).toFixed(1));
 
-    // 8. Veredicto de Aprobación
+    // 9. Veredicto de Aprobación
     const decision = this._evaluateDecision({
       ev,
       uncertainty,
@@ -159,6 +200,9 @@ class PredictionEngine {
       minutesExpected,
       decision: decision.status,
       decisionReason: decision.reason,
+      qualityStatus: research.qualityStatus || 'COMPLETA',
+      windows: research.playerData?.windows || research.teamData?.windows || null,
+      splits: research.playerData?.splits || research.teamData?.splits || null,
       featuresUsed: {
         statP90,
         lambdaBase: Number(lambdaBase.toFixed(2)),
@@ -277,8 +321,15 @@ class PredictionEngine {
   }
 
   _calculateUncertainty({ sampleSize, modelDivergence, minutesExpected, lineupCertainty, isTeamProp }) {
-    // 1. Penalidad por muestra corta (muestra ideal: 20 partidos)
-    const samplePenalty = Math.max(0, (20 - sampleSize) / 20) * 0.20;
+    // 1. Penalidad por muestra corta (muestra ideal: 20 partidos jugador, 30 equipo)
+    const targetSize = isTeamProp ? 30 : 20;
+    let samplePenalty = 0;
+    if (sampleSize < 10) {
+      // Muestra corta (< 10): penalidad severa
+      samplePenalty = 0.25 + Math.max(0, (10 - sampleSize) / 10) * 0.20;
+    } else {
+      samplePenalty = Math.max(0, (targetSize - sampleSize) / targetSize) * 0.15;
+    }
 
     // 2. Penalidad por discrepancia entre modelo paramétrico y empírico
     const divergencePenalty = Math.min(0.25, modelDivergence * 0.80);
@@ -287,13 +338,25 @@ class PredictionEngine {
     const minutesPenalty = isTeamProp ? 0 : Math.max(0, (75 - minutesExpected) / 75) * 0.15;
 
     // 4. Penalidad por incertidumbre de alineación
-    const lineupPenalty = (1 - lineupCertainty) * 0.10;
+    const lineupPenalty = (1 - (lineupCertainty || 0.85)) * 0.10;
 
     const totalUncertainty = samplePenalty + divergencePenalty + minutesPenalty + lineupPenalty;
     return Number(Math.min(1.0, Math.max(0.05, totalUncertainty)).toFixed(3));
   }
 
   _evaluateDecision({ ev, uncertainty, minutesExpected, sampleSize, bookmakerOdds, lineupStatus, isTeamProp }) {
+    // 0. Descarte inmediato si la muestra es inferior al mínimo establecido por configuración
+    const minValidMatches = isTeamProp 
+      ? (config.sampling?.minTeamValidMatches || 10) 
+      : (config.sampling?.minPlayerValidMatches || 8);
+
+    if (sampleSize < minValidMatches) {
+      return {
+        status: 'RECHAZADO',
+        reason: `Muestra estadística insuficiente (${sampleSize} partidos válidos < ${minValidMatches} mínimos requeridos)`
+      };
+    }
+
     // A. Descarte por EV negativo o insuficiente
     if (ev < this.minEV) {
       return {

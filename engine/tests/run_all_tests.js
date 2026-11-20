@@ -9,6 +9,7 @@ const suites = [
   { name: 'Fase 1: Data Engine (Governor, Cache, Storage, MCP)', file: 'test_data_engine.js' },
   { name: 'Fase 2: Discovery Engine (Screeners, Trends, Outliers)', file: 'test_discovery_engine.js' },
   { name: 'Fase 3: Deep Research & Prediction Engine (Poisson, EV, Cuota Justa)', file: 'test_prediction_engine.js' },
+  { name: 'Integridad de Muestreo & StatsHub MCP (20/30 Partidos, Ventanas L5-L20, Calidad)', file: 'test_sampling_integrity.js' },
   { name: 'Fase 4: AI Research Team & Match Intelligence (6 Agentes & Veto)', file: 'test_agents_orchestration.js' },
   { name: 'Fase 5: Integración con Radar Web (4ta Pestaña & Modal de Auditoría)', file: 'test_radar_integration.js' },
   { name: 'Fase 6: Scheduler, Alineaciones y Liquidación (Settlement & Cron)', file: 'test_scheduler_and_settlement.js' },

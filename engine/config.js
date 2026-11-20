@@ -30,10 +30,20 @@ module.exports = {
     minOdds: 1.60,
     maxOdds: 2.35,
     minEV: 0.07,                        // +7.0% EV mínimo
-    minSampleMatches: 15,               // Muestra mínima de partidos
-    minExpectedMinutes: 65,             // Minutos esperados de titular
-    maxModelDivergence: 0.12,           // Divergencia máx Poisson vs Empírico
+    minSampleMatches: 12,               // Muestra mínima de partidos reales válidos para aprobación
+    minExpectedMinutes: 60,             // Minutos esperados de titular (>= 60 min)
+    maxModelDivergence: 0.15,           // Divergencia máx Poisson vs Empírico
     defaultKellyFraction: 0.25          // Cuarto de Kelly para gestión de stake
+  },
+
+  // Estrategia y ventanas de muestreo estadístico
+  sampling: {
+    maxPlayerMatches: 20,               // Límite máximo de partidos para jugadores (getPlayerStats limit: 20)
+    maxTeamMatches: 30,                 // Límite máximo de partidos para equipos (getTeamPerformance limit: 30)
+    minPlayerValidMatches: 8,           // Mínimo de partidos reales con minutos para considerar válida la investigación
+    minTeamValidMatches: 10,            // Mínimo de partidos reales para equipos
+    minStarterMinutes: 45,              // Mínimo de minutos en una aparición para considerarla titularidad válida
+    temporalDecayAlpha: 0.04            // Factor de decaimiento exponencial temporal w_i = e^(-alpha * i)
   },
 
   // Ligas y competiciones prioritarias
