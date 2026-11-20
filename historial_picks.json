@@ -1,6 +1,32 @@
 {
   "picks": [
     {
+      "id": "pick_test_settle_loss",
+      "date": "2026-11-18",
+      "match": "Liverpool vs Everton",
+      "player": "Darwin Núñez",
+      "market": "Remates al arco",
+      "line": "Más de 2.5",
+      "odds": 2.1,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "pick_test_settle_win",
+      "date": "2026-11-18",
+      "match": "Arsenal vs Chelsea",
+      "player": "Bukayo Saka",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.9,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.9
+    },
+    {
       "id": "cand_1795110774831_6rsb2k",
       "date": "2026-11-19",
       "match": "Internacional vs Vasco da Gama",
@@ -204,9 +230,9 @@
       "line": "Más de 0.5",
       "odds": 1.62,
       "stake": 1,
-      "actual_stat": 2,
-      "status": "ACERTADA",
-      "profit": 0.62
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": -1
     },
     {
       "id": "cand_1795110774831_5nnp8v",
@@ -237,6 +263,32 @@
   ],
   "history": [
     {
+      "id": "pick_test_settle_loss",
+      "date": "2026-11-18",
+      "match": "Liverpool vs Everton",
+      "player": "Darwin Núñez",
+      "market": "Remates al arco",
+      "line": "Más de 2.5",
+      "odds": 2.1,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "pick_test_settle_win",
+      "date": "2026-11-18",
+      "match": "Arsenal vs Chelsea",
+      "player": "Bukayo Saka",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.9,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.9
+    },
+    {
       "id": "cand_1795110774831_6rsb2k",
       "date": "2026-11-19",
       "match": "Internacional vs Vasco da Gama",
@@ -440,9 +492,9 @@
       "line": "Más de 0.5",
       "odds": 1.62,
       "stake": 1,
-      "actual_stat": 2,
-      "status": "ACERTADA",
-      "profit": 0.62
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": -1
     },
     {
       "id": "cand_1795110774831_5nnp8v",
@@ -472,16 +524,23 @@
     }
   ],
   "summary": {
-    "total_bets": 18,
-    "settled_bets": 18,
+    "total_bets": 20,
+    "settled_bets": 20,
     "won_bets": 11,
-    "lost_bets": 7,
+    "lost_bets": 9,
     "pending_bets": 0,
-    "win_rate_pct": 61.1,
-    "total_staked_units": 18,
-    "net_profit_units": 1.49,
-    "roi_pct": 8.3,
+    "win_rate_pct": 55,
+    "total_staked_units": 20,
+    "net_profit_units": -0.23,
+    "roi_pct": -1.2,
     "by_market": {
+      "Remates al arco": {
+        "total": 2,
+        "won": 1,
+        "lost": 1,
+        "win_rate": "50.0%",
+        "profit": "-0.10U"
+      },
       "Remates al arco de equipo": {
         "total": 4,
         "won": 1,
@@ -526,10 +585,10 @@
       },
       "Faltas ganadas": {
         "total": 1,
-        "won": 1,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "+0.62U"
+        "won": 0,
+        "lost": 1,
+        "win_rate": "0.0%",
+        "profit": "-1.00U"
       },
       "Tarjetas": {
         "total": 1,
@@ -540,5 +599,5 @@
       }
     }
   },
-  "updated_at": "2026-11-20T01:09:11.590Z"
+  "updated_at": "2026-11-20T02:15:29.408Z"
 }

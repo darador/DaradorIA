@@ -301,6 +301,10 @@ class DeepResearchEngine {
       const homeMatches = [];
       const awayMatches = [];
 
+      const marketMinMinutes = config.sampling?.minutesFilterByMarket?.[statType] 
+        ?? config.sampling?.minutesFilterByMarket?.default 
+        ?? 25;
+
       for (const m of rawMatches) {
         // Diferenciar estrictamente 0 real de null/ausente
         let rawVal = null;
@@ -330,8 +334,8 @@ class DeepResearchEngine {
 
         parsedMatches.push(matchRecord);
 
-        // Aparición válida: minutos >= 25 o titularidad, y statValue no nulo
-        if (rawVal !== null && (minutes >= 25 || isStarter)) {
+        // Aparición válida: minutos >= marketMinMinutes o titularidad, y statValue no nulo
+        if (rawVal !== null && (minutes >= marketMinMinutes || isStarter)) {
           validAppearances.push(matchRecord);
           if (venue === 'home') homeMatches.push(matchRecord);
           else awayMatches.push(matchRecord);

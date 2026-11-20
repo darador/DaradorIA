@@ -99,6 +99,8 @@ class RadarSync {
           market: cand.market || cand.mercado,
           line: cand.line || cand.linea,
           odds,
+          shadow_mode: Boolean(config.shadowMode?.enabled),
+          is_operative_recommendation: false,
           hit_rate_l5: cand.trendL5 ? `${cand.trendL5}` : '4/5 (80%)',
           hit_rate_l10: cand.trendL10 ? `${cand.trendL10}` : '7/10 (70%)',
           avg_per_game: cand.statsSummary?.avg || 2.4,
@@ -166,6 +168,8 @@ class RadarSync {
     }
 
     currentData.updated_at = new Date().toISOString();
+    currentData.shadow_mode = Boolean(config.shadowMode?.enabled);
+    currentData.is_operative_recommendation = false;
     currentData.total_analyzed = Math.max(allCandidates.length, currentData.total_analyzed || 0);
     currentData.top_picks = finalTopPicks;
     currentData.research_center = researchCenterCandidates;

@@ -5,7 +5,7 @@
   "main": "engine/index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "node -e \"console.log('Build OK: DaradorBET Live Research Room ready.')\"",
+    "build": "node engine/build.js",
     "test:data-engine": "node engine/tests/test_data_engine.js"
   },
   "keywords": ["sports-betting", "mcp", "statshub", "predictive-analytics"],

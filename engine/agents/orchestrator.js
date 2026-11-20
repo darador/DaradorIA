@@ -11,6 +11,7 @@ const oddsAnalyst = require('./oddsAnalyst');
 const matchIntelligenceAnalyst = require('./matchIntelligenceAnalyst');
 const riskManager = require('./riskManager');
 const storage = require('../data/storage');
+const observationTracker = require('../prediction/observationTracker');
 
 class AgentOrchestrator {
   constructor() {
@@ -128,6 +129,17 @@ class AgentOrchestrator {
         vetoApplied: riskVerdict.vetoApplied,
         agentReports
       });
+    }
+
+    // 5. Shadow Mode (Fase 10): Congelar observación inmutable (aprobados y rechazados)
+    try {
+      observationTracker.freezeObservation(candidate, prediction, {
+        agentReports,
+        riskVerdict,
+        modelVersion: 'v2.0-shadow-mode'
+      });
+    } catch (obsErr) {
+      console.warn(`[Orchestrator] Advertencia registrando observación Shadow para ${candidate.id}:`, obsErr.message);
     }
 
     return {

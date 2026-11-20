@@ -1627,5 +1627,2537 @@
     },
     "id": "rep_1795111055803_7t5t2",
     "timestamp": "2026-11-19T17:57:35.803Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-20T02:14:21.135Z",
+            "eventDate": "2026-11-20T02:14:21.135Z",
+            "queryDate": "2026-11-20T02:14:21.135Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795140861136_suz8w",
+    "timestamp": "2026-11-20T02:14:21.136Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-20T02:25:51.034Z",
+            "eventDate": "2026-11-20T02:25:51.034Z",
+            "queryDate": "2026-11-20T02:25:51.034Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795141551035_nypyc",
+    "timestamp": "2026-11-20T02:25:51.035Z"
+  },
+  {
+    "candidateId": "cand_test_vetoed_isolation_01",
+    "playerOrTeam": "Jugador Vetado Test",
+    "match": "Test vs Isolated",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "target": "Jugador Vetado Test",
+        "summary": "Jugador Vetado Test proyecta 0 min con una tasa de 0 por 90 min en Remates.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 2.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "tacticalSummary": "Matchup táctico entre Equipo y Rival. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "Equipo juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "contextSummary": "Contexto del partido Test vs Isolated. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "marketAnalysis": "Análisis de mercado para Remates @ 2.1 (bet365). Cuota justa: 1.39. EV: +33.2%.",
+        "referenceOdds": 2.1,
+        "bestOdds": 2.1,
+        "fairOdds": 1.39,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates respalda la selección en Test vs Isolated.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Jugador Vetado Test vs bloque defensivo de ",
+            "tacticalContext": "El planteo de  suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Test%20vs%20Isolated",
+            "publishedDate": "2026-11-20T02:26:40.810Z",
+            "eventDate": "2026-11-20T02:26:40.810Z",
+            "queryDate": "2026-11-20T02:26:40.810Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Jugador Vetado Test mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795141600811_ze4mx",
+    "timestamp": "2026-11-20T02:26:40.811Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-20T02:27:02.063Z",
+            "eventDate": "2026-11-20T02:27:02.063Z",
+            "queryDate": "2026-11-20T02:27:02.063Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795141622064_i34dv",
+    "timestamp": "2026-11-20T02:27:02.064Z"
+  },
+  {
+    "candidateId": "cand_test_vetoed_isolation_01",
+    "playerOrTeam": "Jugador Vetado Test",
+    "match": "Test vs Isolated",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "target": "Jugador Vetado Test",
+        "summary": "Jugador Vetado Test proyecta 0 min con una tasa de 0 por 90 min en Remates.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 2.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "tacticalSummary": "Matchup táctico entre Equipo y Rival. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "Equipo juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "contextSummary": "Contexto del partido Test vs Isolated. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "marketAnalysis": "Análisis de mercado para Remates @ 2.1 (bet365). Cuota justa: 1.39. EV: +33.2%.",
+        "referenceOdds": 2.1,
+        "bestOdds": 2.1,
+        "fairOdds": 1.39,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates respalda la selección en Test vs Isolated.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Jugador Vetado Test vs bloque defensivo de ",
+            "tacticalContext": "El planteo de  suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Test%20vs%20Isolated",
+            "publishedDate": "2026-11-20T02:32:26.671Z",
+            "eventDate": "2026-11-20T02:32:26.671Z",
+            "queryDate": "2026-11-20T02:32:26.671Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Jugador Vetado Test mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795141946672_olcu0",
+    "timestamp": "2026-11-20T02:32:26.672Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-20T02:41:20.946Z",
+            "eventDate": "2026-11-20T02:41:20.946Z",
+            "queryDate": "2026-11-20T02:41:20.946Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795142480947_jyo6b",
+    "timestamp": "2026-11-20T02:41:20.947Z"
+  },
+  {
+    "candidateId": "cand_test_vetoed_isolation_01",
+    "playerOrTeam": "Jugador Vetado Test",
+    "match": "Test vs Isolated",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "target": "Jugador Vetado Test",
+        "summary": "Jugador Vetado Test proyecta 0 min con una tasa de 0 por 90 min en Remates.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 2.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "tacticalSummary": "Matchup táctico entre Equipo y Rival. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "Equipo juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "contextSummary": "Contexto del partido Test vs Isolated. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "marketAnalysis": "Análisis de mercado para Remates @ 2.1 (bet365). Cuota justa: 1.39. EV: +33.2%.",
+        "referenceOdds": 2.1,
+        "bestOdds": 2.1,
+        "fairOdds": 1.39,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates respalda la selección en Test vs Isolated.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Jugador Vetado Test vs bloque defensivo de ",
+            "tacticalContext": "El planteo de  suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Test%20vs%20Isolated",
+            "publishedDate": "2026-11-20T02:41:21.053Z",
+            "eventDate": "2026-11-20T02:41:21.053Z",
+            "queryDate": "2026-11-20T02:41:21.053Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Jugador Vetado Test mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795142481055_99e17",
+    "timestamp": "2026-11-20T02:41:21.055Z"
+  },
+  {
+    "candidateId": "cand_test_vetoed_isolation_01",
+    "playerOrTeam": "Jugador Vetado Test",
+    "match": "Test vs Isolated",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "target": "Jugador Vetado Test",
+        "summary": "Jugador Vetado Test proyecta 0 min con una tasa de 0 por 90 min en Remates.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 2.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "tacticalSummary": "Matchup táctico entre Equipo y Rival. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "Equipo juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "contextSummary": "Contexto del partido Test vs Isolated. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "marketAnalysis": "Análisis de mercado para Remates @ 2.1 (bet365). Cuota justa: 1.39. EV: +33.2%.",
+        "referenceOdds": 2.1,
+        "bestOdds": 2.1,
+        "fairOdds": 1.39,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates respalda la selección en Test vs Isolated.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Jugador Vetado Test vs bloque defensivo de ",
+            "tacticalContext": "El planteo de  suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Test%20vs%20Isolated",
+            "publishedDate": "2026-11-20T02:42:15.998Z",
+            "eventDate": "2026-11-20T02:42:15.998Z",
+            "queryDate": "2026-11-20T02:42:15.998Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Jugador Vetado Test mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795142536000_l4gbt",
+    "timestamp": "2026-11-20T02:42:16.000Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-20T02:55:23.646Z",
+            "eventDate": "2026-11-20T02:55:23.646Z",
+            "queryDate": "2026-11-20T02:55:23.646Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795143323647_ektzj",
+    "timestamp": "2026-11-20T02:55:23.647Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_t4p8c0",
+    "playerOrTeam": "Said El Mala",
+    "match": "1. FC Köln vs FC Bayern München",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_t4p8c0",
+        "target": "Said El Mala",
+        "summary": "Said El Mala proyecta 77.2 min con una tasa de 4.28 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (17 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 77.2 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.28 por 90 min) superando holgadamente la línea exigida (Más de 1.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_t4p8c0",
+        "match": "1. FC Köln vs FC Bayern München",
+        "tacticalSummary": "Matchup táctico entre 1. FC Köln y FC Bayern München. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "1. FC Köln ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_t4p8c0",
+        "match": "1. FC Köln vs FC Bayern München",
+        "contextSummary": "Contexto del partido 1. FC Köln vs FC Bayern München. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_t4p8c0",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.67 (BetVictor). Cuota justa: 1.16. EV: +43.8%.",
+        "referenceOdds": 1.67,
+        "bestOdds": 1.67,
+        "fairOdds": 1.16,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_t4p8c0",
+        "match": "1. FC Köln vs FC Bayern München",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en 1. FC Köln vs FC Bayern München.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Said El Mala vs bloque defensivo de FC Bayern München",
+            "tacticalContext": "El planteo de FC Bayern München suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/1.%20FC%20K%C3%B6ln%20vs%20FC%20Bayern%20M%C3%BCnchen",
+            "publishedDate": "2026-11-20T15:18:30.096Z",
+            "eventDate": "2026-11-20T15:18:30.096Z",
+            "queryDate": "2026-11-20T15:18:30.096Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Said El Mala mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910097_x603q",
+    "timestamp": "2026-11-20T15:18:30.097Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_zeldy6",
+    "playerOrTeam": "Karim Dermane",
+    "match": "Troyes vs Le Havre",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_zeldy6",
+        "target": "Karim Dermane",
+        "summary": "Karim Dermane proyecta 81.4 min con una tasa de 3.25 por 90 min en Entradas (Tackles).",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (15 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 81.4 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (3.25 por 90 min) superando holgadamente la línea exigida (Más de 1.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_zeldy6",
+        "match": "Troyes vs Le Havre",
+        "tacticalSummary": "Matchup táctico entre Troyes y Le Havre. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Troyes ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_zeldy6",
+        "match": "Troyes vs Le Havre",
+        "contextSummary": "Contexto del partido Troyes vs Le Havre. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_zeldy6",
+        "marketAnalysis": "Análisis de mercado para Entradas (Tackles) @ 1.61 (Betway). Cuota justa: 1.20. EV: +34.2%.",
+        "referenceOdds": 1.61,
+        "bestOdds": 1.61,
+        "fairOdds": 1.2,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.8,
+        "recommendation": "NEUTRAL"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_zeldy6",
+        "match": "Troyes vs Le Havre",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Entradas (Tackles) respalda la selección en Troyes vs Le Havre.",
+        "tacticalDuels": [
+          {
+            "duelType": "Contención defensiva vs Extremos rivales",
+            "actors": "Karim Dermane vs ataques verticales de Le Havre",
+            "tacticalContext": "Le Havre canaliza el 65% de sus ofensivas por la zona del jugador, obligando a duelos individuales y barridas limpias.",
+            "impact": "FAVORABLE_A_ENTRADAS",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Troyes%20vs%20Le%20Havre",
+            "publishedDate": "2026-11-20T15:18:30.108Z",
+            "eventDate": "2026-11-20T15:18:30.108Z",
+            "queryDate": "2026-11-20T15:18:30.108Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Karim Dermane mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_ENTRADAS",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910109_istg7",
+    "timestamp": "2026-11-20T15:18:30.109Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_0u6vda",
+    "playerOrTeam": "Hugo Rincon",
+    "match": "Athletic Club vs Espanyol",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_0u6vda",
+        "target": "Hugo Rincon",
+        "summary": "Hugo Rincon proyecta 63.8 min con una tasa de 2.9 por 90 min en Faltas ganadas.",
+        "favorableFindings": [
+          "Muestra aceptable de titularidades (12 partidos).",
+          "Tasa de producción destacada (2.9 por 90 min) superando holgadamente la línea exigida (Más de 1.5)."
+        ],
+        "risks": [
+          "Minutos promedio reducidos (63.8 min), alto riesgo de sustitución temprana."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_0u6vda",
+        "match": "Athletic Club vs Espanyol",
+        "tacticalSummary": "Matchup táctico entre Athletic Club y Espanyol. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Athletic Club ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_0u6vda",
+        "match": "Athletic Club vs Espanyol",
+        "contextSummary": "Contexto del partido Athletic Club vs Espanyol. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_0u6vda",
+        "marketAnalysis": "Análisis de mercado para Faltas ganadas @ 1.57 (BetMGM UK). Cuota justa: 1.58. EV: +-0.4%.",
+        "referenceOdds": 1.57,
+        "bestOdds": 1.57,
+        "fairOdds": 1.58,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.57) no cubre la probabilidad real proyectada (cuota justa: 1.58)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_0u6vda",
+        "match": "Athletic Club vs Espanyol",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas ganadas respalda la selección en Athletic Club vs Espanyol.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Hugo Rincon en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Athletic%20Club%20vs%20Espanyol",
+            "publishedDate": "2026-11-20T15:18:30.117Z",
+            "eventDate": "2026-11-20T15:18:30.117Z",
+            "queryDate": "2026-11-20T15:18:30.117Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Hugo Rincon mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910118_r5p9e",
+    "timestamp": "2026-11-20T15:18:30.118Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_28qq0f",
+    "playerOrTeam": "Sebastian Soraas Sebulonsen",
+    "match": "1. FC Köln vs FC Bayern München",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_28qq0f",
+        "target": "Sebastian Soraas Sebulonsen",
+        "summary": "Sebastian Soraas Sebulonsen proyecta 0 min con una tasa de 0 por 90 min en Remates totales.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_28qq0f",
+        "match": "1. FC Köln vs FC Bayern München",
+        "tacticalSummary": "Matchup táctico entre 1. FC Köln y FC Bayern München. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "1. FC Köln ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_28qq0f",
+        "match": "1. FC Köln vs FC Bayern München",
+        "contextSummary": "Contexto del partido 1. FC Köln vs FC Bayern München. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_28qq0f",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.87 (BetVictor). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.87,
+        "bestOdds": 1.87,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_28qq0f",
+        "match": "1. FC Köln vs FC Bayern München",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en 1. FC Köln vs FC Bayern München.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Sebastian Soraas Sebulonsen vs bloque defensivo de FC Bayern München",
+            "tacticalContext": "El planteo de FC Bayern München suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/1.%20FC%20K%C3%B6ln%20vs%20FC%20Bayern%20M%C3%BCnchen",
+            "publishedDate": "2026-11-20T15:18:30.129Z",
+            "eventDate": "2026-11-20T15:18:30.129Z",
+            "queryDate": "2026-11-20T15:18:30.129Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Sebastian Soraas Sebulonsen mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910130_cv27e",
+    "timestamp": "2026-11-20T15:18:30.130Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_gmaxgc",
+    "playerOrTeam": "Joel Schmied",
+    "match": "1. FC Köln vs FC Bayern München",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_gmaxgc",
+        "target": "Joel Schmied",
+        "summary": "Joel Schmied proyecta 0 min con una tasa de 0 por 90 min en Faltas cometidas.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_gmaxgc",
+        "match": "1. FC Köln vs FC Bayern München",
+        "tacticalSummary": "Matchup táctico entre 1. FC Köln y FC Bayern München. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "1. FC Köln ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_gmaxgc",
+        "match": "1. FC Köln vs FC Bayern München",
+        "contextSummary": "Contexto del partido 1. FC Köln vs FC Bayern München. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_gmaxgc",
+        "marketAnalysis": "Análisis de mercado para Faltas cometidas @ 1.57 (Betfred). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.57,
+        "bestOdds": 1.57,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.57) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_gmaxgc",
+        "match": "1. FC Köln vs FC Bayern München",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas cometidas respalda la selección en 1. FC Köln vs FC Bayern München.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Joel Schmied en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/1.%20FC%20K%C3%B6ln%20vs%20FC%20Bayern%20M%C3%BCnchen",
+            "publishedDate": "2026-11-20T15:18:30.140Z",
+            "eventDate": "2026-11-20T15:18:30.140Z",
+            "queryDate": "2026-11-20T15:18:30.140Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Joel Schmied mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910142_kprgd",
+    "timestamp": "2026-11-20T15:18:30.142Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_xlrid1",
+    "playerOrTeam": "Said El Mala",
+    "match": "1. FC Köln vs FC Bayern München",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_xlrid1",
+        "target": "Said El Mala",
+        "summary": "Said El Mala proyecta 0 min con una tasa de 0 por 90 min en Remates al arco.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_xlrid1",
+        "match": "1. FC Köln vs FC Bayern München",
+        "tacticalSummary": "Matchup táctico entre 1. FC Köln y FC Bayern München. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "1. FC Köln ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_xlrid1",
+        "match": "1. FC Köln vs FC Bayern München",
+        "contextSummary": "Contexto del partido 1. FC Köln vs FC Bayern München. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_xlrid1",
+        "marketAnalysis": "Análisis de mercado para Remates al arco @ 1.8 (Bet365). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_xlrid1",
+        "match": "1. FC Köln vs FC Bayern München",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates al arco respalda la selección en 1. FC Köln vs FC Bayern München.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Said El Mala vs bloque defensivo de FC Bayern München",
+            "tacticalContext": "El planteo de FC Bayern München suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/1.%20FC%20K%C3%B6ln%20vs%20FC%20Bayern%20M%C3%BCnchen",
+            "publishedDate": "2026-11-20T15:18:30.153Z",
+            "eventDate": "2026-11-20T15:18:30.153Z",
+            "queryDate": "2026-11-20T15:18:30.153Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Said El Mala mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910154_1dabe",
+    "timestamp": "2026-11-20T15:18:30.154Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_ulwigt",
+    "playerOrTeam": "Simon Ebonog",
+    "match": "Le Havre vs Troyes",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_ulwigt",
+        "target": "Simon Ebonog",
+        "summary": "Simon Ebonog proyecta 0 min con una tasa de 0 por 90 min en Remates totales.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_ulwigt",
+        "match": "Le Havre vs Troyes",
+        "tacticalSummary": "Matchup táctico entre Le Havre y Troyes. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Le Havre ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_ulwigt",
+        "match": "Le Havre vs Troyes",
+        "contextSummary": "Contexto del partido Le Havre vs Troyes. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_ulwigt",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.6 (BetVictor). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.6,
+        "bestOdds": 1.6,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.6) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_ulwigt",
+        "match": "Le Havre vs Troyes",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Le Havre vs Troyes.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Simon Ebonog vs bloque defensivo de Troyes",
+            "tacticalContext": "El planteo de Troyes suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Le%20Havre%20vs%20Troyes",
+            "publishedDate": "2026-11-20T15:18:30.166Z",
+            "eventDate": "2026-11-20T15:18:30.166Z",
+            "queryDate": "2026-11-20T15:18:30.166Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Simon Ebonog mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910167_9qqkk",
+    "timestamp": "2026-11-20T15:18:30.167Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_ua921m",
+    "playerOrTeam": "Josh Maja",
+    "match": "Le Havre vs Troyes",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_ua921m",
+        "target": "Josh Maja",
+        "summary": "Josh Maja proyecta 0 min con una tasa de 0 por 90 min en Remates al arco.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_ua921m",
+        "match": "Le Havre vs Troyes",
+        "tacticalSummary": "Matchup táctico entre Le Havre y Troyes. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Le Havre ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_ua921m",
+        "match": "Le Havre vs Troyes",
+        "contextSummary": "Contexto del partido Le Havre vs Troyes. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_ua921m",
+        "marketAnalysis": "Análisis de mercado para Remates al arco @ 1.55 (BetVictor). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.55,
+        "bestOdds": 1.55,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.55) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_ua921m",
+        "match": "Le Havre vs Troyes",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates al arco respalda la selección en Le Havre vs Troyes.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Josh Maja vs bloque defensivo de Troyes",
+            "tacticalContext": "El planteo de Troyes suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Le%20Havre%20vs%20Troyes",
+            "publishedDate": "2026-11-20T15:18:30.179Z",
+            "eventDate": "2026-11-20T15:18:30.179Z",
+            "queryDate": "2026-11-20T15:18:30.179Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Josh Maja mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910180_bit5h",
+    "timestamp": "2026-11-20T15:18:30.180Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_e4zf2u",
+    "playerOrTeam": "Ebonog, Simon",
+    "match": "Le Havre vs Troyes",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_e4zf2u",
+        "target": "Ebonog, Simon",
+        "summary": "Ebonog, Simon proyecta 0 min con una tasa de 0 por 90 min en Faltas ganadas.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 1.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_e4zf2u",
+        "match": "Le Havre vs Troyes",
+        "tacticalSummary": "Matchup táctico entre Le Havre y Troyes. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Le Havre ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_e4zf2u",
+        "match": "Le Havre vs Troyes",
+        "contextSummary": "Contexto del partido Le Havre vs Troyes. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_e4zf2u",
+        "marketAnalysis": "Análisis de mercado para Faltas ganadas @ 1.62 (BetMGM UK). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.62,
+        "bestOdds": 1.62,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.62) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_e4zf2u",
+        "match": "Le Havre vs Troyes",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas ganadas respalda la selección en Le Havre vs Troyes.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Ebonog, Simon en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Le%20Havre%20vs%20Troyes",
+            "publishedDate": "2026-11-20T15:18:30.191Z",
+            "eventDate": "2026-11-20T15:18:30.191Z",
+            "queryDate": "2026-11-20T15:18:30.191Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Ebonog, Simon mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910192_mt5ri",
+    "timestamp": "2026-11-20T15:18:30.192Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_3i3xdr",
+    "playerOrTeam": "Marius Bulter",
+    "match": "1. FC Köln vs FC Bayern München",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_3i3xdr",
+        "target": "Marius Bulter",
+        "summary": "Marius Bulter proyecta 0 min con una tasa de 0 por 90 min en Faltas cometidas.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_3i3xdr",
+        "match": "1. FC Köln vs FC Bayern München",
+        "tacticalSummary": "Matchup táctico entre 1. FC Köln y FC Bayern München. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "1. FC Köln ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_3i3xdr",
+        "match": "1. FC Köln vs FC Bayern München",
+        "contextSummary": "Contexto del partido 1. FC Köln vs FC Bayern München. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_3i3xdr",
+        "marketAnalysis": "Análisis de mercado para Faltas cometidas @ 1.57 (Bet365). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.57,
+        "bestOdds": 1.57,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.57) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_3i3xdr",
+        "match": "1. FC Köln vs FC Bayern München",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas cometidas respalda la selección en 1. FC Köln vs FC Bayern München.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Marius Bulter en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/1.%20FC%20K%C3%B6ln%20vs%20FC%20Bayern%20M%C3%BCnchen",
+            "publishedDate": "2026-11-20T15:18:30.204Z",
+            "eventDate": "2026-11-20T15:18:30.204Z",
+            "queryDate": "2026-11-20T15:18:30.204Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Marius Bulter mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910205_4ddw5",
+    "timestamp": "2026-11-20T15:18:30.205Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_0tpjp5",
+    "playerOrTeam": "Quilindschy Hartman",
+    "match": "Espanyol vs Athletic Club",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_0tpjp5",
+        "target": "Quilindschy Hartman",
+        "summary": "Quilindschy Hartman proyecta 0 min con una tasa de 0 por 90 min en Faltas cometidas.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_0tpjp5",
+        "match": "Espanyol vs Athletic Club",
+        "tacticalSummary": "Matchup táctico entre Espanyol y Athletic Club. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Espanyol ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_0tpjp5",
+        "match": "Espanyol vs Athletic Club",
+        "contextSummary": "Contexto del partido Espanyol vs Athletic Club. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_0tpjp5",
+        "marketAnalysis": "Análisis de mercado para Faltas cometidas @ 1.65 (Coral). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.65,
+        "bestOdds": 1.65,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.65) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_0tpjp5",
+        "match": "Espanyol vs Athletic Club",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas cometidas respalda la selección en Espanyol vs Athletic Club.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Quilindschy Hartman en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Espanyol%20vs%20Athletic%20Club",
+            "publishedDate": "2026-11-20T15:18:30.217Z",
+            "eventDate": "2026-11-20T15:18:30.217Z",
+            "queryDate": "2026-11-20T15:18:30.217Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Quilindschy Hartman mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910218_imums",
+    "timestamp": "2026-11-20T15:18:30.218Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_y406gk",
+    "playerOrTeam": "Roberto Fernandez",
+    "match": "Espanyol vs Athletic Club",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_y406gk",
+        "target": "Roberto Fernandez",
+        "summary": "Roberto Fernandez proyecta 0 min con una tasa de 0 por 90 min en Remates totales.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 1.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_y406gk",
+        "match": "Espanyol vs Athletic Club",
+        "tacticalSummary": "Matchup táctico entre Espanyol y Athletic Club. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Espanyol ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_y406gk",
+        "match": "Espanyol vs Athletic Club",
+        "contextSummary": "Contexto del partido Espanyol vs Athletic Club. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_y406gk",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (BetVictor). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_y406gk",
+        "match": "Espanyol vs Athletic Club",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Espanyol vs Athletic Club.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Roberto Fernandez vs bloque defensivo de Athletic Club",
+            "tacticalContext": "El planteo de Athletic Club suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Espanyol%20vs%20Athletic%20Club",
+            "publishedDate": "2026-11-20T15:18:30.229Z",
+            "eventDate": "2026-11-20T15:18:30.229Z",
+            "queryDate": "2026-11-20T15:18:30.229Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Roberto Fernandez mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910231_uxcb3",
+    "timestamp": "2026-11-20T15:18:30.231Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_xmcbes",
+    "playerOrTeam": "Javi Puado",
+    "match": "Espanyol vs Athletic Club",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_xmcbes",
+        "target": "Javi Puado",
+        "summary": "Javi Puado proyecta 83.5 min con una tasa de 1.15 por 90 min en Remates al arco.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (15 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 83.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (1.15 por 90 min) superando holgadamente la línea exigida (Más de 0.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_xmcbes",
+        "match": "Espanyol vs Athletic Club",
+        "tacticalSummary": "Matchup táctico entre Espanyol y Athletic Club. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Espanyol ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_xmcbes",
+        "match": "Espanyol vs Athletic Club",
+        "contextSummary": "Contexto del partido Espanyol vs Athletic Club. Alineación: PENDIENTE_ALINEACION. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_xmcbes",
+        "marketAnalysis": "Análisis de mercado para Remates al arco @ 2.05 (BetMGM UK). Cuota justa: 1.48. EV: +38.2%.",
+        "referenceOdds": 2.05,
+        "bestOdds": 2.05,
+        "fairOdds": 1.48,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_xmcbes",
+        "match": "Espanyol vs Athletic Club",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates al arco respalda la selección en Espanyol vs Athletic Club.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Javi Puado vs bloque defensivo de Athletic Club",
+            "tacticalContext": "El planteo de Athletic Club suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Espanyol%20vs%20Athletic%20Club",
+            "publishedDate": "2026-11-20T15:18:30.243Z",
+            "eventDate": "2026-11-20T15:18:30.243Z",
+            "queryDate": "2026-11-20T15:18:30.243Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Javi Puado mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910244_tofe4",
+    "timestamp": "2026-11-20T15:18:30.244Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_ssx2bd",
+    "playerOrTeam": "Javi Puado",
+    "match": "Espanyol vs Athletic Club",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_ssx2bd",
+        "target": "Javi Puado",
+        "summary": "Javi Puado proyecta 0 min con una tasa de 0 por 90 min en Faltas cometidas.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_ssx2bd",
+        "match": "Espanyol vs Athletic Club",
+        "tacticalSummary": "Matchup táctico entre Espanyol y Athletic Club. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Espanyol ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_ssx2bd",
+        "match": "Espanyol vs Athletic Club",
+        "contextSummary": "Contexto del partido Espanyol vs Athletic Club. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_ssx2bd",
+        "marketAnalysis": "Análisis de mercado para Faltas cometidas @ 1.83 (Bet365). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.83,
+        "bestOdds": 1.83,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_ssx2bd",
+        "match": "Espanyol vs Athletic Club",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas cometidas respalda la selección en Espanyol vs Athletic Club.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Javi Puado en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Espanyol%20vs%20Athletic%20Club",
+            "publishedDate": "2026-11-20T15:18:30.253Z",
+            "eventDate": "2026-11-20T15:18:30.253Z",
+            "queryDate": "2026-11-20T15:18:30.253Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Javi Puado mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910255_0ykx6",
+    "timestamp": "2026-11-20T15:18:30.255Z"
+  },
+  {
+    "candidateId": "cand_1795187331561_3u3pww",
+    "playerOrTeam": "Leandro Cabrera",
+    "match": "Espanyol vs Athletic Club",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_1795187331561_3u3pww",
+        "target": "Leandro Cabrera",
+        "summary": "Leandro Cabrera proyecta 0 min con una tasa de 0 por 90 min en Faltas cometidas.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 0.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_1795187331561_3u3pww",
+        "match": "Espanyol vs Athletic Club",
+        "tacticalSummary": "Matchup táctico entre Espanyol y Athletic Club. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Espanyol ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_1795187331561_3u3pww",
+        "match": "Espanyol vs Athletic Club",
+        "contextSummary": "Contexto del partido Espanyol vs Athletic Club. Alineación: PENDIENTE_ALINEACION. Árbitro: undefined.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min).",
+          "Árbitro permisivo: undefined promedia menos infracciones (undefined) que la media."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_1795187331561_3u3pww",
+        "marketAnalysis": "Análisis de mercado para Faltas cometidas @ 1.55 (Coral). Cuota justa: 1.67. EV: +0%.",
+        "referenceOdds": 1.55,
+        "bestOdds": 1.55,
+        "fairOdds": 1.67,
+        "observedDiscrepancies": [],
+        "risks": [
+          "Cuota insuficiente: la cuota (1.55) no cubre la probabilidad real proyectada (cuota justa: 1.67)."
+        ],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.65,
+        "recommendation": "DESFAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_1795187331561_3u3pww",
+        "match": "Espanyol vs Athletic Club",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Faltas cometidas respalda la selección en Espanyol vs Athletic Club.",
+        "tacticalDuels": [
+          {
+            "duelType": "Duelo individual de banda / Disputa en el mediocampo",
+            "actors": "Leandro Cabrera en zona de recuperación y marca directa",
+            "tacticalContext": "Zona de alta fricción táctica: rival suele utilizar giros rápidos y conducción que fuerzan interrupciones e infracciones tácticas.",
+            "impact": "FAVORABLE_A_INFRACCIONES",
+            "confidence": 0.8
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Espanyol%20vs%20Athletic%20Club",
+            "publishedDate": "2026-11-20T15:18:30.266Z",
+            "eventDate": "2026-11-20T15:18:30.266Z",
+            "queryDate": "2026-11-20T15:18:30.266Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Leandro Cabrera mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_A_INFRACCIONES",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795187910267_bx3tx",
+    "timestamp": "2026-11-20T15:18:30.267Z"
   }
 ]

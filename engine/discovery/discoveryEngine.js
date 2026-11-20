@@ -223,38 +223,42 @@ class DiscoveryEngine {
   _mapPropScreenerRows(data, source) {
     if (!data) return [];
     const rows = Array.isArray(data) ? data : (data.data || data.props || data.rows || []);
-    return rows.map(r => ({
-      sourceTool: source,
-      sport: 'football',
-      competition: r.competitionName || r.competition || 'Liga Destacada',
-      match: r.matchName || `${r.teamName || ''} vs ${r.opponentName || ''}`.trim(),
-      matchTime: r.eventTimestamp || r.time || null,
-      playerOrTeam: r.playerName || r.player,
-      isTeamProp: false,
-      team: r.teamName || r.team || '',
-      opponent: r.opponentName || r.opponent || '',
-      market: this._normalizeMarket(r.statType || r.stat),
-      line: r.line ? `Más de ${r.line}` : 'Línea estándar',
-      rawLine: r.line,
-      bookmakerOdds: Number(r.bestOdds || r.odds || r.oddsValue || 1.75),
-      bookmaker: r.bestBookmaker || r.bookmaker || 'bet365',
-      trendL5: r.hitRateL5 ? `${r.hitRateL5}%` : (r.allCompsHitRateL5 ? `${r.allCompsHitRateL5}%` : null),
-      trendL10: r.hitRateL10 ? `${r.hitRateL10}%` : (r.allCompsHitRateL10 ? `${r.allCompsHitRateL10}%` : null),
-      statsSummary: {
-        starts: r.startsInAllCompetitions || r.startsInCompetition || null,
-        avg: r.avgPerGame || null,
-        rawRate: r.hitRateL10 || r.hitRateFrom || null
-      },
-      lineupStatus: r.lineupStatus || (r.predictedStarter ? 'PREDICTED' : 'UNKNOWN'),
-      playerId: r.playerId || r.id || (r.player && r.player.id) || null,
-      teamId: r.teamId || (r.team && r.team.id) || null,
-      opponentTeamId: r.opponentTeamId || r.opponentId || (r.opponent && r.opponent.id) || null,
-      matchId: r.matchId || r.fixtureId || r.gameId || r.eventId || null,
-      competitionId: r.competitionId || r.leagueId || null,
-      seasonId: r.seasonId || null,
-      rawStatType: r.statType || r.stat || null,
-      raw: r
-    }));
+    return rows.map(r => {
+      const opp = r.opponentTeamName || r.opponentName || r.opponent || '';
+      const tm = r.teamName || r.team || '';
+      return {
+        sourceTool: source,
+        sport: 'football',
+        competition: r.competitionName || r.competition || r.league || 'Liga Destacada',
+        match: r.matchName || (tm && opp ? `${tm} vs ${opp}` : tm || 'Partido'),
+        matchTime: r.kickoff || r.eventTimestamp || r.time || null,
+        playerOrTeam: r.playerName || r.player,
+        isTeamProp: false,
+        team: tm,
+        opponent: opp,
+        market: this._normalizeMarket(r.statType || r.stat),
+        line: r.line ? `Más de ${r.line}` : 'Línea estándar',
+        rawLine: r.line,
+        bookmakerOdds: Number(r.bestOdds || r.odds || r.oddsValue || 1.75),
+        bookmaker: r.bestBookmakerName || r.bestBookmaker || r.bookmaker || 'bet365',
+        trendL5: r.hitRateL5 ? `${r.hitRateL5}%` : (r.allCompsHitRateL5 ? `${r.allCompsHitRateL5}%` : null),
+        trendL10: r.hitRateL10 ? `${r.hitRateL10}%` : (r.allCompsHitRateL10 ? `${r.allCompsHitRateL10}%` : null),
+        statsSummary: {
+          starts: r.startsInAllCompetitions || r.startsInCompetition || null,
+          avg: r.avgPerGame || null,
+          rawRate: r.hitRateL10 || r.hitRateFrom || null
+        },
+        lineupStatus: r.lineupStatus || (r.inPredictedLineup || r.predictedStarter ? 'PREDICTED' : 'UNKNOWN'),
+        playerId: r.playerId || r.id || (r.player && r.player.id) || null,
+        teamId: r.teamId || (r.team && r.team.id) || null,
+        opponentTeamId: r.opponentTeamId || r.opponentId || (r.opponent && r.opponent.id) || null,
+        matchId: r.matchId || r.fixtureId || r.gameId || r.eventId || null,
+        competitionId: r.competitionId || r.leagueId || null,
+        seasonId: r.seasonId || null,
+        rawStatType: r.statType || r.stat || null,
+        raw: r
+      };
+    });
   }
 
   _mapTeamPropRows(data, source) {

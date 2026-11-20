@@ -38,7 +38,7 @@
     "approvedAt": "2026-11-19T17:52:58.591Z"
   },
   {
-    "id": "cand_1795120672547_m4j28",
+    "id": "cand_1795140929393_zq72a",
     "partido": "Real Madrid vs Inter",
     "liga": "Champions League",
     "seleccion": "Kylian Mbappé",
@@ -50,7 +50,7 @@
     "fair_odds": 1.41,
     "status": "APROBADO",
     "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
-    "approvedAt": "2026-11-19T20:37:52.552Z"
+    "approvedAt": "2026-11-20T02:15:29.397Z"
   },
   {
     "id": "cand_test_agent_01",
@@ -69,7 +69,7 @@
     "team_analysis": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
     "player_analysis": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
     "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
-    "approvedAt": "2026-11-19T20:38:34.099Z"
+    "approvedAt": "2026-11-20T02:55:23.653Z"
   },
   {
     "id": "cand_1795110774831_uhvh6d",

@@ -1,9 +1,10 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
 
 const PORT = 3333;
+const HOST = '0.0.0.0';
+
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
@@ -18,6 +19,23 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   let reqPath = req.url.split('?')[0];
+
+  // API de salud rápida
+  if (reqPath === '/api/health') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store, no-cache'
+    });
+    let picksCount = 0;
+    try {
+      const picks = JSON.parse(fs.readFileSync(path.join(__dirname, 'picks_hoy.json'), 'utf8'));
+      picksCount = picks.top_picks ? picks.top_picks.length : 0;
+    } catch (e) {}
+    res.end(JSON.stringify({ status: 'ok', serverTime: new Date().toISOString(), activePicks: picksCount }));
+    return;
+  }
+
   if (reqPath === '/' || reqPath === '') reqPath = '/dashboard.html';
 
   const filePath = path.join(__dirname, reqPath);
@@ -32,20 +50,26 @@ const server = http.createServer((req, res) => {
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
     });
     res.end(data);
   });
 });
 
-server.listen(PORT, () => {
-  const url = `http://localhost:${PORT}/dashboard.html`;
-  console.log(`\n======================================================`);
-  console.log(`⚡ Servidor de Dashboard StatsHub × bet365 Activo`);
-  console.log(`🌐 Abriendo: ${url}`);
-  console.log(`Presiona Ctrl + C para detener el servidor.`);
-  console.log(`======================================================\n`);
+server.on('error', (e) => {
+  console.error('[Server Error]', e.message);
+});
 
-  // Open default browser on Windows
-  exec(`start ${url}`);
+server.listen(PORT, HOST, () => {
+  console.log(`\n======================================================`);
+  console.log(`⚡ Servidor DaradorIA / DaradorBET Activo`);
+  console.log(`🌐 Acceso local: http://localhost:${PORT}/dashboard.html`);
+  console.log(`🌐 Acceso IP:    http://127.0.0.1:${PORT}/dashboard.html`);
+  console.log(`📡 Salud API:    http://localhost:${PORT}/api/health`);
+  console.log(`======================================================\n`);
 });

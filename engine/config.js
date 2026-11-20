@@ -43,7 +43,19 @@ module.exports = {
     minPlayerValidMatches: 8,           // Mínimo de partidos reales con minutos para considerar válida la investigación
     minTeamValidMatches: 10,            // Mínimo de partidos reales para equipos
     minStarterMinutes: 45,              // Mínimo de minutos en una aparición para considerarla titularidad válida
-    temporalDecayAlpha: 0.04            // Factor de decaimiento exponencial temporal w_i = e^(-alpha * i)
+    temporalDecayAlpha: 0.04,           // Factor de decaimiento exponencial temporal w_i = e^(-alpha * i)
+    minutesFilterByMarket: {
+      shots: 25,
+      shotsOnTarget: 25,
+      goals: 20,
+      assists: 20,
+      fouls: 15,
+      foulsWon: 15,
+      yellowCards: 15,
+      tackles: 20,
+      corners: 0,
+      default: 25
+    }
   },
 
   // Ligas y competiciones prioritarias
@@ -58,6 +70,18 @@ module.exports = {
     'Brasileirão Série A',
     'Liga Profesional'
   ],
+
+  // Shadow Mode: Modo de observación controlada y validación de motor (Fase 10)
+  shadowMode: {
+    enabled: true,                       // Activo en Fase 10: investigación y evaluación sin ejecución real
+    allowRealBets: false,                // Prohibido ejecutar apuestas reales
+    allowTelegramPicks: false,           // Prohibido enviar picks a canales operativos de Telegram
+    allowAutomatedOrders: false,         // Prohibido emitir órdenes automatizadas
+    logCounterfactuals: true,            // Conservar candidatos aprobados y rechazados por Elena
+    modelsTracked: ['Model-B-L10', 'Model-C-L15-L20'],
+    targetConfirmedObservations: 100,    // Meta mínima de observaciones confirmadas y auditables
+    reportingBatchSize: 25               // Frecuencia de generación de informes de seguimiento
+  },
 
   // Rutas del sistema
   paths: {

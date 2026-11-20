@@ -41,8 +41,14 @@ class PipelineScheduler {
 
     // 2. Fase 3: Deep Research Engine
     console.log('\n--- 2. Deep Research Engine ---');
-    const candidatesToResearch = storage.getCandidates().filter(c => c.status === 'DETECTADO' || c.status === 'INVESTIGADO');
-    const targetIds = candidatesToResearch.slice(0, 8).map(c => c.id);
+    const allPending = storage.getCandidates().filter(c => c.status === 'DETECTADO' || c.status === 'INVESTIGADO');
+    const todayPending = allPending.filter(c => 
+      c.discoveredAt?.startsWith(targetDate) || 
+      (c.matchTime && c.matchTime.includes(targetDate)) || 
+      (c.rawSourceData && JSON.stringify(c.rawSourceData).includes(targetDate))
+    );
+    const candidatesToResearch = todayPending.length > 0 ? todayPending : allPending;
+    const targetIds = candidatesToResearch.slice(0, 15).map(c => c.id);
     const researchedCandidates = await deepResearchEngine.runDeepResearch({ candidateIds: targetIds });
     console.log(`[DeepResearch] ${researchedCandidates.length} candidatos enriquecidos estadísticamente.`);
 

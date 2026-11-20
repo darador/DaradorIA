@@ -166,6 +166,24 @@ class PredictionEngine {
 
     const confidenceScore = Number((Math.max(0, (1 - uncertainty)) * 100).toFixed(1));
 
+    // 8B. Modelos en Paralelo para Shadow Mode (Fase 10: Model B L10 vs Model C L15/L20)
+    const valuesB = historicalValues.slice(0, 10);
+    const pModelB = valuesB.length >= 5 
+      ? Number((valuesB.filter(v => v >= targetK).length / valuesB.length).toFixed(4)) 
+      : null;
+
+    let pModelC = null;
+    let windowC = null;
+    if (historicalValues.length >= 20) {
+      windowC = 'L20';
+      const valuesC = historicalValues.slice(0, 20);
+      pModelC = Number((valuesC.filter(v => v >= targetK).length / 20).toFixed(4));
+    } else if (historicalValues.length >= 15) {
+      windowC = 'L15';
+      const valuesC = historicalValues.slice(0, 15);
+      pModelC = Number((valuesC.filter(v => v >= targetK).length / 15).toFixed(4));
+    }
+
     // 9. Veredicto de Aprobación
     const decision = this._evaluateDecision({
       ev,
@@ -190,6 +208,22 @@ class PredictionEngine {
       pPoisson: Number(pPoisson.toFixed(4)),
       pEmpirical: Number(pEmpirical.toFixed(4)),
       pProjected,
+      models: {
+        modelB: {
+          version: 'Model-B-L10',
+          window: 'L10',
+          sampleSize: valuesB.length,
+          pProjected: pModelB,
+          isEligible: valuesB.length >= 8
+        },
+        modelC: {
+          version: 'Model-C-L15-L20',
+          window: windowC,
+          sampleSize: historicalValues.length,
+          pProjected: pModelC,
+          isEligible: historicalValues.length >= 15
+        }
+      },
       ev,
       evPercentage,
       modelApplied: parametricModelName,
