@@ -3610,21 +3610,12 @@
 
     function getPickDateKey(p) {
       if (!p) return '2026-11-19';
-      if (p.eventDateLocal && /^\d{4}-\d{2}-\d{2}$/.test(p.eventDateLocal)) {
-        return p.eventDateLocal;
-      }
-      if (p.date && /^\d{4}-\d{2}-\d{2}$/.test(p.date)) {
-        return p.date.slice(0, 10);
-      }
-      if (typeof p.time === 'string') {
+      if (p.eventDateLocal) return p.eventDateLocal;
+      if (p.date && /^\d{4}-\d{2}-\d{2}/.test(p.date)) return p.date.slice(0, 10);
+      if (p.time) {
         if (p.time.includes('20 Nov')) return '2026-11-20';
         if (p.time.includes('19 Nov')) return '2026-11-19';
       }
-      if (p.eventDate) {
-        return String(p.eventDate).slice(0, 10);
-      }
-      return '2026-11-19';
-    }
       if (p.risk_verdict && p.risk_verdict.decidedAt) {
         return p.risk_verdict.decidedAt.slice(0, 10);
       }
@@ -3636,6 +3627,112 @@
 
     function onDateChange() {
       const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
+
+      let picksForDate = availablePicks;
+      if (dateFilter === 'today') {
+        picksForDate = availablePicks.filter(p => getPickDateKey(p) === '2026-11-20');
+      } else if (dateFilter === 'yesterday') {
+        picksForDate = availablePicks.filter(p => getPickDateKey(p) === '2026-11-19');
+      }
+
+      populatePicksFilters(picksForDate);
+      renderPicks();
+    }
+
+    function populatePicksFilters(picks) {
+      const leagueSelect = document.getElementById('filterLeague');
+      const matchSelect = document.getElementById('filterMatch');
+      const marketSelect = document.getElementById('filterMarket');
+
+      const leagues = [...new Set(picks.map(p => p.league))].filter(Boolean);
+      const matches = [...new Set(picks.map(p => p.match))].filter(Boolean);
+      const markets = [...new Set(picks.map(p => p.market))].filter(Boolean);
+
+      leagueSelect.innerHTML = '<option value="all">Todas las Ligas</option>';
+      leagues.forEach(l => {
+        const opt = document.createElement('option');
+        opt.value = l;
+        opt.textContent = l;
+        leagueSelect.appendChild(opt);
+      });
+
+      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
+      matches.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        matchSelect.appendChild(opt);
+      });
+
+      marketSelect.innerHTML = '<option value="all">Todos los Mercados</option>';
+      markets.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        marketSelect.appendChild(opt);
+      });
+    }
+
+    function onLeagueChange() {
+      const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
+      const matchSelect = document.getElementById('filterMatch');
+      const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
+
+      let filtered = availablePicks;
+      if (dateFilter === 'today') {
+        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-20');
+      } else if (dateFilter === 'yesterday') {
+        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-19');
+      }
+      const filteredByLeague = (leagueFilter === 'all') 
+        ? filtered 
+        : filtered.filter(p => p.league === leagueFilter);
+
+      const matches = [...new Set(filteredByLeague.map(p => p.match))].filter(Boolean);
+      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
+      matches.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        matchSelect.appendChild(opt);
+      });
+
+      renderPicks();
+    }
+
+    function toggleViewMode(mode) {
+      currentViewMode = mode;
+      document.getElementById('btnViewTable').classList.toggle('active', mode === 'table');
+      document.getElementById('btnViewCards').classList.toggle('active', mode === 'cards');
+      document.getElementById('dailyBoardTableWrap').style.display = mode === 'table' ? 'block' : 'none';
+      document.getElementById('picksGrid').style.display = mode === 'cards' ? 'grid' : 'none';
+    }
+
+    function sortBoard(col) {
+      if (sortColumn === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortColumn = col;
+        sortAsc = false;
+      }
+      renderPicks();
+    }
+
+    function renderPicks() {
+      const tableBody = document.getElementById('dailyBoardTableBody');
+      const gridContainer = document.getElementById('picksGrid');
+      const mobileListContainer = document.getElementById('mobilePicksList');
+
+      if (!globalPicksData || !globalPicksData.top_picks) {
+        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">No hay picks disponibles para hoy.</td></tr>';
+        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
+        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
+        return;
+      }
+
+      const dateFilter = document.getElementById('filterDate')?.value || 'today';
       const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
       const matchFilter = document.getElementById('filterMatch')?.value || 'all';
       const marketFilter = document.getElementById('filterMarket')?.value || 'all';
@@ -3644,21 +3741,14 @@
       const statusFilter = document.getElementById('filterStatus')?.value || 'all';
 
       let filtered = globalPicksData.top_picks.filter(pick => {
-        // 1. FILTRADO ESTRICTO POR FECHA DE EVENTO (America/Argentina/Buenos_Aires)
-        const pickDate = pick.eventDateLocal || getPickDateKey(pick);
+        // FILTRADO ESTRICTO POR FECHA
+        const pickDate = getPickDateKey(pick);
         if (dateFilter === 'today' && pickDate !== '2026-11-20') return false;
         if (dateFilter === 'yesterday' && pickDate !== '2026-11-19') return false;
 
-        // 2. FILTRADO POR COMPETICIÓN / LIGA
         if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
-
-        // 3. FILTRADO POR PARTIDO
         if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
-
-        // 4. FILTRADO POR MERCADO
         if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
-
-        // 5. FILTRADO POR ESTADO
         if (statusFilter !== 'all') {
           if (statusFilter === 'APROBADO' && pick.status !== 'APROBADO' && pick.status !== 'ACERTADA') return false;
           if (statusFilter === 'PENDIENTE') {
@@ -3671,7 +3761,6 @@
           }
         }
 
-        // 6. FILTRADO POR EFECTIVIDAD L5
         let hitRateNum = 0;
         if (pick.hit_rate_l5) {
           const match = pick.hit_rate_l5.match(/(\d+)%/);
@@ -3679,21 +3768,20 @@
         }
         if (hitRateNum < minHitFilter) return false;
 
-        // 7. BÚSQUEDA DE TEXTO EN VIVO
         if (searchFilter) {
-          const searchSpace = `${pick.player} ${pick.team} ${pick.opponent} ${pick.match} ${pick.market} ${pick.line} ${pick.league}`.toLowerCase();
+          const searchSpace = `${pick.player} ${pick.team} ${pick.opponent} ${pick.match} ${pick.market} ${pick.line}`.toLowerCase();
           if (!searchSpace.includes(searchFilter)) return false;
         }
 
         return true;
       });
 
-      // Sincronizar métricas del tablero con los filtros activos
+      // Sincronizar métricas del tablero con la fecha activa
       const setEl = (id, val) => {
         const el = document.getElementById(id);
         if (el) el.textContent = val;
       };
-      const activeApproved = filtered.filter(p => p.status === 'APROBADO' || p.status === 'ACERTADA').length;
+      const activeApproved = filtered.filter(p => p.status === 'APROBADO').length;
       const activePending = filtered.filter(p => (p.status === 'PENDIENTE' || p.status === 'PENDIENTE_ALINEACION') && !p.is_finished).length;
       const activeEvs = filtered.map(p => parseFloat(p.edge_pct || p.ev_pct || 0)).filter(n => !isNaN(n));
       const activeAvgEv = activeEvs.length ? (activeEvs.reduce((a, b) => a + b, 0) / activeEvs.length).toFixed(1) : '0.0';
@@ -4806,6 +4894,13 @@
 
     function resetMobileFilters() {
       resetPicksFilters();
+      if (document.getElementById('filterDate')) document.getElementById('filterDate').value = 'today';
+      if (document.getElementById('filterLeague')) document.getElementById('filterLeague').value = 'all';
+      if (document.getElementById('filterMatch')) document.getElementById('filterMatch').value = 'all';
+      if (document.getElementById('filterMarket')) document.getElementById('filterMarket').value = 'all';
+      if (document.getElementById('filterMinHit')) document.getElementById('filterMinHit').value = '0';
+      if (document.getElementById('filterStatus')) document.getElementById('filterStatus').value = 'all';
+      if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
       applyMobileFilters();
     }
 
