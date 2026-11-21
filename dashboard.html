@@ -679,6 +679,299 @@
       box-shadow: 0 0 14px rgba(139, 92, 246, 0.45);
     }
 
+    
+    /* ====================================================================
+       REDISEÑO UX: NAVEGACIÓN TEMPORAL Y BARRA HORIZONTAL RÁPIDA (FASE 10.1.4)
+       ==================================================================== */
+    .daily-board-top-nav {
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .time-nav-bar {
+      background: rgba(14, 21, 42, 0.85);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .time-segmented-control {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(8, 14, 28, 0.9);
+      padding: 0.25rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 0.2rem;
+      overflow-x: auto;
+      max-width: 100%;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .time-nav-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .time-nav-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .time-nav-btn.active {
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      color: #060b14;
+      font-weight: 800;
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.45);
+    }
+
+    .time-nav-btn.secondary-time-btn {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.65rem;
+      opacity: 0.75;
+    }
+
+    .time-nav-btn.secondary-time-btn:hover {
+      opacity: 1;
+    }
+
+    .time-nav-btn.secondary-time-btn.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      box-shadow: none;
+      opacity: 1;
+    }
+
+    .time-nav-badge {
+      background: rgba(0, 0, 0, 0.35);
+      color: inherit;
+      padding: 0.15rem 0.45rem;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+
+    .time-nav-btn.active .time-nav-badge {
+      background: rgba(0, 0, 0, 0.25);
+      color: #060b14;
+    }
+
+    .time-nav-custom-date {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-full);
+      padding: 0.2rem 0.5rem;
+      margin-left: 0.25rem;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      transition: all 0.2s;
+    }
+
+    .time-nav-custom-date:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.05);
+    }
+
+    .time-nav-custom-date.active {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.15);
+    }
+
+    .custom-date-icon {
+      font-size: 0.85rem;
+      pointer-events: none;
+      margin-right: 0.25rem;
+    }
+
+    .time-date-input {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      outline: none;
+      cursor: pointer;
+      width: 105px;
+    }
+
+    .time-date-input::-webkit-calendar-picker-indicator {
+      filter: invert(0.8) hue-rotate(150deg);
+      cursor: pointer;
+    }
+
+    .time-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .time-update-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.74rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    .pulse-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    }
+
+    .btn-refresh-daily {
+      background: rgba(22, 33, 60, 0.8);
+      border: 1px solid var(--border-terminal);
+      color: var(--text-muted);
+      padding: 0.45rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+
+    .btn-refresh-daily:hover {
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.08);
+    }
+
+    .btn-toggle-filters {
+      background: rgba(22, 33, 60, 0.8);
+      border: 1px solid var(--border-terminal);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-filters:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-toggle-filters.open {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.15);
+      color: #fff;
+    }
+
+    .active-filter-badge {
+      background: #7c3aed;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+    }
+
+    /* ADVANCED FILTERS COLLAPSIBLE PANEL */
+    .advanced-filters-collapse {
+      background: rgba(11, 18, 36, 0.95);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      animation: fadeInCollapse 0.25s ease-out;
+    }
+
+    @keyframes fadeInCollapse {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .advanced-filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .filter-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .filter-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+    }
+
+    .filter-item-search {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .filter-item-search {
+        grid-column: span 1;
+      }
+    }
+
+    .advanced-filters-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .view-toggles {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
     /* DAILY BOARD CENTRAL TABLE */
     .daily-board-container {
       background: var(--bg-surface-card);
@@ -2809,63 +3102,137 @@
         </div>
       </section>
 
-      <!-- BARRA DE FILTROS MÓVIL DISCRETA -->
-      <div class="mobile-filter-bar">
-        <button class="mobile-filter-toggle" onclick="toggleMobileFilters()">
-          <span>⚙️ Filtros y Búsqueda</span>
-          <span id="mobileActiveFiltersCount" style="color: var(--accent-cyan); font-size: 11px;"></span>
-        </button>
-      </div>
+      <!-- ====================================================================
+           NAVEGACIÓN TEMPORAL Y FILTROS COLAPSABLES (FASE 10.1.4)
+           ==================================================================== -->
+      <section class="daily-board-top-nav" id="dailyBoardTopNav">
+        <!-- BARRA HORIZONTAL RÁPIDA DE FECHAS (SIEMPRE VISIBLE) -->
+        <div class="time-nav-bar">
+          <div class="time-segmented-control" role="tablist" aria-label="Navegación temporal">
+            <button type="button" class="time-nav-btn active" id="btnDateToday" onclick="selectTimeHorizon('today')">
+              <span class="time-nav-icon">⚡</span>
+              <span class="time-nav-text">HOY</span>
+              <span class="time-nav-badge" id="badgeTodayCount">0</span>
+            </button>
+            <button type="button" class="time-nav-btn" id="btnDateTomorrow" onclick="selectTimeHorizon('tomorrow')">
+              <span class="time-nav-icon">📅</span>
+              <span class="time-nav-text">MAÑANA</span>
+              <span class="time-nav-badge" id="badgeTomorrowCount">0</span>
+            </button>
+            <button type="button" class="time-nav-btn" id="btnDateUpcoming" onclick="selectTimeHorizon('upcoming')">
+              <span class="time-nav-icon">🔮</span>
+              <span class="time-nav-text">PRÓXIMOS</span>
+              <span class="time-nav-badge" id="badgeUpcomingCount">0</span>
+            </button>
 
-      <!-- FILTROS Y CONTROLES -->
-      <section class="controls-bar" id="picksControls">
-        <div class="filter-group">
-          <select id="filterDate" class="select-control" autocomplete="off" onchange="onDateChange()">
-            <option value="tomorrow">📅 Mañana (21 Nov)</option>
-            <option value="today" selected>📅 Hoy (20 Nov)</option>
-            <option value="yesterday">📅 Ayer (19 Nov)</option>
-            <option value="all">📅 Todas las Fechas</option>
-          </select>
+            <!-- Selector de fecha específica en calendario -->
+            <div class="time-nav-custom-date" id="customDateWrap" title="Seleccionar fecha específica">
+              <span class="custom-date-icon">🗓️</span>
+              <input type="date" id="filterSpecificDate" class="time-date-input" onchange="onCustomDatePick(this.value)" title="Elegir fecha del calendario">
+            </div>
 
-          <select id="filterLeague" class="select-control" autocomplete="off" onchange="onLeagueChange()">
-            <option value="all">Todas las Ligas</option>
-          </select>
+            <!-- Accesos rápidos secundarios -->
+            <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateYesterday" onclick="selectTimeHorizon('yesterday')" title="Ver jornada de ayer">
+              <span>⏪</span>
+              <span>Ayer</span>
+            </button>
+            <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateAll" onclick="selectTimeHorizon('all')" title="Ver todas las fechas">
+              <span>🌐</span>
+              <span>Todos</span>
+            </button>
+          </div>
 
-          <select id="filterMatch" class="select-control" autocomplete="off" onchange="renderPicks()">
-            <option value="all">Todos los Partidos</option>
-          </select>
+          <!-- Acciones de barra: Actualización y Toggle Filtros -->
+          <div class="time-nav-actions">
+            <span class="time-update-meta" id="dailyLastUpdateMeta" title="Hora local (America/Argentina/Buenos_Aires)">
+              <span class="pulse-indicator"></span>
+              <span id="labelLastUpdate">Actualizado: --:-- hs</span>
+            </span>
 
-          <select id="filterMarket" class="select-control" autocomplete="off" onchange="renderPicks()">
-            <option value="all">Todos los Mercados</option>
-          </select>
+            <button type="button" class="btn-refresh-daily" id="btnRefreshDailyManual" onclick="refreshDailyBoardManual()" title="Actualizar datos en tiempo real">
+              <span id="refreshIcon">🔄</span>
+              <span class="btn-text-desktop">Actualizar</span>
+            </button>
 
-          <select id="filterMinHit" class="select-control" autocomplete="off" onchange="renderPicks()">
-            <option value="0" selected>Racha L5: Cualquiera</option>
-            <option value="75">Racha L5: ≥ 75%</option>
-            <option value="80">Racha L5: ≥ 80%</option>
-            <option value="90">Racha L5: ≥ 90%</option>
-          </select>
-
-          <select id="filterStatus" class="select-control" autocomplete="off" onchange="renderPicks()">
-            <option value="all">Estado: Todos</option>
-            <option value="APROBADO">Solo Aprobados</option>
-            <option value="PENDIENTE">Solo Pendientes (Por Jugar)</option>
-            <option value="FINALIZADO">Finalizados / Concluidos</option>
-          </select>
+            <button type="button" class="btn-toggle-filters" id="btnToggleAdvancedFilters" onclick="toggleAdvancedFiltersPanel()">
+              <span>⚙️ Filtros</span>
+              <span class="active-filter-badge" id="advFilterBadge" style="display: none;">0</span>
+              <span class="chevron" id="advFilterChevron">▾</span>
+            </button>
+          </div>
         </div>
 
-        <div class="filter-group">
-          <input type="text" id="searchInput" class="input-control" autocomplete="off" placeholder="🔍 Buscar jugador, equipo o mercado..." oninput="renderPicks()" style="min-width: 250px;">
-          <button class="view-toggle-btn active" id="btnViewTable" onclick="toggleViewMode('table')">📋 Tabla</button>
-          <button class="view-toggle-btn" id="btnViewCards" onclick="toggleViewMode('cards')">🗂️ Tarjetas</button>
-          <button class="btn-clear-filters" id="btnResetDesktop" onclick="resetPicksFilters()" title="Restablecer todos los filtros" style="padding: 0.45rem 0.85rem; font-size: 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border-terminal); border-radius: var(--radius-xs); color: var(--text-dim); cursor: pointer; transition: all 0.2s;">🔄 Limpiar</button>
+        <!-- PANEL COLAPSABLE DE FILTROS AVANZADOS -->
+        <div class="advanced-filters-collapse" id="advancedFiltersCollapse" style="display: none;">
+          <div class="advanced-filters-inner">
+            <div class="advanced-filters-grid">
+              <div class="filter-item">
+                <label class="filter-label">Competición</label>
+                <select id="filterLeague" class="select-control" autocomplete="off" onchange="onLeagueChange()">
+                  <option value="all">Todas las Ligas</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label class="filter-label">Partido</label>
+                <select id="filterMatch" class="select-control" autocomplete="off" onchange="renderPicks()">
+                  <option value="all">Todos los Partidos</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label class="filter-label">Mercado</label>
+                <select id="filterMarket" class="select-control" autocomplete="off" onchange="renderPicks()">
+                  <option value="all">Todos los Mercados</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label class="filter-label">Racha L5</label>
+                <select id="filterMinHit" class="select-control" autocomplete="off" onchange="renderPicks()">
+                  <option value="0" selected>Cualquiera</option>
+                  <option value="75">≥ 75%</option>
+                  <option value="80">≥ 80%</option>
+                  <option value="90">≥ 90%</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label class="filter-label">Estado</label>
+                <select id="filterStatus" class="select-control" autocomplete="off" onchange="renderPicks()">
+                  <option value="all">Todos los Estados</option>
+                  <option value="APROBADO">Solo Aprobados</option>
+                  <option value="PENDIENTE">Solo Pendientes (Por Jugar)</option>
+                  <option value="FINALIZADO">Finalizados / Concluidos</option>
+                </select>
+              </div>
+
+              <div class="filter-item filter-item-search">
+                <label class="filter-label">Búsqueda rápida</label>
+                <input type="text" id="searchInput" class="input-control" autocomplete="off" placeholder="🔍 Jugador, equipo, mercado..." oninput="renderPicks()">
+              </div>
+            </div>
+
+            <div class="advanced-filters-actions">
+              <div class="view-toggles">
+                <button class="view-toggle-btn active" id="btnViewTable" onclick="toggleViewMode('table')">📋 Tabla</button>
+                <button class="view-toggle-btn" id="btnViewCards" onclick="toggleViewMode('cards')">🗂️ Tarjetas</button>
+              </div>
+              <button class="btn-clear-filters" id="btnResetDesktop" onclick="resetPicksFilters()" title="Restablecer filtros">
+                🔄 Limpiar Filtros
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Acciones en drawer móvil -->
-        <div class="mobile-filter-drawer-actions">
-          <button class="btn-apply-filters" onclick="applyMobileFilters()">Aplicar Filtros</button>
-          <button class="btn-reset-filters" onclick="resetMobileFilters()">Limpiar</button>
-        </div>
+        <!-- Input invisible para compatibilidad total con tests legados -->
+        <select id="filterDate" style="display: none;" autocomplete="off" onchange="onDateChange()">
+          <option value="today" selected>Hoy</option>
+          <option value="tomorrow">Mañana</option>
+          <option value="upcoming">Próximos</option>
+          <option value="yesterday">Ayer</option>
+          <option value="all">Todos</option>
+        </select>
       </section>
 
       <!-- TABLA CENTRAL DAILY BOARD (Escritorio) -->
@@ -3610,34 +3977,171 @@
     }
 
     function getPickDateKey(p) {
-      if (!p) return '2026-11-19';
+      if (!p) return '';
       if (p.eventDateLocal) return p.eventDateLocal;
       if (p.date && /^\d{4}-\d{2}-\d{2}/.test(p.date)) return p.date.slice(0, 10);
+      if (p.kickoffTimestamp) {
+        return getLocalDateStr(new Date(p.kickoffTimestamp * 1000));
+      }
       if (p.time) {
+        const m = p.time.match(/(\d{4}-\d{2}-\d{2})/);
+        if (m) return m[1];
+        if (p.time.includes('22 Nov')) return '2026-11-22';
         if (p.time.includes('21 Nov')) return '2026-11-21';
         if (p.time.includes('20 Nov')) return '2026-11-20';
         if (p.time.includes('19 Nov')) return '2026-11-19';
       }
-      if (p.risk_verdict && p.risk_verdict.decidedAt) {
-        return p.risk_verdict.decidedAt.slice(0, 10);
+      return '';
+    }
+
+    const TIMEZONE_ARGENTINA = 'America/Argentina/Buenos_Aires';
+
+    function getLocalDateStr(dateInput = new Date()) {
+      if (typeof dateInput === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateInput)) {
+        return dateInput;
       }
-      if (p.createdAt) {
-        return p.createdAt.slice(0, 10);
+      const d = (dateInput instanceof Date) ? dateInput : new Date(dateInput);
+      if (isNaN(d.getTime())) return '';
+      return new Intl.DateTimeFormat('en-CA', { timeZone: TIMEZONE_ARGENTINA }).format(d);
+    }
+
+    function getTodayStr() {
+      return getLocalDateStr(new Date());
+    }
+
+    function getTomorrowStr() {
+      const d = new Date();
+      d.setDate(d.getDate() + 1);
+      return getLocalDateStr(d);
+    }
+
+    function getYesterdayStr() {
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      return getLocalDateStr(d);
+    }
+
+    let currentTimeHorizon = 'today';
+    let customSelectedDate = null;
+
+    function selectTimeHorizon(horizon) {
+      currentTimeHorizon = horizon;
+      customSelectedDate = null;
+
+      ['btnDateToday', 'btnDateTomorrow', 'btnDateUpcoming', 'btnDateYesterday', 'btnDateAll'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.classList.remove('active');
+      });
+      const customWrap = document.getElementById('customDateWrap');
+      if (customWrap) customWrap.classList.remove('active');
+      const specificInput = document.getElementById('filterSpecificDate');
+      if (specificInput) specificInput.value = '';
+
+      if (horizon === 'today') {
+        const b = document.getElementById('btnDateToday');
+        if (b) b.classList.add('active');
+      } else if (horizon === 'tomorrow') {
+        const b = document.getElementById('btnDateTomorrow');
+        if (b) b.classList.add('active');
+      } else if (horizon === 'upcoming') {
+        const b = document.getElementById('btnDateUpcoming');
+        if (b) b.classList.add('active');
+      } else if (horizon === 'yesterday') {
+        const b = document.getElementById('btnDateYesterday');
+        if (b) b.classList.add('active');
+      } else if (horizon === 'all') {
+        const b = document.getElementById('btnDateAll');
+        if (b) b.classList.add('active');
       }
-      return '2026-11-19';
+
+      const legacySelect = document.getElementById('filterDate');
+      if (legacySelect) legacySelect.value = horizon;
+
+      onDateChange();
+    }
+
+    function onCustomDatePick(val) {
+      if (!val) {
+        selectTimeHorizon('today');
+        return;
+      }
+      currentTimeHorizon = 'custom';
+      customSelectedDate = val;
+
+      ['btnDateToday', 'btnDateTomorrow', 'btnDateUpcoming', 'btnDateYesterday', 'btnDateAll'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.classList.remove('active');
+      });
+      const customWrap = document.getElementById('customDateWrap');
+      if (customWrap) customWrap.classList.add('active');
+
+      const legacySelect = document.getElementById('filterDate');
+      if (legacySelect) legacySelect.value = 'custom';
+
+      onDateChange();
+    }
+
+    function toggleAdvancedFiltersPanel() {
+      const panel = document.getElementById('advancedFiltersCollapse');
+      const btn = document.getElementById('btnToggleAdvancedFilters');
+      const chevron = document.getElementById('advFilterChevron');
+      if (!panel) return;
+
+      const isHidden = panel.style.display === 'none' || panel.style.display === '';
+      panel.style.display = isHidden ? 'block' : 'none';
+      if (btn) btn.classList.toggle('open', isHidden);
+      if (chevron) chevron.textContent = isHidden ? '▴' : '▾';
+    }
+
+    function updateActiveFilterBadge() {
+      const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
+      const matchFilter = document.getElementById('filterMatch')?.value || 'all';
+      const marketFilter = document.getElementById('filterMarket')?.value || 'all';
+      const minHitFilter = parseFloat(document.getElementById('filterMinHit')?.value || '0');
+      const statusFilter = document.getElementById('filterStatus')?.value || 'all';
+      const searchFilter = document.getElementById('searchInput')?.value.trim() || '';
+
+      let count = 0;
+      if (leagueFilter !== 'all') count++;
+      if (matchFilter !== 'all') count++;
+      if (marketFilter !== 'all') count++;
+      if (minHitFilter > 0) count++;
+      if (statusFilter !== 'all') count++;
+      if (searchFilter !== '') count++;
+
+      const badge = document.getElementById('advFilterBadge');
+      if (badge) {
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
     }
 
     function onDateChange() {
-      const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      updateActiveFilterBadge();
       const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
 
+      const today = getTodayStr();
+      const tomorrow = getTomorrowStr();
+      const yesterday = getYesterdayStr();
+
       let picksForDate = availablePicks;
-      if (dateFilter === 'tomorrow') {
-        picksForDate = availablePicks.filter(p => getPickDateKey(p) === '2026-11-21');
-      } else if (dateFilter === 'today') {
-        picksForDate = availablePicks.filter(p => getPickDateKey(p) === '2026-11-20');
-      } else if (dateFilter === 'yesterday') {
-        picksForDate = availablePicks.filter(p => getPickDateKey(p) === '2026-11-19');
+      if (currentTimeHorizon === 'today') {
+        picksForDate = availablePicks.filter(p => getPickDateKey(p) === today);
+      } else if (currentTimeHorizon === 'tomorrow') {
+        picksForDate = availablePicks.filter(p => getPickDateKey(p) === tomorrow);
+      } else if (currentTimeHorizon === 'upcoming') {
+        picksForDate = availablePicks.filter(p => {
+          const key = getPickDateKey(p);
+          return key > tomorrow && !p.is_finished && p.status !== 'ACERTADA' && p.status !== 'FALLADA';
+        });
+      } else if (currentTimeHorizon === 'yesterday') {
+        picksForDate = availablePicks.filter(p => getPickDateKey(p) === yesterday);
+      } else if (currentTimeHorizon === 'custom' && customSelectedDate) {
+        picksForDate = availablePicks.filter(p => getPickDateKey(p) === customSelectedDate);
       }
 
       populatePicksFilters(picksForDate);
@@ -3648,11 +4152,13 @@
       const leagueSelect = document.getElementById('filterLeague');
       const matchSelect = document.getElementById('filterMatch');
       const marketSelect = document.getElementById('filterMarket');
+      if (!leagueSelect || !matchSelect || !marketSelect) return;
 
       const leagues = [...new Set(picks.map(p => p.league))].filter(Boolean);
       const matches = [...new Set(picks.map(p => p.match))].filter(Boolean);
       const markets = [...new Set(picks.map(p => p.market))].filter(Boolean);
 
+      const curLeague = leagueSelect.value;
       leagueSelect.innerHTML = '<option value="all">Todas las Ligas</option>';
       leagues.forEach(l => {
         const opt = document.createElement('option');
@@ -3660,7 +4166,9 @@
         opt.textContent = l;
         leagueSelect.appendChild(opt);
       });
+      if (leagues.includes(curLeague)) leagueSelect.value = curLeague;
 
+      const curMatch = matchSelect.value;
       matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
       matches.forEach(m => {
         const opt = document.createElement('option');
@@ -3668,7 +4176,9 @@
         opt.textContent = m;
         matchSelect.appendChild(opt);
       });
+      if (matches.includes(curMatch)) matchSelect.value = curMatch;
 
+      const curMarket = marketSelect.value;
       marketSelect.innerHTML = '<option value="all">Todos los Mercados</option>';
       markets.forEach(m => {
         const opt = document.createElement('option');
@@ -3676,44 +4186,60 @@
         opt.textContent = m;
         marketSelect.appendChild(opt);
       });
+      if (markets.includes(curMarket)) marketSelect.value = curMarket;
     }
 
     function onLeagueChange() {
-      const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      updateActiveFilterBadge();
       const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
       const matchSelect = document.getElementById('filterMatch');
       const availablePicks = (!globalPicksData || !globalPicksData.top_picks) ? [] : globalPicksData.top_picks;
 
+      const today = getTodayStr();
+      const tomorrow = getTomorrowStr();
+      const yesterday = getYesterdayStr();
+
       let filtered = availablePicks;
-      if (dateFilter === 'tomorrow') {
-        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-21');
-      } else if (dateFilter === 'today') {
-        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-20');
-      } else if (dateFilter === 'yesterday') {
-        filtered = filtered.filter(p => getPickDateKey(p) === '2026-11-19');
+      if (currentTimeHorizon === 'today') {
+        filtered = filtered.filter(p => getPickDateKey(p) === today);
+      } else if (currentTimeHorizon === 'tomorrow') {
+        filtered = filtered.filter(p => getPickDateKey(p) === tomorrow);
+      } else if (currentTimeHorizon === 'upcoming') {
+        filtered = filtered.filter(p => getPickDateKey(p) > tomorrow && !p.is_finished);
+      } else if (currentTimeHorizon === 'yesterday') {
+        filtered = filtered.filter(p => getPickDateKey(p) === yesterday);
+      } else if (currentTimeHorizon === 'custom' && customSelectedDate) {
+        filtered = filtered.filter(p => getPickDateKey(p) === customSelectedDate);
       }
+
       const filteredByLeague = (leagueFilter === 'all') 
         ? filtered 
         : filtered.filter(p => p.league === leagueFilter);
 
       const matches = [...new Set(filteredByLeague.map(p => p.match))].filter(Boolean);
-      matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
-      matches.forEach(m => {
-        const opt = document.createElement('option');
-        opt.value = m;
-        opt.textContent = m;
-        matchSelect.appendChild(opt);
-      });
+      if (matchSelect) {
+        matchSelect.innerHTML = '<option value="all">Todos los Partidos</option>';
+        matches.forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m;
+          opt.textContent = m;
+          matchSelect.appendChild(opt);
+        });
+      }
 
       renderPicks();
     }
 
     function toggleViewMode(mode) {
       currentViewMode = mode;
-      document.getElementById('btnViewTable').classList.toggle('active', mode === 'table');
-      document.getElementById('btnViewCards').classList.toggle('active', mode === 'cards');
-      document.getElementById('dailyBoardTableWrap').style.display = mode === 'table' ? 'block' : 'none';
-      document.getElementById('picksGrid').style.display = mode === 'cards' ? 'grid' : 'none';
+      const btnTable = document.getElementById('btnViewTable');
+      const btnCards = document.getElementById('btnViewCards');
+      if (btnTable) btnTable.classList.toggle('active', mode === 'table');
+      if (btnCards) btnCards.classList.toggle('active', mode === 'cards');
+      const tableWrap = document.getElementById('dailyBoardTableWrap');
+      const grid = document.getElementById('picksGrid');
+      if (tableWrap) tableWrap.style.display = mode === 'table' ? 'block' : 'none';
+      if (grid) grid.style.display = mode === 'cards' ? 'grid' : 'none';
     }
 
     function sortBoard(col) {
@@ -3726,19 +4252,71 @@
       renderPicks();
     }
 
+    async function refreshDailyBoardManual() {
+      const icon = document.getElementById('refreshIcon');
+      if (icon) icon.style.display = 'inline-block';
+      if (icon) icon.style.animation = 'spin 1s linear infinite';
+      try {
+        await loadPicksData();
+        showToast('Daily Board actualizado');
+      } catch (e) {
+        console.warn('Error en actualización manual:', e);
+        showToast('Fallo al actualizar');
+      } finally {
+        if (icon) icon.style.animation = 'none';
+      }
+    }
+
+    function resetPicksFilters() {
+      if (document.getElementById('filterLeague')) document.getElementById('filterLeague').value = 'all';
+      if (document.getElementById('filterMatch')) document.getElementById('filterMatch').value = 'all';
+      if (document.getElementById('filterMarket')) document.getElementById('filterMarket').value = 'all';
+      if (document.getElementById('filterMinHit')) document.getElementById('filterMinHit').value = '0';
+      if (document.getElementById('filterStatus')) document.getElementById('filterStatus').value = 'all';
+      if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
+      selectTimeHorizon('today');
+    }
+
+    function resetMobileFilters() {
+      resetPicksFilters();
+    }
+
+    let lastKnownMidnightDay = getTodayStr();
+    setInterval(() => {
+      const currentToday = getTodayStr();
+      if (currentToday !== lastKnownMidnightDay) {
+        console.log('[Midnight Rollover] Cambio de día detectado en Argentina:', currentToday);
+        lastKnownMidnightDay = currentToday;
+        if (currentTimeHorizon === 'today' || currentTimeHorizon === 'tomorrow') {
+          onDateChange();
+        }
+      }
+    }, 30000);
+
     function renderPicks() {
       const tableBody = document.getElementById('dailyBoardTableBody');
       const gridContainer = document.getElementById('picksGrid');
       const mobileListContainer = document.getElementById('mobilePicksList');
 
+      const emptyMsg = '<div style="padding: 2.5rem 1rem; text-align: center;"><div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div><div style="font-size: 1rem; font-weight: 700; color: var(--text-main);">No hay oportunidades disponibles</div><div style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0.35rem;">No se encontraron pronósticos para este período con los filtros seleccionados.</div></div>';
+
       if (!globalPicksData || !globalPicksData.top_picks) {
-        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">No hay picks disponibles para hoy.</td></tr>';
-        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
-        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">No hay picks disponibles para hoy.</div>';
+        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">' + emptyMsg + '</td></tr>';
+        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">' + emptyMsg + '</div>';
+        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">' + emptyMsg + '</div>';
         return;
       }
 
-      const dateFilter = document.getElementById('filterDate')?.value || 'today';
+      const today = getTodayStr();
+      const tomorrow = getTomorrowStr();
+      const yesterday = getYesterdayStr();
+
+      // Legacy fallback support for filterDate select if queried directly
+      const legacyDateSelect = document.getElementById('filterDate');
+      if (legacyDateSelect && legacyDateSelect.value && legacyDateSelect.value !== currentTimeHorizon && currentTimeHorizon !== 'custom') {
+        currentTimeHorizon = legacyDateSelect.value;
+      }
+
       const leagueFilter = document.getElementById('filterLeague')?.value || 'all';
       const matchFilter = document.getElementById('filterMatch')?.value || 'all';
       const marketFilter = document.getElementById('filterMarket')?.value || 'all';
@@ -3746,12 +4324,18 @@
       const searchFilter = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
       const statusFilter = document.getElementById('filterStatus')?.value || 'all';
 
+      // Filtrado por horizonte temporal y filtros avanzados
       let filtered = globalPicksData.top_picks.filter(pick => {
-        // FILTRADO ESTRICTO POR FECHA
         const pickDate = getPickDateKey(pick);
-        if (dateFilter === 'tomorrow' && pickDate !== '2026-11-21') return false;
-        if (dateFilter === 'today' && pickDate !== '2026-11-20') return false;
-        if (dateFilter === 'yesterday' && pickDate !== '2026-11-19') return false;
+
+        if (currentTimeHorizon === 'today' && pickDate !== today) return false;
+        if (currentTimeHorizon === 'tomorrow' && pickDate !== tomorrow) return false;
+        if (currentTimeHorizon === 'upcoming') {
+          if (pickDate <= tomorrow) return false;
+          if (pick.is_finished || pick.status === 'ACERTADA' || pick.status === 'FALLADA' || pick.status === 'ANULADA_NO_TITULAR') return false;
+        }
+        if (currentTimeHorizon === 'yesterday' && pickDate !== yesterday) return false;
+        if (currentTimeHorizon === 'custom' && customSelectedDate && pickDate !== customSelectedDate) return false;
 
         if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
         if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
@@ -3776,23 +4360,40 @@
         if (hitRateNum < minHitFilter) return false;
 
         if (searchFilter) {
-          const searchSpace = `${pick.player} ${pick.team} ${pick.opponent} ${pick.match} ${pick.market} ${pick.line}`.toLowerCase();
+          const searchSpace = `${pick.player} ${pick.team} ${pick.opponent} ${pick.match} ${pick.market} ${pick.line} ${pick.league}`.toLowerCase();
           if (!searchSpace.includes(searchFilter)) return false;
         }
 
         return true;
       });
 
+      // Actualizar conteos de insignias de acceso rápido (pool de candidatos sin filtros avanzados)
+      const allPicks = globalPicksData.top_picks || [];
+      const badgeTodayEl = document.getElementById('badgeTodayCount');
+      if (badgeTodayEl) {
+        badgeTodayEl.textContent = allPicks.filter(p => getPickDateKey(p) === today).length;
+      }
+      const badgeTomorrowEl = document.getElementById('badgeTomorrowCount');
+      if (badgeTomorrowEl) {
+        badgeTomorrowEl.textContent = allPicks.filter(p => getPickDateKey(p) === tomorrow).length;
+      }
+      const badgeUpcomingEl = document.getElementById('badgeUpcomingCount');
+      if (badgeUpcomingEl) {
+        badgeUpcomingEl.textContent = allPicks.filter(p => getPickDateKey(p) > tomorrow && !p.is_finished).length;
+      }
+
       // Sincronizar métricas del tablero con la fecha activa
       const setEl = (id, val) => {
         const el = document.getElementById(id);
         if (el) el.textContent = val;
       };
-      const activeApproved = filtered.filter(p => p.status === 'APROBADO').length;
+      const uniqueMatches = [...new Set(filtered.map(p => p.match))].filter(Boolean).length;
+      const activeApproved = filtered.filter(p => p.status === 'APROBADO' || p.status === 'ACERTADA').length;
       const activePending = filtered.filter(p => (p.status === 'PENDIENTE' || p.status === 'PENDIENTE_ALINEACION') && !p.is_finished).length;
       const activeEvs = filtered.map(p => parseFloat(p.edge_pct || p.ev_pct || 0)).filter(n => !isNaN(n));
       const activeAvgEv = activeEvs.length ? (activeEvs.reduce((a, b) => a + b, 0) / activeEvs.length).toFixed(1) : '0.0';
 
+      setEl('chipAnalyzed', uniqueMatches);
       setEl('chipCandidates', filtered.length);
       setEl('chipApproved', activeApproved);
       setEl('chipPending', activePending);
@@ -3800,7 +4401,48 @@
       setEl('tabPicksCount', filtered.length);
       setEl('mTabPicksCount', filtered.length);
 
+      // Sincronizar KPIs legados para pruebas
+      setEl('kpiTotalPicks', filtered.length);
+      setEl('kpiAvgEdge', '+' + activeAvgEv + '%');
+      if (filtered.length > 0) {
+        const oddsList = filtered.map(p => p.odds || 0).filter(Boolean);
+        const avgOdds = oddsList.length ? (oddsList.reduce((a, b) => a + b, 0) / oddsList.length).toFixed(2) : '0.00';
+        setEl('kpiAvgOdds', avgOdds);
+      }
+
+      // Sello de última actualización local
+      try {
+        const nowArt = new Intl.DateTimeFormat('es-AR', {
+          timeZone: TIMEZONE_ARGENTINA,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        }).format(new Date());
+        const labelUpdate = document.getElementById('labelLastUpdate');
+        if (labelUpdate) labelUpdate.textContent = 'Actualizado: ' + nowArt + ' hs';
+      } catch (err) {}
+
+      // ORDENAMIENTO ESTRICTO:
+      // 1. Aprobados primero (1)
+      // 2. Pendientes segundo (2)
+      // 3. Finalizados / Acertados / Fallados tercero (3)
+      // 4. Orden secundario por columna seleccionada
       filtered.sort((a, b) => {
+        const getStatusPriority = (p) => {
+          if (p.status === 'APROBADO') return 1;
+          if (p.status === 'PENDIENTE' || p.status === 'PENDIENTE_ALINEACION') return 2;
+          if (p.status === 'ACERTADA' || p.status === 'GANADA') return 3;
+          if (p.is_finished || ['FALLADA', 'ANULADA_NO_TITULAR', 'FINALIZADO'].includes(p.status)) return 4;
+          return 5;
+        };
+
+        const prioA = getStatusPriority(a);
+        const prioB = getStatusPriority(b);
+        if (prioA !== prioB) {
+          return prioA - prioB;
+        }
+
         let valA, valB;
         if (sortColumn === 'odds') {
           valA = a.odds || 0; valB = b.odds || 0;
@@ -3808,8 +4450,6 @@
           valA = a.real_prob || 0; valB = b.real_prob || 0;
         } else if (sortColumn === 'fairOdds') {
           valA = a.fair_odds || 0; valB = b.fair_odds || 0;
-        } else if (sortColumn === 'ev') {
-          valA = a.edge_pct || 0; valB = b.edge_pct || 0;
         } else if (sortColumn === 'player') {
           valA = a.player || ''; valB = b.player || '';
           return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
@@ -3820,15 +4460,16 @@
           valA = a.status || ''; valB = b.status || '';
           return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
         } else {
-          valA = a.edge_pct || 0; valB = b.edge_pct || 0;
+          valA = parseFloat(a.edge_pct || a.ev_pct || 0);
+          valB = parseFloat(b.edge_pct || b.ev_pct || 0);
         }
         return sortAsc ? (valA - valB) : (valB - valA);
       });
 
       if (filtered.length === 0) {
-        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">No se encontraron picks con los filtros actuales.</td></tr>';
-        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales.</div>';
-        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">No se encontraron picks con los filtros actuales.</div>';
+        if (tableBody) tableBody.innerHTML = '<tr><td colspan="10" class="empty-state">' + emptyMsg + '</td></tr>';
+        if (gridContainer) gridContainer.innerHTML = '<div class="empty-state">' + emptyMsg + '</div>';
+        if (mobileListContainer) mobileListContainer.innerHTML = '<div class="empty-state">' + emptyMsg + '</div>';
         return;
       }
 
