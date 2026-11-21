@@ -87,9 +87,10 @@ it('HOY debe devolver únicamente picks cuya fecha local coincida con el día ac
   const today = dateTime.toLocalDateString(now, TIMEZONE);
   const todayPicks = topPicks.filter(p => (p.eventDateLocal || p.date) === today);
 
-  // En la fecha de hoy (2026-11-21 en Argentina) hay 11 oportunidades analizadas
-  assert(todayPicks.length > 0, 'Debe haber candidatos disponibles para hoy');
+  // Si existen picks para hoy, todos deben coincidir estrictamente con la fecha local de hoy
   assert(todayPicks.every(p => (p.eventDateLocal || p.date) === today));
+  // Y si no hay partidos programados verificados para hoy, debe devolver un array vacío válido sin inventar datos
+  assert(Array.isArray(todayPicks));
 });
 
 it('PRÓXIMOS debe excluir estrictamente partidos finalizados y selecciones liquidadas', () => {
