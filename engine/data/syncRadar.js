@@ -8,6 +8,17 @@ const fs = require('fs');
 const path = require('path');
 const config = require('../config');
 const storage = require('./storage');
+const dateTime = require('../utils/dateTime');
+
+function isTestFixture(cand) {
+  if (!cand) return true;
+  if (cand.isTest || cand.is_test || cand.isTestPick) return true;
+  const id = String(cand.id || cand.candidateId || cand.pickId || '');
+  if (id.startsWith('cand_test_') || id.startsWith('test_') || id.startsWith('pick_test_')) return true;
+  if (id === 'cand_1795140929393_zq72a' && (cand.match?.includes('Real Madrid') || cand.player?.includes('Mbappé') || cand.partido?.includes('Real Madrid') || cand.seleccion?.includes('Mbappé'))) return true;
+  if (id === 'cand_1795111034541_doqilz') return true; // Duplicado no canónico de Bruno Gomes
+  return false;
+}
 
 class RadarSync {
   constructor() {
@@ -19,10 +30,10 @@ class RadarSync {
    * Sincroniza los picks aprobados y los candidatos del Centro de Investigación en picks_hoy.json
    */
   exportToPicksHoy(dateStr = null) {
-    const today = dateStr || new Date().toISOString().slice(0, 10);
-    const approvedList = storage.getApprovedPicks();
-    const allCandidates = storage.getCandidates();
-    const rejectedList = storage.getRejectedPicks();
+    const today = dateStr || dateTime.toLocalDateString(new Date()) || new Date().toISOString().slice(0, 10);
+    const approvedList = storage.getApprovedPicks().filter(c => !isTestFixture(c));
+    const allCandidates = storage.getCandidates().filter(c => !isTestFixture(c));
+    const rejectedList = storage.getRejectedPicks().filter(c => !isTestFixture(c));
     const allReports = storage.getAgentReports();
 
     // Leer picks existentes para no borrar datos previos si existen
@@ -87,12 +98,19 @@ class RadarSync {
         const fairOdds = Number(pred.fairOdds || (1 / pProjected).toFixed(2));
         const evPct = pred.evPercentage !== undefined ? pred.evPercentage : Number(((pProjected * odds - 1) * 100).toFixed(1));
 
+        const eventDateLocal = dateTime.getEventDateLocal(cand) || today;
+        const kickoffTimeLocal = dateTime.toLocalTimeString(cand.kickoffTimestamp || cand.eventDate || cand.matchTime || cand.time);
+
         mergedPicks.push({
           id: cand.id,
           league: cand.competition || cand.liga || 'Liga Destacada',
           league_badge: this._getLeagueBadge(cand.competition || cand.liga),
           match: cand.match || cand.partido,
-          time: cand.matchTime || cand.hora || 'Horario por confirmar',
+          time: cand.matchTime || cand.hora || cand.time || (kickoffTimeLocal !== 'Horario por confirmar' ? `${kickoffTimeLocal} (ART)` : 'Horario por confirmar'),
+          date: eventDateLocal,
+          eventDateLocal,
+          eventDateUtc: cand.eventDate || cand.kickoffUtc || null,
+          kickoffTimeLocal,
           player: cand.player || cand.playerOrTeam || cand.seleccion || cand.jugador || 'Jugador',
           team: cand.team || '',
           opponent: cand.opponent || cand.rival || '',

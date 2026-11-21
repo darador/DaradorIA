@@ -97,38 +97,42 @@ class AgentOrchestrator {
     candidate.status = riskVerdict.finalStatus; // APROBADO, PENDIENTE, RECHAZADO
     candidate.riskVerdict = riskVerdict;
     candidate.agentReports = agentReports;
-    storage.saveCandidate(candidate);
 
-    if (riskVerdict.finalStatus === 'APROBADO') {
-      storage.saveApprovedPick({
-        id: candidate.id,
-        partido: candidate.match,
-        liga: candidate.competition,
-        seleccion: candidate.playerOrTeam,
-        mercado: candidate.market,
-        linea: candidate.line,
-        cuota: candidate.bookmakerOdds,
-        pProjected: prediction.pProjected,
-        evPercentage: prediction.evPercentage,
-        fair_odds: prediction.fairOdds,
-        status: 'APROBADO',
-        rationale: riskVerdict.finalReason,
-        analyst_verdict: riskVerdict.finalReason,
-        team_analysis: tReport.tacticalSummary,
-        player_analysis: pReport.summary,
-        match_intel: mIntelReport.summary
-      });
-    } else if (riskVerdict.finalStatus === 'RECHAZADO') {
-      storage.saveRejectedPick({
-        candidateId: candidate.id,
-        partido: candidate.match,
-        seleccion: candidate.playerOrTeam,
-        mercado: candidate.market,
-        cuota: candidate.bookmakerOdds,
-        reason: riskVerdict.finalReason,
-        vetoApplied: riskVerdict.vetoApplied,
-        agentReports
-      });
+    const isTestCandidate = candidate.isTest || (candidate.id && (candidate.id.startsWith('cand_test_') || candidate.id.startsWith('test_')));
+    if (!isTestCandidate) {
+      storage.saveCandidate(candidate);
+
+      if (riskVerdict.finalStatus === 'APROBADO') {
+        storage.saveApprovedPick({
+          id: candidate.id,
+          partido: candidate.match,
+          liga: candidate.competition,
+          seleccion: candidate.playerOrTeam,
+          mercado: candidate.market,
+          linea: candidate.line,
+          cuota: candidate.bookmakerOdds,
+          pProjected: prediction.pProjected,
+          evPercentage: prediction.evPercentage,
+          fair_odds: prediction.fairOdds,
+          status: 'APROBADO',
+          rationale: riskVerdict.finalReason,
+          analyst_verdict: riskVerdict.finalReason,
+          team_analysis: tReport.tacticalSummary,
+          player_analysis: pReport.summary,
+          match_intel: mIntelReport.summary
+        });
+      } else if (riskVerdict.finalStatus === 'RECHAZADO') {
+        storage.saveRejectedPick({
+          candidateId: candidate.id,
+          partido: candidate.match,
+          seleccion: candidate.playerOrTeam,
+          mercado: candidate.market,
+          cuota: candidate.bookmakerOdds,
+          reason: riskVerdict.finalReason,
+          vetoApplied: riskVerdict.vetoApplied,
+          agentReports
+        });
+      }
     }
 
     // 5. Shadow Mode (Fase 10): Congelar observación inmutable (aprobados y rechazados)

@@ -93,6 +93,9 @@ module.exports = {
     historialPicks: path.resolve(__dirname, '..', 'historial_picks.json')
   },
 
+  // Zona horaria oficial del sistema y visualización
+  timezone: 'America/Argentina/Buenos_Aires',
+
   // Configuración de Supabase (detecta variables de entorno si existen)
   supabase: {
     url: process.env.SUPABASE_URL || null,
