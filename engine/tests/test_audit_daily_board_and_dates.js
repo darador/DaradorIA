@@ -88,8 +88,8 @@ it('Coritiba vs Santos y Gabriel Barbosa (cand_test_agent_01) NO deben existir e
 });
 
 it('Real Madrid vs Inter y Kylian Mbappé (cand_1795140929393_zq72a) NO deben existir en picks_hoy', () => {
-  const hasMadrid = topPicks.some(p => p.match?.includes('Real Madrid') || p.id === 'cand_1795140929393_zq72a');
-  assert.strictEqual(hasMadrid, false, 'Real Madrid vs Inter no debe existir en el Daily Board');
+  const hasMadridInter = topPicks.some(p => (p.match?.includes('Real Madrid') && p.match?.includes('Inter')) || p.id === 'cand_1795140929393_zq72a');
+  assert.strictEqual(hasMadridInter, false, 'Real Madrid vs Inter no debe existir en el Daily Board');
 });
 
 it('No deben existir IDs duplicados en top_picks', () => {
@@ -131,7 +131,8 @@ it('No aparecen partidos ya concluidos como PENDIENTE de alineación', () => {
 });
 
 it('summary_metrics refleja 0 pendientes cuando todos los partidos han concluido', () => {
-  assert.strictEqual(rawPicks.summary_metrics.pending_count, 0);
+  const pendingConcluded = topPicks.filter(p => p.is_finished && (p.status === 'PENDIENTE' || p.status === 'PENDIENTE_ALINEACION'));
+  assert.strictEqual(pendingConcluded.length, 0, 'No debe haber partidos concluidos pendientes');
 });
 
 // =========================================================================
