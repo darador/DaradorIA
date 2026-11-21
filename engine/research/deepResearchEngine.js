@@ -180,6 +180,15 @@ class DeepResearchEngine {
     if (raw.includes('goal') || raw.includes('gol')) {
       return 'goals';
     }
+    if (raw.includes('interception') || raw.includes('intercep')) {
+      return 'interceptions';
+    }
+    if (raw.includes('aerial') || raw.includes('aéreo')) {
+      return 'aerialsWon';
+    }
+    if (raw.includes('duel') || raw.includes('duelo')) {
+      return 'duelsWon';
+    }
     if (raw.includes('assist') || raw.includes('asistencia')) {
       return 'assists';
     }

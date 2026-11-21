@@ -1,5 +1,16 @@
 [
   {
+    "id": "run_1795265715966",
+    "timestamp": "2026-11-21T12:55:15.966Z",
+    "fixturesScanned": 0,
+    "candidatesFound": 15,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado: 15 candidatos priorizados (ALTA: 7, MEDIA: 8, BAJA: 0)"
+  },
+  {
     "id": "run_1795187876754",
     "timestamp": "2026-11-20T15:17:56.754Z",
     "fixturesScanned": 8,

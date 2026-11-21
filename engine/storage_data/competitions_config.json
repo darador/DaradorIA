@@ -1,0 +1,394 @@
+{
+  "version": "1.0.0",
+  "lastSynced": "2026-11-21T09:30:00.000Z",
+  "policy": {
+    "autoEnableNew": false,
+    "maxActiveCompetitions": 20,
+    "requireLineupsForPlayerProps": true,
+    "trialLeagues": [
+      "Championship",
+      "Eredivisie",
+      "Ligue 1"
+    ]
+  },
+  "competitions": [
+    {
+      "id": "championship",
+      "name": "Championship",
+      "country": "England",
+      "tier": 2,
+      "status": "TRIAL",
+      "competitionId": "championship.0wn0f9v",
+      "stageId": "championship.0asgfjm",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Cobertura completa: alineaciones confirmadas/proyectadas, cuotas en 12+ bookmakers, stats detalladas."
+    },
+    {
+      "id": "eredivisie",
+      "name": "Eredivisie",
+      "country": "Netherlands",
+      "tier": 1,
+      "status": "TRIAL",
+      "competitionId": "eredivisie.08twh9o",
+      "stageId": "eredivisie.167da1r",
+      "supportedMarkets": [
+        "corners",
+        "shots",
+        "shotsOnTarget",
+        "goals",
+        "cards"
+      ],
+      "coverageNotes": "Excelente cobertura en mercados de equipo (shots, corners, goals); props de jugador limitados por bookmakers hasta cerca del kickoff."
+    },
+    {
+      "id": "ligue-1",
+      "name": "Ligue 1",
+      "country": "France",
+      "tier": 1,
+      "status": "TRIAL",
+      "competitionId": "ligue-1.13zyav8",
+      "stageId": "ligue-1.1c0fpyw",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "interceptions",
+        "duelsWon",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Cobertura tier 1 completa: alineaciones proyectadas con dorsales/posiciones, cuotas profundas y estadísticas individuales."
+    },
+    {
+      "id": "premier-league",
+      "name": "Premier League",
+      "country": "England",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "premier-league.0z9xjh1",
+      "stageId": "premier-league.1ni8uu8",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Tier 1: Máxima liquidez y cobertura de todos los mercados individuales y colectivos."
+    },
+    {
+      "id": "laliga",
+      "name": "LaLiga",
+      "country": "Spain",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "laliga.1ddpw68",
+      "stageId": "laliga.11gsq3d",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Tier 1: Cobertura completa de props de jugadores y equipos."
+    },
+    {
+      "id": "serie-a",
+      "name": "Serie A",
+      "country": "Italy",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "serie-a.17atem7",
+      "stageId": "serie-a.1qhwu7b",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Tier 1: Cobertura completa de props de jugadores y equipos."
+    },
+    {
+      "id": "bundesliga",
+      "name": "Bundesliga",
+      "country": "Germany",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "bundesliga.19a8rva",
+      "stageId": "bundesliga.0r8fyje",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Tier 1: Cobertura completa de props de jugadores y equipos."
+    },
+    {
+      "id": "brasileirao-serie-a",
+      "name": "Brasileirão Série A",
+      "country": "Brazil",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "brasileirao-serie-a.1ap1kr4",
+      "stageId": "brasileirao-serie-a.16haxbt",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Tier 1 Sudamérica: Cobertura auditada en el ledger de DaradorIA."
+    },
+    {
+      "id": "liga-profesional",
+      "name": "Liga Profesional de Fútbol",
+      "country": "Argentina",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "liga-profesional-de-futbol.1wbxpsy",
+      "stageId": "liga-profesional-de-futbol.10u573c",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Tier 1 Argentina: Cobertura de mercado local y continental."
+    },
+    {
+      "id": "uefa-champions-league",
+      "name": "UEFA Champions League",
+      "country": "Europe",
+      "tier": 1,
+      "status": "ENABLED",
+      "competitionId": "uefa-champions-league.1xa8iez",
+      "stageId": "uefa-champions-league.0buuqss",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "fouls",
+        "foulsWon",
+        "tackles",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Torneo internacional de máxima cobertura y profundidad estadística."
+    },
+    {
+      "id": "uefa-europa-league",
+      "name": "UEFA Europa League",
+      "country": "Europe",
+      "tier": 2,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "uefa-europa-league.11wsie0",
+      "stageId": "uefa-europa-league.1bssu49",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Verificación de cuotas sujeta a fixture."
+    },
+    {
+      "id": "uefa-conference-league",
+      "name": "UEFA Conference League",
+      "country": "Europe",
+      "tier": 3,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "uefa-conference-league.157707k",
+      "stageId": "uefa-conference-league.05kqrsf",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Props de jugadores limitados a fase final."
+    },
+    {
+      "id": "liga-portugal",
+      "name": "Liga Portugal Betclic",
+      "country": "Portugal",
+      "tier": 1,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "liga-portugal-betclic.0q4vd91",
+      "stageId": "liga-portugal-betclic.08twh9o",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Excelente cobertura de mercados colectivos; props individuales en los tres grandes (Benfica, Porto, Sporting)."
+    },
+    {
+      "id": "pro-league-belgium",
+      "name": "Pro League",
+      "country": "Belgium",
+      "tier": 1,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "pro-league.01ug690",
+      "stageId": "pro-league.1o3rvwn",
+      "supportedMarkets": [
+        "shots",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Foco en team props."
+    },
+    {
+      "id": "scottish-premiership",
+      "name": "Scottish Premiership",
+      "country": "Scotland",
+      "tier": 1,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "scottish-premiership.1atdcyn",
+      "stageId": "scottish-premiership.0f84z8d",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Props individuales concentrados en Celtic y Rangers.",
+      "updatedAt": "2026-11-21T12:58:08.311Z"
+    },
+    {
+      "id": "super-lig-turkey",
+      "name": "Trendyol Süper Lig",
+      "country": "Turkey",
+      "tier": 1,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "trendyol-super-lig.1onxznz",
+      "stageId": "trendyol-super-lig.01t3c53",
+      "supportedMarkets": [
+        "shots",
+        "corners",
+        "cards",
+        "goals",
+        "fouls"
+      ],
+      "coverageNotes": "Disponible en catálogo. Foco en tarjetas y faltas por alta intensidad disciplinaria."
+    },
+    {
+      "id": "league-one",
+      "name": "League One",
+      "country": "England",
+      "tier": 3,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "league-one.11gsq3d",
+      "stageId": "league-one.0ga5az7",
+      "supportedMarkets": [
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Foco en team props (corners y goles)."
+    },
+    {
+      "id": "league-two",
+      "name": "League Two",
+      "country": "England",
+      "tier": 4,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "league-two.0atylbf",
+      "stageId": "league-two.0qzs5dw",
+      "supportedMarkets": [
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Team props disponibles."
+    },
+    {
+      "id": "2-bundesliga",
+      "name": "2. Bundesliga",
+      "country": "Germany",
+      "tier": 2,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "2-bundesliga.01t3c53",
+      "stageId": "2-bundesliga.194ah9h",
+      "supportedMarkets": [
+        "shots",
+        "shotsOnTarget",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Cobertura de equipo y tiros."
+    },
+    {
+      "id": "serie-b",
+      "name": "Serie B",
+      "country": "Italy",
+      "tier": 2,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "serie-b.0hy1oe0",
+      "stageId": "serie-b.0dosh0x",
+      "supportedMarkets": [
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Foco en tarjetas y goles."
+    },
+    {
+      "id": "laliga-2",
+      "name": "LaLiga 2",
+      "country": "Spain",
+      "tier": 2,
+      "status": "CATALOG_DISCOVERED",
+      "competitionId": "laliga-2.16i000w",
+      "stageId": "laliga-2.0atylbf",
+      "supportedMarkets": [
+        "shots",
+        "corners",
+        "cards",
+        "goals"
+      ],
+      "coverageNotes": "Disponible en catálogo. Cobertura en bookmakers españoles y británicos."
+    }
+  ]
+}

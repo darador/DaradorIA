@@ -53,18 +53,22 @@ module.exports = {
       foulsWon: 15,
       yellowCards: 15,
       tackles: 20,
+      interceptions: 20,
+      duelsWon: 20,
       corners: 0,
       default: 25
     }
   },
 
-  // Ligas y competiciones prioritarias
+  // Ligas y competiciones prioritarias (Fase 11: Expansión Multiliga)
   targetCompetitions: [
     'Premier League',
+    'Championship',
     'LaLiga',
     'Serie A',
     'Bundesliga',
     'Ligue 1',
+    'Eredivisie',
     'UEFA Champions League',
     'Copa del Rey',
     'Brasileirão Série A',

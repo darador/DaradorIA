@@ -6,6 +6,7 @@
 const config = require('../config');
 const mcpClient = require('../mcp/mcpClient');
 const storage = require('../data/storage');
+const competitionRegistry = require('../data/competitionRegistry');
 
 class DiscoveryEngine {
   constructor() {
@@ -155,8 +156,8 @@ class DiscoveryEngine {
         hitRateScope: 'all',
         type: 'over',
         lineupFilterType: 'predicted',
-        pageSize: 30,
-        statTypes: ['shots', 'shotsOnTarget', 'fouls', 'foulsWon', 'tackles', 'scoredOrAssisted']
+        pageSize: 35,
+        statTypes: ['shots', 'shotsOnTarget', 'fouls', 'foulsWon', 'tackles', 'interceptions', 'duelsWon', 'scoredOrAssisted']
       });
 
       return this._mapPropScreenerRows(res.data, 'prop_screener');
@@ -379,6 +380,9 @@ class DiscoveryEngine {
     if (s.includes('foulwon') || s === 'foulswon') return 'Faltas ganadas';
     if (s.includes('foul') || s === 'fouls') return 'Faltas cometidas';
     if (s.includes('tackle') || s === 'tackles') return 'Entradas (Tackles)';
+    if (s.includes('interception') || s.includes('intercep')) return 'Intercepciones';
+    if (s.includes('aerial') || s.includes('aéreo')) return 'Duelos aéreos ganados';
+    if (s.includes('duel') || s.includes('duelo')) return 'Duelos ganados';
     if (s.includes('corner') || s === 'corners') return 'Córners de equipo';
     if (s.includes('card') || s === 'cards' || s.includes('yellow')) return 'Tarjetas';
     if (s.includes('scoredorassisted') || s.includes('goalorassist') || s.includes('xgxa')) return 'Gol o Asistencia';
