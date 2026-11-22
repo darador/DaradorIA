@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-22T16:39:30.091Z",
+  "updatedAt": "2026-11-22T20:36:59.396Z",
   "methodologyVersion": "v2.1-calibrated-nomenclature",
   "nomenclature": {
     "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
@@ -12,77 +12,85 @@
   },
   "totalTrackedPicks": 58,
   "summary": {
-    "total_bets": 58,
-    "settled_bets": 31,
-    "won_bets": 21,
-    "lost_bets": 10,
-    "void_bets": 3,
-    "pending_bets": 24,
-    "win_rate_pct": 67.7,
-    "total_staked_units": 31,
-    "net_profit_units": 6.78,
-    "roi_pct": 21.9,
+    "total_picks": 58,
+    "won": 28,
+    "lost": 14,
+    "void": 9,
+    "pending": 7,
+    "win_rate": "66.7%",
+    "net_profit_units": 7.42,
+    "roi_pct": 17.7,
+    "yield_pct": 17.7,
     "by_market": {
       "Remates totales": {
-        "total": 7,
-        "won": 7,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "+5.52U"
+        "total": 15,
+        "won": 10,
+        "lost": 1,
+        "void": 2,
+        "win_rate": "90.9%",
+        "profit": "+6.59U"
       },
       "Remates al arco de equipo": {
-        "total": 5,
-        "won": 2,
-        "lost": 3,
-        "win_rate": "40.0%",
-        "profit": "-1.64U"
+        "total": 9,
+        "won": 3,
+        "lost": 5,
+        "void": 0,
+        "win_rate": "37.5%",
+        "profit": "-3.02U"
       },
       "Remates al arco": {
-        "total": 5,
+        "total": 6,
         "won": 1,
         "lost": 1,
+        "void": 3,
         "win_rate": "50.0%",
         "profit": "-0.30U"
       },
       "Córners de equipo": {
-        "total": 5,
+        "total": 7,
         "won": 3,
         "lost": 2,
+        "void": 1,
         "win_rate": "60.0%",
         "profit": "+0.27U"
       },
       "Entradas (Tackles)": {
-        "total": 2,
-        "won": 2,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "+1.80U"
-      },
-      "Faltas cometidas": {
-        "total": 3,
+        "total": 4,
         "won": 3,
         "lost": 0,
+        "void": 1,
         "win_rate": "100.0%",
-        "profit": "+2.53U"
+        "profit": "+2.47U"
+      },
+      "Faltas cometidas": {
+        "total": 5,
+        "won": 4,
+        "lost": 0,
+        "void": 1,
+        "win_rate": "100.0%",
+        "profit": "+3.08U"
       },
       "Goles de equipo": {
-        "total": 3,
+        "total": 4,
         "won": 2,
         "lost": 1,
+        "void": 0,
         "win_rate": "66.7%",
         "profit": "+0.87U"
       },
       "Remates de equipo": {
-        "total": 2,
-        "won": 0,
-        "lost": 2,
-        "win_rate": "0.0%",
-        "profit": "-2.00U"
+        "total": 5,
+        "won": 1,
+        "lost": 3,
+        "void": 0,
+        "win_rate": "25.0%",
+        "profit": "-2.27U"
       },
       "Faltas ganadas": {
         "total": 1,
         "won": 0,
         "lost": 1,
+        "void": 0,
         "win_rate": "0.0%",
         "profit": "-1.00U"
       },
@@ -90,8 +98,17 @@
         "total": 1,
         "won": 1,
         "lost": 0,
+        "void": 0,
         "win_rate": "100.0%",
         "profit": "+0.73U"
+      },
+      "Faltas recibidas": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "void": 1,
+        "win_rate": "0.0%",
+        "profit": "+0.00U"
       }
     }
   },

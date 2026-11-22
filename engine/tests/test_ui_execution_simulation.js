@@ -85,13 +85,24 @@ console.log('🧪 Iniciando Test de Ejecución Real del Frontend (dashboard.html
   vm.runInContext('syncHistoryFilterChange("status", "PENDIENTE");', context);
   const pendingRows = (els['historyTableBody'].innerHTML.match(/<tr/g) || []).length;
   console.log(`  Estadísticas [Filtro PENDIENTE]: ${pendingRows} apuestas en juego`);
-  assert(pendingRows === 24, `${filename}: Se esperan 24 apuestas en juego con filtro PENDIENTE (actual: ${pendingRows})`);
+  assert(pendingRows === 7, `${filename}: Se esperan 7 apuestas en juego con filtro PENDIENTE (actual: ${pendingRows})`);
 
   // 6. Comprobar filtros de Estadísticas (ANULADA)
   vm.runInContext('syncHistoryFilterChange("status", "ANULADA");', context);
   const voidRows = (els['historyTableBody'].innerHTML.match(/<tr/g) || []).length;
   console.log(`  Estadísticas [Filtro ANULADA]: ${voidRows} apuestas anuladas`);
-  assert(voidRows === 3, `${filename}: Se esperan 3 apuestas anuladas con filtro ANULADA (actual: ${voidRows})`);
+  assert(voidRows === 9, `${filename}: Se esperan 9 apuestas anuladas con filtro ANULADA (actual: ${voidRows})`);
+
+  // 7. Comprobar filtros de Estadísticas (GANADA y PERDIDA)
+  vm.runInContext('syncHistoryFilterChange("status", "GANADA");', context);
+  const wonRows = (els['historyTableBody'].innerHTML.match(/<tr/g) || []).length;
+  console.log(`  Estadísticas [Filtro GANADA]: ${wonRows} apuestas ganadas`);
+  assert(wonRows === 28, `${filename}: Se esperan 28 apuestas ganadas con filtro GANADA (actual: ${wonRows})`);
+
+  vm.runInContext('syncHistoryFilterChange("status", "PERDIDA");', context);
+  const lostRows = (els['historyTableBody'].innerHTML.match(/<tr/g) || []).length;
+  console.log(`  Estadísticas [Filtro PERDIDA]: ${lostRows} apuestas perdidas`);
+  assert(lostRows === 14, `${filename}: Se esperan 14 apuestas perdidas con filtro PERDIDA (actual: ${lostRows})`);
 
   console.log(`✅ ${filename}: Todas las verificaciones de renderizado pasaron al 100%.`);
 });

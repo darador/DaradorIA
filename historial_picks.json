@@ -452,13 +452,16 @@
       "line": "Más de 4.5",
       "odds": 1.62,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 9,
+      "status": "ACERTADA",
+      "profit": "+0.62U",
       "is_finished": false,
       "real_prob": 73.8,
       "fair_odds": 1.36,
-      "ev_pct": "+19.6%"
+      "ev_pct": "+19.6%",
+      "settled_at": "2026-11-22T20:36:47.774Z",
+      "notes": "Oficial StatsHub: FC Augsburg registró 9 remates al arco en su victoria 3-1 ante Mainz 05. Superó la línea de Más de 4.5.",
+      "profit_loss": 0.62
     },
     {
       "id": "cand_real_statshub_20261122_adodenhaag_1795318990011",
@@ -470,13 +473,16 @@
       "line": "Más de 2.5",
       "odds": 1.58,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 74.6,
       "fair_odds": 1.34,
-      "ev_pct": "+17.9%"
+      "ev_pct": "+17.9%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: ADO Den Haag solo pudo rematar 1 vez al arco de Ajax en el Johan Cruijff ArenA. Línea Más de 2.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_yamal_1795287296257",
@@ -488,13 +494,16 @@
       "line": "Más de 2.5",
       "odds": 1.65,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 9,
+      "status": "ACERTADA",
+      "profit": "+0.65U",
       "is_finished": false,
       "real_prob": 75.5,
       "fair_odds": 1.32,
-      "ev_pct": "+24.6%"
+      "ev_pct": "+24.6%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 9 remates totales (1 al arco, 4 fuera, 4 bloqueados) en 90 min. Superó ampliamente la línea de Más de 2.5.",
+      "profit_loss": 0.65
     },
     {
       "id": "cand_real_statshub_20261122_puga_1795318990006",
@@ -506,13 +515,16 @@
       "line": "Más de 2.5",
       "odds": 1.6,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 76.2,
       "fair_odds": 1.31,
-      "ev_pct": "+21.9%"
+      "ev_pct": "+21.9%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Carlos Puga no inició como titular (ingresó al min 64 como recambio). Condición T-60 de titularidad no cumplida.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_aramburu_1795318990005",
@@ -524,13 +536,16 @@
       "line": "Más de 1.5",
       "odds": 1.73,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 69.8,
       "fair_odds": 1.43,
-      "ev_pct": "+20.8%"
+      "ev_pct": "+20.8%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Jon Aramburu fue suplente (ingresó min 68 por Héctor Fort). Condición T-60 de titularidad no cumplida.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_romero_1795318990004",
@@ -542,13 +557,16 @@
       "line": "Más de 0.5",
       "odds": 1.83,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 72.4,
       "fair_odds": 1.38,
-      "ev_pct": "+32.5%"
+      "ev_pct": "+32.5%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Carlos Romero disputó 65 min como titular de lateral y no registró remates (0 remates). Línea Más de 0.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_realsaltlake_1795318990012",
@@ -578,13 +596,16 @@
       "line": "Más de 2.5",
       "odds": 1.67,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": "+0.67U",
       "is_finished": false,
       "real_prob": 86.2,
       "fair_odds": 1.16,
-      "ev_pct": "+44.0%"
+      "ev_pct": "+44.0%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 3 entradas (tackles) exitosas en 44 min como titular ante Brighton. Superó la línea de Más de 2.5.",
+      "profit_loss": 0.67
     },
     {
       "id": "cand_real_statshub_20261122_gakpo_1795287296258",
@@ -596,13 +617,16 @@
       "line": "Más de 1.5",
       "odds": 1.8,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 64,
       "fair_odds": 1.56,
-      "ev_pct": "+15.2%"
+      "ev_pct": "+15.2%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Cody Gakpo no disputó minutos en el partido vs Man Utd (Ngumoha e Isak titulares). Cuota reembolsada.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_fernandes_1795287296259",
@@ -614,13 +638,16 @@
       "line": "Más de 1.5",
       "odds": 1.75,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": "+0.75U",
       "is_finished": false,
       "real_prob": 66,
       "fair_odds": 1.52,
-      "ev_pct": "+15.5%"
+      "ev_pct": "+15.5%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 4 remates totales (3 al arco, 1 fuera) en Anfield. Superó la línea de Más de 1.5.",
+      "profit_loss": 0.75
     },
     {
       "id": "cand_real_statshub_20261122_manutd_1795318990002",
@@ -632,13 +659,16 @@
       "line": "Más de 11.5",
       "odds": 1.8,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 10,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 73.8,
       "fair_odds": 1.36,
-      "ev_pct": "+32.8%"
+      "ev_pct": "+32.8%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Manchester United finalizó con 10 remates de equipo en Anfield. Línea Más de 11.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_jacquet_1795318990003",
@@ -650,13 +680,16 @@
       "line": "Más de 0.5",
       "odds": 1.55,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": "+0.55U",
       "is_finished": false,
       "real_prob": 78.8,
       "fair_odds": 1.27,
-      "ev_pct": "+22.1%"
+      "ev_pct": "+22.1%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 2 faltas cometidas en 93 min de titular para Liverpool ante Man Utd. Superó la línea de Más de 0.5.",
+      "profit_loss": 0.55
     },
     {
       "id": "cand_real_statshub_20261122_thuram_1795287296260",
@@ -704,13 +737,16 @@
       "line": "Más de 3.5",
       "odds": 1.82,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 3,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 71.2,
       "fair_odds": 1.4,
-      "ev_pct": "+29.6%"
+      "ev_pct": "+29.6%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Frosinone completó 3 remates a puerta ante Milan en San Siro. Línea Más de 3.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_yeboah_1795318990007",
@@ -722,13 +758,16 @@
       "line": "Más de 1.5",
       "odds": 1.67,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": "+0.67U",
       "is_finished": false,
       "real_prob": 74.6,
       "fair_odds": 1.34,
-      "ev_pct": "+24.6%"
+      "ev_pct": "+24.6%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: John Yeboah ingresó al min 67 y completó 3 remates totales (1 a puerta, 1 fuera, 1 bloqueado). Superó la línea de Más de 1.5.",
+      "profit_loss": 0.67
     },
     {
       "id": "cand_real_statshub_20261122_venezia_1795318990009",
@@ -740,13 +779,16 @@
       "line": "Más de 8.5",
       "odds": 1.73,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 13,
+      "status": "ACERTADA",
+      "profit": "+0.73U",
       "is_finished": false,
       "real_prob": 75.2,
       "fair_odds": 1.33,
-      "ev_pct": "+30.1%"
+      "ev_pct": "+30.1%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Venezia registró 13 remates de equipo ante Juventus. Superó la línea de Más de 8.5.",
+      "profit_loss": 0.73
     },
     {
       "id": "cand_real_statshub_20261122_wojcik_fouls",
@@ -758,13 +800,16 @@
       "line": "Más de 0.5",
       "odds": 1.5,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 79.6,
       "fair_odds": 1.26,
-      "ev_pct": "+19.4%"
+      "ev_pct": "+19.4%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Oskar Wójcik no formó parte de la convocatoria de Werder Bremen vs HSV. Cuota reembolsada.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_bremen_corners",
@@ -776,13 +821,16 @@
       "line": "Menos de 6.5",
       "odds": 1.58,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": null,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 74.6,
       "fair_odds": 1.34,
-      "ev_pct": "+17.9%"
+      "ev_pct": "+17.9%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Acta de córners colectivos no consolidada por proveedor oficial StatsHub. Reembolso preventivo.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_albacete_goals",
@@ -830,13 +878,16 @@
       "line": "Más de 0.5",
       "odds": 1.57,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 75.6,
       "fair_odds": 1.32,
-      "ev_pct": "+18.7%"
+      "ev_pct": "+18.7%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Javier Bonar no participó en el encuentro Girona vs Eibar. Cuota reembolsada.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_avellino_corners",
@@ -1328,13 +1379,16 @@
       "line": "Más de 4.5",
       "odds": 1.62,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 9,
+      "status": "ACERTADA",
+      "profit": "+0.62U",
       "is_finished": false,
       "real_prob": 73.8,
       "fair_odds": 1.36,
-      "ev_pct": "+19.6%"
+      "ev_pct": "+19.6%",
+      "settled_at": "2026-11-22T20:36:47.774Z",
+      "notes": "Oficial StatsHub: FC Augsburg registró 9 remates al arco en su victoria 3-1 ante Mainz 05. Superó la línea de Más de 4.5.",
+      "profit_loss": 0.62
     },
     {
       "id": "cand_real_statshub_20261122_adodenhaag_1795318990011",
@@ -1346,13 +1400,16 @@
       "line": "Más de 2.5",
       "odds": 1.58,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 74.6,
       "fair_odds": 1.34,
-      "ev_pct": "+17.9%"
+      "ev_pct": "+17.9%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: ADO Den Haag solo pudo rematar 1 vez al arco de Ajax en el Johan Cruijff ArenA. Línea Más de 2.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_yamal_1795287296257",
@@ -1364,13 +1421,16 @@
       "line": "Más de 2.5",
       "odds": 1.65,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 9,
+      "status": "ACERTADA",
+      "profit": "+0.65U",
       "is_finished": false,
       "real_prob": 75.5,
       "fair_odds": 1.32,
-      "ev_pct": "+24.6%"
+      "ev_pct": "+24.6%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 9 remates totales (1 al arco, 4 fuera, 4 bloqueados) en 90 min. Superó ampliamente la línea de Más de 2.5.",
+      "profit_loss": 0.65
     },
     {
       "id": "cand_real_statshub_20261122_puga_1795318990006",
@@ -1382,13 +1442,16 @@
       "line": "Más de 2.5",
       "odds": 1.6,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 76.2,
       "fair_odds": 1.31,
-      "ev_pct": "+21.9%"
+      "ev_pct": "+21.9%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Carlos Puga no inició como titular (ingresó al min 64 como recambio). Condición T-60 de titularidad no cumplida.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_aramburu_1795318990005",
@@ -1400,13 +1463,16 @@
       "line": "Más de 1.5",
       "odds": 1.73,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 69.8,
       "fair_odds": 1.43,
-      "ev_pct": "+20.8%"
+      "ev_pct": "+20.8%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Jon Aramburu fue suplente (ingresó min 68 por Héctor Fort). Condición T-60 de titularidad no cumplida.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_romero_1795318990004",
@@ -1418,13 +1484,16 @@
       "line": "Más de 0.5",
       "odds": 1.83,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 72.4,
       "fair_odds": 1.38,
-      "ev_pct": "+32.5%"
+      "ev_pct": "+32.5%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Carlos Romero disputó 65 min como titular de lateral y no registró remates (0 remates). Línea Más de 0.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_realsaltlake_1795318990012",
@@ -1454,13 +1523,16 @@
       "line": "Más de 2.5",
       "odds": 1.67,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": "+0.67U",
       "is_finished": false,
       "real_prob": 86.2,
       "fair_odds": 1.16,
-      "ev_pct": "+44.0%"
+      "ev_pct": "+44.0%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 3 entradas (tackles) exitosas en 44 min como titular ante Brighton. Superó la línea de Más de 2.5.",
+      "profit_loss": 0.67
     },
     {
       "id": "cand_real_statshub_20261122_gakpo_1795287296258",
@@ -1472,13 +1544,16 @@
       "line": "Más de 1.5",
       "odds": 1.8,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 64,
       "fair_odds": 1.56,
-      "ev_pct": "+15.2%"
+      "ev_pct": "+15.2%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Cody Gakpo no disputó minutos en el partido vs Man Utd (Ngumoha e Isak titulares). Cuota reembolsada.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_fernandes_1795287296259",
@@ -1490,13 +1565,16 @@
       "line": "Más de 1.5",
       "odds": 1.75,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": "+0.75U",
       "is_finished": false,
       "real_prob": 66,
       "fair_odds": 1.52,
-      "ev_pct": "+15.5%"
+      "ev_pct": "+15.5%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 4 remates totales (3 al arco, 1 fuera) en Anfield. Superó la línea de Más de 1.5.",
+      "profit_loss": 0.75
     },
     {
       "id": "cand_real_statshub_20261122_manutd_1795318990002",
@@ -1508,13 +1586,16 @@
       "line": "Más de 11.5",
       "odds": 1.8,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 10,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 73.8,
       "fair_odds": 1.36,
-      "ev_pct": "+32.8%"
+      "ev_pct": "+32.8%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Manchester United finalizó con 10 remates de equipo en Anfield. Línea Más de 11.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_jacquet_1795318990003",
@@ -1526,13 +1607,16 @@
       "line": "Más de 0.5",
       "odds": 1.55,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": "+0.55U",
       "is_finished": false,
       "real_prob": 78.8,
       "fair_odds": 1.27,
-      "ev_pct": "+22.1%"
+      "ev_pct": "+22.1%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: 2 faltas cometidas en 93 min de titular para Liverpool ante Man Utd. Superó la línea de Más de 0.5.",
+      "profit_loss": 0.55
     },
     {
       "id": "cand_real_statshub_20261122_thuram_1795287296260",
@@ -1580,13 +1664,16 @@
       "line": "Más de 3.5",
       "odds": 1.82,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 3,
+      "status": "FALLADA",
+      "profit": "-1.00U",
       "is_finished": false,
       "real_prob": 71.2,
       "fair_odds": 1.4,
-      "ev_pct": "+29.6%"
+      "ev_pct": "+29.6%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Frosinone completó 3 remates a puerta ante Milan en San Siro. Línea Más de 3.5 no alcanzada.",
+      "profit_loss": -1
     },
     {
       "id": "cand_real_statshub_20261122_yeboah_1795318990007",
@@ -1598,13 +1685,16 @@
       "line": "Más de 1.5",
       "odds": 1.67,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": "+0.67U",
       "is_finished": false,
       "real_prob": 74.6,
       "fair_odds": 1.34,
-      "ev_pct": "+24.6%"
+      "ev_pct": "+24.6%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: John Yeboah ingresó al min 67 y completó 3 remates totales (1 a puerta, 1 fuera, 1 bloqueado). Superó la línea de Más de 1.5.",
+      "profit_loss": 0.67
     },
     {
       "id": "cand_real_statshub_20261122_venezia_1795318990009",
@@ -1616,13 +1706,16 @@
       "line": "Más de 8.5",
       "odds": 1.73,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 13,
+      "status": "ACERTADA",
+      "profit": "+0.73U",
       "is_finished": false,
       "real_prob": 75.2,
       "fair_odds": 1.33,
-      "ev_pct": "+30.1%"
+      "ev_pct": "+30.1%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Oficial StatsHub: Venezia registró 13 remates de equipo ante Juventus. Superó la línea de Más de 8.5.",
+      "profit_loss": 0.73
     },
     {
       "id": "cand_real_statshub_20261122_wojcik_fouls",
@@ -1634,13 +1727,16 @@
       "line": "Más de 0.5",
       "odds": 1.5,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 79.6,
       "fair_odds": 1.26,
-      "ev_pct": "+19.4%"
+      "ev_pct": "+19.4%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Oskar Wójcik no formó parte de la convocatoria de Werder Bremen vs HSV. Cuota reembolsada.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_bremen_corners",
@@ -1652,13 +1748,16 @@
       "line": "Menos de 6.5",
       "odds": 1.58,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": null,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 74.6,
       "fair_odds": 1.34,
-      "ev_pct": "+17.9%"
+      "ev_pct": "+17.9%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Acta de córners colectivos no consolidada por proveedor oficial StatsHub. Reembolso preventivo.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_albacete_goals",
@@ -1706,13 +1805,16 @@
       "line": "Más de 0.5",
       "odds": 1.57,
       "stake": 1,
-      "actual_stat": "Por jugar (En juego)",
-      "status": "PENDIENTE",
-      "profit": 0,
+      "actual_stat": 0,
+      "status": "ANULADA",
+      "profit": "0.00U",
       "is_finished": false,
       "real_prob": 75.6,
       "fair_odds": 1.32,
-      "ev_pct": "+18.7%"
+      "ev_pct": "+18.7%",
+      "settled_at": "2026-11-22T20:36:47.775Z",
+      "notes": "Elena Risk Veto: Javier Bonar no participó en el encuentro Girona vs Eibar. Cuota reembolsada.",
+      "profit_loss": 0
     },
     {
       "id": "cand_real_statshub_20261122_avellino_corners",
@@ -1752,77 +1854,85 @@
     }
   ],
   "summary": {
-    "total_bets": 58,
-    "settled_bets": 31,
-    "won_bets": 21,
-    "lost_bets": 10,
-    "void_bets": 3,
-    "pending_bets": 24,
-    "win_rate_pct": 67.7,
-    "total_staked_units": 31,
-    "net_profit_units": 6.78,
-    "roi_pct": 21.9,
+    "total_picks": 58,
+    "won": 28,
+    "lost": 14,
+    "void": 9,
+    "pending": 7,
+    "win_rate": "66.7%",
+    "net_profit_units": 7.42,
+    "roi_pct": 17.7,
+    "yield_pct": 17.7,
     "by_market": {
       "Remates totales": {
-        "total": 7,
-        "won": 7,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "+5.52U"
+        "total": 15,
+        "won": 10,
+        "lost": 1,
+        "void": 2,
+        "win_rate": "90.9%",
+        "profit": "+6.59U"
       },
       "Remates al arco de equipo": {
-        "total": 5,
-        "won": 2,
-        "lost": 3,
-        "win_rate": "40.0%",
-        "profit": "-1.64U"
+        "total": 9,
+        "won": 3,
+        "lost": 5,
+        "void": 0,
+        "win_rate": "37.5%",
+        "profit": "-3.02U"
       },
       "Remates al arco": {
-        "total": 5,
+        "total": 6,
         "won": 1,
         "lost": 1,
+        "void": 3,
         "win_rate": "50.0%",
         "profit": "-0.30U"
       },
       "Córners de equipo": {
-        "total": 5,
+        "total": 7,
         "won": 3,
         "lost": 2,
+        "void": 1,
         "win_rate": "60.0%",
         "profit": "+0.27U"
       },
       "Entradas (Tackles)": {
-        "total": 2,
-        "won": 2,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "+1.80U"
-      },
-      "Faltas cometidas": {
-        "total": 3,
+        "total": 4,
         "won": 3,
         "lost": 0,
+        "void": 1,
         "win_rate": "100.0%",
-        "profit": "+2.53U"
+        "profit": "+2.47U"
+      },
+      "Faltas cometidas": {
+        "total": 5,
+        "won": 4,
+        "lost": 0,
+        "void": 1,
+        "win_rate": "100.0%",
+        "profit": "+3.08U"
       },
       "Goles de equipo": {
-        "total": 3,
+        "total": 4,
         "won": 2,
         "lost": 1,
+        "void": 0,
         "win_rate": "66.7%",
         "profit": "+0.87U"
       },
       "Remates de equipo": {
-        "total": 2,
-        "won": 0,
-        "lost": 2,
-        "win_rate": "0.0%",
-        "profit": "-2.00U"
+        "total": 5,
+        "won": 1,
+        "lost": 3,
+        "void": 0,
+        "win_rate": "25.0%",
+        "profit": "-2.27U"
       },
       "Faltas ganadas": {
         "total": 1,
         "won": 0,
         "lost": 1,
+        "void": 0,
         "win_rate": "0.0%",
         "profit": "-1.00U"
       },
@@ -1830,10 +1940,19 @@
         "total": 1,
         "won": 1,
         "lost": 0,
+        "void": 0,
         "win_rate": "100.0%",
         "profit": "+0.73U"
+      },
+      "Faltas recibidas": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "void": 1,
+        "win_rate": "0.0%",
+        "profit": "+0.00U"
       }
     }
   },
-  "updated_at": "2026-11-22T16:39:30.088Z"
+  "updated_at": "2026-11-22T20:36:47.776Z"
 }
