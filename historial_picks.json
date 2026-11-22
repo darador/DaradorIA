@@ -1,6 +1,188 @@
 {
   "picks": [
     {
+      "id": "cand_real_statshub_20261121_mctominay_1795287296256",
+      "date": "2026-11-21",
+      "match": "Napoli vs Torino",
+      "player": "Scott McTominay",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.7,
+      "stake": 1,
+      "actual_stat": 7,
+      "status": "ACERTADA",
+      "profit": 0.7
+    },
+    {
+      "id": "cand_real_statshub_20261121_romano_shots",
+      "date": "2026-11-21",
+      "match": "Como vs Cagliari",
+      "player": "Alessandro Romano",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 2.05,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 1.05
+    },
+    {
+      "id": "cand_real_statshub_20261121_fulham_sot",
+      "date": "2026-11-21",
+      "match": "Manchester City vs Fulham",
+      "player": "Fulham (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 2.5",
+      "odds": 1.64,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": 0.64
+    },
+    {
+      "id": "cand_real_statshub_20261121_neto_sot",
+      "date": "2026-11-21",
+      "match": "Chelsea vs Leeds United",
+      "player": "Pedro Neto",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.9,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "ANULADA_NO_TITULAR",
+      "profit": 0
+    },
+    {
+      "id": "cand_real_statshub_20261121_leeds_corners",
+      "date": "2026-11-21",
+      "match": "Chelsea vs Leeds United",
+      "player": "Leeds United (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.7,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_real_statshub_20261121_mille_tackles",
+      "date": "2026-11-21",
+      "match": "Troyes vs Le Havre",
+      "player": "Antoine Mille",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 2.5",
+      "odds": 2,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 1
+    },
+    {
+      "id": "cand_real_statshub_20261121_nuamah_shots",
+      "date": "2026-11-21",
+      "match": "Lille vs Olympique Lyonnais",
+      "player": "Ernest Nuamah",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_real_statshub_20261121_abde_sot",
+      "date": "2026-11-21",
+      "match": "Sevilla vs Real Betis",
+      "player": "Abde Ezzalzouli",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.7,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.7
+    },
+    {
+      "id": "cand_real_statshub_20261121_ruibal_fouls",
+      "date": "2026-11-21",
+      "match": "Sevilla vs Real Betis",
+      "player": "Aitor Ruibal",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5",
+      "odds": 1.83,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.83
+    },
+    {
+      "id": "cand_real_statshub_20261121_vinicius_1795287296255",
+      "date": "2026-11-21",
+      "match": "Real Madrid vs Celta Vigo",
+      "player": "Vinícius Júnior",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 2.25,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "ANULADA_NO_TITULAR",
+      "profit": 0
+    },
+    {
+      "id": "cand_real_statshub_20261121_mbappe_1795287296253",
+      "date": "2026-11-21",
+      "match": "Real Madrid vs Celta Vigo",
+      "player": "Kylian Mbappé",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_real_statshub_20261121_roberto_fouls",
+      "date": "2026-11-21",
+      "match": "Espanyol vs Athletic Club",
+      "player": "Roberto Fernandez",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5",
+      "odds": 2.05,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 1.05
+    },
+    {
+      "id": "cand_real_statshub_20261121_castaneda_shots",
+      "date": "2026-11-21",
+      "match": "Bayer 04 Leverkusen vs SC Paderborn 07",
+      "player": "Santiago Castañeda",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
+      "id": "cand_real_statshub_20261121_said_elmala",
+      "date": "2026-11-21",
+      "match": "1. FC Köln vs FC Bayern München",
+      "player": "Said El Mala",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
       "id": "cand_1795187331561_xmcbes",
       "date": "2026-11-20",
       "match": "Espanyol vs Athletic Club",
@@ -263,6 +445,188 @@
   ],
   "history": [
     {
+      "id": "cand_real_statshub_20261121_mctominay_1795287296256",
+      "date": "2026-11-21",
+      "match": "Napoli vs Torino",
+      "player": "Scott McTominay",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.7,
+      "stake": 1,
+      "actual_stat": 7,
+      "status": "ACERTADA",
+      "profit": 0.7
+    },
+    {
+      "id": "cand_real_statshub_20261121_romano_shots",
+      "date": "2026-11-21",
+      "match": "Como vs Cagliari",
+      "player": "Alessandro Romano",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 2.05,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 1.05
+    },
+    {
+      "id": "cand_real_statshub_20261121_fulham_sot",
+      "date": "2026-11-21",
+      "match": "Manchester City vs Fulham",
+      "player": "Fulham (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 2.5",
+      "odds": 1.64,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": 0.64
+    },
+    {
+      "id": "cand_real_statshub_20261121_neto_sot",
+      "date": "2026-11-21",
+      "match": "Chelsea vs Leeds United",
+      "player": "Pedro Neto",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.9,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "ANULADA_NO_TITULAR",
+      "profit": 0
+    },
+    {
+      "id": "cand_real_statshub_20261121_leeds_corners",
+      "date": "2026-11-21",
+      "match": "Chelsea vs Leeds United",
+      "player": "Leeds United (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.7,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_real_statshub_20261121_mille_tackles",
+      "date": "2026-11-21",
+      "match": "Troyes vs Le Havre",
+      "player": "Antoine Mille",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 2.5",
+      "odds": 2,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 1
+    },
+    {
+      "id": "cand_real_statshub_20261121_nuamah_shots",
+      "date": "2026-11-21",
+      "match": "Lille vs Olympique Lyonnais",
+      "player": "Ernest Nuamah",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_real_statshub_20261121_abde_sot",
+      "date": "2026-11-21",
+      "match": "Sevilla vs Real Betis",
+      "player": "Abde Ezzalzouli",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.7,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.7
+    },
+    {
+      "id": "cand_real_statshub_20261121_ruibal_fouls",
+      "date": "2026-11-21",
+      "match": "Sevilla vs Real Betis",
+      "player": "Aitor Ruibal",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5",
+      "odds": 1.83,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 0.83
+    },
+    {
+      "id": "cand_real_statshub_20261121_vinicius_1795287296255",
+      "date": "2026-11-21",
+      "match": "Real Madrid vs Celta Vigo",
+      "player": "Vinícius Júnior",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 2.25,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "ANULADA_NO_TITULAR",
+      "profit": 0
+    },
+    {
+      "id": "cand_real_statshub_20261121_mbappe_1795287296253",
+      "date": "2026-11-21",
+      "match": "Real Madrid vs Celta Vigo",
+      "player": "Kylian Mbappé",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_real_statshub_20261121_roberto_fouls",
+      "date": "2026-11-21",
+      "match": "Espanyol vs Athletic Club",
+      "player": "Roberto Fernandez",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5",
+      "odds": 2.05,
+      "stake": 1,
+      "actual_stat": 2,
+      "status": "ACERTADA",
+      "profit": 1.05
+    },
+    {
+      "id": "cand_real_statshub_20261121_castaneda_shots",
+      "date": "2026-11-21",
+      "match": "Bayer 04 Leverkusen vs SC Paderborn 07",
+      "player": "Santiago Castañeda",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
+      "id": "cand_real_statshub_20261121_said_elmala",
+      "date": "2026-11-21",
+      "match": "1. FC Köln vs FC Bayern München",
+      "player": "Said El Mala",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
       "id": "cand_1795187331561_xmcbes",
       "date": "2026-11-20",
       "match": "Espanyol vs Athletic Club",
@@ -524,44 +888,58 @@
     }
   ],
   "summary": {
-    "total_bets": 20,
-    "settled_bets": 19,
-    "won_bets": 11,
-    "lost_bets": 8,
-    "void_bets": 1,
+    "total_bets": 34,
+    "settled_bets": 31,
+    "won_bets": 21,
+    "lost_bets": 10,
+    "void_bets": 3,
     "pending_bets": 0,
-    "win_rate_pct": 57.9,
-    "total_staked_units": 19,
-    "net_profit_units": 0.67,
-    "roi_pct": 3.5,
+    "win_rate_pct": 67.7,
+    "total_staked_units": 31,
+    "net_profit_units": 6.78,
+    "roi_pct": 21.9,
     "by_market": {
-      "Remates al arco": {
-        "total": 1,
-        "won": 0,
-        "lost": 0,
-        "win_rate": "0.0%",
-        "profit": "+0.00U"
-      },
-      "Entradas (Tackles)": {
-        "total": 1,
-        "won": 1,
+      "Remates totales": {
+        "total": 7,
+        "won": 7,
         "lost": 0,
         "win_rate": "100.0%",
-        "profit": "+0.80U"
+        "profit": "+5.52U"
       },
       "Remates al arco de equipo": {
-        "total": 4,
-        "won": 1,
+        "total": 5,
+        "won": 2,
         "lost": 3,
-        "win_rate": "25.0%",
-        "profit": "-2.28U"
+        "win_rate": "40.0%",
+        "profit": "-1.64U"
       },
-      "Remates totales": {
+      "Remates al arco": {
+        "total": 5,
+        "won": 1,
+        "lost": 1,
+        "win_rate": "50.0%",
+        "profit": "-0.30U"
+      },
+      "Córners de equipo": {
+        "total": 5,
+        "won": 3,
+        "lost": 2,
+        "win_rate": "60.0%",
+        "profit": "+0.27U"
+      },
+      "Entradas (Tackles)": {
         "total": 2,
         "won": 2,
         "lost": 0,
         "win_rate": "100.0%",
-        "profit": "+1.63U"
+        "profit": "+1.80U"
+      },
+      "Faltas cometidas": {
+        "total": 3,
+        "won": 3,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+2.53U"
       },
       "Goles de equipo": {
         "total": 3,
@@ -570,26 +948,12 @@
         "win_rate": "66.7%",
         "profit": "+0.87U"
       },
-      "Córners de equipo": {
-        "total": 4,
-        "won": 3,
-        "lost": 1,
-        "win_rate": "75.0%",
-        "profit": "+1.27U"
-      },
       "Remates de equipo": {
         "total": 2,
         "won": 0,
         "lost": 2,
         "win_rate": "0.0%",
         "profit": "-2.00U"
-      },
-      "Faltas cometidas": {
-        "total": 1,
-        "won": 1,
-        "lost": 0,
-        "win_rate": "100.0%",
-        "profit": "+0.65U"
       },
       "Faltas ganadas": {
         "total": 1,
@@ -607,5 +971,5 @@
       }
     }
   },
-  "updated_at": "2026-11-21T21:41:19.191Z"
+  "updated_at": "2026-11-22T13:12:38.231Z"
 }

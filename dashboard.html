@@ -4672,10 +4672,7 @@
       if (mobileListContainer) {
         mobileListContainer.innerHTML = filtered.map((pick, idx) => {
           const pickKey = 'pick_' + (pick.id ? pick.id.replace(/[^a-zA-Z0-9]/g, '_') : idx);
-          const isApproved = pick.status === 'APROBADO';
-          const statusBadge = isApproved 
-            ? '<span class="status-pill approved">✔ APROBADO</span>' 
-            : '<span class="status-pill pending">🕒 PENDIENTE</span>';
+          const statusBadge = getStatusBadge(pick.status);
 
           const realProb = pick.real_prob || (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : 75);
           const impliedProb = pick.implied_prob || (pick.odds ? (100 / pick.odds).toFixed(1) : 55);
@@ -5400,6 +5397,9 @@
           statusBadge = '<span class="badge-status perdida">✖ Fallada</span>';
           const pVal = item.profit !== undefined ? item.profit : -1.0;
           profitDisplay = `<span class="profit-negative">${Number(pVal).toFixed(2)} U</span>`;
+        } else if (item.status && (item.status.includes('ANULADA') || item.status.includes('VOID') || item.status === 'CANCELADA')) {
+          statusBadge = '<span class="badge-status" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.45);">🚫 Anulada</span>';
+          profitDisplay = '<span class="profit-neutral">0.00 U</span>';
         } else {
           statusBadge = '<span class="badge-status pendiente">⏳ Pendiente</span>';
           profitDisplay = '<span class="profit-neutral">0.00 U</span>';
@@ -5778,7 +5778,21 @@
       const statusEl = document.getElementById('modalPickStatus');
       const isApproved = pick.status === 'APROBADO';
       const isPending = pick.status && pick.status.includes('PENDIENTE');
-      statusEl.className = 'status-pill ' + (isApproved ? 'approved' : (isPending ? 'pending' : 'rejected'));
+      const isAcertada = pick.status === 'ACERTADA' || pick.status === 'GANADA';
+      const isFallada = pick.status === 'FALLADA' || pick.status === 'PERDIDA';
+      const isAnulada = pick.status && (pick.status.includes('ANULADA') || pick.status.includes('CANCELADA'));
+
+      if (isAcertada || isApproved) {
+        statusEl.className = 'status-pill approved';
+      } else if (isFallada) {
+        statusEl.className = 'status-pill rejected';
+      } else if (isAnulada) {
+        statusEl.className = 'status-pill';
+        statusEl.style.background = 'rgba(148, 163, 184, 0.2)';
+        statusEl.style.color = '#cbd5e1';
+      } else {
+        statusEl.className = 'status-pill pending';
+      }
       statusEl.textContent = pick.status || (isApproved ? 'APROBADO' : 'PENDIENTE');
 
       document.getElementById('drawerStatOdds').textContent = pick.odds ? (typeof pick.odds === "number" ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2)) : '1.80';
