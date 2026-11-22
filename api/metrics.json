@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-22T14:42:33.276Z",
+  "updatedAt": "2026-11-22T16:39:30.091Z",
   "methodologyVersion": "v2.1-calibrated-nomenclature",
   "nomenclature": {
     "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
@@ -10,14 +10,14 @@
     "ensembleProb": "Promedio ponderado Modelo B + Modelo C",
     "modelFairOdds": "1 / Probabilidad_Modelo (cuota teórica del modelo, no de mercado)"
   },
-  "totalTrackedPicks": 34,
+  "totalTrackedPicks": 58,
   "summary": {
-    "total_bets": 34,
+    "total_bets": 58,
     "settled_bets": 31,
     "won_bets": 21,
     "lost_bets": 10,
     "void_bets": 3,
-    "pending_bets": 0,
+    "pending_bets": 24,
     "win_rate_pct": 67.7,
     "total_staked_units": 31,
     "net_profit_units": 6.78,
