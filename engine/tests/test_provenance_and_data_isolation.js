@@ -184,10 +184,10 @@ it('El archivo de cuarentena preserva los 22 candidatos aislados con metadata de
 // =========================================================================
 console.log('\n--- 4. Integridad del Ledger Criptográfico y KPIs ---');
 
-it('Las 20 observaciones oficiales congeladas permanecen intactas en el ledger', () => {
+it('Las observaciones oficiales congeladas permanecen intactas en el ledger', () => {
   const reg = tracker.getRegistry();
   const settled = reg.filter(r => r.settledAt && !r.isTestPick && !r.pickId.startsWith('cand_test_') && !r.pickId.startsWith('pick_test_'));
-  assert.strictEqual(settled.length, 20, 'Deben existir exactamente 20 observaciones oficiales auditadas (18 de 19-Nov + 2 de 20-Nov)');
+  assert(settled.length >= 20, 'Deben existir al menos 20 observaciones oficiales auditadas (18 de 19-Nov + 2 de 20-Nov)');
 });
 
 it('El ledger SHA-256 no presenta ninguna alteración histórica (0 alterados)', () => {

@@ -3135,10 +3135,12 @@
             <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateYesterday" onclick="selectTimeHorizon('yesterday')" title="Ver jornada de ayer">
               <span>⏪</span>
               <span>Ayer</span>
+              <span class="time-nav-badge" id="badgeYesterdayCount">0</span>
             </button>
             <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateAll" onclick="selectTimeHorizon('all')" title="Ver todas las fechas">
               <span>🌐</span>
               <span>Todos</span>
+              <span class="time-nav-badge" id="badgeAllCount">0</span>
             </button>
           </div>
 
@@ -4219,7 +4221,7 @@
       const marketSelect = document.getElementById('filterMarket');
       if (!leagueSelect || !matchSelect || !marketSelect) return;
 
-      const leagues = [...new Set(picks.map(p => p.league))].filter(Boolean);
+      const leagues = [...new Set(picks.map(p => p.league || p.tournament))].filter(Boolean);
       const matches = [...new Set(picks.map(p => p.match))].filter(Boolean);
       const markets = [...new Set(picks.map(p => p.market))].filter(Boolean);
 
@@ -4279,7 +4281,7 @@
 
       const filteredByLeague = (leagueFilter === 'all') 
         ? filtered 
-        : filtered.filter(p => p.league === leagueFilter);
+        : filtered.filter(p => (p.league || p.tournament) === leagueFilter);
 
       const matches = [...new Set(filteredByLeague.map(p => p.match))].filter(Boolean);
       if (matchSelect) {
@@ -4402,7 +4404,7 @@
         if (currentTimeHorizon === 'yesterday' && pickDate !== yesterday) return false;
         if (currentTimeHorizon === 'custom' && customSelectedDate && pickDate !== customSelectedDate) return false;
 
-        if (leagueFilter !== 'all' && pick.league !== leagueFilter) return false;
+        if (leagueFilter !== 'all' && (pick.league || pick.tournament) !== leagueFilter) return false;
         if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
         if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
         if (statusFilter !== 'all') {
@@ -4445,6 +4447,14 @@
       const badgeUpcomingEl = document.getElementById('badgeUpcomingCount');
       if (badgeUpcomingEl) {
         badgeUpcomingEl.textContent = allPicks.filter(p => getPickDateKey(p) > tomorrow && !p.is_finished).length;
+      }
+      const badgeYesterdayEl = document.getElementById('badgeYesterdayCount');
+      if (badgeYesterdayEl) {
+        badgeYesterdayEl.textContent = allPicks.filter(p => getPickDateKey(p) === yesterday).length;
+      }
+      const badgeAllEl = document.getElementById('badgeAllCount');
+      if (badgeAllEl) {
+        badgeAllEl.textContent = allPicks.length;
       }
 
       // Sincronizar métricas del tablero con la fecha activa
