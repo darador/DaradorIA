@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-22T14:12:09.954Z",
+  "updatedAt": "2026-11-22T14:42:33.276Z",
   "methodologyVersion": "v2.1-calibrated-nomenclature",
   "nomenclature": {
     "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
@@ -96,7 +96,7 @@
     }
   },
   "evaluation": {
-    "evaluatedAt": "2026-11-22T14:12:09.952Z",
+    "evaluatedAt": "2026-11-22T14:42:33.275Z",
     "sampleSize": 21,
     "financialMetrics": {
       "totalStakedUnits": 21,
