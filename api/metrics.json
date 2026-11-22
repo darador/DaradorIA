@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-22T20:36:59.396Z",
+  "updatedAt": "2026-11-22T22:06:13.472Z",
   "methodologyVersion": "v2.1-calibrated-nomenclature",
   "nomenclature": {
     "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
@@ -110,7 +110,16 @@
         "win_rate": "0.0%",
         "profit": "+0.00U"
       }
-    }
+    },
+    "total_bets": 58,
+    "won_bets": 28,
+    "lost_bets": 14,
+    "void_bets": 9,
+    "pending_bets": 7,
+    "settled": 42,
+    "settled_bets": 42,
+    "win_rate_pct": 66.7,
+    "total_staked_units": 42
   },
   "evaluation": {
     "evaluatedAt": "2026-11-22T14:42:33.275Z",
