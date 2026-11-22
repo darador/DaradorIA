@@ -131,6 +131,37 @@ class IntegrityGuard {
   }
 
   /**
+   * Sella formalmente la liquidación oficial de una observación pre-sellada en el ledger.
+   * Valida estrictamente que los datos pre-match no hayan sufrido ninguna alteración.
+   * @param {Object} record Observación con liquidación confirmada
+   * @returns {boolean}
+   */
+  sealSettlement(record) {
+    if (!record || !record.pickId) return false;
+    let ledger = {};
+    try {
+      ledger = JSON.parse(fs.readFileSync(this.ledgerPath, 'utf-8'));
+    } catch (e) {
+      ledger = {};
+    }
+
+    const seal = ledger[record.pickId];
+    if (seal) {
+      const currentPreHash = this.computePreMatchHash(record);
+      if (currentPreHash !== seal.preMatchHash) {
+        throw new Error(`TAMPERING_DETECTED: Pre-match data altered for ${record.pickId}`);
+      }
+      seal.finalResultConfirmed = record.finalResultConfirmed;
+      seal.settlementHash = this.computeSettlementHash(record);
+      seal.settledAt = record.settledAt || new Date().toISOString();
+      seal.actualStat = record.actualStat;
+      fs.writeFileSync(this.ledgerPath, JSON.stringify(ledger, null, 2), 'utf-8');
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Audita exhaustivamente la integridad del registro frente al ledger sellado.
    * Detecta cualquier modificación retrospectiva de probabilidades, cuotas o resultados.
    * @param {Array<Object>} records

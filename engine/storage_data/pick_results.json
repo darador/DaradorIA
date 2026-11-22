@@ -313,5 +313,43 @@
     "profitUnits": -1,
     "settledAt": "2026-11-20T00:46:28.928Z",
     "id": "res_1795135588928_aep9"
+  },
+  {
+    "pickId": "cand_1795187331561_zeldy6",
+    "date": "2026-11-20",
+    "match": "Troyes vs Le Havre",
+    "player": "Karim Dermane",
+    "market": "Entradas (Tackles)",
+    "line": "Más de 1.5",
+    "odds": 1.8,
+    "targetLine": 1.5,
+    "actualStat": 3,
+    "matchScore": "1-0",
+    "status": "GANADA",
+    "stakedUnits": 1,
+    "profitUnits": 0.8,
+    "settledAt": "2026-11-20T23:00:00.000Z",
+    "verificationSource": "StatsHub MCP Oficial FT",
+    "verificationReason": "Titular confirmado (90 min), 3 entradas completadas superando la línea de Más de 1.5.",
+    "id": "res_cand_1795187331561_zeldy6"
+  },
+  {
+    "pickId": "cand_1795187331561_xmcbes",
+    "date": "2026-11-20",
+    "match": "Espanyol vs Athletic Club",
+    "player": "Javi Puado",
+    "market": "Remates al arco",
+    "line": "Más de 0.5",
+    "odds": 1.75,
+    "targetLine": 0.5,
+    "actualStat": 0,
+    "matchScore": "0-1",
+    "status": "ANULADA_NO_TITULAR",
+    "stakedUnits": 1,
+    "profitUnits": 0,
+    "settledAt": "2026-11-20T23:00:00.000Z",
+    "verificationSource": "StatsHub MCP Oficial FT",
+    "verificationReason": "Elena Risk Veto: Suplente (ingresó min 81, jugó 9 min). Condición de titularidad T-60 min no cumplida.",
+    "id": "res_cand_1795187331561_xmcbes"
   }
 ]

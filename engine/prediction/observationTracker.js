@@ -472,7 +472,14 @@ class ObservationTracker {
 
     // Sellar el resultado oficial en el libro criptográfico
     try {
-      integrityGuard.sealRecords([obs]);
+      if (typeof integrityGuard.sealSettlement === 'function') {
+        const updated = integrityGuard.sealSettlement(obs);
+        if (!updated) {
+          integrityGuard.sealRecords([obs]);
+        }
+      } else {
+        integrityGuard.sealRecords([obs]);
+      }
     } catch (sealErr) {
       console.warn('[ObservationTracker] Advertencia sellando settlement:', sealErr.message);
     }

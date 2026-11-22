@@ -4031,7 +4031,7 @@
     "pickId": "cand_1795187331561_zeldy6",
     "eventId": "le havre__troyes",
     "stage": "ELIGIBLE",
-    "currentState": "PENDING_LINEUP",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -4081,13 +4081,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "GANADA",
+    "actualStat": 3,
+    "profitUnits": 0.8,
+    "settledAt": "2026-11-20T23:00:00.000Z",
+    "verificationSource": "StatsHub MCP Oficial FT",
+    "verificationReason": "Titular confirmado (90 min), 3 entradas completadas superando la línea de Más de 1.5.",
     "stateHistory": [
       {
         "fromState": null,
@@ -4102,6 +4102,20 @@
         "timestamp": "2026-11-20T15:08:51.567Z",
         "reason": "Evaluación cuantitativa y comité: PENDING_LINEUP",
         "source": "AgentOrchestrator"
+      },
+      {
+        "fromState": "PENDING_LINEUP",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-20T23:00:00.000Z",
+        "reason": "Titular confirmado (90 min), 3 entradas completadas superando la línea de Más de 1.5.",
+        "source": "StatsHub MCP Oficial FT"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-20T23:00:00.000Z",
+        "reason": "Titular confirmado (90 min), 3 entradas completadas superando la línea de Más de 1.5.",
+        "source": "StatsHub MCP Oficial FT"
       }
     ]
   },
@@ -4934,7 +4948,7 @@
     "pickId": "cand_1795187331561_xmcbes",
     "eventId": "athletic club__espanyol",
     "stage": "ELIGIBLE",
-    "currentState": "PENDING_LINEUP",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -4984,13 +4998,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "ANULADA_NO_TITULAR",
+    "actualStat": 0,
+    "profitUnits": 0,
+    "settledAt": "2026-11-20T23:00:00.000Z",
+    "verificationSource": "StatsHub MCP Oficial FT",
+    "verificationReason": "Elena Risk Veto: Suplente (ingresó min 81, jugó 9 min). Condición de titularidad T-60 min no cumplida.",
     "stateHistory": [
       {
         "fromState": null,
@@ -5005,6 +5019,20 @@
         "timestamp": "2026-11-20T15:08:51.620Z",
         "reason": "Evaluación cuantitativa y comité: PENDING_LINEUP",
         "source": "AgentOrchestrator"
+      },
+      {
+        "fromState": "PENDING_LINEUP",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-20T23:00:00.000Z",
+        "reason": "Elena Risk Veto: Suplente (ingresó min 81, jugó 9 min). Condición de titularidad T-60 min no cumplida.",
+        "source": "StatsHub MCP Oficial FT"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-20T23:00:00.000Z",
+        "reason": "Elena Risk Veto: Suplente (ingresó min 81, jugó 9 min). Condición de titularidad T-60 min no cumplida.",
+        "source": "StatsHub MCP Oficial FT"
       }
     ]
   },

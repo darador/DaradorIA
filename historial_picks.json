@@ -1,6 +1,32 @@
 {
   "picks": [
     {
+      "id": "cand_1795187331561_xmcbes",
+      "date": "2026-11-20",
+      "match": "Espanyol vs Athletic Club",
+      "player": "Javi Puado",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.75,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "ANULADA_NO_TITULAR",
+      "profit": 0
+    },
+    {
+      "id": "cand_1795187331561_zeldy6",
+      "date": "2026-11-20",
+      "match": "Troyes vs Le Havre",
+      "player": "Karim Dermane",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 1.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
       "id": "cand_1795110774831_6rsb2k",
       "date": "2026-11-19",
       "match": "Internacional vs Vasco da Gama",
@@ -237,6 +263,32 @@
   ],
   "history": [
     {
+      "id": "cand_1795187331561_xmcbes",
+      "date": "2026-11-20",
+      "match": "Espanyol vs Athletic Club",
+      "player": "Javi Puado",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.75,
+      "stake": 1,
+      "actual_stat": 0,
+      "status": "ANULADA_NO_TITULAR",
+      "profit": 0
+    },
+    {
+      "id": "cand_1795187331561_zeldy6",
+      "date": "2026-11-20",
+      "match": "Troyes vs Le Havre",
+      "player": "Karim Dermane",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 1.5",
+      "odds": 1.8,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.8
+    },
+    {
       "id": "cand_1795110774831_6rsb2k",
       "date": "2026-11-19",
       "match": "Internacional vs Vasco da Gama",
@@ -472,16 +524,31 @@
     }
   ],
   "summary": {
-    "total_bets": 18,
-    "settled_bets": 18,
-    "won_bets": 10,
+    "total_bets": 20,
+    "settled_bets": 19,
+    "won_bets": 11,
     "lost_bets": 8,
+    "void_bets": 1,
     "pending_bets": 0,
-    "win_rate_pct": 55.6,
-    "total_staked_units": 18,
-    "net_profit_units": -0.13,
-    "roi_pct": -0.7,
+    "win_rate_pct": 57.9,
+    "total_staked_units": 19,
+    "net_profit_units": 0.67,
+    "roi_pct": 3.5,
     "by_market": {
+      "Remates al arco": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "+0.00U"
+      },
+      "Entradas (Tackles)": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+0.80U"
+      },
       "Remates al arco de equipo": {
         "total": 4,
         "won": 1,
@@ -540,5 +607,5 @@
       }
     }
   },
-  "updated_at": "2026-11-20T21:02:58.407Z"
+  "updated_at": "2026-11-21T21:41:19.191Z"
 }

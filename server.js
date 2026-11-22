@@ -36,6 +36,46 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API de métricas dinámicas y evaluación
+  if (reqPath === '/api/metrics' || reqPath === '/api/metrics.json') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
+    try {
+      const staticMetricsPath = path.join(__dirname, 'api/metrics.json');
+      if (fs.existsSync(staticMetricsPath)) {
+        const staticData = fs.readFileSync(staticMetricsPath, 'utf8');
+        res.end(staticData);
+        return;
+      }
+
+      const evaluator = require('./engine/evaluation/evaluator');
+      const evalMetrics = evaluator.evaluatePerformance();
+      let historySummary = null;
+      let totalPicksInHistory = 0;
+      try {
+        const histRaw = fs.readFileSync(path.join(__dirname, 'historial_picks.json'), 'utf8');
+        const history = JSON.parse(histRaw);
+        historySummary = history.summary || null;
+        totalPicksInHistory = history.picks ? history.picks.length : (history.history ? history.history.length : 0);
+      } catch (e) {}
+
+      res.end(JSON.stringify({
+        status: 'ok',
+        updatedAt: new Date().toISOString(),
+        totalTrackedPicks: totalPicksInHistory,
+        summary: historySummary,
+        evaluation: evalMetrics
+      }, null, 2));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ status: 'error', message: err.message }));
+    }
+    return;
+  }
+
   if (reqPath === '/' || reqPath === '') reqPath = '/dashboard.html';
 
   const filePath = path.join(__dirname, reqPath);

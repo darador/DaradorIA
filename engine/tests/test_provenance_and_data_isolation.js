@@ -45,13 +45,23 @@ console.log('--- 1. Clasificación y Validación de Procedencia ---');
 
 it('Identifica y clasifica correctamente un registro MOCK / SCRIPTED', () => {
   const mockCand = {
-    id: 'cand_20261121_archer_sot',
-    player: 'Cameron Archer',
-    team: 'Auxerre', // Incorrecto
-    match: 'AS Monaco vs Auxerre'
+    id: 'cand_fase11_prem_salah_17',
+    player: 'Mohamed Salah',
+    match: 'Liverpool vs Manchester United'
   };
   const type = provenanceGuard.classifyCandidate(mockCand);
   assert.strictEqual(type, PROVENANCE_TYPES.MOCK, 'Debe clasificarse como MOCK');
+});
+
+it('Identifica y clasifica correctamente un registro con club inválido REAL_INVALID_PLAYER_TEAM', () => {
+  const invalidPlayer = {
+    id: 'cand_20261121_archer_sot',
+    player: 'Cameron Archer',
+    team: 'Auxerre',
+    match: 'AS Monaco vs Auxerre'
+  };
+  const type = provenanceGuard.classifyCandidate(invalidPlayer);
+  assert.strictEqual(type, PROVENANCE_TYPES.REAL_INVALID_PLAYER_TEAM, 'Debe clasificarse como REAL_INVALID_PLAYER_TEAM');
 });
 
 it('Identifica y clasifica correctamente un registro TEST', () => {
@@ -159,11 +169,12 @@ it('Todos los candidatos en picks_hoy.json están clasificados como REAL_VERIFIE
   }
 });
 
-it('El archivo de cuarentena preserva los 30 candidatos aislados con metadata de auditoría', () => {
+it('El archivo de cuarentena preserva los 22 candidatos aislados con metadata de auditoría', () => {
   const quarPath = 'engine/storage_data/quarantine_candidates.json';
   assert(fs.existsSync(quarPath), 'Archivo de cuarentena debe existir');
   const quarData = JSON.parse(fs.readFileSync(quarPath, 'utf8'));
-  assert.strictEqual(quarData.quarantinedCount, 30, 'Deben existir exactamente 30 candidatos en cuarentena');
+  assert.strictEqual(quarData.quarantinedCount, 22, 'Deben existir exactamente 22 candidatos en cuarentena');
+  assert.strictEqual(quarData.recoveredCount, 8, 'Deben existir 8 candidatos recuperados');
   assert(Array.isArray(quarData.quarantinedCandidates), 'Lista de candidatos en cuarentena debe ser un array');
   assert(quarData.quarantinedCandidates[0].quarantineReason.includes('FAILED_PROVENANCE_CHECK'));
 });
@@ -173,10 +184,10 @@ it('El archivo de cuarentena preserva los 30 candidatos aislados con metadata de
 // =========================================================================
 console.log('\n--- 4. Integridad del Ledger Criptográfico y KPIs ---');
 
-it('Las 18 observaciones oficiales congeladas permanecen intactas en el ledger', () => {
+it('Las 20 observaciones oficiales congeladas permanecen intactas en el ledger', () => {
   const reg = tracker.getRegistry();
   const settled = reg.filter(r => r.settledAt && !r.isTestPick && !r.pickId.startsWith('cand_test_') && !r.pickId.startsWith('pick_test_'));
-  assert.strictEqual(settled.length, 18, 'Deben existir exactamente 18 observaciones oficiales auditadas');
+  assert.strictEqual(settled.length, 20, 'Deben existir exactamente 20 observaciones oficiales auditadas (18 de 19-Nov + 2 de 20-Nov)');
 });
 
 it('El ledger SHA-256 no presenta ninguna alteración histórica (0 alterados)', () => {

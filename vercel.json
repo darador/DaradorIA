@@ -1,6 +1,12 @@
 {
   "outputDirectory": ".",
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/metrics",
+      "destination": "/api/metrics.json"
+    }
+  ],
   "headers": [
     {
       "source": "/picks_hoy.json",
@@ -17,6 +23,19 @@
         {
           "key": "Cache-Control",
           "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     },

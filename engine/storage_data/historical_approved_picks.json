@@ -1,0 +1,324 @@
+{
+  "version": "1.0.0",
+  "description": "DARADORBET - Repositorio de Picks Aprobados Históricamente (Recuperación Fase 11.3.4)",
+  "updatedAt": "2026-11-22T00:48:04.966Z",
+  "totalApproved": 2,
+  "picks": [
+    {
+      "id": "cand_20261121_fulham_sot",
+      "league": "Premier League (England)",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Manchester City vs Fulham",
+      "time": "Sat 21 Nov 2026, 12:30 UTC (Sat 21 Nov, 12:30 Europe/London)",
+      "player": "Fulham (Equipo)",
+      "team": "Fulham",
+      "opponent": "Manchester City",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 2.5",
+      "odds": 1.64,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "100%",
+      "hit_rate_l10": "100%",
+      "avg_per_game": 4.2,
+      "implied_prob": 61,
+      "real_prob": 76.5,
+      "edge_pct": 25.4,
+      "confidence": "92.0%",
+      "rationale": "Doble convergencia estadística: Fulham supera la línea en 10/10 partidos y Man City concede >= 3 remates a puerta en 9/10.",
+      "status": "APROBADO",
+      "fair_odds": 1.31,
+      "ev_pct": "+25.4%",
+      "uncertainty_index": 0.05,
+      "minutes_expected": 90,
+      "sample_size": 15,
+      "model_applied": "Ensemble (Modelo B + C)",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_fulham_sot",
+        "finalStatus": "APROBADO",
+        "finalReason": "APROBADO: Muestra completa >= 10 partidos, EV superior a +7% y convergencia de métricas de concesión rival.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [],
+        "approvalReasons": [
+          "Alta consistencia estadística (100% L10)",
+          "EV proyectado +25.4%"
+        ],
+        "decidedAt": "2026-11-20T23:30:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_fulham_sot",
+          "target": "Fulham (Equipo)",
+          "summary": "Fulham mantiene un promedio de 4.2 tiros al arco en sus últimos 10 cotejos.",
+          "favorableFindings": [
+            "10/10 partidos superando la línea de 2.5 remates a puerta",
+            "Racha L5 perfecta (100%)"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.92,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_fulham_sot",
+          "match": "Manchester City vs Fulham",
+          "tacticalSummary": "El City adelanta sus líneas permitiendo transiciones veloces del rival.",
+          "advantages": [
+            "Man City concede >= 3 remates a puerta en 9 de sus últimos 10 partidos"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_fulham_sot",
+          "match": "Manchester City vs Fulham",
+          "contextSummary": "Jornada 12 Premier League. Sin bajas significativas en el ataque de Fulham.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Contexto favorable para contragolpes de Fulham.",
+          "sources": [
+            "StatsHub",
+            "Premier League Official"
+          ],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_fulham_sot",
+          "marketAnalysis": "Cuota 1.64 en BetMGM. Cuota justa modelada 1.31.",
+          "referenceOdds": 1.64,
+          "bestOdds": 1.64,
+          "fairOdds": 1.31,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "ALTO",
+          "confidenceScore": 0.91,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_fulham_sot",
+          "match": "Manchester City vs Fulham",
+          "hasFindings": true,
+          "summary": "Fulham explota las bandas con transiciones rápidas.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "09:30 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_APPROVED",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit 469ddd1)",
+        "source_created_at": "2026-11-20T23:30:00.000Z",
+        "original_decided_at": "2026-11-20T23:30:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_APPROVED",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_fulham_sot",
+          "finalStatus": "APROBADO",
+          "finalReason": "APROBADO: Muestra completa >= 10 partidos, EV superior a +7% y convergencia de métricas de concesión rival.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [],
+          "approvalReasons": [
+            "Alta consistencia estadística (100% L10)",
+            "EV proyectado +25.4%"
+          ],
+          "decidedAt": "2026-11-20T23:30:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "WON",
+        "result_label": "ACERTADA",
+        "official_market": "Remates al arco de equipo (Fulham)",
+        "line": 2.5,
+        "actual_stat": 4,
+        "official_match_id": "manchester-city-v-fulham.0td7e63",
+        "official_match_score": "Manchester City 1-1 Fulham",
+        "settled_at": "2026-11-22T00:48:04.966Z",
+        "odds_frozen": 1.64,
+        "evidence_source": "StatsHub MCP (getTeamPerformance / getMatchDetails)"
+      }
+    },
+    {
+      "id": "cand_20261121_leeds_corners",
+      "league": "Premier League (England)",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Chelsea vs Leeds United",
+      "time": "Sat 21 Nov 2026, 15:00 UTC (Sat 21 Nov, 15:00 Europe/London)",
+      "player": "Leeds United (Equipo)",
+      "team": "Leeds United",
+      "opponent": "Chelsea",
+      "market": "Córners de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.73,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "80%",
+      "hit_rate_l10": "90%",
+      "avg_per_game": 5.2,
+      "implied_prob": 57.8,
+      "real_prob": 72,
+      "edge_pct": 24.5,
+      "confidence": "90.0%",
+      "rationale": "Leeds supera la línea en 9/10 partidos y Chelsea concede >= 4 córners en 9/10 encuentros recientes.",
+      "status": "APROBADO",
+      "fair_odds": 1.39,
+      "ev_pct": "+24.5%",
+      "uncertainty_index": 0.05,
+      "minutes_expected": 90,
+      "sample_size": 15,
+      "model_applied": "Ensemble (Modelo B + C)",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_leeds_corners",
+        "finalStatus": "APROBADO",
+        "finalReason": "APROBADO: Muestra completa, consistencia de córners generados por Leeds y concedidos por Chelsea.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [],
+        "approvalReasons": [
+          "90% L10 aciertos",
+          "Chelsea concede al 90%"
+        ],
+        "decidedAt": "2026-11-20T23:30:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_leeds_corners",
+          "target": "Leeds United (Equipo)",
+          "summary": "Leeds promedia 5.2 córners por juego.",
+          "favorableFindings": [
+            "9/10 en todas las competiciones superando 3.5 córners"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_leeds_corners",
+          "match": "Chelsea vs Leeds United",
+          "tacticalSummary": "Leeds ataca con amplitud y extremos profundos generando saques de esquina.",
+          "advantages": [
+            "Chelsea concede 4 o más córners en 9/10 partidos"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_leeds_corners",
+          "match": "Chelsea vs Leeds United",
+          "contextSummary": "Stamford Bridge. Sin bajas en bandas para Leeds.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Volumen ofensivo sostenido.",
+          "sources": [
+            "StatsHub"
+          ],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_leeds_corners",
+          "marketAnalysis": "Cuota 1.73 en Bet365. Cuota justa 1.39.",
+          "referenceOdds": 1.73,
+          "bestOdds": 1.73,
+          "fairOdds": 1.39,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "ALTO",
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_leeds_corners",
+          "match": "Chelsea vs Leeds United",
+          "hasFindings": true,
+          "summary": "Duelo táctico favorable por bandas.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "12:00 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_APPROVED",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit 469ddd1)",
+        "source_created_at": "2026-11-20T23:30:00.000Z",
+        "original_decided_at": "2026-11-20T23:30:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_APPROVED",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_leeds_corners",
+          "finalStatus": "APROBADO",
+          "finalReason": "APROBADO: Muestra completa, consistencia de córners generados por Leeds y concedidos por Chelsea.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [],
+          "approvalReasons": [
+            "90% L10 aciertos",
+            "Chelsea concede al 90%"
+          ],
+          "decidedAt": "2026-11-20T23:30:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "LOST",
+        "result_label": "FALLADA",
+        "official_market": "Córners de equipo (Leeds United)",
+        "line": 3.5,
+        "actual_stat": 2,
+        "official_match_id": "chelsea-v-leeds-united.0mslo6c",
+        "official_match_score": "Chelsea 1-4 Leeds United",
+        "settled_at": "2026-11-22T00:48:04.966Z",
+        "odds_frozen": 1.73,
+        "evidence_source": "StatsHub MCP (getTeamPerformance / getMatchDetails)"
+      }
+    }
+  ]
+}

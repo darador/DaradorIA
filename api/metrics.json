@@ -1,0 +1,331 @@
+{
+  "status": "ok",
+  "updatedAt": "2026-11-21T21:59:05.610Z",
+  "methodologyVersion": "v2.1-calibrated-nomenclature",
+  "nomenclature": {
+    "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
+    "fairMarketProbWithoutVig": "Probabilidad de mercado sin margen (requiere mercado bilateral)",
+    "modelBProb": "Probabilidad proyectada por Modelo B (ventana L10)",
+    "modelCProb": "Probabilidad proyectada por Modelo C (ventana L15-L20)",
+    "ensembleProb": "Promedio ponderado Modelo B + Modelo C",
+    "modelFairOdds": "1 / Probabilidad_Modelo (cuota teórica del modelo, no de mercado)"
+  },
+  "totalTrackedPicks": 20,
+  "summary": {
+    "total_bets": 20,
+    "settled_bets": 19,
+    "won_bets": 11,
+    "lost_bets": 8,
+    "void_bets": 1,
+    "pending_bets": 0,
+    "win_rate_pct": 57.9,
+    "total_staked_units": 19,
+    "net_profit_units": 0.67,
+    "roi_pct": 3.5,
+    "by_market": {
+      "Remates al arco": {
+        "total": 1,
+        "won": 0,
+        "lost": 0,
+        "win_rate": "0.0%",
+        "profit": "+0.00U"
+      },
+      "Entradas (Tackles)": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+0.80U"
+      },
+      "Remates al arco de equipo": {
+        "total": 4,
+        "won": 1,
+        "lost": 3,
+        "win_rate": "25.0%",
+        "profit": "-2.28U"
+      },
+      "Remates totales": {
+        "total": 2,
+        "won": 2,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+1.63U"
+      },
+      "Goles de equipo": {
+        "total": 3,
+        "won": 2,
+        "lost": 1,
+        "win_rate": "66.7%",
+        "profit": "+0.87U"
+      },
+      "Córners de equipo": {
+        "total": 4,
+        "won": 3,
+        "lost": 1,
+        "win_rate": "75.0%",
+        "profit": "+1.27U"
+      },
+      "Remates de equipo": {
+        "total": 2,
+        "won": 0,
+        "lost": 2,
+        "win_rate": "0.0%",
+        "profit": "-2.00U"
+      },
+      "Faltas cometidas": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+0.65U"
+      },
+      "Faltas ganadas": {
+        "total": 1,
+        "won": 0,
+        "lost": 1,
+        "win_rate": "0.0%",
+        "profit": "-1.00U"
+      },
+      "Tarjetas": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+0.73U"
+      }
+    }
+  },
+  "evaluation": {
+    "evaluatedAt": "2026-11-21T21:59:05.608Z",
+    "sampleSize": 19,
+    "financialMetrics": {
+      "totalStakedUnits": 19,
+      "netProfitUnits": 0.67,
+      "yieldPct": 3.5,
+      "winRatePct": 57.9,
+      "wonBets": 11,
+      "lostBets": 8,
+      "maxDrawdownUnits": 4.63
+    },
+    "probabilisticMetrics": {
+      "brierScore": 0.2459,
+      "brierEvaluation": "Aceptable",
+      "logLoss": 0.6851,
+      "evaluatedPicksWithProb": 19
+    },
+    "calibrationByDecile": [
+      {
+        "range": "50% - 60%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      },
+      {
+        "range": "60% - 70%",
+        "sampleSize": 19,
+        "avgPredictedProb": 62.5,
+        "actualHitRate": 57.9,
+        "calibrationGap": -4.6
+      },
+      {
+        "range": "70% - 80%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      },
+      {
+        "range": "80% - 90%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      },
+      {
+        "range": "90% - 100%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      }
+    ],
+    "byMarket": [
+      {
+        "market": "Córners de equipo",
+        "total": 4,
+        "winRate": 75,
+        "netProfit": 1.27,
+        "yieldPct": 31.8
+      },
+      {
+        "market": "Tarjetas",
+        "total": 1,
+        "winRate": 100,
+        "netProfit": 0.73,
+        "yieldPct": 73
+      },
+      {
+        "market": "Faltas ganadas",
+        "total": 1,
+        "winRate": 0,
+        "netProfit": -1,
+        "yieldPct": -100
+      },
+      {
+        "market": "Faltas cometidas",
+        "total": 1,
+        "winRate": 100,
+        "netProfit": 0.65,
+        "yieldPct": 65
+      },
+      {
+        "market": "Remates al arco de equipo",
+        "total": 4,
+        "winRate": 25,
+        "netProfit": -2.28,
+        "yieldPct": -57
+      },
+      {
+        "market": "Remates de equipo",
+        "total": 2,
+        "winRate": 0,
+        "netProfit": -2,
+        "yieldPct": -100
+      },
+      {
+        "market": "Goles de equipo",
+        "total": 3,
+        "winRate": 66.7,
+        "netProfit": 0.87,
+        "yieldPct": 29
+      },
+      {
+        "market": "Remates totales",
+        "total": 2,
+        "winRate": 100,
+        "netProfit": 1.63,
+        "yieldPct": 81.5
+      },
+      {
+        "market": "Entradas (Tackles)",
+        "total": 1,
+        "winRate": 100,
+        "netProfit": 0.8,
+        "yieldPct": 80
+      }
+    ]
+  },
+  "universes": {
+    "universeA_globalAudit": {
+      "description": "Todas las predicciones auditables liquidadas (Universo Global)",
+      "totalObservations": 20,
+      "settledDecided": 19,
+      "won": 11,
+      "lost": 8,
+      "voidCount": 1,
+      "winRatePct": 57.9,
+      "netProfitUnits": 0.67,
+      "roiYieldPct": 3.5,
+      "brierScoreBenchmarkNaive": 0.2459,
+      "logLossBenchmarkNaive": 0.6851,
+      "brierScoreGrossMarketImplied": 0.2381,
+      "logLossGrossMarketImplied": 0.6694,
+      "brierScoreModelB": 0.3121,
+      "logLossModelB": 0.8902,
+      "brierScoreModelC": 0.3053,
+      "logLossModelC": 0.8472,
+      "brierScoreEnsemble": 0.306,
+      "logLossEnsemble": 0.8564
+    },
+    "universeB_elenaApproved": {
+      "description": "Portfolio de selecciones aprobadas por Elena (Veto a investigación incompleta)",
+      "totalObservations": 19,
+      "settledDecided": 18,
+      "won": 11,
+      "lost": 7,
+      "voidCount": 1,
+      "winRatePct": 61.1,
+      "netProfitUnits": 1.67,
+      "roiYieldPct": 9.3,
+      "brierScoreBenchmarkNaive": 0.2378,
+      "logLossBenchmarkNaive": 0.6687,
+      "brierScoreGrossMarketImplied": 0.2375,
+      "logLossGrossMarketImplied": 0.6681,
+      "brierScoreModelB": 0.3022,
+      "logLossModelB": 0.8727,
+      "brierScoreModelC": 0.31,
+      "logLossModelC": 0.8589,
+      "brierScoreEnsemble": 0.304,
+      "logLossEnsemble": 0.8551
+    },
+    "universeC_discardedOrPending": {
+      "description": "Picks descartados por Elena o pendientes de disputa",
+      "discardedAudited": {
+        "id": "cand_1795110774831_6rsb2k",
+        "match": "Internacional vs Vasco da Gama",
+        "reason": "INVESTIGACION_INCOMPLETA",
+        "status": "FALLADA",
+        "profitUnits": -1
+      },
+      "pendingActiveInDailyBoard": 3,
+      "quarantinedMocks": 30
+    }
+  },
+  "calibrationReport": {
+    "note": "Muestra preliminar (N=19). Intervalos con N<30 no constituyen evidencia concluyente.",
+    "modelB_bins": [
+      {
+        "range": "70% - 80%",
+        "n": 7,
+        "expectedAvgProb": "70.0%",
+        "actualHitRate": "71.4%",
+        "gap": "+1.4%"
+      },
+      {
+        "range": "80% - 90%",
+        "n": 6,
+        "expectedAvgProb": "80.0%",
+        "actualHitRate": "50.0%",
+        "gap": "-30.0%"
+      },
+      {
+        "range": "90% - 100%",
+        "n": 6,
+        "expectedAvgProb": "90.0%",
+        "actualHitRate": "50.0%",
+        "gap": "-40.0%"
+      }
+    ],
+    "ensemble_bins": [
+      {
+        "range": "50% - 60%",
+        "n": 1,
+        "expectedAvgProb": "58.5%",
+        "actualHitRate": "0.0%",
+        "gap": "-58.5%"
+      },
+      {
+        "range": "60% - 70%",
+        "n": 4,
+        "expectedAvgProb": "64.1%",
+        "actualHitRate": "100.0%",
+        "gap": "+35.9%"
+      },
+      {
+        "range": "70% - 80%",
+        "n": 5,
+        "expectedAvgProb": "73.9%",
+        "actualHitRate": "60.0%",
+        "gap": "-13.9%"
+      },
+      {
+        "range": "80% - 90%",
+        "n": 9,
+        "expectedAvgProb": "84.9%",
+        "actualHitRate": "44.4%",
+        "gap": "-40.4%"
+      }
+    ]
+  }
+}

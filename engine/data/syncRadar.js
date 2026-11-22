@@ -232,7 +232,7 @@ class RadarSync {
     for (const res of results) {
       const bet = history.find(b => b.id === res.pickId || (b.match === res.match && b.player === res.player && b.market === res.market && (!res.line || b.line === res.line)));
       const normalizedStatus = (res.status === 'GANADA' || res.status === 'ACERTADA') ? 'ACERTADA' : ((res.status === 'PERDIDA' || res.status === 'FALLADA') ? 'FALLADA' : res.status);
-      const profitVal = res.profitUnits !== undefined ? res.profitUnits : (normalizedStatus === 'ACERTADA' ? Number((((res.odds || 1.8) - 1) * 1.0).toFixed(2)) : -1.0);
+      const profitVal = res.profitUnits !== undefined ? res.profitUnits : (normalizedStatus === 'ACERTADA' ? Number((((res.odds || 1.8) - 1) * 1.0).toFixed(2)) : (normalizedStatus.includes('ANULADA') ? 0.0 : -1.0));
 
       if (bet) {
         bet.status = normalizedStatus;
@@ -261,6 +261,7 @@ class RadarSync {
     let settled = 0;
     let won = 0;
     let lost = 0;
+    let voidCount = 0;
     let pending = 0;
     let staked = 0;
     let profit = 0;
@@ -275,6 +276,7 @@ class RadarSync {
 
       const isWon = b.status === 'ACERTADA' || b.status === 'GANADA';
       const isLost = b.status === 'FALLADA' || b.status === 'PERDIDA';
+      const isVoid = b.status === 'ANULADA_NO_TITULAR' || b.status === 'ANULADA' || b.status === 'CANCELADA';
 
       if (isWon) {
         settled++;
@@ -290,6 +292,8 @@ class RadarSync {
         profit += (b.profit || 0);
         byMarket[m].lost++;
         byMarket[m].net_profit = (byMarket[m].net_profit || 0) + (b.profit || 0);
+      } else if (isVoid) {
+        voidCount++;
       } else {
         pending++;
       }
@@ -312,6 +316,7 @@ class RadarSync {
       settled_bets: settled,
       won_bets: won,
       lost_bets: lost,
+      void_bets: voidCount,
       pending_bets: pending,
       win_rate_pct: settled > 0 ? Number(((won / settled) * 100).toFixed(1)) : 0.0,
       total_staked_units: Number(staked.toFixed(2)),

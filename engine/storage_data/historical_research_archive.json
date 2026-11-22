@@ -1,0 +1,921 @@
+{
+  "version": "1.0.0",
+  "description": "DARADORBET - Archivo Histórico de Investigaciones con Dictamen Pendiente (Fase 11.3.4)",
+  "updatedAt": "2026-11-22T00:48:04.966Z",
+  "totalPending": 6,
+  "candidates": [
+    {
+      "id": "cand_20261121_castaneda_shots",
+      "league": "Bundesliga (Germany)",
+      "league_badge": "🇩🇪 Bundesliga",
+      "match": "Bayer 04 Leverkusen vs SC Paderborn 07",
+      "time": "Sat 21 Nov 2026, 14:30 UTC (Sat 21 Nov, 14:30 Europe/London)",
+      "player": "Santiago Castañeda",
+      "team": "SC Paderborn 07",
+      "opponent": "Bayer 04 Leverkusen",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.67,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "100%",
+      "hit_rate_l10": "90%",
+      "avg_per_game": 1.4,
+      "implied_prob": 59.9,
+      "real_prob": 74,
+      "edge_pct": 23.5,
+      "confidence": "91.5%",
+      "rationale": "Muestra sólida de 11 titularidades en Bundesliga (9/10 aciertos). Pendiente confirmación de planilla oficial T-60 min.",
+      "status": "PENDIENTE_ALINEACION",
+      "fair_odds": 1.35,
+      "ev_pct": "+23.5%",
+      "uncertainty_index": 0.06,
+      "minutes_expected": 82,
+      "sample_size": 11,
+      "model_applied": "Poisson Ajustado",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_castaneda_shots",
+        "finalStatus": "PENDIENTE",
+        "finalReason": "ALINEACIÓN PENDIENTE: Selección cuantitativamente aprobada, supeditada a confirmación en planilla oficial (T-60 min).",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [
+          "ALINEACIÓN PENDIENTE: Confirmación oficial T-60 min."
+        ],
+        "approvalReasons": [],
+        "decidedAt": "2026-11-20T23:30:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_castaneda_shots",
+          "target": "Santiago Castañeda",
+          "summary": "11 titularidades en la temporada. 9 de sus últimos 10 partidos con al menos 1 remate.",
+          "favorableFindings": [
+            "Hit rate L10 del 90%",
+            "Promedia 1.4 remates por 90 min"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_castaneda_shots",
+          "match": "Bayer 04 Leverkusen vs SC Paderborn 07",
+          "tacticalSummary": "Paderborn genera volumen desde media distancia en transiciones.",
+          "advantages": [
+            "Leverkusen concede espacios en segunda jugada"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.85,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_castaneda_shots",
+          "match": "Bayer 04 Leverkusen vs SC Paderborn 07",
+          "contextSummary": "Alineación proyectada: Titular. Esperar confirmación oficial.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Titular habitual sin riesgo evidente de rotación.",
+          "sources": [
+            "StatsHub Lineups",
+            "Bundesliga Official"
+          ],
+          "confidenceScore": 0.85,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_castaneda_shots",
+          "marketAnalysis": "Cuota 1.67 en BetVictor. Cuota justa 1.35. EV +23.5%.",
+          "referenceOdds": 1.67,
+          "bestOdds": 1.67,
+          "fairOdds": 1.35,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "MODERADO",
+          "confidenceScore": 0.87,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_castaneda_shots",
+          "match": "Bayer 04 Leverkusen vs SC Paderborn 07",
+          "hasFindings": true,
+          "summary": "Participación activa en el frente ofensivo de Paderborn.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.85,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "11:30 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_PENDING",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit cccf772)",
+        "source_created_at": "2026-11-20T23:30:00.000Z",
+        "original_decided_at": "2026-11-20T23:30:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_PENDING",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_castaneda_shots",
+          "finalStatus": "PENDIENTE",
+          "finalReason": "ALINEACIÓN PENDIENTE: Selección cuantitativamente aprobada, supeditada a confirmación en planilla oficial (T-60 min).",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [
+            "ALINEACIÓN PENDIENTE: Confirmación oficial T-60 min."
+          ],
+          "approvalReasons": [],
+          "decidedAt": "2026-11-20T23:30:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "PENDING_VERIFICATION",
+        "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
+        "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
+      }
+    },
+    {
+      "id": "cand_20261121_ruibal_fouls",
+      "league": "LaLiga (Spain)",
+      "league_badge": "🇪🇸 LaLiga",
+      "match": "Sevilla vs Real Betis",
+      "time": "Sat 21 Nov 2026, 17:30 UTC (Sat 21 Nov, 17:30 Europe/London)",
+      "player": "Aitor Ruibal",
+      "team": "Real Betis",
+      "opponent": "Sevilla",
+      "market": "Faltas cometidas",
+      "line": "Más de 1.5",
+      "odds": 1.67,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "100%",
+      "hit_rate_l10": "70%",
+      "avg_per_game": 2.2,
+      "implied_prob": 59.9,
+      "real_prob": 71,
+      "edge_pct": 18.5,
+      "confidence": "89.0%",
+      "rationale": "El Gran Derbi de Sevilla: Ruibal acumula 5 partidos consecutivos con >= 2 faltas y Sevilla recibe 14 f/p en su estadio.",
+      "status": "PENDIENTE_ALINEACION",
+      "fair_odds": 1.41,
+      "ev_pct": "+18.5%",
+      "uncertainty_index": 0.07,
+      "minutes_expected": 75,
+      "sample_size": 10,
+      "model_applied": "Poisson Ajustado",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_ruibal_fouls",
+        "finalStatus": "PENDIENTE",
+        "finalReason": "ALINEACIÓN PENDIENTE: Selección cuantitativamente aprobada, supeditada a confirmación oficial T-60 min.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [
+          "ALINEACIÓN PENDIENTE: Planilla oficial T-60 min."
+        ],
+        "approvalReasons": [],
+        "decidedAt": "2026-11-20T23:30:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_ruibal_fouls",
+          "target": "Aitor Ruibal",
+          "summary": "Ruibal acumula 5 cotejos consecutivos cometiendo 2 o más infracciones.",
+          "favorableFindings": [
+            "100% en L5 con 2+ faltas",
+            "10 titularidades en LaLiga"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_ruibal_fouls",
+          "match": "Sevilla vs Real Betis",
+          "tacticalSummary": "El Gran Derbi: clima de máxima rivalidad y fricción en el Sánchez-Pizjuán.",
+          "advantages": [
+            "Sevilla provoca 14.0 faltas por partido en casa"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_ruibal_fouls",
+          "match": "Sevilla vs Real Betis",
+          "contextSummary": "Derbi sevillano de alta tensión. Esperar alineación oficial.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Rol de alta intensidad en banda.",
+          "sources": [
+            "StatsHub"
+          ],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_ruibal_fouls",
+          "marketAnalysis": "Cuota 1.67 en Paddy Power. Cuota justa 1.41. EV +18.5%.",
+          "referenceOdds": 1.67,
+          "bestOdds": 1.67,
+          "fairOdds": 1.41,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "MODERADO",
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_ruibal_fouls",
+          "match": "Sevilla vs Real Betis",
+          "hasFindings": true,
+          "summary": "Duelo de alta fricción con los extremos del Sevilla.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.87,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "14:30 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_PENDING",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit cccf772)",
+        "source_created_at": "2026-11-20T23:30:00.000Z",
+        "original_decided_at": "2026-11-20T23:30:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_PENDING",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_ruibal_fouls",
+          "finalStatus": "PENDIENTE",
+          "finalReason": "ALINEACIÓN PENDIENTE: Selección cuantitativamente aprobada, supeditada a confirmación oficial T-60 min.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [
+            "ALINEACIÓN PENDIENTE: Planilla oficial T-60 min."
+          ],
+          "approvalReasons": [],
+          "decidedAt": "2026-11-20T23:30:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "PENDING_VERIFICATION",
+        "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
+        "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
+      }
+    },
+    {
+      "id": "cand_20261121_abde_sot",
+      "league": "LaLiga (Spain)",
+      "league_badge": "🇪🇸 LaLiga",
+      "match": "Sevilla vs Real Betis",
+      "time": "Sat 21 Nov 2026, 17:30 UTC (Sat 21 Nov, 14:30 ART)",
+      "player": "Abdessamad Ezzalzouli",
+      "team": "Real Betis",
+      "opponent": "Sevilla",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.6,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "80%",
+      "hit_rate_l10": "90%",
+      "avg_per_game": 1.9,
+      "implied_prob": 62.5,
+      "real_prob": 76,
+      "edge_pct": 21.6,
+      "confidence": "91.0%",
+      "rationale": "El Gran Derbi: 9/10 en L10 con remate a puerta. Extremo desequilibrante con alta frecuencia de disparo.",
+      "status": "PENDIENTE_ALINEACION",
+      "fair_odds": 1.32,
+      "ev_pct": "+21.6%",
+      "uncertainty_index": 0.05,
+      "minutes_expected": 78,
+      "sample_size": 14,
+      "model_applied": "Poisson Ajustado",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_abde_sot",
+        "finalStatus": "PENDIENTE",
+        "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado (EV +21.6%). Supeditado a planilla oficial T-60 min.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [
+          "ALINEACIÓN PENDIENTE: T-60 min."
+        ],
+        "approvalReasons": [
+          "90% L10 remates a puerta"
+        ],
+        "decidedAt": "2026-11-21T00:10:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_abde_sot",
+          "target": "Abdessamad Ezzalzouli",
+          "summary": "Abde promedia 1.9 remates y 1.1 al arco por partido. 9/10 aciertos en sus últimos 10 cotejos.",
+          "favorableFindings": [
+            "90% hit-rate en L10",
+            "Desborde y remate desde perfil cambiado"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.91,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_abde_sot",
+          "match": "Sevilla vs Real Betis",
+          "tacticalSummary": "Duelo de bandas en el Sánchez-Pizjuán. Betis vuelca ataques por el sector izquierdo.",
+          "advantages": [
+            "Sevilla concede transiciones por costados"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_abde_sot",
+          "match": "Sevilla vs Real Betis",
+          "contextSummary": "Alineación proyectada: Titular. Esperar confirmación oficial.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Sin lesiones reportadas.",
+          "sources": [
+            "StatsHub",
+            "LaLiga Official"
+          ],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_abde_sot",
+          "marketAnalysis": "Cuota 1.60 en BetVictor. Cuota justa modelada 1.32. EV +21.6%.",
+          "referenceOdds": 1.6,
+          "bestOdds": 1.6,
+          "fairOdds": 1.32,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "ALTO",
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_abde_sot",
+          "match": "Sevilla vs Real Betis",
+          "hasFindings": true,
+          "summary": "Emparejamiento favorable en 1v1 con lateral derecho rival.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "14:30 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_PENDING",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit cccf772)",
+        "source_created_at": "2026-11-21T00:10:00.000Z",
+        "original_decided_at": "2026-11-21T00:10:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_PENDING",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_abde_sot",
+          "finalStatus": "PENDIENTE",
+          "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado (EV +21.6%). Supeditado a planilla oficial T-60 min.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [
+            "ALINEACIÓN PENDIENTE: T-60 min."
+          ],
+          "approvalReasons": [
+            "90% L10 remates a puerta"
+          ],
+          "decidedAt": "2026-11-21T00:10:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "PENDING_VERIFICATION",
+        "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
+        "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
+      }
+    },
+    {
+      "id": "cand_20261121_neto_sot",
+      "league": "Premier League (England)",
+      "league_badge": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+      "match": "Chelsea vs Leeds United",
+      "time": "Sat 21 Nov 2026, 15:00 UTC (Sat 21 Nov, 12:00 ART)",
+      "player": "Pedro Neto",
+      "team": "Chelsea",
+      "opponent": "Leeds United",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.67,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "100%",
+      "hit_rate_l10": "80%",
+      "avg_per_game": 2.3,
+      "implied_prob": 59.9,
+      "real_prob": 74,
+      "edge_pct": 23.6,
+      "confidence": "91.0%",
+      "rationale": "Racha perfecta L5 (5/5) y 80% en L10. Extremo titular en Stamford Bridge con alta diagonal y disparo.",
+      "status": "PENDIENTE_ALINEACION",
+      "fair_odds": 1.35,
+      "ev_pct": "+23.6%",
+      "uncertainty_index": 0.05,
+      "minutes_expected": 76,
+      "sample_size": 13,
+      "model_applied": "Poisson Ajustado",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_neto_sot",
+        "finalStatus": "PENDIENTE",
+        "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado. Supeditado a confirmación oficial T-60 min.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [
+          "ALINEACIÓN PENDIENTE: T-60 min."
+        ],
+        "approvalReasons": [
+          "100% L5 con remates a portería"
+        ],
+        "decidedAt": "2026-11-21T00:10:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_neto_sot",
+          "target": "Pedro Neto",
+          "summary": "Neto ha probado a puerta en 5 de sus últimos 5 juegos como titular.",
+          "favorableFindings": [
+            "100% L5",
+            "Promedia 2.3 disparos y 1.2 a puerta"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.91,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_neto_sot",
+          "match": "Chelsea vs Leeds United",
+          "tacticalSummary": "Chelsea domina la posesión en campo rival forzando repliegue de Leeds.",
+          "advantages": [
+            "Leeds concede 4.4 tiros al arco como visitante"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_neto_sot",
+          "match": "Chelsea vs Leeds United",
+          "contextSummary": "Stamford Bridge. Proyectado titular en banda derecha.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Rol protagónico en el frente de ataque.",
+          "sources": [
+            "StatsHub",
+            "Premier League Official"
+          ],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_neto_sot",
+          "marketAnalysis": "Cuota 1.67 en BetVictor. Cuota justa 1.35. EV +23.6%.",
+          "referenceOdds": 1.67,
+          "bestOdds": 1.67,
+          "fairOdds": 1.35,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "ALTO",
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_neto_sot",
+          "match": "Chelsea vs Leeds United",
+          "hasFindings": true,
+          "summary": "Cortes hacia el centro para rematar con pierna zurda.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "12:00 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_PENDING",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit cccf772)",
+        "source_created_at": "2026-11-21T00:10:00.000Z",
+        "original_decided_at": "2026-11-21T00:10:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_PENDING",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_neto_sot",
+          "finalStatus": "PENDIENTE",
+          "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado. Supeditado a confirmación oficial T-60 min.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [
+            "ALINEACIÓN PENDIENTE: T-60 min."
+          ],
+          "approvalReasons": [
+            "100% L5 con remates a portería"
+          ],
+          "decidedAt": "2026-11-21T00:10:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "PENDING_VERIFICATION",
+        "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
+        "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
+      }
+    },
+    {
+      "id": "cand_20261121_romano_shots",
+      "league": "Serie A (Italy)",
+      "league_badge": "🇮🇹 Serie A",
+      "match": "Como vs Cagliari",
+      "time": "Sat 21 Nov 2026, 14:00 UTC (Sat 21 Nov, 11:00 ART)",
+      "player": "Alessandro Romano",
+      "team": "Cagliari",
+      "opponent": "Como",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.57,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "80%",
+      "hit_rate_l10": "90%",
+      "avg_per_game": 1.5,
+      "implied_prob": 63.7,
+      "real_prob": 75,
+      "edge_pct": 17.7,
+      "confidence": "90.0%",
+      "rationale": "11 titularidades en Serie A con 9/10 aciertos en L10. Presencia constante en remate de media distancia.",
+      "status": "PENDIENTE_ALINEACION",
+      "fair_odds": 1.33,
+      "ev_pct": "+17.7%",
+      "uncertainty_index": 0.05,
+      "minutes_expected": 82,
+      "sample_size": 11,
+      "model_applied": "Poisson Ajustado",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_romano_shots",
+        "finalStatus": "PENDIENTE",
+        "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado (EV +17.7%). Supeditado a planilla oficial T-60 min.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [
+          "ALINEACIÓN PENDIENTE: T-60 min."
+        ],
+        "approvalReasons": [
+          "90% L10 remates totales en Serie A"
+        ],
+        "decidedAt": "2026-11-21T00:10:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_romano_shots",
+          "target": "Alessandro Romano",
+          "summary": "Romano ha rematado en 9 de sus últimos 10 cotejos ligueros.",
+          "favorableFindings": [
+            "90% L10",
+            "11 titularidades en la temporada"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_romano_shots",
+          "match": "Como vs Cagliari",
+          "tacticalSummary": "Duelo igualado donde Cagliari busca disparos tras segundas jugadas de pelota parada.",
+          "advantages": [
+            "Romano se incorpora al borde del área"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_romano_shots",
+          "match": "Como vs Cagliari",
+          "contextSummary": "Stadio Giuseppe Sinigaglia. Proyectado en el once inicial.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Sin fatiga ni rotación prevista.",
+          "sources": [
+            "StatsHub"
+          ],
+          "confidenceScore": 0.86,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_romano_shots",
+          "marketAnalysis": "Cuota 1.57 en Coral. Cuota justa 1.33. EV +17.7%.",
+          "referenceOdds": 1.57,
+          "bestOdds": 1.57,
+          "fairOdds": 1.33,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "MODERADO",
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_romano_shots",
+          "match": "Como vs Cagliari",
+          "hasFindings": true,
+          "summary": "Romano asume tiros libres directos lejanos y disparos exteriores.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.87,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "11:00 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_PENDING",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit cccf772)",
+        "source_created_at": "2026-11-21T00:10:00.000Z",
+        "original_decided_at": "2026-11-21T00:10:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_PENDING",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_romano_shots",
+          "finalStatus": "PENDIENTE",
+          "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado (EV +17.7%). Supeditado a planilla oficial T-60 min.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [
+            "ALINEACIÓN PENDIENTE: T-60 min."
+          ],
+          "approvalReasons": [
+            "90% L10 remates totales en Serie A"
+          ],
+          "decidedAt": "2026-11-21T00:10:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "PENDING_VERIFICATION",
+        "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
+        "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
+      }
+    },
+    {
+      "id": "cand_20261121_nuamah_shots",
+      "league": "Ligue 1 (France)",
+      "league_badge": "🇫🇷 Ligue 1",
+      "match": "Lille vs Olympique Lyonnais",
+      "time": "Sat 21 Nov 2026, 19:45 UTC (Sat 21 Nov, 16:45 ART)",
+      "player": "Ernest Nuamah",
+      "team": "Olympique Lyonnais",
+      "opponent": "Lille",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "odds": 1.67,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
+      "hit_rate_l5": "80%",
+      "hit_rate_l10": "80%",
+      "avg_per_game": 2.4,
+      "implied_prob": 59.9,
+      "real_prob": 73,
+      "edge_pct": 21.9,
+      "confidence": "90.5%",
+      "rationale": "80% de aciertos en L10 superando la línea de 1.5 remates (promedia 2.4 f/p). Alta iniciativa ofensiva en Lyon.",
+      "status": "PENDIENTE_ALINEACION",
+      "fair_odds": 1.37,
+      "ev_pct": "+21.9%",
+      "uncertainty_index": 0.05,
+      "minutes_expected": 75,
+      "sample_size": 13,
+      "model_applied": "Poisson Ajustado",
+      "risk_verdict": {
+        "agentName": "Risk Manager",
+        "alias": "Elena",
+        "candidateId": "cand_20261121_nuamah_shots",
+        "finalStatus": "PENDIENTE",
+        "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado (EV +21.9%). Supeditado a planilla oficial T-60 min.",
+        "vetoApplied": false,
+        "vetoReasons": [],
+        "pendingReasons": [
+          "ALINEACIÓN PENDIENTE: T-60 min."
+        ],
+        "approvalReasons": [
+          "80% L10 remates >= 2"
+        ],
+        "decidedAt": "2026-11-21T00:10:00.000Z"
+      },
+      "agent_reports": {
+        "playerAnalyst": {
+          "agentName": "Player Analyst",
+          "candidateId": "cand_20261121_nuamah_shots",
+          "target": "Ernest Nuamah",
+          "summary": "Nuamah es el atacante con mayor desequilibrio individual en Lyon. 8 de sus últimos 10 cotejos con 2+ remates.",
+          "favorableFindings": [
+            "80% L10",
+            "Promedia 2.4 remates por 90 min"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.9,
+          "recommendation": "FAVORABLE"
+        },
+        "teamAnalyst": {
+          "agentName": "Team Analyst",
+          "candidateId": "cand_20261121_nuamah_shots",
+          "match": "Lille vs Olympique Lyonnais",
+          "tacticalSummary": "Partido de ida y vuelta en el Decathlon Arena. Ambos equipos priorizan la posesión vertical.",
+          "advantages": [
+            "Espacios para transiciones de Lyon"
+          ],
+          "risks": [],
+          "missingData": [],
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        },
+        "matchContext": {
+          "agentName": "Match Context Analyst",
+          "candidateId": "cand_20261121_nuamah_shots",
+          "match": "Lille vs Olympique Lyonnais",
+          "contextSummary": "Alineación proyectada: Extremo derecho titular.",
+          "confirmedAbsences": [],
+          "probableAbsences": [],
+          "rotationRisks": [],
+          "impactAnalysis": "Sin limitaciones físicas reportadas.",
+          "sources": [
+            "StatsHub"
+          ],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        },
+        "oddsAnalyst": {
+          "agentName": "Odds Analyst",
+          "candidateId": "cand_20261121_nuamah_shots",
+          "marketAnalysis": "Cuota 1.67 en BetVictor. Cuota justa 1.37. EV +21.9%.",
+          "referenceOdds": 1.67,
+          "bestOdds": 1.67,
+          "fairOdds": 1.37,
+          "observedDiscrepancies": [],
+          "risks": [],
+          "clvAssessment": "ALTO",
+          "confidenceScore": 0.89,
+          "recommendation": "FAVORABLE"
+        },
+        "matchIntel": {
+          "agentName": "Match Intelligence Analyst",
+          "candidateId": "cand_20261121_nuamah_shots",
+          "match": "Lille vs Olympique Lyonnais",
+          "hasFindings": true,
+          "summary": "Tendencia a disparar con zurda tras superar la primera línea defensiva.",
+          "tacticalDuels": [],
+          "findings": [],
+          "confidenceScore": 0.88,
+          "recommendation": "FAVORABLE"
+        }
+      },
+      "date": "2026-11-21",
+      "is_finished": false,
+      "actual_stat": null,
+      "result": null,
+      "eventDateLocal": "2026-11-21",
+      "kickoffTimeLocal": "16:45 hs",
+      "is_historical_recovery": true,
+      "historical_status": "HISTORICAL_PENDING",
+      "recovery_metadata": {
+        "recovery_phase": "11.3.4",
+        "recovery_source": "engine/storage_data/quarantine_candidates.json (commit 0aab50c / commit cccf772)",
+        "source_created_at": "2026-11-21T00:10:00.000Z",
+        "original_decided_at": "2026-11-21T00:10:00.000Z",
+        "recovered_at": "2026-11-22T00:48:04.966Z",
+        "integrity_sealed_at": "2026-11-22T00:48:04.966Z",
+        "is_historical_recovery": true,
+        "recovery_classification": "HISTORICAL_PENDING",
+        "original_risk_verdict": {
+          "agentName": "Risk Manager",
+          "alias": "Elena",
+          "candidateId": "cand_20261121_nuamah_shots",
+          "finalStatus": "PENDIENTE",
+          "finalReason": "ALINEACIÓN PENDIENTE: Cuantitativamente aprobado (EV +21.9%). Supeditado a planilla oficial T-60 min.",
+          "vetoApplied": false,
+          "vetoReasons": [],
+          "pendingReasons": [
+            "ALINEACIÓN PENDIENTE: T-60 min."
+          ],
+          "approvalReasons": [
+            "80% L10 remates >= 2"
+          ],
+          "decidedAt": "2026-11-21T00:10:00.000Z"
+        }
+      },
+      "settlement_historical": {
+        "status": "PENDING_VERIFICATION",
+        "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
+        "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
+      }
+    }
+  ]
+}

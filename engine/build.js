@@ -79,7 +79,8 @@ const storageFiles = [
   'engine/storage_data/rejected_picks.json',
   'engine/storage_data/audit_integrity_ledger.json',
   'historial_picks.json',
-  'picks_hoy.json'
+  'picks_hoy.json',
+  'api/metrics.json'
 ];
 
 storageFiles.forEach(file => {
