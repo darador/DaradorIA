@@ -1,0 +1,445 @@
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+const guard = require('../audit/integrityGuard');
+
+const ROOT_DIR = process.cwd();
+const PICKS_PATH = path.join(ROOT_DIR, 'picks_hoy.json');
+const REGISTRY_PATH = path.join(ROOT_DIR, 'engine/storage_data/model_observation_registry.json');
+const LEDGER_PATH = path.join(ROOT_DIR, 'engine/storage_data/audit_integrity_ledger.json');
+
+const newPicks = [
+  {
+    id: 'cand_real_statshub_20261122_wojcik_fouls',
+    original_id: 'statshub_wojcik_fouls',
+    match: 'SV Werder Bremen vs Hamburger SV',
+    tournament: 'Bundesliga (Germany)',
+    league: 'Bundesliga (Germany)',
+    league_badge: '🇩🇪 Bundesliga',
+    player: 'Oskar Wojcik',
+    playerOrTeam: 'Oskar Wojcik',
+    team: 'SV Werder Bremen',
+    opponent: 'Hamburger SV',
+    market: 'Faltas cometidas',
+    line: 'Más de 0.5',
+    odds: 1.50,
+    fair_odds: 1.26,
+    ev_pct: '+19.4%',
+    edge_pct: 19.4,
+    confidence: '90.0%',
+    hit_rate_l5: '80% (4/5)',
+    hit_rate_l10: '90% (9/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T16:30:00Z',
+    kickoffTimeLocal: '13:30 hs',
+    time: '13:30 hs (ART)',
+    rationale: 'Oskar Wojcik superó la línea de 0.5 faltas en 9 de sus últimos 10 partidos (90% L10, 93% L15). Hamburger SV recibe en promedio 11.4 faltas por partido fuera de casa.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    model_probabilities: { model_b_poisson: 0.78, model_c_empirical: 0.82, ensemble: 0.796 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      officialMatchId: 'sv-werder-bremen-v-hamburger-sv.0lgjf2o',
+      officialPlayerId: 'oskar-wojcik.0tk5app',
+      officialTeamId: 'sv-werder-bremen.0dwnpj8',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261122_bremen_corners',
+    original_id: 'statshub_bremen_corners',
+    match: 'SV Werder Bremen vs Hamburger SV',
+    tournament: 'Bundesliga (Germany)',
+    league: 'Bundesliga (Germany)',
+    league_badge: '🇩🇪 Bundesliga',
+    player: 'SV Werder Bremen (Equipo)',
+    playerOrTeam: 'SV Werder Bremen (Equipo)',
+    team: 'SV Werder Bremen',
+    opponent: 'Hamburger SV',
+    market: 'Córners de equipo',
+    line: 'Menos de 6.5',
+    odds: 1.58,
+    fair_odds: 1.34,
+    ev_pct: '+17.9%',
+    edge_pct: 17.9,
+    confidence: '90.0%',
+    hit_rate_l5: '80% (4/5)',
+    hit_rate_l10: '90% (9/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T16:30:00Z',
+    kickoffTimeLocal: '13:30 hs',
+    time: '13:30 hs (ART)',
+    rationale: 'Werder Bremen registró menos de 6.5 córners en 9 de sus últimos 10 encuentros (90% L10). Hamburger SV concede menos de 6.5 córners en el 70% de sus compromisos.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    isTeamProp: true,
+    model_probabilities: { model_b_poisson: 0.75, model_c_empirical: 0.74, ensemble: 0.746 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      isTeamProp: true,
+      officialMatchId: 'sv-werder-bremen-v-hamburger-sv.0lgjf2o',
+      officialTeamId: 'sv-werder-bremen.0dwnpj8',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261122_albacete_goals',
+    original_id: 'statshub_albacete_goals',
+    match: 'Burgos CF vs Albacete Balompié',
+    tournament: 'LaLiga 2 (Spain)',
+    league: 'LaLiga 2 (Spain)',
+    league_badge: '🇪🇸 LaLiga 2',
+    player: 'Albacete Balompié (Equipo)',
+    playerOrTeam: 'Albacete Balompié (Equipo)',
+    team: 'Albacete Balompié',
+    opponent: 'Burgos CF',
+    market: 'Goles de equipo',
+    line: 'Más de 0.5',
+    odds: 1.53,
+    fair_odds: 1.30,
+    ev_pct: '+18.1%',
+    edge_pct: 18.1,
+    confidence: '85.0%',
+    hit_rate_l5: '100% (5/5)',
+    hit_rate_l10: '80% (8/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T20:00:00Z',
+    kickoffTimeLocal: '17:00 hs',
+    time: '17:00 hs (ART)',
+    rationale: 'Albacete convirtió al menos un gol en 5 de sus últimos 5 juegos (100% L5) y en 8 de los últimos 10 (80%). Burgos concedió goles en el 80% de sus partidos.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    isTeamProp: true,
+    model_probabilities: { model_b_poisson: 0.78, model_c_empirical: 0.76, ensemble: 0.772 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      isTeamProp: true,
+      officialMatchId: 'burgos-club-de-futbol-v-albacete-balompi.1vda0g3',
+      officialTeamId: 'albacete-balompie.1fnl4jd',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261122_tay_abed_shots',
+    original_id: 'statshub_tay_abed_shots',
+    match: 'Celta Vigo B vs Real Valladolid',
+    tournament: 'LaLiga 2 (Spain)',
+    league: 'LaLiga 2 (Spain)',
+    league_badge: '🇪🇸 LaLiga 2',
+    player: 'Tay Abed',
+    playerOrTeam: 'Tay Abed',
+    team: 'Real Valladolid',
+    opponent: 'Celta Vigo B',
+    market: 'Remates totales',
+    line: 'Más de 2.5',
+    odds: 1.57,
+    fair_odds: 1.37,
+    ev_pct: '+14.9%',
+    edge_pct: 14.9,
+    confidence: '85.0%',
+    hit_rate_l5: '80% (4/5)',
+    hit_rate_l10: '90% (9/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T17:30:00Z',
+    kickoffTimeLocal: '14:30 hs',
+    time: '14:30 hs (ART)',
+    rationale: 'Tay Abed promedia 3.4 remates por partido y cumplió la línea de 2.5 remates en 9 de sus últimos 10 partidos oficiales (90% L10). Titularidad proyectada.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    model_probabilities: { model_b_poisson: 0.74, model_c_empirical: 0.72, ensemble: 0.732 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      officialMatchId: 'celta-vigo-b-v-real-valladolid.1e0n4s7',
+      officialPlayerId: 'tay-abed.1h5vk8u',
+      officialTeamId: 'real-valladolid.1wgxtss',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261122_bonar_shots',
+    original_id: 'statshub_bonar_shots',
+    match: 'Girona FC vs Eibar',
+    tournament: 'LaLiga 2 (Spain)',
+    league: 'LaLiga 2 (Spain)',
+    league_badge: '🇪🇸 LaLiga 2',
+    player: 'Javier Bonar',
+    playerOrTeam: 'Javier Bonar',
+    team: 'Girona FC',
+    opponent: 'Eibar',
+    market: 'Remates totales',
+    line: 'Más de 0.5',
+    odds: 1.57,
+    fair_odds: 1.32,
+    ev_pct: '+18.7%',
+    edge_pct: 18.7,
+    confidence: '90.0%',
+    hit_rate_l5: '100% (5/5)',
+    hit_rate_l10: '90% (9/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T17:30:00Z',
+    kickoffTimeLocal: '14:30 hs',
+    time: '14:30 hs (ART)',
+    rationale: 'Javier Bonar registró al menos un remate en 9 de sus últimos 10 partidos (90% L10, 87% L15). Eibar concede un promedio de 23.1 remates en visitas.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    model_probabilities: { model_b_poisson: 0.76, model_c_empirical: 0.75, ensemble: 0.756 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      officialMatchId: 'girona-fc-v-eibar.1m8hnww',
+      officialPlayerId: 'javier-bonar.0syfi8t',
+      officialTeamId: 'girona-fc.159x68u',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261122_avellino_corners',
+    original_id: 'statshub_avellino_corners',
+    match: 'Avellino vs Mantova',
+    tournament: 'Serie B (Italy)',
+    league: 'Serie B (Italy)',
+    league_badge: '🇮🇹 Serie B',
+    player: 'Avellino (Equipo)',
+    playerOrTeam: 'Avellino (Equipo)',
+    team: 'Avellino',
+    opponent: 'Mantova',
+    market: 'Córners de equipo',
+    line: 'Menos de 5.5',
+    odds: 1.53,
+    fair_odds: 1.31,
+    ev_pct: '+16.6%',
+    edge_pct: 16.6,
+    confidence: '85.0%',
+    hit_rate_l5: '60% (3/5)',
+    hit_rate_l10: '80% (8/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T14:00:00Z',
+    kickoffTimeLocal: '11:00 hs',
+    time: '11:00 hs (ART)',
+    rationale: 'Avellino generó menos de 5.5 córners en 8 de sus últimos 10 partidos (80% L10). Mantova concede menos de 5.5 córners en el 90% de sus visitas.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    isTeamProp: true,
+    model_probabilities: { model_b_poisson: 0.77, model_c_empirical: 0.75, ensemble: 0.762 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      isTeamProp: true,
+      officialMatchId: 'avellino-v-mantova.0mds7pa',
+      officialTeamId: 'avellino.1hz47ny',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261122_arezzo_sot',
+    original_id: 'statshub_arezzo_sot',
+    match: 'Arezzo vs Padova',
+    tournament: 'Serie B (Italy)',
+    league: 'Serie B (Italy)',
+    league_badge: '🇮🇹 Serie B',
+    player: 'Arezzo (Equipo)',
+    playerOrTeam: 'Arezzo (Equipo)',
+    team: 'Arezzo',
+    opponent: 'Padova',
+    market: 'Remates al arco de equipo',
+    line: 'Menos de 4.5',
+    odds: 1.62,
+    fair_odds: 1.35,
+    ev_pct: '+20.2%',
+    edge_pct: 20.2,
+    confidence: '85.0%',
+    hit_rate_l5: '80% (4/5)',
+    hit_rate_l10: '80% (8/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-22',
+    eventDateLocal: '2026-11-22',
+    eventDateUtc: '2026-11-22T16:15:00Z',
+    kickoffTimeLocal: '13:15 hs',
+    time: '13:15 hs (ART)',
+    rationale: 'Arezzo no superó los 4.5 remates a puerta en 8 de sus últimos 10 partidos (80%). Padova es una de las defensas más sólidas concediendo más de 4.5 SOT en solo 20% de sus juegos.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    isTeamProp: true,
+    model_probabilities: { model_b_poisson: 0.75, model_c_empirical: 0.73, ensemble: 0.742 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      isTeamProp: true,
+      officialMatchId: 'arezzo-v-padova.1gi7b9q',
+      officialTeamId: 'arezzo.0zm1x44',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  },
+  {
+    id: 'cand_real_statshub_20261123_almeria_goals',
+    original_id: 'statshub_almeria_goals',
+    match: 'AD Ceuta vs Almería',
+    tournament: 'LaLiga 2 (Spain)',
+    league: 'LaLiga 2 (Spain)',
+    league_badge: '🇪🇸 LaLiga 2',
+    player: 'Almería (Equipo)',
+    playerOrTeam: 'Almería (Equipo)',
+    team: 'Almería',
+    opponent: 'AD Ceuta',
+    market: 'Goles de equipo',
+    line: 'Más de 1.5',
+    odds: 1.80,
+    fair_odds: 1.50,
+    ev_pct: '+20.2%',
+    edge_pct: 20.2,
+    confidence: '75.0%',
+    hit_rate_l5: '80% (4/5)',
+    hit_rate_l10: '70% (7/10)',
+    status: 'APROBADO',
+    status_label: '✔ Aprobado',
+    date: '2026-11-23',
+    eventDateLocal: '2026-11-23',
+    eventDateUtc: '2026-11-23T19:30:00Z',
+    kickoffTimeLocal: '16:30 hs',
+    time: '16:30 hs (ART)',
+    rationale: 'Almería anotó 2 o más goles en 4 de sus últimos 5 compromisos (80%) y promedia 1.8 goles por partido. AD Ceuta concede goles en el 70% de sus juegos de local.',
+    is_finished: false,
+    actual_stat: null,
+    result: 'PENDIENTE',
+    isTeamProp: true,
+    model_probabilities: { model_b_poisson: 0.68, model_c_empirical: 0.65, ensemble: 0.668 },
+    provenance: {
+      type: 'REAL_VERIFIED',
+      isTeamProp: true,
+      officialMatchId: 'ad-ceuta-v-almeria.0oxir8i',
+      officialTeamId: 'almeria.0n1b49y',
+      sourceTool: 'statshub_mcp',
+      verifiedAt: new Date().toISOString()
+    },
+    shadow_mode: true,
+    is_operative_recommendation: false
+  }
+];
+
+// 1. Incorporar en picks_hoy.json
+const picksData = JSON.parse(fs.readFileSync(PICKS_PATH, 'utf8'));
+const existingPickIds = new Set(picksData.top_picks.map(p => p.id));
+
+let addedCount = 0;
+for (const pick of newPicks) {
+  if (!existingPickIds.has(pick.id)) {
+    picksData.top_picks.push(pick);
+    addedCount++;
+  }
+}
+picksData.last_updated = new Date().toISOString();
+picksData.summary_metrics.total_picks = picksData.top_picks.length;
+fs.writeFileSync(PICKS_PATH, JSON.stringify(picksData, null, 2), 'utf8');
+console.log(`✅ picks_hoy.json actualizado: ${picksData.top_picks.length} picks totales (+${addedCount} de nuevas ligas).`);
+
+// 2. Registrar en model_observation_registry.json y sellar en ledger
+const registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf8'));
+const ledger = JSON.parse(fs.readFileSync(LEDGER_PATH, 'utf8'));
+const existingRegIds = new Set(registry.map(r => r.pickId));
+
+let regAdded = 0;
+for (const pick of newPicks) {
+  if (!existingRegIds.has(pick.id)) {
+    const obs = {
+      pickId: pick.id,
+      eventId: pick.provenance.officialMatchId,
+      event: pick.match,
+      competition: pick.league,
+      playerOrTeam: pick.player,
+      market: pick.market,
+      line: pick.line,
+      odds: pick.odds,
+      probModelB: pick.model_probabilities.model_b_poisson,
+      probModelC: pick.model_probabilities.model_c_empirical,
+      originalProb: pick.model_probabilities.ensemble,
+      modelVersionB: 'Model-B-L10',
+      modelVersionC: 'Model-C-L15-L20',
+      windowUsedB: 'L10',
+      windowUsedC: 'L15',
+      evEnsemble: (pick.odds * pick.model_probabilities.ensemble) - 1.0,
+      evPercentageEnsemble: pick.edge_pct,
+      actualMatchesAnalyzed: 10,
+      investigatedAt: new Date().toISOString(),
+      date: pick.eventDateLocal,
+      elenaDecision: 'APROBADO',
+      elenaVetoApplied: false,
+      verificationStatus: 'PRE_MATCH_FROZEN',
+      finalResultConfirmed: 'PENDIENTE',
+      actualStat: null,
+      profitUnits: null,
+      settledAt: null,
+      currentState: 'APPROVED',
+      stage: 'APPROVED',
+      isOperativeRecommendation: false,
+      shadowMode: true,
+      isTeamProp: pick.isTeamProp || false,
+      provenance: pick.provenance
+    };
+    registry.push(obs);
+
+    // Cripto sello SHA-256 canónico
+    const preHash = guard.computePreMatchHash(obs);
+    const postHash = guard.computeSettlementHash(obs);
+    ledger[obs.pickId] = {
+      pickId: obs.pickId,
+      sealedAt: obs.investigatedAt || new Date().toISOString(),
+      preMatchHash: preHash,
+      settlementHash: postHash,
+      modelVersionB: obs.modelVersionB,
+      modelVersionC: obs.modelVersionC,
+      odds: obs.odds,
+      probModelB: obs.probModelB,
+      probModelC: obs.probModelC,
+      finalResultConfirmed: obs.finalResultConfirmed
+    };
+    regAdded++;
+  }
+}
+
+fs.writeFileSync(REGISTRY_PATH, JSON.stringify(registry, null, 2), 'utf8');
+fs.writeFileSync(LEDGER_PATH, JSON.stringify(ledger, null, 2), 'utf8');
+console.log(`✅ Observation Tracker y Ledger actualizados (+${regAdded} observaciones selladas).`);

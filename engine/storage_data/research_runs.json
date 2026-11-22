@@ -1,5 +1,16 @@
 [
   {
+    "id": "run_1795356380192",
+    "timestamp": "2026-11-22T14:06:20.192Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
     "id": "run_1795265715966",
     "timestamp": "2026-11-21T12:55:15.966Z",
     "fixturesScanned": 0,

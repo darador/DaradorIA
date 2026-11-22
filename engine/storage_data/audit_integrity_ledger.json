@@ -1302,5 +1302,101 @@
     "finalResultConfirmed": "GANADA",
     "settledAt": "2026-11-21T23:00:00.000Z",
     "actualStat": 2
+  },
+  "cand_real_statshub_20261122_wojcik_fouls": {
+    "pickId": "cand_real_statshub_20261122_wojcik_fouls",
+    "sealedAt": "2026-11-22T14:00:44.338Z",
+    "preMatchHash": "e1f79af826fa5dd78bf1309729135f2e8dae56c9b2842aeee49b390d8f7c21d0",
+    "settlementHash": "43e0ae47cb62936993302dcd9a6c7323eb400825c3b3c06fe297fbbc1545bf02",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.5,
+    "probModelB": 0.78,
+    "probModelC": 0.82,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261122_bremen_corners": {
+    "pickId": "cand_real_statshub_20261122_bremen_corners",
+    "sealedAt": "2026-11-22T14:00:44.338Z",
+    "preMatchHash": "163f6f8acdc4142f78dfb7d921c82d4fc7e21b56141fb9ab94bde46c8eb0974d",
+    "settlementHash": "cd37e314d00a5669b76d445bb95cc919c930304c41d35d4c6b52ab14e4acf667",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.58,
+    "probModelB": 0.75,
+    "probModelC": 0.74,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261122_albacete_goals": {
+    "pickId": "cand_real_statshub_20261122_albacete_goals",
+    "sealedAt": "2026-11-22T14:00:44.339Z",
+    "preMatchHash": "9f5157ef6c04ed9c43d8766e0639c3e1b134cc4eb37dc8e3799d7329fe0c71d7",
+    "settlementHash": "489a0a1d1120c44a2c261aed1ab92e1078f4172ea19c7dea713debc39b52f257",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.53,
+    "probModelB": 0.78,
+    "probModelC": 0.76,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261122_tay_abed_shots": {
+    "pickId": "cand_real_statshub_20261122_tay_abed_shots",
+    "sealedAt": "2026-11-22T14:00:44.339Z",
+    "preMatchHash": "6df8957e4144a7d9dbc4e6d5207964d0cd29fd425b71705df0384fa1dfc1ebae",
+    "settlementHash": "c8bd2246fa52dd7823e72b168598c22dedbe4c7631e2c50208a5a2a1a96c66b4",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.57,
+    "probModelB": 0.74,
+    "probModelC": 0.72,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261122_bonar_shots": {
+    "pickId": "cand_real_statshub_20261122_bonar_shots",
+    "sealedAt": "2026-11-22T14:00:44.339Z",
+    "preMatchHash": "085a2c826181bc64fdbcc491c274ddf8e83e183f782bdff0c1d4242af262e573",
+    "settlementHash": "358e3df1d84d27e53fe283f7324c70382c0c258bbf03993f21e0e5c072b3d0fc",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.57,
+    "probModelB": 0.76,
+    "probModelC": 0.75,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261122_avellino_corners": {
+    "pickId": "cand_real_statshub_20261122_avellino_corners",
+    "sealedAt": "2026-11-22T14:00:44.339Z",
+    "preMatchHash": "2c81879ff520347e8ce46c02647479c260e0bf6c035761fd1063bf82a7495593",
+    "settlementHash": "20d8e1acefd90ee2195b8406a3f4fcf3c8bb9db5a5c9c00f59aba78695c9ade3",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.53,
+    "probModelB": 0.77,
+    "probModelC": 0.75,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261122_arezzo_sot": {
+    "pickId": "cand_real_statshub_20261122_arezzo_sot",
+    "sealedAt": "2026-11-22T14:00:44.339Z",
+    "preMatchHash": "a63bce60845aa1acbb95aa4e5f40fd4474ceb5c991c0e2ec2497fdc1edf75f51",
+    "settlementHash": "f6918b10dea92ace1ed531b8cd79430b6f6e2896792c46d589ba0e0a1d3f35c5",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.62,
+    "probModelB": 0.75,
+    "probModelC": 0.73,
+    "finalResultConfirmed": "PENDIENTE"
+  },
+  "cand_real_statshub_20261123_almeria_goals": {
+    "pickId": "cand_real_statshub_20261123_almeria_goals",
+    "sealedAt": "2026-11-22T14:00:44.339Z",
+    "preMatchHash": "c4916def851997b50b39097311047fc89e97be959df21a5c6fa4264a5199e0a8",
+    "settlementHash": "0e101b81c5bbe448c3cc08c0d00f958934580f9f2e1bb25fefcd7977c4aaf63b",
+    "modelVersionB": "Model-B-L10",
+    "modelVersionC": "Model-C-L15-L20",
+    "odds": 1.8,
+    "probModelB": 0.68,
+    "probModelC": 0.65,
+    "finalResultConfirmed": "PENDIENTE"
   }
 }

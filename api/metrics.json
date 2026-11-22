@@ -1,33 +1,338 @@
 {
-  "updated_at": "2026-11-22T12:31:38.984Z",
-  "shadow_mode": true,
-  "universe_a_global_predictive": {
-    "description": "Todos los pronósticos auténticos con probabilidad congelada pre-partido y resultado oficial FT",
-    "total_observations": 31,
-    "won": 21,
-    "lost": 10,
-    "win_rate_pct": 67.74,
-    "brier_model_b": 0.2518,
-    "log_loss_model_b": 0.7351,
-    "brier_model_c": 0.2544,
-    "log_loss_model_c": 0.7261,
-    "brier_ensemble": 0.304,
-    "log_loss_ensemble": 0.8455,
-    "progress_towards_100": "21 / 100 (21%)",
-    "void": 3
+  "status": "ok",
+  "updatedAt": "2026-11-22T14:12:09.954Z",
+  "methodologyVersion": "v2.1-calibrated-nomenclature",
+  "nomenclature": {
+    "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
+    "fairMarketProbWithoutVig": "Probabilidad de mercado sin margen (requiere mercado bilateral)",
+    "modelBProb": "Probabilidad proyectada por Modelo B (ventana L10)",
+    "modelCProb": "Probabilidad proyectada por Modelo C (ventana L15-L20)",
+    "ensembleProb": "Promedio ponderado Modelo B + Modelo C",
+    "modelFairOdds": "1 / Probabilidad_Modelo (cuota teórica del modelo, no de mercado)"
   },
-  "universe_b_elena_portfolio": {
-    "description": "Cartera operativa exclusiva de picks aprobados por Elena y jugados bajo Shadow Mode",
-    "total_picks_decided": 20,
-    "won": 17,
-    "lost": 8,
-    "win_rate_pct": 68,
-    "pnl_units": 5.7,
-    "yield_pct": 22.8,
-    "staked_units": 20,
-    "brier_ensemble": 0.3021,
-    "log_loss_ensemble": 0.8438,
-    "total_decided": 25,
-    "void": 2
+  "totalTrackedPicks": 34,
+  "summary": {
+    "total_bets": 34,
+    "settled_bets": 31,
+    "won_bets": 21,
+    "lost_bets": 10,
+    "void_bets": 3,
+    "pending_bets": 0,
+    "win_rate_pct": 67.7,
+    "total_staked_units": 31,
+    "net_profit_units": 6.78,
+    "roi_pct": 21.9,
+    "by_market": {
+      "Remates totales": {
+        "total": 7,
+        "won": 7,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+5.52U"
+      },
+      "Remates al arco de equipo": {
+        "total": 5,
+        "won": 2,
+        "lost": 3,
+        "win_rate": "40.0%",
+        "profit": "-1.64U"
+      },
+      "Remates al arco": {
+        "total": 5,
+        "won": 1,
+        "lost": 1,
+        "win_rate": "50.0%",
+        "profit": "-0.30U"
+      },
+      "Córners de equipo": {
+        "total": 5,
+        "won": 3,
+        "lost": 2,
+        "win_rate": "60.0%",
+        "profit": "+0.27U"
+      },
+      "Entradas (Tackles)": {
+        "total": 2,
+        "won": 2,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+1.80U"
+      },
+      "Faltas cometidas": {
+        "total": 3,
+        "won": 3,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+2.53U"
+      },
+      "Goles de equipo": {
+        "total": 3,
+        "won": 2,
+        "lost": 1,
+        "win_rate": "66.7%",
+        "profit": "+0.87U"
+      },
+      "Remates de equipo": {
+        "total": 2,
+        "won": 0,
+        "lost": 2,
+        "win_rate": "0.0%",
+        "profit": "-2.00U"
+      },
+      "Faltas ganadas": {
+        "total": 1,
+        "won": 0,
+        "lost": 1,
+        "win_rate": "0.0%",
+        "profit": "-1.00U"
+      },
+      "Tarjetas": {
+        "total": 1,
+        "won": 1,
+        "lost": 0,
+        "win_rate": "100.0%",
+        "profit": "+0.73U"
+      }
+    }
+  },
+  "evaluation": {
+    "evaluatedAt": "2026-11-22T14:12:09.952Z",
+    "sampleSize": 21,
+    "financialMetrics": {
+      "totalStakedUnits": 21,
+      "netProfitUnits": 0.37,
+      "yieldPct": 1.8,
+      "winRatePct": 57.1,
+      "wonBets": 12,
+      "lostBets": 9,
+      "maxDrawdownUnits": 4.63
+    },
+    "probabilisticMetrics": {
+      "brierScore": 0.2478,
+      "brierEvaluation": "Aceptable",
+      "logLoss": 0.6889,
+      "evaluatedPicksWithProb": 21
+    },
+    "calibrationByDecile": [
+      {
+        "range": "50% - 60%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      },
+      {
+        "range": "60% - 70%",
+        "sampleSize": 21,
+        "avgPredictedProb": 62.5,
+        "actualHitRate": 57.1,
+        "calibrationGap": -5.4
+      },
+      {
+        "range": "70% - 80%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      },
+      {
+        "range": "80% - 90%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      },
+      {
+        "range": "90% - 100%",
+        "sampleSize": 0,
+        "avgPredictedProb": 0,
+        "actualHitRate": 0,
+        "calibrationGap": 0
+      }
+    ],
+    "byMarket": [
+      {
+        "market": "Córners de equipo",
+        "total": 4,
+        "winRate": 75,
+        "netProfit": 1.27,
+        "yieldPct": 31.8
+      },
+      {
+        "market": "Tarjetas",
+        "total": 1,
+        "winRate": 100,
+        "netProfit": 0.73,
+        "yieldPct": 73
+      },
+      {
+        "market": "Faltas ganadas",
+        "total": 1,
+        "winRate": 0,
+        "netProfit": -1,
+        "yieldPct": -100
+      },
+      {
+        "market": "Faltas cometidas",
+        "total": 1,
+        "winRate": 100,
+        "netProfit": 0.65,
+        "yieldPct": 65
+      },
+      {
+        "market": "Remates al arco de equipo",
+        "total": 4,
+        "winRate": 25,
+        "netProfit": -2.28,
+        "yieldPct": -57
+      },
+      {
+        "market": "Remates de equipo",
+        "total": 2,
+        "winRate": 0,
+        "netProfit": -2,
+        "yieldPct": -100
+      },
+      {
+        "market": "Goles de equipo",
+        "total": 3,
+        "winRate": 66.7,
+        "netProfit": 0.87,
+        "yieldPct": 29
+      },
+      {
+        "market": "Remates totales",
+        "total": 3,
+        "winRate": 100,
+        "netProfit": 2.33,
+        "yieldPct": 77.7
+      },
+      {
+        "market": "Entradas (Tackles)",
+        "total": 1,
+        "winRate": 100,
+        "netProfit": 0.8,
+        "yieldPct": 80
+      },
+      {
+        "market": "Remates al arco",
+        "total": 1,
+        "winRate": 0,
+        "netProfit": -1,
+        "yieldPct": -100
+      }
+    ]
+  },
+  "universes": {
+    "universeA_globalAudit": {
+      "description": "Todas las predicciones auditables liquidadas (Universo Global)",
+      "totalObservations": 20,
+      "settledDecided": 19,
+      "won": 11,
+      "lost": 8,
+      "voidCount": 1,
+      "winRatePct": 57.9,
+      "netProfitUnits": 0.67,
+      "roiYieldPct": 3.5,
+      "brierScoreBenchmarkNaive": 0.2459,
+      "logLossBenchmarkNaive": 0.6851,
+      "brierScoreGrossMarketImplied": 0.2381,
+      "logLossGrossMarketImplied": 0.6694,
+      "brierScoreModelB": 0.3121,
+      "logLossModelB": 0.8902,
+      "brierScoreModelC": 0.3053,
+      "logLossModelC": 0.8472,
+      "brierScoreEnsemble": 0.306,
+      "logLossEnsemble": 0.8564
+    },
+    "universeB_elenaApproved": {
+      "description": "Portfolio de selecciones aprobadas por Elena (Veto a investigación incompleta)",
+      "totalObservations": 19,
+      "settledDecided": 18,
+      "won": 11,
+      "lost": 7,
+      "voidCount": 1,
+      "winRatePct": 61.1,
+      "netProfitUnits": 1.67,
+      "roiYieldPct": 9.3,
+      "brierScoreBenchmarkNaive": 0.2378,
+      "logLossBenchmarkNaive": 0.6687,
+      "brierScoreGrossMarketImplied": 0.2375,
+      "logLossGrossMarketImplied": 0.6681,
+      "brierScoreModelB": 0.3022,
+      "logLossModelB": 0.8727,
+      "brierScoreModelC": 0.31,
+      "logLossModelC": 0.8589,
+      "brierScoreEnsemble": 0.304,
+      "logLossEnsemble": 0.8551
+    },
+    "universeC_discardedOrPending": {
+      "description": "Picks descartados por Elena o pendientes de disputa",
+      "discardedAudited": {
+        "id": "cand_1795110774831_6rsb2k",
+        "match": "Internacional vs Vasco da Gama",
+        "reason": "INVESTIGACION_INCOMPLETA",
+        "status": "FALLADA",
+        "profitUnits": -1
+      },
+      "pendingActiveInDailyBoard": 3,
+      "quarantinedMocks": 30
+    }
+  },
+  "calibrationReport": {
+    "note": "Muestra preliminar (N=19). Intervalos con N<30 no constituyen evidencia concluyente.",
+    "modelB_bins": [
+      {
+        "range": "70% - 80%",
+        "n": 7,
+        "expectedAvgProb": "70.0%",
+        "actualHitRate": "71.4%",
+        "gap": "+1.4%"
+      },
+      {
+        "range": "80% - 90%",
+        "n": 6,
+        "expectedAvgProb": "80.0%",
+        "actualHitRate": "50.0%",
+        "gap": "-30.0%"
+      },
+      {
+        "range": "90% - 100%",
+        "n": 6,
+        "expectedAvgProb": "90.0%",
+        "actualHitRate": "50.0%",
+        "gap": "-40.0%"
+      }
+    ],
+    "ensemble_bins": [
+      {
+        "range": "50% - 60%",
+        "n": 1,
+        "expectedAvgProb": "58.5%",
+        "actualHitRate": "0.0%",
+        "gap": "-58.5%"
+      },
+      {
+        "range": "60% - 70%",
+        "n": 4,
+        "expectedAvgProb": "64.1%",
+        "actualHitRate": "100.0%",
+        "gap": "+35.9%"
+      },
+      {
+        "range": "70% - 80%",
+        "n": 5,
+        "expectedAvgProb": "73.9%",
+        "actualHitRate": "60.0%",
+        "gap": "-13.9%"
+      },
+      {
+        "range": "80% - 90%",
+        "n": 9,
+        "expectedAvgProb": "84.9%",
+        "actualHitRate": "44.4%",
+        "gap": "-40.4%"
+      }
+    ]
   }
 }

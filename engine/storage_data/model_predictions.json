@@ -753,5 +753,23 @@
     "sampleSize": 0,
     "featuresUsed": {},
     "status": "PENDING"
+  },
+  {
+    "id": "pred_1795356380201_8taaa",
+    "candidateId": "cand_1795356380196_ubbnb",
+    "timestamp": "2026-11-22T14:06:20.201Z",
+    "market": "Remates al arco",
+    "line": "Más de 1.5",
+    "bookmakerOdds": 1.85,
+    "pEmpirical": 0.72,
+    "pPoisson": 0.7,
+    "pProjected": 0.71,
+    "fairOdds": 1.41,
+    "evPercentage": 0.31,
+    "sampleSize": 22,
+    "confidenceScore": 0.88,
+    "modelDivergence": 0.02,
+    "featuresUsed": {},
+    "status": "PENDING"
   }
 ]

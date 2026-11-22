@@ -38,21 +38,6 @@
     "approvedAt": "2026-11-19T17:52:58.591Z"
   },
   {
-    "id": "cand_1795140929393_zq72a",
-    "partido": "Real Madrid vs Inter",
-    "liga": "Champions League",
-    "seleccion": "Kylian Mbappé",
-    "mercado": "Remates al arco",
-    "linea": "Más de 1.5",
-    "cuota": 1.85,
-    "evPercentage": 0.31,
-    "pProjected": 0.71,
-    "fair_odds": 1.41,
-    "status": "APROBADO",
-    "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
-    "approvedAt": "2026-11-20T02:15:29.397Z"
-  },
-  {
     "id": "cand_test_agent_01",
     "partido": "Coritiba vs Santos",
     "liga": "Brasileirão Série A",
