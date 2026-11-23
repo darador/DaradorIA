@@ -549,5 +549,29 @@
     "verifiedAt": "2026-11-23T04:42:48.227Z",
     "isSettled": true,
     "id": "res_1795408968228"
+  },
+  {
+    "pickId": "cand_real_statshub_20261122_realsaltlake_1795318990012",
+    "date": "2026-11-22",
+    "match": "Vancouver Whitecaps vs Real Salt Lake",
+    "player": "Real Salt Lake (Equipo)",
+    "market": "Remates de equipo",
+    "line": "Más de 10.5",
+    "odds": 2,
+    "targetLine": 10.5,
+    "actualStat": 14,
+    "matchScore": "2-0",
+    "status": "GANADA",
+    "elenaDecision": "APROBADO",
+    "operationalStatus": "ACEPTADO",
+    "stakedUnits": 1,
+    "profitUnits": 1,
+    "settledAt": "2026-11-23T12:18:29.800Z",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "verificationSource": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)",
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+    "verifiedAt": "2026-11-23T12:18:29.799Z",
+    "isSettled": true,
+    "id": "res_1795436309800"
   }
 ]

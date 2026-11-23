@@ -1069,15 +1069,15 @@
     "pickId": "cand_real_statshub_20261122_realsaltlake_1795318990012",
     "sealedAt": "2026-11-22T03:45:00.000Z",
     "preMatchHash": "70f43e290124c98b4de44c0cc11bf8378771fd0964aacf7197c2b17a0f59cbfe",
-    "settlementHash": "4dfdba39db03a912d77c7d59cfe7d3a635a5224cbce9626b5931335f0bf223e5",
+    "settlementHash": "cb18155b81b5a5a4feae325c875f9f9a85e14fcf96a28c1f1a99bc6026121d5d",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 2,
     "probModelB": 0.68,
     "probModelC": 0.65,
-    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
-    "settledAt": "2026-11-23T04:42:48.288Z",
-    "actualStat": null
+    "finalResultConfirmed": "GANADA",
+    "settledAt": "2026-11-23T12:18:29.799Z",
+    "actualStat": 14
   },
   "cand_real_statshub_20261123_everton_1795318990013": {
     "pickId": "cand_real_statshub_20261123_everton_1795318990013",

@@ -6640,11 +6640,11 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
-    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
-    "actualStat": null,
-    "profitUnits": 0,
-    "settledAt": "2026-11-23T04:42:48.288Z",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "GANADA",
+    "actualStat": 14,
+    "profitUnits": 1,
+    "settledAt": "2026-11-23T12:18:29.799Z",
     "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
@@ -6699,10 +6699,17 @@
         "timestamp": "2026-11-23T04:42:48.288Z",
         "reason": "Partido en estado 'live' sin estadísticas oficiales consolidadas en StatsHub para Remates de equipo.",
         "source": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T12:18:29.799Z",
+        "reason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+        "source": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)"
       }
     ],
     "verificationSource": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)",
-    "verificationReason": "Partido en estado 'live' sin estadísticas oficiales consolidadas en StatsHub para Remates de equipo."
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub."
   },
   {
     "pickId": "cand_real_statshub_20261123_everton_1795318990013",
