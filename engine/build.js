@@ -34,7 +34,8 @@ const criticalFiles = [
   'engine/agents/riskManager.js',
   'engine/settlement/settlementEngine.js',
   'engine/audit/integrityGuard.js',
-  'engine/data/syncRadar.js'
+  'engine/data/syncRadar.js',
+  'engine/scheduler/processMonitor.js'
 ];
 
 criticalFiles.forEach(file => {
@@ -80,7 +81,8 @@ const storageFiles = [
   'engine/storage_data/audit_integrity_ledger.json',
   'historial_picks.json',
   'picks_hoy.json',
-  'api/metrics.json'
+  'api/metrics.json',
+  'api/processes.json'
 ];
 
 storageFiles.forEach(file => {

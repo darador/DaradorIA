@@ -771,5 +771,41 @@
     "modelDivergence": 0.02,
     "featuresUsed": {},
     "status": "PENDING"
+  },
+  {
+    "id": "pred_1795393495533_lqazz",
+    "candidateId": "cand_1795393495527_tw092",
+    "timestamp": "2026-11-23T00:24:55.533Z",
+    "market": "Remates al arco",
+    "line": "Más de 1.5",
+    "bookmakerOdds": 1.85,
+    "pEmpirical": 0.72,
+    "pPoisson": 0.7,
+    "pProjected": 0.71,
+    "fairOdds": 1.41,
+    "evPercentage": 0.31,
+    "sampleSize": 22,
+    "confidenceScore": 0.88,
+    "modelDivergence": 0.02,
+    "featuresUsed": {},
+    "status": "PENDING"
+  },
+  {
+    "id": "pred_1795393549239_nf301",
+    "candidateId": "cand_1795393549233_6rdvk",
+    "timestamp": "2026-11-23T00:25:49.239Z",
+    "market": "Remates al arco",
+    "line": "Más de 1.5",
+    "bookmakerOdds": 1.85,
+    "pEmpirical": 0.72,
+    "pPoisson": 0.7,
+    "pProjected": 0.71,
+    "fairOdds": 1.41,
+    "evPercentage": 0.31,
+    "sampleSize": 22,
+    "confidenceScore": 0.88,
+    "modelDivergence": 0.02,
+    "featuresUsed": {},
+    "status": "PENDING"
   }
 ]

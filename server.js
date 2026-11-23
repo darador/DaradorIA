@@ -36,6 +36,29 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API de monitoreo operativo de procesos y frecuencias
+  if (reqPath === '/api/system/processes' || reqPath === '/api/processes' || reqPath === '/api/processes.json') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
+    try {
+      const processMonitor = require('./engine/scheduler/processMonitor');
+      const report = processMonitor.auditProcesses();
+      res.end(JSON.stringify(report, null, 2));
+    } catch (err) {
+      const fallbackFile = path.join(__dirname, 'api/processes.json');
+      if (fs.existsSync(fallbackFile)) {
+        res.end(fs.readFileSync(fallbackFile, 'utf8'));
+      } else {
+        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'error', message: err.message }));
+      }
+    }
+    return;
+  }
+
   // API de métricas dinámicas y evaluación
   if (reqPath === '/api/metrics' || reqPath === '/api/metrics.json') {
     res.writeHead(200, {

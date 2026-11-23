@@ -278,20 +278,22 @@ class RadarSync {
       const isLost = b.status === 'FALLADA' || b.status === 'PERDIDA';
       const isVoid = b.status === 'ANULADA_NO_TITULAR' || b.status === 'ANULADA' || b.status === 'CANCELADA';
 
+      const pNum = (typeof b.profit_loss === 'number') ? b.profit_loss : (typeof b.profit === 'number' ? b.profit : (parseFloat(b.profit) || 0));
+
       if (isWon) {
         settled++;
         won++;
         staked += (b.stake || 1.0);
-        profit += (b.profit || 0);
+        profit += pNum;
         byMarket[m].won++;
-        byMarket[m].net_profit = (byMarket[m].net_profit || 0) + (b.profit || 0);
+        byMarket[m].net_profit = (byMarket[m].net_profit || 0) + pNum;
       } else if (isLost) {
         settled++;
         lost++;
         staked += (b.stake || 1.0);
-        profit += (b.profit || 0);
+        profit += pNum;
         byMarket[m].lost++;
-        byMarket[m].net_profit = (byMarket[m].net_profit || 0) + (b.profit || 0);
+        byMarket[m].net_profit = (byMarket[m].net_profit || 0) + pNum;
       } else if (isVoid) {
         voidCount++;
       } else {
@@ -303,7 +305,7 @@ class RadarSync {
       const settledM = byMarket[k].won + byMarket[k].lost;
       const rate = settledM > 0 ? ((byMarket[k].won / settledM) * 100).toFixed(1) + '%' : '0.0%';
       byMarket[k].win_rate = rate;
-      const net = byMarket[k].net_profit || 0;
+      const net = typeof byMarket[k].net_profit === 'number' ? byMarket[k].net_profit : (parseFloat(byMarket[k].net_profit) || 0);
       byMarket[k].profit = (net >= 0 ? '+' : '') + net.toFixed(2) + 'U';
       delete byMarket[k].net_profit;
     }

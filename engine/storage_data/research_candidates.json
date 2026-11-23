@@ -17808,5 +17808,31 @@
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
     }
+  },
+  {
+    "match_id": "match-test-01",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "status": "INVESTIGADO",
+    "id": "cand_1795393495527_tw092",
+    "updatedAt": "2026-11-23T00:24:55.527Z",
+    "createdAt": "2026-11-23T00:24:55.527Z"
+  },
+  {
+    "match_id": "match-test-01",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "status": "INVESTIGADO",
+    "id": "cand_1795393549233_6rdvk",
+    "updatedAt": "2026-11-23T00:25:49.233Z",
+    "createdAt": "2026-11-23T00:25:49.233Z"
   }
 ]

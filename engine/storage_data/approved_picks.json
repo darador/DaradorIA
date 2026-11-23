@@ -356,5 +356,20 @@
     },
     "decisionReason": "Alineación oficial confirmada: Jugador parte en el XI titular. Condición levantada por el Risk Manager.",
     "approvedAt": "2026-11-19T22:18:53.260Z"
+  },
+  {
+    "id": "cand_1795393549233_6rdvk",
+    "partido": "Real Madrid vs Inter",
+    "liga": "Champions League",
+    "seleccion": "Kylian Mbappé",
+    "mercado": "Remates al arco",
+    "linea": "Más de 1.5",
+    "cuota": 1.85,
+    "evPercentage": 0.31,
+    "pProjected": 0.71,
+    "fair_odds": 1.41,
+    "status": "APROBADO",
+    "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
+    "approvedAt": "2026-11-23T00:25:49.241Z"
   }
 ]

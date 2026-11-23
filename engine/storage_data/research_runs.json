@@ -1,5 +1,27 @@
 [
   {
+    "id": "run_1795393549229",
+    "timestamp": "2026-11-23T00:25:49.229Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
+    "id": "run_1795393495522",
+    "timestamp": "2026-11-23T00:24:55.522Z",
+    "fixturesScanned": 25,
+    "candidatesFound": 8,
+    "approvedCount": 3,
+    "rejectedCount": 5,
+    "mcpCallsUsed": 14,
+    "status": "COMPLETED",
+    "notes": "Prueba de validación Fase 1"
+  },
+  {
     "id": "run_1795356380192",
     "timestamp": "2026-11-22T14:06:20.192Z",
     "fixturesScanned": 25,

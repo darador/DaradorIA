@@ -78,6 +78,27 @@ async function main() {
         break;
       }
 
+      case '--monitor':
+      case '--processes':
+      case '-m': {
+        const processMonitor = require('./scheduler/processMonitor');
+        const report = processMonitor.auditProcesses();
+        console.log('📡 AUDITORÍA OPERATIVA DE PROCESOS — DARADORBET');
+        console.log(`Hora Sistema (Argentina): ${report.systemTimeArt}`);
+        console.log(`Zona Horaria: ${report.timeZone}`);
+        console.log(`Modo Demonio: ${report.daemonRunning ? 'ACTIVO' : 'DETENIDO / MANUAL'}`);
+        console.log(`\nResumen: ${report.summary.active} Activos | ${report.summary.manual} Ejecución Manual | ${report.summary.inactive} Inactivos\n`);
+        console.table(report.processes.map(p => ({
+          Proceso: p.name,
+          Frecuencia: p.configuredFrequency,
+          Estado: p.status,
+          'Última Ejecución (ART)': p.lastRunArt || 'Sin registro',
+          'Próxima Ejecución': p.nextRunArt || 'No programada',
+          Duración: `${p.durationSeconds}s`
+        })));
+        break;
+      }
+
       case '--daemon': {
         scheduler.startDaemon();
         console.log('Presione Ctrl+C para detener el servicio...');
@@ -98,6 +119,7 @@ async function main() {
         console.log('  --lineups           Revisa alineaciones oficiales para picks condicionales');
         console.log('  --settle            Liquida partidos finalizados y actualiza el ROI');
         console.log('  --status            Muestra métricas operativas y consumo de API MCP');
+        console.log('  --monitor           Audita los 9 procesos del motor, frecuencias y estado en horario AR');
         console.log('  --daemon            Inicia el scheduler en segundo plano con intervalos automáticos');
         break;
     }

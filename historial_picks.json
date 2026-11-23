@@ -1854,21 +1854,21 @@
     }
   ],
   "summary": {
-    "total_picks": 58,
-    "won": 28,
-    "lost": 14,
-    "void": 9,
-    "pending": 7,
-    "win_rate": "66.7%",
+    "total_bets": 58,
+    "settled_bets": 42,
+    "won_bets": 28,
+    "lost_bets": 14,
+    "void_bets": 9,
+    "pending_bets": 7,
+    "win_rate_pct": 66.7,
+    "total_staked_units": 42,
     "net_profit_units": 7.42,
     "roi_pct": 17.7,
-    "yield_pct": 17.7,
     "by_market": {
       "Remates totales": {
         "total": 15,
         "won": 10,
         "lost": 1,
-        "void": 2,
         "win_rate": "90.9%",
         "profit": "+6.59U"
       },
@@ -1876,7 +1876,6 @@
         "total": 9,
         "won": 3,
         "lost": 5,
-        "void": 0,
         "win_rate": "37.5%",
         "profit": "-3.02U"
       },
@@ -1884,7 +1883,6 @@
         "total": 6,
         "won": 1,
         "lost": 1,
-        "void": 3,
         "win_rate": "50.0%",
         "profit": "-0.30U"
       },
@@ -1892,7 +1890,6 @@
         "total": 7,
         "won": 3,
         "lost": 2,
-        "void": 1,
         "win_rate": "60.0%",
         "profit": "+0.27U"
       },
@@ -1900,7 +1897,6 @@
         "total": 4,
         "won": 3,
         "lost": 0,
-        "void": 1,
         "win_rate": "100.0%",
         "profit": "+2.47U"
       },
@@ -1908,7 +1904,6 @@
         "total": 5,
         "won": 4,
         "lost": 0,
-        "void": 1,
         "win_rate": "100.0%",
         "profit": "+3.08U"
       },
@@ -1916,7 +1911,6 @@
         "total": 4,
         "won": 2,
         "lost": 1,
-        "void": 0,
         "win_rate": "66.7%",
         "profit": "+0.87U"
       },
@@ -1924,7 +1918,6 @@
         "total": 5,
         "won": 1,
         "lost": 3,
-        "void": 0,
         "win_rate": "25.0%",
         "profit": "-2.27U"
       },
@@ -1932,7 +1925,6 @@
         "total": 1,
         "won": 0,
         "lost": 1,
-        "void": 0,
         "win_rate": "0.0%",
         "profit": "-1.00U"
       },
@@ -1940,7 +1932,6 @@
         "total": 1,
         "won": 1,
         "lost": 0,
-        "void": 0,
         "win_rate": "100.0%",
         "profit": "+0.73U"
       },
@@ -1948,20 +1939,10 @@
         "total": 1,
         "won": 0,
         "lost": 0,
-        "void": 1,
         "win_rate": "0.0%",
         "profit": "+0.00U"
       }
-    },
-    "total_bets": 58,
-    "won_bets": 28,
-    "lost_bets": 14,
-    "void_bets": 9,
-    "pending_bets": 7,
-    "settled": 42,
-    "settled_bets": 42,
-    "win_rate_pct": 66.7,
-    "total_staked_units": 42
+    }
   },
-  "updated_at": "2026-11-22T20:36:47.776Z"
+  "updated_at": "2026-11-23T00:25:49.281Z"
 }
