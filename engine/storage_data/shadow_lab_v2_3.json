@@ -192,5 +192,1764 @@
       "settledAtUtc": null,
       "verificationSource": null
     }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298417_1391e6",
+    "eventId": "real-madrid-v-psv-eindhoven.1kkn2l5",
+    "pickId": "cand_real_statshub_20261124_mijnans_shots",
+    "eventKey": "real-madrid-v-psv-eindhoven.1kkn2l5__sven-mijnans.0ttues5__remates totales__más de 1.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298417_1391e6",
+      "eventId": "real-madrid-v-psv-eindhoven.1kkn2l5",
+      "pickId": "cand_real_statshub_20261124_mijnans_shots",
+      "eventKey": "real-madrid-v-psv-eindhoven.1kkn2l5__sven-mijnans.0ttues5__remates totales__más de 1.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "Real Madrid vs PSV Eindhoven",
+      "playerOrTeam": "Sven Mijnans",
+      "market": "Remates totales",
+      "line": "Más de 1.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.6,
+        "approvalOdds": 1.6,
+        "overOdds": 1.6,
+        "underOdds": null,
+        "marketNoVigProb": 0.589623,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86
+        ],
+        "avgMinutes": 86.15,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.7954,
+          "evPct": 27.26,
+          "decisionV1": "PENDIENTE",
+          "modelApplied": "Binomial Negativa (Sobredispersión)",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.7469,
+          "evPct": 19.5,
+          "parametricModel": "NegativeBinomial-Lanczos",
+          "pParametric": 0.7554,
+          "dispersionPhi": 1.3333,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 1,
+          "evPct": 60,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.85,
+          "evPct": 36,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.7384,
+          "evPct": 18.14,
+          "priorStrength": 15,
+          "priorProb": 0.589623,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.6906,
+          "evPct": 10.5,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "e3bb7fd20dd8136e9d9228f8c0a896a80b986c3146699d28e1c2c611ff1bfce5",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298430_717c3d",
+    "eventId": "rb-leipzig-v-rc-lens.0uh4tjf",
+    "pickId": "cand_real_statshub_20261124_aguilar_fouls",
+    "eventKey": "rb-leipzig-v-rc-lens.0uh4tjf__ruben-aguilar.0xnovxe__faltas cometidas__más de 0.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298430_717c3d",
+      "eventId": "rb-leipzig-v-rc-lens.0uh4tjf",
+      "pickId": "cand_real_statshub_20261124_aguilar_fouls",
+      "eventKey": "rb-leipzig-v-rc-lens.0uh4tjf__ruben-aguilar.0xnovxe__faltas cometidas__más de 0.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "RB Leipzig vs RC Lens",
+      "playerOrTeam": "Ruben Aguilar",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.55,
+        "approvalOdds": 1.55,
+        "overOdds": 1.55,
+        "underOdds": null,
+        "marketNoVigProb": 0.608643,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81
+        ],
+        "avgMinutes": 80.8,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.8114,
+          "evPct": 25.77,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.7675,
+          "evPct": 18.96,
+          "parametricModel": "Poisson",
+          "pParametric": 0.7884,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 39.5,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.85,
+          "evPct": 31.75,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.7466,
+          "evPct": 15.72,
+          "priorStrength": 15,
+          "priorProb": 0.608643,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.7088,
+          "evPct": 9.86,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "995c9f4380ce4945384e1440f01710b6860b972b47df90630b226b6bc5750c33",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298441_ab52da",
+    "eventId": "rb-leipzig-v-rc-lens.0uh4tjf",
+    "pickId": "cand_real_statshub_20261124_thauvin_fouls",
+    "eventKey": "rb-leipzig-v-rc-lens.0uh4tjf__florian-thauvin.1crvlv8__faltas cometidas__más de 0.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298441_ab52da",
+      "eventId": "rb-leipzig-v-rc-lens.0uh4tjf",
+      "pickId": "cand_real_statshub_20261124_thauvin_fouls",
+      "eventKey": "rb-leipzig-v-rc-lens.0uh4tjf__florian-thauvin.1crvlv8__faltas cometidas__más de 0.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "RB Leipzig vs RC Lens",
+      "playerOrTeam": "Florian Thauvin",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.62,
+        "approvalOdds": 1.62,
+        "overOdds": 1.62,
+        "underOdds": null,
+        "marketNoVigProb": 0.582343,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84
+        ],
+        "avgMinutes": 84,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.6111,
+          "evPct": -1,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.5735,
+          "evPct": -7.09,
+          "parametricModel": "Poisson",
+          "pParametric": 0.5261,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 45.8,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.65,
+          "evPct": 5.3,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.621,
+          "evPct": 0.6,
+          "priorStrength": 15,
+          "priorProb": 0.582343,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.5837,
+          "evPct": -5.44,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "bf5cb3efdb73f1d67c71eeb9eaaf3767ffc3649499802c97d8a861bd92540a17",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298452_f944bb",
+    "eventId": "feyenoord-v-fc-porto.1h2nn2k",
+    "pickId": "cand_real_statshub_20261124_alberto_costa_shots",
+    "eventKey": "feyenoord-v-fc-porto.1h2nn2k__alberto-costa.0ou3sd6__remates totales__más de 0.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298452_f944bb",
+      "eventId": "feyenoord-v-fc-porto.1h2nn2k",
+      "pickId": "cand_real_statshub_20261124_alberto_costa_shots",
+      "eventKey": "feyenoord-v-fc-porto.1h2nn2k__alberto-costa.0ou3sd6__remates totales__más de 0.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "Feyenoord vs FC Porto",
+      "playerOrTeam": "Alberto Costa",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.55,
+        "approvalOdds": 1.55,
+        "overOdds": 1.55,
+        "underOdds": null,
+        "marketNoVigProb": 0.608643,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11",
+          "2026-07-04"
+        ],
+        "minutesPerMatch": [
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85
+        ],
+        "avgMinutes": 84.65,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.7203,
+          "evPct": 11.65,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.6804,
+          "evPct": 5.46,
+          "parametricModel": "Poisson",
+          "pParametric": 0.7,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 39.5,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.7,
+          "evPct": 8.5,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.6608,
+          "evPct": 2.42,
+          "priorStrength": 15,
+          "priorProb": 0.608643,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.6523,
+          "evPct": 1.11,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "926c548a7d1cd13d7432b3a4a359b429a059d89507c0160174703648d20f6cee",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298462_34be09",
+    "eventId": "portsmouth-v-west-ham-united.13l4n23",
+    "pickId": "cand_real_statshub_20261124_devlin_shots",
+    "eventKey": "portsmouth-v-west-ham-united.13l4n23__terry-devlin.0jthqh6__remates totales__más de 0.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T19:45:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298462_34be09",
+      "eventId": "portsmouth-v-west-ham-united.13l4n23",
+      "pickId": "cand_real_statshub_20261124_devlin_shots",
+      "eventKey": "portsmouth-v-west-ham-united.13l4n23__terry-devlin.0jthqh6__remates totales__más de 0.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T19:45:00.000Z",
+      "competition": "Championship",
+      "match": "Portsmouth vs West Ham United",
+      "playerOrTeam": "Terry Devlin",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.6,
+        "approvalOdds": 1.6,
+        "overOdds": 1.6,
+        "underOdds": null,
+        "marketNoVigProb": 0.589623,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82
+        ],
+        "avgMinutes": 82.35,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.6717,
+          "evPct": 7.47,
+          "decisionV1": "PENDIENTE",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.6081,
+          "evPct": -2.7,
+          "parametricModel": "Poisson",
+          "pParametric": 0.5921,
+          "dispersionPhi": 1.0409,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 44,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.65,
+          "evPct": 4,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.6241,
+          "evPct": -0.14,
+          "priorStrength": 15,
+          "priorProb": 0.589623,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.604,
+          "evPct": -3.36,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "6f4164649ba0f5a6651f990284206e374d0e461ee3b1be201763366d33a92cee",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298473_5b18ae",
+    "eventId": "wolverhampton-v-derby-county.0hq93bg",
+    "pickId": "cand_real_statshub_20261124_mowatt_fouls",
+    "eventKey": "wolverhampton-v-derby-county.0hq93bg__alex-mowatt.0tnsmsg__faltas cometidas__más de 0.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298473_5b18ae",
+      "eventId": "wolverhampton-v-derby-county.0hq93bg",
+      "pickId": "cand_real_statshub_20261124_mowatt_fouls",
+      "eventKey": "wolverhampton-v-derby-county.0hq93bg__alex-mowatt.0tnsmsg__faltas cometidas__más de 0.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "Championship",
+      "match": "Wolverhampton vs Derby County",
+      "playerOrTeam": "Alex Mowatt",
+      "market": "Faltas cometidas",
+      "line": "Más de 0.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.53,
+        "approvalOdds": 1.53,
+        "overOdds": 1.53,
+        "underOdds": null,
+        "marketNoVigProb": 0.616599,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84,
+          84
+        ],
+        "avgMinutes": 84.15,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.7519,
+          "evPct": 15.04,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.7096,
+          "evPct": 8.57,
+          "parametricModel": "Poisson",
+          "pParametric": 0.6978,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 37.7,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.8,
+          "evPct": 22.4,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.7214,
+          "evPct": 10.37,
+          "priorStrength": 15,
+          "priorProb": 0.616599,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.6788,
+          "evPct": 3.86,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "efeeac33fd2f66de06e663b51373bd56f349da4ddbbe000d77a2a2fc95c5b362",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298484_b60cc7",
+    "eventId": "chapecoense-v-palmeiras.1lpihrf",
+    "pickId": "cand_real_statshub_20261124_barboza_tackles",
+    "eventKey": "chapecoense-v-palmeiras.1lpihrf__alexander-barboza.1897533__entradas (tackles)__más de 1.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T21:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298484_b60cc7",
+      "eventId": "chapecoense-v-palmeiras.1lpihrf",
+      "pickId": "cand_real_statshub_20261124_barboza_tackles",
+      "eventKey": "chapecoense-v-palmeiras.1lpihrf__alexander-barboza.1897533__entradas (tackles)__más de 1.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T21:00:00.000Z",
+      "competition": "Brasileirão Série A",
+      "match": "Chapecoense vs Palmeiras",
+      "playerOrTeam": "Alexander Barboza",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 1.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.91,
+        "approvalOdds": 1.91,
+        "overOdds": 1.91,
+        "underOdds": null,
+        "marketNoVigProb": 0.493925,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-18",
+          "2026-11-11",
+          "2026-11-04",
+          "2026-10-28",
+          "2026-10-21",
+          "2026-10-14",
+          "2026-10-07",
+          "2026-09-30",
+          "2026-09-23",
+          "2026-09-16",
+          "2026-09-09",
+          "2026-09-02",
+          "2026-08-26",
+          "2026-08-19",
+          "2026-08-12",
+          "2026-08-05",
+          "2026-07-29",
+          "2026-07-22",
+          "2026-07-15",
+          "2026-07-08"
+        ],
+        "minutesPerMatch": [
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86
+        ],
+        "avgMinutes": 85.85,
+        "sourceEndpoint": "statshub:getPlayerStats",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.6726,
+          "evPct": 28.47,
+          "decisionV1": "PENDIENTE",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.5961,
+          "evPct": 13.86,
+          "parametricModel": "Poisson",
+          "pParametric": 0.552,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 71.9,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.75,
+          "evPct": 43.25,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.6403,
+          "evPct": 22.3,
+          "priorStrength": 15,
+          "priorProb": 0.493925,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.567,
+          "evPct": 8.3,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "001564693636b413c4bb69624cba0b2432ff9e3fe5f79126ca90e20255a10912",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298494_dd1ca0",
+    "eventId": "atletico-madrid-v-viking-fk.143n3za",
+    "pickId": "cand_real_statshub_20261125_atletico_goals_under",
+    "eventKey": "atletico-madrid-v-viking-fk.143n3za__atletico-madrid.1w5dgjj__goles de equipo__menos de 3.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298494_dd1ca0",
+      "eventId": "atletico-madrid-v-viking-fk.143n3za",
+      "pickId": "cand_real_statshub_20261125_atletico_goals_under",
+      "eventKey": "atletico-madrid-v-viking-fk.143n3za__atletico-madrid.1w5dgjj__goles de equipo__menos de 3.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-25T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "Atlético Madrid vs Viking FK",
+      "playerOrTeam": "Atlético Madrid (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Menos de 3.5",
+      "side": "under",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.67,
+        "approvalOdds": 1.67,
+        "overOdds": null,
+        "underOdds": 1.67,
+        "marketNoVigProb": 0.564908,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-22",
+          "2026-11-15",
+          "2026-11-08",
+          "2026-11-01",
+          "2026-10-25",
+          "2026-10-18",
+          "2026-10-11",
+          "2026-10-04",
+          "2026-09-27",
+          "2026-09-20",
+          "2026-09-13",
+          "2026-09-06",
+          "2026-08-30",
+          "2026-08-23",
+          "2026-08-16",
+          "2026-08-09",
+          "2026-08-02",
+          "2026-07-26",
+          "2026-07-19",
+          "2026-07-12"
+        ],
+        "minutesPerMatch": [],
+        "avgMinutes": null,
+        "sourceEndpoint": "statshub:getTeamPerformance",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.0779,
+          "evPct": -86.99,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.8459,
+          "evPct": 41.27,
+          "parametricModel": "Poisson",
+          "pParametric": 0.9068,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 1,
+          "evPct": 67,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.95,
+          "evPct": 58.65,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.785,
+          "evPct": 31.1,
+          "priorStrength": 15,
+          "priorProb": 0.564908,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.7384,
+          "evPct": 23.31,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "c6613d976089da32140a944e4d2d63bb7c57dd8f1cf8fff706f165a5c9cc024e",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298510_3071ad",
+    "eventId": "como-v-aek-athens.1wlg7mi",
+    "pickId": "cand_real_statshub_20261124_aek_goals_over",
+    "eventKey": "como-v-aek-athens.1wlg7mi__aek-athens.0iuo8rm__goles de equipo__más de 0.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298510_3071ad",
+      "eventId": "como-v-aek-athens.1wlg7mi",
+      "pickId": "cand_real_statshub_20261124_aek_goals_over",
+      "eventKey": "como-v-aek-athens.1wlg7mi__aek-athens.0iuo8rm__goles de equipo__más de 0.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "Como vs AEK Athens",
+      "playerOrTeam": "AEK Athens (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Más de 0.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.57,
+        "approvalOdds": 1.57,
+        "overOdds": 1.57,
+        "underOdds": null,
+        "marketNoVigProb": 0.600889,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [],
+        "avgMinutes": null,
+        "sourceEndpoint": "statshub:getTeamPerformance",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.8323,
+          "evPct": 30.67,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Binomial Negativa (Sobredispersión)",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.7893,
+          "evPct": 23.92,
+          "parametricModel": "NegativeBinomial-Lanczos",
+          "pParametric": 0.8068,
+          "dispersionPhi": 1.8187,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 41.3,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 41.3,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.7718,
+          "evPct": 21.17,
+          "priorStrength": 15,
+          "priorProb": 0.600889,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.7207,
+          "evPct": 13.15,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "e206410de4a3fe4bcb45c28ebe3265ee0de82f632cf8ace57fa23459feb2daf3",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298522_e399f3",
+    "eventId": "wolverhampton-v-derby-county.0hq93bg",
+    "pickId": "cand_real_statshub_20261124_wolves_goals_under",
+    "eventKey": "wolverhampton-v-derby-county.0hq93bg__wolverhampton.0ga5az7__goles de equipo__menos de 2.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298522_e399f3",
+      "eventId": "wolverhampton-v-derby-county.0hq93bg",
+      "pickId": "cand_real_statshub_20261124_wolves_goals_under",
+      "eventKey": "wolverhampton-v-derby-county.0hq93bg__wolverhampton.0ga5az7__goles de equipo__menos de 2.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "Championship",
+      "match": "Wolverhampton vs Derby County",
+      "playerOrTeam": "Wolverhampton (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Menos de 2.5",
+      "side": "under",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.62,
+        "approvalOdds": 1.62,
+        "overOdds": null,
+        "underOdds": 1.62,
+        "marketNoVigProb": 0.582343,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 20,
+        "dates": [
+          "2026-11-21",
+          "2026-11-14",
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-09-05",
+          "2026-08-29",
+          "2026-08-22",
+          "2026-08-15",
+          "2026-08-08",
+          "2026-08-01",
+          "2026-07-25",
+          "2026-07-18",
+          "2026-07-11"
+        ],
+        "minutesPerMatch": [],
+        "avgMinutes": null,
+        "sourceEndpoint": "statshub:getTeamPerformance",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": null
+      },
+      "models": {
+        "v1_production": {
+          "available": true,
+          "prob": 0.2203,
+          "evPct": -64.31,
+          "decisionV1": "RECHAZADO",
+          "modelApplied": "Poisson Ajustado",
+          "reason": null
+        },
+        "v2_corrected": {
+          "available": true,
+          "prob": 0.732,
+          "evPct": 18.58,
+          "parametricModel": "Poisson",
+          "pParametric": 0.7572,
+          "dispersionPhi": 1,
+          "reason": null
+        },
+        "model_b": {
+          "available": true,
+          "prob": 0.9,
+          "evPct": 45.8,
+          "window": "L10",
+          "sampleSize": 10,
+          "reason": null
+        },
+        "model_c": {
+          "available": true,
+          "prob": 0.8,
+          "evPct": 29.6,
+          "window": "L20",
+          "sampleSize": 20,
+          "reason": null
+        },
+        "beta_binomial": {
+          "available": true,
+          "prob": 0.7067,
+          "evPct": 14.49,
+          "priorStrength": 15,
+          "priorProb": 0.582343,
+          "reason": null
+        },
+        "ensemble_v2": {
+          "available": true,
+          "prob": 0.6758,
+          "evPct": 9.48,
+          "weights": {
+            "wBB": 0.4,
+            "wNB": 0.25,
+            "wMkt": 0.35
+          },
+          "reason": null
+        }
+      }
+    },
+    "preMatchHash": "1acb6613c4253c978bccfc853104f14874bbc5c6d77863419ace38d8f8ccc5cb",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298532_f2e0bb",
+    "eventId": "rb-leipzig-v-rc-lens.0uh4tjf",
+    "pickId": "cand_real_statshub_20261124_lens_corners",
+    "eventKey": "rb-leipzig-v-rc-lens.0uh4tjf__rc-lens.0xyfeel__córners de equipo__más de 3.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298532_f2e0bb",
+      "eventId": "rb-leipzig-v-rc-lens.0uh4tjf",
+      "pickId": "cand_real_statshub_20261124_lens_corners",
+      "eventKey": "rb-leipzig-v-rc-lens.0uh4tjf__rc-lens.0xyfeel__córners de equipo__más de 3.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "RB Leipzig vs RC Lens",
+      "playerOrTeam": "RC Lens (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 3.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.73,
+        "approvalOdds": 1.73,
+        "overOdds": 1.73,
+        "underOdds": null,
+        "marketNoVigProb": 0.545316,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 0,
+        "dates": [],
+        "minutesPerMatch": [],
+        "avgMinutes": null,
+        "sourceEndpoint": "statshub:getTeamPropScreener",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": "STATSHUB_TEAM_PERFORMANCE_OMITS_PER_GAME_STATS"
+      },
+      "models": {
+        "v1_production": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "decisionV1": "RECHAZADO",
+          "reason": "RECHAZADO_DATOS_INSUFICIENTES: Muestra estadística insuficiente o datos reales ausentes en StatsHub"
+        },
+        "v2_corrected": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_b": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_c": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "beta_binomial": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "ensemble_v2": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        }
+      }
+    },
+    "preMatchHash": "e86c43d1883e259291968758a8d51742260dce585a52fa379df2a028466f7add",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795477298543_9d6735",
+    "eventId": "sk-slavia-praha-v-villarreal.0dw9kpj",
+    "pickId": "cand_real_statshub_20261125_slavia_corners",
+    "eventKey": "sk-slavia-praha-v-villarreal.0dw9kpj__sk-slavia-praha.0c7mo47__córners de equipo__más de 4.5",
+    "observedAtUtc": "2026-11-23T23:41:38.398Z",
+    "kickoffUtc": "2026-11-25T17:45:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795477298543_9d6735",
+      "eventId": "sk-slavia-praha-v-villarreal.0dw9kpj",
+      "pickId": "cand_real_statshub_20261125_slavia_corners",
+      "eventKey": "sk-slavia-praha-v-villarreal.0dw9kpj__sk-slavia-praha.0c7mo47__córners de equipo__más de 4.5",
+      "observedAtUtc": "2026-11-23T23:41:38.398Z",
+      "kickoffUtc": "2026-11-25T17:45:00.000Z",
+      "competition": "UEFA Champions League",
+      "match": "SK Slavia Praha vs Villarreal",
+      "playerOrTeam": "SK Slavia Praha (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Más de 4.5",
+      "side": "over",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.8,
+        "approvalOdds": 1.8,
+        "overOdds": 1.8,
+        "underOdds": null,
+        "marketNoVigProb": 0.524109,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "historyMetadata": {
+        "sampleCount": 0,
+        "dates": [],
+        "minutesPerMatch": [],
+        "avgMinutes": null,
+        "sourceEndpoint": "statshub:getTeamPropScreener",
+        "filteredPostKickoffCount": 0,
+        "unavailableReason": "STATSHUB_TEAM_PERFORMANCE_OMITS_PER_GAME_STATS"
+      },
+      "models": {
+        "v1_production": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "decisionV1": "RECHAZADO",
+          "reason": "RECHAZADO_DATOS_INSUFICIENTES: Muestra estadística insuficiente o datos reales ausentes en StatsHub"
+        },
+        "v2_corrected": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_b": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_c": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "beta_binomial": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "ensemble_v2": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        }
+      }
+    },
+    "preMatchHash": "6af18562f4fc00c1c6663de73621c605c596b182d117b475cd65f4900578eeaa",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
   }
 ]
