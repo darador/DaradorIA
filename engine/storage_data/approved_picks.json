@@ -16,7 +16,13 @@
     "team_analysis": "Matchup táctico entre Red Bull Bragantino y Vitória. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
     "player_analysis": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates al arco de equipo respalda la selección en Red Bull Bragantino vs Vitória.",
-    "approvedAt": "2026-11-19T17:52:58.581Z"
+    "approvedAt": "2026-11-19T17:52:58.581Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 2,
+    "settledAt": "2026-11-20T00:36:03.786Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_f1vj6i",
@@ -35,7 +41,13 @@
     "team_analysis": "Matchup táctico entre Internacional y Vasco da Gama. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
     "player_analysis": "Mercado colectivo (Remates de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates de equipo respalda la selección en Internacional vs Vasco da Gama.",
-    "approvedAt": "2026-11-19T17:52:58.591Z"
+    "approvedAt": "2026-11-19T17:52:58.591Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 4,
+    "settledAt": "2026-11-20T00:36:03.788Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_test_agent_01",
@@ -73,7 +85,13 @@
     "team_analysis": "Matchup táctico entre AS Roma y Benfica. Ratio de concesión del rival: 1x (ESTÁNDAR).",
     "player_analysis": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
-    "approvedAt": "2026-11-19T17:57:35.762Z"
+    "approvedAt": "2026-11-19T17:57:35.762Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 3,
+    "settledAt": "2026-11-20T00:46:28.928Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_fa98d7",
@@ -92,7 +110,13 @@
     "team_analysis": "Matchup táctico entre USM Alger y JS Kabylie. Ratio de concesión del rival: 1x (ESTÁNDAR).",
     "player_analysis": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
-    "approvedAt": "2026-11-19T17:57:35.774Z"
+    "approvedAt": "2026-11-19T17:57:35.774Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 0,
+    "settledAt": "2026-11-20T00:46:28.928Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_5nnp8v",
@@ -111,7 +135,13 @@
     "team_analysis": "Matchup táctico entre Internacional y Vasco da Gama. Ratio de concesión del rival: 1x (ESTÁNDAR).",
     "player_analysis": "Mercado colectivo (Tarjetas). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
-    "approvedAt": "2026-11-19T17:57:35.781Z"
+    "approvedAt": "2026-11-19T17:57:35.781Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 4,
+    "settledAt": "2026-11-20T00:36:03.783Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_9pw61t",
@@ -130,7 +160,13 @@
     "team_analysis": "Matchup táctico entre Arsenal y Olympique Lyonnais. Ratio de concesión del rival: 1x (ESTÁNDAR).",
     "player_analysis": "Mercado colectivo (Córners de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
-    "approvedAt": "2026-11-19T17:57:35.789Z"
+    "approvedAt": "2026-11-19T17:57:35.789Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 2,
+    "settledAt": "2026-11-20T00:46:28.928Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_56ms2b",
@@ -149,7 +185,13 @@
     "team_analysis": "Matchup táctico entre Arsenal y Olympique Lyonnais. Ratio de concesión del rival: 1.174x (VULNERABLE (Percentil bajo)).",
     "player_analysis": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "Inteligencia táctica favorable: duelo individual directo en Remates al arco de equipo respalda la selección en Arsenal vs Olympique Lyonnais.",
-    "approvedAt": "2026-11-19T17:57:35.795Z"
+    "approvedAt": "2026-11-19T17:57:35.795Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 1,
+    "settledAt": "2026-11-20T00:46:28.928Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_hmkyeq",
@@ -168,7 +210,13 @@
     "team_analysis": "Matchup táctico entre Hillerød y FC Fredericia. Ratio de concesión del rival: 1x (ESTÁNDAR).",
     "player_analysis": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
-    "approvedAt": "2026-11-19T17:57:35.802Z"
+    "approvedAt": "2026-11-19T17:57:35.802Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 1,
+    "settledAt": "2026-11-20T00:46:28.928Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   },
   {
     "id": "cand_1795110774831_3q13a7",
@@ -187,21 +235,12 @@
     "team_analysis": "Matchup táctico entre Progreso y Montevideo City Torque. Ratio de concesión del rival: 1x (ESTÁNDAR).",
     "player_analysis": "Mercado colectivo (Córners de equipo). La contribución se evalúa como bloque de equipo.",
     "match_intel": "SIN HALLAZGOS RELEVANTES",
-    "approvedAt": "2026-11-19T17:57:35.808Z"
-  },
-  {
-    "id": "cand_1795393549233_6rdvk",
-    "partido": "Real Madrid vs Inter",
-    "liga": "Champions League",
-    "seleccion": "Kylian Mbappé",
-    "mercado": "Remates al arco",
-    "linea": "Más de 1.5",
-    "cuota": 1.85,
-    "evPercentage": 0.31,
-    "pProjected": 0.71,
-    "fair_odds": 1.41,
-    "status": "APROBADO",
-    "rationale": "Promedio de 2.4 tiros al arco en 18 partidos con titularidad.",
-    "approvedAt": "2026-11-23T00:25:49.241Z"
+    "approvedAt": "2026-11-19T17:57:35.808Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 5,
+    "settledAt": "2026-11-20T00:46:28.928Z",
+    "date": "2026-11-19",
+    "elenaDecision": "APROBADO"
   }
 ]

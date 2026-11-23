@@ -111,31 +111,45 @@ const server = http.createServer((req, res) => {
       'Cache-Control': 'no-store, no-cache, must-revalidate'
     });
     try {
-      const staticMetricsPath = path.join(__dirname, 'api/metrics.json');
-      if (fs.existsSync(staticMetricsPath)) {
-        const staticData = fs.readFileSync(staticMetricsPath, 'utf8');
-        res.end(staticData);
-        return;
-      }
-
       const evaluator = require('./engine/evaluation/evaluator');
       const evalMetrics = evaluator.evaluatePerformance();
       let historySummary = null;
       let totalPicksInHistory = 0;
+      let historyPicks = [];
       try {
         const histRaw = fs.readFileSync(path.join(__dirname, 'historial_picks.json'), 'utf8');
         const history = JSON.parse(histRaw);
         historySummary = history.summary || null;
-        totalPicksInHistory = history.picks ? history.picks.length : (history.history ? history.history.length : 0);
+        historyPicks = (history.picks || history.history || []).filter(p => !p.id?.startsWith('pick_settle_'));
+        totalPicksInHistory = historyPicks.length;
       } catch (e) {}
 
-      res.end(JSON.stringify({
+      // Separación de universos: Métricas predictivas globales vs Portfolio aprobado por Elena
+      const elenaPicks = historyPicks.filter(p => p.elena_decision === 'APROBADO' || p.status === 'APROBADO' || !p.status?.includes('RECHAZADO'));
+      const elenaSettled = elenaPicks.filter(p => p.status === 'ACERTADA' || p.status === 'FALLADA' || p.status === 'GANADA' || p.status === 'PERDIDA');
+      const elenaWon = elenaSettled.filter(p => p.status === 'ACERTADA' || p.status === 'GANADA').length;
+
+      const dynamicMetrics = {
         status: 'ok',
         updatedAt: new Date().toISOString(),
         totalTrackedPicks: totalPicksInHistory,
         summary: historySummary,
+        portfolioElena: {
+          totalTracked: elenaPicks.length,
+          settled: elenaSettled.length,
+          won: elenaWon,
+          winRatePct: elenaSettled.length > 0 ? Number(((elenaWon / elenaSettled.length) * 100).toFixed(1)) : 0.0
+        },
         evaluation: evalMetrics
-      }, null, 2));
+      };
+
+      // Mantener sincronizado api/metrics.json en disco
+      try {
+        const staticMetricsPath = path.join(__dirname, 'api/metrics.json');
+        fs.writeFileSync(staticMetricsPath, JSON.stringify(dynamicMetrics, null, 2), 'utf8');
+      } catch (e) {}
+
+      res.end(JSON.stringify(dynamicMetrics, null, 2));
     } catch (err) {
       res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ status: 'error', message: err.message }));

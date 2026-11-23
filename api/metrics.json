@@ -1,26 +1,18 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-22T22:06:13.472Z",
-  "methodologyVersion": "v2.1-calibrated-nomenclature",
-  "nomenclature": {
-    "grossMarketImpliedProb": "1 / cuota_mercado (contiene margen del bookmaker)",
-    "fairMarketProbWithoutVig": "Probabilidad de mercado sin margen (requiere mercado bilateral)",
-    "modelBProb": "Probabilidad proyectada por Modelo B (ventana L10)",
-    "modelCProb": "Probabilidad proyectada por Modelo C (ventana L15-L20)",
-    "ensembleProb": "Promedio ponderado Modelo B + Modelo C",
-    "modelFairOdds": "1 / Probabilidad_Modelo (cuota teórica del modelo, no de mercado)"
-  },
+  "updatedAt": "2026-11-23T03:22:37.797Z",
   "totalTrackedPicks": 58,
   "summary": {
-    "total_picks": 58,
-    "won": 28,
-    "lost": 14,
-    "void": 9,
-    "pending": 7,
-    "win_rate": "66.7%",
+    "total_bets": 58,
+    "settled_bets": 42,
+    "won_bets": 28,
+    "lost_bets": 14,
+    "void_bets": 9,
+    "pending_bets": 7,
+    "win_rate_pct": 66.7,
+    "total_staked_units": 42,
     "net_profit_units": 7.42,
     "roi_pct": 17.7,
-    "yield_pct": 17.7,
     "by_market": {
       "Remates totales": {
         "total": 15,
@@ -110,19 +102,16 @@
         "win_rate": "0.0%",
         "profit": "+0.00U"
       }
-    },
-    "total_bets": 58,
-    "won_bets": 28,
-    "lost_bets": 14,
-    "void_bets": 9,
-    "pending_bets": 7,
+    }
+  },
+  "portfolioElena": {
+    "totalTracked": 58,
     "settled": 42,
-    "settled_bets": 42,
-    "win_rate_pct": 66.7,
-    "total_staked_units": 42
+    "won": 28,
+    "winRatePct": 66.7
   },
   "evaluation": {
-    "evaluatedAt": "2026-11-22T14:42:33.275Z",
+    "evaluatedAt": "2026-11-23T03:22:37.796Z",
     "sampleSize": 21,
     "financialMetrics": {
       "totalStakedUnits": 21,
@@ -246,118 +235,6 @@
         "winRate": 0,
         "netProfit": -1,
         "yieldPct": -100
-      }
-    ]
-  },
-  "universes": {
-    "universeA_globalAudit": {
-      "description": "Todas las predicciones auditables liquidadas (Universo Global)",
-      "totalObservations": 20,
-      "settledDecided": 19,
-      "won": 11,
-      "lost": 8,
-      "voidCount": 1,
-      "winRatePct": 57.9,
-      "netProfitUnits": 0.67,
-      "roiYieldPct": 3.5,
-      "brierScoreBenchmarkNaive": 0.2459,
-      "logLossBenchmarkNaive": 0.6851,
-      "brierScoreGrossMarketImplied": 0.2381,
-      "logLossGrossMarketImplied": 0.6694,
-      "brierScoreModelB": 0.3121,
-      "logLossModelB": 0.8902,
-      "brierScoreModelC": 0.3053,
-      "logLossModelC": 0.8472,
-      "brierScoreEnsemble": 0.306,
-      "logLossEnsemble": 0.8564
-    },
-    "universeB_elenaApproved": {
-      "description": "Portfolio de selecciones aprobadas por Elena (Veto a investigación incompleta)",
-      "totalObservations": 19,
-      "settledDecided": 18,
-      "won": 11,
-      "lost": 7,
-      "voidCount": 1,
-      "winRatePct": 61.1,
-      "netProfitUnits": 1.67,
-      "roiYieldPct": 9.3,
-      "brierScoreBenchmarkNaive": 0.2378,
-      "logLossBenchmarkNaive": 0.6687,
-      "brierScoreGrossMarketImplied": 0.2375,
-      "logLossGrossMarketImplied": 0.6681,
-      "brierScoreModelB": 0.3022,
-      "logLossModelB": 0.8727,
-      "brierScoreModelC": 0.31,
-      "logLossModelC": 0.8589,
-      "brierScoreEnsemble": 0.304,
-      "logLossEnsemble": 0.8551
-    },
-    "universeC_discardedOrPending": {
-      "description": "Picks descartados por Elena o pendientes de disputa",
-      "discardedAudited": {
-        "id": "cand_1795110774831_6rsb2k",
-        "match": "Internacional vs Vasco da Gama",
-        "reason": "INVESTIGACION_INCOMPLETA",
-        "status": "FALLADA",
-        "profitUnits": -1
-      },
-      "pendingActiveInDailyBoard": 3,
-      "quarantinedMocks": 30
-    }
-  },
-  "calibrationReport": {
-    "note": "Muestra preliminar (N=19). Intervalos con N<30 no constituyen evidencia concluyente.",
-    "modelB_bins": [
-      {
-        "range": "70% - 80%",
-        "n": 7,
-        "expectedAvgProb": "70.0%",
-        "actualHitRate": "71.4%",
-        "gap": "+1.4%"
-      },
-      {
-        "range": "80% - 90%",
-        "n": 6,
-        "expectedAvgProb": "80.0%",
-        "actualHitRate": "50.0%",
-        "gap": "-30.0%"
-      },
-      {
-        "range": "90% - 100%",
-        "n": 6,
-        "expectedAvgProb": "90.0%",
-        "actualHitRate": "50.0%",
-        "gap": "-40.0%"
-      }
-    ],
-    "ensemble_bins": [
-      {
-        "range": "50% - 60%",
-        "n": 1,
-        "expectedAvgProb": "58.5%",
-        "actualHitRate": "0.0%",
-        "gap": "-58.5%"
-      },
-      {
-        "range": "60% - 70%",
-        "n": 4,
-        "expectedAvgProb": "64.1%",
-        "actualHitRate": "100.0%",
-        "gap": "+35.9%"
-      },
-      {
-        "range": "70% - 80%",
-        "n": 5,
-        "expectedAvgProb": "73.9%",
-        "actualHitRate": "60.0%",
-        "gap": "-13.9%"
-      },
-      {
-        "range": "80% - 90%",
-        "n": 9,
-        "expectedAvgProb": "84.9%",
-        "actualHitRate": "44.4%",
-        "gap": "-40.4%"
       }
     ]
   }

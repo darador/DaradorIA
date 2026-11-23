@@ -40,14 +40,52 @@ class SettlementEngine {
       try {
         const result = await this.evaluatePick(pick, options.mockData);
         if (result && result.isSettled !== false) {
-          storage.saveResult(result);
-          settledResults.push(result);
-          try {
-            observationTracker.recordSettlement(pick.id, result);
-          } catch (trErr) {
-            console.warn(`[Settlement] Error actualizando tracker para ${pick.id}:`, trErr.message);
+          // Segregar fixtures o simulaciones de prueba
+          const isTest = pick.id?.startsWith('pick_settle_') || 
+                         result.verificationSource?.includes('Mock Provider') || 
+                         pick.isTestPick || pick.isTest;
+
+          if (isTest) {
+            const testResults = storage._readCollection('test_pick_results');
+            testResults.push(result);
+            storage._writeCollection('test_pick_results', testResults);
+            console.log(`[Settlement] Registro de prueba segregado para ${pick.id}`);
+          } else {
+            storage.saveResult(result);
+            settledResults.push(result);
+
+            // Loopback 1: Actualizar approved_picks.json preservando el veredicto APROBADO de Elena
+            const approvedList = storage.getApprovedPicks();
+            const appPick = approvedList.find(a => a.id === pick.id);
+            if (appPick) {
+              appPick.isSettled = true;
+              appPick.sportsResult = result.status;
+              appPick.actualStat = result.actualStat;
+              appPick.settledAt = result.settledAt;
+              appPick.elenaDecision = 'APROBADO';
+              storage._writeCollection('approved_picks', approvedList);
+            }
+
+            // Loopback 2: Actualizar research_candidates.json
+            const candidates = storage.getCandidates();
+            const cand = candidates.find(c => c.id === pick.id);
+            if (cand) {
+              cand.status = 'LIQUIDADO';
+              cand.isSettled = true;
+              cand.sportsResult = result.status;
+              cand.actualStat = result.actualStat;
+              cand.settledAt = result.settledAt;
+              cand.operationalStatus = result.status.includes('ANULADA') ? 'ANULADA_LINEUP' : 'ACEPTADO';
+              storage._writeCollection('research_candidates', candidates);
+            }
+
+            try {
+              observationTracker.recordSettlement(pick.id, result);
+            } catch (trErr) {
+              console.warn(`[Settlement] Error actualizando tracker para ${pick.id}:`, trErr.message);
+            }
           }
-          console.log(`[Settlement] Pick ${pick.player} (${pick.market} ${pick.line}): ${result.status} [${result.actualStat} vs ${result.targetLine}]`);
+          console.log(`[Settlement] Pick ${pick.player || pick.id} (${pick.market} ${pick.line}): ${result.status} [${result.actualStat} vs ${result.targetLine}]`);
         } else if (result && result.verificationStatus) {
           try {
             observationTracker.recordSettlement(pick.id, result);
@@ -61,8 +99,9 @@ class SettlementEngine {
       }
     }
 
-    // Sincronizar con historial_picks.json
+    // Sincronizar con historial_picks.json y picks_hoy.json
     const historialSummary = syncRadar.exportToHistorial();
+    syncRadar.exportToPicksHoy();
 
     return {
       evaluated: pendingToSettle.length,
@@ -190,7 +229,9 @@ class SettlementEngine {
     const isOver = !lineStr || lineStr.toLowerCase().includes('más') || lineStr.toLowerCase().includes('over') || lineStr.includes('>');
 
     let status = 'PERDIDA';
-    if (isOver) {
+    if (pick.lineupStatus === 'NO_TITULAR' || pick.isStarter === false || pick.voidReason || pick.isVoid) {
+      status = 'ANULADA_NO_TITULAR';
+    } else if (isOver) {
       if (actualStat > targetLineNum) status = 'GANADA';
       else if (actualStat === targetLineNum) status = 'NULA';
     } else {
@@ -207,12 +248,12 @@ class SettlementEngine {
     } else if (status === 'PERDIDA') {
       profitUnits = -stake;
     } else {
-      profitUnits = 0.0;
+      profitUnits = 0.0; // VOID / NULA / ANULADA
     }
 
     return {
       pickId: pick.id,
-      date: pick.date || new Date().toISOString().slice(0, 10),
+      date: pick.date || pick.eventDateLocal || new Date().toISOString().slice(0, 10),
       match: pick.match || pick.partido,
       player: pick.player || pick.seleccion,
       market: pick.market || pick.mercado,
@@ -221,7 +262,9 @@ class SettlementEngine {
       targetLine: targetLineNum,
       actualStat,
       matchScore: score,
-      status, // 'GANADA' | 'PERDIDA' | 'NULA'
+      status, // 'GANADA' | 'PERDIDA' | 'NULA' | 'ANULADA_NO_TITULAR'
+      elenaDecision: pick.elenaDecision || (pick.status === 'APROBADO' ? 'APROBADO' : 'PENDIENTE'),
+      operationalStatus: status.includes('ANULADA') ? 'ANULADA_LINEUP' : 'ACEPTADO',
       stakedUnits: stake,
       profitUnits,
       settledAt: new Date().toISOString(),
