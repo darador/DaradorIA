@@ -5699,12 +5699,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "GANADA",
+    "actualStat": 1,
+    "profitUnits": 0.6,
+    "settledAt": "2026-11-23T04:42:48.158Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -5744,8 +5744,17 @@
         "timestamp": "2026-11-21T18:54:56.254Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.158Z",
+        "reason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+        "source": "StatsHub Oficial (atalanta-v-inter.1619igm)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (atalanta-v-inter.1619igm)",
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub."
   },
   {
     "pickId": "cand_real_statshub_20261122_lautaro_1795287296261",
@@ -5770,12 +5779,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "ANULADA_NO_TITULAR",
+    "actualStat": 0,
+    "profitUnits": 0,
+    "settledAt": "2026-11-23T04:42:48.174Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -5815,8 +5824,17 @@
         "timestamp": "2026-11-21T18:54:56.254Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.174Z",
+        "reason": "Alineación oficial confirmada: jugador NO inició como titular (regla T-60).",
+        "source": "StatsHub Oficial (atalanta-v-inter.1619igm)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (atalanta-v-inter.1619igm)",
+    "verificationReason": "Alineación oficial confirmada: jugador NO inició como titular (regla T-60)."
   },
   {
     "pickId": "cand_real_statshub_20261122_iroegbunam_1795318990001",
@@ -6622,12 +6640,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "profitUnits": 0,
+    "settledAt": "2026-11-23T04:42:48.288Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -6667,8 +6685,24 @@
         "timestamp": "2026-11-22T03:45:00.000Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.154Z",
+        "reason": "Partido en estado 'live' sin estadísticas oficiales consolidadas en StatsHub para Remates de equipo.",
+        "source": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.288Z",
+        "reason": "Partido en estado 'live' sin estadísticas oficiales consolidadas en StatsHub para Remates de equipo.",
+        "source": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (vancouver-whitecaps-v-real-salt-lake.0jc6gre)",
+    "verificationReason": "Partido en estado 'live' sin estadísticas oficiales consolidadas en StatsHub para Remates de equipo."
   },
   {
     "pickId": "cand_real_statshub_20261123_everton_1795318990013",
@@ -8071,12 +8105,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PRE_MATCH_FROZEN",
-    "finalResultConfirmed": "PENDIENTE",
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "PERDIDA",
+    "actualStat": 0,
+    "profitUnits": -1,
+    "settledAt": "2026-11-23T04:42:48.186Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -8117,8 +8151,17 @@
         "timestamp": "2026-11-22T14:00:44.339Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.186Z",
+        "reason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+        "source": "StatsHub Oficial (burgos-club-de-futbol-v-albacete-balompi.1vda0g3)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (burgos-club-de-futbol-v-albacete-balompi.1vda0g3)",
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub."
   },
   {
     "pickId": "cand_real_statshub_20261122_tay_abed_shots",
@@ -8143,12 +8186,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PRE_MATCH_FROZEN",
-    "finalResultConfirmed": "PENDIENTE",
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "PERDIDA",
+    "actualStat": 2,
+    "profitUnits": -1,
+    "settledAt": "2026-11-23T04:42:48.201Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -8188,8 +8231,17 @@
         "timestamp": "2026-11-22T14:00:44.339Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.201Z",
+        "reason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+        "source": "StatsHub Oficial (celta-vigo-b-v-real-valladolid.1e0n4s7)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (celta-vigo-b-v-real-valladolid.1e0n4s7)",
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub."
   },
   {
     "pickId": "cand_real_statshub_20261122_bonar_shots",
@@ -8285,12 +8337,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PRE_MATCH_FROZEN",
-    "finalResultConfirmed": "PENDIENTE",
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "GANADA",
+    "actualStat": 5,
+    "profitUnits": 0.53,
+    "settledAt": "2026-11-23T04:42:48.213Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -8331,8 +8383,17 @@
         "timestamp": "2026-11-22T14:00:44.339Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.213Z",
+        "reason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+        "source": "StatsHub Oficial (avellino-v-mantova.0mds7pa)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (avellino-v-mantova.0mds7pa)",
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub."
   },
   {
     "pickId": "cand_real_statshub_20261122_arezzo_sot",
@@ -8357,12 +8418,12 @@
     "date": "2026-11-22",
     "elenaDecision": "APROBADO",
     "elenaVetoApplied": false,
-    "verificationStatus": "PRE_MATCH_FROZEN",
-    "finalResultConfirmed": "PENDIENTE",
-    "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "currentState": "APPROVED",
+    "verificationStatus": "RESULTADO_CONFIRMADO",
+    "finalResultConfirmed": "PERDIDA",
+    "actualStat": 6,
+    "profitUnits": -1,
+    "settledAt": "2026-11-23T04:42:48.227Z",
+    "currentState": "SETTLED",
     "stage": "APPROVED",
     "isOperativeRecommendation": false,
     "shadowMode": true,
@@ -8403,8 +8464,17 @@
         "timestamp": "2026-11-22T14:00:44.339Z",
         "reason": "Aprobación unánime del Comité de IA",
         "source": "RiskManager_Elena"
+      },
+      {
+        "fromState": "APPROVED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-23T04:42:48.227Z",
+        "reason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.",
+        "source": "StatsHub Oficial (arezzo-v-padova.1gi7b9q)"
       }
-    ]
+    ],
+    "verificationSource": "StatsHub Oficial (arezzo-v-padova.1gi7b9q)",
+    "verificationReason": "Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub."
   },
   {
     "pickId": "cand_real_statshub_20261123_almeria_goals",

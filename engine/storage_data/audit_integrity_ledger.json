@@ -887,29 +887,29 @@
     "pickId": "cand_real_statshub_20261122_thuram_1795287296260",
     "sealedAt": "2026-11-21T18:54:56.254Z",
     "preMatchHash": "328cf6dcb6b7f2d2a1aa385b39468abd015f1603f38f591f374c1213ae7688bf",
-    "settlementHash": "a16d437867bdb5edc949845205c237622dde644f249c714bcfec7ba463f81332",
+    "settlementHash": "d49901d070a30dfb5a9ac2a7ed06713bf95c7d43c43bb0440fbfa7b69d7abc7b",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.6,
     "probModelB": 0.727,
     "probModelC": 0.9,
-    "finalResultConfirmed": null,
-    "settledAt": null,
-    "actualStat": null
+    "finalResultConfirmed": "GANADA",
+    "settledAt": "2026-11-23T04:42:48.158Z",
+    "actualStat": 1
   },
   "cand_real_statshub_20261122_lautaro_1795287296261": {
     "pickId": "cand_real_statshub_20261122_lautaro_1795287296261",
     "sealedAt": "2026-11-21T18:54:56.254Z",
     "preMatchHash": "dd4f695453b0f363b7644583b3a6845ed85dd8b3e98062f5642efdca3e489546",
-    "settlementHash": "a403b07934e3e16392a1c00955893c28cacbf8d038260da2051e74dfde2a1235",
+    "settlementHash": "b6ee74d5bdaee6bc90a41a8420960c6ef144e3ce9f4bf1479a1a9636ae4fc416",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.85,
     "probModelB": 0.608,
     "probModelC": 0.7,
-    "finalResultConfirmed": null,
-    "settledAt": null,
-    "actualStat": null
+    "finalResultConfirmed": "ANULADA_NO_TITULAR",
+    "settledAt": "2026-11-23T04:42:48.174Z",
+    "actualStat": 0
   },
   "cand_real_statshub_20261122_iroegbunam_1795318990001": {
     "pickId": "cand_real_statshub_20261122_iroegbunam_1795318990001",
@@ -1069,14 +1069,14 @@
     "pickId": "cand_real_statshub_20261122_realsaltlake_1795318990012",
     "sealedAt": "2026-11-22T03:45:00.000Z",
     "preMatchHash": "70f43e290124c98b4de44c0cc11bf8378771fd0964aacf7197c2b17a0f59cbfe",
-    "settlementHash": "13e4d0c80b17d840915096172af8ce70bcad9121d18c77bf4d2e42d2623cbc50",
+    "settlementHash": "4dfdba39db03a912d77c7d59cfe7d3a635a5224cbce9626b5931335f0bf223e5",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 2,
     "probModelB": 0.68,
     "probModelC": 0.65,
-    "finalResultConfirmed": null,
-    "settledAt": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-23T04:42:48.288Z",
     "actualStat": null
   },
   "cand_real_statshub_20261123_everton_1795318990013": {
@@ -1331,25 +1331,29 @@
     "pickId": "cand_real_statshub_20261122_albacete_goals",
     "sealedAt": "2026-11-22T14:00:44.339Z",
     "preMatchHash": "9f5157ef6c04ed9c43d8766e0639c3e1b134cc4eb37dc8e3799d7329fe0c71d7",
-    "settlementHash": "489a0a1d1120c44a2c261aed1ab92e1078f4172ea19c7dea713debc39b52f257",
+    "settlementHash": "42e83d87d1226557a7ff13ee0c32d6e56bb9f42424251e3c5d7eb2d43f4e8aab",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.53,
     "probModelB": 0.78,
     "probModelC": 0.76,
-    "finalResultConfirmed": "PENDIENTE"
+    "finalResultConfirmed": "PERDIDA",
+    "settledAt": "2026-11-23T04:42:48.186Z",
+    "actualStat": 0
   },
   "cand_real_statshub_20261122_tay_abed_shots": {
     "pickId": "cand_real_statshub_20261122_tay_abed_shots",
     "sealedAt": "2026-11-22T14:00:44.339Z",
     "preMatchHash": "6df8957e4144a7d9dbc4e6d5207964d0cd29fd425b71705df0384fa1dfc1ebae",
-    "settlementHash": "c8bd2246fa52dd7823e72b168598c22dedbe4c7631e2c50208a5a2a1a96c66b4",
+    "settlementHash": "eb1c0d899d4628bd4bb431114f1b2e8ec00b3bc8561dba73be42efca14e6ca32",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.57,
     "probModelB": 0.74,
     "probModelC": 0.72,
-    "finalResultConfirmed": "PENDIENTE"
+    "finalResultConfirmed": "PERDIDA",
+    "settledAt": "2026-11-23T04:42:48.201Z",
+    "actualStat": 2
   },
   "cand_real_statshub_20261122_bonar_shots": {
     "pickId": "cand_real_statshub_20261122_bonar_shots",
@@ -1367,25 +1371,29 @@
     "pickId": "cand_real_statshub_20261122_avellino_corners",
     "sealedAt": "2026-11-22T14:00:44.339Z",
     "preMatchHash": "2c81879ff520347e8ce46c02647479c260e0bf6c035761fd1063bf82a7495593",
-    "settlementHash": "20d8e1acefd90ee2195b8406a3f4fcf3c8bb9db5a5c9c00f59aba78695c9ade3",
+    "settlementHash": "e5baa70e23913e78532cf199c8441d519eaddd7f689f7405ba0ac484b6c101af",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.53,
     "probModelB": 0.77,
     "probModelC": 0.75,
-    "finalResultConfirmed": "PENDIENTE"
+    "finalResultConfirmed": "GANADA",
+    "settledAt": "2026-11-23T04:42:48.213Z",
+    "actualStat": 5
   },
   "cand_real_statshub_20261122_arezzo_sot": {
     "pickId": "cand_real_statshub_20261122_arezzo_sot",
     "sealedAt": "2026-11-22T14:00:44.339Z",
     "preMatchHash": "a63bce60845aa1acbb95aa4e5f40fd4474ceb5c991c0e2ec2497fdc1edf75f51",
-    "settlementHash": "f6918b10dea92ace1ed531b8cd79430b6f6e2896792c46d589ba0e0a1d3f35c5",
+    "settlementHash": "11bf7f71632455b41353c370d6df73e08bd50792fc928252ec3ec7a2714fdca3",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.62,
     "probModelB": 0.75,
     "probModelC": 0.73,
-    "finalResultConfirmed": "PENDIENTE"
+    "finalResultConfirmed": "PERDIDA",
+    "settledAt": "2026-11-23T04:42:48.227Z",
+    "actualStat": 6
   },
   "cand_real_statshub_20261123_almeria_goals": {
     "pickId": "cand_real_statshub_20261123_almeria_goals",

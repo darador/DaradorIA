@@ -4,10 +4,32 @@
  * individuales o colectivas de StatsHub, determina si la apuesta fue GANADA / PERDIDA / NULA
  * y actualiza automáticamente el historial y las métricas de rendimiento (+ROI).
  */
+const fs = require('fs');
+const config = require('../config');
 const storage = require('../data/storage');
 const mcpClient = require('../mcp/mcpClient');
 const syncRadar = require('../data/syncRadar');
 const observationTracker = require('../prediction/observationTracker');
+
+function normalizeName(str) {
+  return String(str || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\(equipo\)/gi, '')
+    .trim()
+    .toLowerCase();
+}
+
+function isTeamMarketPick(pick) {
+  const player = String(pick.player || pick.playerOrTeam || pick.seleccion || '');
+  const market = String(pick.market || pick.mercado || '').toLowerCase();
+  return Boolean(
+    pick.isTeamProp ||
+    pick.teamId ||
+    player.toLowerCase().includes('(equipo)') ||
+    market.includes('de equipo')
+  );
+}
 
 class SettlementEngine {
   constructor() {
@@ -15,31 +37,78 @@ class SettlementEngine {
   }
 
   /**
-   * Ejecuta el ciclo de liquidación para todos los picks aprobados pendientes
+   * Ejecuta el ciclo de liquidación para todos los picks aprobados y pendientes en historial
    * @param {Object} options
    * @returns {Promise<Object>} Resumen de liquidaciones
    */
   async settlePendingPicks(options = {}) {
     console.log('[Settlement] Iniciando ciclo de liquidación de resultados...');
     const approvedPicks = storage.getApprovedPicks();
+    const allCandidates = storage.getCandidates();
     const existingHistory = storage.getResults();
 
-    // Filtrar picks ya liquidados
-    const settledIds = new Set(existingHistory.map(h => h.pickId || h.id));
-    let pendingToSettle = approvedPicks.filter(p => !settledIds.has(p.id));
+    // Índices de candidatos y duplicados
+    const candById = new Map(allCandidates.map(c => [c.id, c]));
+    const duplicateIds = new Set(allCandidates.filter(c => c && c.status === 'DUPLICADO').map(c => c.id));
+
+    // Filtrar picks ya liquidados (idempotencia por pickId y canonicalId)
+    const settledIds = new Set();
+    for (const h of existingHistory) {
+      if (h.pickId) settledIds.add(h.pickId);
+      if (h.id) settledIds.add(h.id);
+      if (h.canonicalId) settledIds.add(h.canonicalId);
+    }
+
+    // Consolidar universo elegible: approved_picks.json + pendientes en historial_picks.json
+    const combinedById = new Map();
+    for (const p of approvedPicks) {
+      if (!p || !p.id || duplicateIds.has(p.id)) continue;
+      const canonical = p.canonicalId || p.id;
+      if (settledIds.has(p.id) || settledIds.has(canonical)) continue;
+      const cand = candById.get(p.id) || {};
+      combinedById.set(p.id, { ...cand, ...p, elenaDecision: p.elenaDecision || 'APROBADO' });
+    }
+
+    // Incorporar selecciones PENDIENTE / PENDIENTE_DE_LIQUIDACION de historial_picks.json
+    if (fs.existsSync(config.paths.historialPicks)) {
+      try {
+        const histRaw = JSON.parse(fs.readFileSync(config.paths.historialPicks, 'utf8'));
+        const histList = histRaw.history || histRaw.picks || [];
+        for (const h of histList) {
+          if (!h || !h.id || duplicateIds.has(h.id)) continue;
+          const isHistPending = h.status === 'PENDIENTE' || h.status === 'PENDIENTE_DE_LIQUIDACION';
+          if (!isHistPending) continue;
+          const canonical = h.canonicalId || h.id;
+          if (settledIds.has(h.id) || settledIds.has(canonical) || combinedById.has(h.id)) continue;
+          const cand = candById.get(h.id) || {};
+          combinedById.set(h.id, {
+            ...cand,
+            ...h,
+            elenaDecision: h.elena_decision || h.elenaDecision || 'APROBADO',
+            isTeamProp: isTeamMarketPick(h)
+          });
+        }
+      } catch (e) {
+        console.warn('[Settlement] Error leyendo historial_picks.json:', e.message);
+      }
+    }
+
+    let pendingToSettle = Array.from(combinedById.values());
 
     if (options.pickIds && options.pickIds.length > 0) {
       pendingToSettle = pendingToSettle.filter(p => options.pickIds.includes(p.id));
     }
 
-    console.log(`[Settlement] Picks aprobados a evaluar: ${pendingToSettle.length}`);
+    console.log(`[Settlement] Picks elegibles a evaluar: ${pendingToSettle.length}`);
 
     const settledResults = [];
+    const pendingVerification = [];
+    const errors = [];
 
     for (const pick of pendingToSettle) {
       try {
-        const result = await this.evaluatePick(pick, options.mockData);
-        if (result && result.isSettled !== false) {
+        const result = await this.evaluatePick(pick, options.mockData, options.verifiedStatsHubData);
+        if (result && result.isSettled === true) {
           // Segregar fixtures o simulaciones de prueba
           const isTest = pick.id?.startsWith('pick_settle_') || 
                          result.verificationSource?.includes('Mock Provider') || 
@@ -51,6 +120,13 @@ class SettlementEngine {
             storage._writeCollection('test_pick_results', testResults);
             console.log(`[Settlement] Registro de prueba segregado para ${pick.id}`);
           } else {
+            // Verificación adicional de idempotencia antes de persistir
+            const freshResults = storage.getResults();
+            if (freshResults.some(r => r.pickId === pick.id)) {
+              console.log(`[Settlement] Pick ${pick.id} ya liquidado previamente (idempotencia).`);
+              continue;
+            }
+
             storage.saveResult(result);
             settledResults.push(result);
 
@@ -87,14 +163,28 @@ class SettlementEngine {
           }
           console.log(`[Settlement] Pick ${pick.player || pick.id} (${pick.market} ${pick.line}): ${result.status} [${result.actualStat} vs ${result.targetLine}]`);
         } else if (result && result.verificationStatus) {
+          if (result.verificationStatus === 'ERROR_DE_VERIFICACION') {
+            errors.push({ pickId: pick.id, reason: result.verificationReason });
+            console.warn(`[Settlement] ⚠️ Error de verificación para ${pick.id}: ${result.verificationReason}`);
+          } else {
+            pendingVerification.push({
+              pickId: pick.id,
+              status: result.status || 'PENDIENTE_DE_LIQUIDACION',
+              verificationStatus: result.verificationStatus,
+              reason: result.verificationReason
+            });
+            // Persistir trazabilidad en historial_picks.json si falta evidencia oficial (sin inventar actualStat)
+            this._markPendingVerificationInHistorial(pick.id, result);
+            console.log(`[Settlement] ⏳ Pick ${pick.player || pick.id}: ${result.verificationStatus} - ${result.verificationReason}`);
+          }
           try {
             observationTracker.recordSettlement(pick.id, result);
           } catch (trErr) {
             console.warn(`[Settlement] Error actualizando tracker provisional para ${pick.id}:`, trErr.message);
           }
-          console.log(`[Settlement] Pick ${pick.player || pick.id}: ${result.verificationStatus} - ${result.verificationReason}`);
         }
       } catch (err) {
+        errors.push({ pickId: pick.id, reason: err.message });
         console.warn(`[Settlement] Error evaluando pick ${pick.id}: ${err.message}`);
       }
     }
@@ -107,8 +197,30 @@ class SettlementEngine {
       evaluated: pendingToSettle.length,
       settled: settledResults.length,
       results: settledResults,
+      pendingVerification,
+      errors,
       historialSummary
     };
+  }
+
+  _markPendingVerificationInHistorial(pickId, result) {
+    if (!fs.existsSync(config.paths.historialPicks)) return;
+    try {
+      const hData = JSON.parse(fs.readFileSync(config.paths.historialPicks, 'utf8'));
+      const list = hData.history || hData.picks || [];
+      const item = list.find(b => b.id === pickId);
+      if (item && (item.status === 'PENDIENTE' || item.status === 'PENDIENTE_DE_LIQUIDACION')) {
+        item.status = 'PENDIENTE_DE_LIQUIDACION';
+        item.actual_stat = null;
+        item.notes = result.verificationReason || 'Pendiente de liquidación: ausencia de estadísticas oficiales en StatsHub.';
+        item.verification_status = result.verificationStatus;
+        hData.history = list;
+        hData.picks = list;
+        fs.writeFileSync(config.paths.historialPicks, JSON.stringify(hData, null, 2), 'utf8');
+      }
+    } catch (e) {
+      console.warn(`[Settlement] Error actualizando estado pendiente en historial para ${pickId}:`, e.message);
+    }
   }
 
   /**
@@ -122,13 +234,14 @@ class SettlementEngine {
   /**
    * Evalúa un pick específico comparando resultado real con la línea
    */
-  async evaluatePick(pick, mockData = null) {
+  async evaluatePick(pick, mockData = null, verifiedStatsHubData = null) {
     let actualStat = null;
     let matchFinished = false;
     let score = null;
     let verificationStatus = 'PENDIENTE';
     let verificationSource = null;
     let verificationReason = null;
+    let lineupStarterFlag = pick.isStarter;
 
     if (mockData && mockData[pick.id]) {
       actualStat = mockData[pick.id].stat;
@@ -138,98 +251,133 @@ class SettlementEngine {
       verificationSource = 'Mock Provider (Test Suite)';
       verificationReason = 'Liquidación de prueba con datos simulados confirmados';
     } else {
-      // Consultar StatsHub MCP para obtener estadísticas finales
+      // Consultar StatsHub MCP (o acta oficial verificada provista por el flujo de StatsHub)
       try {
         let matchDetails = null;
-        if (pick.matchId) {
-          matchDetails = await mcpClient.callTool('getMatchDetails', { matchId: pick.matchId });
+        let lineupRecord = null;
+        const verifiedEntry = verifiedStatsHubData && verifiedStatsHubData[pick.id] ? verifiedStatsHubData[pick.id] : null;
+
+        if (verifiedEntry) {
+          matchDetails = verifiedEntry.matchDetails || null;
+          lineupRecord = verifiedEntry.lineup || null;
+        } else if (pick.matchId) {
+          matchDetails = await mcpClient.callTool('getMatchDetails', {
+            matchId: pick.matchId,
+            include: ['players', 'teamStats'],
+            allPlayers: true
+          });
         }
 
-        const isFT = matchDetails && (matchDetails.status === 'FT' || matchDetails.status === 'FINISHED');
+        const rawStatus = matchDetails?.data?.matches?.status || matchDetails?.status || '';
+        const statusLower = String(rawStatus).toLowerCase();
+        const isFT = ['ft', 'finished', 'full_time', 'ended'].includes(statusLower);
+        const isLive = ['live', 'in_play', 'inplay', 'ht', '1h', '2h'].includes(statusLower);
+
         if (isFT) {
           matchFinished = true;
-          score = matchDetails.score || `${matchDetails.homeScore ?? ''}-${matchDetails.awayScore ?? ''}`.trim();
+          score = matchDetails?.score?.final || matchDetails?.score?.current || matchDetails?.score || `${matchDetails?.homeScore ?? ''}-${matchDetails?.awayScore ?? ''}`.trim();
+        } else if (isLive) {
+          score = matchDetails?.score?.current || matchDetails?.score?.final || matchDetails?.score || null;
         }
 
-        // Si es jugador individual, consultar playerStats
-        if (pick.playerId) {
-          const pStats = await mcpClient.callTool('getPlayerStats', { 
-            playerId: pick.playerId, 
-            statType: this._mapMarketToStatType(pick.market),
-            limit: 1,
-            appearances: 'all'
-          });
+        const teamPick = isTeamMarketPick(pick);
 
-          // Extraer último partido
-          const lastGame = pStats?.data?.matches?.[0] || pStats?.data?.matchRows?.[0] || pStats?.lastGame || null;
-          if (lastGame) {
-            actualStat = this._extractStatFromGame(lastGame, pick.market, pStats?.data?.matchColumns);
-          }
-        } else if (pick.isTeamProp || pick.teamId) {
-          // Si es mercado de equipo
+        if (teamPick) {
           if (matchDetails) {
-            actualStat = this._extractTeamStatFromMatch(matchDetails, pick.market, pick.player || pick.team);
+            actualStat = this._extractTeamStatFromMatch(matchDetails, pick.market || pick.mercado, pick.player || pick.team || pick.seleccion);
+          }
+        } else {
+          // Jugador individual: primero buscar en el acta oficial del partido (players + lineup)
+          if (matchDetails && matchDetails.players) {
+            const pRow = this._extractPlayerRowFromMatch(matchDetails, pick.player || pick.playerOrTeam || pick.seleccion, pick.playerId);
+            if (pRow) {
+              actualStat = this._extractStatFromGame(pRow, pick.market || pick.mercado);
+            }
+          }
+
+          if (lineupRecord && typeof lineupRecord.started === 'boolean') {
+            lineupStarterFlag = lineupRecord.started;
+          }
+
+          // Fallback a getPlayerStats vía MCP si no hubo acta embebida y existe playerId
+          if (actualStat === null && pick.playerId && !verifiedEntry) {
+            const pStats = await mcpClient.callTool('getPlayerStats', {
+              playerId: pick.playerId,
+              statType: this._mapMarketToStatType(pick.market),
+              limit: 1,
+              appearances: 'all'
+            });
+            const lastGame = pStats?.data?.matches?.[0] || pStats?.data?.matchRows?.[0] || pStats?.lastGame || null;
+            if (lastGame) {
+              actualStat = this._extractStatFromGame(lastGame, pick.market, pStats?.data?.matchColumns);
+            }
           }
         }
 
-        if (matchFinished && actualStat !== null) {
+        const fixtureRef = matchDetails?.data?.matches?.id || pick.matchId || 'sin-matchId';
+
+        if (matchFinished && lineupStarterFlag === false && !teamPick) {
+          // Regla de Elena T-60: jugador no titular -> anulación confirmada aunque no alcance stats
+          actualStat = actualStat ?? 0;
           verificationStatus = 'RESULTADO_CONFIRMADO';
-          verificationSource = 'StatsHub MCP: getMatchDetails + getPlayerStats (FT Oficial)';
-          verificationReason = 'Partido concluido con estado oficial FT y estadísticas individuales confirmadas';
-        } else if (matchFinished && actualStat === null) {
-          verificationStatus = 'RESULTADO_PROVISIONAL';
-          verificationSource = 'StatsHub MCP: getMatchDetails (FT)';
-          verificationReason = 'Partido finalizado pero estadísticas individuales aún no consolidadas en StatsHub';
-        } else if (!matchFinished && actualStat !== null) {
-          verificationStatus = 'RESULTADO_PROVISIONAL';
-          verificationSource = 'StatsHub MCP: En Juego';
-          verificationReason = 'Estadística preliminar durante el transcurso del partido';
+          verificationSource = `StatsHub Oficial (${fixtureRef})`;
+          verificationReason = 'Alineación oficial confirmada: jugador NO inició como titular (regla T-60).';
+        } else if (matchFinished && actualStat !== null && actualStat !== undefined) {
+          verificationStatus = 'RESULTADO_CONFIRMADO';
+          verificationSource = `StatsHub Oficial (${fixtureRef})`;
+          verificationReason = 'Partido concluido (FT) con estadísticas oficiales confirmadas en StatsHub.';
+        } else if ((matchFinished || isLive) && (actualStat === null || actualStat === undefined)) {
+          verificationStatus = 'PENDIENTE_DE_LIQUIDACION';
+          verificationSource = `StatsHub Oficial (${fixtureRef})`;
+          verificationReason = `Partido en estado '${rawStatus}' sin estadísticas oficiales consolidadas en StatsHub para ${pick.market || pick.mercado}.`;
+        } else if (!matchDetails) {
+          verificationStatus = 'PENDIENTE_DE_LIQUIDACION';
+          verificationSource = 'StatsHub MCP';
+          verificationReason = `Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para ${pick.match || pick.id}).`;
         } else {
           verificationStatus = 'PENDIENTE';
-          verificationSource = 'StatsHub MCP';
-          verificationReason = 'Partido pendiente de inicio o en disputa sin datos consolidados';
+          verificationSource = `StatsHub Oficial (${fixtureRef})`;
+          verificationReason = 'Partido pendiente de inicio o sin datos consolidados.';
         }
       } catch (e) {
         verificationStatus = 'ERROR_DE_VERIFICACION';
         verificationSource = 'StatsHub MCP Error';
         verificationReason = `Error durante consulta de liquidación: ${e.message}`;
+        console.warn(`[Settlement] Error StatsHub en ${pick.id}: ${e.message}`);
       }
     }
 
     // Regla de integridad: No liquidar definitivamente si no está confirmado
-    if (verificationStatus !== 'RESULTADO_CONFIRMADO' || actualStat === null) {
-      if (verificationStatus === 'ERROR_DE_VERIFICACION' || verificationStatus === 'RESULTADO_PROVISIONAL') {
-        return {
-          pickId: pick.id,
-          date: pick.date || new Date().toISOString().slice(0, 10),
-          match: pick.match || pick.partido,
-          player: pick.player || pick.seleccion,
-          market: pick.market || pick.mercado,
-          line: pick.line || pick.linea,
-          odds: Number(pick.odds || pick.cuota || 1.80),
-          targetLine: parseFloat(String(pick.line || pick.linea || '0.5').replace(/[^\d.]/g, '') || '0.5'),
-          actualStat: actualStat ?? null,
-          matchScore: score,
-          status: verificationStatus === 'ERROR_DE_VERIFICACION' ? 'ERROR_DE_VERIFICACION' : 'PENDIENTE',
-          stakedUnits: 1.0,
-          profitUnits: 0.0,
-          verificationStatus,
-          verificationSource: verificationSource || 'StatsHub MCP',
-          verificationReason: verificationReason || 'Pendiente de consolidación oficial',
-          verifiedAt: new Date().toISOString(),
-          isSettled: false
-        };
-      }
-      return null; // El partido sigue en juego o pendiente
+    if (verificationStatus !== 'RESULTADO_CONFIRMADO' || actualStat === null || actualStat === undefined) {
+      return {
+        pickId: pick.id,
+        date: pick.date || pick.eventDateLocal || new Date().toISOString().slice(0, 10),
+        match: pick.match || pick.partido,
+        player: pick.player || pick.seleccion,
+        market: pick.market || pick.mercado,
+        line: pick.line || pick.linea,
+        odds: Number(pick.odds || pick.cuota || 1.80),
+        targetLine: parseFloat(String(pick.line || pick.linea || '0.5').replace(/[^\d.]/g, '') || '0.5'),
+        actualStat: null,
+        matchScore: score,
+        status: verificationStatus === 'ERROR_DE_VERIFICACION' ? 'ERROR_DE_VERIFICACION' : 'PENDIENTE_DE_LIQUIDACION',
+        stakedUnits: 1.0,
+        profitUnits: 0.0,
+        verificationStatus,
+        verificationSource: verificationSource || 'StatsHub MCP',
+        verificationReason: verificationReason || 'Pendiente de consolidación oficial',
+        verifiedAt: new Date().toISOString(),
+        isSettled: false
+      };
     }
 
-    // Determinar resultado oficial: GANADA vs PERDIDA
+    // Determinar resultado oficial: GANADA vs PERDIDA vs ANULADA_NO_TITULAR
     const lineStr = String(pick.line || pick.linea || '0.5');
     const targetLineNum = parseFloat(lineStr.replace(/[^\d.]/g, '') || '0.5');
     const isOver = !lineStr || lineStr.toLowerCase().includes('más') || lineStr.toLowerCase().includes('over') || lineStr.includes('>');
 
     let status = 'PERDIDA';
-    if (pick.lineupStatus === 'NO_TITULAR' || pick.isStarter === false || pick.voidReason || pick.isVoid) {
+    if (pick.lineupStatus === 'NO_TITULAR' || lineupStarterFlag === false || pick.voidReason || pick.isVoid) {
       status = 'ANULADA_NO_TITULAR';
     } else if (isOver) {
       if (actualStat > targetLineNum) status = 'GANADA';
@@ -288,18 +436,83 @@ class SettlementEngine {
     return 'shots';
   }
 
+  _extractPlayerRowFromMatch(matchDetails, playerName, playerId = null) {
+    if (!matchDetails || !matchDetails.players) return null;
+    const rows = [
+      ...(matchDetails.players.home?.rows || []),
+      ...(matchDetails.players.away?.rows || [])
+    ];
+    if (playerId) {
+      const byId = rows.find(r => r.playerId === playerId || r.id === playerId);
+      if (byId) return byId;
+    }
+    const target = normalizeName(playerName);
+    if (!target) return null;
+    return rows.find(r => {
+      const rn = normalizeName(r.name);
+      return rn === target || rn.includes(target) || target.includes(rn);
+    }) || null;
+  }
+
   _extractTeamStatFromMatch(matchDetails, market, teamName) {
     if (!matchDetails) return null;
     const m = (market || '').toLowerCase();
-    const isHome = teamName && matchDetails.homeTeam && matchDetails.homeTeam.toLowerCase().includes(teamName.toLowerCase());
+    const targetTeam = normalizeName(teamName);
+
+    // Determinar índice [0 = home, 1 = away] desde StatsHub (data.homeTeam / data.awayTeam o teamStats.columns)
+    const homeName = normalizeName(matchDetails.data?.homeTeam?.name || matchDetails.data?.homeTeam?.shortName || matchDetails.teamStats?.columns?.[0] || matchDetails.homeTeam);
+    const awayName = normalizeName(matchDetails.data?.awayTeam?.name || matchDetails.data?.awayTeam?.shortName || matchDetails.teamStats?.columns?.[1] || matchDetails.awayTeam);
+
+    let teamIdx = -1;
+    if (targetTeam && homeName && (homeName.includes(targetTeam) || targetTeam.includes(homeName))) {
+      teamIdx = 0;
+    } else if (targetTeam && awayName && (awayName.includes(targetTeam) || targetTeam.includes(awayName))) {
+      teamIdx = 1;
+    }
+
+    if (teamIdx === -1) return null;
+
+    // 1. Goles de equipo desde marcador final oficial (score.final)
+    if (m.includes('gol')) {
+      const finalScore = matchDetails.score?.final || (typeof matchDetails.score === 'string' ? matchDetails.score : null);
+      if (finalScore && /^\d+\s*-\s*\d+$/.test(String(finalScore).trim())) {
+        const parts = String(finalScore).split('-').map(n => Number(n.trim()));
+        if (Number.isFinite(parts[teamIdx])) return parts[teamIdx];
+      }
+      return null;
+    }
+
+    // 2. Estadísticas de equipo desde StatsHub teamStats.fullTime
+    const ft = matchDetails.teamStats?.fullTime;
+    if (ft) {
+      if (m.includes('remates al arco') || m.includes('tiros a puerta')) {
+        return ft.shotsOnTarget ? ft.shotsOnTarget[teamIdx] : null;
+      }
+      if (m.includes('remates') || m.includes('tiros')) {
+        return ft.shots ? ft.shots[teamIdx] : null;
+      }
+      if (m.includes('córner') || m.includes('corner')) {
+        return ft.corners ? ft.corners[teamIdx] : null;
+      }
+      if (m.includes('falta')) {
+        return ft.fouls ? ft.fouls[teamIdx] : null;
+      }
+      if (m.includes('tarjeta')) {
+        return ft.yellowCards ? ft.yellowCards[teamIdx] : null;
+      }
+      return null;
+    }
+
+    // Fallback estructura plana legacy
+    const isHome = teamIdx === 0;
     if (m.includes('remates al arco') || m.includes('tiros a puerta')) {
-      return isHome ? matchDetails.homeShotsOnTarget : matchDetails.awayShotsOnTarget;
+      return isHome ? (matchDetails.homeShotsOnTarget ?? null) : (matchDetails.awayShotsOnTarget ?? null);
     }
     if (m.includes('remates')) {
-      return isHome ? matchDetails.homeShots : matchDetails.awayShots;
+      return isHome ? (matchDetails.homeShots ?? null) : (matchDetails.awayShots ?? null);
     }
     if (m.includes('córner') || m.includes('corner')) {
-      return isHome ? matchDetails.homeCorners : matchDetails.awayCorners;
+      return isHome ? (matchDetails.homeCorners ?? null) : (matchDetails.awayCorners ?? null);
     }
     return null;
   }

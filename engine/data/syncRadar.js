@@ -356,6 +356,12 @@ class RadarSync {
       }
     }
 
+    const isSettledStatus = (st) => {
+      if (!st) return false;
+      const s = String(st).toUpperCase();
+      return s === 'ACERTADA' || s === 'GANADA' || s === 'FALLADA' || s === 'PERDIDA' || s.includes('ANULADA') || s === 'VOID' || s === 'NULA';
+    };
+
     // 3. Incorporar cualquier pick de historial_picks que falte en consolidatedMap
     for (const [id, h] of histMap.entries()) {
       if (!consolidatedMap.has(id)) {
@@ -363,17 +369,34 @@ class RadarSync {
         const rawSt = res ? res.status : h.status;
         const normSt = (rawSt === 'GANADA' || rawSt === 'ACERTADA') ? 'ACERTADA' : 
                        ((rawSt === 'PERDIDA' || rawSt === 'FALLADA') ? 'FALLADA' : rawSt);
-        const isSettled = normSt === 'ACERTADA' || normSt === 'FALLADA' || normSt.includes('ANULADA');
+        const isSettled = isSettledStatus(normSt);
+        const isPastPending = !isSettled && (normSt === 'PENDIENTE_DE_LIQUIDACION' || (h.date && h.date < today));
+
+        let category = 'proximos';
+        let proximityBadge = 'Próximo';
+        let displayStatus = normSt;
+        let timeLabel = h.time || 'Horario por confirmar';
+
+        if (isSettled) {
+          category = 'finalizados';
+          proximityBadge = 'Finalizado';
+          timeLabel = h.time && h.time !== 'Horario por confirmar' ? h.time : 'Finalizado';
+        } else if (isPastPending) {
+          category = 'pendientes_liquidacion';
+          proximityBadge = 'Pendiente de liquidación';
+          displayStatus = 'PENDIENTE_DE_LIQUIDACION';
+          timeLabel = h.time && h.time !== 'Horario por confirmar' ? h.time : 'Finalizado · Pendiente de estadísticas';
+        }
 
         consolidatedMap.set(id, {
           id: h.id,
           league: h.league || '',
           league_badge: h.league ? this._getLeagueBadge(h.league) : '',
           match: h.match,
-          time: h.time || (isSettled ? 'Finalizado' : 'Horario por confirmar'),
+          time: timeLabel,
           date: h.date || null,
           eventDateLocal: h.date || null,
-          kickoffTimeLocal: h.time || (isSettled ? 'Finalizado' : 'Horario por confirmar'),
+          kickoffTimeLocal: isPastPending ? 'Pendiente de liquidación' : (isSettled ? 'Finalizado' : timeLabel),
           player: h.player || h.team || 'Jugador',
           team: h.team || '',
           opponent: h.opponent || '',
@@ -389,15 +412,15 @@ class RadarSync {
           real_prob: h.real_prob || 75.0,
           edge_pct: h.edge_pct || 15.0,
           confidence: h.confidence || 'Alta',
-          rationale: h.rationale || 'Selección histórica confirmada y auditada.',
+          rationale: h.notes || h.rationale || 'Selección histórica confirmada y auditada.',
           elena_decision: h.elena_decision || 'APROBADO',
           operational_status: isSettled ? (normSt.includes('ANULADA') ? 'ANULADA_LINEUP' : 'ACEPTADO') : 'ACEPTADO',
-          sports_result: normSt,
-          status: normSt,
+          sports_result: displayStatus,
+          status: displayStatus,
           is_settled: isSettled,
           actual_stat: res ? res.actualStat : (h.actual_stat !== undefined ? h.actual_stat : null),
-          category: isSettled ? 'finalizados' : 'proximos',
-          proximity_badge: isSettled ? 'Finalizado' : 'Próximo',
+          category,
+          proximity_badge: proximityBadge,
           agent_reports: h.agent_reports || {}
         });
       }
@@ -406,22 +429,44 @@ class RadarSync {
     for (const [id, p] of consolidatedMap.entries()) {
       const res = resultsMap.get(id);
       const h = histMap.get(id);
-      const rawSt = res ? res.status : (h ? h.status : null);
+      const rawSt = res ? res.status : (h ? h.status : p.status);
 
-      if (rawSt && rawSt !== 'PENDIENTE') {
+      if (isSettledStatus(rawSt)) {
         const normSt = (rawSt === 'GANADA' || rawSt === 'ACERTADA') ? 'ACERTADA' : 
                        ((rawSt === 'PERDIDA' || rawSt === 'FALLADA') ? 'FALLADA' : rawSt);
         p.is_settled = true;
         p.sports_result = normSt;
         p.status = normSt;
+        p.operational_status = normSt.includes('ANULADA') ? 'ANULADA_LINEUP' : 'ACEPTADO';
         p.actual_stat = res ? res.actualStat : (h && h.actual_stat !== undefined ? h.actual_stat : p.actual_stat);
         p.category = 'finalizados';
         p.proximity_badge = 'Finalizado';
+        if (!p.time || p.time === 'Horario por confirmar' || p.time === 'Finalizado · Pendiente de estadísticas') {
+          p.time = 'Finalizado';
+          p.kickoffTimeLocal = 'Finalizado';
+        }
         if (res && res.date) p.date = res.date;
         else if (h && h.date) p.date = h.date;
+      } else if (rawSt === 'EN_CURSO' || p.is_live) {
+        p.is_settled = false;
+        p.category = 'en_curso';
+        p.proximity_badge = 'En curso';
+      } else if (rawSt === 'PENDIENTE_DE_LIQUIDACION' || (p.date && p.date < today)) {
+        // Partido de fecha pasada o marcado sin estadísticas oficiales: nunca futuro ni "Horario por confirmar"
+        p.is_settled = false;
+        p.status = 'PENDIENTE_DE_LIQUIDACION';
+        p.sports_result = 'PENDIENTE_DE_LIQUIDACION';
+        p.category = 'pendientes_liquidacion';
+        p.proximity_badge = 'Pendiente de liquidación';
+        if (!p.time || p.time === 'Horario por confirmar') {
+          p.time = 'Finalizado · Pendiente de estadísticas';
+        }
+        p.kickoffTimeLocal = 'Pendiente de liquidación';
+        if (h && h.actual_stat === null) p.actual_stat = null;
+        if (h && h.notes) p.rationale = h.notes;
       } else if (!p.category) {
-        p.category = p.is_settled ? 'finalizados' : 'proximos';
-        p.proximity_badge = p.is_settled ? 'Finalizado' : 'Próximo';
+        p.category = 'proximos';
+        p.proximity_badge = 'Próximo';
       }
     }
 

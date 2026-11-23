@@ -4528,11 +4528,17 @@
       let proximityCategory = 'unconfirmed';
       let proximityLabel = '📅 Horario a confirmar';
 
-      const isDone = p.is_finished || ['ACERTADA', 'FALLADA', 'GANADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'FINALIZADO'].includes(p.status);
+      const isDone = p.is_settled || p.is_finished || ['ACERTADA', 'FALLADA', 'GANADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'VOID', 'FINALIZADO'].includes(p.status);
+      const isPendingSettlement = !isDone && (p.category === 'pendientes_liquidacion' || p.status === 'PENDIENTE_DE_LIQUIDACION' || p.sports_result === 'PENDIENTE_DE_LIQUIDACION');
 
       if (isDone) {
         proximityCategory = 'finished';
         proximityLabel = '🏁 Finalizado';
+        if (!hasConfirmedTime) timeStrArt = 'Finalizado';
+      } else if (isPendingSettlement) {
+        proximityCategory = 'pending_settlement';
+        proximityLabel = '⏳ Pendiente de liquidación';
+        if (!hasConfirmedTime) timeStrArt = 'Finalizado · Pendiente de estadísticas';
       } else if (!hasConfirmedTime) {
         proximityCategory = 'unconfirmed';
         proximityLabel = '📅 Horario a confirmar';
@@ -4576,6 +4582,9 @@
       if (meta.proximityCategory === 'upcoming') {
         return '<span class="prox-badge upcoming" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.4);">' + meta.proximityLabel + '</span>';
       }
+      if (meta.proximityCategory === 'pending_settlement') {
+        return '<span class="prox-badge pending-settlement" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5);">' + meta.proximityLabel + '</span>';
+      }
       if (meta.proximityCategory === 'finished') {
         return '<span class="prox-badge finished" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(100, 116, 139, 0.2); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.4);">' + meta.proximityLabel + '</span>';
       }
@@ -4583,7 +4592,7 @@
     }
 
     function getElenaBadge(pick) {
-      const isApproved = pick.status === 'APROBADO' ||
+      const isApproved = pick.elena_decision === 'APROBADO' || pick.status === 'APROBADO' ||
         (pick.status_label && pick.status_label.includes('Aprobado')) ||
         (pick.elena_verdict && pick.elena_verdict.includes('Aprobado')) ||
         (pick.provenance && pick.provenance.elena_decision === 'APPROVED');
@@ -4622,6 +4631,9 @@
       }
       if (status === 'RECHAZADO' || status === 'VETADO') {
         return '<span class="status-pill rejected" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.5); font-weight: 700;">❌ RECHAZADO</span>';
+      }
+      if (status === 'PENDIENTE_DE_LIQUIDACION') {
+        return '<span class="status-pill pending" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5); font-weight: 700;">⏳ PENDIENTE LIQUIDACIÓN</span>';
       }
       return '<span class="status-pill pending" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5); font-weight: 700;">🕒 PENDIENTE</span>';
     }
@@ -4870,7 +4882,7 @@
       };
       const isValidBoardPick = (p) => {
         if (isTestBoardRecord(p)) return false;
-        const isHistoricalOrSettled = Boolean(p.is_settled) || Boolean(p.is_finished) || ['ACERTADA', 'GANADA', 'FALLADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'VOID', 'FINALIZADO'].includes(p.status);
+        const isHistoricalOrSettled = Boolean(p.is_settled) || Boolean(p.is_finished) || ['ACERTADA', 'GANADA', 'FALLADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'VOID', 'FINALIZADO', 'PENDIENTE_DE_LIQUIDACION'].includes(p.status);
         if (isHistoricalOrSettled) return true;
         if (!isValidText(p.match) || !isValidText(p.player) || !isValidText(p.market) || !isValidText(p.line)) return false;
         const oddsNum = Number(p.odds);
