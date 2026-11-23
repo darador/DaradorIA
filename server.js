@@ -36,6 +36,50 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API de Scheduler Central (Fase 13: Automatización del Motor)
+  if (reqPath.startsWith('/api/scheduler/')) {
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
+
+    try {
+      const centralScheduler = require('./engine/scheduler/centralScheduler');
+      const action = reqPath.replace('/api/scheduler/', '');
+
+      if (action === 'status') {
+        res.end(JSON.stringify({ status: 'ok', data: centralScheduler.getState() }, null, 2));
+      } else if (action === 'start') {
+        const result = centralScheduler.startDaemon();
+        res.end(JSON.stringify({ status: 'ok', action: 'start', result }, null, 2));
+      } else if (action === 'stop') {
+        const result = centralScheduler.stopDaemon();
+        res.end(JSON.stringify({ status: 'ok', action: 'stop', result }, null, 2));
+      } else if (action === 'trigger') {
+        const urlParams = new URLSearchParams(req.url.split('?')[1] || '');
+        const task = urlParams.get('task') || 'pipeline';
+        if (task === 'discovery') {
+          centralScheduler.runDiscoveryJob().then(r => console.log('[API Trigger] Discovery completado:', r));
+        } else if (task === 'pipeline') {
+          centralScheduler.runPipelineJob().then(r => console.log('[API Trigger] Pipeline completado:', r));
+        } else if (task === 'lineups') {
+          centralScheduler.runLineupsJob().then(r => console.log('[API Trigger] Lineups completado:', r));
+        } else if (task === 'settlement') {
+          centralScheduler.runSettlementJob().then(r => console.log('[API Trigger] Settlement completado:', r));
+        }
+        res.end(JSON.stringify({ status: 'ok', message: `Tarea '${task}' iniciada en segundo plano.` }));
+      } else {
+        res.end(JSON.stringify({ status: 'ok', data: centralScheduler.getState() }, null, 2));
+      }
+    } catch (schedErr) {
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ status: 'error', message: schedErr.message }));
+    }
+    return;
+  }
+
   // API de monitoreo operativo de procesos y frecuencias
   if (reqPath === '/api/system/processes' || reqPath === '/api/processes' || reqPath === '/api/processes.json') {
     res.writeHead(200, {
@@ -134,5 +178,15 @@ server.listen(PORT, HOST, () => {
   console.log(`🌐 Acceso local: http://localhost:${PORT}/dashboard.html`);
   console.log(`🌐 Acceso IP:    http://127.0.0.1:${PORT}/dashboard.html`);
   console.log(`📡 Salud API:    http://localhost:${PORT}/api/health`);
+  console.log(`📡 Scheduler:    http://localhost:${PORT}/api/scheduler/status`);
   console.log(`======================================================\n`);
+
+  if (process.env.AUTO_START_DAEMON !== 'false') {
+    try {
+      const centralScheduler = require('./engine/scheduler/centralScheduler');
+      centralScheduler.startDaemon();
+    } catch (e) {
+      console.warn('[Server] No se pudo iniciar el scheduler automáticamente:', e.message);
+    }
+  }
 });

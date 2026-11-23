@@ -21,12 +21,19 @@ class DiscoveryEngine {
    */
   async runDiscovery(options = {}) {
     const today = options.targetDate || options.date || new Date().toISOString().slice(0, 10);
+    const targetDates = options.targetDates ? 
+      (Array.isArray(options.targetDates) ? options.targetDates : [options.targetDates]) :
+      (options.daysAhead === 2 || options.horizonHours === 48 ? 
+        [today, new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10)] : 
+        [today]);
+
     const maxCandidates = options.maxCandidates || 20;
 
-    console.log(`[Discovery] Iniciando escaneo de candidatos para la fecha: ${today}`);
+    console.log(`[Discovery] Iniciando escaneo de candidatos para fechas: ${targetDates.join(', ')}`);
 
     const runMeta = {
-      targetDate: today,
+      targetDate: targetDates[0],
+      targetDates,
       startTime: new Date().toISOString(),
       fixturesScanned: 0,
       candidatesFound: 0,
@@ -37,18 +44,22 @@ class DiscoveryEngine {
     const rawCandidates = [];
 
     try {
-      // 1. Obtener Fixtures del día
-      const fixtures = await this._getUpcomingFixtures(today);
+      // 1. Obtener Fixtures del día y horizonte
+      const fixtures = [];
+      for (const d of targetDates) {
+        const dFixtures = await this._getUpcomingFixtures(d);
+        fixtures.push(...dFixtures);
+      }
       runMeta.fixturesScanned = fixtures.length;
       runMeta.toolsQueried.push('getFixturesByDate');
 
-      // 2. Screener de Props de Jugadores
-      const playerProps = await this._screenPlayerProps(today);
+      // 2. Screener de Props de Jugadores (Multi-fecha / Horizonte 48h)
+      const playerProps = await this._screenPlayerProps(targetDates);
       runMeta.toolsQueried.push('getPropScreener');
       rawCandidates.push(...playerProps);
 
-      // 3. Screener de Props de Equipos
-      const teamProps = await this._screenTeamProps(today);
+      // 3. Screener de Props de Equipos (Multi-fecha / Horizonte 48h)
+      const teamProps = await this._screenTeamProps(targetDates);
       runMeta.toolsQueried.push('getTeamPropScreener');
       rawCandidates.push(...teamProps);
 
@@ -72,31 +83,60 @@ class DiscoveryEngine {
         .sort((a, b) => this._priorityScore(b.priority) - this._priorityScore(a.priority))
         .slice(0, maxCandidates);
 
-      // 8. Persistir en Storage
-      for (const cand of evaluatedCandidates) {
-        storage.saveCandidate(cand);
-        runMeta.byPriority[cand.priority] = (runMeta.byPriority[cand.priority] || 0) + 1;
+      // 8. Persistir en Storage con prevención de candidatos duplicados
+      const existingCandidates = storage.getCandidates();
+      const existingMap = new Map();
+      for (const ec of existingCandidates) {
+        if (ec.playerOrTeam && ec.match && ec.market) {
+          const k = `${ec.playerOrTeam.toLowerCase()}|${ec.match.toLowerCase()}|${ec.market.toLowerCase()}|${ec.line || ''}`.trim();
+          existingMap.set(k, ec);
+        }
       }
 
-      runMeta.candidatesFound = evaluatedCandidates.length;
+      const finalizedCandidates = [];
+      let genuinelyNewCount = 0;
+
+      for (const cand of evaluatedCandidates) {
+        const k = `${cand.playerOrTeam.toLowerCase()}|${cand.match.toLowerCase()}|${cand.market.toLowerCase()}|${cand.line || ''}`.trim();
+        if (existingMap.has(k)) {
+          const prev = existingMap.get(k);
+          if (cand.bookmakerOdds && cand.bookmakerOdds > (prev.bookmakerOdds || 0)) {
+            prev.bookmakerOdds = cand.bookmakerOdds;
+            prev.updatedAt = new Date().toISOString();
+            storage.saveCandidate(prev);
+          }
+          finalizedCandidates.push(prev);
+        } else {
+          cand.status = 'DETECTADO';
+          storage.saveCandidate(cand);
+          finalizedCandidates.push(cand);
+          genuinelyNewCount++;
+          runMeta.byPriority[cand.priority] = (runMeta.byPriority[cand.priority] || 0) + 1;
+        }
+      }
+
+      runMeta.candidatesFound = finalizedCandidates.length;
+      runMeta.genuinelyNewCount = genuinelyNewCount;
       runMeta.endTime = new Date().toISOString();
 
       // Guardar registro de la corrida
       storage.saveRun({
         fixturesScanned: runMeta.fixturesScanned,
         candidatesFound: runMeta.candidatesFound,
+        genuinelyNewCount,
         approvedCount: 0,
         rejectedCount: 0,
         mcpCallsUsed: runMeta.toolsQueried.length,
         status: 'DISCOVERY_COMPLETED',
-        notes: `Discovery completado: ${runMeta.candidatesFound} candidatos priorizados (ALTA: ${runMeta.byPriority.ALTA}, MEDIA: ${runMeta.byPriority.MEDIA}, BAJA: ${runMeta.byPriority.BAJA})`
+        notes: `Discovery completado (48h): ${runMeta.candidatesFound} candidatos priorizados (${genuinelyNewCount} nuevos).`
       });
 
-      console.log(`[Discovery] Finalizado con éxito: ${evaluatedCandidates.length} candidatos detectados.`);
+      console.log(`[Discovery] Finalizado con éxito: ${finalizedCandidates.length} candidatos evaluados (${genuinelyNewCount} nuevos).`);
 
       return {
         runMeta,
-        candidates: evaluatedCandidates
+        candidates: finalizedCandidates,
+        newCandidates: finalizedCandidates.filter(c => c.status === 'DETECTADO')
       };
     } catch (err) {
       console.error('[Discovery] Error crítico en DiscoveryEngine:', err.message);
@@ -145,10 +185,11 @@ class DiscoveryEngine {
     }
   }
 
-  async _screenPlayerProps(dateStr) {
+  async _screenPlayerProps(dateInput) {
     try {
+      const dates = Array.isArray(dateInput) ? dateInput : [dateInput];
       const res = await mcpClient.callTool('getPropScreener', {
-        selectedDates: [dateStr],
+        selectedDates: dates,
         oddsFrom: 1.55,
         oddsTo: 2.45,
         hitRateFrom: 60,
@@ -167,10 +208,11 @@ class DiscoveryEngine {
     }
   }
 
-  async _screenTeamProps(dateStr) {
+  async _screenTeamProps(dateInput) {
     try {
+      const dates = Array.isArray(dateInput) ? dateInput : [dateInput];
       const res = await mcpClient.callTool('getTeamPropScreener', {
-        selectedDates: [dateStr],
+        selectedDates: dates,
         minOdds: 1.55,
         maxOdds: 2.45,
         minHitRateL10: 60,

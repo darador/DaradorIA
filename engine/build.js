@@ -35,7 +35,9 @@ const criticalFiles = [
   'engine/settlement/settlementEngine.js',
   'engine/audit/integrityGuard.js',
   'engine/data/syncRadar.js',
-  'engine/scheduler/processMonitor.js'
+  'engine/scheduler/processMonitor.js',
+  'engine/scheduler/centralScheduler.js',
+  'engine/scheduler/scheduler.js'
 ];
 
 criticalFiles.forEach(file => {
@@ -63,6 +65,7 @@ try {
   const orchestrator = require('./agents/orchestrator');
   const settlementEngine = require('./settlement/settlementEngine');
   const integrityGuard = require('./audit/integrityGuard');
+  const centralScheduler = require('./scheduler/centralScheduler');
 
   console.log('  ✅ Todos los módulos críticos cargados sin dependencias circulares ni errores de import.');
 } catch (err) {

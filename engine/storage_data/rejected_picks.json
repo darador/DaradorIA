@@ -2312,5 +2312,44 @@
     },
     "id": "rej_1795187910275_uwadu",
     "rejectedAt": "2026-11-20T15:18:30.275Z"
+  },
+  {
+    "id": "cand_sub_1795397238172",
+    "matchId": "match_auto_01",
+    "playerOrTeam": "Suplente FC",
+    "status": "RECHAZADO",
+    "kickoffTimestamp": 1795400238,
+    "updatedAt": "2026-11-23T01:27:18.184Z",
+    "createdAt": "2026-11-23T01:27:18.184Z",
+    "lineupStatus": "SUPLENTE",
+    "decisionReason": "Alineación oficial confirmada: Jugador es SUPLENTE. Veto preventivo definitivo aplicado por el Risk Manager (minutos insuficientes).",
+    "rejectedAt": "2026-11-23T01:27:18.215Z",
+    "reason": "No cumplió criterios mínimos de EV o muestra"
+  },
+  {
+    "id": "cand_sub_1795397375499",
+    "matchId": "match_auto_01",
+    "playerOrTeam": "Suplente FC",
+    "status": "RECHAZADO",
+    "kickoffTimestamp": 1795400375,
+    "updatedAt": "2026-11-23T01:29:35.511Z",
+    "createdAt": "2026-11-23T01:29:35.511Z",
+    "lineupStatus": "SUPLENTE",
+    "decisionReason": "Alineación oficial confirmada: Jugador es SUPLENTE. Veto preventivo definitivo aplicado por el Risk Manager (minutos insuficientes).",
+    "rejectedAt": "2026-11-23T01:29:35.538Z",
+    "reason": "No cumplió criterios mínimos de EV o muestra"
+  },
+  {
+    "id": "cand_sub_1795397396093",
+    "matchId": "match_auto_01",
+    "playerOrTeam": "Suplente FC",
+    "status": "RECHAZADO",
+    "kickoffTimestamp": 1795400396,
+    "updatedAt": "2026-11-23T01:29:56.104Z",
+    "createdAt": "2026-11-23T01:29:56.104Z",
+    "lineupStatus": "SUPLENTE",
+    "decisionReason": "Alineación oficial confirmada: Jugador es SUPLENTE. Veto preventivo definitivo aplicado por el Risk Manager (minutos insuficientes).",
+    "rejectedAt": "2026-11-23T01:29:56.132Z",
+    "reason": "No cumplió criterios mínimos de EV o muestra"
   }
 ]

@@ -1,0 +1,117 @@
+{
+  "isRunning": true,
+  "startedAt": "2026-11-23T01:30:36.739Z",
+  "lastStoppedAt": "2026-11-23T01:29:56.204Z",
+  "lastRunTimes": {
+    "pipeline": "2026-11-23T01:29:56.091Z",
+    "lineups": "2026-11-23T01:29:56.148Z",
+    "settlement": "2026-11-23T01:29:56.167Z"
+  },
+  "nextScheduledRuns": {
+    "discovery": "2026-11-23T04:00:00.000Z",
+    "discoveryArt": "23/11/2026, 01:00:00 hs (ART)",
+    "lineups": "2026-11-23T01:45:36.753Z",
+    "lineupsArt": "22/11/2026, 22:45:36 hs (ART)",
+    "settlement": "2026-11-23T02:00:36.754Z",
+    "settlementArt": "22/11/2026, 23:00:36 hs (ART)"
+  },
+  "executionHistory": [
+    {
+      "id": "exec_1795397396166_i3evk",
+      "task": "settlement",
+      "startedAt": "2026-11-23T01:29:56.157Z",
+      "startedAtArt": "22/11/2026, 22:29:56 hs (ART)",
+      "completedAt": "2026-11-23T01:29:56.167Z",
+      "completedAtArt": "22/11/2026, 22:29:56 hs (ART)",
+      "durationSeconds": 0.01,
+      "status": "SUCCESS",
+      "recordsProcessed": 1,
+      "message": "Liquidación: 1 evaluados. 1 liquidados oficialmente.",
+      "error": null
+    },
+    {
+      "id": "exec_1795397396148_95a06",
+      "task": "lineups",
+      "startedAt": "2026-11-23T01:29:56.108Z",
+      "startedAtArt": "22/11/2026, 22:29:56 hs (ART)",
+      "completedAt": "2026-11-23T01:29:56.148Z",
+      "completedAtArt": "22/11/2026, 22:29:56 hs (ART)",
+      "durationSeconds": 0.04,
+      "status": "SUCCESS",
+      "recordsProcessed": 2,
+      "message": "Alineaciones: 2 evaluadas. Promovidos: 1, Vetados: 1.",
+      "error": null
+    },
+    {
+      "id": "exec_1795397396091_50xyf",
+      "task": "pipeline",
+      "startedAt": "2026-11-23T01:29:56.087Z",
+      "startedAtArt": "22/11/2026, 22:29:56 hs (ART)",
+      "completedAt": "2026-11-23T01:29:56.091Z",
+      "completedAtArt": "22/11/2026, 22:29:56 hs (ART)",
+      "durationSeconds": 0,
+      "status": "SUCCESS",
+      "recordsProcessed": 0,
+      "message": "Sin candidatos nuevos para procesar.",
+      "error": null
+    },
+    {
+      "id": "exec_1795397375574_cm2sg",
+      "task": "settlement",
+      "startedAt": "2026-11-23T01:29:35.564Z",
+      "startedAtArt": "22/11/2026, 22:29:35 hs (ART)",
+      "completedAt": "2026-11-23T01:29:35.574Z",
+      "completedAtArt": "22/11/2026, 22:29:35 hs (ART)",
+      "durationSeconds": 0.01,
+      "status": "SUCCESS",
+      "recordsProcessed": 1,
+      "message": "Liquidación: 1 evaluados. 1 liquidados oficialmente.",
+      "error": null
+    },
+    {
+      "id": "exec_1795397375553_t0qcl",
+      "task": "lineups",
+      "startedAt": "2026-11-23T01:29:35.515Z",
+      "startedAtArt": "22/11/2026, 22:29:35 hs (ART)",
+      "completedAt": "2026-11-23T01:29:35.553Z",
+      "completedAtArt": "22/11/2026, 22:29:35 hs (ART)",
+      "durationSeconds": 0.04,
+      "status": "SUCCESS",
+      "recordsProcessed": 2,
+      "message": "Alineaciones: 2 evaluadas. Promovidos: 1, Vetados: 1.",
+      "error": null
+    },
+    {
+      "id": "exec_1795397375497_08r36",
+      "task": "pipeline",
+      "startedAt": "2026-11-23T01:29:35.494Z",
+      "startedAtArt": "22/11/2026, 22:29:35 hs (ART)",
+      "completedAt": "2026-11-23T01:29:35.498Z",
+      "completedAtArt": "22/11/2026, 22:29:35 hs (ART)",
+      "durationSeconds": 0,
+      "status": "SUCCESS",
+      "recordsProcessed": 0,
+      "message": "Sin candidatos nuevos para procesar.",
+      "error": null
+    },
+    {
+      "id": "exec_1795397238170_t9o97",
+      "task": "pipeline",
+      "startedAt": "2026-11-23T01:27:18.165Z",
+      "startedAtArt": "22/11/2026, 22:27:18 hs (ART)",
+      "completedAt": "2026-11-23T01:27:18.170Z",
+      "completedAtArt": "22/11/2026, 22:27:18 hs (ART)",
+      "durationSeconds": 0,
+      "status": "SUCCESS",
+      "recordsProcessed": 0,
+      "message": "Sin candidatos nuevos para procesar.",
+      "error": null
+    }
+  ],
+  "errorLog": [],
+  "totalRunsCompleted": 7,
+  "totalErrorsCaught": 0,
+  "startedAtArt": "22/11/2026, 22:30:36 hs (ART)",
+  "updatedAt": "2026-11-23T01:30:36.754Z",
+  "updatedAtArt": "22/11/2026, 22:30:36 hs (ART)"
+}

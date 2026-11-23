@@ -26,7 +26,11 @@ class SettlementEngine {
 
     // Filtrar picks ya liquidados
     const settledIds = new Set(existingHistory.map(h => h.pickId || h.id));
-    const pendingToSettle = approvedPicks.filter(p => !settledIds.has(p.id));
+    let pendingToSettle = approvedPicks.filter(p => !settledIds.has(p.id));
+
+    if (options.pickIds && options.pickIds.length > 0) {
+      pendingToSettle = pendingToSettle.filter(p => options.pickIds.includes(p.id));
+    }
 
     console.log(`[Settlement] Picks aprobados a evaluar: ${pendingToSettle.length}`);
 

@@ -1,6 +1,32 @@
 {
   "picks": [
     {
+      "id": "pick_settle_1795397396155",
+      "date": "2026-11-23",
+      "match": "Partido",
+      "player": "Erling Haaland",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.85,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.85
+    },
+    {
+      "id": "pick_settle_1795397375562",
+      "date": "2026-11-23",
+      "match": "Partido",
+      "player": "Erling Haaland",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.85,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.85
+    },
+    {
       "id": "cand_real_statshub_20261121_mctominay_1795287296256",
       "date": "2026-11-21",
       "match": "Napoli vs Torino",
@@ -928,6 +954,32 @@
   ],
   "history": [
     {
+      "id": "pick_settle_1795397396155",
+      "date": "2026-11-23",
+      "match": "Partido",
+      "player": "Erling Haaland",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.85,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.85
+    },
+    {
+      "id": "pick_settle_1795397375562",
+      "date": "2026-11-23",
+      "match": "Partido",
+      "player": "Erling Haaland",
+      "market": "Remates al arco",
+      "line": "Más de 1.5",
+      "odds": 1.85,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.85
+    },
+    {
       "id": "cand_real_statshub_20261121_mctominay_1795287296256",
       "date": "2026-11-21",
       "match": "Napoli vs Torino",
@@ -1854,17 +1906,24 @@
     }
   ],
   "summary": {
-    "total_bets": 58,
-    "settled_bets": 42,
-    "won_bets": 28,
+    "total_bets": 60,
+    "settled_bets": 44,
+    "won_bets": 30,
     "lost_bets": 14,
     "void_bets": 9,
     "pending_bets": 7,
-    "win_rate_pct": 66.7,
-    "total_staked_units": 42,
-    "net_profit_units": 7.42,
-    "roi_pct": 17.7,
+    "win_rate_pct": 68.2,
+    "total_staked_units": 44,
+    "net_profit_units": 9.12,
+    "roi_pct": 20.7,
     "by_market": {
+      "Remates al arco": {
+        "total": 8,
+        "won": 3,
+        "lost": 1,
+        "win_rate": "75.0%",
+        "profit": "+1.40U"
+      },
       "Remates totales": {
         "total": 15,
         "won": 10,
@@ -1878,13 +1937,6 @@
         "lost": 5,
         "win_rate": "37.5%",
         "profit": "-3.02U"
-      },
-      "Remates al arco": {
-        "total": 6,
-        "won": 1,
-        "lost": 1,
-        "win_rate": "50.0%",
-        "profit": "-0.30U"
       },
       "Córners de equipo": {
         "total": 7,
@@ -1944,5 +1996,5 @@
       }
     }
   },
-  "updated_at": "2026-11-23T00:25:49.281Z"
+  "updated_at": "2026-11-23T01:29:56.166Z"
 }

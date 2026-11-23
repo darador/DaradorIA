@@ -14,27 +14,65 @@ class LineupWatcher {
     this.name = 'LineupWatcher';
   }
 
+  _getKickoffTimestamp(cand) {
+    if (cand.kickoffTimestamp) {
+      return cand.kickoffTimestamp < 10000000000 ? cand.kickoffTimestamp * 1000 : cand.kickoffTimestamp;
+    }
+    if (cand.eventDateUtc) {
+      const ts = new Date(cand.eventDateUtc).getTime();
+      if (!isNaN(ts)) return ts;
+    }
+    if (cand.matchTime) {
+      const ts = new Date(cand.matchTime).getTime();
+      if (!isNaN(ts)) return ts;
+    }
+    return null;
+  }
+
   /**
-   * Revisa todas las selecciones pendientes de alineación oficial
+   * Revisa todas las selecciones pendientes de alineación oficial,
+   * priorizando encuentros en la ventana T-60 a T-45 minutos.
    * @param {Object} options
    * @returns {Promise<Object>} Resumen de cambios de estado
    */
   async checkPendingLineups(options = {}) {
     console.log('[LineupWatcher] Comprobando alineaciones oficiales para candidatos condicionales...');
     const allCandidates = storage.getCandidates();
-    const pendingCandidates = allCandidates.filter(c => 
+    let pendingCandidates = allCandidates.filter(c => 
       c.status === 'PENDIENTE' || 
       c.status === 'PENDIENTE_ALINEACION' || 
       c.status === 'PENDIENTE_DE_ALINEACION'
     );
 
+    if (options.candidateIds && options.candidateIds.length > 0) {
+      pendingCandidates = pendingCandidates.filter(c => options.candidateIds.includes(c.id));
+    }
+
     console.log(`[LineupWatcher] Candidatos pendientes encontrados: ${pendingCandidates.length}`);
+
+    // Priorizar por proximidad al inicio del encuentro (más cercanos primero)
+    const now = Date.now();
+    pendingCandidates.sort((a, b) => {
+      const tsA = this._getKickoffTimestamp(a) || Infinity;
+      const tsB = this._getKickoffTimestamp(b) || Infinity;
+      return tsA - tsB;
+    });
 
     const promoted = [];
     const vetoed = [];
     const stillPending = [];
 
     for (const cand of pendingCandidates) {
+      const ts = this._getKickoffTimestamp(cand);
+      const diffMinutes = ts ? (ts - now) / 60000 : null;
+
+      // Si el partido está a más de 120 min, las alineaciones oficiales aún no se publican (StatsHub las emite ~60m antes)
+      // Ahorrar cuota de MCP a menos que sea forzado por test suite
+      if (diffMinutes !== null && diffMinutes > 120 && !options.forceAll && !options.mockLineups) {
+        stillPending.push(cand);
+        continue;
+      }
+
       try {
         const result = await this.evaluateCandidateLineup(cand, options.mockLineups);
         if (result.action === 'PROMOTE') {

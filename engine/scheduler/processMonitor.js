@@ -88,7 +88,8 @@ class ProcessMonitor {
       } catch (e) {}
     }
 
-    const isDaemonRunning = schedulerInstance ? !!schedulerInstance.isRunning : false;
+    const schedulerState = this._safeReadJson('engine/storage_data/scheduler_state.json', null);
+    const isDaemonRunning = (schedulerInstance && schedulerInstance.isRunning) || (schedulerState && schedulerState.isRunning);
 
     // Leer fuentes de datos reales
     const runs = this._safeReadJson('engine/storage_data/research_runs.json', []);
@@ -111,53 +112,69 @@ class ProcessMonitor {
     const totalHistoryPicks = history.picks ? history.picks.length : (history.history ? history.history.length : 0);
     const totalDailyPicks = picksHoy.top_picks ? picksHoy.top_picks.length : 0;
 
+    // Próxima corrida de discovery calculada si el daemon está activo
+    let nextDiscoveryArt = 'No programada automáticamente (Bajo demanda / CLI)';
+    let nextDiscoveryUtc = null;
+    if (isDaemonRunning) {
+      if (schedulerState?.nextScheduledRuns?.discoveryArt) {
+        nextDiscoveryArt = schedulerState.nextScheduledRuns.discoveryArt;
+        nextDiscoveryUtc = schedulerState.nextScheduledRuns.discovery;
+      } else if (schedulerInstance?.calculateNextDiscoveryRun) {
+        const nextDisc = schedulerInstance.calculateNextDiscoveryRun();
+        nextDiscoveryArt = nextDisc.art;
+        nextDiscoveryUtc = nextDisc.utc;
+      } else {
+        nextDiscoveryArt = 'En próxima ventana horaria (05, 09, 13, 17, 21, 01 hs ART)';
+      }
+    }
+
     const processes = [
       {
         id: 'discovery',
         name: 'Discovery Engine',
         description: 'Búsqueda de partidos, escaneo de props, screeners y outliers en StatsHub',
-        configuredFrequency: 'Matutino diario (Diseño 08:00 UTC / 05:00 ART)',
-        executionType: 'EJECUCIÓN MANUAL',
-        status: 'EJECUCIÓN MANUAL',
-        isAutomatic: false,
-        lastRunUtc: lastRun?.timestamp || mtimePicksHoy,
-        lastRunArt: this.formatArtTime(lastRun?.timestamp || mtimePicksHoy),
-        nextRunUtc: null,
-        nextRunArt: 'No programada automáticamente (Bajo demanda / CLI)',
+        configuredFrequency: isDaemonRunning ? '05:00 ART y cada 4 horas (Horizonte 48h)' : 'Matutino diario (Diseño 08:00 UTC / 05:00 ART)',
+        executionType: isDaemonRunning ? 'PROGRAMADA AUTÓNOMA (SCHEDULER CENTRAL)' : 'EJECUCIÓN MANUAL',
+        status: isDaemonRunning ? 'ACTIVO' : 'EJECUCIÓN MANUAL',
+        isAutomatic: isDaemonRunning,
+        lastRunUtc: schedulerState?.lastRunTimes?.discovery || lastRun?.timestamp || mtimePicksHoy,
+        lastRunArt: this.formatArtTime(schedulerState?.lastRunTimes?.discovery || lastRun?.timestamp || mtimePicksHoy),
+        nextRunUtc: nextDiscoveryUtc,
+        nextRunArt: nextDiscoveryArt,
         durationSeconds: 16.5,
         recordsProcessed: `${lastRun?.fixturesScanned || 25} partidos escaneados · ${lastRun?.candidatesFound || 8} candidatos detectados (${candidates.length} en base histórica)`,
         lastError: null,
-        notes: lastRun?.notes || 'Ejecutado con éxito vía pipeline manual'
+        notes: isDaemonRunning ? 'Discovery autónomo activo en horizonte de 48 horas' : (lastRun?.notes || 'Ejecutado con éxito vía pipeline manual')
       },
       {
         id: 'deep_research',
         name: 'Deep Research Engine',
         description: 'Investigación estadística profunda de candidatos (H2H, L5, L10, concesiones rivales)',
         configuredFrequency: 'Secuencial post-Discovery (Paso 2 del pipeline)',
-        executionType: 'EJECUCIÓN MANUAL',
-        status: 'EJECUCIÓN MANUAL',
-        isAutomatic: false,
-        lastRunUtc: lastRun?.timestamp || mtimePicksHoy,
-        lastRunArt: this.formatArtTime(lastRun?.timestamp || mtimePicksHoy),
+        executionType: isDaemonRunning ? 'AUTOMÁTICA (POST-DISCOVERY)' : 'EJECUCIÓN MANUAL',
+        status: isDaemonRunning ? 'ACTIVO' : 'EJECUCIÓN MANUAL',
+        isAutomatic: isDaemonRunning,
+        lastRunUtc: schedulerState?.lastRunTimes?.pipeline || lastRun?.timestamp || mtimePicksHoy,
+        lastRunArt: this.formatArtTime(schedulerState?.lastRunTimes?.pipeline || lastRun?.timestamp || mtimePicksHoy),
         nextRunUtc: null,
-        nextRunArt: 'No programada automáticamente (Bajo demanda / CLI)',
+        nextRunArt: isDaemonRunning ? 'Automática tras la próxima corrida de Discovery' : 'No programada automáticamente (Bajo demanda / CLI)',
         durationSeconds: 9.2,
         recordsProcessed: `${lastRun?.candidatesFound || 8} candidatos investigados a fondo (${candidates.length} totales)`,
         lastError: null,
-        notes: 'Enriquecimiento estadístico completado satisfactoriamente'
+        notes: isDaemonRunning ? 'Enriquecimiento estadístico autónomo activado' : 'Enriquecimiento estadístico completado satisfactoriamente'
       },
       {
         id: 'prediction_engine',
         name: 'Prediction Engine',
         description: 'Modelado matemático de Poisson (Modelo B), empírico (Modelo C), Ensemble y cálculo +EV',
         configuredFrequency: 'Secuencial post-Research (Paso 3 del pipeline)',
-        executionType: 'EJECUCIÓN MANUAL',
-        status: 'EJECUCIÓN MANUAL',
-        isAutomatic: false,
-        lastRunUtc: mtimePreds || lastRun?.timestamp,
-        lastRunArt: this.formatArtTime(mtimePreds || lastRun?.timestamp),
+        executionType: isDaemonRunning ? 'AUTOMÁTICA (POST-RESEARCH)' : 'EJECUCIÓN MANUAL',
+        status: isDaemonRunning ? 'ACTIVO' : 'EJECUCIÓN MANUAL',
+        isAutomatic: isDaemonRunning,
+        lastRunUtc: schedulerState?.lastRunTimes?.pipeline || mtimePreds || lastRun?.timestamp,
+        lastRunArt: this.formatArtTime(schedulerState?.lastRunTimes?.pipeline || mtimePreds || lastRun?.timestamp),
         nextRunUtc: null,
-        nextRunArt: 'No programada automáticamente (Bajo demanda / CLI)',
+        nextRunArt: isDaemonRunning ? 'Automática tras Deep Research' : 'No programada automáticamente (Bajo demanda / CLI)',
         durationSeconds: 3.4,
         recordsProcessed: `${predictions.length} predicciones matemáticas selladas`,
         lastError: null,
@@ -168,13 +185,13 @@ class ProcessMonitor {
         name: 'Evaluación Agentes IA y Risk Manager (Elena)',
         description: 'Comité colegiado de agentes (Sofía, Valentina, Camila, Renata, Lucía) y dictamen vinculante de Elena',
         configuredFrequency: 'Secuencial post-Prediction (Paso 4 del pipeline)',
-        executionType: 'EJECUCIÓN MANUAL',
-        status: 'EJECUCIÓN MANUAL',
-        isAutomatic: false,
-        lastRunUtc: mtimePreds || lastRun?.timestamp,
-        lastRunArt: this.formatArtTime(mtimePreds || lastRun?.timestamp),
+        executionType: isDaemonRunning ? 'AUTOMÁTICA (POST-PREDICTION)' : 'EJECUCIÓN MANUAL',
+        status: isDaemonRunning ? 'ACTIVO' : 'EJECUCIÓN MANUAL',
+        isAutomatic: isDaemonRunning,
+        lastRunUtc: schedulerState?.lastRunTimes?.pipeline || mtimePreds || lastRun?.timestamp,
+        lastRunArt: this.formatArtTime(schedulerState?.lastRunTimes?.pipeline || mtimePreds || lastRun?.timestamp),
         nextRunUtc: null,
-        nextRunArt: 'No programada automáticamente (Bajo demanda / CLI)',
+        nextRunArt: isDaemonRunning ? 'Automática tras predicción matemática' : 'No programada automáticamente (Bajo demanda / CLI)',
         durationSeconds: 4.8,
         recordsProcessed: `${approved.length} picks formalmente APROBADOS · ${rejected.length} RECHAZADOS con veto`,
         lastError: null,
@@ -184,14 +201,14 @@ class ProcessMonitor {
         id: 'odds_update',
         name: 'Actualización de Cuotas',
         description: 'Consulta de cuotas disponibles en bookmakers frente a cuota justa calculada',
-        configuredFrequency: 'Integrada en Discovery y Research',
-        executionType: 'EJECUCIÓN MANUAL',
-        status: 'EJECUCIÓN MANUAL',
-        isAutomatic: false,
+        configuredFrequency: isDaemonRunning ? 'En cada ciclo de Discovery (cada 4 horas)' : 'Integrada en Discovery y Research',
+        executionType: isDaemonRunning ? 'AUTOMÁTICA (INTEGRADA EN DISCOVERY)' : 'EJECUCIÓN MANUAL',
+        status: isDaemonRunning ? 'ACTIVO' : 'EJECUCIÓN MANUAL',
+        isAutomatic: isDaemonRunning,
         lastRunUtc: picksHoy.last_updated || mtimePicksHoy,
         lastRunArt: this.formatArtTime(picksHoy.last_updated || mtimePicksHoy),
-        nextRunUtc: null,
-        nextRunArt: 'No programada automáticamente (Bajo demanda)',
+        nextRunUtc: nextDiscoveryUtc,
+        nextRunArt: isDaemonRunning ? 'En próxima corrida de Discovery' : 'No programada automáticamente (Bajo demanda)',
         durationSeconds: 2.1,
         recordsProcessed: `${totalDailyPicks} selecciones con cuota y edge actualizado en Daily Board`,
         lastError: null,
@@ -202,34 +219,34 @@ class ProcessMonitor {
         name: 'Verificación de Alineaciones (LineupWatcher)',
         description: 'Monitoreo reactivo pre-partido (T-60 a T-45) de titulares y suplentes con veto o promoción',
         configuredFrequency: 'Cada 15 minutos (En scheduler daemon)',
-        executionType: 'PROGRAMADA EN CÓDIGO (REQUIERE DAEMON)',
+        executionType: isDaemonRunning ? 'PROGRAMADA AUTÓNOMA (CADA 15 MIN)' : 'PROGRAMADA EN CÓDIGO (REQUIERE DAEMON)',
         status: isDaemonRunning ? 'ACTIVO' : 'INACTIVO',
         isAutomatic: isDaemonRunning,
-        lastRunUtc: picksHoy.last_updated || mtimePicksHoy,
-        lastRunArt: this.formatArtTime(picksHoy.last_updated || mtimePicksHoy),
-        nextRunUtc: isDaemonRunning ? new Date(Date.now() + 15 * 60 * 1000).toISOString() : null,
-        nextRunArt: isDaemonRunning ? this.formatArtTime(new Date(Date.now() + 15 * 60 * 1000)) : 'Inactivo (Daemon detenido)',
+        lastRunUtc: schedulerState?.lastRunTimes?.lineups || picksHoy.last_updated || mtimePicksHoy,
+        lastRunArt: this.formatArtTime(schedulerState?.lastRunTimes?.lineups || picksHoy.last_updated || mtimePicksHoy),
+        nextRunUtc: isDaemonRunning ? (schedulerState?.nextScheduledRuns?.lineups || new Date(Date.now() + 15 * 60 * 1000).toISOString()) : null,
+        nextRunArt: isDaemonRunning ? (schedulerState?.nextScheduledRuns?.lineupsArt || this.formatArtTime(new Date(Date.now() + 15 * 60 * 1000))) : 'Inactivo (Daemon detenido)',
         durationSeconds: 3.8,
         recordsProcessed: 'Candidatos condicionales revisados (9 selecciones anuladas por no titularidad)',
         lastError: null,
-        notes: isDaemonRunning ? 'Demonio de alineaciones activo cada 15 min' : 'Requiere iniciar `node engine/cli.js --daemon` para ejecución continua'
+        notes: isDaemonRunning ? 'Demonio de alineaciones activo cada 15 min con foco en T-60 / T-45' : 'Requiere iniciar `node engine/cli.js --daemon` para ejecución continua'
       },
       {
         id: 'settlement_engine',
         name: 'Settlement Engine (Liquidación de Resultados)',
         description: 'Validación de actas oficiales FT de StatsHub, liquidación (GANADA/FALLADA/NULA) y balance ROI',
         configuredFrequency: 'Cada 30 minutos (En scheduler daemon)',
-        executionType: 'PROGRAMADA EN CÓDIGO (REQUIERE DAEMON / MANUAL)',
+        executionType: isDaemonRunning ? 'PROGRAMADA AUTÓNOMA (CADA 30 MIN)' : 'PROGRAMADA EN CÓDIGO (REQUIERE DAEMON / MANUAL)',
         status: isDaemonRunning ? 'ACTIVO' : 'INACTIVO',
         isAutomatic: isDaemonRunning,
-        lastRunUtc: lastResult?.settledAt || mtimeHistorial,
-        lastRunArt: this.formatArtTime(lastResult?.settledAt || mtimeHistorial),
-        nextRunUtc: isDaemonRunning ? new Date(Date.now() + 30 * 60 * 1000).toISOString() : null,
-        nextRunArt: isDaemonRunning ? this.formatArtTime(new Date(Date.now() + 30 * 60 * 1000)) : 'Inactivo (Daemon detenido)',
+        lastRunUtc: schedulerState?.lastRunTimes?.settlement || lastResult?.settledAt || mtimeHistorial,
+        lastRunArt: this.formatArtTime(schedulerState?.lastRunTimes?.settlement || lastResult?.settledAt || mtimeHistorial),
+        nextRunUtc: isDaemonRunning ? (schedulerState?.nextScheduledRuns?.settlement || new Date(Date.now() + 30 * 60 * 1000).toISOString()) : null,
+        nextRunArt: isDaemonRunning ? (schedulerState?.nextScheduledRuns?.settlementArt || this.formatArtTime(new Date(Date.now() + 30 * 60 * 1000))) : 'Inactivo (Daemon detenido)',
         durationSeconds: 6.5,
         recordsProcessed: `${totalHistoryPicks} apuestas auditadas en historial (28 ganadas, 14 perdidas, 9 anuladas, 7 pendientes)`,
         lastError: null,
-        notes: isDaemonRunning ? 'Demonio de liquidación activo cada 30 min' : 'Ejecutado bajo demanda vía `node engine/cli.js --settle`'
+        notes: isDaemonRunning ? 'Demonio de liquidación activo cada 30 min (Actas oficiales FT)' : 'Ejecutado bajo demanda vía `node engine/cli.js --settle`'
       },
       {
         id: 'observation_tracker',

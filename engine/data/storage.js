@@ -68,10 +68,21 @@ class StorageEngine {
   // --- CANDIDATES ---
   saveCandidate(candidate) {
     const candidates = this._readCollection('research_candidates');
-    const existingIndex = candidates.findIndex(c => c.id === candidate.id);
+    const existingIndex = candidates.findIndex(c => 
+      c.id === candidate.id || 
+      (c.playerOrTeam && candidate.playerOrTeam &&
+       c.match && candidate.match &&
+       c.market && candidate.market &&
+       c.playerOrTeam.toLowerCase().trim() === candidate.playerOrTeam.toLowerCase().trim() &&
+       c.match.toLowerCase().trim() === candidate.match.toLowerCase().trim() &&
+       c.market.toLowerCase().trim() === candidate.market.toLowerCase().trim() &&
+       String(c.line || '') === String(candidate.line || ''))
+    );
+
+    const existingId = existingIndex >= 0 ? candidates[existingIndex].id : null;
     const updated = {
       ...candidate,
-      id: candidate.id || `cand_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+      id: candidate.id || existingId || `cand_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
       updatedAt: new Date().toISOString()
     };
 
