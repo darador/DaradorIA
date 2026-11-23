@@ -10,16 +10,86 @@ const config = require('../config');
 const storage = require('./storage');
 const dateTime = require('../utils/dateTime');
 
+const TEST_ID_PREFIXES = [
+  'cand_test_',
+  'test_',
+  'pick_test_',
+  'pick_settle_',
+  'cand_autotest_',
+  'cand_starter_',
+  'cand_sub_',
+  'cand_incomp_'
+];
+
+const TEST_MATCH_IDS = new Set(['match_auto_01', 'match_settle_01']);
+
+const TEST_TEXT_PATTERNS = [
+  'equipo auto',
+  'jugador prueba auto',
+  'equipo x vs equipo y',
+  'suplente fc',
+  'jugador incompleto'
+];
+
 function isTestFixture(cand) {
   if (!cand) return true;
   if (cand.isTest || cand.is_test || cand.isTestPick) return true;
   const id = String(cand.id || cand.candidateId || cand.pickId || '');
-  if (id.startsWith('cand_test_') || id.startsWith('test_') || id.startsWith('pick_test_') || id.startsWith('pick_settle_')) return true;
+  if (TEST_ID_PREFIXES.some(prefix => id.startsWith(prefix))) return true;
+  const matchId = String(cand.matchId || cand.fixtureId || '');
+  if (TEST_MATCH_IDS.has(matchId)) return true;
   if (cand.verificationSource && String(cand.verificationSource).includes('Mock Provider')) return true;
+
+  const textFields = [
+    cand.match,
+    cand.partido,
+    cand.player,
+    cand.playerOrTeam,
+    cand.seleccion,
+    cand.jugador
+  ]
+    .filter(Boolean)
+    .map(v => String(v).toLowerCase());
+
+  if (textFields.some(txt => TEST_TEXT_PATTERNS.some(pat => txt.includes(pat)))) return true;
   if ((cand.match?.includes('Real Madrid') || cand.partido?.includes('Real Madrid')) && (cand.match?.includes('Inter') || cand.partido?.includes('Inter')) && (cand.player?.includes('Mbappé') || cand.seleccion?.includes('Mbappé'))) return true;
   if (id === 'cand_1795140929393_zq72a') return true;
   if (id === 'cand_1795111034541_doqilz') return true; // Duplicado no canónico de Bruno Gomes
   return false;
+}
+
+function isValidTextField(val) {
+  if (val === undefined || val === null) return false;
+  const str = String(val).trim();
+  return str.length > 0 && str.toLowerCase() !== 'undefined' && str.toLowerCase() !== 'null';
+}
+
+function hasRequiredBoardFields(pick) {
+  if (!pick || isTestFixture(pick)) return false;
+
+  const matchVal = pick.match || pick.partido;
+  const playerVal = pick.player || pick.playerOrTeam || pick.seleccion || pick.jugador;
+  const marketVal = pick.market || pick.mercado;
+  const lineVal = pick.line || pick.linea;
+  const dateVal = pick.date || pick.eventDateLocal || dateTime.getEventDateLocal(pick);
+
+  if (!isValidTextField(matchVal)) return false;
+  if (!isValidTextField(playerVal) || String(playerVal).trim().toLowerCase() === 'jugador') return false;
+  if (!isValidTextField(marketVal)) return false;
+  if (!isValidTextField(lineVal)) return false;
+  if (!isValidTextField(dateVal)) return false;
+
+  const odds = Number(pick.bookmakerOdds || pick.odds || pick.cuota);
+  if (!Number.isFinite(odds) || odds <= 1.0) return false;
+
+  const pred = pick.prediction || {};
+  const pProjected = pred.pProjected !== undefined && pred.pProjected !== null
+    ? Number(pred.pProjected)
+    : (pick.real_prob !== undefined && pick.real_prob !== null ? Number(pick.real_prob) / 100 : NaN);
+
+  if (!Number.isFinite(pProjected) || pProjected <= 0 || pProjected > 1) return false;
+
+  return true;
 }
 
 class RadarSync {
@@ -85,14 +155,34 @@ class RadarSync {
       approvedMap.set(app.id, app);
     }
 
+    // Cargar historial oficial antes de consolidar para preservar siempre picks históricos legítimos
+    let histPicks = [];
+    if (fs.existsSync(this.historialFile)) {
+      try {
+        const hData = JSON.parse(fs.readFileSync(this.historialFile, 'utf8'));
+        histPicks = hData.picks || hData.history || [];
+      } catch (e) {}
+    }
+
+    const histMap = new Map();
+    for (const h of histPicks) {
+      if (h.id && !isTestFixture(h)) histMap.set(h.id, h);
+    }
+
+    // Identificar candidatos marcados como DUPLICADO para excluir clones del Daily Board
+    const duplicateIds = new Set(
+      allCandidates.filter(c => c && c.status === 'DUPLICADO').map(c => c.id)
+    );
+
     // Mapa consolidado de picks para el Daily Board
     const consolidatedMap = new Map();
 
-    // 1. Cargar picks existentes en top_picks (preservando datos anteriores)
+    // 1. Cargar picks existentes en top_picks (filtrando pruebas, duplicados y activos incompletos, preservando históricos/liquidados)
     for (const p of (currentData.top_picks || [])) {
-      if (p && p.id && !isTestFixture(p)) {
-        consolidatedMap.set(p.id, { ...p });
-      }
+      if (!p || !p.id || isTestFixture(p) || duplicateIds.has(p.id)) continue;
+      const isHistoricalOrSettled = Boolean(p.is_settled) || histMap.has(p.id) || resultsMap.has(p.id);
+      if (!isHistoricalOrSettled && !hasRequiredBoardFields(p)) continue;
+      consolidatedMap.set(p.id, { ...p });
     }
 
     // 2. Incorporar candidatos de investigación y aprobados
@@ -112,43 +202,58 @@ class RadarSync {
     const researchCenterCandidates = [];
 
     for (const cand of combinedCandidates) {
+      if (isTestFixture(cand)) continue;
       const reports = reportsMap.get(cand.id) || cand.agentReports || {};
       const pred = cand.prediction || {};
       const elenaStatus = approvedMap.has(cand.id) ? 'APROBADO' : (cand.status || 'PENDIENTE');
+      const rawCandOdds = cand.bookmakerOdds || cand.odds || cand.cuota;
 
-      // Centro de Investigación recibe todos los candidatos
+      // Centro de Investigación recibe candidatos productivos (sin registros sintéticos)
       researchCenterCandidates.push({
         id: cand.id,
         discoveredAt: cand.discoveredAt || cand.createdAt,
         sport: cand.sport || 'football',
-        competition: cand.competition || cand.liga || 'Liga',
-        match: cand.match || cand.partido,
-        playerOrTeam: cand.playerOrTeam || cand.seleccion || cand.player,
-        market: cand.market || cand.mercado,
-        line: cand.line || cand.linea,
-        odds: Number(cand.bookmakerOdds || cand.odds || cand.cuota || 1.75),
+        competition: cand.competition || cand.liga || '',
+        match: cand.match || cand.partido || null,
+        playerOrTeam: cand.playerOrTeam || cand.seleccion || cand.player || null,
+        market: cand.market || cand.mercado || null,
+        line: cand.line || cand.linea || null,
+        odds: rawCandOdds !== undefined && rawCandOdds !== null ? Number(rawCandOdds) : null,
         priority: cand.priority || 'MEDIA',
         status: cand.status || 'DETECTADO',
         discoveryReason: cand.discoveryReason || 'Identificado por screener',
         decisionReason: cand.decisionReason || (cand.riskVerdict?.finalReason || 'En proceso de evaluación'),
-        evPercentage: pred.evPercentage || null,
-        fairOdds: pred.fairOdds || null,
+        evPercentage: pred.evPercentage ?? null,
+        fairOdds: pred.fairOdds ?? null,
         agentReports: reports
       });
 
-      // Si es un candidato elegible para el Daily Board (Aprobado, Pendiente, o con resultado)
+      // Si es un candidato elegible para el Daily Board (Aprobado, Pendiente, o con resultado — nunca DUPLICADO)
       const r = resultsMap.get(cand.id);
       const isSettled = r !== undefined || cand.isSettled === true || cand.status === 'LIQUIDADO';
 
-      if (elenaStatus === 'APROBADO' || cand.status?.includes('PENDIENTE') || isSettled) {
+      if (cand.status !== 'DUPLICADO' && (elenaStatus === 'APROBADO' || cand.status?.includes('PENDIENTE') || isSettled)) {
         const existing = consolidatedMap.get(cand.id) || {};
-        const odds = Number(cand.bookmakerOdds || cand.odds || cand.cuota || existing.odds || 1.75);
-        const pProjected = Number(pred.pProjected || (existing.real_prob ? existing.real_prob / 100 : 0.70));
-        const fairOdds = Number(pred.fairOdds || (1 / pProjected).toFixed(2));
-        const evPct = pred.evPercentage !== undefined ? pred.evPercentage : (existing.edge_pct || Number(((pProjected * odds - 1) * 100).toFixed(1)));
+        const rawOdds = cand.bookmakerOdds ?? cand.odds ?? cand.cuota ?? existing.odds ?? null;
+        const odds = rawOdds !== null && Number.isFinite(Number(rawOdds)) && Number(rawOdds) > 1 ? Number(rawOdds) : null;
 
-        // Preservar fecha original del evento (NUNCA pisar con hoy)
-        const eventDateLocal = cand.date || existing.date || cand.eventDateLocal || dateTime.getEventDateLocal(cand) || (cand.approvedAt ? cand.approvedAt.slice(0, 10) : today);
+        const rawProb = pred.pProjected !== undefined && pred.pProjected !== null
+          ? Number(pred.pProjected)
+          : (existing.real_prob !== undefined && existing.real_prob !== null ? Number(existing.real_prob) / 100 : null);
+        const pProjected = rawProb !== null && Number.isFinite(rawProb) && rawProb > 0 && rawProb <= 1 ? rawProb : null;
+
+        const fairOdds = pred.fairOdds !== undefined && pred.fairOdds !== null
+          ? Number(pred.fairOdds)
+          : (pProjected ? Number((1 / pProjected).toFixed(2)) : null);
+
+        const evPct = pred.evPercentage !== undefined && pred.evPercentage !== null
+          ? Number(pred.evPercentage)
+          : (existing.edge_pct !== undefined && existing.edge_pct !== null
+              ? Number(existing.edge_pct)
+              : (pProjected !== null && odds !== null ? Number(((pProjected * odds - 1) * 100).toFixed(1)) : null));
+
+        // Preservar fecha real del evento (NUNCA fabricar con hoy cuando no existe fecha real)
+        const eventDateLocal = cand.date || existing.date || cand.eventDateLocal || dateTime.getEventDateLocal(cand) || (isSettled && cand.approvedAt ? cand.approvedAt.slice(0, 10) : null);
         const kickoffTimeLocal = cand.kickoffTimeLocal || existing.kickoffTimeLocal || dateTime.toLocalTimeString(cand.kickoffTimestamp || cand.eventDate || cand.matchTime || cand.time || existing.time);
 
         // Determinación de los 3 estados ortogonales
@@ -168,6 +273,13 @@ class RadarSync {
         }
 
         const pickSettled = sportsResult === 'ACERTADA' || sportsResult === 'FALLADA' || sportsResult.includes('ANULADA') || sportsResult.includes('VOID');
+        const isHistoricalRecord = pickSettled || histMap.has(cand.id);
+
+        const leagueVal = cand.competition || cand.liga || existing.league || '';
+        const matchVal = cand.match || cand.partido || existing.match;
+        const playerVal = cand.player || cand.playerOrTeam || cand.seleccion || cand.jugador || existing.player;
+        const marketVal = cand.market || cand.mercado || existing.market;
+        const lineVal = cand.line || cand.linea || existing.line;
 
         // Categoría operativa y proximidad
         let category = 'proximos';
@@ -184,30 +296,30 @@ class RadarSync {
           proximityBadge = 'En verificación';
         }
 
-        consolidatedMap.set(cand.id, {
+        const boardEntry = {
           ...existing,
           id: cand.id,
-          league: cand.competition || cand.liga || existing.league || 'Liga Destacada',
-          league_badge: this._getLeagueBadge(cand.competition || cand.liga || existing.league),
-          match: cand.match || cand.partido || existing.match,
+          league: leagueVal,
+          league_badge: leagueVal ? this._getLeagueBadge(leagueVal) : '',
+          match: matchVal,
           time: cand.matchTime || cand.hora || cand.time || existing.time || (kickoffTimeLocal !== 'Horario por confirmar' ? `${kickoffTimeLocal} (ART)` : 'Horario por confirmar'),
           date: eventDateLocal,
           eventDateLocal,
           eventDateUtc: cand.eventDate || cand.kickoffUtc || existing.eventDateUtc || null,
           kickoffTimeLocal,
-          player: cand.player || cand.playerOrTeam || cand.seleccion || cand.jugador || existing.player || 'Jugador',
+          player: playerVal,
           team: cand.team || existing.team || '',
           opponent: cand.opponent || cand.rival || existing.opponent || '',
-          market: cand.market || cand.mercado || existing.market,
-          line: cand.line || cand.linea || existing.line,
+          market: marketVal,
+          line: lineVal,
           odds,
           shadow_mode: Boolean(config.shadowMode?.enabled),
           is_operative_recommendation: false,
-          hit_rate_l5: cand.trendL5 ? `${cand.trendL5}` : (existing.hit_rate_l5 || '4/5 (80%)'),
-          hit_rate_l10: cand.trendL10 ? `${cand.trendL10}` : (existing.hit_rate_l10 || '7/10 (70%)'),
-          avg_per_game: cand.statsSummary?.avg || existing.avg_per_game || 2.4,
-          implied_prob: Number(((1 / odds) * 100).toFixed(1)),
-          real_prob: Number((pProjected * 100).toFixed(1)),
+          hit_rate_l5: cand.trendL5 ? `${cand.trendL5}` : (existing.hit_rate_l5 || null),
+          hit_rate_l10: cand.trendL10 ? `${cand.trendL10}` : (existing.hit_rate_l10 || null),
+          avg_per_game: cand.statsSummary?.avg ?? existing.avg_per_game ?? null,
+          implied_prob: odds ? Number(((1 / odds) * 100).toFixed(1)) : null,
+          real_prob: pProjected !== null ? Number((pProjected * 100).toFixed(1)) : null,
           edge_pct: evPct,
           confidence: pred.confidenceScore ? `${pred.confidenceScore}%` : (existing.confidence || 'Alta'),
           rationale: cand.decisionReason || cand.rationale || existing.rationale || 'Aprobado matemáticamente con consenso del Tribunal de IA.',
@@ -223,35 +335,28 @@ class RadarSync {
           proximity_badge: proximityBadge,
 
           fair_odds: fairOdds,
-          ev_pct: `+${evPct}%`,
-          uncertainty_index: pred.uncertaintyIndex || existing.uncertainty_index || 0.18,
-          minutes_expected: cand.minutesExpected || existing.minutes_expected || 75,
-          sample_size: pred.sampleSize || existing.sample_size || 18,
-          model_applied: pred.modelApplied || existing.model_applied || 'Poisson Ajustado',
+          ev_pct: evPct !== null ? `${evPct >= 0 ? '+' : ''}${evPct}%` : null,
+          uncertainty_index: pred.uncertaintyIndex ?? existing.uncertainty_index ?? null,
+          minutes_expected: cand.minutesExpected ?? existing.minutes_expected ?? null,
+          sample_size: pred.sampleSize ?? existing.sample_size ?? null,
+          model_applied: pred.modelApplied || existing.model_applied || null,
           risk_verdict: cand.riskVerdict || existing.risk_verdict || {
             finalStatus: elenaStatus,
             finalReason: cand.decisionReason || 'Validado por el comité de riesgos'
           },
           agent_reports: Object.keys(reports).length > 0 ? reports : (existing.agent_reports || {})
-        });
+        };
+
+        // Gate de completitud para oportunidades activas (preserva registros históricos y liquidados)
+        if (!isHistoricalRecord && !hasRequiredBoardFields(boardEntry)) {
+          continue;
+        }
+
+        consolidatedMap.set(cand.id, boardEntry);
       }
     }
 
-    // 3. Sincronizar e incorporar picks del historial oficial en consolidatedMap
-    let histPicks = [];
-    if (fs.existsSync(this.historialFile)) {
-      try {
-        const hData = JSON.parse(fs.readFileSync(this.historialFile, 'utf8'));
-        histPicks = hData.picks || hData.history || [];
-      } catch (e) {}
-    }
-
-    const histMap = new Map();
-    for (const h of histPicks) {
-      if (h.id && !isTestFixture(h)) histMap.set(h.id, h);
-    }
-
-    // Incorporar cualquier pick de historial_picks que falte en consolidatedMap
+    // 3. Incorporar cualquier pick de historial_picks que falte en consolidatedMap
     for (const [id, h] of histMap.entries()) {
       if (!consolidatedMap.has(id)) {
         const res = resultsMap.get(id);
@@ -262,12 +367,12 @@ class RadarSync {
 
         consolidatedMap.set(id, {
           id: h.id,
-          league: h.league || 'Liga Destacada',
-          league_badge: this._getLeagueBadge(h.league),
-          match: h.match || 'Partido',
+          league: h.league || '',
+          league_badge: h.league ? this._getLeagueBadge(h.league) : '',
+          match: h.match,
           time: h.time || (isSettled ? 'Finalizado' : 'Horario por confirmar'),
-          date: h.date || today,
-          eventDateLocal: h.date || today,
+          date: h.date || null,
+          eventDateLocal: h.date || null,
           kickoffTimeLocal: h.time || (isSettled ? 'Finalizado' : 'Horario por confirmar'),
           player: h.player || h.team || 'Jugador',
           team: h.team || '',
@@ -524,4 +629,8 @@ class RadarSync {
   }
 }
 
-module.exports = new RadarSync();
+const radarSyncInstance = new RadarSync();
+radarSyncInstance.isTestFixture = isTestFixture;
+radarSyncInstance.hasRequiredBoardFields = hasRequiredBoardFields;
+
+module.exports = radarSyncInstance;

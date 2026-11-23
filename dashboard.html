@@ -4858,8 +4858,32 @@
       const searchFilter = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
       const statusFilter = document.getElementById('filterStatus')?.value || 'all';
 
+      // Defensa visual y de KPIs: excluir registros sintéticos y oportunidades activas malformadas (preservando históricos legítimos)
+      const isValidText = (v) => v !== undefined && v !== null && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'undefined' && String(v).trim().toLowerCase() !== 'null';
+      const isTestBoardRecord = (p) => {
+        if (!p) return true;
+        if (p.isTest || p.is_test || p.isTestPick) return true;
+        const id = String(p.id || '');
+        if (/^(cand_test_|test_|pick_test_|pick_settle_|cand_autotest_|cand_starter_|cand_sub_|cand_incomp_)/.test(id)) return true;
+        const txt = `${p.match || ''} ${p.player || ''}`.toLowerCase();
+        return txt.includes('equipo auto') || txt.includes('jugador prueba auto') || txt.includes('equipo x vs equipo y') || txt.includes('suplente fc') || txt.includes('jugador incompleto');
+      };
+      const isValidBoardPick = (p) => {
+        if (isTestBoardRecord(p)) return false;
+        const isHistoricalOrSettled = Boolean(p.is_settled) || Boolean(p.is_finished) || ['ACERTADA', 'GANADA', 'FALLADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'VOID', 'FINALIZADO'].includes(p.status);
+        if (isHistoricalOrSettled) return true;
+        if (!isValidText(p.match) || !isValidText(p.player) || !isValidText(p.market) || !isValidText(p.line)) return false;
+        const oddsNum = Number(p.odds);
+        const probNum = Number(p.real_prob);
+        if (!Number.isFinite(oddsNum) || oddsNum <= 1) return false;
+        if (!Number.isFinite(probNum) || probNum <= 0 || probNum > 100) return false;
+        return true;
+      };
+
+      const validTopPicks = globalPicksData.top_picks.filter(isValidBoardPick);
+
       // Filtrado por horizonte temporal y filtros avanzados
-      let filtered = globalPicksData.top_picks.filter(pick => {
+      let filtered = validTopPicks.filter(pick => {
         const pickDate = getPickDateKey(pick);
 
         if (currentTimeHorizon === 'today' && pickDate !== today) return false;
@@ -4917,8 +4941,8 @@
         return true;
       });
 
-      // Actualizar conteos de insignias de acceso rápido (pool de candidatos sin filtros avanzados)
-      const allPicks = globalPicksData.top_picks || [];
+      // Actualizar conteos de insignias de acceso rápido (pool de candidatos válidos sin filtros avanzados)
+      const allPicks = validTopPicks;
       const badgeTodayEl = document.getElementById('badgeTodayCount');
       if (badgeTodayEl) {
         badgeTodayEl.textContent = allPicks.filter(p => getPickDateKey(p) === today).length;

@@ -16711,7 +16711,7 @@
     "edge_pct": 25.4,
     "confidence": "92.0%",
     "rationale": "Doble convergencia estadística: Fulham supera la línea en 10/10 partidos y Man City concede >= 3 remates a puerta en 9/10.",
-    "status": "APROBADO",
+    "status": "DUPLICADO",
     "fair_odds": 1.31,
     "ev_pct": "+25.4%",
     "uncertainty_index": 0.05,
@@ -16846,7 +16846,12 @@
       "settled_at": "2026-11-22T00:48:04.966Z",
       "odds_frozen": 1.64,
       "evidence_source": "StatsHub MCP (getTeamPerformance / getMatchDetails)"
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_fulham_sot",
+    "isSettled": true,
+    "sportsResult": "ACERTADA",
+    "actualStat": 4,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_fulham_sot (ACERTADA)"
   },
   {
     "id": "cand_20261121_leeds_corners",
@@ -16870,7 +16875,7 @@
     "edge_pct": 24.5,
     "confidence": "90.0%",
     "rationale": "Leeds supera la línea en 9/10 partidos y Chelsea concede >= 4 córners en 9/10 encuentros recientes.",
-    "status": "APROBADO",
+    "status": "DUPLICADO",
     "fair_odds": 1.39,
     "ev_pct": "+24.5%",
     "uncertainty_index": 0.05,
@@ -17003,7 +17008,12 @@
       "settled_at": "2026-11-22T00:48:04.966Z",
       "odds_frozen": 1.73,
       "evidence_source": "StatsHub MCP (getTeamPerformance / getMatchDetails)"
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_leeds_corners",
+    "isSettled": true,
+    "sportsResult": "FALLADA",
+    "actualStat": 2,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_leeds_corners (FALLADA)"
   },
   {
     "id": "cand_20261121_castaneda_shots",
@@ -17027,7 +17037,7 @@
     "edge_pct": 23.5,
     "confidence": "91.5%",
     "rationale": "Muestra sólida de 11 titularidades en Bundesliga (9/10 aciertos). Pendiente confirmación de planilla oficial T-60 min.",
-    "status": "PENDIENTE_ALINEACION",
+    "status": "DUPLICADO",
     "fair_odds": 1.35,
     "ev_pct": "+23.5%",
     "uncertainty_index": 0.06,
@@ -17153,7 +17163,12 @@
       "status": "PENDING_VERIFICATION",
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_castaneda_shots",
+    "isSettled": true,
+    "sportsResult": "ACERTADA",
+    "actualStat": 1,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_castaneda_shots (ACERTADA)"
   },
   {
     "id": "cand_20261121_ruibal_fouls",
@@ -17177,7 +17192,7 @@
     "edge_pct": 18.5,
     "confidence": "89.0%",
     "rationale": "El Gran Derbi de Sevilla: Ruibal acumula 5 partidos consecutivos con >= 2 faltas y Sevilla recibe 14 f/p en su estadio.",
-    "status": "PENDIENTE_ALINEACION",
+    "status": "DUPLICADO",
     "fair_odds": 1.41,
     "ev_pct": "+18.5%",
     "uncertainty_index": 0.07,
@@ -17302,7 +17317,12 @@
       "status": "PENDING_VERIFICATION",
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_ruibal_fouls",
+    "isSettled": true,
+    "sportsResult": "ACERTADA",
+    "actualStat": 2,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_ruibal_fouls (ACERTADA)"
   },
   {
     "id": "cand_20261121_abde_sot",
@@ -17326,7 +17346,7 @@
     "edge_pct": 21.6,
     "confidence": "91.0%",
     "rationale": "El Gran Derbi: 9/10 en L10 con remate a puerta. Extremo desequilibrante con alta frecuencia de disparo.",
-    "status": "PENDIENTE_ALINEACION",
+    "status": "DUPLICADO",
     "fair_odds": 1.32,
     "ev_pct": "+21.6%",
     "uncertainty_index": 0.05,
@@ -17456,7 +17476,12 @@
       "status": "PENDING_VERIFICATION",
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_abde_sot",
+    "isSettled": true,
+    "sportsResult": "ACERTADA",
+    "actualStat": 1,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_abde_sot (ACERTADA)"
   },
   {
     "id": "cand_20261121_neto_sot",
@@ -17480,7 +17505,7 @@
     "edge_pct": 23.6,
     "confidence": "91.0%",
     "rationale": "Racha perfecta L5 (5/5) y 80% en L10. Extremo titular en Stamford Bridge con alta diagonal y disparo.",
-    "status": "PENDIENTE_ALINEACION",
+    "status": "DUPLICADO",
     "fair_odds": 1.35,
     "ev_pct": "+23.6%",
     "uncertainty_index": 0.05,
@@ -17610,7 +17635,12 @@
       "status": "PENDING_VERIFICATION",
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_neto_sot",
+    "isSettled": true,
+    "sportsResult": "ANULADA_NO_TITULAR",
+    "actualStat": 0,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_neto_sot (ANULADA_NO_TITULAR)"
   },
   {
     "id": "cand_20261121_romano_shots",
@@ -17634,7 +17664,7 @@
     "edge_pct": 17.7,
     "confidence": "90.0%",
     "rationale": "11 titularidades en Serie A con 9/10 aciertos en L10. Presencia constante en remate de media distancia.",
-    "status": "PENDIENTE_ALINEACION",
+    "status": "DUPLICADO",
     "fair_odds": 1.33,
     "ev_pct": "+17.7%",
     "uncertainty_index": 0.05,
@@ -17763,7 +17793,12 @@
       "status": "PENDING_VERIFICATION",
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_romano_shots",
+    "isSettled": true,
+    "sportsResult": "ACERTADA",
+    "actualStat": 1,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_romano_shots (ACERTADA)"
   },
   {
     "id": "cand_20261121_nuamah_shots",
@@ -17787,7 +17822,7 @@
     "edge_pct": 21.9,
     "confidence": "90.5%",
     "rationale": "80% de aciertos en L10 superando la línea de 1.5 remates (promedia 2.4 f/p). Alta iniciativa ofensiva en Lyon.",
-    "status": "PENDIENTE_ALINEACION",
+    "status": "DUPLICADO",
     "fair_odds": 1.37,
     "ev_pct": "+21.9%",
     "uncertainty_index": 0.05,
@@ -17916,7 +17951,12 @@
       "status": "PENDING_VERIFICATION",
       "result_label": "NO_LIQUIDADO_EN_CARTERA_ACTIVA",
       "note": "Preservado con dictamen histórico PENDIENTE (T-60 min). No computa en portfolio aprobado ni en métricas de rentabilidad."
-    }
+    },
+    "canonicalId": "cand_real_statshub_20261121_nuamah_shots",
+    "isSettled": true,
+    "sportsResult": "ACERTADA",
+    "actualStat": 2,
+    "reconciliationNote": "Duplicado pre-liquidación consolidado hacia registro canónico liquidado cand_real_statshub_20261121_nuamah_shots (ACERTADA)"
   },
   {
     "match_id": "match-test-01",
@@ -17971,53 +18011,807 @@
     "createdAt": "2026-11-23T03:17:16.816Z"
   },
   {
-    "id": "cand_autotest_1795403865782",
-    "playerOrTeam": "Jugador Prueba Auto",
-    "match": "Equipo Auto A vs Equipo Auto B",
-    "market": "Remates al arco",
-    "line": "Más de 1.5",
-    "bookmakerOdds": 1.85,
-    "status": "APROBADO",
-    "createdAt": "2026-11-23T03:17:45.787Z",
-    "updatedAt": "2026-11-23T03:17:45.787Z"
+    "id": "cand_1795406452983_dxfxii",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Athletic Club vs Espanyol",
+    "matchTime": null,
+    "playerOrTeam": "Beñat Gerenabarrena",
+    "isTeamProp": false,
+    "team": "Athletic Club",
+    "opponent": "Espanyol",
+    "market": "Remates totales",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.3,
+    "bookmaker": "William Hill",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "48.0%",
+      "averageOdds": 1.55
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "benat-gerenabarrena.0afgmhy",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "shots",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "benat-gerenabarrena.0afgmhy",
+      "playerName": "Beñat Gerenabarrena",
+      "homeTeam": "Athletic Club",
+      "awayTeam": "Espanyol",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "William Hill",
+      "bestOdds": 2.3,
+      "averageOdds": 1.55,
+      "edge": 0.48,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "All British Casino",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.363
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.44
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "BoyleSports",
+          "odd": 1.6
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.67
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.67
+        },
+        {
+          "bookmaker": "Paddy Power",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "Sky Bet",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Unibet",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "William Hill",
+          "odd": 2.3
+        }
+      ],
+      "impliedChance": 43.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (48.0%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:52.994Z",
+    "createdAt": "2026-11-23T04:00:52.994Z"
   },
   {
-    "id": "cand_incomp_1795403865795",
-    "playerOrTeam": "Jugador Incompleto",
-    "match": "Equipo X vs Equipo Y",
+    "id": "cand_1795406452983_h0wh7r",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Monza vs Fiorentina",
+    "matchTime": null,
+    "playerOrTeam": "Wilfried Gnonto",
+    "isTeamProp": false,
+    "team": "Monza",
+    "opponent": "Fiorentina",
+    "market": "Faltas ganadas",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.45,
+    "bookmaker": "Betfred",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "45.2%",
+      "averageOdds": 1.69
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "wilfried-gnonto.1n5pmjr",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "foulsWon",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "wilfried-gnonto.1n5pmjr",
+      "playerName": "Wilfried Gnonto",
+      "homeTeam": "Monza",
+      "awayTeam": "Fiorentina",
+      "market": "Fouls Won",
+      "marketKey": "foulsWon",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "Betfred",
+      "bestOdds": 2.45,
+      "averageOdds": 1.69,
+      "edge": 0.452,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.333
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 2.45
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.32
+        },
+        {
+          "bookmaker": "Paddy Power",
+          "odd": 1.33
+        }
+      ],
+      "impliedChance": 40.8
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (45.2%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.003Z",
+    "createdAt": "2026-11-23T04:00:53.003Z"
+  },
+  {
+    "id": "cand_1795406452983_m0imcl",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Como vs Cagliari",
+    "matchTime": null,
+    "playerOrTeam": "Maxence Caqueret",
+    "isTeamProp": false,
+    "team": "Como",
+    "opponent": "Cagliari",
+    "market": "Remates totales",
+    "line": "Más de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.143,
+    "bookmaker": "All British Casino",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "44.2%",
+      "averageOdds": 1.49
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "maxence-caqueret.0m7hfqe",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "shots",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "maxence-caqueret.0m7hfqe",
+      "playerName": "Maxence Caqueret",
+      "homeTeam": "Como",
+      "awayTeam": "Cagliari",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "All British Casino",
+      "bestOdds": 2.143,
+      "averageOdds": 1.49,
+      "edge": 0.442,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.285
+        },
+        {
+          "bookmaker": "All British Casino",
+          "odd": 2.143
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.666
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.33
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.93
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.375
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.48
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.29
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.48
+        },
+        {
+          "bookmaker": "Paddy Power",
+          "odd": 1.17
+        },
+        {
+          "bookmaker": "Sky Bet",
+          "odd": 1.2
+        }
+      ],
+      "impliedChance": 46.7
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (44.2%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.013Z",
+    "createdAt": "2026-11-23T04:00:53.013Z"
+  },
+  {
+    "id": "cand_1795406452983_qqf0nw",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "1. FC Union Berlin vs RB Leipzig",
+    "matchTime": null,
+    "playerOrTeam": "Leopold Querfeld",
+    "isTeamProp": false,
+    "team": "1. FC Union Berlin",
+    "opponent": "RB Leipzig",
+    "market": "Remates totales",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.375,
+    "bookmaker": "Bet365",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "43.4%",
+      "averageOdds": 1.66
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "leopold-querfeld.181gx4n",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "shots",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "leopold-querfeld.181gx4n",
+      "playerName": "Leopold Querfeld",
+      "homeTeam": "1. FC Union Berlin",
+      "awayTeam": "RB Leipzig",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "Bet365",
+      "bestOdds": 2.375,
+      "averageOdds": 1.66,
+      "edge": 0.434,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.666
+        },
+        {
+          "bookmaker": "All British Casino",
+          "odd": 1.52
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.375
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.55
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.5
+        },
+        {
+          "bookmaker": "BoyleSports",
+          "odd": 1.67
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.7
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.38
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.7
+        }
+      ],
+      "impliedChance": 42
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (43.4%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.022Z",
+    "createdAt": "2026-11-23T04:00:53.022Z"
+  },
+  {
+    "id": "cand_1795406452983_aazbra",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Paris FC vs Angers",
+    "matchTime": null,
+    "playerOrTeam": "Thibault De Smet",
+    "isTeamProp": false,
+    "team": "Paris FC",
+    "opponent": "Angers",
+    "market": "Remates totales",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 2.15,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "41.5%",
+      "averageOdds": 1.52
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "thibault-de-smet.1o5sl7b",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "shots",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "thibault-de-smet.1o5sl7b",
+      "playerName": "Thibault De Smet",
+      "homeTeam": "Paris FC",
+      "awayTeam": "Angers",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 0.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.15,
+      "averageOdds": 1.52,
+      "edge": 0.415,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.1
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.15
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.14
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.4
+        },
+        {
+          "bookmaker": "Paddy Power",
+          "odd": 1.3
+        },
+        {
+          "bookmaker": "Sky Bet",
+          "odd": 1.14
+        }
+      ],
+      "impliedChance": 46.5
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (41.5%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.030Z",
+    "createdAt": "2026-11-23T04:00:53.030Z"
+  },
+  {
+    "id": "cand_1795406452983_by22ye",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Napoli vs Torino",
+    "matchTime": null,
+    "playerOrTeam": "Rasmus Højlund",
+    "isTeamProp": false,
+    "team": "Napoli",
+    "opponent": "Torino",
+    "market": "Remates totales",
+    "line": "Más de 3.5",
+    "rawLine": 3.5,
+    "bookmakerOdds": 2.4,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "41.5%",
+      "averageOdds": 1.7
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "rasmus-hojlund.1dpji41",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "shots",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "rasmus-hojlund.1dpji41",
+      "playerName": "Rasmus Højlund",
+      "homeTeam": "Napoli",
+      "awayTeam": "Torino",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 3.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.4,
+      "averageOdds": 1.7,
+      "edge": 0.415,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.533
+        },
+        {
+          "bookmaker": "All British Casino",
+          "odd": 2.2
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 1.833
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.8
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.4
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.61
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.18
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.18
+        },
+        {
+          "bookmaker": "Paddy Power",
+          "odd": 1.67
+        },
+        {
+          "bookmaker": "Sky Bet",
+          "odd": 1.73
+        }
+      ],
+      "impliedChance": 41.7
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (41.5%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.038Z",
+    "createdAt": "2026-11-23T04:00:53.038Z"
+  },
+  {
+    "id": "cand_1795406452983_znvlnl",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Borussia M'gladbach vs Borussia Dortmund",
+    "matchTime": null,
+    "playerOrTeam": "Serhou Guirassy",
+    "isTeamProp": false,
+    "team": "Borussia M'gladbach",
+    "opponent": "Borussia Dortmund",
+    "market": "Remates totales",
+    "line": "Más de 3.5",
+    "rawLine": 3.5,
+    "bookmakerOdds": 2.45,
+    "bookmaker": "BetVictor",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "41.3%",
+      "averageOdds": 1.73
+    },
+    "lineupStatus": "UNKNOWN",
+    "playerId": "serhou-guirassy.1k84cpn",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "shots",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "serhou-guirassy.1k84cpn",
+      "playerName": "Serhou Guirassy",
+      "homeTeam": "Borussia M'gladbach",
+      "awayTeam": "Borussia Dortmund",
+      "market": "Shots",
+      "marketKey": "shots",
+      "marketType": "Over",
+      "line": 3.5,
+      "bestBookmaker": "BetVictor",
+      "bestOdds": 2.45,
+      "averageOdds": 1.73,
+      "edge": 0.413,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.533
+        },
+        {
+          "bookmaker": "All British Casino",
+          "odd": 2.2
+        },
+        {
+          "bookmaker": "Bet365",
+          "odd": 2.2
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 1.62
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 2.45
+        },
+        {
+          "bookmaker": "Betway",
+          "odd": 1.61
+        },
+        {
+          "bookmaker": "BoyleSports",
+          "odd": 1.83
+        },
+        {
+          "bookmaker": "Coral",
+          "odd": 1.28
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.33
+        },
+        {
+          "bookmaker": "Ladbrokes",
+          "odd": 1.28
+        }
+      ],
+      "impliedChance": 40.8
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (41.3%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.046Z",
+    "createdAt": "2026-11-23T04:00:53.046Z"
+  },
+  {
+    "id": "cand_1795406452983_81fjs7",
+    "discoveredAt": "2026-11-23T04:00:52.983Z",
+    "sport": "football",
+    "competition": "Liga Destacada",
+    "match": "Levante UD vs Elche",
+    "matchTime": null,
+    "playerOrTeam": "Federico Redondo",
+    "isTeamProp": false,
+    "team": "Levante UD",
+    "opponent": "Elche",
     "market": "Faltas cometidas",
     "line": "Más de 1.5",
-    "bookmakerOdds": 1.8,
-    "status": "INVESTIGACION_INCOMPLETA",
-    "researchData": {
-      "qualityStatus": "INVESTIGACION_INCOMPLETA",
-      "missingData": [
-        "playerData"
-      ]
+    "rawLine": 1.5,
+    "bookmakerOdds": 2.4,
+    "bookmaker": "Betfred",
+    "trendL5": null,
+    "trendL10": null,
+    "statsSummary": {
+      "edgeDiscrepancy": "41.3%",
+      "averageOdds": 1.7
     },
-    "updatedAt": "2026-11-23T03:17:45.800Z",
-    "createdAt": "2026-11-23T03:17:45.800Z"
-  },
-  {
-    "id": "cand_starter_1795403865812",
-    "matchId": "match_auto_01",
-    "playerOrTeam": "Julian Alvarez",
-    "status": "APROBADO",
-    "kickoffTimestamp": 1795406865,
-    "updatedAt": "2026-11-23T03:17:45.841Z",
-    "createdAt": "2026-11-23T03:17:45.817Z",
-    "lineupStatus": "CONFIRMADA",
-    "decisionReason": "Alineación oficial confirmada: Jugador parte en el XI titular. Condición levantada por el Risk Manager."
-  },
-  {
-    "id": "cand_sub_1795403865813",
-    "matchId": "match_auto_01",
-    "playerOrTeam": "Suplente FC",
-    "status": "RECHAZADO",
-    "kickoffTimestamp": 1795406865,
-    "updatedAt": "2026-11-23T03:17:45.854Z",
-    "createdAt": "2026-11-23T03:17:45.825Z",
-    "lineupStatus": "SUPLENTE",
-    "decisionReason": "Alineación oficial confirmada: Jugador es SUPLENTE. Veto preventivo definitivo aplicado por el Risk Manager (minutos insuficientes)."
+    "lineupStatus": "UNKNOWN",
+    "playerId": "federico-redondo.199c4mu",
+    "teamId": null,
+    "opponentTeamId": null,
+    "matchId": null,
+    "competitionId": null,
+    "seasonId": null,
+    "rawStatType": "fouls",
+    "discoverySources": [
+      "outlier_pricing"
+    ],
+    "mcpToolsQueried": [
+      "outlier_pricing"
+    ],
+    "rawSourceData": {
+      "playerId": "federico-redondo.199c4mu",
+      "playerName": "Federico Redondo",
+      "homeTeam": "Levante UD",
+      "awayTeam": "Elche",
+      "market": "Fouls Committed",
+      "marketKey": "fouls",
+      "marketType": "Over",
+      "line": 1.5,
+      "bestBookmaker": "Betfred",
+      "bestOdds": 2.4,
+      "averageOdds": 1.7,
+      "edge": 0.413,
+      "bookmakers": [
+        {
+          "bookmaker": "10bet",
+          "odd": 1.444
+        },
+        {
+          "bookmaker": "Betfred",
+          "odd": 2.4
+        },
+        {
+          "bookmaker": "BetVictor",
+          "odd": 1.53
+        },
+        {
+          "bookmaker": "BetMGM UK",
+          "odd": 1.42
+        }
+      ],
+      "impliedChance": 41.7
+    },
+    "priority": "MEDIA",
+    "status": "DETECTADO",
+    "discoveryReason": "Discrepancia de cuota en el mercado (41.3%) frente a otros bookmakers.",
+    "pendingInvestigation": [
+      "Minutos esperados y titularidad reciente",
+      "Métricas concedidas por el rival (xGA, shotsAgainst, foulsConceded)",
+      "Ajuste matemático Poisson / Distribución empírica",
+      "Noticias de última hora y bajas"
+    ],
+    "updatedAt": "2026-11-23T04:00:53.055Z",
+    "createdAt": "2026-11-23T04:00:53.055Z"
   }
 ]

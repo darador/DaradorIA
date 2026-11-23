@@ -25,9 +25,23 @@ const observationTracker = require('../prediction/observationTracker');
 const dateTimeUtils = require('../utils/dateTime');
 
 const TIMEZONE_ART = 'America/Argentina/Buenos_Aires';
-const STATE_FILE = path.join(__dirname, '../storage_data/scheduler_state.json');
+const STORAGE_DIR = path.join(__dirname, '../storage_data');
+const STATE_FILE = path.join(STORAGE_DIR, 'scheduler_state.json');
+const CANDIDATES_FILE = path.join(STORAGE_DIR, 'research_candidates.json');
+const APPROVED_FILE = path.join(STORAGE_DIR, 'approved_picks.json');
+const REJECTED_FILE = path.join(STORAGE_DIR, 'rejected_picks.json');
+const TEST_RESULTS_FILE = path.join(STORAGE_DIR, 'test_pick_results.json');
+const RESULTS_FILE = path.join(STORAGE_DIR, 'pick_results.json');
+const PICKS_HOY_FILE = path.join(__dirname, '../../picks_hoy.json');
+const HISTORIAL_FILE = path.join(__dirname, '../../historial_picks.json');
 
 async function runTestSuite() {
+  const createdIds = new Set();
+  const prevStateRaw = fs.existsSync(STATE_FILE) ? fs.readFileSync(STATE_FILE, 'utf8') : null;
+  const prevPicksHoyRaw = fs.existsSync(PICKS_HOY_FILE) ? fs.readFileSync(PICKS_HOY_FILE, 'utf8') : null;
+  const prevHistorialRaw = fs.existsSync(HISTORIAL_FILE) ? fs.readFileSync(HISTORIAL_FILE, 'utf8') : null;
+
+  try {
   console.log('======================================================');
   console.log('🧪 VALIDACIÓN FASE 13: AUTOMATIZACIÓN DEL MOTOR');
   console.log('======================================================\n');
@@ -94,6 +108,7 @@ async function runTestSuite() {
     status: 'APROBADO',
     createdAt: new Date().toISOString()
   };
+  createdIds.add(testCandidate.id);
   storage.saveCandidate(testCandidate);
 
   // Comprobar que no se duplica en almacenamiento
@@ -118,6 +133,7 @@ async function runTestSuite() {
     status: 'INVESTIGACION_INCOMPLETA',
     researchData: { qualityStatus: 'INVESTIGACION_INCOMPLETA', missingData: ['playerData'] }
   };
+  createdIds.add(incompleteCandidate.id);
   storage.saveCandidate(incompleteCandidate);
 
   // Ejecutar pipeline pasando candidato incompleto
@@ -146,6 +162,8 @@ async function runTestSuite() {
     status: 'PENDIENTE_ALINEACION',
     kickoffTimestamp: Math.floor(Date.now() / 1000) + 3000
   };
+  createdIds.add(candStarter.id);
+  createdIds.add(candSub.id);
   storage.saveCandidate(candStarter);
   storage.saveCandidate(candSub);
 
@@ -178,6 +196,7 @@ async function runTestSuite() {
     cuota: 1.85,
     status: 'APROBADO'
   };
+  createdIds.add(pickToSettle.id);
   storage.saveApprovedPick(pickToSettle);
 
   const mockSettlementData = {
@@ -188,12 +207,18 @@ async function runTestSuite() {
   };
 
   const settleRes = await centralScheduler.runSettlementJob({ mockData: mockSettlementData, pickIds: [pickToSettle.id] });
-  assert(settleRes.settled >= 1, 'Debe liquidar el pick con acta oficial FT');
+  assert(settleRes.evaluated >= 1, 'Debe evaluar el pick sintético en el ciclo de Settlement');
+  assert.strictEqual(settleRes.settled, 0, 'Un pick sintético pick_settle_* no debe contabilizarse como liquidación productiva');
 
-  const settledResult = storage.getResults().find(r => r.pickId === pickToSettle.id);
-  assert(settledResult, 'Debe persistir el resultado liquidado');
-  assert(settledResult.status === 'ACERTADA' || settledResult.status === 'GANADA', '3 remates con línea 1.5 debe ser ACERTADA/GANADA');
-  console.log('  ✅ Settlement: Pick liquidado en GANADA/ACERTADA y balance actualizado.');
+  const prodResult = storage.getResults().find(r => r.pickId === pickToSettle.id);
+  assert(!prodResult, 'El registro sintético pick_settle_* NO debe ingresar en pick_results.json');
+
+  const testResults = fs.existsSync(TEST_RESULTS_FILE) ? JSON.parse(fs.readFileSync(TEST_RESULTS_FILE, 'utf8')) : [];
+  const segregatedResult = testResults.find(r => r.pickId === pickToSettle.id);
+  assert(segregatedResult, 'El registro sintético pick_settle_* debe segregarse en test_pick_results.json');
+  assert(segregatedResult.status === 'ACERTADA' || segregatedResult.status === 'GANADA', '3 remates con línea 1.5 debe evaluarse como ACERTADA/GANADA');
+  assert.strictEqual(segregatedResult.actualStat, 3, 'Debe registrar actualStat = 3 en el resultado segregado');
+  console.log('  ✅ Settlement: Pick sintético evaluado en GANADA/ACERTADA y segregado correctamente en test_pick_results.json sin contaminar pick_results.json.');
 
   // --- 7. MONITOR OPERATIVO EN HORARIO ARGENTINO ---
   console.log('\n--- 7. Monitor Operativo y Sincronización en Horario de Argentina ---');
@@ -224,17 +249,43 @@ async function runTestSuite() {
     assert.fail(`El build falló: ${bErr.message}`);
   }
 
-  // Limpieza de datos de prueba
-  try {
-    const candsClean = storage.getCandidates().filter(c => !c.id.includes('autotest') && !c.id.includes('incomp') && !c.id.includes('starter') && !c.id.includes('sub'));
-    fs.writeFileSync('engine/storage_data/research_candidates.json', JSON.stringify(candsClean, null, 2), 'utf8');
-    const appsClean = storage.getApprovedPicks().filter(p => !p.id.includes('autotest') && !p.id.includes('settle') && !p.id.includes('starter'));
-    fs.writeFileSync('engine/storage_data/approved_picks.json', JSON.stringify(appsClean, null, 2), 'utf8');
-  } catch (e) {}
-
   console.log('\n======================================================');
   console.log('🎉 FASE 13 SUPERADA: 8 DE 8 PRUEBAS PASADAS AL 100%');
   console.log('======================================================\n');
+  } finally {
+    // Limpieza garantizada ante éxito o fallo: elimina únicamente registros creados por esta ejecución
+    try {
+      if (centralScheduler.isRunning) centralScheduler.stopDaemon();
+    } catch (e) {}
+
+    const pruneFileByIds = (filePath, idField = 'id') => {
+      try {
+        if (!fs.existsSync(filePath)) return;
+        const arr = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        if (!Array.isArray(arr)) return;
+        const cleaned = arr.filter(item => !createdIds.has(item && (item[idField] || item.id || item.pickId)));
+        if (cleaned.length !== arr.length) {
+          fs.writeFileSync(filePath, JSON.stringify(cleaned, null, 2), 'utf8');
+        }
+      } catch (e) {}
+    };
+
+    pruneFileByIds(CANDIDATES_FILE, 'id');
+    pruneFileByIds(APPROVED_FILE, 'id');
+    pruneFileByIds(REJECTED_FILE, 'id');
+    pruneFileByIds(TEST_RESULTS_FILE, 'pickId');
+    pruneFileByIds(RESULTS_FILE, 'pickId');
+
+    try {
+      if (prevStateRaw !== null) fs.writeFileSync(STATE_FILE, prevStateRaw, 'utf8');
+    } catch (e) {}
+    try {
+      if (prevPicksHoyRaw !== null) fs.writeFileSync(PICKS_HOY_FILE, prevPicksHoyRaw, 'utf8');
+    } catch (e) {}
+    try {
+      if (prevHistorialRaw !== null) fs.writeFileSync(HISTORIAL_FILE, prevHistorialRaw, 'utf8');
+    } catch (e) {}
+  }
 }
 
 runTestSuite().catch(err => {
