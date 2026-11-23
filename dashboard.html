@@ -6182,13 +6182,22 @@
       const candidates = (globalPicksData && globalPicksData.research_center) ? globalPicksData.research_center : [];
       const filterStatus = document.getElementById('filterResearchStatus')?.value || 'all';
 
-      const filtered = candidates.filter(c => {
-        if (filterStatus === 'all') return true;
-        if (filterStatus === 'INVESTIGADO') return c.status === 'INVESTIGADO' || c.status === 'APROBADO';
-        if (filterStatus === 'PENDIENTE') return c.status && c.status.includes('PENDIENTE');
-        if (filterStatus === 'DESCARTADO') return c.status === 'RECHAZADO' || c.status === 'DESCARTADO';
-        return true;
-      });
+      const filtered = candidates
+        .filter(c => {
+          if (filterStatus === 'all') return true;
+          if (filterStatus === 'INVESTIGADO') return c.status === 'INVESTIGADO' || c.status === 'APROBADO';
+          if (filterStatus === 'PENDIENTE') return c.status && c.status.includes('PENDIENTE');
+          if (filterStatus === 'DESCARTADO') return c.status === 'RECHAZADO' || c.status === 'DESCARTADO';
+          return true;
+        })
+        .map((item, idx) => ({ item, idx }))
+        .sort((a, b) => {
+          const tsA = Date.parse(a.item.discoveredAt || a.item.createdAt || '') || 0;
+          const tsB = Date.parse(b.item.discoveredAt || b.item.createdAt || '') || 0;
+          if (tsB !== tsA) return tsB - tsA;
+          return b.idx - a.idx;
+        })
+        .map(x => x.item);
 
       if (filtered.length === 0) {
         tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-muted);">No hay candidatos registrados en esta categoría.</td></tr>';
@@ -6198,6 +6207,8 @@
       tbody.innerHTML = filtered.map(c => {
         let statusBadge = '<span class="status-pill detected">DETECTADO</span>';
         if (c.status === 'APROBADO') statusBadge = '<span class="status-pill approved">APROBADO</span>';
+        else if (c.status === 'LIQUIDADO') statusBadge = '<span class="status-pill approved">LIQUIDADO</span>';
+        else if (c.status === 'DUPLICADO') statusBadge = '<span class="status-pill" style="background: rgba(148,163,184,0.18); color: #94a3b8; border: 1px solid rgba(148,163,184,0.35);">DUPLICADO</span>';
         else if (c.status && c.status.includes('PENDIENTE')) statusBadge = '<span class="status-pill pending">PEND. ALINEACIÓN</span>';
         else if (c.status === 'INVESTIGADO') statusBadge = '<span class="status-pill detected">INVESTIGADO</span>';
         else if (c.status === 'RECHAZADO' || c.status === 'DESCARTADO') statusBadge = '<span class="status-pill rejected">RECHAZADO</span>';
@@ -6206,7 +6217,17 @@
         if (c.priority === 'ALTA') prioClass = 'p-alta';
         else if (c.priority === 'BAJA') prioClass = 'p-baja';
 
-        const dateStr = c.discoveredAt ? c.discoveredAt.replace('T', ' ').slice(0, 16) : 'Hoy';
+        let dateStr = 'Hoy';
+        if (c.discoveredAt) {
+          const d = new Date(c.discoveredAt);
+          if (!isNaN(d.getTime())) {
+            const dPart = new Intl.DateTimeFormat('en-CA', { timeZone: TIMEZONE_ARGENTINA, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+            const tPart = new Intl.DateTimeFormat('es-AR', { timeZone: TIMEZONE_ARGENTINA, hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+            dateStr = `${dPart} ${tPart} hs`;
+          } else {
+            dateStr = c.discoveredAt.replace('T', ' ').slice(0, 16);
+          }
+        }
 
         const matchingTopPick = (globalPicksData?.top_picks || []).find(p => p.id === c.id);
         const playerOrTeam = c.playerOrTeam || matchingTopPick?.player || (c.discoveryReason && c.discoveryReason.includes(':') ? c.discoveryReason.split(':')[0] : 'Candidato');
