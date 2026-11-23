@@ -1,0 +1,196 @@
+[
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795472585097_11a0fc",
+    "eventId": "internacional-v-vitoria.1ymdoe1",
+    "pickId": "cand_real_statshub_20261123_vitoria_cards",
+    "eventKey": "internacional-v-vitoria.1ymdoe1__vitória (equipo)__tarjetas de equipo__menos de 3.5",
+    "observedAtUtc": "2026-11-23T22:23:05.093Z",
+    "kickoffUtc": "2026-11-23T22:30:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795472585097_11a0fc",
+      "eventId": "internacional-v-vitoria.1ymdoe1",
+      "pickId": "cand_real_statshub_20261123_vitoria_cards",
+      "eventKey": "internacional-v-vitoria.1ymdoe1__vitória (equipo)__tarjetas de equipo__menos de 3.5",
+      "observedAtUtc": "2026-11-23T22:23:05.093Z",
+      "kickoffUtc": "2026-11-23T22:30:00.000Z",
+      "competition": "Brasileirão Série A",
+      "match": "Internacional vs Vitória",
+      "playerOrTeam": "Vitória (Equipo)",
+      "market": "Tarjetas de equipo",
+      "line": "Menos de 3.5",
+      "side": "under",
+      "oddsAtPrediction": {
+        "bookmaker": "Bet365",
+        "openingOdds": 1.67,
+        "approvalOdds": 1.67,
+        "overOdds": null,
+        "underOdds": 1.67,
+        "marketNoVigProb": 0.564908,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "models": {
+        "v1_production": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "decisionV1": "RECHAZADO",
+          "reason": "RECHAZADO_DATOS_INSUFICIENTES: Muestra estadística insuficiente o datos reales ausentes en StatsHub"
+        },
+        "v2_corrected": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_b": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_c": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "beta_binomial": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "ensemble_v2": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        }
+      }
+    },
+    "preMatchHash": "a143d6fcdb5ea7603fbda135f085b6d9f30783d380fdedfbb166ec24e34c693d",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  },
+  {
+    "schemaVersion": "shadow-lab-v2.3",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "predictionId": "shpred_1795472585103_023390",
+    "eventId": "botafogo-v-sao-paulo.1dxw70e",
+    "pickId": "cand_real_statshub_20261123_botafogo_goals",
+    "eventKey": "botafogo-v-sao-paulo.1dxw70e__botafogo (equipo)__goles de equipo__menos de 1.5",
+    "observedAtUtc": "2026-11-23T22:23:05.101Z",
+    "kickoffUtc": "2026-11-23T23:00:00.000Z",
+    "preMatchBlock": {
+      "predictionId": "shpred_1795472585103_023390",
+      "eventId": "botafogo-v-sao-paulo.1dxw70e",
+      "pickId": "cand_real_statshub_20261123_botafogo_goals",
+      "eventKey": "botafogo-v-sao-paulo.1dxw70e__botafogo (equipo)__goles de equipo__menos de 1.5",
+      "observedAtUtc": "2026-11-23T22:23:05.101Z",
+      "kickoffUtc": "2026-11-23T23:00:00.000Z",
+      "competition": "Brasileirão Série A",
+      "match": "Botafogo vs São Paulo",
+      "playerOrTeam": "Botafogo (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Menos de 1.5",
+      "side": "under",
+      "oddsAtPrediction": {
+        "bookmaker": "BetMGM UK",
+        "openingOdds": 1.67,
+        "approvalOdds": 1.67,
+        "overOdds": null,
+        "underOdds": 1.67,
+        "marketNoVigProb": 0.564908,
+        "noVigMethod": "estimated_overround",
+        "isExactNoVig": false,
+        "overround": 1.06
+      },
+      "models": {
+        "v1_production": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "decisionV1": "RECHAZADO",
+          "reason": "RECHAZADO_DATOS_INSUFICIENTES: Muestra estadística insuficiente o datos reales ausentes en StatsHub"
+        },
+        "v2_corrected": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_b": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "model_c": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "sampleSize": 0,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "beta_binomial": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        },
+        "ensemble_v2": {
+          "available": false,
+          "prob": null,
+          "evPct": null,
+          "reason": "Ausencia de serie histórica de observaciones (historicalValues vacío)"
+        }
+      }
+    },
+    "preMatchHash": "d86396f3f69562385be0868d8c6e582f7fd7e1e9273f2bf18801ad547faad9e2",
+    "closingOddsSnapshot": {
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingNoVigMethod": null,
+      "closingOverround": null,
+      "capturedAtUtc": null,
+      "minutesBeforeKickoff": null,
+      "source": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "settlement": {
+      "status": "PENDING",
+      "outcome": null,
+      "actualStat": null,
+      "settledAtUtc": null,
+      "verificationSource": null
+    }
+  }
+]

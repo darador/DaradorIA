@@ -1,0 +1,202 @@
+[
+  {
+    "schemaVersion": "shadow-v2.2",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "pickId": "cand_real_statshub_20261123_vitoria_cards",
+    "eventKey": "internacional-v-vitoria.1ymdoe1__vitória (equipo)__tarjetas de equipo__menos de 3.5",
+    "matchId": "internacional-v-vitoria.1ymdoe1",
+    "competition": "Brasileirão Série A",
+    "match": "Internacional vs Vitória",
+    "kickoffUtc": "2026-11-23T22:30:00.000Z",
+    "observedAt": "2026-11-23T22:16:50.647Z",
+    "source": "StatsHub MCP (Shadow v2.2)",
+    "playerOrTeam": "Vitória (Equipo)",
+    "market": "Tarjetas de equipo",
+    "line": "Menos de 3.5",
+    "side": "under",
+    "oddsSnapshot": {
+      "bookmaker": "Bet365",
+      "openingOdds": 1.67,
+      "openingCapturedAt": "2026-11-23T22:16:50.647Z",
+      "approvalOdds": 1.67,
+      "approvalCapturedAt": "2026-11-23T22:16:50.647Z",
+      "overOdds": null,
+      "underOdds": 1.67,
+      "marketNoVigProb": 0.564908,
+      "noVigMethod": "estimated_overround",
+      "overround": 1.06,
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingCapturedAt": null,
+      "closingMinutesBeforeKickoff": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "matchContext": {
+      "market1X2": {
+        "homeOdds": null,
+        "drawOdds": null,
+        "awayOdds": null,
+        "noVigHome": null,
+        "noVigDraw": null,
+        "noVigAway": null,
+        "overround": null,
+        "available": false
+      },
+      "handicap": {
+        "line": null,
+        "homeOdds": null,
+        "awayOdds": null,
+        "source": null,
+        "available": false
+      },
+      "referee": {
+        "id": null,
+        "name": null,
+        "avgCardsPerGame": null,
+        "avgFoulsPerGame": null,
+        "source": null,
+        "available": false
+      }
+    },
+    "playerContext": {
+      "isTeamProp": true,
+      "minutesPerMatch": null,
+      "avgMinutes": null,
+      "expectedMinutes": null,
+      "lineupStatus": "UNKNOWN",
+      "isStarter": null,
+      "position": null
+    },
+    "statWindows": {
+      "L5": null,
+      "L10": null,
+      "L20": null,
+      "splits": {
+        "home": null,
+        "away": null
+      }
+    },
+    "predictions": {
+      "referenceEngineV1": null,
+      "experimentalEngineV2": null
+    },
+    "dataAvailability": {
+      "openingOdds": true,
+      "approvalOdds": true,
+      "twoWayOddsForExactNoVig": false,
+      "closingOdds": false,
+      "market1X2": false,
+      "handicap": false,
+      "referee": false,
+      "minutesPerMatch": false,
+      "position": false,
+      "windowL5": false,
+      "windowL10": false,
+      "windowL20": false,
+      "homeAwaySplits": false
+    }
+  },
+  {
+    "schemaVersion": "shadow-v2.2",
+    "shadowMode": true,
+    "isOperativeRecommendation": false,
+    "pickId": "cand_real_statshub_20261123_botafogo_goals",
+    "eventKey": "botafogo-v-sao-paulo.1dxw70e__botafogo (equipo)__goles de equipo__menos de 1.5",
+    "matchId": "botafogo-v-sao-paulo.1dxw70e",
+    "competition": "Brasileirão Série A",
+    "match": "Botafogo vs São Paulo",
+    "kickoffUtc": "2026-11-23T23:00:00.000Z",
+    "observedAt": "2026-11-23T22:16:50.649Z",
+    "source": "StatsHub MCP (Shadow v2.2)",
+    "playerOrTeam": "Botafogo (Equipo)",
+    "market": "Goles de equipo",
+    "line": "Menos de 1.5",
+    "side": "under",
+    "oddsSnapshot": {
+      "bookmaker": "BetMGM UK",
+      "openingOdds": 1.67,
+      "openingCapturedAt": "2026-11-23T22:16:50.649Z",
+      "approvalOdds": 1.67,
+      "approvalCapturedAt": "2026-11-23T22:16:50.649Z",
+      "overOdds": null,
+      "underOdds": 1.67,
+      "marketNoVigProb": 0.564908,
+      "noVigMethod": "estimated_overround",
+      "overround": 1.06,
+      "closingOdds": null,
+      "closingOppositeOdds": null,
+      "closingNoVigProb": null,
+      "closingCapturedAt": null,
+      "closingMinutesBeforeKickoff": null,
+      "clvOddsPct": null,
+      "clvProbPp": null
+    },
+    "matchContext": {
+      "market1X2": {
+        "homeOdds": null,
+        "drawOdds": null,
+        "awayOdds": null,
+        "noVigHome": null,
+        "noVigDraw": null,
+        "noVigAway": null,
+        "overround": null,
+        "available": false
+      },
+      "handicap": {
+        "line": null,
+        "homeOdds": null,
+        "awayOdds": null,
+        "source": null,
+        "available": false
+      },
+      "referee": {
+        "id": null,
+        "name": null,
+        "avgCardsPerGame": null,
+        "avgFoulsPerGame": null,
+        "source": null,
+        "available": false
+      }
+    },
+    "playerContext": {
+      "isTeamProp": true,
+      "minutesPerMatch": null,
+      "avgMinutes": null,
+      "expectedMinutes": null,
+      "lineupStatus": "UNKNOWN",
+      "isStarter": null,
+      "position": null
+    },
+    "statWindows": {
+      "L5": null,
+      "L10": null,
+      "L20": null,
+      "splits": {
+        "home": null,
+        "away": null
+      }
+    },
+    "predictions": {
+      "referenceEngineV1": null,
+      "experimentalEngineV2": null
+    },
+    "dataAvailability": {
+      "openingOdds": true,
+      "approvalOdds": true,
+      "twoWayOddsForExactNoVig": false,
+      "closingOdds": false,
+      "market1X2": false,
+      "handicap": false,
+      "referee": false,
+      "minutesPerMatch": false,
+      "position": false,
+      "windowL5": false,
+      "windowL10": false,
+      "windowL20": false,
+      "homeAwaySplits": false
+    }
+  }
+]
