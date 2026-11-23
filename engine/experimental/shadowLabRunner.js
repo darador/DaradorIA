@@ -27,6 +27,39 @@ const DEFAULT_LAB_LEDGER = path.resolve(__dirname, '..', 'storage_data', 'shadow
 const MIN_ENSEMBLE_PROB = 0.03;
 const MAX_ENSEMBLE_PROB = 0.94;
 
+// Umbrales mínimos de muestra por modelo y por tipo de mercado (Fase 2.3.1)
+const MIN_SAMPLE_BY_MODEL = {
+  v1_production: 8,
+  v2_corrected: 8,
+  model_b: 5,
+  model_c: 15,
+  beta_binomial: 5,
+  ensemble_v2: 8
+};
+
+const MIN_SAMPLE_BY_MARKET = {
+  'remates totales': 8,
+  'remates al arco': 8,
+  'entradas (tackles)': 8,
+  'faltas cometidas': 8,
+  'faltas ganadas': 8,
+  'faltas recibidas': 8,
+  'remates de equipo': 10,
+  'remates al arco de equipo': 10,
+  'córners de equipo': 10,
+  'goles de equipo': 10,
+  'tarjetas de equipo': 10,
+  'tarjetas': 10
+};
+
+function getMinSampleFor(modelKey, market) {
+  const mBase = MIN_SAMPLE_BY_MODEL[modelKey] ?? 8;
+  const mktMin = MIN_SAMPLE_BY_MARKET[String(market || '').toLowerCase()] ?? 8;
+  // Para Model B y Beta-Binomial respetamos su mínimo de modelo si es menor; para los demás el mayor de ambos
+  if (modelKey === 'model_b' || modelKey === 'beta_binomial') return mBase;
+  return Math.max(mBase, mktMin);
+}
+
 function toFiniteOrNull(val) {
   if (val === undefined || val === null || val === '') return null;
   const n = Number(val);
@@ -169,35 +202,56 @@ class ShadowLabRunner {
       });
 
       const calcEv = (p) => (p !== null && approvalOdds > 1 ? Number(((p * approvalOdds - 1) * 100).toFixed(2)) : null);
+      const nHist = histVals.length;
 
-      mV2 = {
-        available: r2.pShadowCombined !== null && r2.pShadowCombined !== undefined,
-        prob: r2.pShadowCombined ?? null,
-        evPct: calcEv(r2.pShadowCombined ?? null),
-        parametricModel: r2.parametric?.modelUsed || null,
-        pParametric: r2.parametric?.pSelected ?? null,
-        dispersionPhi: r2.parametric?.dispersionPhi ?? null,
-        reason: r2.error || null
-      };
+      // Validar umbral mínimo de muestra por modelo y mercado
+      const minV1 = getMinSampleFor('v1_production', payload.market);
+      if (mV1.available && nHist < minV1) {
+        mV1 = { available: false, prob: null, evPct: null, decisionV1: mV1.decisionV1, reason: `Muestra insuficiente para V1 en ${payload.market} (${nHist} < ${minV1})` };
+      }
 
+      const minV2 = getMinSampleFor('v2_corrected', payload.market);
+      mV2 = nHist >= minV2 && r2.pShadowCombined !== null && r2.pShadowCombined !== undefined
+        ? {
+            available: true,
+            prob: r2.pShadowCombined,
+            evPct: calcEv(r2.pShadowCombined),
+            parametricModel: r2.parametric?.modelUsed || null,
+            pParametric: r2.parametric?.pSelected ?? null,
+            dispersionPhi: r2.parametric?.dispersionPhi ?? null,
+            reason: null
+          }
+        : {
+            available: false,
+            prob: null,
+            evPct: null,
+            reason: nHist < minV2 ? `Muestra insuficiente para V2 en ${payload.market} (${nHist} < ${minV2})` : (r2.error || 'V2 no disponible')
+          };
+
+      const minB = getMinSampleFor('model_b', payload.market);
       const bRaw = r2.models?.modelB?.pRaw ?? null;
       const bN = r2.models?.modelB?.sampleSize ?? 0;
-      mB = bN >= 5 && bRaw !== null
+      mB = bN >= minB && bRaw !== null
         ? { available: true, prob: bRaw, evPct: calcEv(bRaw), window: 'L10', sampleSize: bN, reason: null }
-        : { available: false, prob: null, evPct: null, window: 'L10', sampleSize: bN, reason: `Muestra insuficiente para Model B (${bN} < 5)` };
+        : { available: false, prob: null, evPct: null, window: 'L10', sampleSize: bN, reason: `Muestra insuficiente para Model B (${bN} < ${minB})` };
 
+      const minC = getMinSampleFor('model_c', payload.market);
       const cRaw = r2.models?.modelC?.pRaw ?? null;
       const cN = r2.models?.modelC?.sampleSize ?? 0;
-      mC = cN >= 15 && cRaw !== null
+      mC = cN >= minC && cRaw !== null
         ? { available: true, prob: cRaw, evPct: calcEv(cRaw), window: r2.models.modelC.window, sampleSize: cN, reason: null }
-        : { available: false, prob: null, evPct: null, window: r2.models?.modelC?.window || null, sampleSize: cN, reason: `Muestra insuficiente para Model C (${cN} < 15)` };
+        : { available: false, prob: null, evPct: null, window: r2.models?.modelC?.window || null, sampleSize: cN, reason: `Muestra insuficiente para Model C (${cN} < ${minC})` };
 
+      const minBB = getMinSampleFor('beta_binomial', payload.market);
       const bbProb = r2.models?.modelC?.pShrunk ?? null;
-      mBB = bbProb !== null
+      mBB = nHist >= minBB && bbProb !== null
         ? { available: true, prob: bbProb, evPct: calcEv(bbProb), priorStrength: v2Engine.defaultPriorStrength, priorProb: noVig.prob, reason: null }
-        : { available: false, prob: null, evPct: null, reason: 'No fue posible calcular shrinkage Beta-Binomial' };
+        : { available: false, prob: null, evPct: null, reason: nHist < minBB ? `Muestra insuficiente para Beta-Binomial (${nHist} < ${minBB})` : 'No fue posible calcular shrinkage Beta-Binomial' };
 
-      const ens = this.computeEnsembleV2(r2.parametric?.pSelected ?? null, bbProb, noVig.prob, histVals.length);
+      const minEns = getMinSampleFor('ensemble_v2', payload.market);
+      const ens = nHist >= minEns
+        ? this.computeEnsembleV2(r2.parametric?.pSelected ?? null, bbProb, noVig.prob, nHist)
+        : { available: false, prob: null, weights: null, reason: `Muestra insuficiente para Ensemble v2 en ${payload.market} (${nHist} < ${minEns})` };
       mEnsV2 = {
         available: ens.available,
         prob: ens.prob,
@@ -283,6 +337,15 @@ class ShadowLabRunner {
         noVigMethod: noVig.method,
         isExactNoVig: noVig.method === 'exact_2way_proportional',
         overround: noVig.overround
+      },
+      historyMetadata: {
+        sampleCount: Array.isArray(payload.historicalValues) ? payload.historicalValues.length : 0,
+        dates: Array.isArray(payload.matchDates) ? payload.matchDates : [],
+        minutesPerMatch: Array.isArray(payload.minutesPerMatch) ? payload.minutesPerMatch : [],
+        avgMinutes: toFiniteOrNull(payload.avgMinutes),
+        sourceEndpoint: payload.historySourceEndpoint || null,
+        filteredPostKickoffCount: Number(payload.filteredPostKickoffCount || 0),
+        unavailableReason: payload.historyUnavailableReason || null
       },
       models
     };

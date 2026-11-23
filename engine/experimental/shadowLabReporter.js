@@ -147,6 +147,28 @@ class ShadowLabReporter {
     const settledWL = settledWon + settledLost;
     const withClosing = records.filter(r => r.closingOddsSnapshot?.closingOdds !== null).length;
 
+    // Métricas de cobertura por modelo (% de candidatos evaluables por cada uno de los 6 modelos)
+    const modelCoverage = {};
+    for (const k of MODEL_KEYS) {
+      const avail = records.filter(r => r.preMatchBlock?.models?.[k]?.available === true).length;
+      const unavail = records.length - avail;
+      const reasons = {};
+      for (const r of records) {
+        const m = r.preMatchBlock?.models?.[k];
+        if (!m || m.available !== true) {
+          const reason = m?.reason || 'Motivo no especificado';
+          reasons[reason] = (reasons[reason] || 0) + 1;
+        }
+      }
+      modelCoverage[k] = {
+        totalObservations: records.length,
+        availableCount: avail,
+        unavailableCount: unavail,
+        coveragePct: records.length > 0 ? Number(((avail / records.length) * 100).toFixed(1)) : 0,
+        unavailableReasons: reasons
+      };
+    }
+
     // Comparación de los 6 modelos + baseline mercado sin vig
     const modelsComparison = {};
     for (const k of MODEL_KEYS) {
@@ -210,6 +232,7 @@ class ShadowLabReporter {
         milestoneProgressPct: Number(Math.min(100, (settledWL / TARGET_SETTLED_MILESTONE) * 100).toFixed(1)),
         milestoneNote: '100 observaciones liquidadas es un hito inicial de auditoría, no una garantía automática de significancia estadística.'
       },
+      modelCoverage,
       modelsComparison,
       byMarket,
       byOddsRange
