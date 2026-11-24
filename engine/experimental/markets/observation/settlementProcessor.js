@@ -1,15 +1,18 @@
 /**
- * FASE 9 — SETTLEMENT PROCESSOR INDEPENDIENTE
+ * FASE 9.1 — SETTLEMENT PROCESSOR HARDENED (EVENTOS APPEND-ONLY + AH DE CUARTOS)
  *
  * Estados soportados:
- *   PENDING | WON | LOST | VOID | PUSH | UNAVAILABLE | SETTLEMENT_ERROR
+ *   PENDING | WON | LOST | HALF_WON | HALF_LOST | VOID | PUSH | UNAVAILABLE | SETTLEMENT_ERROR
  *
  * Reglas estrictas:
  *  - Liquida exclusivamente con resultados confirmados (resultConfirmed === true y matchStatus === 'FINISHED').
- *  - Nunca interpreta un partido suspendido/postergado como LOST.
- *  - Idempotencia estricta: no liquida dos veces la misma observación.
- *  - Soporta PUSH (líneas enteras / AH entero) y VOID (stake devuelto, profit 0).
- *  - Mantiene trazabilidad completa de cualquier corrección posterior en settlement.corrections[].
+ *  - Nunca interpreta un partido suspendido/postergado/cancelado como LOST.
+ *  - Idempotencia atómica inter-proceso (via store.appendSettlementEvent bajo O_EXCL lock).
+ *  - Soporta Hándicap Asiático completo: enteros (±0, ±1, ±2), medios (±0.5, ±1.5) y cuartos (±0.25, ±0.75, ±1.25...):
+ *      * HALF_WON:  profit = (odds - 1) / 2
+ *      * HALF_LOST: profit = -0.5
+ *    Líneas no múltiplo de 0.25 devuelven UNAVAILABLE (nunca asigna pérdida completa incorrectamente).
+ *  - Nunca muta el archivo inmutable de observaciones; agrega eventos encadenados append-only.
  */
 
 'use strict';
@@ -18,6 +21,8 @@ const SETTLEMENT_STATES = Object.freeze({
   PENDING: 'PENDING',
   WON: 'WON',
   LOST: 'LOST',
+  HALF_WON: 'HALF_WON',
+  HALF_LOST: 'HALF_LOST',
   VOID: 'VOID',
   PUSH: 'PUSH',
   UNAVAILABLE: 'UNAVAILABLE',
@@ -28,6 +33,15 @@ function round(v, d = 4) {
   if (!Number.isFinite(v)) return null;
   const f = Math.pow(10, d);
   return Math.round(v * f) / f;
+}
+
+/**
+ * Resuelve una mitad de Hándicap Asiático (entero o medio).
+ */
+function resolveSingleAsianLeg(goalDiff, legLine) {
+  const adjusted = goalDiff + legLine;
+  if (Math.abs(adjusted) < 1e-9) return 'PUSH';
+  return adjusted > 0 ? 'WON' : 'LOST';
 }
 
 /**
@@ -94,18 +108,45 @@ function resolveSelectionStatus({ marketFamily, selection, line = null, homeGoal
   if (marketFamily === 'asian_handicap') {
     const h = Number(line);
     if (!Number.isFinite(h)) {
-      return { status: SETTLEMENT_STATES.SETTLEMENT_ERROR, actual1X2, reason: 'Línea de hándicap ausente.' };
+      return { status: SETTLEMENT_STATES.UNAVAILABLE, actual1X2, reason: 'Línea de hándicap ausente o inválida.' };
     }
-    const diff = sel === 'AWAY' ? (ag - hg) + h : (hg - ag) + h;
-    if (Math.abs(diff) < 1e-9) return { status: SETTLEMENT_STATES.PUSH, actual1X2 };
-    return { status: diff > 0 ? SETTLEMENT_STATES.WON : SETTLEMENT_STATES.LOST, actual1X2 };
+    // Verificar que sea múltiplo exacto de 0.25 (entero, medio o cuarto)
+    const quarters = h * 4;
+    if (Math.abs(quarters - Math.round(quarters)) > 1e-6) {
+      return { status: SETTLEMENT_STATES.UNAVAILABLE, actual1X2, reason: `Línea AH no múltiplo de 0.25 (${h}): no liquidable.` };
+    }
+
+    const goalDiff = sel === 'AWAY' ? (ag - hg) : (hg - ag);
+    const isQuarter = Math.abs(Math.round(quarters) % 2) === 1;
+
+    if (!isQuarter) {
+      const leg = resolveSingleAsianLeg(goalDiff, h);
+      return { status: SETTLEMENT_STATES[leg], actual1X2 };
+    }
+
+    // División exacta de apuesta en las dos líneas adyacentes (h - 0.25) y (h + 0.25)
+    const legLow = resolveSingleAsianLeg(goalDiff, h - 0.25);
+    const legHigh = resolveSingleAsianLeg(goalDiff, h + 0.25);
+
+    if (legLow === 'WON' && legHigh === 'WON') return { status: SETTLEMENT_STATES.WON, actual1X2 };
+    if (legLow === 'LOST' && legHigh === 'LOST') return { status: SETTLEMENT_STATES.LOST, actual1X2 };
+    if ((legLow === 'WON' && legHigh === 'PUSH') || (legLow === 'PUSH' && legHigh === 'WON')) {
+      return { status: SETTLEMENT_STATES.HALF_WON, actual1X2 };
+    }
+    if ((legLow === 'LOST' && legHigh === 'PUSH') || (legLow === 'PUSH' && legHigh === 'LOST')) {
+      return { status: SETTLEMENT_STATES.HALF_LOST, actual1X2 };
+    }
+    return { status: SETTLEMENT_STATES.PUSH, actual1X2 };
   }
 
   return { status: SETTLEMENT_STATES.UNAVAILABLE, actual1X2, reason: `Familia sin regla de liquidación: ${marketFamily}` };
 }
 
 function computeFlatStakeProfit(status, odds) {
-  if (status === SETTLEMENT_STATES.WON) return round(Number(odds) - 1, 4);
+  const o = Number(odds);
+  if (status === SETTLEMENT_STATES.WON) return round(o - 1, 4);
+  if (status === SETTLEMENT_STATES.HALF_WON) return round((o - 1) / 2, 4);
+  if (status === SETTLEMENT_STATES.HALF_LOST) return -0.5;
   if (status === SETTLEMENT_STATES.LOST) return -1;
   if (status === SETTLEMENT_STATES.VOID || status === SETTLEMENT_STATES.PUSH) return 0;
   return null;
@@ -117,14 +158,13 @@ class SettlementProcessor {
   }
 
   /**
-   * Liquida una observación de forma idempotente y segura.
+   * Liquida una observación de forma idempotente (append-only en el log de liquidaciones).
    */
   settleObservation(observationId, resultPayload) {
     const list = this.store.getObservations();
     const obs = list.find(o => o.observationId === observationId);
     if (!obs) return { settled: false, reason: 'OBSERVATION_NOT_FOUND' };
 
-    // Idempotencia estricta
     if (obs.status !== SETTLEMENT_STATES.PENDING && obs.status !== SETTLEMENT_STATES.UNAVAILABLE) {
       return { settled: false, idempotent: true, reason: 'ALREADY_SETTLED', status: obs.status };
     }
@@ -132,12 +172,12 @@ class SettlementProcessor {
     const matchStatus = String(resultPayload.matchStatus || '').toUpperCase();
     const confirmed = resultPayload.resultConfirmed === true;
 
-    // Regla crítica: partido suspendido/postergado NUNCA se interpreta como LOST
+    // Partido suspendido/postergado/cancelado NUNCA se liquida como LOST
     if (['SUSPENDED', 'POSTPONED', 'ABANDONED', 'CANCELLED'].includes(matchStatus)) {
       if (resultPayload.officiallyVoided === true) {
-        obs.status = SETTLEMENT_STATES.VOID;
-        obs.settlement = {
-          ...obs.settlement,
+        const app = this.store.appendSettlementEvent({
+          eventType: 'SETTLEMENT',
+          observationId,
           status: SETTLEMENT_STATES.VOID,
           homeGoals: null,
           awayGoals: null,
@@ -145,10 +185,11 @@ class SettlementProcessor {
           profitUnits: 0,
           resultSource: resultPayload.resultSource || 'official_void',
           settledAtUtc: resultPayload.settledAtUtc || new Date().toISOString()
-        };
-        this.store._writeJsonArray(this.store.obsPath, list);
+        });
+        if (!app.appended && app.idempotent) return { settled: false, idempotent: true, reason: 'ALREADY_SETTLED', status: app.status };
         return { settled: true, status: SETTLEMENT_STATES.VOID, profitUnits: 0 };
       }
+
       this.store.logQualityAlert({
         code: 'UNCONFIRMED_OR_SUSPENDED_SETTLEMENT',
         severity: 'WARNING',
@@ -159,7 +200,7 @@ class SettlementProcessor {
       return { settled: false, status: SETTLEMENT_STATES.PENDING, reason: `MATCH_${matchStatus}_NOT_LOST` };
     }
 
-    // Regla crítica: solo liquidar con resultados confirmados
+    // Solo liquidar con resultados confirmados
     if (!confirmed || matchStatus !== 'FINISHED') {
       this.store.logQualityAlert({
         code: 'UNCONFIRMED_RESULT_BLOCKED',
@@ -181,9 +222,9 @@ class SettlementProcessor {
 
     const profitUnits = computeFlatStakeProfit(resolved.status, obs.odds);
 
-    obs.status = resolved.status;
-    obs.settlement = {
-      ...obs.settlement,
+    const app = this.store.appendSettlementEvent({
+      eventType: 'SETTLEMENT',
+      observationId,
       status: resolved.status,
       homeGoals: Number.isFinite(Number(resultPayload.homeGoals)) ? Number(resultPayload.homeGoals) : null,
       awayGoals: Number.isFinite(Number(resultPayload.awayGoals)) ? Number(resultPayload.awayGoals) : null,
@@ -191,9 +232,12 @@ class SettlementProcessor {
       profitUnits,
       resultSource: resultPayload.resultSource || 'statshub_match_details',
       settledAtUtc: resultPayload.settledAtUtc || new Date().toISOString()
-    };
+    });
 
-    this.store._writeJsonArray(this.store.obsPath, list);
+    if (!app.appended && app.idempotent) {
+      return { settled: false, idempotent: true, reason: 'ALREADY_SETTLED', status: app.status };
+    }
+
     return {
       settled: true,
       status: resolved.status,
@@ -203,7 +247,7 @@ class SettlementProcessor {
   }
 
   /**
-   * Registra una corrección posterior auditada sin borrar el historial original de liquidación.
+   * Registra una corrección posterior auditada como evento append-only sin sobrescribir la liquidación original.
    */
   recordSettlementCorrection(observationId, { newHomeGoals, newAwayGoals, reason, source = 'official_correction' }) {
     const list = this.store.getObservations();
@@ -227,24 +271,29 @@ class SettlementProcessor {
     });
     const newProfit = computeFlatStakeProfit(resolved.status, obs.odds);
 
-    obs.settlement.corrections = Array.isArray(obs.settlement.corrections) ? obs.settlement.corrections : [];
-    obs.settlement.corrections.push({
-      correctedAtUtc: new Date().toISOString(),
+    const app = this.store.appendSettlementEvent({
+      eventType: 'CORRECTION',
+      observationId,
       reason,
-      source,
       previous,
-      updated: { status: resolved.status, homeGoals: newHomeGoals, awayGoals: newAwayGoals, profitUnits: newProfit }
+      status: resolved.status,
+      homeGoals: Number(newHomeGoals),
+      awayGoals: Number(newAwayGoals),
+      actual1X2: resolved.actual1X2,
+      profitUnits: newProfit,
+      resultSource: source,
+      correctedAtUtc: new Date().toISOString()
     });
 
-    obs.status = resolved.status;
-    obs.settlement.status = resolved.status;
-    obs.settlement.homeGoals = Number(newHomeGoals);
-    obs.settlement.awayGoals = Number(newAwayGoals);
-    obs.settlement.actual1X2 = resolved.actual1X2;
-    obs.settlement.profitUnits = newProfit;
+    if (!app.appended) return { corrected: false, reason: app.reason };
 
-    this.store._writeJsonArray(this.store.obsPath, list);
-    return { corrected: true, status: resolved.status, profitUnits: newProfit, correctionsCount: obs.settlement.corrections.length };
+    const updated = this.store.getObservations().find(o => o.observationId === observationId);
+    return {
+      corrected: true,
+      status: resolved.status,
+      profitUnits: newProfit,
+      correctionsCount: updated.settlement.corrections.length
+    };
   }
 }
 

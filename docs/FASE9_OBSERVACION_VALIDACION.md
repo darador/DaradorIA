@@ -29,8 +29,15 @@
 
 ---
 
-### 3. Limitaciones y Riesgos Pendientes
+### 3. Garantías de Endurecimiento (Fase 9.1) y Limitaciones Residuales
 
-1. **Volumen inicial $N=0$ en producción Shadow:** los modelos de 1X2 y Doble Oportunidad recién comienzan la fase de recolección; hasta superar $N \ge 100$–$300$ partidos liquidados por familia, cualquier conclusión de rentabilidad es prematura.
-2. **Cuotas de cierre (`CLOSING`) en Doble Oportunidad:** StatsHub `movement: true` no incluye `doubleChance` directamente; las cuotas de cierre de Doble Oportunidad dependen de snapshots programados a T−5 / T−1 antes del kickoff.
-3. **Cobertura de `getTeamNews`:** limitada principalmente a Top-Flight y competiciones europeas (`coverage === 'ok'`).
+- **Persistencia y Lock Inter-Proceso:** `O_CREAT | O_EXCL` con reintentos acotados, verificación de PID vivo antes de liberar locks obsoletos, escritura atómica (`tmp → fsync → rename`) y cuarentena de JSON corrupto en `.corrupt.bak` único sin sobrescribir ni vaciar el ledger. *Limitación de filesystem:* las garantías atómicas de `O_EXCL` y `rename` aplican a filesystems locales NTFS/POSIX (no a montajes NFSv2 ni sincronizaciones de nube con conflictos concurrentes).
+- **Integridad Global Encadenada:** `sequenceIndex` + `prevPredictionHash` (génesis `'0'.repeat(64)`) + `predictionHash` sobre JSON canónico, con validación automática al leer y logs append-only separados y encadenados para snapshots (`*_snapshots.json`) y liquidaciones/correcciones (`*_settlements.json`).
+- **Anti-Leakage en Snapshots:** todo snapshot (incluyendo `CLOSING`) exige `capturedAtUtc < kickoffUtc`.
+- **Muestra Efectiva e IC Clusterizados:** `sampleStatus` se calcula sobre partidos independientes (`uniqueMatchCount`), y los IC 95% de Hit Rate y ROI utilizan **Cluster Bootstrap por `matchId`** (`INSUFFICIENT_CLUSTERS` si $k < 2$).
+- **OOS Estricto y AH de Cuartos:** partición por bloques indivisibles de `kickoffUtc` (`maxTrainKo < minValKo < minEvalKo`), liquidación exacta de `HALF_WON` / `HALF_LOST` en cuartos (`±0.25`, `±0.75`) y baseline multiclase 3-way real con `noVig1X2`.
+
+**Limitaciones y riesgos residuales:**
+1. **Volumen inicial $N=0$ en producción Shadow:** superar los tests verifica la ingeniería del sistema, **no** demuestra rentabilidad deportiva ni ventaja estadística hasta acumular muestras reales ($N \ge 100$–$300$ partidos independientes).
+2. **Cuotas de cierre (`CLOSING`) en Doble Oportunidad:** StatsHub `movement: true` no incluye `doubleChance` directamente; depende de capturas pre-kickoff T−5 / T−1.
+3. **Cobertura de `getTeamNews`:** consistente principalmente en Top-Flight y competiciones europeas (`coverage === 'ok'`).

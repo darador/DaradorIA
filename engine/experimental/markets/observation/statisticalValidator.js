@@ -1,22 +1,25 @@
 /**
- * FASE 9 — STATISTICAL VALIDATOR (MÉTRICAS, BASELINES, INCERTIDUMBRE, CLUSTER BOOTSTRAP Y OOS)
+ * FASE 9.1 — STATISTICAL VALIDATOR HARDENED
  *
- * Implementa:
- *  - Sección 7: Evaluación estadística por liga, temporada, mercado, familia, selección, modelo,
- *    versión, período, calidad de datos y bookmaker. Brier/LogLoss binario y multiclase (1X2),
- *    Accuracy, Matriz de confusión 3x3, ROI 1U plano, Yield, Hit Rate, CLV y Calibración.
- *  - Sección 8: Comparación contra Baselines (mercado sin vig, base rate histórico estrictamente
- *    anterior al evento, versión anterior del modelo) sobre exactamente las mismas observaciones.
- *  - Sección 9: Indicadores de muestra (INSUFFICIENT/PRELIMINARY/DEVELOPING/STRONGER), IC 95%
- *    Wilson (Hit Rate) y normal (ROI), detección de sesgo de muestra y Cluster Bootstrap por matchId.
- *  - Sección 10: Validación temporal estricta fuera de muestra (train < validation < evaluation)
- *    sin divisiones aleatorias, retornando OUT_OF_SAMPLE_NOT_AVAILABLE si no hay volumen suficiente.
+ * Correcciones implementadas:
+ *  - Distinción explícita: rawObservationCount, decidedObservationCount, uniqueMatchCount,
+ *    effectiveSampleSize e independentClusterCount.
+ *  - classifySampleSize() utiliza partidos independientes (uniqueMatchCount), nunca selecciones brutas.
+ *  - Intervalos de confianza 95% de Hit Rate y ROI calculados mediante Cluster Bootstrap por matchId
+ *    (devuelve INSUFFICIENT_CLUSTERS si independentClusterCount < 2). Wilson CI queda etiquetado
+ *    explícitamente como independiente y se omite (null) cuando hay múltiples selecciones por partido.
+ *  - Separación temporal OOS estricta (maxTrainKo < minValKo y maxValKo < minEvalKo) agrupando
+ *    eventos con idéntico kickoffUtc en el mismo bloque; devuelve OUT_OF_SAMPLE_NOT_AVAILABLE si no
+ *    puede garantizarse separación estricta.
+ *  - Baseline multiclase 3-way real para 1X2 usando vector noVig1X2 { home, draw, away } (suma 1 ± 1e-3);
+ *    devuelve BASELINE_UNAVAILABLE si faltan las 3 probabilidades comparables.
  */
 
 'use strict';
 
 const EPS = 1e-6;
 const Z_95 = 1.959963984540054;
+const DECIDED_STATUSES = new Set(['WON', 'LOST', 'HALF_WON', 'HALF_LOST']);
 
 function clampProb(p) {
   return Math.min(1 - EPS, Math.max(EPS, Number(p)));
@@ -28,19 +31,28 @@ function round(v, d = 5) {
   return Math.round(v * f) / f;
 }
 
+function isValid3WayVec(vec) {
+  if (!vec || typeof vec !== 'object') return false;
+  const h = Number(vec.home);
+  const d = Number(vec.draw);
+  const a = Number(vec.away);
+  if (!Number.isFinite(h) || !Number.isFinite(d) || !Number.isFinite(a)) return false;
+  if (h <= 0 || d <= 0 || a <= 0 || h >= 1 || d >= 1 || a >= 1) return false;
+  return Math.abs((h + d + a) - 1.0) <= 1e-3;
+}
+
 /**
- * Clasificador oficial de volumen de muestra (Sección 9).
- * Describe volumen; NO certifica rentabilidad ni significancia estadística.
+ * Clasificador oficial de volumen de muestra basado en partidos independientes (uniqueMatchCount).
  */
-function classifySampleSize(n) {
-  if (n < 30) return 'INSUFFICIENT_SAMPLE';
-  if (n < 100) return 'PRELIMINARY_SAMPLE';
-  if (n < 300) return 'DEVELOPING_EVIDENCE';
+function classifySampleSize(independentMatches) {
+  if (independentMatches < 30) return 'INSUFFICIENT_SAMPLE';
+  if (independentMatches < 100) return 'PRELIMINARY_SAMPLE';
+  if (independentMatches < 300) return 'DEVELOPING_EVIDENCE';
   return 'STRONGER_EVIDENCE';
 }
 
 /**
- * Intervalo de confianza de Wilson al 95% para una proporción (Hit Rate).
+ * Intervalo de confianza de Wilson al 95% SOLO para ensayos verdaderamente independientes.
  */
 function wilsonCI95(successes, trials) {
   if (!trials || trials <= 0) return null;
@@ -50,13 +62,14 @@ function wilsonCI95(successes, trials) {
   const center = (p + z2 / (2 * trials)) / denom;
   const half = (Z_95 * Math.sqrt((p * (1 - p) + z2 / (4 * trials)) / trials)) / denom;
   return {
+    method: 'wilson_independent_trials_only',
     lowPct: round(Math.max(0, center - half) * 100, 2),
     highPct: round(Math.min(1, center + half) * 100, 2)
   };
 }
 
 /**
- * Intervalo de confianza al 95% para ROI (stake plano 1U) basado en varianza muestral.
+ * Intervalo de confianza al 95% para ROI (solo si las observaciones son independientes).
  */
 function roiCI95(profits) {
   const n = profits.length;
@@ -65,14 +78,12 @@ function roiCI95(profits) {
   const variance = profits.reduce((acc, x) => acc + Math.pow(x - mean, 2), 0) / (n - 1);
   const se = Math.sqrt(variance / n);
   return {
+    method: 'normal_independent_trials_only',
     lowPct: round((mean - Z_95 * se) * 100, 2),
     highPct: round((mean + Z_95 * se) * 100, 2)
   };
 }
 
-/**
- * PRNG determinista (Mulberry32) para que el Cluster Bootstrap sea 100% reproducible.
- */
 function mulberry32(seed = 42) {
   let a = seed >>> 0;
   return function () {
@@ -86,16 +97,15 @@ function mulberry32(seed = 42) {
 
 /**
  * Cluster Bootstrap por partido (matchId):
- * Remuestrea partidos completos con reemplazo para respetar la correlación entre
- * múltiples selecciones del mismo encuentro.
+ * Remuestrea partidos completos con reemplazo para preservar correlación intra-partido.
  */
-function clusterBootstrapDiffCI(pairedItems, metricFn, { iterations = 500, seed = 2026 } = {}) {
-  if (!Array.isArray(pairedItems) || pairedItems.length < 2) {
-    return { available: false, reason: 'MUESTRA_INSUFICIENTE_BOOTSTRAP' };
+function clusterBootstrapDiffCI(items, metricFn, { iterations = 500, seed = 2026 } = {}) {
+  if (!Array.isArray(items) || items.length < 2) {
+    return { available: false, reason: 'INSUFFICIENT_CLUSTERS', clusterCount: 0 };
   }
 
   const byMatch = new Map();
-  for (const item of pairedItems) {
+  for (const item of items) {
     const key = String(item.matchId || item.observationId);
     if (!byMatch.has(key)) byMatch.set(key, []);
     byMatch.get(key).push(item);
@@ -103,45 +113,43 @@ function clusterBootstrapDiffCI(pairedItems, metricFn, { iterations = 500, seed 
   const clusters = Array.from(byMatch.values());
   const k = clusters.length;
   if (k < 2) {
-    return { available: false, clusterCount: k, reason: 'SE_REQUIEREN_AL_MENOS_2_PARTIDOS_PARA_CLUSTER_BOOTSTRAP' };
+    return { available: false, clusterCount: k, reason: 'INSUFFICIENT_CLUSTERS' };
   }
 
   const rng = mulberry32(seed);
-  const diffs = [];
+  const vals = [];
   for (let b = 0; b < iterations; b++) {
     const sample = [];
     for (let i = 0; i < k; i++) {
       const idx = Math.floor(rng() * k);
       sample.push(...clusters[idx]);
     }
-    const d = metricFn(sample);
-    if (Number.isFinite(d)) diffs.push(d);
+    const v = metricFn(sample);
+    if (Number.isFinite(v)) vals.push(v);
   }
 
-  if (diffs.length < 10) {
+  if (vals.length < 10) {
     return { available: false, clusterCount: k, reason: 'BOOTSTRAP_NO_CONVERGENTE' };
   }
 
-  diffs.sort((a, b) => a - b);
-  const loIdx = Math.floor(0.025 * diffs.length);
-  const hiIdx = Math.min(diffs.length - 1, Math.floor(0.975 * diffs.length));
-  const mean = diffs.reduce((a, b) => a + b, 0) / diffs.length;
+  vals.sort((a, b) => a - b);
+  const loIdx = Math.floor(0.025 * vals.length);
+  const hiIdx = Math.min(vals.length - 1, Math.floor(0.975 * vals.length));
+  const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
 
   return {
     available: true,
+    method: 'cluster_bootstrap_by_matchId',
     clusterCount: k,
-    observationCount: pairedItems.length,
-    iterations: diffs.length,
+    observationCount: items.length,
+    iterations: vals.length,
     meanDiff: round(mean, 5),
-    ci95Low: round(diffs[loIdx], 5),
-    ci95High: round(diffs[hiIdx], 5),
-    includesZero: diffs[loIdx] <= 0 && diffs[hiIdx] >= 0
+    ci95Low: round(vals[loIdx], 5),
+    ci95High: round(vals[hiIdx], 5),
+    includesZero: vals[loIdx] <= 0 && vals[hiIdx] >= 0
   };
 }
 
-/**
- * Calcula bins de calibración (5 intervalos de ancho 0.20).
- */
 function computeCalibrationBins(binaryObs) {
   const edges = [
     { label: '0.00-0.20', min: 0.0, max: 0.2 },
@@ -163,7 +171,7 @@ function computeCalibrationBins(binaryObs) {
 
   for (const o of binaryObs) {
     const p = clampProb(o.modelProbability);
-    const y = o.status === 'WON' ? 1 : 0;
+    const y = o.status === 'WON' ? 1 : (o.status === 'HALF_WON' ? 0.75 : (o.status === 'HALF_LOST' ? 0.25 : 0));
     const idx = Math.min(4, Math.max(0, Math.floor(p / 0.2)));
     bins[idx].count++;
     bins[idx]._predSum += p;
@@ -191,24 +199,71 @@ function computeCalibrationBins(binaryObs) {
   };
 }
 
+function outcomeProfit(o) {
+  if (Number.isFinite(Number(o.settlement?.profitUnits))) return Number(o.settlement.profitUnits);
+  if (o.status === 'WON') return Number(o.odds) - 1;
+  if (o.status === 'HALF_WON') return (Number(o.odds) - 1) / 2;
+  if (o.status === 'HALF_LOST') return -0.5;
+  if (o.status === 'LOST') return -1;
+  return 0;
+}
+
 /**
  * Evalúa un conjunto homogéneo de observaciones (misma familia de mercado).
- * Nunca mezcla métricas de familias distintas.
+ * Nunca infla N ni los IC cuando hay múltiples selecciones del mismo partido.
  */
-function evaluateFamilySlice(observations, marketFamily) {
+function evaluateFamilySlice(observations, marketFamily, { bootstrapIterations = 400 } = {}) {
   const familyObs = observations.filter(o => o.marketFamily === marketFamily);
-  const decided = familyObs.filter(o => o.status === 'WON' || o.status === 'LOST');
-  const settledAll = familyObs.filter(o => ['WON', 'LOST', 'VOID', 'PUSH'].includes(o.status));
+  const decided = familyObs.filter(o => DECIDED_STATUSES.has(o.status));
+  const settledAll = familyObs.filter(o => DECIDED_STATUSES.has(o.status) || o.status === 'VOID' || o.status === 'PUSH');
   const pendingCount = familyObs.filter(o => o.status === 'PENDING').length;
+
   const wonCount = decided.filter(o => o.status === 'WON').length;
+  const halfWonCount = decided.filter(o => o.status === 'HALF_WON').length;
   const lostCount = decided.filter(o => o.status === 'LOST').length;
+  const halfLostCount = decided.filter(o => o.status === 'HALF_LOST').length;
   const voidCount = familyObs.filter(o => o.status === 'VOID').length;
   const pushCount = familyObs.filter(o => o.status === 'PUSH').length;
-  const uniqueMatches = new Set(familyObs.map(o => o.matchId)).size;
 
-  const profits = decided.map(o => Number(o.settlement?.profitUnits ?? (o.status === 'WON' ? o.odds - 1 : -1)));
+  const rawObservationCount = familyObs.length;
+  const decidedObservationCount = decided.length;
+  const uniqueMatchCount = new Set(decided.map(o => o.matchId)).size;
+  const totalUniqueMatches = new Set(familyObs.map(o => o.matchId)).size;
+  const effectiveSampleSize = uniqueMatchCount;
+  const independentClusterCount = uniqueMatchCount;
+  const isClusteredSample = decidedObservationCount > uniqueMatchCount;
+
+  const profits = decided.map(outcomeProfit);
   const cumProfit = profits.reduce((a, b) => a + b, 0);
   const avgOdds = decided.length > 0 ? decided.reduce((a, o) => a + Number(o.odds), 0) / decided.length : null;
+  const winEquiv = wonCount + 0.5 * halfWonCount;
+
+  // IC 95% por Cluster Bootstrap (respetando correlación por matchId)
+  const hrClusterBoot = clusterBootstrapDiffCI(
+    decided,
+    (sample) => {
+      const w = sample.reduce((acc, o) => acc + (o.status === 'WON' ? 1 : (o.status === 'HALF_WON' ? 0.5 : 0)), 0);
+      return (w / sample.length) * 100;
+    },
+    { iterations: bootstrapIterations, seed: 101 }
+  );
+
+  const roiClusterBoot = clusterBootstrapDiffCI(
+    decided,
+    (sample) => {
+      const p = sample.reduce((acc, o) => acc + outcomeProfit(o), 0);
+      return (p / sample.length) * 100;
+    },
+    { iterations: bootstrapIterations, seed: 202 }
+  );
+
+  const hitRateCI95 = hrClusterBoot.available
+    ? { method: 'cluster_bootstrap_by_matchId', clusterCount: hrClusterBoot.clusterCount, lowPct: round(hrClusterBoot.ci95Low, 2), highPct: round(hrClusterBoot.ci95High, 2) }
+    : { available: false, reason: 'INSUFFICIENT_CLUSTERS', clusterCount: independentClusterCount };
+
+  const roiCI95Clustered = roiClusterBoot.available
+    ? { method: 'cluster_bootstrap_by_matchId', clusterCount: roiClusterBoot.clusterCount, lowPct: round(roiClusterBoot.ci95Low, 2), highPct: round(roiClusterBoot.ci95High, 2) }
+    : { available: false, reason: 'INSUFFICIENT_CLUSTERS', clusterCount: independentClusterCount };
 
   // Calidad de mercado (CLV y edge vs no-vig)
   const clvObs = familyObs.filter(o => o.clv?.status === 'CLV_AVAILABLE' && Number.isFinite(o.clv.clvPct));
@@ -222,7 +277,7 @@ function evaluateFamilySlice(observations, marketFamily) {
     ? noVigDiffs.reduce((a, b) => a + b, 0) / noVigDiffs.length
     : null;
 
-  // Métricas predictivas según familia (multiclase para 1X2, binario para DC/BTTS/O/U)
+  // Métricas predictivas (multiclase para 1X2, binario para el resto)
   let predictive;
   if (marketFamily === 'match_1x2') {
     let brierSum = 0;
@@ -268,10 +323,10 @@ function evaluateFamilySlice(observations, marketFamily) {
     let accCorrect = 0;
     for (const o of decided) {
       const p = clampProb(o.modelProbability);
-      const y = o.status === 'WON' ? 1 : 0;
+      const y = o.status === 'WON' ? 1 : (o.status === 'HALF_WON' ? 0.75 : (o.status === 'HALF_LOST' ? 0.25 : 0));
       brierSum += Math.pow(p - y, 2);
       logLossSum += -(y * Math.log(p) + (1 - y) * Math.log(1 - p));
-      if ((p >= 0.5 && y === 1) || (p < 0.5 && y === 0)) accCorrect++;
+      if ((p >= 0.5 && y >= 0.5) || (p < 0.5 && y < 0.5)) accCorrect++;
     }
 
     predictive = {
@@ -284,52 +339,72 @@ function evaluateFamilySlice(observations, marketFamily) {
     };
   }
 
-  // Detección de sesgos de concentración por liga o período
+  // Sesgos por liga o período
   const skewWarnings = [];
-  if (decided.length >= 10) {
+  if (uniqueMatchCount >= 10) {
     const byLeague = {};
     const byMonth = {};
+    const seenMatches = new Set();
     for (const o of decided) {
+      if (seenMatches.has(o.matchId)) continue;
+      seenMatches.add(o.matchId);
       byLeague[o.league] = (byLeague[o.league] || 0) + 1;
       const m = String(o.kickoffUtc || '').slice(0, 7);
       byMonth[m] = (byMonth[m] || 0) + 1;
     }
     for (const [lg, cnt] of Object.entries(byLeague)) {
-      if (cnt / decided.length > 0.60) {
-        skewWarnings.push(`Sesgo de liga: ${lg} concentra ${Math.round((cnt / decided.length) * 100)}% de la muestra.`);
+      if (cnt / uniqueMatchCount > 0.60) {
+        skewWarnings.push(`Sesgo de liga: ${lg} concentra ${Math.round((cnt / uniqueMatchCount) * 100)}% de los partidos.`);
       }
     }
     for (const [mo, cnt] of Object.entries(byMonth)) {
-      if (cnt / decided.length > 0.60) {
-        skewWarnings.push(`Sesgo temporal: ${mo} concentra ${Math.round((cnt / decided.length) * 100)}% de la muestra.`);
+      if (cnt / uniqueMatchCount > 0.60) {
+        skewWarnings.push(`Sesgo temporal: ${mo} concentra ${Math.round((cnt / uniqueMatchCount) * 100)}% de los partidos.`);
       }
     }
   }
 
-  const sampleStatus = classifySampleSize(decided.length);
+  // Clasificación basada EXCLUSIVAMENTE en partidos independientes (uniqueMatchCount)
+  const sampleStatus = classifySampleSize(effectiveSampleSize);
   const calibration = computeCalibrationBins(decided);
 
   return {
     marketFamily,
-    totalObservations: familyObs.length,
-    uniqueMatches,
+    totalObservations: rawObservationCount,
+    rawObservationCount,
+    decidedObservationCount,
+    uniqueMatches: totalUniqueMatches,
+    uniqueMatchCount,
+    effectiveSampleSize,
+    independentClusterCount,
+    isClusteredSample,
     pendingCount,
-    counts: { won: wonCount, lost: lostCount, void: voidCount, push: pushCount, decided: decided.length, settledAll: settledAll.length },
+    counts: {
+      won: wonCount,
+      halfWon: halfWonCount,
+      lost: lostCount,
+      halfLost: halfLostCount,
+      void: voidCount,
+      push: pushCount,
+      decided: decidedObservationCount,
+      settledAll: settledAll.length
+    },
     sampleStatus,
     sampleWarning: sampleStatus === 'INSUFFICIENT_SAMPLE'
-      ? `Muestra insuficiente (N=${decided.length} < 30). No sacar conclusiones ni usar indicadores verdes de rentabilidad.`
+      ? `Muestra insuficiente (partidos independientes=${effectiveSampleSize} < 30; obs decididas=${decidedObservationCount}). No usar indicadores verdes de rentabilidad.`
       : null,
     skewWarnings,
     predictive,
     profitability: {
-      simulatedBets: decided.length,
-      hitRatePct: decided.length > 0 ? round((wonCount / decided.length) * 100, 2) : null,
-      hitRateCI95: wilsonCI95(wonCount, decided.length),
+      simulatedBets: decidedObservationCount,
+      hitRatePct: decidedObservationCount > 0 ? round((winEquiv / decidedObservationCount) * 100, 2) : null,
+      hitRateCI95,
+      wilsonCI95_IndependentOnly: !isClusteredSample ? wilsonCI95(wonCount, decidedObservationCount) : null,
       avgOdds: round(avgOdds, 3),
       cumulativeProfitUnits: round(cumProfit, 4),
-      roiPct: decided.length > 0 ? round((cumProfit / decided.length) * 100, 2) : null,
-      roiCI95: roiCI95(profits),
-      yieldPct: decided.length > 0 ? round((cumProfit / decided.length) * 100, 2) : null
+      roiPct: decidedObservationCount > 0 ? round((cumProfit / decidedObservationCount) * 100, 2) : null,
+      roiCI95: roiCI95Clustered,
+      yieldPct: decidedObservationCount > 0 ? round((cumProfit / decidedObservationCount) * 100, 2) : null
     },
     marketQuality: {
       clvSampleCount: clvObs.length,
@@ -342,52 +417,109 @@ function evaluateFamilySlice(observations, marketFamily) {
 }
 
 /**
- * Compara el modelo experimental contra 3 Baselines sobre EXACTAMENTE las mismas observaciones:
- *  1. Probabilidad implícita de mercado sin margen (noVigProbability)
- *  2. Base rate histórico estrictamente anterior a cada evento (zero lookahead)
- *  3. Versión anterior del modelo (cuando exista)
+ * Comparación contra Baselines sobre EXACTAMENTE las mismas observaciones.
+ * Para match_1x2 usa Brier y Log Loss MULTICLASE 3-way con noVig1X2 { home, draw, away }
+ * y marca BASELINE_UNAVAILABLE si faltan las 3 probabilidades comparables.
  */
 function compareAgainstBaselines(observations, marketFamily, { previousVersionObs = null, bootstrapIterations = 400 } = {}) {
   const decided = observations
-    .filter(o => o.marketFamily === marketFamily && (o.status === 'WON' || o.status === 'LOST'))
+    .filter(o => o.marketFamily === marketFamily && DECIDED_STATUSES.has(o.status))
     .sort((a, b) => Date.parse(a.kickoffUtc) - Date.parse(b.kickoffUtc));
 
   const binaryBrier = (p, y) => Math.pow(clampProb(p) - y, 2);
   const binaryLL = (p, y) => -(y * Math.log(clampProb(p)) + (1 - y) * Math.log(1 - clampProb(p)));
+  const multiBrier = (vec, actual) => ['1', 'X', '2'].reduce((acc, k) => {
+    const p = clampProb(k === '1' ? vec.home : (k === 'X' ? vec.draw : vec.away));
+    return acc + Math.pow(p - (actual === k ? 1 : 0), 2);
+  }, 0);
+  const multiLL = (vec, actual) => {
+    const p = clampProb(actual === '1' ? vec.home : (actual === 'X' ? vec.draw : vec.away));
+    return -Math.log(p);
+  };
 
-  // 1. Baseline: Probabilidad implícita sin vig del mercado
-  const withNoVig = decided.filter(o => Number.isFinite(o.noVigProbability));
-  let vsMarketNoVig = { comparableCount: withNoVig.length, available: false, reason: 'SIN_OBSERVACIONES_CON_NOVIG' };
-  if (withNoVig.length > 0) {
-    const modelBrier = withNoVig.reduce((a, o) => a + binaryBrier(o.modelProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
-    const baseBrier = withNoVig.reduce((a, o) => a + binaryBrier(o.noVigProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
-    const modelLL = withNoVig.reduce((a, o) => a + binaryLL(o.modelProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
-    const baseLL = withNoVig.reduce((a, o) => a + binaryLL(o.noVigProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
-
-    const bootBrier = clusterBootstrapDiffCI(
-      withNoVig,
-      (sample) => {
-        const mB = sample.reduce((a, o) => a + binaryBrier(o.modelProbability, o.status === 'WON' ? 1 : 0), 0) / sample.length;
-        const bB = sample.reduce((a, o) => a + binaryBrier(o.noVigProbability, o.status === 'WON' ? 1 : 0), 0) / sample.length;
-        return mB - bB; // negativo = modelo mejor que mercado
-      },
-      { iterations: bootstrapIterations }
+  // 1. Baseline: Probabilidad implícita de mercado sin margen
+  let vsMarketNoVig;
+  if (marketFamily === 'match_1x2') {
+    const comparable = decided.filter(o =>
+      isValid3WayVec(o.probabilities1X2) &&
+      isValid3WayVec(o.noVig1X2) &&
+      ['1', 'X', '2'].includes(o.settlement?.actual1X2)
     );
+    if (comparable.length === 0) {
+      vsMarketNoVig = {
+        available: false,
+        status: 'BASELINE_UNAVAILABLE',
+        metricType: 'MULTICLASS_3WAY',
+        comparableCount: 0,
+        reason: 'Faltan vectores completos noVig1X2 { home, draw, away } (suma 1) o probabilities1X2 para comparación multiclase 1X2.'
+      };
+    } else {
+      const mB = comparable.reduce((a, o) => a + multiBrier(o.probabilities1X2, o.settlement.actual1X2), 0) / comparable.length;
+      const bB = comparable.reduce((a, o) => a + multiBrier(o.noVig1X2, o.settlement.actual1X2), 0) / comparable.length;
+      const mL = comparable.reduce((a, o) => a + multiLL(o.probabilities1X2, o.settlement.actual1X2), 0) / comparable.length;
+      const bL = comparable.reduce((a, o) => a + multiLL(o.noVig1X2, o.settlement.actual1X2), 0) / comparable.length;
 
-    vsMarketNoVig = {
-      available: true,
-      comparableCount: withNoVig.length,
-      modelBrier: round(modelBrier, 5),
-      baselineBrier: round(baseBrier, 5),
-      deltaBrier: round(modelBrier - baseBrier, 5), // < 0 es mejor
-      modelLogLoss: round(modelLL, 5),
-      baselineLogLoss: round(baseLL, 5),
-      deltaLogLoss: round(modelLL - baseLL, 5), // < 0 es mejor
-      clusterBootstrapBrierDiff: bootBrier
-    };
+      const bootBrier = clusterBootstrapDiffCI(
+        comparable,
+        (sample) => {
+          const mm = sample.reduce((a, o) => a + multiBrier(o.probabilities1X2, o.settlement.actual1X2), 0) / sample.length;
+          const bb = sample.reduce((a, o) => a + multiBrier(o.noVig1X2, o.settlement.actual1X2), 0) / sample.length;
+          return mm - bb;
+        },
+        { iterations: bootstrapIterations }
+      );
+
+      vsMarketNoVig = {
+        available: true,
+        status: 'AVAILABLE',
+        metricType: 'MULTICLASS_3WAY',
+        comparableCount: comparable.length,
+        modelBrier: round(mB, 5),
+        baselineBrier: round(bB, 5),
+        deltaBrier: round(mB - bB, 5),
+        modelLogLoss: round(mL, 5),
+        baselineLogLoss: round(bL, 5),
+        deltaLogLoss: round(mL - bL, 5),
+        clusterBootstrapBrierDiff: bootBrier
+      };
+    }
+  } else {
+    const withNoVig = decided.filter(o => Number.isFinite(o.noVigProbability));
+    if (withNoVig.length === 0) {
+      vsMarketNoVig = { available: false, status: 'BASELINE_UNAVAILABLE', metricType: 'BINARY', comparableCount: 0, reason: 'SIN_OBSERVACIONES_CON_NOVIG' };
+    } else {
+      const mB = withNoVig.reduce((a, o) => a + binaryBrier(o.modelProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
+      const bB = withNoVig.reduce((a, o) => a + binaryBrier(o.noVigProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
+      const mL = withNoVig.reduce((a, o) => a + binaryLL(o.modelProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
+      const bL = withNoVig.reduce((a, o) => a + binaryLL(o.noVigProbability, o.status === 'WON' ? 1 : 0), 0) / withNoVig.length;
+
+      const bootBrier = clusterBootstrapDiffCI(
+        withNoVig,
+        (sample) => {
+          const mm = sample.reduce((a, o) => a + binaryBrier(o.modelProbability, o.status === 'WON' ? 1 : 0), 0) / sample.length;
+          const bb = sample.reduce((a, o) => a + binaryBrier(o.noVigProbability, o.status === 'WON' ? 1 : 0), 0) / sample.length;
+          return mm - bb;
+        },
+        { iterations: bootstrapIterations }
+      );
+
+      vsMarketNoVig = {
+        available: true,
+        status: 'AVAILABLE',
+        metricType: 'BINARY',
+        comparableCount: withNoVig.length,
+        modelBrier: round(mB, 5),
+        baselineBrier: round(bB, 5),
+        deltaBrier: round(mB - bB, 5),
+        modelLogLoss: round(mL, 5),
+        baselineLogLoss: round(bL, 5),
+        deltaLogLoss: round(mL - bL, 5),
+        clusterBootstrapBrierDiff: bootBrier
+      };
+    }
   }
 
-  // 2. Baseline: Frecuencia histórica / Base Rate estrictamente anterior al kickoff (zero lookahead)
+  // 2. Baseline: Base Rate histórico estrictamente anterior al evento (zero lookahead)
   const baseRatePairs = [];
   for (let i = 0; i < decided.length; i++) {
     const cur = decided[i];
@@ -398,7 +530,7 @@ function compareAgainstBaselines(observations, marketFamily, { previousVersionOb
     baseRatePairs.push({ obs: cur, priorRate, matchId: cur.matchId, observationId: cur.observationId });
   }
 
-  let vsHistoricalBaseRate = { comparableCount: baseRatePairs.length, available: false, reason: 'SIN_HISTORICO_ANTERIOR' };
+  let vsHistoricalBaseRate = { comparableCount: baseRatePairs.length, available: false, status: 'BASELINE_UNAVAILABLE', reason: 'SIN_HISTORICO_ANTERIOR' };
   if (baseRatePairs.length > 0) {
     const modelBrier = baseRatePairs.reduce((a, x) => a + binaryBrier(x.obs.modelProbability, x.obs.status === 'WON' ? 1 : 0), 0) / baseRatePairs.length;
     const baseBrier = baseRatePairs.reduce((a, x) => a + binaryBrier(x.priorRate, x.obs.status === 'WON' ? 1 : 0), 0) / baseRatePairs.length;
@@ -407,6 +539,7 @@ function compareAgainstBaselines(observations, marketFamily, { previousVersionOb
 
     vsHistoricalBaseRate = {
       available: true,
+      status: 'AVAILABLE',
       comparableCount: baseRatePairs.length,
       modelBrier: round(modelBrier, 5),
       baselineBrier: round(baseBrier, 5),
@@ -418,11 +551,11 @@ function compareAgainstBaselines(observations, marketFamily, { previousVersionOb
   }
 
   // 3. Baseline: Versión anterior del modelo (emparejada por matchId + selection)
-  let vsPreviousVersion = { comparableCount: 0, available: false, reason: 'SIN_VERSION_ANTERIOR_COMPARABLE' };
+  let vsPreviousVersion = { comparableCount: 0, available: false, status: 'BASELINE_UNAVAILABLE', reason: 'SIN_VERSION_ANTERIOR_COMPARABLE' };
   if (Array.isArray(previousVersionObs) && previousVersionObs.length > 0) {
     const prevMap = new Map();
     for (const p of previousVersionObs) {
-      if (p.marketFamily === marketFamily && (p.status === 'WON' || p.status === 'LOST')) {
+      if (p.marketFamily === marketFamily && DECIDED_STATUSES.has(p.status)) {
         prevMap.set(`${p.matchId}__${p.selection}`, p);
       }
     }
@@ -436,8 +569,8 @@ function compareAgainstBaselines(observations, marketFamily, { previousVersionOb
       const pBrier = matched.reduce((a, x) => a + binaryBrier(x.prev.modelProbability, x.prev.status === 'WON' ? 1 : 0), 0) / matched.length;
       const mLL = matched.reduce((a, x) => a + binaryLL(x.cur.modelProbability, x.cur.status === 'WON' ? 1 : 0), 0) / matched.length;
       const pLL = matched.reduce((a, x) => a + binaryLL(x.prev.modelProbability, x.prev.status === 'WON' ? 1 : 0), 0) / matched.length;
-      const mRoi = (matched.reduce((a, x) => a + (x.cur.settlement?.profitUnits ?? 0), 0) / matched.length) * 100;
-      const pRoi = (matched.reduce((a, x) => a + (x.prev.settlement?.profitUnits ?? 0), 0) / matched.length) * 100;
+      const mRoi = (matched.reduce((a, x) => a + outcomeProfit(x.cur), 0) / matched.length) * 100;
+      const pRoi = (matched.reduce((a, x) => a + outcomeProfit(x.prev), 0) / matched.length) * 100;
 
       const curClv = matched.map(x => x.cur.clv?.clvPct).filter(Number.isFinite);
       const prevClv = matched.map(x => x.prev.clv?.clvPct).filter(Number.isFinite);
@@ -447,6 +580,7 @@ function compareAgainstBaselines(observations, marketFamily, { previousVersionOb
 
       vsPreviousVersion = {
         available: true,
+        status: 'AVAILABLE',
         comparableCount: matched.length,
         deltaBrier: round(mBrier - pBrier, 5),
         deltaLogLoss: round(mLL - pLL, 5),
@@ -465,9 +599,10 @@ function compareAgainstBaselines(observations, marketFamily, { previousVersionOb
 }
 
 /**
- * Validación temporal estricta fuera de muestra (Sección 10).
- * Separa cronológicamente train < validation < evaluation por kickoffUtc (CERO división aleatoria).
- * Devuelve OUT_OF_SAMPLE_NOT_AVAILABLE si no hay volumen histórico suficiente.
+ * Validación temporal estricta fuera de muestra (Sección 6 Fase 9.1):
+ * Agrupa por timestamp exacto de kickoffUtc para que eventos simultáneos NUNCA se dividan
+ * entre train y validation ni entre validation y evaluation.
+ * Garantiza estrictamente: maxTrainKo < minValKo y (si hay eval) maxValKo < minEvalKo.
  */
 function runStrictTemporalOutOfSampleSplit(observations, marketFamily, {
   minTrainCount = 20,
@@ -475,31 +610,89 @@ function runStrictTemporalOutOfSampleSplit(observations, marketFamily, {
   trainRatio = 0.60,
   valRatio = 0.20
 } = {}) {
-  const sorted = observations
-    .filter(o => o.marketFamily === marketFamily && (o.status === 'WON' || o.status === 'LOST') && o.kickoffUtc)
+  const valid = observations
+    .filter(o => o.marketFamily === marketFamily && DECIDED_STATUSES.has(o.status) && o.kickoffUtc && Number.isFinite(Date.parse(o.kickoffUtc)))
     .sort((a, b) => Date.parse(a.kickoffUtc) - Date.parse(b.kickoffUtc));
 
-  if (sorted.length < minTrainCount + minValCount) {
+  if (valid.length < minTrainCount + minValCount) {
     return {
       status: 'OUT_OF_SAMPLE_NOT_AVAILABLE',
-      reason: `Histórico insuficiente para partición temporal estricta (N=${sorted.length} < mínimo ${minTrainCount + minValCount}).`,
-      totalAvailable: sorted.length
+      reason: `Histórico insuficiente para partición temporal estricta (N=${valid.length} < mínimo ${minTrainCount + minValCount}).`,
+      totalAvailable: valid.length
     };
   }
 
-  const trainEnd = Math.max(minTrainCount, Math.floor(sorted.length * trainRatio));
-  const valEnd = Math.min(sorted.length, trainEnd + Math.max(minValCount, Math.floor(sorted.length * valRatio)));
+  // Agrupar todos los eventos con idéntico kickoffUtc en un bloque atómico indivisible
+  const timeBuckets = [];
+  for (const o of valid) {
+    const ts = Date.parse(o.kickoffUtc);
+    const last = timeBuckets[timeBuckets.length - 1];
+    if (last && last.ts === ts) last.items.push(o);
+    else timeBuckets.push({ ts, iso: o.kickoffUtc, items: [o] });
+  }
 
-  const trainSet = sorted.slice(0, trainEnd);
-  const valSet = sorted.slice(trainEnd, valEnd);
-  const evalSet = sorted.slice(valEnd);
+  if (timeBuckets.length < 2) {
+    return {
+      status: 'OUT_OF_SAMPLE_NOT_AVAILABLE',
+      reason: 'Todos los eventos comparten el mismo kickoffUtc; imposible garantizar separación temporal estricta (maxTrainKo < minValKo).',
+      totalAvailable: valid.length
+    };
+  }
 
-  // Garantía estricta de separación temporal sin solapamiento
+  const targetTrain = Math.max(minTrainCount, Math.floor(valid.length * trainRatio));
+  const targetVal = Math.max(minValCount, Math.floor(valid.length * valRatio));
+
+  const trainSet = [];
+  const valSet = [];
+  const evalSet = [];
+
+  let phase = 'train';
+  let remaining = valid.length;
+  for (let i = 0; i < timeBuckets.length; i++) {
+    const bucket = timeBuckets[i];
+    const nextBucket = timeBuckets[i + 1];
+    remaining -= bucket.items.length;
+
+    if (phase === 'train') {
+      trainSet.push(...bucket.items);
+      const nextWouldStarveVal = nextBucket && (remaining - nextBucket.items.length < minValCount);
+      if (trainSet.length >= targetTrain || (trainSet.length >= minTrainCount && nextWouldStarveVal)) {
+        phase = 'validation';
+      }
+    } else if (phase === 'validation') {
+      valSet.push(...bucket.items);
+      if (valSet.length >= targetVal) phase = 'evaluation';
+    } else {
+      evalSet.push(...bucket.items);
+    }
+  }
+
+  if (trainSet.length < minTrainCount || valSet.length < minValCount) {
+    return {
+      status: 'OUT_OF_SAMPLE_NOT_AVAILABLE',
+      reason: `No se pudo formar train (${trainSet.length}/${minTrainCount}) y validation (${valSet.length}/${minValCount}) sin partir partidos simultáneos.`,
+      totalAvailable: valid.length
+    };
+  }
+
   const maxTrainKo = Date.parse(trainSet[trainSet.length - 1].kickoffUtc);
   const minValKo = Date.parse(valSet[0].kickoffUtc);
-  const temporalIntegrityOk = maxTrainKo <= minValKo;
+  const maxValKo = Date.parse(valSet[valSet.length - 1].kickoffUtc);
+  const minEvalKo = evalSet.length > 0 ? Date.parse(evalSet[0].kickoffUtc) : null;
 
-  // Ajuste de calibración simple estimado EXCLUSIVAMENTE sobre trainSet (zero leakage)
+  const trainBeforeVal = maxTrainKo < minValKo;
+  const valBeforeEval = minEvalKo === null || maxValKo < minEvalKo;
+  const temporalIntegrityOk = trainBeforeVal && valBeforeEval;
+
+  if (!temporalIntegrityOk) {
+    return {
+      status: 'OUT_OF_SAMPLE_NOT_AVAILABLE',
+      reason: 'Fallo de separación temporal estricta entre bloques.',
+      totalAvailable: valid.length
+    };
+  }
+
+  // Parámetros estimados EXCLUSIVAMENTE sobre trainSet
   const trainPredAvg = trainSet.reduce((a, o) => a + o.modelProbability, 0) / trainSet.length;
   const trainObsRate = trainSet.filter(o => o.status === 'WON').length / trainSet.length;
   const calibrationShiftLearnedOnTrain = round(trainObsRate - trainPredAvg, 5);
@@ -507,7 +700,7 @@ function runStrictTemporalOutOfSampleSplit(observations, marketFamily, {
 
   return {
     status: 'OUT_OF_SAMPLE_AVAILABLE',
-    temporalIntegrityOk,
+    temporalIntegrityOk: true,
     parameterVersion,
     calibrationShiftLearnedOnTrain,
     splits: {
@@ -533,9 +726,6 @@ function runStrictTemporalOutOfSampleSplit(observations, marketFamily, {
   };
 }
 
-/**
- * Segmentación multi-dimensional independiente (Sección 7).
- */
 function sliceObservations(observations, dimension, filters = {}) {
   const filtered = observations.filter(o => {
     if (filters.league && o.league !== filters.league) return false;
@@ -552,10 +742,7 @@ function sliceObservations(observations, dimension, filters = {}) {
 
   const groups = new Map();
   for (const o of filtered) {
-    let key;
-    if (dimension === 'period') key = String(o.kickoffUtc || '').slice(0, 7) || 'unknown';
-    else key = String(o[dimension] ?? 'unknown');
-    // Clave compuesta con marketFamily para nunca mezclar familias distintas
+    const key = dimension === 'period' ? (String(o.kickoffUtc || '').slice(0, 7) || 'unknown') : String(o[dimension] ?? 'unknown');
     const compKey = `${key}__${o.marketFamily}`;
     if (!groups.has(compKey)) groups.set(compKey, { dimensionValue: key, marketFamily: o.marketFamily, rows: [] });
     groups.get(compKey).rows.push(o);

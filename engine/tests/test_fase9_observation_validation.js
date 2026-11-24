@@ -158,9 +158,9 @@ async function runTest(name, fn) {
         matchId: 'm5', kickoffUtc: '2026-11-28T18:00:00Z', observedAtUtc: '2026-11-28T12:00:00Z',
         marketFamily: 'match_1x2', selection: '1', modelProbability: 0.60, odds: 1.85, bookmaker: 'Bet365'
       });
-      store.recordOddsSnapshot(r.observationId, { checkpoint: 'T_MINUS_60', odds: 1.82, bookmaker: 'Bet365' });
-      store.recordOddsSnapshot(r.observationId, { checkpoint: 'T_MINUS_30', odds: 1.80, bookmaker: 'Bet365' });
-      const t5 = store.recordOddsSnapshot(r.observationId, { checkpoint: 'T_MINUS_5', odds: 1.78, bookmaker: 'Bet365' });
+      store.recordOddsSnapshot(r.observationId, { checkpoint: 'T_MINUS_60', capturedAtUtc: '2026-11-28T17:00:00Z', odds: 1.82, bookmaker: 'Bet365' });
+      store.recordOddsSnapshot(r.observationId, { checkpoint: 'T_MINUS_30', capturedAtUtc: '2026-11-28T17:30:00Z', odds: 1.80, bookmaker: 'Bet365' });
+      const t5 = store.recordOddsSnapshot(r.observationId, { checkpoint: 'T_MINUS_5', capturedAtUtc: '2026-11-28T17:55:00Z', odds: 1.78, bookmaker: 'Bet365' });
       assert.strictEqual(t5.clv.status, 'CLV_UNAVAILABLE', 'T-5 no debe asumirse automáticamente como CLOSING');
       assert.strictEqual(store.getObservations()[0].oddsSnapshots.length, 4);
     } finally { cleanup(dir); }
@@ -175,13 +175,13 @@ async function runTest(name, fn) {
       });
       // Línea distinta (2.5 vs 3.5) -> CLV_UNAVAILABLE
       const diffLine = store.recordOddsSnapshot(r.observationId, {
-        checkpoint: 'CLOSING', odds: 2.40, bookmaker: 'Bet365', line: 3.5
+        checkpoint: 'CLOSING', capturedAtUtc: '2026-11-28T17:58:00Z', odds: 2.40, bookmaker: 'Bet365', line: 3.5
       });
       assert.strictEqual(diffLine.clv.status, 'CLV_UNAVAILABLE');
 
       // Mismo bookmaker, misma selección y misma línea (2.5) -> CLV_AVAILABLE positivo
       const validClose = store.recordOddsSnapshot(r.observationId, {
-        checkpoint: 'CLOSING', odds: 1.85, bookmaker: 'Bet365', line: 2.5
+        checkpoint: 'CLOSING', capturedAtUtc: '2026-11-28T17:59:00Z', odds: 1.85, bookmaker: 'Bet365', line: 2.5
       });
       assert.strictEqual(validClose.clv.status, 'CLV_AVAILABLE');
       assert(validClose.clv.clvPct > 5.0);

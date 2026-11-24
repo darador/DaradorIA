@@ -62,6 +62,7 @@ class ObservationOrchestrator {
         bookmaker: c.bookmaker || 'StatsHubBest',
         impliedProbability: c.impliedProb,
         noVigProbability: c.noVigProb,
+        noVig1X2: c.noVig1X2 || null,
         dataQualityTier: c.dataQuality?.tier || 'MEDIA',
         dataSources: ['statshub:getFixturesByDate', 'statshub:getMatchOdds', 'statshub:getTeamPerformance'],
         features: c.parameters || null
