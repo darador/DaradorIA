@@ -1,0 +1,609 @@
+{
+  "status": "COMPLETED",
+  "inProgressScanId": null,
+  "completedMatchIds": [
+    "arsenal-v-borussia-dortmund.0uein1n",
+    "feyenoord-v-fc-porto.1h2nn2k",
+    "inter-v-vfb-stuttgart.0rpftmy"
+  ],
+  "lastSummary": {
+    "scanId": "rescan_1795541976334",
+    "startedAtUtc": "2026-11-24T17:39:36.334Z",
+    "completedAtUtc": "2026-11-24T17:39:36.605Z",
+    "durationMs": 271,
+    "autoExecutionAllowed": false,
+    "leaguesScanned": 1,
+    "apiCallsUsed": 13,
+    "eventsDiscovered": 3,
+    "eventsProcessed": 3,
+    "eventsSkippedStarted": 0,
+    "marketsExplored": 40,
+    "newOpportunitiesCount": 13,
+    "existingChangedCount": 0,
+    "improvedCount": 0,
+    "deterioratedCount": 0,
+    "rejectedCount": 26,
+    "watchlistCount": 1,
+    "insufficientDataCount": 0,
+    "versionsRecorded": 40,
+    "versionsUnchangedSkipped": 0,
+    "errors": [],
+    "marketAvailabilityLog": [
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "1X2",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "1",
+          "X",
+          "2"
+        ],
+        "bookmakers": {
+          "1": "All British Casino",
+          "2": "Paddy Power",
+          "X": "Bet365"
+        }
+      },
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "Double Chance",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "1X",
+          "X2",
+          "12"
+        ],
+        "bookmakers": {
+          "12": "BetMGM UK",
+          "1X": "All British Casino",
+          "X2": "Bet365"
+        }
+      },
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "Draw No Bet",
+        "status": "AVAILABLE",
+        "line": 0,
+        "selections": [
+          "HOME",
+          "AWAY"
+        ],
+        "bookmakers": {
+          "HOME": "Bet365",
+          "AWAY": "Paddy Power"
+        }
+      },
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "BTTS",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "YES",
+          "NO"
+        ],
+        "bookmakers": {
+          "YES": "Bet365",
+          "NO": "BetMGM UK"
+        }
+      },
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "Total Goals 2.5",
+        "status": "AVAILABLE",
+        "line": 2.5,
+        "selections": [
+          "OVER",
+          "UNDER"
+        ],
+        "bookmakers": {
+          "OVER": "All British Casino",
+          "UNDER": "Bet365"
+        }
+      },
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "Asian Handicap -1.5",
+        "status": "AVAILABLE",
+        "line": -1.5,
+        "selections": [
+          "HOME",
+          "AWAY"
+        ],
+        "bookmakers": {
+          "HOME": "All British Casino",
+          "AWAY": "Bet365"
+        }
+      },
+      {
+        "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+        "market": "Team Corners / Cards / Shots / Fouls",
+        "status": "AGREGADO_SIN_SERIE",
+        "reason": "StatsHub omite series partido a partido por fila en getTeamPerformance; no se fabrican series."
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "1X2",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "1",
+          "X",
+          "2"
+        ],
+        "bookmakers": {
+          "1": "All British Casino",
+          "2": "All British Casino",
+          "X": "BetMGM UK"
+        }
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "Double Chance",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "1X",
+          "X2",
+          "12"
+        ],
+        "bookmakers": {
+          "12": "All British Casino",
+          "1X": "BetMGM UK",
+          "X2": "Bet365"
+        }
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "Draw No Bet",
+        "status": "AVAILABLE",
+        "line": 0,
+        "selections": [
+          "HOME",
+          "AWAY"
+        ],
+        "bookmakers": {
+          "HOME": "Paddy Power",
+          "AWAY": "Bet365"
+        }
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "BTTS",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "YES",
+          "NO"
+        ],
+        "bookmakers": {
+          "YES": "BetMGM UK",
+          "NO": "Paddy Power"
+        }
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "Total Goals 2.5",
+        "status": "AVAILABLE",
+        "line": 2.5,
+        "selections": [
+          "OVER",
+          "UNDER"
+        ],
+        "bookmakers": {
+          "OVER": "All British Casino",
+          "UNDER": "BetMGM UK"
+        }
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "Asian Handicap",
+        "status": "UNAVAILABLE",
+        "reason": "Sin línea AH estándar disponible en matriz"
+      },
+      {
+        "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+        "market": "Team Corners / Cards / Shots / Fouls",
+        "status": "AGREGADO_SIN_SERIE",
+        "reason": "StatsHub omite series partido a partido por fila en getTeamPerformance; no se fabrican series."
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "1X2",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "1",
+          "X",
+          "2"
+        ],
+        "bookmakers": {
+          "1": "Bet365",
+          "2": "BetMGM UK",
+          "X": "Bet365"
+        }
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "Double Chance",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "1X",
+          "X2",
+          "12"
+        ],
+        "bookmakers": {
+          "12": "BetMGM UK",
+          "1X": "All British Casino",
+          "X2": "Paddy Power"
+        }
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "Draw No Bet",
+        "status": "AVAILABLE",
+        "line": 0,
+        "selections": [
+          "HOME",
+          "AWAY"
+        ],
+        "bookmakers": {
+          "HOME": "Bet365",
+          "AWAY": "Bet365"
+        }
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "BTTS",
+        "status": "AVAILABLE",
+        "line": null,
+        "selections": [
+          "YES",
+          "NO"
+        ],
+        "bookmakers": {
+          "YES": "All British Casino",
+          "NO": "BetMGM UK"
+        }
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "Total Goals 3.5",
+        "status": "AVAILABLE",
+        "line": 3.5,
+        "selections": [
+          "OVER",
+          "UNDER"
+        ],
+        "bookmakers": {
+          "OVER": "Bet365",
+          "UNDER": "Bet365"
+        }
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "Asian Handicap -1.5",
+        "status": "AVAILABLE",
+        "line": -1.5,
+        "selections": [
+          "HOME",
+          "AWAY"
+        ],
+        "bookmakers": {
+          "HOME": "Paddy Power",
+          "AWAY": "Bet365"
+        }
+      },
+      {
+        "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+        "market": "Team Corners / Cards / Shots / Fouls",
+        "status": "AGREGADO_SIN_SERIE",
+        "reason": "StatsHub omite series partido a partido por fila en getTeamPerformance; no se fabrican series."
+      }
+    ]
+  },
+  "scanHistory": [
+    {
+      "scanId": "rescan_1795541976334",
+      "startedAtUtc": "2026-11-24T17:39:36.334Z",
+      "completedAtUtc": "2026-11-24T17:39:36.605Z",
+      "durationMs": 271,
+      "autoExecutionAllowed": false,
+      "leaguesScanned": 1,
+      "apiCallsUsed": 13,
+      "eventsDiscovered": 3,
+      "eventsProcessed": 3,
+      "eventsSkippedStarted": 0,
+      "marketsExplored": 40,
+      "newOpportunitiesCount": 13,
+      "existingChangedCount": 0,
+      "improvedCount": 0,
+      "deterioratedCount": 0,
+      "rejectedCount": 26,
+      "watchlistCount": 1,
+      "insufficientDataCount": 0,
+      "versionsRecorded": 40,
+      "versionsUnchangedSkipped": 0,
+      "errors": [],
+      "marketAvailabilityLog": [
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "1X2",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "1",
+            "X",
+            "2"
+          ],
+          "bookmakers": {
+            "1": "All British Casino",
+            "2": "Paddy Power",
+            "X": "Bet365"
+          }
+        },
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "Double Chance",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "1X",
+            "X2",
+            "12"
+          ],
+          "bookmakers": {
+            "12": "BetMGM UK",
+            "1X": "All British Casino",
+            "X2": "Bet365"
+          }
+        },
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "Draw No Bet",
+          "status": "AVAILABLE",
+          "line": 0,
+          "selections": [
+            "HOME",
+            "AWAY"
+          ],
+          "bookmakers": {
+            "HOME": "Bet365",
+            "AWAY": "Paddy Power"
+          }
+        },
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "BTTS",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "YES",
+            "NO"
+          ],
+          "bookmakers": {
+            "YES": "Bet365",
+            "NO": "BetMGM UK"
+          }
+        },
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "Total Goals 2.5",
+          "status": "AVAILABLE",
+          "line": 2.5,
+          "selections": [
+            "OVER",
+            "UNDER"
+          ],
+          "bookmakers": {
+            "OVER": "All British Casino",
+            "UNDER": "Bet365"
+          }
+        },
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "Asian Handicap -1.5",
+          "status": "AVAILABLE",
+          "line": -1.5,
+          "selections": [
+            "HOME",
+            "AWAY"
+          ],
+          "bookmakers": {
+            "HOME": "All British Casino",
+            "AWAY": "Bet365"
+          }
+        },
+        {
+          "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+          "market": "Team Corners / Cards / Shots / Fouls",
+          "status": "AGREGADO_SIN_SERIE",
+          "reason": "StatsHub omite series partido a partido por fila en getTeamPerformance; no se fabrican series."
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "1X2",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "1",
+            "X",
+            "2"
+          ],
+          "bookmakers": {
+            "1": "All British Casino",
+            "2": "All British Casino",
+            "X": "BetMGM UK"
+          }
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "Double Chance",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "1X",
+            "X2",
+            "12"
+          ],
+          "bookmakers": {
+            "12": "All British Casino",
+            "1X": "BetMGM UK",
+            "X2": "Bet365"
+          }
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "Draw No Bet",
+          "status": "AVAILABLE",
+          "line": 0,
+          "selections": [
+            "HOME",
+            "AWAY"
+          ],
+          "bookmakers": {
+            "HOME": "Paddy Power",
+            "AWAY": "Bet365"
+          }
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "BTTS",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "YES",
+            "NO"
+          ],
+          "bookmakers": {
+            "YES": "BetMGM UK",
+            "NO": "Paddy Power"
+          }
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "Total Goals 2.5",
+          "status": "AVAILABLE",
+          "line": 2.5,
+          "selections": [
+            "OVER",
+            "UNDER"
+          ],
+          "bookmakers": {
+            "OVER": "All British Casino",
+            "UNDER": "BetMGM UK"
+          }
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "Asian Handicap",
+          "status": "UNAVAILABLE",
+          "reason": "Sin línea AH estándar disponible en matriz"
+        },
+        {
+          "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+          "market": "Team Corners / Cards / Shots / Fouls",
+          "status": "AGREGADO_SIN_SERIE",
+          "reason": "StatsHub omite series partido a partido por fila en getTeamPerformance; no se fabrican series."
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "1X2",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "1",
+            "X",
+            "2"
+          ],
+          "bookmakers": {
+            "1": "Bet365",
+            "2": "BetMGM UK",
+            "X": "Bet365"
+          }
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "Double Chance",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "1X",
+            "X2",
+            "12"
+          ],
+          "bookmakers": {
+            "12": "BetMGM UK",
+            "1X": "All British Casino",
+            "X2": "Paddy Power"
+          }
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "Draw No Bet",
+          "status": "AVAILABLE",
+          "line": 0,
+          "selections": [
+            "HOME",
+            "AWAY"
+          ],
+          "bookmakers": {
+            "HOME": "Bet365",
+            "AWAY": "Bet365"
+          }
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "BTTS",
+          "status": "AVAILABLE",
+          "line": null,
+          "selections": [
+            "YES",
+            "NO"
+          ],
+          "bookmakers": {
+            "YES": "All British Casino",
+            "NO": "BetMGM UK"
+          }
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "Total Goals 3.5",
+          "status": "AVAILABLE",
+          "line": 3.5,
+          "selections": [
+            "OVER",
+            "UNDER"
+          ],
+          "bookmakers": {
+            "OVER": "Bet365",
+            "UNDER": "Bet365"
+          }
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "Asian Handicap -1.5",
+          "status": "AVAILABLE",
+          "line": -1.5,
+          "selections": [
+            "HOME",
+            "AWAY"
+          ],
+          "bookmakers": {
+            "HOME": "Paddy Power",
+            "AWAY": "Bet365"
+          }
+        },
+        {
+          "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+          "market": "Team Corners / Cards / Shots / Fouls",
+          "status": "AGREGADO_SIN_SERIE",
+          "reason": "StatsHub omite series partido a partido por fila en getTeamPerformance; no se fabrican series."
+        }
+      ]
+    }
+  ]
+}

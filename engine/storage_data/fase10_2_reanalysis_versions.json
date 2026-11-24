@@ -1,0 +1,1962 @@
+[
+  {
+    "sequenceIndex": 0,
+    "prevAnalysisHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "analysisId": "anl_1795541976346_07ba7a",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__match_1x2__1__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "1",
+    "line": null,
+    "odds": 1.47,
+    "bookmaker": "All British Casino",
+    "probability": 0.566918,
+    "fairOdds": 1.7639,
+    "impliedProbability": 0.680272,
+    "noVigProbability": 0.658123,
+    "expectedValue": -0.166631,
+    "expectedValuePct": -16.66,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-16.66% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-16.66% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "4b28f7bba600583335558a3d193974538185560711a1bfba3c838efa371fb256"
+  },
+  {
+    "sequenceIndex": 1,
+    "prevAnalysisHash": "4b28f7bba600583335558a3d193974538185560711a1bfba3c838efa371fb256",
+    "analysisId": "anl_1795541976353_93d4e0",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__match_1x2__2__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "2",
+    "line": null,
+    "odds": 7,
+    "bookmaker": "Paddy Power",
+    "probability": 0.187012,
+    "fairOdds": 5.3473,
+    "impliedProbability": 0.142857,
+    "noVigProbability": 0.138206,
+    "expectedValue": 0.309084,
+    "expectedValuePct": 30.91,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+30.91%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +30.91%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "bd1ecaa6e20de50f9737bd91f33f88cd260cff1f0f0013d663d936346ae9676b"
+  },
+  {
+    "sequenceIndex": 2,
+    "prevAnalysisHash": "bd1ecaa6e20de50f9737bd91f33f88cd260cff1f0f0013d663d936346ae9676b",
+    "analysisId": "anl_1795541976359_fa19d0",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__match_1x2__X__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "X",
+    "line": null,
+    "odds": 4.75,
+    "bookmaker": "Bet365",
+    "probability": 0.24607,
+    "fairOdds": 4.0639,
+    "impliedProbability": 0.210526,
+    "noVigProbability": 0.203672,
+    "expectedValue": 0.168833,
+    "expectedValuePct": 16.88,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+16.88%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +16.88%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "9616124668ca481dd89b5e9e72d9e7a42cc9d194a655c78331c9b3fdda4dcba4"
+  },
+  {
+    "sequenceIndex": 3,
+    "prevAnalysisHash": "9616124668ca481dd89b5e9e72d9e7a42cc9d194a655c78331c9b3fdda4dcba4",
+    "analysisId": "anl_1795541976365_4553d8",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__double_chance__12__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "12",
+    "line": null,
+    "odds": 1.17,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.75393,
+    "fairOdds": 1.3264,
+    "impliedProbability": 0.854701,
+    "noVigProbability": 0.796328,
+    "expectedValue": -0.117902,
+    "expectedValuePct": -11.79,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-11.79% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-11.79% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "e5ebf751ff7e9f9f0c070069d3ca5e0f19db7264091e24ef67ba1b5ea9da36d1"
+  },
+  {
+    "sequenceIndex": 4,
+    "prevAnalysisHash": "e5ebf751ff7e9f9f0c070069d3ca5e0f19db7264091e24ef67ba1b5ea9da36d1",
+    "analysisId": "anl_1795541976371_480843",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__double_chance__1X__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "1X",
+    "line": null,
+    "odds": 1.09,
+    "bookmaker": "All British Casino",
+    "probability": 0.812988,
+    "fairOdds": 1.23,
+    "impliedProbability": 0.917431,
+    "noVigProbability": 0.861794,
+    "expectedValue": -0.113843,
+    "expectedValuePct": -11.38,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-11.38% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-11.38% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "e23e818c0363608ccf0936e58f3c20b21c646a9a582c758c024ad97d5ba687d2"
+  },
+  {
+    "sequenceIndex": 5,
+    "prevAnalysisHash": "e23e818c0363608ccf0936e58f3c20b21c646a9a582c758c024ad97d5ba687d2",
+    "analysisId": "anl_1795541976377_e2f3f0",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__double_chance__X2__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "X2",
+    "line": null,
+    "odds": 3,
+    "bookmaker": "Bet365",
+    "probability": 0.433082,
+    "fairOdds": 2.309,
+    "impliedProbability": 0.333333,
+    "noVigProbability": 0.341877,
+    "expectedValue": 0.299246,
+    "expectedValuePct": 29.92,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+29.92%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +29.92%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "eecf974b3d4ab9c37500646fffc15da7bd803d0bbdb090bfefc1f6cf5c009ffa"
+  },
+  {
+    "sequenceIndex": 6,
+    "prevAnalysisHash": "eecf974b3d4ab9c37500646fffc15da7bd803d0bbdb090bfefc1f6cf5c009ffa",
+    "analysisId": "anl_1795541976383_1d6bb6",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__draw_no_bet__HOME__0",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "draw_no_bet",
+    "market": "Draw No Bet",
+    "selection": "HOME",
+    "line": 0,
+    "odds": 1.13,
+    "bookmaker": "Bet365",
+    "probability": 0.75195,
+    "fairOdds": 1.3299,
+    "impliedProbability": 0.884956,
+    "noVigProbability": 0.8519,
+    "expectedValue": -0.150296,
+    "expectedValuePct": -15.03,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-15.03% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-15.03% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "e07ca3b02584f2f226fcdf9158b8d3204ebd8941d09f521b9abb4545879adda9"
+  },
+  {
+    "sequenceIndex": 7,
+    "prevAnalysisHash": "e07ca3b02584f2f226fcdf9158b8d3204ebd8941d09f521b9abb4545879adda9",
+    "analysisId": "anl_1795541976388_d3bae2",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__draw_no_bet__AWAY__0",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "draw_no_bet",
+    "market": "Draw No Bet",
+    "selection": "AWAY",
+    "line": 0,
+    "odds": 6.5,
+    "bookmaker": "Paddy Power",
+    "probability": 0.24805,
+    "fairOdds": 4.0315,
+    "impliedProbability": 0.153846,
+    "noVigProbability": 0.1481,
+    "expectedValue": 0.612322,
+    "expectedValuePct": 61.23,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+61.23%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +61.23%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "397bc561e855a27fc4971566c6f873b45d0025d6b1fd518ae096aeeb6140e47f"
+  },
+  {
+    "sequenceIndex": 8,
+    "prevAnalysisHash": "397bc561e855a27fc4971566c6f873b45d0025d6b1fd518ae096aeeb6140e47f",
+    "analysisId": "anl_1795541976394_f40ec9",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__btts__YES__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "btts",
+    "market": "Ambos Equipos Marcan",
+    "selection": "YES",
+    "line": null,
+    "odds": 1.95,
+    "bookmaker": "Bet365",
+    "probability": 0.505079,
+    "fairOdds": 1.9799,
+    "impliedProbability": 0.512821,
+    "noVigProbability": 0.489529,
+    "expectedValue": -0.015096,
+    "expectedValuePct": -1.51,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-1.51% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-1.51% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "3709d2a205597f92a157a714c51f28221ad6930ba5aade22209d658433bb6acb"
+  },
+  {
+    "sequenceIndex": 9,
+    "prevAnalysisHash": "3709d2a205597f92a157a714c51f28221ad6930ba5aade22209d658433bb6acb",
+    "analysisId": "anl_1795541976400_0b34f1",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__btts__NO__none",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "btts",
+    "market": "Ambos Equipos Marcan",
+    "selection": "NO",
+    "line": null,
+    "odds": 1.87,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.494921,
+    "fairOdds": 2.0205,
+    "impliedProbability": 0.534759,
+    "noVigProbability": 0.510471,
+    "expectedValue": -0.074498,
+    "expectedValuePct": -7.45,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-7.45% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-7.45% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "d2314a9bd5040ae93057147f17d8ec032a44af28f3ca5846713ef276064ab738"
+  },
+  {
+    "sequenceIndex": 10,
+    "prevAnalysisHash": "d2314a9bd5040ae93057147f17d8ec032a44af28f3ca5846713ef276064ab738",
+    "analysisId": "anl_1795541976405_bfcd9f",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__match_goals__OVER__2.5",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_goals",
+    "market": "Total Goles 2.5",
+    "selection": "OVER",
+    "line": 2.5,
+    "odds": 1.75,
+    "bookmaker": "All British Casino",
+    "probability": 0.502904,
+    "fairOdds": 1.9885,
+    "impliedProbability": 0.571429,
+    "noVigProbability": 0.545455,
+    "expectedValue": -0.119918,
+    "expectedValuePct": -11.99,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-11.99% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-11.99% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "686ebcab7d7250d6aa39901729b25612ea5e44960fa449d3db69442d0fc96c93"
+  },
+  {
+    "sequenceIndex": 11,
+    "prevAnalysisHash": "686ebcab7d7250d6aa39901729b25612ea5e44960fa449d3db69442d0fc96c93",
+    "analysisId": "anl_1795541976412_59d289",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__match_goals__UNDER__2.5",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_goals",
+    "market": "Total Goles 2.5",
+    "selection": "UNDER",
+    "line": 2.5,
+    "odds": 2.1,
+    "bookmaker": "Bet365",
+    "probability": 0.497096,
+    "fairOdds": 2.0117,
+    "impliedProbability": 0.47619,
+    "noVigProbability": 0.454545,
+    "expectedValue": 0.043902,
+    "expectedValuePct": 4.39,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+4.39%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +4.39%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "af5ebe82ab1848a38ff5c87db1a14aecf436676ca2a9b9ff87c2a925b5b1fcb6"
+  },
+  {
+    "sequenceIndex": 12,
+    "prevAnalysisHash": "af5ebe82ab1848a38ff5c87db1a14aecf436676ca2a9b9ff87c2a925b5b1fcb6",
+    "analysisId": "anl_1795541976418_d768a9",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__asian_handicap__HOME__-1.5",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "asian_handicap",
+    "market": "Hándicap Asiático (-1.5)",
+    "selection": "HOME",
+    "line": -1.5,
+    "odds": 2.25,
+    "bookmaker": "All British Casino",
+    "probability": 0.325015,
+    "fairOdds": 3.0768,
+    "impliedProbability": 0.444444,
+    "noVigProbability": 0.423077,
+    "expectedValue": -0.268716,
+    "expectedValuePct": -26.87,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-26.87% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-26.87% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "114ae4bddf5d8b42507a36deb02dc7077b1ca088c8ed63c89ac4552849331037"
+  },
+  {
+    "sequenceIndex": 13,
+    "prevAnalysisHash": "114ae4bddf5d8b42507a36deb02dc7077b1ca088c8ed63c89ac4552849331037",
+    "analysisId": "anl_1795541976424_0c5333",
+    "opportunityId": "arsenal-v-borussia-dortmund.0uein1n__asian_handicap__AWAY__1.5",
+    "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+    "match": "Arsenal vs Borussia Dortmund",
+    "league": "UEFA Champions League",
+    "marketFamily": "asian_handicap",
+    "market": "Hándicap Asiático (1.5)",
+    "selection": "AWAY",
+    "line": 1.5,
+    "odds": 1.65,
+    "bookmaker": "Bet365",
+    "probability": 0.674985,
+    "fairOdds": 1.4815,
+    "impliedProbability": 0.606061,
+    "noVigProbability": 0.576923,
+    "expectedValue": 0.113725,
+    "expectedValuePct": 11.37,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+11.37%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +11.37%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "a8f1c61ffdab3b3b10253662b8b37695ff478f6d30a3411ab866aceaeb972c17"
+  },
+  {
+    "sequenceIndex": 14,
+    "prevAnalysisHash": "a8f1c61ffdab3b3b10253662b8b37695ff478f6d30a3411ab866aceaeb972c17",
+    "analysisId": "anl_1795541976435_cd1863",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__match_1x2__1__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "1",
+    "line": null,
+    "odds": 3.4,
+    "bookmaker": "All British Casino",
+    "probability": 0.383527,
+    "fairOdds": 2.6074,
+    "impliedProbability": 0.294118,
+    "noVigProbability": 0.284482,
+    "expectedValue": 0.303992,
+    "expectedValuePct": 30.4,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+30.4%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +30.4%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "46a8cb0a0604002b036e7133674466f693f6a76949bd876fcd7b147fd429ad76"
+  },
+  {
+    "sequenceIndex": 15,
+    "prevAnalysisHash": "46a8cb0a0604002b036e7133674466f693f6a76949bd876fcd7b147fd429ad76",
+    "analysisId": "anl_1795541976441_455a76",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__match_1x2__2__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "2",
+    "line": null,
+    "odds": 2.13,
+    "bookmaker": "All British Casino",
+    "probability": 0.391573,
+    "fairOdds": 2.5538,
+    "impliedProbability": 0.469484,
+    "noVigProbability": 0.454102,
+    "expectedValue": -0.16595,
+    "expectedValuePct": -16.59,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-16.59% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-16.59% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "b8aa9e4d716e27b172df667f5a57e93aeeb83c14f8613169b7f5b9f9a6f57991"
+  },
+  {
+    "sequenceIndex": 16,
+    "prevAnalysisHash": "b8aa9e4d716e27b172df667f5a57e93aeeb83c14f8613169b7f5b9f9a6f57991",
+    "analysisId": "anl_1795541976448_65ed6a",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__match_1x2__X__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "X",
+    "line": null,
+    "odds": 3.7,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.224899,
+    "fairOdds": 4.4464,
+    "impliedProbability": 0.27027,
+    "noVigProbability": 0.261416,
+    "expectedValue": -0.167874,
+    "expectedValuePct": -16.79,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-16.79% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-16.79% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "87b7631bbcdae8d17a53f3b9f7c3c951783f493be2a41125e4427c6c64e48b64"
+  },
+  {
+    "sequenceIndex": 17,
+    "prevAnalysisHash": "87b7631bbcdae8d17a53f3b9f7c3c951783f493be2a41125e4427c6c64e48b64",
+    "analysisId": "anl_1795541976453_296c94",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__double_chance__12__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "12",
+    "line": null,
+    "odds": 1.29,
+    "bookmaker": "All British Casino",
+    "probability": 0.775101,
+    "fairOdds": 1.2902,
+    "impliedProbability": 0.775194,
+    "noVigProbability": 0.738584,
+    "expectedValue": -0.00012,
+    "expectedValuePct": -0.01,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-0.01% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-0.01% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "2d38a19ba0f0dce1c210bca290bebb55d91c6c483214805f6bc37f27c398fff8"
+  },
+  {
+    "sequenceIndex": 18,
+    "prevAnalysisHash": "2d38a19ba0f0dce1c210bca290bebb55d91c6c483214805f6bc37f27c398fff8",
+    "analysisId": "anl_1795541976459_00d0af",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__double_chance__1X__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "1X",
+    "line": null,
+    "odds": 1.54,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.608427,
+    "fairOdds": 1.6436,
+    "impliedProbability": 0.649351,
+    "noVigProbability": 0.545898,
+    "expectedValue": -0.063022,
+    "expectedValuePct": -6.3,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-6.3% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-6.3% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "1b8c5695fd5b48a6c68860fd9b713cdb59559288226717eae743d82cdaa7dc80"
+  },
+  {
+    "sequenceIndex": 19,
+    "prevAnalysisHash": "1b8c5695fd5b48a6c68860fd9b713cdb59559288226717eae743d82cdaa7dc80",
+    "analysisId": "anl_1795541976466_b295ed",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__double_chance__X2__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "X2",
+    "line": null,
+    "odds": 1.5,
+    "bookmaker": "Bet365",
+    "probability": 0.616473,
+    "fairOdds": 1.6221,
+    "impliedProbability": 0.666667,
+    "noVigProbability": 0.715518,
+    "expectedValue": -0.07529,
+    "expectedValuePct": -7.53,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-7.53% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-7.53% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "850157bb46c2b7852984319361b269e1205edf4e99197ac6533f369c76c140e3"
+  },
+  {
+    "sequenceIndex": 20,
+    "prevAnalysisHash": "850157bb46c2b7852984319361b269e1205edf4e99197ac6533f369c76c140e3",
+    "analysisId": "anl_1795541976472_6a082b",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__draw_no_bet__HOME__0",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "draw_no_bet",
+    "market": "Draw No Bet",
+    "selection": "HOME",
+    "line": 0,
+    "odds": 2.4,
+    "bookmaker": "Paddy Power",
+    "probability": 0.49481,
+    "fairOdds": 2.021,
+    "impliedProbability": 0.416667,
+    "noVigProbability": 0.428571,
+    "expectedValue": 0.187543,
+    "expectedValuePct": 18.75,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+18.75%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +18.75%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "08c3adc303bab49b4b3f7f0bf4d6ab32e5398efd580ce1c417473817df1e4904"
+  },
+  {
+    "sequenceIndex": 21,
+    "prevAnalysisHash": "08c3adc303bab49b4b3f7f0bf4d6ab32e5398efd580ce1c417473817df1e4904",
+    "analysisId": "anl_1795541976478_2934af",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__draw_no_bet__AWAY__0",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "draw_no_bet",
+    "market": "Draw No Bet",
+    "selection": "AWAY",
+    "line": 0,
+    "odds": 1.8,
+    "bookmaker": "Bet365",
+    "probability": 0.50519,
+    "fairOdds": 1.9795,
+    "impliedProbability": 0.555556,
+    "noVigProbability": 0.571429,
+    "expectedValue": -0.090657,
+    "expectedValuePct": -9.07,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-9.07% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-9.07% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "4304f9c27e0034842beb0e8446626b3cc7b5a58c94f5a9e03b445792b65a0ec3"
+  },
+  {
+    "sequenceIndex": 22,
+    "prevAnalysisHash": "4304f9c27e0034842beb0e8446626b3cc7b5a58c94f5a9e03b445792b65a0ec3",
+    "analysisId": "anl_1795541976483_47a22d",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__btts__YES__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "btts",
+    "market": "Ambos Equipos Marcan",
+    "selection": "YES",
+    "line": null,
+    "odds": 1.54,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.719884,
+    "fairOdds": 1.3891,
+    "impliedProbability": 0.649351,
+    "noVigProbability": 0.623472,
+    "expectedValue": 0.108621,
+    "expectedValuePct": 10.86,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+10.86%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +10.86%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "5d7ec9b8a99ff1757a002c7a32e8910dfcf24b69c528721c531b1782eeac6a3a"
+  },
+  {
+    "sequenceIndex": 23,
+    "prevAnalysisHash": "5d7ec9b8a99ff1757a002c7a32e8910dfcf24b69c528721c531b1782eeac6a3a",
+    "analysisId": "anl_1795541976490_43466a",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__btts__NO__none",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "btts",
+    "market": "Ambos Equipos Marcan",
+    "selection": "NO",
+    "line": null,
+    "odds": 2.55,
+    "bookmaker": "Paddy Power",
+    "probability": 0.280116,
+    "fairOdds": 3.5699,
+    "impliedProbability": 0.392157,
+    "noVigProbability": 0.376528,
+    "expectedValue": -0.285704,
+    "expectedValuePct": -28.57,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-28.57% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-28.57% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "cbd4039f6c44fea3e6a138db18db5f8c6fa20f90ac50951adbdf20ec2f6d9b97"
+  },
+  {
+    "sequenceIndex": 24,
+    "prevAnalysisHash": "cbd4039f6c44fea3e6a138db18db5f8c6fa20f90ac50951adbdf20ec2f6d9b97",
+    "analysisId": "anl_1795541976497_34cbc3",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__match_goals__OVER__2.5",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_goals",
+    "market": "Total Goles 2.5",
+    "selection": "OVER",
+    "line": 2.5,
+    "odds": 1.71,
+    "bookmaker": "All British Casino",
+    "probability": 0.720506,
+    "fairOdds": 1.3879,
+    "impliedProbability": 0.584795,
+    "noVigProbability": 0.560411,
+    "expectedValue": 0.232065,
+    "expectedValuePct": 23.21,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+23.21%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +23.21%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "d18c6e07b9a1d819765d66e4d6e5cec2d0dc7df1b526ec6573e8765d690f183c"
+  },
+  {
+    "sequenceIndex": 25,
+    "prevAnalysisHash": "d18c6e07b9a1d819765d66e4d6e5cec2d0dc7df1b526ec6573e8765d690f183c",
+    "analysisId": "anl_1795541976502_db41d2",
+    "opportunityId": "feyenoord-v-fc-porto.1h2nn2k__match_goals__UNDER__2.5",
+    "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+    "match": "Feyenoord vs FC Porto",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_goals",
+    "market": "Total Goles 2.5",
+    "selection": "UNDER",
+    "line": 2.5,
+    "odds": 2.18,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.279494,
+    "fairOdds": 3.5779,
+    "impliedProbability": 0.458716,
+    "noVigProbability": 0.439589,
+    "expectedValue": -0.390703,
+    "expectedValuePct": -39.07,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-24T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-39.07% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-39.07% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "361f1dbfd49db74a6b8c2e35e7bc776a2906f471f7a321df505078595050b7fe"
+  },
+  {
+    "sequenceIndex": 26,
+    "prevAnalysisHash": "361f1dbfd49db74a6b8c2e35e7bc776a2906f471f7a321df505078595050b7fe",
+    "analysisId": "anl_1795541976515_076662",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__match_1x2__1__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "1",
+    "line": null,
+    "odds": 1.4,
+    "bookmaker": "Bet365",
+    "probability": 0.729622,
+    "fairOdds": 1.3706,
+    "impliedProbability": 0.714286,
+    "noVigProbability": 0.684017,
+    "expectedValue": 0.021471,
+    "expectedValuePct": 2.15,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "WATCHLIST",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+2.15% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+2.15% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "e5004fea98cc785f3cc979222307317136b9050975a2172661d2e4f6cdf10b2b"
+  },
+  {
+    "sequenceIndex": 27,
+    "prevAnalysisHash": "e5004fea98cc785f3cc979222307317136b9050975a2172661d2e4f6cdf10b2b",
+    "analysisId": "anl_1795541976521_87e01f",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__match_1x2__2__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "2",
+    "line": null,
+    "odds": 6.75,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.134748,
+    "fairOdds": 7.4213,
+    "impliedProbability": 0.148148,
+    "noVigProbability": 0.14187,
+    "expectedValue": -0.090451,
+    "expectedValuePct": -9.05,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-9.05% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-9.05% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "8ab26e50673366678f3efa1114f6cfb2d9e9af5723b8d21f8b6aa14fccfc241d"
+  },
+  {
+    "sequenceIndex": 28,
+    "prevAnalysisHash": "8ab26e50673366678f3efa1114f6cfb2d9e9af5723b8d21f8b6aa14fccfc241d",
+    "analysisId": "anl_1795541976527_a6b253",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__match_1x2__X__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_1x2",
+    "market": "Ganador 1X2",
+    "selection": "X",
+    "line": null,
+    "odds": 5.5,
+    "bookmaker": "Bet365",
+    "probability": 0.13563,
+    "fairOdds": 7.373,
+    "impliedProbability": 0.181818,
+    "noVigProbability": 0.174113,
+    "expectedValue": -0.254035,
+    "expectedValuePct": -25.4,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-25.4% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-25.4% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "a9adf408e39586702af10886409c6b85dfef5bfa1042549961acdaa8d160bae4"
+  },
+  {
+    "sequenceIndex": 29,
+    "prevAnalysisHash": "a9adf408e39586702af10886409c6b85dfef5bfa1042549961acdaa8d160bae4",
+    "analysisId": "anl_1795541976533_a1be0b",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__double_chance__12__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "12",
+    "line": null,
+    "odds": 1.15,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.86437,
+    "fairOdds": 1.1569,
+    "impliedProbability": 0.869565,
+    "noVigProbability": 0.825887,
+    "expectedValue": -0.005975,
+    "expectedValuePct": -0.6,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-0.6% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-0.6% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "5cb33f0aa02e7991c96ebd03ae2c9e4941d561ffa20aa3ae8e4a6c456ee817d0"
+  },
+  {
+    "sequenceIndex": 30,
+    "prevAnalysisHash": "5cb33f0aa02e7991c96ebd03ae2c9e4941d561ffa20aa3ae8e4a6c456ee817d0",
+    "analysisId": "anl_1795541976540_97ac85",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__double_chance__1X__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "1X",
+    "line": null,
+    "odds": 1.13,
+    "bookmaker": "All British Casino",
+    "probability": 0.865252,
+    "fairOdds": 1.1557,
+    "impliedProbability": 0.884956,
+    "noVigProbability": 0.85813,
+    "expectedValue": -0.022265,
+    "expectedValuePct": -2.23,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-2.23% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-2.23% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "d1b990359b6837a20e63635a298c2400ee50c1998f7ddca284625bcb75b0150f"
+  },
+  {
+    "sequenceIndex": 31,
+    "prevAnalysisHash": "d1b990359b6837a20e63635a298c2400ee50c1998f7ddca284625bcb75b0150f",
+    "analysisId": "anl_1795541976547_a53eb1",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__double_chance__X2__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "double_chance",
+    "market": "Doble Oportunidad",
+    "selection": "X2",
+    "line": null,
+    "odds": 2.8,
+    "bookmaker": "Paddy Power",
+    "probability": 0.270378,
+    "fairOdds": 3.6985,
+    "impliedProbability": 0.357143,
+    "noVigProbability": 0.315983,
+    "expectedValue": -0.242942,
+    "expectedValuePct": -24.29,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-24.29% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-24.29% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "fdc1847e9fe0378dbb5742dd448d872244945ee0a2c959011946557606fb23f7"
+  },
+  {
+    "sequenceIndex": 32,
+    "prevAnalysisHash": "fdc1847e9fe0378dbb5742dd448d872244945ee0a2c959011946557606fb23f7",
+    "analysisId": "anl_1795541976554_9bf7f8",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__draw_no_bet__HOME__0",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "draw_no_bet",
+    "market": "Draw No Bet",
+    "selection": "HOME",
+    "line": 0,
+    "odds": 1.17,
+    "bookmaker": "Bet365",
+    "probability": 0.844108,
+    "fairOdds": 1.1847,
+    "impliedProbability": 0.854701,
+    "noVigProbability": 0.810373,
+    "expectedValue": -0.012393,
+    "expectedValuePct": -1.24,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-1.24% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-1.24% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "f72c4025af6fa165ed5e61f625d48461aac1897153a639d1a55d8c6a7a93a1d4"
+  },
+  {
+    "sequenceIndex": 33,
+    "prevAnalysisHash": "f72c4025af6fa165ed5e61f625d48461aac1897153a639d1a55d8c6a7a93a1d4",
+    "analysisId": "anl_1795541976560_f4f148",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__draw_no_bet__AWAY__0",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "draw_no_bet",
+    "market": "Draw No Bet",
+    "selection": "AWAY",
+    "line": 0,
+    "odds": 5,
+    "bookmaker": "Bet365",
+    "probability": 0.155892,
+    "fairOdds": 6.4147,
+    "impliedProbability": 0.2,
+    "noVigProbability": 0.189627,
+    "expectedValue": -0.220542,
+    "expectedValuePct": -22.05,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-22.05% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-22.05% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "7ee0c3726534a77e24b93ad5ff0c40710e1b822870298eb8319d85088bc6db73"
+  },
+  {
+    "sequenceIndex": 34,
+    "prevAnalysisHash": "7ee0c3726534a77e24b93ad5ff0c40710e1b822870298eb8319d85088bc6db73",
+    "analysisId": "anl_1795541976567_061454",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__btts__YES__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "btts",
+    "market": "Ambos Equipos Marcan",
+    "selection": "YES",
+    "line": null,
+    "odds": 1.38,
+    "bookmaker": "All British Casino",
+    "probability": 0.773743,
+    "fairOdds": 1.2924,
+    "impliedProbability": 0.724638,
+    "noVigProbability": 0.688488,
+    "expectedValue": 0.067765,
+    "expectedValuePct": 6.78,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+6.78%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +6.78%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "6e98cd6cfd510929f7a460c3535fa2f482fcb785122e3676b1a1c7c3beaea48a"
+  },
+  {
+    "sequenceIndex": 35,
+    "prevAnalysisHash": "6e98cd6cfd510929f7a460c3535fa2f482fcb785122e3676b1a1c7c3beaea48a",
+    "analysisId": "anl_1795541976573_529913",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__btts__NO__none",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "btts",
+    "market": "Ambos Equipos Marcan",
+    "selection": "NO",
+    "line": null,
+    "odds": 3.05,
+    "bookmaker": "BetMGM UK",
+    "probability": 0.226257,
+    "fairOdds": 4.4198,
+    "impliedProbability": 0.327869,
+    "noVigProbability": 0.311512,
+    "expectedValue": -0.309916,
+    "expectedValuePct": -30.99,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-30.99% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-30.99% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "891d441a18abab62d95d269fc3e3593adf61aac788255fdcb6efbba7347063ee"
+  },
+  {
+    "sequenceIndex": 36,
+    "prevAnalysisHash": "891d441a18abab62d95d269fc3e3593adf61aac788255fdcb6efbba7347063ee",
+    "analysisId": "anl_1795541976580_832d37",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__match_goals__OVER__3.5",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_goals",
+    "market": "Total Goles 3.5",
+    "selection": "OVER",
+    "line": 3.5,
+    "odds": 1.62,
+    "bookmaker": "Bet365",
+    "probability": 0.745045,
+    "fairOdds": 1.3422,
+    "impliedProbability": 0.617284,
+    "noVigProbability": 0.586735,
+    "expectedValue": 0.206973,
+    "expectedValuePct": 20.7,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+20.7%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +20.7%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "da4d831032f333c4f8eda6e8cb49f35a908980c4cf173d4598a715b2d7184cd7"
+  },
+  {
+    "sequenceIndex": 37,
+    "prevAnalysisHash": "da4d831032f333c4f8eda6e8cb49f35a908980c4cf173d4598a715b2d7184cd7",
+    "analysisId": "anl_1795541976586_5203e9",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__match_goals__UNDER__3.5",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "match_goals",
+    "market": "Total Goles 3.5",
+    "selection": "UNDER",
+    "line": 3.5,
+    "odds": 2.3,
+    "bookmaker": "Bet365",
+    "probability": 0.254955,
+    "fairOdds": 3.9223,
+    "impliedProbability": 0.434783,
+    "noVigProbability": 0.413265,
+    "expectedValue": -0.413604,
+    "expectedValuePct": -41.36,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-41.36% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-41.36% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "c123c364fe42abe1f312f2b6bc2ab9c1cf64f7c9cf3953b4314308f45e7348e3"
+  },
+  {
+    "sequenceIndex": 38,
+    "prevAnalysisHash": "c123c364fe42abe1f312f2b6bc2ab9c1cf64f7c9cf3953b4314308f45e7348e3",
+    "analysisId": "anl_1795541976593_e037bd",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__asian_handicap__HOME__-1.5",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "asian_handicap",
+    "market": "Hándicap Asiático (-1.5)",
+    "selection": "HOME",
+    "line": -1.5,
+    "odds": 2,
+    "bookmaker": "Paddy Power",
+    "probability": 0.559249,
+    "fairOdds": 1.7881,
+    "impliedProbability": 0.5,
+    "noVigProbability": 0.484536,
+    "expectedValue": 0.118498,
+    "expectedValuePct": 11.85,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "OPPORTUNITY",
+    "elenaSummary": {
+      "available": true,
+      "approved": true,
+      "status": "APROBADO",
+      "reasons": [
+        "EV positivo validado (+11.85%), calidad de datos ALTA y precio coherente."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "APROBADO",
+      "reason": "APROBADO (Elena + Risk Manager): EV +11.85%, sin superposición horaria y datos validados."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "afe1d458ef1cba945a15e5103047e477d396e021ba876b3b91031cba243dea63"
+  },
+  {
+    "sequenceIndex": 39,
+    "prevAnalysisHash": "afe1d458ef1cba945a15e5103047e477d396e021ba876b3b91031cba243dea63",
+    "analysisId": "anl_1795541976600_68fee8",
+    "opportunityId": "inter-v-vfb-stuttgart.0rpftmy__asian_handicap__AWAY__1.5",
+    "matchId": "inter-v-vfb-stuttgart.0rpftmy",
+    "match": "Inter vs VfB Stuttgart",
+    "league": "UEFA Champions League",
+    "marketFamily": "asian_handicap",
+    "market": "Hándicap Asiático (1.5)",
+    "selection": "AWAY",
+    "line": 1.5,
+    "odds": 1.88,
+    "bookmaker": "Bet365",
+    "probability": 0.440751,
+    "fairOdds": 2.2689,
+    "impliedProbability": 0.531915,
+    "noVigProbability": 0.515464,
+    "expectedValue": -0.171388,
+    "expectedValuePct": -17.14,
+    "modelId": "MatchOutcomeDC",
+    "modelVersion": "match-outcome-dc-v1.0-experimental",
+    "dataCoverage": "COMPLETO",
+    "dataQualityScore": 0.95,
+    "evidenceTier": "INSUFFICIENT_SAMPLE",
+    "analyzedAtUtc": "2026-11-24T17:39:36.334Z",
+    "kickoffUtc": "2026-11-25T20:00:00.000Z",
+    "previousAnalysisId": null,
+    "changeReason": [
+      "NEW_MARKET",
+      "INITIAL_ANALYSIS"
+    ],
+    "status": "REJECTED",
+    "elenaSummary": {
+      "available": true,
+      "approved": false,
+      "status": "RECHAZADO",
+      "reasons": [
+        "EV insuficiente (+-17.14% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+      ]
+    },
+    "riskManagerSummary": {
+      "approved": true,
+      "finalStatus": "RECHAZADO",
+      "reason": "RECHAZO ELENA: EV insuficiente (+-17.14% < mínimo +2.5%). Probabilidad alta sin EV positivo no justifica entrada."
+    },
+    "autoExecutionAllowed": false,
+    "analysisHash": "7cdb6f535c42ecc4dca861fcdab031d307f9791af4728e6f4eeaed468542ba57"
+  }
+]

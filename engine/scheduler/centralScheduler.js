@@ -52,7 +52,8 @@ class CentralAutonomousScheduler {
       sync: false,
       experimentalMarkets: false,
       experimentalSnapshots: false,
-      experimentalSettlement: false
+      experimentalSettlement: false,
+      experimentalRescan: false
     };
 
     // Configuración de intervalos (en milisegundos)
@@ -810,6 +811,37 @@ class CentralAutonomousScheduler {
       return { ok: false, error: err.message, autoExecutionAllowed: false };
     } finally {
       this.locks.experimentalSettlement = false;
+    }
+  }
+
+  /**
+   * Fase 10.2: Ejecuta FullMarketRescanEngine (manual controlado, scheduler permanente deshabilitado).
+   */
+  async runExperimentalFullRescanJob(options = {}) {
+    if (this.locks.experimentalRescan) {
+      return { skipped: true, reason: 'LOCKED', autoExecutionAllowed: false };
+    }
+    this.locks.experimentalRescan = true;
+    const startTime = Date.now();
+    try {
+      const { FullMarketRescanEngine } = require('../experimental/markets/reanalysis/fullMarketRescanEngine');
+      const engine = options.engine || new FullMarketRescanEngine(options.engineOptions);
+      const res = await engine.runFullRescan(options);
+      this._recordExecution('experimentalRescan', startTime, Date.now() - startTime, res.ok ? 'SUCCESS' : 'ERROR', {
+        recordsProcessed: res?.summary?.versionsRecorded || 0,
+        message: `Rescan Fase 10.2: ${res?.summary?.eventsProcessed || 0} eventos, ${res?.summary?.marketsExplored || 0} mercados, ${res?.summary?.newOpportunitiesCount || 0} nuevas, ${res?.summary?.existingChangedCount || 0} cambios.`,
+        error: res.ok ? null : res.error
+      });
+      return res;
+    } catch (err) {
+      this._recordExecution('experimentalRescan', startTime, Date.now() - startTime, 'ERROR', {
+        recordsProcessed: 0,
+        message: 'Fallo en FullMarketRescanEngine experimental.',
+        error: err.message
+      });
+      return { ok: false, error: err.message, autoExecutionAllowed: false };
+    } finally {
+      this.locks.experimentalRescan = false;
     }
   }
 

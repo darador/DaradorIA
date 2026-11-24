@@ -110,6 +110,29 @@
       <div class="table-wrap"><table id="calibrationTable"></table></div>
     </section>
 
+    <section class="panel" aria-label="Reanálisis Integral y Oportunidades Fase 10.2">
+      <h2>
+        Oportunidades & Reanálisis Integral (Fase 10.2)
+        <span style="display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;">
+          <span class="badge badge-violet" id="rescanMetaBadge">Sin rescan</span>
+          <button type="button" id="btnReloadRescan" style="background:#1e293b;color:#e2e8f0;border:1px solid var(--border);border-radius:7px;padding:0.25rem 0.6rem;font-size:0.72rem;font-weight:700;cursor:pointer;">↻ Refrescar Rescan</button>
+        </span>
+      </h2>
+      <div class="kpi-grid" id="rescanSummaryGrid" style="margin-bottom:0.7rem;"></div>
+      <div class="filters" style="margin-bottom:0.65rem;">
+        <select id="fRescanStatus">
+          <option value="TOP">Priorizadas (OPPORTUNITY + WATCHLIST)</option>
+          <option value="">Todos los estados</option>
+          <option value="OPPORTUNITY">OPPORTUNITY</option>
+          <option value="WATCHLIST">WATCHLIST</option>
+          <option value="REJECTED">REJECTED</option>
+          <option value="INSUFFICIENT_DATA">INSUFFICIENT_DATA</option>
+        </select>
+      </div>
+      <div class="table-wrap"><table id="rescanRankingTable"></table></div>
+      <div id="rescanDetailDrawer" style="display:none;margin-top:0.7rem;padding:0.75rem;border-radius:9px;background:rgba(9,15,32,0.85);border:1px solid rgba(167,139,250,0.35);font-size:0.76rem;"></div>
+    </section>
+
     <section class="panel">
       <h2>Observaciones Registradas — Bookmaker, Snapshots y CLV</h2>
       <div class="table-wrap"><table id="obsDetailTable"></table></div>
@@ -124,6 +147,8 @@
   <script>
     (function () {
       let DATA = null;
+      let RESCAN = null;
+      let selectedOppId = null;
 
       function fmt(v, suffix = '') {
         return (v === null || v === undefined || Number.isNaN(v)) ? '—' : `${v}${suffix}`;
@@ -286,7 +311,71 @@
         document.getElementById('alertsBox').innerHTML = alerts.length === 0
           ? '<div class="empty">Sin alertas de calidad registradas.</div>'
           : alerts.map(a => `<div class="alert-row"><strong>[${a.code}]</strong> ${a.message} <span style="color:var(--muted);">(${a.timestampUtc})</span></div>`).join('');
+
+        renderRescanPanel();
       }
+
+      function renderRescanPanel() {
+        const s = RESCAN?.summary || null;
+        const badge = document.getElementById('rescanMetaBadge');
+        if (!s) {
+          badge.textContent = 'Sin rescan aún';
+          document.getElementById('rescanSummaryGrid').innerHTML = '<div class="empty">Aún no se ejecutó ningún rescan integral (Fase 10.2).</div>';
+          document.getElementById('rescanRankingTable').innerHTML = '';
+          return;
+        }
+        badge.textContent = `SHA-256: ${RESCAN.integrity?.ok ? 'OK' : 'ALERTA'} · ${s.apiCallsUsed} MCP calls · ${s.durationMs}ms`;
+        document.getElementById('rescanSummaryGrid').innerHTML = `
+          <div class="kpi"><div class="kpi-lbl">Eventos / Mercados</div><div class="kpi-val">${s.eventsProcessed} / ${s.marketsExplored}</div><div class="kpi-sub">Descubiertos: ${s.eventsDiscovered}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Nuevas / Cambios</div><div class="kpi-val" style="color:var(--cyan);">${s.newOpportunitiesCount} / ${s.existingChangedCount}</div><div class="kpi-sub">Mejoraron: ${s.improvedCount} · Perdieron valor: ${s.deterioratedCount}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Watchlist / Rechazadas</div><div class="kpi-val">${s.watchlistCount} / ${s.rejectedCount}</div><div class="kpi-sub">Datos insuf.: ${s.insufficientDataCount}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Versiones / Errores</div><div class="kpi-val">${s.versionsRecorded} / ${(s.errors || []).length}</div><div class="kpi-sub">Sin cambio omitidas: ${s.versionsUnchangedSkipped}</div></div>
+        `;
+
+        const filterSt = document.getElementById('fRescanStatus').value;
+        const list = (RESCAN.ranking || []).filter(item => {
+          if (filterSt === 'TOP') return item.status === 'OPPORTUNITY' || item.status === 'WATCHLIST';
+          return !filterSt || item.status === filterSt;
+        }).slice(0, 25);
+
+        document.getElementById('rescanRankingTable').innerHTML = list.length === 0
+          ? '<tr><td class="empty">No hay oportunidades para el filtro seleccionado.</td></tr>'
+          : `<thead><tr><th>Partido</th><th>Inicio</th><th>Mercado</th><th>Selección</th><th>Cuota</th><th>Bookmaker</th><th>Prob.</th><th>Cuota Justa</th><th>EV</th><th>Evidencia</th><th>Variación</th><th>Estado</th></tr></thead><tbody>` +
+            list.map(o => `<tr style="cursor:pointer;" onclick="window._openOppDetail('${o.opportunityId}')">
+              <td><strong>${o.match}</strong><br/><small style="color:var(--muted)">${o.league}</small></td>
+              <td class="mono">${String(o.kickoffUtc || '').slice(5,16).replace('T',' ')}Z</td>
+              <td>${o.market}</td>
+              <td><strong>${o.selection}${o.line !== null && o.line !== undefined ? ' ' + o.line : ''}</strong></td>
+              <td class="mono">${fmt(o.odds)}</td>
+              <td>${o.bookmaker}</td>
+              <td class="mono">${o.probability !== null ? (o.probability * 100).toFixed(1) + '%' : '—'}</td>
+              <td class="mono">${fmt(o.fairOdds)}</td>
+              <td class="mono" style="color:${(o.expectedValuePct || 0) >= 2.5 ? 'var(--cyan)' : 'var(--muted)'};">${fmt(o.expectedValuePct, '%')}</td>
+              <td><span class="badge badge-amber">${o.evidenceTier}</span></td>
+              <td style="font-size:0.68rem;color:var(--muted);">${(o.changeReason || []).join(', ')}</td>
+              <td><span class="badge ${o.status === 'OPPORTUNITY' ? 'badge-cyan' : (o.status === 'WATCHLIST' ? 'badge-violet' : 'badge-amber')}">${o.status}</span></td>
+            </tr>`).join('') + '</tbody>';
+
+        if (selectedOppId) renderOppDetail(selectedOppId);
+      }
+
+      function renderOppDetail(oppId) {
+        selectedOppId = oppId;
+        const drawer = document.getElementById('rescanDetailDrawer');
+        const hist = RESCAN?.histories?.[oppId] || [];
+        if (hist.length === 0) { drawer.style.display = 'none'; return; }
+        const last = hist[hist.length - 1];
+        drawer.style.display = 'block';
+        drawer.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;">
+            <strong>Detalle y Versionado: ${last.match} — ${last.market} (${last.selection})</strong>
+            <button type="button" onclick="document.getElementById('rescanDetailDrawer').style.display='none'" style="background:transparent;color:var(--muted);border:none;cursor:pointer;">✕</button>
+          </div>
+          <div style="margin-bottom:0.4rem;"><strong>Elena:</strong> ${last.elenaSummary ? `${last.elenaSummary.status} (${(last.elenaSummary.reasons || []).join('; ')})` : '—'} · <strong>Risk Manager:</strong> ${last.riskManagerSummary ? last.riskManagerSummary.reason : '—'}</div>
+          <div class="mono" style="font-size:0.7rem;color:var(--muted);">Historial (${hist.length} versiones): ${hist.map(v => `[v${v.sequenceIndex}] ${v.analyzedAtUtc.slice(11,19)}Z @ ${v.odds} (${v.bookmaker}) EV=${v.expectedValuePct}% -> ${v.status} (${(v.changeReason || []).join('/')})`).join(' | ')}</div>
+        `;
+      }
+      window._openOppDetail = renderOppDetail;
 
       async function init() {
         try {
@@ -312,6 +401,12 @@
         ['fPeriod', 'fLeague', 'fFamily', 'fMarket', 'fModel', 'fVersion'].forEach(id => {
           document.getElementById(id).addEventListener('change', render);
         });
+        try {
+          const rRes = await fetch('api/opportunities_fase10_2.json', { cache: 'no-store' });
+          if (rRes.ok) RESCAN = await rRes.json();
+        } catch (_) { RESCAN = null; }
+        document.getElementById('fRescanStatus').addEventListener('change', renderRescanPanel);
+        document.getElementById('btnReloadRescan').addEventListener('click', init);
         render();
       }
 
