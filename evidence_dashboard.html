@@ -87,6 +87,12 @@
       </div>
     </section>
 
+    <section class="panel" aria-label="Monitoreo Operativo Fase 10">
+      <h2>Monitoreo Operativo — Circuito Experimental (Fase 10) <span class="badge badge-cyan" id="opStatusBadge">NOT_EXECUTED</span></h2>
+      <div class="kpi-grid" id="opTelemetryGrid"></div>
+      <div id="opReasonsBox" style="margin-top:0.55rem;font-size:0.74rem;color:var(--muted);"></div>
+    </section>
+
     <section class="kpi-grid" id="kpiGrid" aria-label="Indicadores principales"></section>
 
     <section class="panel">
@@ -168,6 +174,23 @@
         document.getElementById('integrityBadge').textContent = DATA.integrity?.ok
           ? `SHA-256: ${DATA.integrity.intact}/${DATA.integrity.total} OK`
           : `SHA-256: ALERTA (${DATA.integrity?.corruptedCount || 0})`;
+
+        // Monitoreo Operativo Fase 10 (diferencia claramente NOT_EXECUTED / ZERO_OPPORTUNITIES / PROVIDER_ERROR / INSUFFICIENT_DATA / EXECUTED)
+        const op = DATA.operationalStatus || { status: 'NOT_EXECUTED', lastRunSummary: null };
+        const ls = op.lastRunSummary || {};
+        const opBadge = document.getElementById('opStatusBadge');
+        opBadge.textContent = op.status || 'NOT_EXECUTED';
+        opBadge.className = 'badge ' + (op.status === 'EXECUTED' ? 'badge-cyan' : (op.status === 'PROVIDER_ERROR' ? 'badge-red' : 'badge-amber'));
+        document.getElementById('opTelemetryGrid').innerHTML = `
+          <div class="kpi"><div class="kpi-lbl">Última Ejecución Exp.</div><div class="kpi-val" style="font-size:0.82rem;">${op.lastRunAtUtc ? op.lastRunAtUtc.replace('T',' ').slice(0,19) + 'Z' : 'Sin ejecutar'}</div><div class="kpi-sub">Últ. StatsHub: ${op.lastStatsHubQueryAtUtc ? op.lastStatsHubQueryAtUtc.slice(11,19) + 'Z' : '—'}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Partidos (Desc / Inv)</div><div class="kpi-val">${ls.fixturesDiscovered ?? 0} / ${ls.matchesInvestigated ?? 0}</div><div class="kpi-sub">Llamadas MCP: ${ls.mcpCallsUsed ?? 0}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Predicciones / Aceptadas</div><div class="kpi-val">${ls.predictionsGenerated ?? 0} / ${ls.observationsAccepted ?? 0}</div><div class="kpi-sub">Rechazadas: ${ls.observationsRejected ?? 0} · Dup: ${ls.observationsDuplicated ?? 0}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Snapshots Programados</div><div class="kpi-val">${op.scheduledSnapshotsCount ?? 0}</div><div class="kpi-sub">Errores de etapa: ${(ls.stageErrors || []).length}</div></div>
+        `;
+        const rejEntries = Object.entries(ls.rejectionReasons || {});
+        document.getElementById('opReasonsBox').innerHTML = rejEntries.length > 0
+          ? '<strong>Motivos de rechazo / descarte:</strong> ' + rejEntries.map(([k, v]) => `${k} (${v})`).join(' · ')
+          : (op.status === 'NOT_EXECUTED' ? 'El circuito experimental aún no se ejecutó.' : 'Sin rechazos registrados en la última corrida.');
 
         document.getElementById('kpiGrid').innerHTML = `
           <div class="kpi"><div class="kpi-lbl">Observaciones</div><div class="kpi-val">${obs.length}</div><div class="kpi-sub">${matches} partidos únicos</div></div>

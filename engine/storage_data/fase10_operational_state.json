@@ -1,0 +1,460 @@
+{
+  "status": "EXECUTED",
+  "autoExecutionAllowed": false,
+  "inProgressRunId": null,
+  "lastRunAtUtc": "2026-11-24T16:12:51.376Z",
+  "lastStatsHubQueryAtUtc": "2026-11-24T16:12:51.300Z",
+  "runsCount": 1,
+  "lastRunSummary": {
+    "runId": "f10_run_1795536771292",
+    "trigger": "MANUAL_CONTROLLED_FIRST_RUN",
+    "startedAtUtc": "2026-11-24T16:12:51.292Z",
+    "completedAtUtc": "2026-11-24T16:12:51.376Z",
+    "outcomeCategory": "EXECUTED",
+    "autoExecutionAllowed": false,
+    "leaguesScanned": 1,
+    "mcpCallsUsed": 13,
+    "lastStatsHubQueryAtUtc": "2026-11-24T16:12:51.300Z",
+    "fixturesDiscovered": 3,
+    "fixturesSkippedStarted": 0,
+    "fixturesSkippedNoOdds": 0,
+    "matchesInvestigated": 3,
+    "marketsEvaluated": {
+      "match_1x2": 9,
+      "double_chance": 9,
+      "btts": 6,
+      "match_goals": 6,
+      "asian_handicap": 0
+    },
+    "predictionsGenerated": 30,
+    "observationsAccepted": 12,
+    "observationsRejected": 18,
+    "observationsDuplicated": 0,
+    "snapshotsScheduled": 48,
+    "rejectionReasons": {
+      "EV insuficiente (-61.7% < 2.5%)": 1,
+      "EV insuficiente (-39.46% < 2.5%)": 1,
+      "EV insuficiente (-50.22% < 2.5%)": 1,
+      "EV insuficiente (-29.16% < 2.5%)": 1,
+      "EV insuficiente (-48.45% < 2.5%)": 1,
+      "EV insuficiente (-16.59% < 2.5%)": 1,
+      "EV insuficiente (-12.3% < 2.5%)": 1,
+      "EV insuficiente (-10.85% < 2.5%)": 1,
+      "EV insuficiente (-5.44% < 2.5%)": 1,
+      "EV insuficiente (-3.68% < 2.5%)": 1,
+      "EV insuficiente (-16.01% < 2.5%)": 1,
+      "EV insuficiente (-14.75% < 2.5%)": 1,
+      "EV insuficiente (-15.58% < 2.5%)": 1,
+      "EV insuficiente (-0.67% < 2.5%)": 1,
+      "EV insuficiente (-7.35% < 2.5%)": 1,
+      "EV insuficiente (-5.74% < 2.5%)": 1,
+      "EV insuficiente (-23.82% < 2.5%)": 1,
+      "EV insuficiente (-32.62% < 2.5%)": 1
+    },
+    "stageErrors": [],
+    "recordedObservationIds": [
+      "obs9_1795536771306_f65d12",
+      "obs9_1795536771312_3164a3",
+      "obs9_1795536771318_80a934",
+      "obs9_1795536771324_a0084e",
+      "obs9_1795536771329_ae76bc",
+      "obs9_1795536771335_4d5c7d",
+      "obs9_1795536771343_d378ad",
+      "obs9_1795536771349_9f524f",
+      "obs9_1795536771355_263e4b",
+      "obs9_1795536771361_042e79",
+      "obs9_1795536771367_e244e4",
+      "obs9_1795536771373_ff3ab9"
+    ]
+  },
+  "scheduledSnapshots": [
+    {
+      "observationId": "obs9_1795536771306_f65d12",
+      "matchId": "galatasaray-v-aston-villa.1ebawk2",
+      "kickoffUtc": "2026-11-24T17:45:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T16:45:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T17:15:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T17:40:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T17:44:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771312_3164a3",
+      "matchId": "galatasaray-v-aston-villa.1ebawk2",
+      "kickoffUtc": "2026-11-24T17:45:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T16:45:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T17:15:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T17:40:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T17:44:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771318_80a934",
+      "matchId": "galatasaray-v-aston-villa.1ebawk2",
+      "kickoffUtc": "2026-11-24T17:45:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T16:45:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T17:15:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T17:40:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T17:44:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771324_a0084e",
+      "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771329_ae76bc",
+      "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771335_4d5c7d",
+      "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771343_d378ad",
+      "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771349_9f524f",
+      "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771355_263e4b",
+      "matchId": "arsenal-v-borussia-dortmund.0uein1n",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771361_042e79",
+      "matchId": "feyenoord-v-fc-porto.1h2nn2k",
+      "kickoffUtc": "2026-11-24T20:00:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T19:00:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T19:30:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T19:55:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T19:59:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771367_e244e4",
+      "matchId": "galatasaray-v-aston-villa.1ebawk2",
+      "kickoffUtc": "2026-11-24T17:45:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T16:45:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T17:15:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T17:40:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T17:44:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    },
+    {
+      "observationId": "obs9_1795536771373_ff3ab9",
+      "matchId": "galatasaray-v-aston-villa.1ebawk2",
+      "kickoffUtc": "2026-11-24T17:45:00.000Z",
+      "checkpoints": [
+        {
+          "checkpoint": "T_MINUS_60",
+          "scheduledUtc": "2026-11-24T16:45:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_30",
+          "scheduledUtc": "2026-11-24T17:15:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "T_MINUS_5",
+          "scheduledUtc": "2026-11-24T17:40:00.000Z",
+          "status": "SCHEDULED"
+        },
+        {
+          "checkpoint": "CLOSING",
+          "scheduledUtc": "2026-11-24T17:44:00.000Z",
+          "status": "SCHEDULED"
+        }
+      ]
+    }
+  ],
+  "runHistory": [
+    {
+      "runId": "f10_run_1795536771292",
+      "trigger": "MANUAL_CONTROLLED_FIRST_RUN",
+      "startedAtUtc": "2026-11-24T16:12:51.292Z",
+      "completedAtUtc": "2026-11-24T16:12:51.376Z",
+      "outcomeCategory": "EXECUTED",
+      "autoExecutionAllowed": false,
+      "leaguesScanned": 1,
+      "mcpCallsUsed": 13,
+      "lastStatsHubQueryAtUtc": "2026-11-24T16:12:51.300Z",
+      "fixturesDiscovered": 3,
+      "fixturesSkippedStarted": 0,
+      "fixturesSkippedNoOdds": 0,
+      "matchesInvestigated": 3,
+      "marketsEvaluated": {
+        "match_1x2": 9,
+        "double_chance": 9,
+        "btts": 6,
+        "match_goals": 6,
+        "asian_handicap": 0
+      },
+      "predictionsGenerated": 30,
+      "observationsAccepted": 12,
+      "observationsRejected": 18,
+      "observationsDuplicated": 0,
+      "snapshotsScheduled": 48,
+      "rejectionReasons": {
+        "EV insuficiente (-61.7% < 2.5%)": 1,
+        "EV insuficiente (-39.46% < 2.5%)": 1,
+        "EV insuficiente (-50.22% < 2.5%)": 1,
+        "EV insuficiente (-29.16% < 2.5%)": 1,
+        "EV insuficiente (-48.45% < 2.5%)": 1,
+        "EV insuficiente (-16.59% < 2.5%)": 1,
+        "EV insuficiente (-12.3% < 2.5%)": 1,
+        "EV insuficiente (-10.85% < 2.5%)": 1,
+        "EV insuficiente (-5.44% < 2.5%)": 1,
+        "EV insuficiente (-3.68% < 2.5%)": 1,
+        "EV insuficiente (-16.01% < 2.5%)": 1,
+        "EV insuficiente (-14.75% < 2.5%)": 1,
+        "EV insuficiente (-15.58% < 2.5%)": 1,
+        "EV insuficiente (-0.67% < 2.5%)": 1,
+        "EV insuficiente (-7.35% < 2.5%)": 1,
+        "EV insuficiente (-5.74% < 2.5%)": 1,
+        "EV insuficiente (-23.82% < 2.5%)": 1,
+        "EV insuficiente (-32.62% < 2.5%)": 1
+      },
+      "stageErrors": [],
+      "recordedObservationIds": [
+        "obs9_1795536771306_f65d12",
+        "obs9_1795536771312_3164a3",
+        "obs9_1795536771318_80a934",
+        "obs9_1795536771324_a0084e",
+        "obs9_1795536771329_ae76bc",
+        "obs9_1795536771335_4d5c7d",
+        "obs9_1795536771343_d378ad",
+        "obs9_1795536771349_9f524f",
+        "obs9_1795536771355_263e4b",
+        "obs9_1795536771361_042e79",
+        "obs9_1795536771367_e244e4",
+        "obs9_1795536771373_ff3ab9"
+      ]
+    }
+  ]
+}

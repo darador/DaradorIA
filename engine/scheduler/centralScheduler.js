@@ -49,7 +49,8 @@ class CentralAutonomousScheduler {
       pipeline: false,
       lineups: false,
       settlement: false,
-      sync: false
+      sync: false,
+      experimentalMarkets: false
     };
 
     // Configuración de intervalos (en milisegundos)
@@ -699,6 +700,53 @@ class CentralAutonomousScheduler {
       recentExecutions: (this.state.executionHistory || []).slice(0, 10),
       recentErrors: (this.state.errorLog || []).slice(0, 5)
     };
+  }
+
+  /**
+   * Fase 10: Ejecuta el circuito experimental de mercados (1X2, Doble Oportunidad, BTTS, Goles, AH)
+   * de forma 100% aislada del circuito productivo (autoExecutionAllowed: false).
+   * No se programa automáticamente en daemon hasta validar la primera corrida controlada.
+   */
+  async runExperimentalMarketsJob(options = {}) {
+    if (this.locks.experimentalMarkets) {
+      return { skipped: true, reason: 'LOCKED', autoExecutionAllowed: false };
+    }
+
+    this.locks.experimentalMarkets = true;
+    const startTime = Date.now();
+    try {
+      const { ControlledPipelineRunner } = require('../experimental/markets/observation/controlledPipelineRunner');
+      const runner = options.runner || new ControlledPipelineRunner(options.runnerOptions);
+      const res = await runner.runControlledCycle({
+        ...options,
+        trigger: options.trigger || 'CENTRAL_SCHEDULER_EXPERIMENTAL'
+      });
+
+      const accepted = res?.telemetry?.observationsAccepted || 0;
+      const cat = res?.telemetry?.outcomeCategory || (res.ok ? 'EXECUTED' : 'PROVIDER_ERROR');
+      this._recordExecution(
+        'experimentalMarkets',
+        startTime,
+        Date.now() - startTime,
+        res.ok ? 'SUCCESS' : 'ERROR',
+        {
+          recordsProcessed: accepted,
+          message: `Fase 10 (${cat}): ${res?.telemetry?.matchesInvestigated || 0} partidos investigados, ${res?.telemetry?.predictionsGenerated || 0} predicciones, ${accepted} obs registradas.`,
+          error: res.ok ? null : res.error
+        }
+      );
+
+      return res;
+    } catch (err) {
+      this._recordExecution('experimentalMarkets', startTime, Date.now() - startTime, 'ERROR', {
+        recordsProcessed: 0,
+        message: 'Fallo en circuito experimental de mercados (Fase 10).',
+        error: err.message
+      });
+      return { ok: false, error: err.message, autoExecutionAllowed: false };
+    } finally {
+      this.locks.experimentalMarkets = false;
+    }
   }
 
   /**

@@ -220,24 +220,94 @@ function auditMatchOddsCoverage(matchOddsPayload) {
     };
   };
 
+  const extractBtts = () => {
+    if (!btts || !Array.isArray(btts.outcomes) || btts.outcomes.length < 2) return null;
+    const yes = btts.outcomes.find(o => String(o.label || '').toLowerCase() === 'yes');
+    const no = btts.outcomes.find(o => String(o.label || '').toLowerCase() === 'no');
+    if (!yes || !no) return null;
+    return {
+      YES: Number(yes?.best?.odds),
+      NO: Number(no?.best?.odds),
+      bookmakerYes: yes?.best?.bookmaker || 'Unknown',
+      bookmakerNo: no?.best?.bookmaker || 'Unknown',
+      ageMinutes: Math.max(Number(yes?.best?.ageMinutes || 0), Number(no?.best?.ageMinutes || 0)),
+      books: Math.min(Number(yes?.books || 0), Number(no?.books || 0))
+    };
+  };
+
+  const extractTotalGoals = () => {
+    if (!totGoals || !Array.isArray(totGoals.outcomes) || totGoals.outcomes.length < 2) return null;
+    const over = totGoals.outcomes.find(o => /^over\s+/i.test(String(o.label || '')));
+    const under = totGoals.outcomes.find(o => /^under\s+/i.test(String(o.label || '')));
+    if (!over || !under) return null;
+    const lineMatch = String(over.label).match(/([\d.]+)/);
+    const line = lineMatch ? Number(lineMatch[1]) : null;
+    if (!Number.isFinite(line)) return null;
+    return {
+      line,
+      OVER: Number(over?.best?.odds),
+      UNDER: Number(under?.best?.odds),
+      bookmakerOver: over?.best?.bookmaker || 'Unknown',
+      bookmakerUnder: under?.best?.bookmaker || 'Unknown',
+      ageMinutes: Math.max(Number(over?.best?.ageMinutes || 0), Number(under?.best?.ageMinutes || 0)),
+      books: Math.min(Number(over?.books || 0), Number(under?.books || 0))
+    };
+  };
+
+  const extractAsianHandicap = () => {
+    if (!ah || !Array.isArray(ah.outcomes) || ah.outcomes.length < 2) return null;
+    const o0 = ah.outcomes[0];
+    const o1 = ah.outcomes[1];
+    const m0 = String(o0?.label || '').match(/\(([+-]?[\d.]+)\)/);
+    const m1 = String(o1?.label || '').match(/\(([+-]?[\d.]+)\)/);
+    const lineHome = m0 ? Number(m0[1]) : null;
+    const lineAway = m1 ? Number(m1[1]) : null;
+    if (!Number.isFinite(lineHome)) return null;
+    return {
+      lineHome,
+      lineAway,
+      HOME: Number(o0?.best?.odds),
+      AWAY: Number(o1?.best?.odds),
+      bookmakerHome: o0?.best?.bookmaker || 'Unknown',
+      bookmakerAway: o1?.best?.bookmaker || 'Unknown',
+      ageMinutes: Math.max(Number(o0?.best?.ageMinutes || 0), Number(o1?.best?.ageMinutes || 0)),
+      books: Math.min(Number(o0?.books || 0), Number(o1?.books || 0))
+    };
+  };
+
+  // Extraer kickoffUtc desde context si existe ("kick-off Tue 24 Nov 2026, 20:00 UTC")
+  let kickoffUtc = null;
+  const ctxMatch = String(matchOddsPayload.context || '').match(/kick-off\s+[A-Za-z]{3}\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4}),\s+(\d{2}:\d{2})\s+UTC/i);
+  if (ctxMatch) {
+    const parsed = Date.parse(`${ctxMatch[1]} ${ctxMatch[2]}:00 UTC`);
+    if (Number.isFinite(parsed)) kickoffUtc = new Date(parsed).toISOString();
+  }
+
   const odds1X2 = extract1X2();
   const oddsDC = extractDC();
+  const oddsBtts = extractBtts();
+  const oddsTotalGoals = extractTotalGoals();
+  const oddsAsianHandicap = extractAsianHandicap();
 
   return {
     priced: true,
+    kickoffUtc,
     markets: {
       match_1x2: odds1X2 ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
       double_chance: oddsDC ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
-      asian_handicap: ah ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
-      match_goals: totGoals ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
+      asian_handicap: oddsAsianHandicap ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
+      match_goals: oddsTotalGoals ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
       team_goals: (homeGoals || awayGoals) ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
-      btts: btts ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
+      btts: oddsBtts ? COVERAGE_STATUS.COMPLETO : COVERAGE_STATUS.NO_DISPONIBLE,
       corners: corners ? COVERAGE_STATUS.AGREGADO_SIN_SERIE : COVERAGE_STATUS.NO_DISPONIBLE,
       cards: cards ? COVERAGE_STATUS.AGREGADO_SIN_SERIE : COVERAGE_STATUS.NO_DISPONIBLE
     },
     extractedOdds: {
       odds1X2,
-      oddsDoubleChance: oddsDC
+      oddsDoubleChance: oddsDC,
+      oddsBtts,
+      oddsTotalGoals,
+      oddsAsianHandicap
     }
   };
 }
