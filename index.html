@@ -64,15 +64,15 @@
     }
 
     body {
+      color-scheme: dark;
       font-family: var(--font-body);
       font-variant-numeric: tabular-nums;
       background-color: var(--bg-pitch-black);
       background-image: 
-        radial-gradient(ellipse at 50% -5%, rgba(139, 92, 246, 0.32) 0%, transparent 60%),
-        radial-gradient(ellipse at 85% 15%, rgba(0, 242, 254, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 15% 15%, rgba(139, 92, 246, 0.22) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(5, 8, 19, 0.72) 0%, rgba(6, 10, 22, 0.94) 40%, rgba(5, 8, 19, 0.98) 100%),
-        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2000&q=80');
+        radial-gradient(ellipse at 50% -5%, rgba(139, 92, 246, 0.28) 0%, transparent 58%),
+        radial-gradient(ellipse at 85% 15%, rgba(0, 242, 254, 0.14) 0%, transparent 48%),
+        radial-gradient(ellipse at 15% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 48%),
+        linear-gradient(180deg, #070b18 0%, #060a16 45%, #050813 100%);
       background-position: center top;
       background-repeat: no-repeat;
       background-size: cover;
@@ -87,29 +87,35 @@
 
     .container {
       width: 100%;
-      max-width: 1400px;
+      max-width: 1480px;
       margin: 0 auto;
-      padding: 0 1.25rem;
+      padding: 0 1.1rem;
     }
 
     /* HEADER */
     header {
-      background: rgba(7, 11, 24, 0.9);
+      background: rgba(7, 11, 24, 0.94);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-violet);
-      padding: 0.9rem 0;
+      padding: 0.65rem 0;
       position: sticky;
       top: 0;
       z-index: 50;
-      box-shadow: 0 4px 35px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.72);
     }
 
     .header-content {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      gap: 0.65rem;
+    }
+
+    @media (max-width: 1200px) {
+      .header-content {
+        flex-wrap: wrap;
+      }
     }
 
     .brand-title {
@@ -152,8 +158,9 @@
     }
 
     .brand-text p {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
+      white-space: nowrap;
     }
 
     /* HEADER NAVIGATION (Minimalist, linear icons, active bottom border) */
@@ -170,16 +177,17 @@
       border-bottom: 2px solid transparent;
       color: var(--text-muted);
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 500;
-      padding: 0.55rem 0.8rem;
+      padding: 0.48rem 0.6rem;
       border-radius: 0;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.35rem;
       position: relative;
+      white-space: nowrap;
     }
 
     .tab-btn .tab-icon {
@@ -219,15 +227,28 @@
     }
 
     .tab-counter {
-      background: rgba(139, 92, 246, 0.18);
-      color: #c084fc;
+      background: rgba(148, 163, 184, 0.14);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.26);
       font-size: 11px;
       font-weight: 600;
-      padding: 0.1rem 0.45rem;
+      padding: 0.08rem 0.42rem;
       border-radius: var(--radius-full);
       font-family: var(--font-mono);
       font-variant-numeric: tabular-nums;
-      margin-left: 0.15rem;
+      margin-left: 0.12rem;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active .tab-counter {
+      background: rgba(139, 92, 246, 0.24);
+      color: #ddd6fe;
+      border-color: rgba(139, 92, 246, 0.55);
+    }
+
+    .tab-counter.is-zero,
+    .m-nav-badge.is-zero {
+      display: none !important;
     }
 
     .header-badges {
@@ -312,10 +333,14 @@
       .hero-agents-grid {
         display: flex;
         overflow-x: auto;
-        padding-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
         scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(139, 92, 246, 0.35) transparent;
       }
-      .hero-agent-card { min-width: 230px; scroll-snap-align: start; }
+      .hero-agents-grid::-webkit-scrollbar { height: 4px; }
+      .hero-agents-grid::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.35); border-radius: 4px; }
+      .hero-agent-card { min-width: 215px; scroll-snap-align: start; }
     }
 
     .hero-agent-card {
@@ -705,6 +730,7 @@
     }
 
     .time-segmented-control {
+      scrollbar-width: none;
       display: inline-flex;
       align-items: center;
       background: rgba(8, 14, 28, 0.9);
@@ -981,24 +1007,37 @@
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
       margin-bottom: 2rem;
       backdrop-filter: blur(12px);
+      container-type: inline-size;
+    }
+
+    .daily-board-container:focus-visible {
+      outline: 2px solid var(--accent-violet);
+      outline-offset: 2px;
     }
 
     .daily-board-table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       text-align: left;
-      font-size: 0.84rem;
+      font-size: 0.81rem;
+    }
+
+    .daily-board-table thead {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 2;
     }
 
     .daily-board-table th {
-      background: rgba(10, 16, 32, 0.95);
-      padding: 0.95rem 1.05rem;
+      background: rgba(10, 16, 32, 0.98);
+      padding: 0.74rem 0.58rem;
       font-family: var(--font-display);
       font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
+      font-size: 0.67rem;
+      letter-spacing: 0.045em;
       border-bottom: 2px solid var(--border-terminal);
       white-space: nowrap;
       user-select: none;
@@ -1010,11 +1049,137 @@
     .daily-board-table th.no-sort { cursor: default; }
 
     .daily-board-table td {
-      padding: 0.9rem 1.05rem;
+      padding: 0.68rem 0.58rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       color: var(--text-main);
       vertical-align: middle;
       transition: background 0.15s ease;
+    }
+
+    /* SEMANTIC BADGES (Unified Color Hierarchy: Green/Red/Amber/Blue/Gray/Violet) */
+    .sem-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.24rem;
+      font-size: 0.67rem;
+      font-weight: 700;
+      padding: 0.16rem 0.46rem;
+      border-radius: 5px;
+      white-space: nowrap;
+      line-height: 1.25;
+      letter-spacing: 0.015em;
+    }
+    .sem-green { background: rgba(34, 197, 94, 0.16); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.45); }
+    .sem-red { background: rgba(239, 68, 68, 0.16); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.45); }
+    .sem-amber { background: rgba(245, 158, 11, 0.16); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.45); }
+    .sem-blue { background: rgba(56, 189, 248, 0.16); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.45); }
+    .sem-gray { background: rgba(148, 163, 184, 0.14); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.34); }
+    .sem-violet { background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.48); }
+
+    .board-edge-badge.neg {
+      background: rgba(239, 68, 68, 0.16);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.45);
+    }
+
+    .board-prob-sub {
+      display: inline-block;
+      font-size: 0.65rem;
+      color: #94a3b8;
+      background: rgba(148, 163, 184, 0.11);
+      padding: 0.04rem 0.32rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+
+    .state-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.26rem;
+    }
+
+    .state-row-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      white-space: nowrap;
+    }
+
+    .state-dim-tag {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #64748b;
+      min-width: 34px;
+    }
+
+    /* ACCESSIBLE TOOLTIPS (Hover + Keyboard Focus + Native Popover Hint progressive enhancement) */
+    [data-tooltip] {
+      position: relative;
+    }
+    [data-tooltip]:hover::after,
+    [data-tooltip]:focus-visible::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 15, 30, 0.98);
+      color: #f8fafc;
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      border-radius: 6px;
+      padding: 0.38rem 0.62rem;
+      font-size: 0.71rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      line-height: 1.35;
+      white-space: normal;
+      width: max-content;
+      max-width: 235px;
+      text-align: center;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+      z-index: 250;
+      pointer-events: none;
+    }
+    header [data-tooltip]:hover::after,
+    header [data-tooltip]:focus-visible::after {
+      bottom: auto;
+      top: calc(100% + 8px);
+    }
+
+    [popover="hint"].db-hint-popover {
+      background: rgba(10, 15, 30, 0.98);
+      color: #f8fafc;
+      border: 1px solid rgba(139, 92, 246, 0.55);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      max-width: 280px;
+      line-height: 1.4;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    @supports (position-area: block-end) {
+      [popover="hint"].db-hint-popover {
+        inset: auto;
+        margin: 0;
+        position-area: block-end;
+        position-try-fallbacks: flip-block, flip-inline;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .sem-badge,
+      .tab-counter,
+      .time-nav-badge,
+      .m-nav-badge {
+        border: 1px solid ButtonText;
+        color: CanvasText;
+        background: Canvas;
+      }
     }
 
     .daily-board-table tr {
@@ -2335,17 +2500,26 @@
 
     .m-nav-badge {
       position: absolute;
-      top: 1px;
-      right: calc(50% - 17px);
-      background: var(--accent-violet);
-      color: #ffffff;
+      top: 2px;
+      right: calc(50% - 23px);
+      background: rgba(30, 41, 59, 0.96);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.42);
       font-size: 9px;
       font-weight: 700;
       font-family: var(--font-mono);
-      padding: 0.05rem 0.3rem;
+      padding: 0.03rem 0.28rem;
       border-radius: 9999px;
-      min-width: 14px;
+      min-width: 16px;
+      line-height: 1.25;
       text-align: center;
+      pointer-events: none;
+    }
+
+    .m-nav-item.active .m-nav-badge {
+      background: rgba(139, 92, 246, 0.92);
+      color: #ffffff;
+      border-color: rgba(196, 181, 253, 0.8);
     }
 
     /* Mobile Opportunity Cards List */
@@ -2876,29 +3050,29 @@
 
       <!-- Navigation tabs in header (Minimalist desktop bar) -->
       <nav class="view-tabs" id="desktopViewTabs" aria-label="Navegación principal">
-        <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')">
+        <button class="tab-btn active" id="tabPicks" onclick="switchView('picks')" data-tooltip="Oportunidades válidas registradas en el Daily Board (todas las fechas)" title="Oportunidades válidas registradas en el Daily Board (todas las fechas)">
           <svg class="tab-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Daily Board</span>
-          <span class="tab-counter" id="tabPicksCount">0</span>
+          <span class="tab-counter" id="tabPicksCount" aria-label="Oportunidades registradas">0</span>
         </button>
-        <button class="tab-btn" id="tabResearch" onclick="switchView('research')" title="Centro de Investigación & Radar">
+        <button class="tab-btn" id="tabResearch" onclick="switchView('research')" data-tooltip="Candidatos totales registrados en el Centro de Investigación" title="Candidatos totales registrados en el Centro de Investigación">
           <svg class="tab-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6M8 11h6"/></svg>
-          <span>Centro de Investigación</span>
-          <span class="tab-counter" id="tabResearchCount">0</span>
+          <span>Investigación</span>
+          <span class="tab-counter" id="tabResearchCount" aria-label="Candidatos en investigación">0</span>
         </button>
-        <button class="tab-btn" id="tabAgents" onclick="switchView('agents')">
+        <button class="tab-btn" id="tabAgents" onclick="switchView('agents')" data-tooltip="Comité de 6 agentes analistas y Gestora de Riesgo (Elena)" title="Comité de 6 agentes analistas y Gestora de Riesgo (Elena)">
           <svg class="tab-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <span>Agentes IA</span>
         </button>
-        <button class="tab-btn" id="tabHistory" onclick="switchView('history')">
+        <button class="tab-btn" id="tabHistory" onclick="switchView('history')" data-tooltip="Selecciones incluidas en el historial auditado de Estadísticas" title="Selecciones incluidas en el historial auditado de Estadísticas">
           <svg class="tab-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           <span>Estadísticas</span>
-          <span class="tab-counter" id="tabHistoryCount">0</span>
+          <span class="tab-counter" id="tabHistoryCount" aria-label="Selecciones en historial">0</span>
         </button>
-        <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')">
+        <button class="tab-btn" id="tabParlays" onclick="switchView('parlays')" data-tooltip="Combinadas registradas activas" title="Combinadas registradas activas">
           <svg class="tab-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <span>Combinadas</span>
-          <span class="tab-counter" id="tabParlaysCount">0</span>
+          <span class="tab-counter is-zero" id="tabParlaysCount" aria-label="Combinadas registradas">0</span>
         </button>
       </nav>
 
@@ -3058,35 +3232,35 @@
         </h2>
 
         <div class="kpis-ticker-inline">
-          <div class="kpi-inline-item">
+          <div class="kpi-inline-item" data-tooltip="Partidos únicos incluidos en la vista y filtros actuales" title="Partidos únicos incluidos en la vista y filtros actuales">
             <span>⚽</span>
-            <strong id="chipAnalyzed">134</strong>
+            <strong id="chipAnalyzed">0</strong>
             <span>Partidos</span>
           </div>
-          <div class="kpi-inline-item">
+          <div class="kpi-inline-item" data-tooltip="Selecciones visibles en la vista y filtros actuales" title="Selecciones visibles en la vista y filtros actuales">
             <span>🎯</span>
-            <strong id="chipCandidates">22</strong>
-            <span>Candidatos</span>
+            <strong id="chipCandidates">0</strong>
+            <span>Selecciones</span>
           </div>
-          <div class="kpi-inline-item">
+          <div class="kpi-inline-item" data-tooltip="Selecciones con dictamen APROBADO por Elena en esta vista" title="Selecciones con dictamen APROBADO por Elena en esta vista">
             <span>✔️</span>
             <strong id="chipApproved" class="green">0</strong>
-            <span>Aprobados</span>
+            <span>Aprob. Elena</span>
           </div>
-          <div class="kpi-inline-item">
+          <div class="kpi-inline-item" data-tooltip="Selecciones aceptadas en el flujo operativo" title="Selecciones aceptadas en el flujo operativo" style="display: none;">
             <span>🎟️</span>
             <strong id="chipAccepted" style="color: #60a5fa;">0</strong>
             <span>Aceptadas</span>
           </div>
-          <div class="kpi-inline-item">
+          <div class="kpi-inline-item" data-tooltip="Selecciones con resultado deportivo aún pendiente de resolución" title="Selecciones con resultado deportivo aún pendiente de resolución">
             <span>🕒</span>
-            <strong id="chipPending" class="amber">16</strong>
-            <span>Pendientes</span>
+            <strong id="chipPending" class="amber">0</strong>
+            <span>Sin resolver</span>
           </div>
-          <div class="kpi-inline-item">
+          <div class="kpi-inline-item" data-tooltip="Valor Esperado (EV) promedio de las selecciones visibles" title="Valor Esperado (EV) promedio de las selecciones visibles">
             <span>📈</span>
-            <strong id="chipAvgEv" class="green">+59.4%</strong>
-            <span>EV Promedio</span>
+            <strong id="chipAvgEv" class="green">0.0%</strong>
+            <span>EV Prom.</span>
           </div>
         </div>
       </div>
@@ -3122,35 +3296,35 @@
         <!-- BARRA HORIZONTAL RÁPIDA DE FECHAS (SIEMPRE VISIBLE) -->
         <div class="time-nav-bar">
           <div class="time-segmented-control" role="tablist" aria-label="Navegación temporal">
-            <button type="button" class="time-nav-btn active" id="btnDateToday" onclick="selectTimeHorizon('today')">
+            <button type="button" class="time-nav-btn active" id="btnDateToday" onclick="selectTimeHorizon('today')" data-tooltip="Oportunidades con evento programado para hoy (hora ART)" title="Oportunidades con evento programado para hoy (hora ART)">
               <span class="time-nav-icon">⚡</span>
               <span class="time-nav-text">HOY</span>
               <span class="time-nav-badge" id="badgeTodayCount">0</span>
             </button>
-            <button type="button" class="time-nav-btn" id="btnDateTomorrow" onclick="selectTimeHorizon('tomorrow')">
+            <button type="button" class="time-nav-btn" id="btnDateTomorrow" onclick="selectTimeHorizon('tomorrow')" data-tooltip="Oportunidades con evento programado para mañana (hora ART)" title="Oportunidades con evento programado para mañana (hora ART)">
               <span class="time-nav-icon">📅</span>
               <span class="time-nav-text">MAÑANA</span>
               <span class="time-nav-badge" id="badgeTomorrowCount">0</span>
             </button>
-            <button type="button" class="time-nav-btn" id="btnDateUpcoming" onclick="selectTimeHorizon('upcoming')">
+            <button type="button" class="time-nav-btn" id="btnDateUpcoming" onclick="selectTimeHorizon('upcoming')" data-tooltip="Eventos futuros posteriores a mañana aún no finalizados" title="Eventos futuros posteriores a mañana aún no finalizados">
               <span class="time-nav-icon">🔮</span>
               <span class="time-nav-text">PRÓXIMOS</span>
               <span class="time-nav-badge" id="badgeUpcomingCount">0</span>
             </button>
 
             <!-- Selector de fecha específica en calendario -->
-            <div class="time-nav-custom-date" id="customDateWrap" title="Seleccionar fecha específica">
+            <div class="time-nav-custom-date" id="customDateWrap" data-tooltip="Filtrar por una fecha específica del calendario" title="Filtrar por una fecha específica del calendario">
               <span class="custom-date-icon">🗓️</span>
-              <input type="date" id="filterSpecificDate" class="time-date-input" onchange="onCustomDatePick(this.value)" title="Elegir fecha del calendario">
+              <input type="date" id="filterSpecificDate" class="time-date-input" onchange="onCustomDatePick(this.value)" aria-label="Elegir fecha específica">
             </div>
 
             <!-- Accesos rápidos secundarios -->
-            <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateYesterday" onclick="selectTimeHorizon('yesterday')" title="Ver jornada de ayer">
+            <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateYesterday" onclick="selectTimeHorizon('yesterday')" data-tooltip="Eventos correspondientes al día anterior (hora ART)" title="Eventos correspondientes al día anterior (hora ART)">
               <span>⏪</span>
               <span>Ayer</span>
               <span class="time-nav-badge" id="badgeYesterdayCount">0</span>
             </button>
-            <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateAll" onclick="selectTimeHorizon('all')" title="Ver todas las fechas">
+            <button type="button" class="time-nav-btn secondary-time-btn" id="btnDateAll" onclick="selectTimeHorizon('all')" data-tooltip="Total de oportunidades válidas del Daily Board en todas las fechas" title="Total de oportunidades válidas del Daily Board en todas las fechas">
               <span>🌐</span>
               <span>Todos</span>
               <span class="time-nav-badge" id="badgeAllCount">0</span>
@@ -3213,19 +3387,41 @@
               </div>
 
               <div class="filter-item">
-                <label class="filter-label">Estado</label>
-                <select id="filterStatus" class="select-control" autocomplete="off" onchange="renderPicks()">
-                  <option value="all">Todos los Estados</option>
-                  <option value="APROBADO">Aprobados por Elena</option>
-                  <option value="ACEPTADA">Aceptadas (Flujo de Apuestas)</option>
-                  <option value="EN_CURSO">En Curso (En Vivo)</option>
-                  <option value="PENDIENTE">Solo Pendientes (Por Jugar)</option>
-                  <option value="ACERTADA">Acertadas (Ganadas)</option>
-                  <option value="FALLADA">Falladas (Perdidas)</option>
-                  <option value="VOID">Anuladas (Void / No Titular)</option>
-                  <option value="FINALIZADO">Todos los Finalizados</option>
+                <label class="filter-label" for="filterMatchPhase">Estado del partido</label>
+                <select id="filterMatchPhase" class="select-control" autocomplete="off" onchange="updateActiveFilterBadge(); renderPicks()">
+                  <option value="all">Todos los partidos</option>
+                  <option value="FUTURO">Futuro (Por jugar)</option>
+                  <option value="EN_CURSO">En curso (En vivo)</option>
+                  <option value="FINALIZADO">Finalizado</option>
                 </select>
               </div>
+
+              <div class="filter-item">
+                <label class="filter-label" for="filterElenaDecision">Decisión de Elena</label>
+                <select id="filterElenaDecision" class="select-control" autocomplete="off" onchange="updateActiveFilterBadge(); renderPicks()">
+                  <option value="all">Todas las decisiones</option>
+                  <option value="APROBADO">Aprobado</option>
+                  <option value="RECHAZADO">Rechazado</option>
+                  <option value="PENDIENTE_EVALUACION">Pendiente de evaluación</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label class="filter-label" for="filterSportsResult">Resultado deportivo</label>
+                <select id="filterSportsResult" class="select-control" autocomplete="off" onchange="updateActiveFilterBadge(); renderPicks()">
+                  <option value="all">Todos los resultados</option>
+                  <option value="PENDIENTE">Pendiente</option>
+                  <option value="EN_CURSO">En curso</option>
+                  <option value="ACERTADA">Acertada</option>
+                  <option value="FALLADA">Fallada</option>
+                  <option value="ANULADA">Anulada</option>
+                  <option value="PENDIENTE_LIQUIDACION">Pendiente de liquidación</option>
+                </select>
+              </div>
+
+              <select id="filterStatus" style="display: none;" autocomplete="off" onchange="renderPicks()">
+                <option value="all">Todos los Estados</option>
+              </select>
 
               <div class="filter-item filter-item-search">
                 <label class="filter-label">Búsqueda rápida</label>
@@ -3256,19 +3452,19 @@
       </section>
 
       <!-- TABLA CENTRAL DAILY BOARD (Escritorio) -->
-      <div class="daily-board-container" id="dailyBoardTableWrap">
+      <div class="daily-board-container" id="dailyBoardTableWrap" tabindex="0" role="region" aria-label="Daily Board — Tabla de oportunidades deportivas">
         <table class="daily-board-table">
           <thead>
             <tr>
-              <th onclick="sortBoard('match')">PARTIDO / TORNEO ↕</th>
-              <th onclick="sortBoard('player')">SELECCIÓN / JUGADOR ↕</th>
-              <th onclick="sortBoard('market')">MERCADO & LÍNEA ↕</th>
+              <th onclick="sortBoard('match')">PARTIDO ↕</th>
+              <th onclick="sortBoard('player')">SELECCIÓN ↕</th>
+              <th onclick="sortBoard('market')">MERCADO Y LÍNEA ↕</th>
               <th onclick="sortBoard('odds')">CUOTA ↕</th>
-              <th onclick="sortBoard('prob')">PROB. PROYECTADA ↕</th>
-              <th onclick="sortBoard('fairOdds')">CUOTA JUSTA ↕</th>
+              <th onclick="sortBoard('prob')">PROB. PROY. ↕</th>
+              <th onclick="sortBoard('fairOdds')">C. JUSTA ↕</th>
               <th onclick="sortBoard('ev')">EV ↕</th>
               <th onclick="sortBoard('hitRate')">RACHA L5 ↕</th>
-              <th onclick="sortBoard('status')">ESTADO ↕</th>
+              <th onclick="sortBoard('status')">ESTADO (RES. / ELENA) ↕</th>
               <th class="no-sort" style="text-align: right;">ACCIONES</th>
             </tr>
           </thead>
@@ -3625,7 +3821,7 @@
               <th>Candidato & ID</th>
               <th>Fecha / Hora</th>
               <th>Competición / Deporte</th>
-              <th>Cuota bet365</th>
+              <th>Cuota</th>
               <th>Prioridad</th>
               <th>Estado Investigación</th>
               <th>Razón de Decisión / Veredicto</th>
@@ -4278,6 +4474,9 @@
       const matchFilter = document.getElementById('filterMatch')?.value || 'all';
       const marketFilter = document.getElementById('filterMarket')?.value || 'all';
       const minHitFilter = parseFloat(document.getElementById('filterMinHit')?.value || '0');
+      const matchPhaseFilter = document.getElementById('filterMatchPhase')?.value || 'all';
+      const elenaFilter = document.getElementById('filterElenaDecision')?.value || 'all';
+      const resultFilter = document.getElementById('filterSportsResult')?.value || 'all';
       const statusFilter = document.getElementById('filterStatus')?.value || 'all';
       const searchFilter = document.getElementById('searchInput')?.value.trim() || '';
 
@@ -4286,6 +4485,9 @@
       if (matchFilter !== 'all') count++;
       if (marketFilter !== 'all') count++;
       if (minHitFilter > 0) count++;
+      if (matchPhaseFilter !== 'all') count++;
+      if (elenaFilter !== 'all') count++;
+      if (resultFilter !== 'all') count++;
       if (statusFilter !== 'all') count++;
       if (searchFilter !== '') count++;
 
@@ -4528,11 +4730,17 @@
       let proximityCategory = 'unconfirmed';
       let proximityLabel = '📅 Horario a confirmar';
 
-      const isDone = p.is_finished || ['ACERTADA', 'FALLADA', 'GANADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'FINALIZADO'].includes(p.status);
+      const isDone = p.is_settled || p.is_finished || ['ACERTADA', 'FALLADA', 'GANADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'VOID', 'FINALIZADO'].includes(p.status);
+      const isPendingSettlement = !isDone && (p.category === 'pendientes_liquidacion' || p.status === 'PENDIENTE_DE_LIQUIDACION' || p.sports_result === 'PENDIENTE_DE_LIQUIDACION');
 
       if (isDone) {
         proximityCategory = 'finished';
         proximityLabel = '🏁 Finalizado';
+        if (!hasConfirmedTime) timeStrArt = 'Finalizado';
+      } else if (isPendingSettlement) {
+        proximityCategory = 'pending_settlement';
+        proximityLabel = '⏳ Pendiente de liquidación';
+        if (!hasConfirmedTime) timeStrArt = 'Finalizado · Pendiente de estadísticas';
       } else if (!hasConfirmedTime) {
         proximityCategory = 'unconfirmed';
         proximityLabel = '📅 Horario a confirmar';
@@ -4576,54 +4784,90 @@
       if (meta.proximityCategory === 'upcoming') {
         return '<span class="prox-badge upcoming" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.4);">' + meta.proximityLabel + '</span>';
       }
+      if (meta.proximityCategory === 'pending_settlement') {
+        return '<span class="prox-badge pending-settlement" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5);">' + meta.proximityLabel + '</span>';
+      }
       if (meta.proximityCategory === 'finished') {
         return '<span class="prox-badge finished" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(100, 116, 139, 0.2); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.4);">' + meta.proximityLabel + '</span>';
       }
       return '<span class="prox-badge unconfirmed" style="display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(71, 85, 105, 0.2); color: #94a3b8; border: 1px solid rgba(71, 85, 105, 0.35);">' + meta.proximityLabel + '</span>';
     }
 
-    function getElenaBadge(pick) {
-      const isApproved = pick.status === 'APROBADO' ||
-        (pick.status_label && pick.status_label.includes('Aprobado')) ||
-        (pick.elena_verdict && pick.elena_verdict.includes('Aprobado')) ||
-        (pick.provenance && pick.provenance.elena_decision === 'APPROVED');
+    function resolveMatchPhase(pick, meta) {
+      const m = meta || getPickKickoffMeta(pick);
+      if (m.proximityCategory === 'live' || pick.status === 'EN_CURSO') {
+        return { code: 'EN_CURSO', label: 'EN CURSO', badgeHtml: '<span class="sem-badge sem-blue" title="Partido actualmente en juego">● EN CURSO</span>' };
+      }
+      if (m.proximityCategory === 'finished' || m.proximityCategory === 'pending_settlement' || pick.is_finished || pick.is_settled) {
+        return { code: 'FINALIZADO', label: 'FINALIZADO', badgeHtml: '<span class="sem-badge sem-gray" title="Partido finalizado">FINALIZADO</span>' };
+      }
+      return { code: 'FUTURO', label: 'FUTURO', badgeHtml: '<span class="sem-badge sem-gray" title="Partido aún no iniciado">FUTURO</span>' };
+    }
 
-      const isVetoed = pick.status === 'RECHAZADO' || pick.status === 'VETADO' ||
+    function resolveElenaDecision(pick) {
+      const rawElena = String(pick.elena_decision || pick.elenaDecision || '').toUpperCase();
+      const rawStatus = String(pick.status || '').toUpperCase();
+      const isVetoed = rawElena === 'RECHAZADO' || rawElena === 'VETADO' || rawStatus === 'RECHAZADO' || rawStatus === 'VETADO' ||
         (pick.status_label && pick.status_label.includes('Veto')) ||
         (pick.rationale && pick.rationale.includes('Elena Risk Veto'));
-
       if (isVetoed) {
-        return '<span class="elena-badge veto" style="display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35);">👑 Elena: Veto</span>';
+        return {
+          code: 'RECHAZADO',
+          label: 'RECHAZADO',
+          badgeHtml: '<span class="sem-badge sem-red" data-tooltip="Dictamen de Elena: selección rechazada por control de riesgo" title="Dictamen de Elena: selección rechazada">✕ Elena: Rechazado</span>'
+        };
       }
+      const isPendingEval = rawElena.includes('PENDIENTE') || rawStatus === 'PENDIENTE_ALINEACION' || rawStatus === 'DETECTADO';
+      const isApproved = !isPendingEval && (
+        rawElena === 'APROBADO' || rawElena === 'APPROVED' || rawStatus === 'APROBADO' ||
+        (pick.status_label && pick.status_label.includes('Aprobado')) ||
+        (pick.elena_verdict && pick.elena_verdict.includes('Aprobado')) ||
+        (pick.provenance && pick.provenance.elena_decision === 'APPROVED') ||
+        (pick.is_settled && ['ACERTADA', 'GANADA', 'FALLADA', 'PERDIDA'].includes(rawStatus))
+      );
       if (isApproved) {
-        return '<span class="elena-badge approved" style="display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.35);">👑 Elena: Aprobado</span>';
+        return {
+          code: 'APROBADO',
+          label: 'APROBADO',
+          badgeHtml: '<span class="sem-badge sem-green" data-tooltip="Dictamen de Elena: selección aprobada por gestión de riesgo" title="Dictamen de Elena: selección aprobada">✓ Elena: Aprobado</span>'
+        };
       }
-      return '<span class="elena-badge supervision" style="display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px; background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35);">👑 Elena: Supervisión</span>';
+      return {
+        code: 'PENDIENTE_EVALUACION',
+        label: 'PENDIENTE DE EVALUACIÓN',
+        badgeHtml: '<span class="sem-badge sem-amber" data-tooltip="Dictamen de Elena pendiente (sujeto a confirmación de XI titular T-60 o revisión)" title="Dictamen de Elena pendiente de evaluación">⏳ Elena: Pend. eval.</span>'
+      };
+    }
+
+    function resolveSportsResult(pick, meta) {
+      const status = String(pick.status || '').toUpperCase();
+      const res = String(pick.sports_result || pick.result || '').toUpperCase();
+      const m = meta || getPickKickoffMeta(pick);
+
+      if (status === 'ACERTADA' || status === 'GANADA' || res === 'ACERTADA' || res === 'GANADA') {
+        return { code: 'ACERTADA', label: 'ACERTADA', badgeHtml: '<span class="sem-badge sem-green" title="Resultado deportivo verificado: Acertada">✔ ACERTADA</span>' };
+      }
+      if (status === 'FALLADA' || status === 'PERDIDA' || res === 'FALLADA' || res === 'PERDIDA') {
+        return { code: 'FALLADA', label: 'FALLADA', badgeHtml: '<span class="sem-badge sem-red" title="Resultado deportivo verificado: Fallada">✖ FALLADA</span>' };
+      }
+      if (['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(status) || res === 'ANULADA' || res === 'VOID') {
+        return { code: 'ANULADA', label: 'ANULADA', badgeHtml: '<span class="sem-badge sem-gray" title="Selección anulada (Void / No titular)">⊘ ANULADA</span>' };
+      }
+      if (status === 'PENDIENTE_DE_LIQUIDACION' || res === 'PENDIENTE_DE_LIQUIDACION' || m.proximityCategory === 'pending_settlement') {
+        return { code: 'PENDIENTE_LIQUIDACION', label: 'PENDIENTE DE LIQUIDACIÓN', badgeHtml: '<span class="sem-badge sem-amber" title="Partido finalizado, esperando acta oficial para liquidar">⏳ PEND. LIQUIDACIÓN</span>' };
+      }
+      if (status === 'EN_CURSO' || m.proximityCategory === 'live') {
+        return { code: 'EN_CURSO', label: 'EN CURSO', badgeHtml: '<span class="sem-badge sem-blue" title="Evento en curso">● EN CURSO</span>' };
+      }
+      return { code: 'PENDIENTE', label: 'PENDIENTE', badgeHtml: '<span class="sem-badge sem-gray" title="Resultado deportivo aún pendiente de disputa">◦ PENDIENTE</span>' };
+    }
+
+    function getElenaBadge(pick) {
+      return resolveElenaDecision(pick).badgeHtml;
     }
 
     function getStatusBadge(status, pick = {}) {
-      if (status === 'ACERTADA' || status === 'GANADA' || pick.result === 'ACERTADA') {
-        return '<span class="status-pill approved" style="background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.5); font-weight: 700;">✔ ACERTADA</span>';
-      }
-      if (status === 'FALLADA' || status === 'PERDIDA' || pick.result === 'FALLADA') {
-        return '<span class="status-pill rejected" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.5); font-weight: 700;">✖ FALLADA</span>';
-      }
-      if (['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(status) || pick.result === 'ANULADA') {
-        return '<span class="status-pill" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.45); font-weight: 700;">🚫 VOID (No Titular)</span>';
-      }
-      if (pick.accepted === true || pick.is_accepted === true || status === 'ACEPTADA') {
-        return '<span class="status-pill" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.5); font-weight: 700;">🎟️ ACEPTADA</span>';
-      }
-      if (status === 'EN_CURSO') {
-        return '<span class="status-pill" style="background: rgba(6, 182, 212, 0.2); color: #38bdf8; border: 1px solid rgba(6, 182, 212, 0.5); font-weight: 700;">🔴 EN CURSO</span>';
-      }
-      if (status === 'APROBADO') {
-        return '<span class="status-pill approved" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); font-weight: 700;">✔ APROBADO</span>';
-      }
-      if (status === 'RECHAZADO' || status === 'VETADO') {
-        return '<span class="status-pill rejected" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.5); font-weight: 700;">❌ RECHAZADO</span>';
-      }
-      return '<span class="status-pill pending" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5); font-weight: 700;">🕒 PENDIENTE</span>';
+      return resolveSportsResult({ ...pick, status: status || pick.status }).badgeHtml;
     }
 
     function computeBoardStatusCounts(picksList) {
@@ -4856,10 +5100,44 @@
       const marketFilter = document.getElementById('filterMarket')?.value || 'all';
       const minHitFilter = parseFloat(document.getElementById('filterMinHit')?.value || '0');
       const searchFilter = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
+      const matchPhaseFilter = document.getElementById('filterMatchPhase')?.value || 'all';
+      const elenaDecisionFilter = document.getElementById('filterElenaDecision')?.value || 'all';
+      const sportsResultFilter = document.getElementById('filterSportsResult')?.value || 'all';
       const statusFilter = document.getElementById('filterStatus')?.value || 'all';
 
+      // Defensa visual y de KPIs: excluir registros sintéticos y oportunidades activas malformadas (preservando históricos legítimos)
+      const isValidText = (v) => v !== undefined && v !== null && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'undefined' && String(v).trim().toLowerCase() !== 'null';
+      const isTestBoardRecord = (p) => {
+        if (!p) return true;
+        if (p.isTest || p.is_test || p.isTestPick) return true;
+        const id = String(p.id || '');
+        if (/^(cand_test_|test_|pick_test_|pick_settle_|cand_autotest_|cand_starter_|cand_sub_|cand_incomp_)/.test(id)) return true;
+        const txt = `${p.match || ''} ${p.player || ''}`.toLowerCase();
+        return txt.includes('equipo auto') || txt.includes('jugador prueba auto') || txt.includes('equipo x vs equipo y') || txt.includes('suplente fc') || txt.includes('jugador incompleto');
+      };
+      const isValidBoardPick = (p) => {
+        if (isTestBoardRecord(p)) return false;
+        const isHistoricalOrSettled = Boolean(p.is_settled) || Boolean(p.is_finished) || ['ACERTADA', 'GANADA', 'FALLADA', 'PERDIDA', 'ANULADA', 'ANULADA_NO_TITULAR', 'VOID', 'FINALIZADO', 'PENDIENTE_DE_LIQUIDACION'].includes(p.status);
+        if (isHistoricalOrSettled) return true;
+        if (!isValidText(p.match) || !isValidText(p.player) || !isValidText(p.market) || !isValidText(p.line)) return false;
+        const oddsNum = Number(p.odds);
+        const probNum = Number(p.real_prob);
+        if (!Number.isFinite(oddsNum) || oddsNum <= 1) return false;
+        if (!Number.isFinite(probNum) || probNum <= 0 || probNum > 100) return false;
+        return true;
+      };
+
+      const seenBoardIds = new Set();
+      const validTopPicks = globalPicksData.top_picks.filter(p => {
+        if (!isValidBoardPick(p)) return false;
+        const key = p.canonicalId || p.id || (p.match + '__' + p.player + '__' + p.market + '__' + p.line);
+        if (seenBoardIds.has(key)) return false;
+        seenBoardIds.add(key);
+        return true;
+      });
+
       // Filtrado por horizonte temporal y filtros avanzados
-      let filtered = globalPicksData.top_picks.filter(pick => {
+      let filtered = validTopPicks.filter(pick => {
         const pickDate = getPickDateKey(pick);
 
         if (currentTimeHorizon === 'today' && pickDate !== today) return false;
@@ -4874,6 +5152,13 @@
         if (leagueFilter !== 'all' && (pick.league || pick.tournament) !== leagueFilter) return false;
         if (matchFilter !== 'all' && pick.match !== matchFilter) return false;
         if (marketFilter !== 'all' && pick.market !== marketFilter) return false;
+
+        if (matchPhaseFilter !== 'all' || elenaDecisionFilter !== 'all' || sportsResultFilter !== 'all') {
+          const metaCheck = getPickKickoffMeta(pick);
+          if (matchPhaseFilter !== 'all' && resolveMatchPhase(pick, metaCheck).code !== matchPhaseFilter) return false;
+          if (elenaDecisionFilter !== 'all' && resolveElenaDecision(pick).code !== elenaDecisionFilter) return false;
+          if (sportsResultFilter !== 'all' && resolveSportsResult(pick, metaCheck).code !== sportsResultFilter) return false;
+        }
 
         if (statusFilter !== 'all') {
           const meta = getPickKickoffMeta(pick);
@@ -4917,8 +5202,8 @@
         return true;
       });
 
-      // Actualizar conteos de insignias de acceso rápido (pool de candidatos sin filtros avanzados)
-      const allPicks = globalPicksData.top_picks || [];
+      // Actualizar conteos de insignias de acceso rápido (pool de candidatos válidos sin filtros avanzados)
+      const allPicks = validTopPicks;
       const badgeTodayEl = document.getElementById('badgeTodayCount');
       if (badgeTodayEl) {
         badgeTodayEl.textContent = allPicks.filter(p => getPickDateKey(p) === today).length;
@@ -4929,7 +5214,7 @@
       }
       const badgeUpcomingEl = document.getElementById('badgeUpcomingCount');
       if (badgeUpcomingEl) {
-        badgeUpcomingEl.textContent = allPicks.filter(p => getPickDateKey(p) > tomorrow && !p.is_finished).length;
+        badgeUpcomingEl.textContent = allPicks.filter(p => getPickDateKey(p) > tomorrow && !p.is_finished && !['ACERTADA', 'FALLADA', 'ANULADA_NO_TITULAR'].includes(p.status)).length;
       }
       const badgeYesterdayEl = document.getElementById('badgeYesterdayCount');
       if (badgeYesterdayEl) {
@@ -4940,25 +5225,29 @@
         badgeAllEl.textContent = allPicks.length;
       }
 
-      // Sincronizar métricas del tablero con la fecha activa (Cálculo independiente y riguroso)
+      // Sincronizar métricas del tablero con la fecha/filtros activos (cálculo independiente y riguroso)
       const setEl = (id, val) => {
         const el = document.getElementById(id);
         if (el) el.textContent = val;
       };
 
-      const counts = computeBoardStatusCounts(filtered);
       const uniqueMatches = [...new Set(filtered.map(p => p.match))].filter(Boolean).length;
-      const activeEvs = filtered.map(p => parseFloat(p.edge_pct || p.ev_pct || 0)).filter(n => !isNaN(n));
-      const activeAvgEv = activeEvs.length ? (activeEvs.reduce((a, b) => a + b, 0) / activeEvs.length).toFixed(1) : '0.0';
+      const elenaApprovedCount = filtered.filter(p => resolveElenaDecision(p).code === 'APROBADO').length;
+      const unresolvedCount = filtered.filter(p => ['PENDIENTE', 'EN_CURSO', 'PENDIENTE_LIQUIDACION'].includes(resolveSportsResult(p).code)).length;
+      const counts = computeBoardStatusCounts(filtered);
+      const activeEvs = filtered.map(p => parseFloat(p.edge_pct ?? p.ev_pct ?? 0)).filter(n => !isNaN(n));
+      const activeAvgEvNum = activeEvs.length ? (activeEvs.reduce((a, b) => a + b, 0) / activeEvs.length) : 0;
+      const activeAvgEvStr = (activeAvgEvNum >= 0 ? '+' : '') + activeAvgEvNum.toFixed(1) + '%';
 
       setEl('chipAnalyzed', uniqueMatches);
       setEl('chipCandidates', filtered.length);
-      setEl('chipApproved', counts.approved);
+      setEl('chipApproved', elenaApprovedCount);
       setEl('chipAccepted', counts.accepted);
-      setEl('chipPending', counts.pending);
-      setEl('chipAvgEv', '+' + activeAvgEv + '%');
-      setEl('tabPicksCount', filtered.length);
-      setEl('mTabPicksCount', filtered.length);
+      setEl('chipPending', unresolvedCount);
+      setEl('chipAvgEv', activeAvgEvStr);
+      // tabPicksCount siempre refleja el universo total válido del Daily Board (coherente con "Todos")
+      setEl('tabPicksCount', allPicks.length);
+      setEl('mTabPicksCount', allPicks.length);
 
       // Cabecera de KPIs del Daily Board
       setEl('kpiLabel1', 'Total Oportunidades');
@@ -4966,7 +5255,7 @@
       setEl('kpiAnalyzed', `${uniqueMatches} partidos analizados`);
 
       setEl('kpiLabel2', 'EV Promedio (+Edge)');
-      setEl('kpiAvgEdge', '+' + activeAvgEv + '%');
+      setEl('kpiAvgEdge', activeAvgEvStr);
       setEl('kpiSub2', 'Sobre cuota bookie');
 
       setEl('kpiLabel3', 'Acierto Reciente (L5)');
@@ -5027,13 +5316,15 @@
       if (tableBody) {
         tableBody.innerHTML = filtered.map(pick => {
           const meta = getPickKickoffMeta(pick);
-          const statusBadge = getStatusBadge(pick.status, pick);
-          const elenaBadge = getElenaBadge(pick);
-          const proximityBadge = getProximityBadge(meta);
+          const matchPhase = resolveMatchPhase(pick, meta);
+          const sportsRes = resolveSportsResult(pick, meta);
+          const elenaDec = resolveElenaDecision(pick);
 
-          const realProb = pick.real_prob || (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : 75);
-          const impliedProb = pick.implied_prob || (pick.odds ? (100 / pick.odds).toFixed(1) : 55);
-          const edgeDisplay = pick.edge_pct ? `+${pick.edge_pct}%` : '+15.0%';
+          const realProb = pick.real_prob != null ? Number(pick.real_prob).toFixed(1) : (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : '75.0');
+          const impliedProb = pick.implied_prob != null ? Number(pick.implied_prob).toFixed(1) : (pick.odds ? (100 / pick.odds).toFixed(1) : '55.0');
+          const edgeNum = pick.edge_pct != null ? parseFloat(pick.edge_pct) : 0;
+          const edgeDisplay = (edgeNum >= 0 ? '+' : '') + edgeNum.toFixed(1) + '%';
+          const edgeClass = edgeNum < 0 ? 'board-edge-badge neg' : 'board-edge-badge';
           const fairOddsDisplay = pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : (pick.real_prob ? (100 / pick.real_prob).toFixed(2) : '1.30');
           const flag = getLeagueFlag(pick.league);
 
@@ -5043,16 +5334,16 @@
                 <div class="board-match-cell">
                   <span class="board-match-league">${flag} ${pick.league || 'Competición'}</span>
                   <span class="board-match-teams">${pick.match}</span>
-                  <div style="display: flex; align-items: center; gap: 0.35rem; margin-top: 0.25rem; flex-wrap: wrap;">
-                    <span style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono);">📅 ${meta.dateStrArt}</span>
-                    <span style="font-size: 0.72rem; color: #e2e8f0; font-family: var(--font-mono); font-weight: 700;">⏰ ${meta.timeStrArt}</span>
-                    ${proximityBadge}
+                  <div style="display: flex; align-items: center; gap: 0.35rem; margin-top: 0.2rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.7rem; color: var(--accent-cyan); font-family: var(--font-mono);">${meta.dateStrArt}</span>
+                    <span style="font-size: 0.7rem; color: #e2e8f0; font-family: var(--font-mono); font-weight: 700;">${meta.timeStrArt}</span>
+                    ${matchPhase.badgeHtml}
                   </div>
                 </div>
               </td>
               <td>
                 <div class="board-player-cell">
-                  <div class="board-player-avatar">👤</div>
+                  <div class="board-player-avatar">${String(pick.player || '').includes('(Equipo)') ? '🛡️' : '👤'}</div>
                   <div class="board-player-name">${pick.player}</div>
                 </div>
               </td>
@@ -5067,12 +5358,12 @@
               </td>
               <td>
                 <div class="board-prob-box">
-                  <div class="board-prob-vals">
-                    <span style="color: #4ade80; font-weight: 800;">${realProb}%</span>
-                    <span style="color: var(--text-dim); font-size: 0.68rem;">Imp. ${impliedProb}%</span>
+                  <div class="board-prob-vals" style="gap: 0.35rem;">
+                    <span style="color: #4ade80; font-weight: 800;" title="Probabilidad proyectada por el modelo">${realProb}%</span>
+                    <span class="board-prob-sub" title="Probabilidad implícita de la cuota">Imp. ${impliedProb}%</span>
                   </div>
                   <div class="board-prob-bar">
-                    <div class="board-prob-fill" style="width: ${Math.min(100, realProb)}%;"></div>
+                    <div class="board-prob-fill" style="width: ${Math.min(100, Number(realProb))}%;"></div>
                   </div>
                 </div>
               </td>
@@ -5080,20 +5371,20 @@
                 <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-cyan);">${fairOddsDisplay}</span>
               </td>
               <td>
-                <span class="board-edge-badge">${edgeDisplay}</span>
+                <span class="${edgeClass}">${edgeDisplay}</span>
               </td>
               <td>
-                <span style="color: var(--neon-turf); font-weight: 800; font-family: var(--font-mono);">${pick.hit_rate_l5 || '4/5 (80%)'}</span>
+                <span style="color: var(--neon-turf); font-weight: 700; font-family: var(--font-mono); white-space: nowrap;">${pick.hit_rate_l5 || '—'}</span>
               </td>
               <td>
-                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
-                  ${statusBadge}
-                  ${elenaBadge}
+                <div class="state-stack">
+                  <div class="state-row-line"><span class="state-dim-tag">Res.</span>${sportsRes.badgeHtml}</div>
+                  <div class="state-row-line"><span class="state-dim-tag">Elena</span>${elenaDec.badgeHtml}</div>
                 </div>
               </td>
-              <td style="text-align: right;">
-                <button class="btn-audit" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')" title="Ver análisis de agentes e IA">
-                  <span>👁️</span> <span>📊</span>
+              <td style="text-align: right; white-space: nowrap;">
+                <button class="btn-audit" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')" title="Ver análisis completo, dictamen de Elena y trazabilidad">
+                  <span>👁️</span> <span>Ver</span>
                 </button>
               </td>
             </tr>
@@ -5146,54 +5437,57 @@
         mobileListContainer.innerHTML = filtered.map((pick, idx) => {
           const pickKey = 'pick_' + (pick.id ? pick.id.replace(/[^a-zA-Z0-9]/g, '_') : idx);
           const meta = getPickKickoffMeta(pick);
-          const statusBadge = getStatusBadge(pick.status, pick);
-          const elenaBadge = getElenaBadge(pick);
-          const proximityBadge = getProximityBadge(meta);
+          const matchPhase = resolveMatchPhase(pick, meta);
+          const sportsRes = resolveSportsResult(pick, meta);
+          const elenaDec = resolveElenaDecision(pick);
 
-          const realProb = pick.real_prob || (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : 75);
-          const impliedProb = pick.implied_prob || (pick.odds ? (100 / pick.odds).toFixed(1) : 55);
-          const edgeDisplay = pick.edge_pct ? `+${pick.edge_pct}%` : '+15.0%';
+          const realProb = pick.real_prob != null ? Number(pick.real_prob).toFixed(1) : (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : '75.0');
+          const impliedProb = pick.implied_prob != null ? Number(pick.implied_prob).toFixed(1) : (pick.odds ? (100 / pick.odds).toFixed(1) : '55.0');
+          const edgeNum = pick.edge_pct != null ? parseFloat(pick.edge_pct) : 0;
+          const edgeDisplay = (edgeNum >= 0 ? '+' : '') + edgeNum.toFixed(1) + '%';
+          const edgeClass = edgeNum < 0 ? 'board-edge-badge neg' : 'board-edge-badge';
           const fairOddsDisplay = pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : (pick.real_prob ? (100 / pick.real_prob).toFixed(2) : '1.30');
           const flag = getLeagueFlag(pick.league);
 
           return `
             <div class="mob-pick-card" id="mobCard_${pickKey}">
-              <!-- Línea 1: Torneo, hora y badges de proximidad y estado -->
+              <!-- Línea 1: Torneo, fecha/hora y fase del partido -->
               <div class="mob-card-line1" onclick="toggleMobileCard('${pickKey}')">
-                <span class="mob-card-tournament">${flag} ${pick.league || 'Competición'} · ⏰ ${meta.timeStrArt}</span>
-                <div style="display: flex; gap: 0.3rem; align-items: center;">
-                  ${proximityBadge}
-                  ${statusBadge}
-                </div>
+                <span class="mob-card-tournament">${flag} ${pick.league || 'Competición'} · ${meta.dateStrArt} ${meta.timeStrArt}</span>
+                ${matchPhase.badgeHtml}
               </div>
 
-              <!-- Línea 2: Partido y Fecha -->
+              <!-- Línea 2: Partido -->
               <div class="mob-card-line2" onclick="toggleMobileCard('${pickKey}')">
                 <span>⚽ ${pick.match}</span>
-                <span style="font-size: 0.72rem; color: var(--text-dim); font-weight: normal; margin-left: auto;">📅 ${meta.dateStrArt}</span>
               </div>
 
-              <!-- Línea 3: Selección / jugador, mercado y Elena -->
-              <div class="mob-card-line3" onclick="toggleMobileCard('${pickKey}')">
-                <span class="mob-card-player">👤 ${pick.player}</span>
-                <span class="mob-card-market">· ${pick.market} (${pick.line})</span>
-                <span style="margin-left: auto;">${elenaBadge}</span>
+              <!-- Línea 3: Selección y Mercado -->
+              <div class="mob-card-line3" onclick="toggleMobileCard('${pickKey}')" style="flex-direction: column; align-items: flex-start; gap: 0.22rem;">
+                <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                  <span class="mob-card-player">${String(pick.player || '').includes('(Equipo)') ? '🛡️' : '👤'} ${pick.player}</span>
+                  <span class="mob-card-market">${pick.market}: <strong>${pick.line}</strong></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.15rem;">
+                  ${sportsRes.badgeHtml}
+                  ${elenaDec.badgeHtml}
+                </div>
               </div>
 
               <!-- Línea 4: Cuota, EV y Probabilidad Proyectada + Indicador de expansión -->
               <div class="mob-card-line4" onclick="toggleMobileCard('${pickKey}')">
-                <div class="mob-metric-group">
+                <div class="mob-metric-group" style="align-items: center;">
                   <div class="mob-metric-item">
                     <span class="mob-metric-lbl">Cuota</span>
                     <span class="mob-metric-val odds">${(typeof pick.odds === "number" ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
                   </div>
                   <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">EV</span>
-                    <span class="board-edge-badge">${edgeDisplay}</span>
+                    <span class="mob-metric-lbl">Prob. Proy.</span>
+                    <span class="mob-metric-val prob">${realProb}% <small style="color:#94a3b8;font-weight:500;">(Imp. ${impliedProb}%)</small></span>
                   </div>
                   <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">Prob. Real</span>
-                    <span class="mob-metric-val prob">${realProb}%</span>
+                    <span class="mob-metric-lbl">EV</span>
+                    <span class="${edgeClass}">${edgeDisplay}</span>
                   </div>
                 </div>
                 <div class="mob-card-chevron">
@@ -5304,6 +5598,10 @@
       setEl('mTabPicksCount', picksCount);
       setEl('tabParlaysCount', parlaysCount);
       setEl('mTabParlaysCount', parlaysCount);
+      const tPar = document.getElementById('tabParlaysCount');
+      const mPar = document.getElementById('mTabParlaysCount');
+      if (tPar) tPar.classList.toggle('is-zero', parlaysCount === 0);
+      if (mPar) mPar.classList.toggle('is-zero', parlaysCount === 0);
       setEl('tabResearchCount', researchCount);
       setEl('mTabResearchCount', researchCount);
 
@@ -5497,6 +5795,16 @@
         if (periodF === 'today') {
           const t = getTodayStr();
           if (item.date !== t && item.date !== '2026-11-22') return false;
+        } else if (periodF === '7d') {
+          const cutoff = new Date();
+          cutoff.setDate(cutoff.getDate() - 7);
+          const cutoffStr = cutoff.toISOString().slice(0, 10);
+          if (item.date && item.date < cutoffStr) return false;
+        } else if (periodF === '30d') {
+          const cutoff = new Date();
+          cutoff.setDate(cutoff.getDate() - 30);
+          const cutoffStr = cutoff.toISOString().slice(0, 10);
+          if (item.date && item.date < cutoffStr) return false;
         }
 
         if (q) {
@@ -6076,8 +6384,8 @@
         applyHistoryFiltersAndRender();
       } else if (view === 'research') {
         renderResearchCenter();
-      } else if (globalPicksData) {
-        updateTopMetrics(globalPicksData);
+      } else if (view === 'picks' && globalPicksData) {
+        renderPicks();
       }
 
       // Scroll to top smoothly when changing views
@@ -6108,6 +6416,9 @@
       if (document.getElementById('filterMatch')) document.getElementById('filterMatch').value = 'all';
       if (document.getElementById('filterMarket')) document.getElementById('filterMarket').value = 'all';
       if (document.getElementById('filterMinHit')) document.getElementById('filterMinHit').value = '0';
+      if (document.getElementById('filterMatchPhase')) document.getElementById('filterMatchPhase').value = 'all';
+      if (document.getElementById('filterElenaDecision')) document.getElementById('filterElenaDecision').value = 'all';
+      if (document.getElementById('filterSportsResult')) document.getElementById('filterSportsResult').value = 'all';
       if (document.getElementById('filterStatus')) document.getElementById('filterStatus').value = 'all';
       if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
       if (typeof onDateChange === 'function') {
@@ -6136,13 +6447,22 @@
       const candidates = (globalPicksData && globalPicksData.research_center) ? globalPicksData.research_center : [];
       const filterStatus = document.getElementById('filterResearchStatus')?.value || 'all';
 
-      const filtered = candidates.filter(c => {
-        if (filterStatus === 'all') return true;
-        if (filterStatus === 'INVESTIGADO') return c.status === 'INVESTIGADO' || c.status === 'APROBADO';
-        if (filterStatus === 'PENDIENTE') return c.status && c.status.includes('PENDIENTE');
-        if (filterStatus === 'DESCARTADO') return c.status === 'RECHAZADO' || c.status === 'DESCARTADO';
-        return true;
-      });
+      const filtered = candidates
+        .filter(c => {
+          if (filterStatus === 'all') return true;
+          if (filterStatus === 'INVESTIGADO') return c.status === 'INVESTIGADO' || c.status === 'APROBADO';
+          if (filterStatus === 'PENDIENTE') return c.status && c.status.includes('PENDIENTE');
+          if (filterStatus === 'DESCARTADO') return c.status === 'RECHAZADO' || c.status === 'DESCARTADO';
+          return true;
+        })
+        .map((item, idx) => ({ item, idx }))
+        .sort((a, b) => {
+          const tsA = Date.parse(a.item.discoveredAt || a.item.createdAt || '') || 0;
+          const tsB = Date.parse(b.item.discoveredAt || b.item.createdAt || '') || 0;
+          if (tsB !== tsA) return tsB - tsA;
+          return b.idx - a.idx;
+        })
+        .map(x => x.item);
 
       if (filtered.length === 0) {
         tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-muted);">No hay candidatos registrados en esta categoría.</td></tr>';
@@ -6152,6 +6472,8 @@
       tbody.innerHTML = filtered.map(c => {
         let statusBadge = '<span class="status-pill detected">DETECTADO</span>';
         if (c.status === 'APROBADO') statusBadge = '<span class="status-pill approved">APROBADO</span>';
+        else if (c.status === 'LIQUIDADO') statusBadge = '<span class="status-pill approved">LIQUIDADO</span>';
+        else if (c.status === 'DUPLICADO') statusBadge = '<span class="status-pill" style="background: rgba(148,163,184,0.18); color: #94a3b8; border: 1px solid rgba(148,163,184,0.35);">DUPLICADO</span>';
         else if (c.status && c.status.includes('PENDIENTE')) statusBadge = '<span class="status-pill pending">PEND. ALINEACIÓN</span>';
         else if (c.status === 'INVESTIGADO') statusBadge = '<span class="status-pill detected">INVESTIGADO</span>';
         else if (c.status === 'RECHAZADO' || c.status === 'DESCARTADO') statusBadge = '<span class="status-pill rejected">RECHAZADO</span>';
@@ -6160,7 +6482,17 @@
         if (c.priority === 'ALTA') prioClass = 'p-alta';
         else if (c.priority === 'BAJA') prioClass = 'p-baja';
 
-        const dateStr = c.discoveredAt ? c.discoveredAt.replace('T', ' ').slice(0, 16) : 'Hoy';
+        let dateStr = 'Hoy';
+        if (c.discoveredAt) {
+          const d = new Date(c.discoveredAt);
+          if (!isNaN(d.getTime())) {
+            const dPart = new Intl.DateTimeFormat('en-CA', { timeZone: TIMEZONE_ARGENTINA, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+            const tPart = new Intl.DateTimeFormat('es-AR', { timeZone: TIMEZONE_ARGENTINA, hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+            dateStr = `${dPart} ${tPart} hs`;
+          } else {
+            dateStr = c.discoveredAt.replace('T', ' ').slice(0, 16);
+          }
+        }
 
         const matchingTopPick = (globalPicksData?.top_picks || []).find(p => p.id === c.id);
         const playerOrTeam = c.playerOrTeam || matchingTopPick?.player || (c.discoveryReason && c.discoveryReason.includes(':') ? c.discoveryReason.split(':')[0] : 'Candidato');
@@ -6177,9 +6509,9 @@
                   <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.25); padding: 0.08rem 0.4rem; border-radius: var(--radius-xs);">${shortId}</span>
                 </div>
                 ${(matchInfo || marketInfo) ? `
-                  <div style="font-size: 0.74rem; color: var(--text-dim); display: flex; gap: 0.35rem; align-items: center; margin-top: 0.1rem;">
+                  <div style="font-size: 0.74rem; color: var(--text-dim); display: flex; flex-direction: column; gap: 0.12rem; margin-top: 0.15rem;">
                     ${matchInfo ? `<span>⚽ ${matchInfo}</span>` : ''}
-                    ${marketInfo ? `<span style="color: #cbd5e1;">• ${marketInfo}</span>` : ''}
+                    ${marketInfo ? `<span style="color: #cbd5e1; font-weight: 600;">${marketInfo}</span>` : ''}
                   </div>
                 ` : ''}
               </div>
@@ -6277,25 +6609,18 @@
       document.getElementById('modalMarketTitle').textContent = (pick.market || '') + ': ' + (pick.line || '');
       document.getElementById('modalMatchTitle').textContent = '⚽ ' + (pick.match || '') + ' (' + (pick.league || '') + ')';
 
-      const statusEl = document.getElementById('modalPickStatus');
-      const isApproved = pick.status === 'APROBADO';
-      const isPending = pick.status && pick.status.includes('PENDIENTE');
-      const isAcertada = pick.status === 'ACERTADA' || pick.status === 'GANADA';
-      const isFallada = pick.status === 'FALLADA' || pick.status === 'PERDIDA';
-      const isAnulada = pick.status && (pick.status.includes('ANULADA') || pick.status.includes('CANCELADA'));
+      const metaModal = getPickKickoffMeta(pick);
+      const elenaModal = resolveElenaDecision(pick);
+      const resultModal = resolveSportsResult(pick, metaModal);
+      const isApproved = elenaModal.code === 'APROBADO';
+      const isPending = elenaModal.code === 'PENDIENTE_EVALUACION';
 
-      if (isAcertada || isApproved) {
-        statusEl.className = 'status-pill approved';
-      } else if (isFallada) {
-        statusEl.className = 'status-pill rejected';
-      } else if (isAnulada) {
-        statusEl.className = 'status-pill';
-        statusEl.style.background = 'rgba(148, 163, 184, 0.2)';
-        statusEl.style.color = '#cbd5e1';
-      } else {
-        statusEl.className = 'status-pill pending';
-      }
-      statusEl.textContent = pick.status || (isApproved ? 'APROBADO' : 'PENDIENTE');
+      const statusEl = document.getElementById('modalPickStatus');
+      statusEl.className = '';
+      statusEl.style.background = 'transparent';
+      statusEl.style.border = 'none';
+      statusEl.style.padding = '0';
+      statusEl.innerHTML = '<div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;">' + resultModal.badgeHtml + elenaModal.badgeHtml + '</div>';
 
       document.getElementById('drawerStatOdds').textContent = pick.odds ? (typeof pick.odds === "number" ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2)) : '1.80';
       document.getElementById('drawerStatProb').textContent = (pick.real_prob || 75) + '%';
@@ -6315,10 +6640,10 @@
         • Ventaja Matemática Neta (+EV): <strong>+${pick.edge_pct || '12'}%</strong> sobre cuota de bet365
       `;
 
-      document.getElementById('mRiskPill').className = 'status-pill ' + (isApproved ? 'approved' : (isPending ? 'pending' : 'rejected'));
-      document.getElementById('mRiskPill').textContent = pick.status || 'APROBADO';
-      document.getElementById('mRiskReason').textContent = pick.rationale || 'Aprobado matemáticamente con EV superior al umbral mínimo del +7.0%.';
-      document.getElementById('mRiskLineupStatus').textContent = isPending ? '⚠️ Pendiente de Confirmación Oficial (T-60)' : '✅ Confirmada / Libre de Riesgo de Rotación';
+      document.getElementById('mRiskPill').className = 'sem-badge ' + (elenaModal.code === 'APROBADO' ? 'sem-green' : (elenaModal.code === 'RECHAZADO' ? 'sem-red' : 'sem-amber'));
+      document.getElementById('mRiskPill').textContent = 'Elena: ' + elenaModal.label;
+      document.getElementById('mRiskReason').textContent = pick.rationale || (elenaModal.code === 'PENDIENTE_EVALUACION' ? 'Dictamen de Elena pendiente de confirmación de alineación titular (T-60) o evaluación de riesgo.' : 'Sin justificación adicional registrada en el origen.');
+      document.getElementById('mRiskLineupStatus').textContent = isPending ? '⚠️ Pendiente de Confirmación Oficial (T-60)' : (String(pick.player || '').includes('(Equipo)') ? '✅ Mercado colectivo (sin riesgo de rotación individual)' : '✅ Evaluado por gestión de riesgo');
       document.getElementById('mRiskMargin').textContent = '+' + Math.max(0, (Number(pick.edge_pct || 15) - 7)).toFixed(1) + '% por encima del umbral mínimo (+7%)';
 
       const agentsContainer = document.getElementById('mAgentsList');
@@ -6479,10 +6804,10 @@
       <span>Estadísticas</span>
       <span class="m-nav-badge" id="mTabHistoryCount">0</span>
     </button>
-    <button class="m-nav-item" id="mTabParlays" onclick="switchView('parlays')">
+    <button class="m-nav-item" id="mTabParlays" onclick="switchView('parlays')" aria-label="Combinadas registradas">
       <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <span>Combinadas</span>
-      <span class="m-nav-badge" id="mTabParlaysCount">0</span>
+      <span class="m-nav-badge is-zero" id="mTabParlaysCount">0</span>
     </button>
   </nav>
 
