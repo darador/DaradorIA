@@ -89,11 +89,13 @@
       "clvProbPp": null
     },
     "settlement": {
-      "status": "PENDING",
-      "outcome": null,
-      "actualStat": null,
-      "settledAtUtc": null,
-      "verificationSource": null
+      "status": "SETTLED",
+      "outcome": "LOST",
+      "actualStat": 5,
+      "settledAtUtc": "2026-11-24T03:33:19.498Z",
+      "eventId": "internacional-v-vitoria.1ymdoe1",
+      "predictionId": "shpred_1795472585097_11a0fc",
+      "verificationSource": "StatsHub Oficial (internacional-v-vitoria.1ymdoe1)"
     }
   },
   {
@@ -186,11 +188,13 @@
       "clvProbPp": null
     },
     "settlement": {
-      "status": "PENDING",
-      "outcome": null,
-      "actualStat": null,
-      "settledAtUtc": null,
-      "verificationSource": null
+      "status": "SETTLED",
+      "outcome": "WON",
+      "actualStat": 1,
+      "settledAtUtc": "2026-11-24T03:33:19.498Z",
+      "eventId": "botafogo-v-sao-paulo.1dxw70e",
+      "predictionId": "shpred_1795472585103_023390",
+      "verificationSource": "StatsHub Oficial (botafogo-v-sao-paulo.1dxw70e)"
     }
   },
   {

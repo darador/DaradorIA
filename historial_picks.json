@@ -1,17 +1,33 @@
 {
-  "updated_at": "2026-11-24T00:20:04.607Z",
+  "updated_at": "2026-11-24T03:33:19.528Z",
   "summary": {
-    "total_bets": 66,
-    "settled_bets": 56,
-    "won_bets": 38,
-    "lost_bets": 18,
+    "total_bets": 68,
+    "settled_bets": 58,
+    "won_bets": 39,
+    "lost_bets": 19,
     "void_bets": 10,
     "pending_bets": 0,
-    "win_rate_pct": 67.9,
-    "total_staked_units": 56,
-    "net_profit_units": 9.53,
-    "roi_pct": 17,
+    "win_rate_pct": 67.2,
+    "total_staked_units": 58,
+    "net_profit_units": 9.2,
+    "roi_pct": 15.9,
     "by_market": {
+      "Goles de equipo": {
+        "total": 5,
+        "won": 3,
+        "lost": 2,
+        "void": 0,
+        "win_rate": "60.0%",
+        "profit": "+0.54U"
+      },
+      "Tarjetas de equipo": {
+        "total": 1,
+        "won": 0,
+        "lost": 1,
+        "void": 0,
+        "win_rate": "0.0%",
+        "profit": "-1.00U"
+      },
       "Córners de equipo": {
         "total": 10,
         "won": 7,
@@ -68,14 +84,6 @@
         "win_rate": "100.0%",
         "profit": "+3.08U"
       },
-      "Goles de equipo": {
-        "total": 4,
-        "won": 2,
-        "lost": 2,
-        "void": 0,
-        "win_rate": "50.0%",
-        "profit": "-0.13U"
-      },
       "Remates de equipo": {
         "total": 5,
         "won": 2,
@@ -103,6 +111,32 @@
     }
   },
   "picks": [
+    {
+      "id": "cand_real_statshub_20261123_botafogo_goals",
+      "date": "2026-11-23",
+      "match": "Botafogo vs São Paulo",
+      "player": "Botafogo (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Menos de 1.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_real_statshub_20261123_vitoria_cards",
+      "date": "2026-11-23",
+      "match": "Internacional vs Vitória",
+      "player": "Vitória (Equipo)",
+      "market": "Tarjetas de equipo",
+      "line": "Menos de 3.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "FALLADA",
+      "profit": -1
+    },
     {
       "id": "cand_real_statshub_20261123_gimnasia_corners",
       "date": "2026-11-23",
@@ -1136,6 +1170,32 @@
     }
   ],
   "history": [
+    {
+      "id": "cand_real_statshub_20261123_botafogo_goals",
+      "date": "2026-11-23",
+      "match": "Botafogo vs São Paulo",
+      "player": "Botafogo (Equipo)",
+      "market": "Goles de equipo",
+      "line": "Menos de 1.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_real_statshub_20261123_vitoria_cards",
+      "date": "2026-11-23",
+      "match": "Internacional vs Vitória",
+      "player": "Vitória (Equipo)",
+      "market": "Tarjetas de equipo",
+      "line": "Menos de 3.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "FALLADA",
+      "profit": -1
+    },
     {
       "id": "cand_real_statshub_20261123_gimnasia_corners",
       "date": "2026-11-23",

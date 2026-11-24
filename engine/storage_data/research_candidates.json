@@ -19177,7 +19177,7 @@
     "trendL5": "5/5 (100%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
-    "status": "APROBADO",
+    "status": "LIQUIDADO",
     "elenaDecision": "APROBADO",
     "prediction": {
       "pProjected": 0.815,
@@ -19189,7 +19189,12 @@
     },
     "decisionReason": "Mercado colectivo StatsHub L10 90% / L15 87%, rival concede L10 60% (Bet365 @1.67). Aprobado por Elena en Shadow Mode.",
     "createdAt": "2026-11-23T12:18:29.928Z",
-    "updatedAt": "2026-11-23T12:18:29.928Z"
+    "updatedAt": "2026-11-24T03:33:19.498Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 5,
+    "settledAt": "2026-11-24T03:33:19.498Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_botafogo_goals",
@@ -19214,7 +19219,7 @@
     "trendL5": "5/5 (100%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
-    "status": "APROBADO",
+    "status": "LIQUIDADO",
     "elenaDecision": "APROBADO",
     "prediction": {
       "pProjected": 0.828,
@@ -19226,7 +19231,12 @@
     },
     "decisionReason": "Mercado colectivo StatsHub L10 90% / L15 87%, rival concede L10 70% (BetMGM UK @1.67). Aprobado por Elena en Shadow Mode.",
     "createdAt": "2026-11-23T12:18:29.937Z",
-    "updatedAt": "2026-11-23T12:18:29.937Z"
+    "updatedAt": "2026-11-24T03:33:19.498Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 1,
+    "settledAt": "2026-11-24T03:33:19.498Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261124_mijnans_shots",
