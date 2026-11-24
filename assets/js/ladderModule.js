@@ -1,14 +1,13 @@
 /**
  * DARADORBET — THE LADDER (Gran Escalera)
- * Rediseño UX Mobile-First con 4 secciones internas:
- *   1. Principal  (Resumen de capital, Próximo escalón, Progresión compacta, 1 línea de disciplina)
- *   2. Escalera   (30 escalones completos con detalle expandible al seleccionar, sin scroll horizontal)
- *   3. Disciplina (Principios, cupo diario, rachas sin apuesta, umbrales y validaciones Elena/RM)
- *   4. Historial  (Tarjetas auditables en móvil / tabla limpia en desktop)
+ * Versión v2.0 — Oportunidades Dinámicas, Ejecución Secuencial y Control de Ventanas Horarias.
+ * Modo visual / experimental (NO OPERATIVO): sin apuestas reales ni ejecución automática.
  *
- * Restricciones:
- *  - Configuración oficial: $ 50.000 → $ 10.000.000 ARS · 30 escalones @ 1.20 (escenario de simulación).
- *  - Modo visual NO OPERATIVO: no ejecuta apuestas reales ni modifica otros módulos.
+ * Secciones internas (Mobile-First):
+ *   1. Principal  (Capital disponible/comprometido, Estado de escalera, Próxima oportunidad / Motivo de bloqueo, Progresión compacta)
+ *   2. Escalera   (30 escalones teóricos @1.20 con detalle expandible al tocar)
+ *   3. Disciplina (Principio oficial + 12 métricas reales de oportunidades y exposición, sin tope diario)
+ *   4. Historial  (Evolución auditable de estados de cada oportunidad y escalón en ARS)
  */
 (function (global) {
   'use strict';
@@ -27,8 +26,8 @@
   }
 
   let activeTab = 'principal';          // 'principal' | 'escalera' | 'disciplina' | 'historial'
-  let previewMode = 'demo_opportunity'; // 'demo_opportunity' | 'demo_no_bet' | 'base_step0'
-  let selectedStepNum = null;           // Escalón seleccionado para ver detalle en tab Escalera
+  let previewMode = 'demo_opportunity'; // 'demo_opportunity' | 'demo_active_bet' | 'demo_no_bet' | 'base_step0'
+  let selectedStepNum = null;
 
   function buildSteps(completedSteps, simOdds = CONFIG.simOdds) {
     const out = [];
@@ -42,25 +41,25 @@
         cap = endCap;
       } else if (s.status === 'ANULADO') {
         endCap = startCap;
-      } else if (s.status === 'APROBADO') {
+      } else if (s.status === 'APROBADO' || s.status === 'EJECUTADO') {
         endCap = startCap * s.odds;
       }
       out.push({
         step: s.step,
         startCapital: startCap,
         odds: s.odds,
-        oddsLabel: s.status === 'APROBADO' ? `${s.odds.toFixed(2)} (Ref.)` : s.odds.toFixed(2),
+        oddsLabel: (s.status === 'APROBADO' || s.status === 'EJECUTADO') ? `${s.odds.toFixed(2)} (Ref.)` : s.odds.toFixed(2),
         endCapital: endCap,
         status: s.status,
         date: s.date,
         note: s.note || '',
-        isNext: s.status === 'APROBADO'
+        isNext: s.status === 'APROBADO' || s.status === 'EJECUTADO'
       });
     }
 
     const lastNum = out.length > 0 ? out[out.length - 1].step : 0;
-    const hasApproved = out.some(s => s.status === 'APROBADO');
-    let projCap = hasApproved ? out[out.length - 1].endCapital : cap;
+    const hasCurrent = out.some(s => s.status === 'APROBADO' || s.status === 'EJECUTADO');
+    let projCap = hasCurrent ? out[out.length - 1].endCapital : cap;
 
     for (let i = lastNum + 1; i <= CONFIG.totalSteps; i++) {
       const startCap = projCap;
@@ -74,9 +73,9 @@
         status: 'PENDIENTE',
         date: i === CONFIG.totalSteps ? 'Meta 🎯' : 'Proy.',
         note: i === CONFIG.totalSteps
-          ? 'Supera el objetivo de $ 10.000.000 ARS bajo escenario teórico @ 1.20.'
-          : 'Escalón proyectado con reinversión teórica del 100% @ 1.20 (referencia de simulación).',
-        isNext: !hasApproved && i === lastNum + 1
+          ? 'Supera $ 10.000.000 ARS bajo simulación @ 1.20 (referencia matemática, no obligación).'
+          : 'Escalón proyectado con reinversión teórica 100% @ 1.20.',
+        isNext: !hasCurrent && i === lastNum + 1
       });
       projCap = endCap;
     }
@@ -90,84 +89,129 @@
       return {
         isDemo: false,
         badgeLabel: 'Estado Base · No operativo',
+        ladderState: 'DISPONIBLE',
+        blockReason: null,
         currentStep: 0,
-        nextStepNum: 1,
-        currentCapital: actualCapital,
+        availableCapital: actualCapital,
+        committedCapital: 0,
         progressPct: 0,
         daysWithoutBet: 0,
-        consecutiveNoBetDays: 0,
-        dailyUsed: '0 / 2',
-        evaluatedDays: 0,
-        resolvedLabel: '0 / 30',
-        avgOdds: '—',
         steps,
         opportunity: null,
+        waitingQueue: [],
+        metrics: {
+          detected: 0, evaluated: 0, approved: 0, rejected: 0,
+          waiting: 0, executed: 0, settled: 0, discardedByCondition: 0,
+          avgResolution: '—', won: 0, lost: 0, voidCount: 0
+        },
         history: []
       };
     }
 
-    if (mode === 'demo_no_bet') {
+    if (mode === 'demo_active_bet') {
       const done = [
-        { step: 1, odds: 1.20, status: 'GANADO', date: 'Sim. D-7', note: 'Simulación visual: escalón ganado con reinversión 100%.' },
-        { step: 2, odds: 1.20, status: 'GANADO', date: 'Sim. D-5', note: 'Simulación visual: escalón ganado con reinversión 100%.' },
-        { step: 3, odds: 1.18, status: 'ANULADO', date: 'Sim. D-4', note: 'Anulado por rotación T-60. Capital preservado intacto.' },
-        { step: 4, odds: 1.20, status: 'GANADO', date: 'Sim. D-2', note: 'Simulación visual: escalón ganado con reinversión 100%.' }
+        { step: 1, odds: 1.20, status: 'GANADO', date: 'Sim. D-4', note: 'Liquidación confirmada.' },
+        { step: 2, odds: 1.20, status: 'GANADO', date: 'Sim. D-2', note: 'Liquidación confirmada.' },
+        { step: 3, odds: 1.18, status: 'ANULADO', date: 'Sim. D-1', note: 'Void por rotación T-60. Capital preservado.' },
+        { step: 4, odds: 1.20, status: 'GANADO', date: 'Sim. Hoy 14:00', note: 'Liquidación confirmada — habilitó E5 el mismo día.' },
+        { step: 5, odds: 1.20, status: 'EJECUTADO', date: 'Sim. Hoy 17:00', note: 'Capital comprometido en evento en curso. Esperando liquidación oficial.' }
       ];
       const { steps, actualCapital } = buildSteps(done);
       return {
         isDemo: true,
         badgeLabel: 'Demo · No operativo',
+        ladderState: 'APUESTA_ACTIVA',
+        blockReason: 'Escalón E5 comprometido ($ 86.400 ARS en juego · ventana 17:00–19:30 ART). Ninguna otra oportunidad puede ejecutarse hasta confirmar liquidación oficial.',
         currentStep: 4,
-        nextStepNum: 5,
-        currentCapital: actualCapital,
+        availableCapital: 0,
+        committedCapital: actualCapital,
         progressPct: (3 / CONFIG.totalSteps) * 100,
-        daysWithoutBet: 4,
-        consecutiveNoBetDays: 2,
-        dailyUsed: '0 / 2',
-        evaluatedDays: 8,
-        resolvedLabel: '3 ganados · 1 anulado (Demo)',
-        avgOdds: '1.20 (Sim.)',
+        daysWithoutBet: 2,
         steps,
         opportunity: null,
+        waitingQueue: [
+          {
+            match: 'Partido Nocturno Demo (20:30 ART)',
+            selection: 'Mercado conservador de referencia @ 1.22',
+            state: 'EN_ESPERA',
+            reason: 'Bloqueo Risk Manager: existe escalón activo (E5). Se reevaluará cuota, Elena y ventana horaria tras la liquidación.'
+          }
+        ],
+        metrics: {
+          detected: 12, evaluated: 12, approved: 5, rejected: 5,
+          waiting: 1, executed: 5, settled: 4, discardedByCondition: 1,
+          avgResolution: '138 min (Demo)', won: 3, lost: 0, voidCount: 1
+        },
         history: [
-          { date: 'Sim. Hoy', step: '—', event: 'Día sin apuesta — ningún candidato superó criterios', odds: '—', capBefore: actualCapital, capAfter: actualCapital, status: 'DIA_SIN_APUESTA' },
-          { date: 'Sim. Ayer', step: '—', event: 'Día sin apuesta — vetado por riesgo de rotación T-60', odds: '—', capBefore: actualCapital, capAfter: actualCapital, status: 'DIA_SIN_APUESTA' },
-          { date: 'Sim. D-2', step: 'E4', event: 'Ejemplo Partido D (Simulación)', odds: '1.20', capBefore: 72000, capAfter: 86400, status: 'GANADO' },
-          { date: 'Sim. D-4', step: 'E3', event: 'Ejemplo Partido C (Void — capital intacto)', odds: '1.18', capBefore: 72000, capAfter: 72000, status: 'ANULADO' },
-          { date: 'Sim. D-5', step: 'E2', event: 'Ejemplo Partido B (Simulación)', odds: '1.20', capBefore: 60000, capAfter: 72000, status: 'GANADO' },
-          { date: 'Sim. D-7', step: 'E1', event: 'Ejemplo Partido A (Simulación)', odds: '1.20', capBefore: 50000, capAfter: 60000, status: 'GANADO' }
+          { date: 'Sim. Hoy 17:05', step: '—', event: 'Partido Nocturno Demo (20:30 ART)', flow: 'DETECTADA → EN_ESPERA', odds: '1.22', capBefore: 86400, capAfter: 86400, status: 'EN_ESPERA' },
+          { date: 'Sim. Hoy 17:00', step: 'E5', event: 'Partido Tarde Demo (Capital comprometido)', flow: 'DETECTADA → APROBADA → EJECUTADA', odds: '1.20', capBefore: 86400, capAfter: 86400, status: 'EJECUTADA' },
+          { date: 'Sim. Hoy 14:00', step: 'E4', event: 'Partido Mediodía Demo (1º del día liquidado)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.20', capBefore: 72000, capAfter: 86400, status: 'GANADO' },
+          { date: 'Sim. D-1', step: '—', event: 'Oportunidad B (Cuota cayó 9% mientras esperaba)', flow: 'DETECTADA → EN_ESPERA → DESCARTADA', odds: '1.09', capBefore: 72000, capAfter: 72000, status: 'DESCARTADA' },
+          { date: 'Sim. D-1', step: 'E3', event: 'Partido C Demo (Void por rotación T-60)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.18', capBefore: 72000, capAfter: 72000, status: 'ANULADO' }
         ]
       };
     }
 
-    // Default: demo_opportunity
+    if (mode === 'demo_no_bet') {
+      const done = [
+        { step: 1, odds: 1.20, status: 'GANADO', date: 'Sim. D-7', note: 'Liquidación confirmada.' },
+        { step: 2, odds: 1.20, status: 'GANADO', date: 'Sim. D-5', note: 'Liquidación confirmada.' },
+        { step: 3, odds: 1.18, status: 'ANULADO', date: 'Sim. D-4', note: 'Void — capital preservado.' },
+        { step: 4, odds: 1.20, status: 'GANADO', date: 'Sim. D-2', note: 'Liquidación confirmada.' }
+      ];
+      const { steps, actualCapital } = buildSteps(done);
+      return {
+        isDemo: true,
+        badgeLabel: 'Demo · No operativo',
+        ladderState: 'DISPONIBLE',
+        blockReason: null,
+        currentStep: 4,
+        availableCapital: actualCapital,
+        committedCapital: 0,
+        progressPct: (3 / CONFIG.totalSteps) * 100,
+        daysWithoutBet: 4,
+        steps,
+        opportunity: null,
+        waitingQueue: [],
+        metrics: {
+          detected: 9, evaluated: 9, approved: 4, rejected: 4,
+          waiting: 0, executed: 4, settled: 4, discardedByCondition: 1,
+          avgResolution: '132 min (Demo)', won: 3, lost: 0, voidCount: 1
+        },
+        history: [
+          { date: 'Sim. Hoy', step: '—', event: 'Día sin oportunidades válidas (capital intacto)', flow: 'SIN_OPORTUNIDADES', odds: '—', capBefore: actualCapital, capAfter: actualCapital, status: 'DIA_SIN_APUESTA' },
+          { date: 'Sim. D-2', step: 'E4', event: 'Ejemplo Partido D (Simulación)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.20', capBefore: 72000, capAfter: 86400, status: 'GANADO' },
+          { date: 'Sim. D-4', step: 'E3', event: 'Ejemplo Partido C (Void — capital intacto)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.18', capBefore: 72000, capAfter: 72000, status: 'ANULADO' }
+        ]
+      };
+    }
+
+    // Default: demo_opportunity (DISPONIBLE con oportunidad lista para decisión manual)
     const done = [
-      { step: 1, odds: 1.20, status: 'GANADO', date: 'Sim. D-6', note: 'Simulación visual: escalón ganado con reinversión 100%.' },
-      { step: 2, odds: 1.20, status: 'GANADO', date: 'Sim. D-4', note: 'Simulación visual: escalón ganado con reinversión 100%.' },
-      { step: 3, odds: 1.18, status: 'ANULADO', date: 'Sim. D-3', note: 'Anulado por no titularidad. Capital preservado.' },
-      { step: 4, odds: 1.20, status: 'GANADO', date: 'Sim. D-1', note: 'Simulación visual: escalón ganado con reinversión 100%.' },
-      { step: 5, odds: 1.20, status: 'APROBADO', date: 'Sim. Hoy', note: 'Aprobado por Elena y validado por Risk Manager (Demo · ejecución manual).' }
+      { step: 1, odds: 1.20, status: 'GANADO', date: 'Sim. D-6', note: 'Liquidación confirmada.' },
+      { step: 2, odds: 1.20, status: 'GANADO', date: 'Sim. D-4', note: 'Liquidación confirmada.' },
+      { step: 3, odds: 1.18, status: 'ANULADO', date: 'Sim. D-3', note: 'Void por rotación T-60.' },
+      { step: 4, odds: 1.20, status: 'GANADO', date: 'Sim. D-1', note: 'Liquidación confirmada.' },
+      { step: 5, odds: 1.20, status: 'APROBADO', date: 'Sim. Hoy', note: 'Aprobada por Elena y validada por Risk Manager (decisión manual pendiente).' }
     ];
     const { steps, actualCapital } = buildSteps(done);
     return {
       isDemo: true,
       badgeLabel: 'Demo · No operativo',
+      ladderState: 'DISPONIBLE',
+      blockReason: null,
       currentStep: 4,
-      nextStepNum: 5,
-      currentCapital: actualCapital,
+      availableCapital: actualCapital,
+      committedCapital: 0,
       progressPct: (3 / CONFIG.totalSteps) * 100,
       daysWithoutBet: 3,
-      consecutiveNoBetDays: 0,
-      dailyUsed: '0 / 2',
-      evaluatedDays: 7,
-      resolvedLabel: '3 ganados · 1 anulado (Demo)',
-      avgOdds: '1.20 (Sim.)',
       steps,
       opportunity: {
         stepNum: 5,
         match: 'Partido de Demostración (Ejemplo Visual)',
         competition: 'Competición Tier 1 · Demo',
         kickoffArt: 'Hoy 17:00 hs (ART)',
+        windowArt: 'Ventana estimada: 17:00 – 19:15 hs (sin superposición)',
         market: 'Mercado conservador de referencia',
         selection: 'Selección ilustrativa (No operativa)',
         odds: 1.20,
@@ -175,23 +219,47 @@
         elenaStatus: 'APROBADO',
         riskManagerStatus: 'VALIDADO'
       },
+      waitingQueue: [],
+      metrics: {
+        detected: 11, evaluated: 11, approved: 5, rejected: 5,
+        waiting: 0, executed: 4, settled: 4, discardedByCondition: 1,
+        avgResolution: '134 min (Demo)', won: 3, lost: 0, voidCount: 1
+      },
       history: [
-        { date: 'Sim. Hoy', step: 'E5', event: 'Partido de Demostración (Aprobado — ejecución manual)', odds: '1.20', capBefore: 86400, capAfter: 103680, status: 'APROBADO' },
-        { date: 'Sim. D-1', step: 'E4', event: 'Ejemplo Partido D (Simulación)', odds: '1.20', capBefore: 72000, capAfter: 86400, status: 'GANADO' },
-        { date: 'Sim. D-2', step: '—', event: 'Día sin apuesta — ningún candidato superó criterios', odds: '—', capBefore: 72000, capAfter: 72000, status: 'DIA_SIN_APUESTA' },
-        { date: 'Sim. D-3', step: 'E3', event: 'Ejemplo Partido C (Void — capital intacto)', odds: '1.18', capBefore: 72000, capAfter: 72000, status: 'ANULADO' },
-        { date: 'Sim. D-4', step: 'E2', event: 'Ejemplo Partido B (Simulación)', odds: '1.20', capBefore: 60000, capAfter: 72000, status: 'GANADO' },
-        { date: 'Sim. D-5', step: '—', event: 'Día sin apuesta — disciplina de capital aplicada', odds: '—', capBefore: 60000, capAfter: 60000, status: 'DIA_SIN_APUESTA' },
-        { date: 'Sim. D-6', step: 'E1', event: 'Ejemplo Partido A (Simulación)', odds: '1.20', capBefore: 50000, capAfter: 60000, status: 'GANADO' }
+        { date: 'Sim. Hoy', step: 'E5', event: 'Partido de Demostración (Decisión manual pendiente)', flow: 'DETECTADA → EN_EVALUACION → APROBADA', odds: '1.20', capBefore: 86400, capAfter: 103680, status: 'APROBADA' },
+        { date: 'Sim. D-1', step: 'E4', event: 'Ejemplo Partido D (Simulación)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.20', capBefore: 72000, capAfter: 86400, status: 'GANADO' },
+        { date: 'Sim. D-2', step: '—', event: 'Oportunidad rechazada por Risk Manager (superposición horaria)', flow: 'DETECTADA → EN_EVALUACION → RECHAZADA', odds: '1.19', capBefore: 72000, capAfter: 72000, status: 'RECHAZADA' },
+        { date: 'Sim. D-3', step: 'E3', event: 'Ejemplo Partido C (Void — capital intacto)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.18', capBefore: 72000, capAfter: 72000, status: 'ANULADO' },
+        { date: 'Sim. D-4', step: 'E2', event: 'Ejemplo Partido B (Simulación)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.20', capBefore: 60000, capAfter: 72000, status: 'GANADO' },
+        { date: 'Sim. D-6', step: 'E1', event: 'Ejemplo Partido A (Simulación)', flow: 'DETECTADA → APROBADA → EJECUTADA → LIQUIDADA', odds: '1.20', capBefore: 50000, capAfter: 60000, status: 'GANADO' }
       ]
     };
+  }
+
+  function ladderStateBadge(state) {
+    const map = {
+      DISPONIBLE: { cls: 'sem-green', txt: '● DISPONIBLE' },
+      OPORTUNIDAD_EN_EVALUACION: { cls: 'sem-violet', txt: '◎ EN EVALUACIÓN' },
+      EN_ESPERA: { cls: 'sem-amber', txt: '⏳ EN ESPERA' },
+      APUESTA_ACTIVA: { cls: 'sem-blue', txt: '▶ APUESTA ACTIVA' },
+      LIQUIDACION_PENDIENTE: { cls: 'sem-amber', txt: '🔒 LIQUIDACIÓN PENDIENTE' },
+      DETENIDA: { cls: 'sem-red', txt: '✖ DETENIDA' }
+    };
+    const c = map[state] || { cls: 'sem-gray', txt: state };
+    return `<span class="sem-badge ${c.cls}">${c.txt}</span>`;
   }
 
   function badgeHtml(status) {
     const map = {
       GANADO: { cls: 'sem-green', txt: '✔ GANADO' },
       APROBADO: { cls: 'sem-violet', txt: '◆ APROBADO' },
+      APROBADA: { cls: 'sem-violet', txt: '◆ APROBADA' },
       EJECUTADO: { cls: 'sem-blue', txt: '▶ EJECUTADO' },
+      EJECUTADA: { cls: 'sem-blue', txt: '▶ EJECUTADA' },
+      LIQUIDADA: { cls: 'sem-green', txt: '✔ LIQUIDADA' },
+      EN_ESPERA: { cls: 'sem-amber', txt: '⏳ EN ESPERA' },
+      DESCARTADA: { cls: 'lm-badge-void', txt: '⊘ DESCARTADA' },
+      RECHAZADA: { cls: 'sem-red', txt: '✕ RECHAZADA' },
       PENDIENTE: { cls: 'sem-gray', txt: '◦ PENDIENTE' },
       ANULADO: { cls: 'lm-badge-void', txt: '⊘ ANULADO' },
       PERDIDO: { cls: 'sem-red', txt: '✖ PERDIDO' },
@@ -201,21 +269,45 @@
     return `<span class="sem-badge ${c.cls}">${c.txt}</span>`;
   }
 
-  // ==================== SECCIÓN 1: PRINCIPAL (Ultra limpia, mobile-first) ====================
+  // ==================== 1. PRINCIPAL ====================
   function renderPrincipalTab(st) {
-    const remainingArs = Math.max(0, CONFIG.targetCapitalArs - st.currentCapital);
+    const totalCap = st.availableCapital + st.committedCapital;
+    const remainingArs = Math.max(0, CONFIG.targetCapitalArs - totalCap);
     const wonSteps = st.steps.filter(s => s.status === 'GANADO').length;
 
-    // Bloque Próximo Escalón (única tarjeta enfocada o estado vacío atractivo)
-    const nextStepHtml = st.opportunity
-      ? `
+    let actionCardHtml = '';
+    if (st.blockReason) {
+      const waitListHtml = (st.waitingQueue || []).map(w => `
+        <div class="lm-wait-item">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+            <strong style="color:#f8fafc;font-size:0.82rem;">${w.match}</strong>
+            ${badgeHtml(w.state)}
+          </div>
+          <div style="font-size:0.75rem;color:#cbd5e1;margin-top:0.15rem;">${w.selection}</div>
+          <div style="font-size:0.72rem;color:#fbbf24;margin-top:0.2rem;">${w.reason}</div>
+        </div>
+      `).join('');
+
+      actionCardHtml = `
+        <section class="lm-card lm-block-card" aria-label="Estado de exposición y bloqueo secuencial">
+          <div class="lm-next-head">
+            ${ladderStateBadge(st.ladderState)}
+            <span class="lm-demo-tag">Secuencial · 1 escalón activo máx.</span>
+          </div>
+          <div class="lm-block-msg">${st.blockReason}</div>
+          ${waitListHtml}
+        </section>
+      `;
+    } else if (st.opportunity) {
+      actionCardHtml = `
         <section class="lm-card lm-next-card" aria-label="Próximo escalón">
           <div class="lm-next-head">
             <span class="sem-badge sem-violet">PRÓXIMO ESCALÓN · E${st.opportunity.stepNum}</span>
-            <span class="lm-demo-tag">Simulación · Manual</span>
+            <span class="lm-demo-tag">Simulación · Decisión manual</span>
           </div>
           <div class="lm-next-match">${st.opportunity.match}</div>
           <div class="lm-next-sub">${st.opportunity.competition} · ⏰ ${st.opportunity.kickoffArt}</div>
+          <div class="lm-next-sub" style="color:#38bdf8;">🕒 ${st.opportunity.windowArt}</div>
           <div class="lm-next-sel">${st.opportunity.market} · <strong>${st.opportunity.selection}</strong></div>
 
           <div class="lm-next-metrics">
@@ -234,16 +326,17 @@
             <span class="sem-badge sem-green">🛡️ Risk Manager: ${st.opportunity.riskManagerStatus}</span>
           </div>
         </section>
-      `
-      : `
+      `;
+    } else {
+      actionCardHtml = `
         <section class="lm-card lm-empty-next" aria-label="Estado sin oportunidad">
           <div class="lm-empty-icon">🛡️</div>
           <div class="lm-empty-title">No hay una oportunidad que cumpla los criterios. Hoy no apostamos.</div>
-          <div class="lm-empty-sub">Tu capital permanece intacto en <strong>${formatArs(st.currentCapital)} ARS</strong>. La disciplina protege la escalera.</div>
+          <div class="lm-empty-sub">Capital disponible intacto: <strong>${formatArs(st.availableCapital)} ARS</strong>. La escalera avanza solo cuando existe calidad estadística verificada.</div>
         </section>
       `;
+    }
 
-    // Resumen compacto de progresión (Ganados, Actual, Próximos)
     const miniSteps = st.steps.slice(0, 8);
     const pillsHtml = miniSteps.map(s => {
       const cls = s.status === 'GANADO' ? 'won' : (s.isNext ? 'next' : (s.status === 'ANULADO' ? 'void' : 'pending'));
@@ -256,12 +349,18 @@
     }).join('');
 
     return `
-      <!-- Resumen de Capital (Protagonista) -->
-      <section class="lm-capital-hero" aria-label="Resumen de capital">
+      <!-- Resumen de Capital + Estado de la Escalera -->
+      <section class="lm-capital-hero" aria-label="Resumen de capital y estado">
         <div class="lm-cap-top">
           <div>
-            <div class="lm-cap-lbl">CAPITAL ACTUAL</div>
-            <div class="lm-cap-value">${formatArs(st.currentCapital)} <small>ARS</small></div>
+            <div style="display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;margin-bottom:0.15rem;">
+              <span class="lm-cap-lbl">CAPITAL ACTUAL</span>
+              ${ladderStateBadge(st.ladderState)}
+            </div>
+            <div class="lm-cap-value">${formatArs(totalCap)} <small>ARS</small></div>
+            <div class="lm-cap-split">
+              Disponible: <strong style="color:#4ade80;">${formatArs(st.availableCapital)}</strong> · Comprometido: <strong style="color:${st.committedCapital > 0 ? '#38bdf8' : '#94a3b8'};">${formatArs(st.committedCapital)}</strong>
+            </div>
           </div>
           <div class="lm-cap-target">
             <div class="lm-cap-lbl">OBJETIVO FINAL</div>
@@ -278,15 +377,15 @@
         </div>
       </section>
 
-      <!-- Próximo Escalón -->
-      ${nextStepHtml}
+      <!-- Próximo Escalón / Motivo de bloqueo secuencial -->
+      ${actionCardHtml}
 
       <!-- Resumen de Progresión -->
       <section class="lm-card lm-prog-summary" aria-label="Resumen de progresión">
         <div class="lm-sec-head">
           <div>
             <h3 class="lm-sec-title">Progresión</h3>
-            <span class="lm-sec-sub">Ganados · Actual · Próximos (ref. @1.20)</span>
+            <span class="lm-sec-sub">Sin tope diario · Avance secuencial tras liquidación confirmada</span>
           </div>
           <button type="button" class="lm-link-btn" onclick="window.LadderModule.setTab('escalera')">Ver escalera completa →</button>
         </div>
@@ -295,15 +394,15 @@
         </div>
       </section>
 
-      <!-- Resumen de Disciplina (1 sola línea limpia) -->
+      <!-- Resumen de Disciplina -->
       <button type="button" class="lm-discipline-strip" onclick="window.LadderModule.setTab('disciplina')">
-        <span>🛡️ <strong>Días sin apuesta: ${st.daysWithoutBet}</strong> · Disciplina preservada</span>
-        <span class="lm-strip-arrow">Ver reglas →</span>
+        <span>🛡️ <strong>Sin límite diario</strong> · Días sin apuesta: ${st.daysWithoutBet} · Ejecución secuencial</span>
+        <span class="lm-strip-arrow">Métricas y reglas →</span>
       </button>
     `;
   }
 
-  // ==================== SECCIÓN 2: ESCALERA (30 escalones completos, tap para detalle) ====================
+  // ==================== 2. ESCALERA (30 escalones) ====================
   function renderEscaleraTab(st) {
     const rowsHtml = st.steps.map(s => {
       const isSelected = selectedStepNum === s.step;
@@ -325,7 +424,7 @@
           </div>
           ${isSelected ? `
             <div class="lm-si-detail">
-              <div><strong>Cálculo:</strong> ${formatArs(s.startCapital)} × ${s.odds.toFixed(2)} = <strong>${formatArs(s.endCapital)} ARS</strong></div>
+              <div><strong>Fórmula:</strong> ${formatArs(s.startCapital)} × ${s.odds.toFixed(2)} = <strong>${formatArs(s.endCapital)} ARS</strong></div>
               <div style="margin-top:0.2rem; color:#94a3b8;">${s.note}</div>
             </div>
           ` : ''}
@@ -338,50 +437,53 @@
         <div class="lm-sec-head" style="margin-bottom:0.75rem;">
           <div>
             <h3 class="lm-sec-title">Escalera Completa (30 Escalones)</h3>
-            <span class="lm-sec-sub">Tocá cualquier escalón para ver el detalle · Fórmula: capital × cuota (simulación @1.20)</span>
+            <span class="lm-sec-sub">Tocá cualquier escalón para ver el detalle · Capital se actualiza solo tras liquidación confirmada</span>
           </div>
           <span class="sem-badge sem-violet">Meta: ${formatArs(CONFIG.targetCapitalArs)}</span>
         </div>
-        <div class="lm-steps-list">
-          ${rowsHtml}
-        </div>
+        <div class="lm-steps-list">${rowsHtml}</div>
       </section>
     `;
   }
 
-  // ==================== SECCIÓN 3: DISCIPLINA ====================
+  // ==================== 3. DISCIPLINA (Sin tope diario + 12 métricas reales) ====================
   function renderDisciplinaTab(st) {
+    const m = st.metrics;
     return `
-      <section class="lm-card" aria-label="Disciplina y reglas de THE LADDER">
+      <section class="lm-card" aria-label="Disciplina y métricas de exposición">
         <div class="lm-sec-head" style="margin-bottom:0.75rem;">
           <div>
-            <h3 class="lm-sec-title">Disciplina & Control</h3>
-            <span class="lm-sec-sub">Preservación estricta de capital por encima del avance rápido</span>
+            <h3 class="lm-sec-title">Disciplina & Control de Exposición</h3>
+            <span class="lm-sec-sub">Oportunidades dinámicas · Ejecución secuencial estricta</span>
           </div>
-          <span class="sem-badge sem-green">✓ Reglas activas</span>
+          ${ladderStateBadge(st.ladderState)}
         </div>
 
         <div class="lm-principle-callout">
-          <strong>Principio fundamental:</strong> "No apostar también es una decisión válida. Nunca se fuerza una selección para avanzar."
+          <strong>Principio de disciplina:</strong> "THE LADDER no tiene límite de oportunidades ni calendario obligatorio. Avanza cuando existe una oportunidad válida y espera cuando no existe. Nunca se fuerza una apuesta para cumplir un objetivo."
         </div>
 
         <div class="lm-kv-list">
-          <div class="lm-kv-row"><span>Selecciones del día / máximo permitido</span><strong>${st.dailyUsed} máx.</strong></div>
-          <div class="lm-kv-row"><span>Jornadas consecutivas sin selección</span><strong>${st.consecutiveNoBetDays}</strong></div>
-          <div class="lm-kv-row"><span>Días evaluados / días sin apuesta</span><strong>${st.evaluatedDays} / ${st.daysWithoutBet}</strong></div>
-          <div class="lm-kv-row"><span>Escalones resueltos</span><strong>${st.resolvedLabel}</strong></div>
-          <div class="lm-kv-row"><span>Cuota media alcanzada</span><strong style="color:#facc15;">${st.avgOdds}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades detectadas</span><strong>${m.detected}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades evaluadas</span><strong>${m.evaluated}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades aprobadas (Elena + RM)</span><strong style="color:#c4b5fd;">${m.approved}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades rechazadas</span><strong style="color:#f87171;">${m.rejected}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades en espera (secuencial / ventana)</span><strong style="color:#fbbf24;">${m.waiting}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades ejecutadas (decisión manual)</span><strong style="color:#38bdf8;">${m.executed}</strong></div>
+          <div class="lm-kv-row"><span>Oportunidades liquidadas</span><strong>${m.settled}</strong></div>
+          <div class="lm-kv-row"><span>Descartadas por cambio de condiciones / cuota</span><strong>${m.discardedByCondition}</strong></div>
+          <div class="lm-kv-row"><span>Tiempo medio de resolución</span><strong>${m.avgResolution}</strong></div>
+          <div class="lm-kv-row"><span>Escalones ganados / perdidos / anulados</span><strong><span style="color:#4ade80;">${m.won}</span> / <span style="color:#f87171;">${m.lost}</span> / ${m.voidCount}</strong></div>
+          <div class="lm-kv-row"><span>Capital comprometido</span><strong style="color:#38bdf8;">${formatArs(st.committedCapital)} ARS</strong></div>
+          <div class="lm-kv-row"><span>Capital disponible</span><strong style="color:#4ade80;">${formatArs(st.availableCapital)} ARS</strong></div>
           <div class="lm-kv-row"><span>Umbral de probabilidad de referencia</span><strong style="color:#38bdf8;">95% <small style="color:#94a3b8;font-weight:500;">(pend. validación)</small></strong></div>
-          <div class="lm-kv-row"><span>Validación Elena (Gestora de Riesgo)</span><span class="sem-badge sem-green">Obligatoria</span></div>
-          <div class="lm-kv-row"><span>Validación Risk Manager</span><span class="sem-badge sem-green">Obligatoria</span></div>
-          <div class="lm-kv-row"><span>Ejecución de apuestas</span><span class="sem-badge sem-blue">100% Manual</span></div>
-          <div class="lm-kv-row"><span>Capital en días sin apuesta</span><strong style="color:#4ade80;">100% preservado</strong></div>
+          <div class="lm-kv-row"><span>Bloqueo Risk Manager sobre Elena</span><span class="sem-badge sem-green">Vinculante</span></div>
         </div>
       </section>
     `;
   }
 
-  // ==================== SECCIÓN 4: HISTORIAL (Mobile cards + Desktop table) ====================
+  // ==================== 4. HISTORIAL (Evolución de estados por oportunidad) ====================
   function renderHistorialTab(st) {
     const hist = st.history || [];
     if (hist.length === 0) {
@@ -389,7 +491,7 @@
         <section class="lm-card" aria-label="Historial auditable">
           <div class="lm-sec-head"><h3 class="lm-sec-title">Historial Auditable</h3><span class="sem-badge sem-gray">0 registros</span></div>
           <div class="lm-empty-next" style="margin-top:0.75rem;">
-            <div class="lm-empty-sub">Todavía no hay registros en el Estado Base (E0). Cada escalón y cada día sin apuesta quedará registrado aquí de forma inmutable.</div>
+            <div class="lm-empty-sub">Todavía no hay transiciones registradas en el Estado Base (E0).</div>
           </div>
         </section>
       `;
@@ -402,6 +504,7 @@
           ${badgeHtml(h.status)}
         </div>
         <div class="lm-hc-event">${h.event}</div>
+        <div style="font-family:var(--font-mono);font-size:0.67rem;color:#38bdf8;">${h.flow}</div>
         <div class="lm-hc-foot">
           <span>Cuota: <strong style="color:#facc15;">${h.odds}</strong></span>
           <span>${formatArs(h.capBefore)} → <strong style="color:#4ade80;">${formatArs(h.capAfter)}</strong></span>
@@ -413,7 +516,10 @@
       <tr>
         <td style="font-family:var(--font-mono);color:#94a3b8;white-space:nowrap;">${h.date}</td>
         <td style="font-weight:700;color:#e2e8f0;white-space:nowrap;">${h.step}</td>
-        <td style="color:#f8fafc;">${h.event}</td>
+        <td>
+          <div style="color:#f8fafc;">${h.event}</div>
+          <div style="font-family:var(--font-mono);font-size:0.67rem;color:#38bdf8;margin-top:0.15rem;">${h.flow}</div>
+        </td>
         <td style="font-family:var(--font-mono);color:#facc15;font-weight:700;">${h.odds}</td>
         <td style="font-family:var(--font-mono);color:#cbd5e1;white-space:nowrap;">${formatArs(h.capBefore)} → <strong style="color:#4ade80;">${formatArs(h.capAfter)}</strong></td>
         <td>${badgeHtml(h.status)}</td>
@@ -421,11 +527,11 @@
     `).join('');
 
     return `
-      <section class="lm-card" aria-label="Historial auditable de progresión">
+      <section class="lm-card" aria-label="Historial auditable de oportunidades y estados">
         <div class="lm-sec-head" style="margin-bottom:0.75rem;">
           <div>
-            <h3 class="lm-sec-title">Historial Auditable</h3>
-            <span class="lm-sec-sub">Escalones ganados, anulados, aprobados y días sin apuesta en ARS</span>
+            <h3 class="lm-sec-title">Historial Auditable de Estados</h3>
+            <span class="lm-sec-sub">Evolución completa: DETECTADA → EVALUADA → APROBADA / EN ESPERA / DESCARTADA → EJECUTADA → LIQUIDADA</span>
           </div>
           <span class="sem-badge sem-gray">${hist.length} registros</span>
         </div>
@@ -438,7 +544,7 @@
               <tr>
                 <th>FECHA</th>
                 <th>ESCALÓN</th>
-                <th>EVENTO / DISCIPLINA</th>
+                <th>OPORTUNIDAD & EVOLUCIÓN DE ESTADOS</th>
                 <th>CUOTA</th>
                 <th>CAPITAL (ANTES → DESPUÉS)</th>
                 <th>ESTADO</th>
@@ -451,7 +557,7 @@
     `;
   }
 
-  // ==================== ORQUESTADOR PRINCIPAL ====================
+  // ==================== ORQUESTADOR ====================
   function renderLadderDashboard() {
     const root = document.getElementById('viewLadder');
     if (!root) return;
@@ -465,7 +571,6 @@
 
     root.innerHTML = `
       <div class="lm-shell">
-        <!-- Encabezado compacto -->
         <div class="lm-header">
           <div class="lm-header-main">
             <div class="lm-title-line">
@@ -477,18 +582,18 @@
               <span>·</span>
               <span>Meta: <strong>${formatArs(CONFIG.targetCapitalArs)} ARS</strong></span>
               <span>·</span>
-              <span>Ref. @1.20 (30 esc.)</span>
+              <span>Secuencial · Sin tope diario</span>
             </div>
           </div>
 
           <div class="lm-scenario-select" role="group" aria-label="Escenario de vista previa">
-            <button type="button" class="lm-sc-btn ${previewMode === 'demo_opportunity' ? 'active' : ''}" onclick="window.LadderModule.setPreviewMode('demo_opportunity')">Oportunidad</button>
+            <button type="button" class="lm-sc-btn ${previewMode === 'demo_opportunity' ? 'active' : ''}" onclick="window.LadderModule.setPreviewMode('demo_opportunity')">Disponible</button>
+            <button type="button" class="lm-sc-btn ${previewMode === 'demo_active_bet' ? 'active' : ''}" onclick="window.LadderModule.setPreviewMode('demo_active_bet')">Apuesta Activa</button>
             <button type="button" class="lm-sc-btn ${previewMode === 'demo_no_bet' ? 'active' : ''}" onclick="window.LadderModule.setPreviewMode('demo_no_bet')">Sin apuesta</button>
             <button type="button" class="lm-sc-btn ${previewMode === 'base_step0' ? 'active' : ''}" onclick="window.LadderModule.setPreviewMode('base_step0')">Base E0</button>
           </div>
         </div>
 
-        <!-- Navegación interna de 4 pestañas -->
         <nav class="lm-subnav" role="tablist" aria-label="Secciones de THE LADDER">
           <button type="button" role="tab" aria-selected="${activeTab === 'principal'}" class="lm-tab ${activeTab === 'principal' ? 'active' : ''}" onclick="window.LadderModule.setTab('principal')">Principal</button>
           <button type="button" role="tab" aria-selected="${activeTab === 'escalera'}" class="lm-tab ${activeTab === 'escalera' ? 'active' : ''}" onclick="window.LadderModule.setTab('escalera')">Escalera <span class="lm-tab-num">30</span></button>
@@ -496,35 +601,17 @@
           <button type="button" role="tab" aria-selected="${activeTab === 'historial'}" class="lm-tab ${activeTab === 'historial' ? 'active' : ''}" onclick="window.LadderModule.setTab('historial')">Historial <span class="lm-tab-num">${st.history.length}</span></button>
         </nav>
 
-        <!-- Contenido de la pestaña activa -->
-        <div class="lm-body">
-          ${bodyHtml}
-        </div>
+        <div class="lm-body">${bodyHtml}</div>
       </div>
     `;
   }
 
   global.LadderModule = {
     render: renderLadderDashboard,
-    setTab: function (tab) {
-      activeTab = tab;
-      renderLadderDashboard();
-    },
-    setPreviewMode: function (mode) {
-      previewMode = mode;
-      renderLadderDashboard();
-    },
-    toggleStepDetail: function (stepNum) {
-      selectedStepNum = selectedStepNum === stepNum ? null : stepNum;
-      renderLadderDashboard();
-    },
-    inspectStep: function (stepNum) {
-      selectedStepNum = stepNum;
-      activeTab = 'escalera';
-      renderLadderDashboard();
-    },
-    getState: function () {
-      return { activeTab, previewMode, selectedStepNum };
-    }
+    setTab: function (tab) { activeTab = tab; renderLadderDashboard(); },
+    setPreviewMode: function (mode) { previewMode = mode; renderLadderDashboard(); },
+    toggleStepDetail: function (stepNum) { selectedStepNum = selectedStepNum === stepNum ? null : stepNum; renderLadderDashboard(); },
+    inspectStep: function (stepNum) { selectedStepNum = stepNum; activeTab = 'escalera'; renderLadderDashboard(); },
+    getState: function () { return { activeTab, previewMode, selectedStepNum }; }
   };
 })(window);

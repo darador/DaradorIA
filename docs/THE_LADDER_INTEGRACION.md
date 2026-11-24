@@ -1,36 +1,33 @@
 # DARADORBET — THE LADDER (Gran Escalera)
-## Diagnóstico de Integración y Arquitectura Conceptual
+## Arquitectura v2.0: Oportunidades Dinámicas, Ejecución Secuencial y Control de Exposición
 
-### 1. Diagnóstico del sistema actual (Inspección previa)
+### 1. Filosofía y Reglas Operativas (v2.0)
 
-| Capa | Ubicación actual | Rol en DaradorBET | Integración prevista con THE LADDER (Fase futura) |
-| :--- | :--- | :--- | :--- |
-| **Navegación & UI** | `dashboard.html`, `index.html` | Barra superior desktop (`#desktopViewTabs`), barra inferior móvil (`#mobileBottomNav`), `switchView(view)` | Nueva pestaña `THE LADDER` (`#tabLadder` / `#mTabLadder`) y sección `#viewLadder` renderizada por `assets/js/ladderModule.js` |
-| **Sistema visual** | Tokens CSS en `dashboard.html` | Dark mode (`#050813`), violeta (`#8b5cf6`), turquesa (`#00f2fe`), verde (`#4ade80`), badges semánticos `.sem-*` | Reutilización 100% de variables CSS y badges semánticos sin duplicar estilos |
-| **Motor de picks** | `engine/prediction/predictionEngine.js` + `engine/experimental/shadowLabRunner.js` | Cálculo de probabilidades, cuota justa, EV y consenso multi-modelo | Lectura pasiva del consenso y probabilidad estimada (sin duplicar fórmulas) |
-| **Comité IA y Riesgo** | `engine/agents/orchestrator.js`, `engine/agents/riskManager.js` | Dictámenes de los 6 agentes y aprobación/veto vinculante de Elena | Filtro obligatorio: solo candidatos con `elenaDecision === 'APROBADO'` y validación de Risk Manager |
-| **Liquidación** | `engine/settlement/settlementEngine.js` | Liquidación oficial post-partido (`GANADA`, `PERDIDA`, `ANULADA`) | Consumo de eventos de liquidación para actualizar el estado del escalón de forma auditable |
-| **Persistencia** | `engine/storage_data/*.json`, `picks_hoy.json`, `historial_picks.json` | Almacenamiento JSON auditado con hashes SHA-256 | Futuro archivo aislado `engine/storage_data/ladder_state.json` (solo cuando se autorice) |
-
----
-
-### 2. Arquitectura modular implementada (Fase Visual / Diseño)
-
-- **`engine/ladder/ladderSchema.js`**: Contrato de datos, reglas funcionales congeladas (`LADDER_RULES`), enumeraciones de estados (`PENDIENTE`, `APROBADO`, `EJECUTADO`, `GANADO`, `PERDIDO`, `ANULADO`) y estados de disciplina (`OPORTUNIDAD_DISPONIBLE`, `ESPERANDO`, `DIA_SIN_APUESTA`).
-- **`assets/js/ladderModule.js`**: Módulo UI autocontenido organizado en los 5 componentes solicitados:
-  1. `LadderDashboard`: Cabecera, banner de modo demo no operativo, resumen superior de 6 KPIs y panel de disciplina.
-  2. `LadderProgression`: Visualización ascendente de escalones con capital por etapa, cuota alcanzada y estado semántico.
-  3. `LadderOpportunityCard`: Ficha de próxima oportunidad con partido, mercado, selección, cuota, probabilidad estimada, EV, consenso de modelos, aprobación de Elena, validación de Risk Manager y estado de alineaciones/datos (incluye selector de vista demo para inspeccionar estado *Oportunidad disponible* vs *Esperando / Día sin apuesta*).
-  4. `LadderHistory`: Tabla auditable de progresión histórica y jornadas sin apuesta.
-  5. `LadderStatistics`: Métricas de disciplina, retención de capital y recordatorio de umbral de referencia (95%, pendiente de validación estadística).
+- **Sin límite artificial de apuestas diarias (`maxDailySelections: null`):** puede haber 0, 1 o varias oportunidades válidas en un mismo día; nunca se fuerza una selección para cumplir una cuota diaria.
+- **Ejecución estrictamente secuencial:** solo puede existir **1 escalón comprometido con capital activo** a la vez (`maxConcurrentCommittedSteps: 1`).
+- **Liquidación confirmada obligatoria:** no se libera capital ni se habilita el siguiente escalón por el mero vencimiento del horario estimado del partido; requiere liquidación definitiva (`WON`, `LOST` o `VOID`).
+- **Control estricto de ventanas horarias (`computeEventWindow`):** cada evento calcula su ventana real `[kickoffUtc, kickoffUtc + base + adicional + prórroga + bufferLiquidación]` según deporte (`football`, `basketball`, `tennis`, `default`) y zona horaria. Dos eventos con ventanas superpuestas **no pueden ejecutarse simultáneamente**.
+- **Gestión de oportunidades `EN_ESPERA`:** una oportunidad en espera no queda pre-aprobada para ejecución; al liberarse la escalera debe reevaluarse por completo (disponibilidad, cambio de cuota `<= 5%`, probabilidad/EV, Elena, Risk Manager y ventana horaria). Si no revalida, pasa a `DESCARTADA`.
+- **Prevalencia vinculante de Risk Manager:** implementado de forma aislada en `engine/ladder/ladderRiskGuard.js` sin alterar `engine/agents/riskManager.js`. La aprobación de Elena **nunca** puede saltarse un bloqueo de Risk Manager.
+- **Concurrencia e Idempotencia:** control optimista por `stateVersion` + mutex en memoria + registro de `idempotencyKey` para evitar que dos procesos comprometan el mismo capital o dupliquen una liquidación.
+- **Configuración matemática:** Capital inicial `$ 50.000 ARS`, objetivo `$ 10.000.000 ARS`, reinversión teórica `100%` (`capital_siguiente = capital_actual × cuota_liquidada`), simulación de referencia `@ 1.20` en `30` escalones (`$ 11.868.816 ARS` en E30).
 
 ---
 
-### 3. Reglas funcionales y garantías de integridad
+### 2. Módulos y Servicios
 
-- **Una única Gran Escalera activa.**
-- **Reinversión teórica del 100% del retorno** (sin alterar capital en días sin apuesta).
-- **Máximo 1–2 selecciones diarias** y **probabilidad mínima de referencia 95%** (pendiente de validación estadística en Shadow Lab).
-- **Doble candado:** solo oportunidades aprobadas por **Elena** y validadas por **Risk Manager**.
-- **Ejecución manual:** ninguna apuesta se ejecuta automáticamente.
-- **Producción intacta:** en esta entrega no se modificó el motor productivo, el Daily Board, los filtros, Risk Manager, Settlement ni los registros históricos sellados (101/101 hashes SHA-256).
+| Archivo | Rol | Impacto en producción |
+| :--- | :--- | :--- |
+| `engine/ladder/ladderSchema.js` | Reglas v2.0, estados de escalera y oportunidades, perfiles de ventana horaria por deporte | Aislado (solo experimental) |
+| `engine/ladder/ladderRiskGuard.js` | Validación aislada de exposición, superposición horaria, drift de cuota y veto vinculante | Cero cambios en `riskManager.js` productivo |
+| `engine/ladder/ladderEngine.js` | Máquina de estados secuencial con concurrencia (`stateVersion`), idempotencia y audit log | Cero cambios en motores productivos |
+| `engine/tests/test_ladder_sequential_rules.js` | 12 pruebas automatizadas obligatorias (12/12 PASS) | Solo pruebas |
+| `assets/js/ladderModule.js` | UI Mobile-First de 4 tabs (`Principal`, `Escalera`, `Disciplina`, `Historial`) con métricas reales de exposición | Solo módulo visual THE LADDER |
+
+---
+
+### 3. Estados de Oportunidades y Escalera
+
+- **Estados de Escalera:** `DISPONIBLE`, `OPORTUNIDAD_EN_EVALUACION`, `EN_ESPERA`, `APUESTA_ACTIVA`, `LIQUIDACION_PENDIENTE`, `DETENIDA`.
+- **Estados de Oportunidades:** `DETECTADA`, `EN_EVALUACION`, `APROBADA`, `EN_ESPERA`, `DESCARTADA`, `RECHAZADA`, `EJECUTADA`, `LIQUIDADA`.
+- **Garantía de integridad:** Daily Board, Centro de Investigación, Agentes IA, Prediction Engine, Risk Manager productivo, Settlement y los 101 hashes históricos SHA-256 permanecen intactos.
