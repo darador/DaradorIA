@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DaradorBET — Fase 9: Centro de Evidencia Estadística (Shadow Mode)</title>
+  <style>
+    :root {
+      --bg: #070b18;
+      --panel: #0e152b;
+      --border: rgba(148, 163, 184, 0.16);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --violet: #a78bfa;
+      --cyan: #38bdf8;
+      --amber: #fbbf24;
+      --green: #4ade80;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top right, #121c3d 0%, var(--bg) 55%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      line-height: 1.45;
+      padding: 1rem;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.9rem; }
+    .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; flex-wrap: wrap; }
+    h1 { font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: 0.01em; }
+    .sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.22rem 0.55rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700;
+      border: 1px solid var(--border); background: rgba(15, 23, 42, 0.8);
+    }
+    .badge-amber { color: var(--amber); border-color: rgba(251, 191, 36, 0.4); background: rgba(251, 191, 36, 0.1); }
+    .badge-violet { color: var(--violet); border-color: rgba(167, 139, 250, 0.4); background: rgba(167, 139, 250, 0.1); }
+    .badge-cyan { color: var(--cyan); border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.1); }
+    .badge-green { color: var(--green); border-color: rgba(74, 222, 128, 0.4); background: rgba(74, 222, 128, 0.1); }
+    .badge-red { color: var(--red); border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.1); }
+    .panel {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+    .filters { display: flex; gap: 0.55rem; flex-wrap: wrap; align-items: center; }
+    .filters select {
+      background: #090f20; color: var(--text); border: 1px solid var(--border);
+      border-radius: 7px; padding: 0.35rem 0.55rem; font-size: 0.76rem;
+    }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.65rem; }
+    .kpi { background: rgba(9, 15, 32, 0.75); border: 1px solid var(--border); border-radius: 9px; padding: 0.65rem 0.75rem; }
+    .kpi-lbl { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .kpi-val { font-size: 1.15rem; font-weight: 800; margin-top: 0.15rem; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.68rem; color: var(--muted); margin-top: 0.1rem; }
+    h2 { font-size: 0.92rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.55rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+    th, td { text-align: left; padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    th { color: var(--muted); font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .alert-row { padding: 0.45rem 0.6rem; border-radius: 8px; background: rgba(251, 191, 36, 0.07); border: 1px solid rgba(251, 191, 36, 0.25); font-size: 0.75rem; margin-bottom: 0.4rem; }
+    .empty { color: var(--muted); font-size: 0.8rem; padding: 1rem 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h1>DARADORBET — CENTRO DE EVIDENCIA ESTADÍSTICA (FASE 9)</h1>
+        <div class="sub">Validación independiente en Shadow Mode · Sin ejecución automática · No bet también es un resultado válido.</div>
+      </div>
+      <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+        <span class="badge badge-amber">SHADOW MODE · NO OPERATIVO</span>
+        <span class="badge badge-violet" id="integrityBadge">SHA-256: verificando...</span>
+      </div>
+    </div>
+
+    <section class="panel" aria-label="Filtros de evidencia">
+      <div class="filters">
+        <select id="fPeriod"><option value="">Todos los períodos</option></select>
+        <select id="fLeague"><option value="">Todas las ligas</option></select>
+        <select id="fFamily"><option value="">Todas las familias</option></select>
+        <select id="fMarket"><option value="">Todos los mercados</option></select>
+        <select id="fModel"><option value="">Todos los modelos</option></select>
+        <select id="fVersion"><option value="">Todas las versiones</option></select>
+      </div>
+    </section>
+
+    <section class="kpi-grid" id="kpiGrid" aria-label="Indicadores principales"></section>
+
+    <section class="panel">
+      <h2>Rendimiento por Familia de Mercado <span class="badge badge-cyan">No mezcla familias</span></h2>
+      <div class="table-wrap"><table id="familyTable"></table></div>
+    </section>
+
+    <section class="panel">
+      <h2>Comparación contra Baselines (mismas observaciones)</h2>
+      <div class="table-wrap"><table id="baselineTable"></table></div>
+    </section>
+
+    <section class="panel">
+      <h2>Calibración y Evolución Temporal</h2>
+      <div class="table-wrap"><table id="calibrationTable"></table></div>
+    </section>
+
+    <section class="panel">
+      <h2>Alertas Locales de Calidad <span class="badge badge-amber">Solo registro local · Sin Telegram</span></h2>
+      <div id="alertsBox"></div>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      let DATA = null;
+
+      function fmt(v, suffix = '') {
+        return (v === null || v === undefined || Number.isNaN(v)) ? '—' : `${v}${suffix}`;
+      }
+
+      // REGLA ESTRICTA SECCIÓN 11: Nunca usar color verde de rentabilidad si la muestra es insuficiente
+      function roiColor(roiPct, sampleStatus) {
+        if (roiPct === null || roiPct === undefined) return 'var(--muted)';
+        if (sampleStatus === 'INSUFFICIENT_SAMPLE') return 'var(--amber)';
+        return roiPct >= 0 ? 'var(--green)' : 'var(--red)';
+      }
+
+      function populateSelect(id, values, defaultLabel) {
+        const el = document.getElementById(id);
+        const cur = el.value;
+        el.innerHTML = `<option value="">${defaultLabel}</option>` +
+          Array.from(new Set(values.filter(Boolean))).sort().map(v => `<option value="${v}">${v}</option>`).join('');
+        el.value = cur;
+      }
+
+      function getFilteredObservations() {
+        const obs = DATA?.observations || [];
+        const p = document.getElementById('fPeriod').value;
+        const l = document.getElementById('fLeague').value;
+        const f = document.getElementById('fFamily').value;
+        const m = document.getElementById('fMarket').value;
+        const mo = document.getElementById('fModel').value;
+        const ver = document.getElementById('fVersion').value;
+        return obs.filter(o =>
+          (!p || String(o.kickoffUtc || '').slice(0, 7) === p) &&
+          (!l || o.league === l) &&
+          (!f || o.marketFamily === f) &&
+          (!m || o.market === m) &&
+          (!mo || o.modelName === mo) &&
+          (!ver || o.modelVersion === ver)
+        );
+      }
+
+      function render() {
+        if (!DATA) return;
+        const obs = getFilteredObservations();
+        const decided = obs.filter(o => o.status === 'WON' || o.status === 'LOST');
+        const won = decided.filter(o => o.status === 'WON').length;
+        const lost = decided.filter(o => o.status === 'LOST').length;
+        const voids = obs.filter(o => o.status === 'VOID').length;
+        const pushes = obs.filter(o => o.status === 'PUSH').length;
+        const pending = obs.filter(o => o.status === 'PENDING').length;
+        const matches = new Set(obs.map(o => o.matchId)).size;
+        const sampleStatus = decided.length < 30 ? 'INSUFFICIENT_SAMPLE' : (decided.length < 100 ? 'PRELIMINARY_SAMPLE' : 'DEVELOPING_EVIDENCE');
+        const profit = decided.reduce((a, o) => a + (Number(o.settlement?.profitUnits) || 0), 0);
+        const roi = decided.length > 0 ? Number(((profit / decided.length) * 100).toFixed(2)) : null;
+
+        document.getElementById('integrityBadge').textContent = DATA.integrity?.ok
+          ? `SHA-256: ${DATA.integrity.intact}/${DATA.integrity.total} OK`
+          : `SHA-256: ALERTA (${DATA.integrity?.corruptedCount || 0})`;
+
+        document.getElementById('kpiGrid').innerHTML = `
+          <div class="kpi"><div class="kpi-lbl">Observaciones</div><div class="kpi-val">${obs.length}</div><div class="kpi-sub">${matches} partidos únicos</div></div>
+          <div class="kpi"><div class="kpi-lbl">Pendientes</div><div class="kpi-val" style="color:var(--cyan);">${pending}</div><div class="kpi-sub">Esperando acta FT</div></div>
+          <div class="kpi"><div class="kpi-lbl">Resultados</div><div class="kpi-val">${won}W / ${lost}L</div><div class="kpi-sub">${voids} VOID · ${pushes} PUSH</div></div>
+          <div class="kpi"><div class="kpi-lbl">ROI Simulado (1U)</div><div class="kpi-val" style="color:${roiColor(roi, sampleStatus)};">${fmt(roi, '%')}</div><div class="kpi-sub">${sampleStatus} (N=${decided.length})</div></div>
+          <div class="kpi"><div class="kpi-lbl">Rechazados Anti-Leak</div><div class="kpi-val">${DATA.summary?.rejectedAntiLeakageCount ?? 0}</div><div class="kpi-sub">Bloqueo temporal</div></div>
+        `;
+
+        // Tabla por familia
+        const fams = Object.values(DATA.byFamily || {});
+        document.getElementById('familyTable').innerHTML = fams.length === 0
+          ? '<tr><td class="empty">Sin observaciones registradas todavía en Fase 9.</td></tr>'
+          : `<thead><tr><th>Familia</th><th>Muestra (N)</th><th>Estado</th><th>Brier</th><th>Log Loss</th><th>Hit Rate (IC 95%)</th><th>ROI (IC 95%)</th><th>CLV Medio</th></tr></thead><tbody>` +
+            fams.map(x => {
+              const hrCi = x.profitability.hitRateCI95 ? `[${x.profitability.hitRateCI95.lowPct}–${x.profitability.hitRateCI95.highPct}%]` : '—';
+              const rCi = x.profitability.roiCI95 ? `[${x.profitability.roiCI95.lowPct}–${x.profitability.roiCI95.highPct}%]` : '—';
+              return `<tr>
+                <td><strong>${x.marketFamily}</strong></td>
+                <td class="mono">${x.counts.decided} / ${x.totalObservations}</td>
+                <td><span class="badge ${x.sampleStatus === 'INSUFFICIENT_SAMPLE' ? 'badge-amber' : 'badge-cyan'}">${x.sampleStatus}</span></td>
+                <td class="mono">${fmt(x.predictive.brierScore)}</td>
+                <td class="mono">${fmt(x.predictive.logLoss)}</td>
+                <td class="mono">${fmt(x.profitability.hitRatePct, '%')} <small style="color:var(--muted)">${hrCi}</small></td>
+                <td class="mono" style="color:${roiColor(x.profitability.roiPct, x.sampleStatus)};">${fmt(x.profitability.roiPct, '%')} <small style="color:var(--muted)">${rCi}</small></td>
+                <td class="mono">${fmt(x.marketQuality.avgClvPct, '%')}</td>
+              </tr>`;
+            }).join('') + '</tbody>';
+
+        // Tabla Baselines
+        const bases = Object.values(DATA.baselinesByFamily || {});
+        document.getElementById('baselineTable').innerHTML = bases.length === 0
+          ? '<tr><td class="empty">Sin comparaciones de baseline disponibles aún.</td></tr>'
+          : `<thead><tr><th>Familia</th><th>N Comp. (No-Vig)</th><th>Δ Brier vs Mercado</th><th>Δ LogLoss vs Mercado</th><th>Bootstrap 95% (Δ Brier)</th><th>Δ Brier vs Base Rate</th></tr></thead><tbody>` +
+            bases.map(b => {
+              const mv = b.vsMarketNoVig || {};
+              const br = b.vsHistoricalBaseRate || {};
+              const bt = mv.clusterBootstrapBrierDiff?.available
+                ? `[${mv.clusterBootstrapBrierDiff.ci95Low}, ${mv.clusterBootstrapBrierDiff.ci95High}]`
+                : '—';
+              return `<tr>
+                <td><strong>${b.marketFamily}</strong></td>
+                <td class="mono">${mv.comparableCount ?? 0}</td>
+                <td class="mono">${fmt(mv.deltaBrier)}</td>
+                <td class="mono">${fmt(mv.deltaLogLoss)}</td>
+                <td class="mono">${bt}</td>
+                <td class="mono">${fmt(br.deltaBrier)}</td>
+              </tr>`;
+            }).join('') + '</tbody>';
+
+        // Calibración (primera familia con datos o vacía)
+        const firstFam = fams[0];
+        document.getElementById('calibrationTable').innerHTML = !firstFam
+          ? '<tr><td class="empty">Sin bins de calibración todavía.</td></tr>'
+          : `<thead><tr><th>Intervalo</th><th>N</th><th>Prob. Pronosticada</th><th>Frecuencia Observada</th><th>Error Calibración</th></tr></thead><tbody>` +
+            (firstFam.calibration?.bins || []).map(bin => `<tr>
+              <td class="mono">${bin.interval}</td>
+              <td class="mono">${bin.count}</td>
+              <td class="mono">${fmt(bin.predictedAvg)}</td>
+              <td class="mono">${fmt(bin.observedFreq)}</td>
+              <td class="mono">${fmt(bin.calibrationError)}</td>
+            </tr>`).join('') + '</tbody>';
+
+        // Alertas
+        const alerts = DATA.recentAlerts || [];
+        document.getElementById('alertsBox').innerHTML = alerts.length === 0
+          ? '<div class="empty">Sin alertas de calidad registradas.</div>'
+          : alerts.map(a => `<div class="alert-row"><strong>[${a.code}]</strong> ${a.message} <span style="color:var(--muted);">(${a.timestampUtc})</span></div>`).join('');
+      }
+
+      async function init() {
+        try {
+          const res = await fetch('api/evidence_fase9.json', { cache: 'no-store' });
+          DATA = await res.json();
+        } catch (_) {
+          DATA = {
+            integrity: { ok: true, intact: 0, total: 0 },
+            summary: { rejectedAntiLeakageCount: 0 },
+            byFamily: {},
+            baselinesByFamily: {},
+            recentAlerts: [],
+            observations: []
+          };
+        }
+        const obs = DATA.observations || [];
+        populateSelect('fPeriod', obs.map(o => String(o.kickoffUtc || '').slice(0, 7)), 'Todos los períodos');
+        populateSelect('fLeague', obs.map(o => o.league), 'Todas las ligas');
+        populateSelect('fFamily', obs.map(o => o.marketFamily), 'Todas las familias');
+        populateSelect('fMarket', obs.map(o => o.market), 'Todos los mercados');
+        populateSelect('fModel', obs.map(o => o.modelName), 'Todos los modelos');
+        populateSelect('fVersion', obs.map(o => o.modelVersion), 'Todas las versiones');
+        ['fPeriod', 'fLeague', 'fFamily', 'fMarket', 'fModel', 'fVersion'].forEach(id => {
+          document.getElementById(id).addEventListener('change', render);
+        });
+        render();
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
