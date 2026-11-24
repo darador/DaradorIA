@@ -4685,6 +4685,18 @@
 
     async function loadPicksData() {
       try {
+        window.COUNTERFACTUAL_ELENA_MAP = window.COUNTERFACTUAL_ELENA_MAP || {};
+        try {
+          const cfRes = await fetch('./api/counterfactual_elena.json?t=' + Date.now(), { cache: 'no-store' });
+          if (cfRes.ok) {
+            const cfJson = await cfRes.json();
+            const cfMap = {};
+            (cfJson.evaluations || []).forEach(ev => {
+              if (ev.originalPickId) cfMap[ev.originalPickId] = ev;
+            });
+            window.COUNTERFACTUAL_ELENA_MAP = cfMap;
+          }
+        } catch (_) {}
         const response = await fetch('./picks_hoy.json?t=' + Date.now());
         if (response.ok) {
           globalPicksData = await response.json();
@@ -5369,6 +5381,36 @@
           code: 'RECHAZADO',
           label: 'RECHAZADO',
           badgeHtml: '<span class="sem-badge sem-red" data-tooltip="Dictamen de Elena: selección rechazada por control de riesgo" title="Dictamen de Elena: selección rechazada">✕ Elena: Rechazado</span>'
+        };
+      }
+      const cfRecord = (typeof window !== 'undefined' && window.COUNTERFACTUAL_ELENA_MAP && pick && pick.id)
+        ? window.COUNTERFACTUAL_ELENA_MAP[pick.id]
+        : null;
+      if (cfRecord && cfRecord.decision === 'COUNTERFACTUAL_APPROVED') {
+        return {
+          code: 'APROBADO',
+          label: 'APROBADO',
+          origin: 'COUNTERFACTUAL_APPROVED',
+          counterfactual: cfRecord,
+          badgeHtml: '<span class="sem-badge sem-green" data-tooltip="Dictamen de Elena: selección aprobada por gestión de riesgo" title="Dictamen de Elena: selección aprobada">✓ Elena: Aprobado</span>'
+        };
+      }
+      if (cfRecord && cfRecord.decision === 'COUNTERFACTUAL_REJECTED') {
+        return {
+          code: 'RECHAZADO',
+          label: 'RECHAZADO',
+          origin: 'COUNTERFACTUAL_REJECTED',
+          counterfactual: cfRecord,
+          badgeHtml: '<span class="sem-badge sem-red" data-tooltip="Dictamen de Elena: selección rechazada por control de riesgo" title="Dictamen de Elena: selección rechazada">✕ Elena: Rechazado</span>'
+        };
+      }
+      if (pick.manualOverride === true && String(pick.manualOverrideStatus || '').toUpperCase() === 'APPROVED') {
+        const tip = 'Aprobación manual excepcional autorizada por el usuario. No representa un dictamen original de Elena.';
+        return {
+          code: 'APROBADO_MANUAL',
+          label: 'APROBADA (MANUAL)',
+          isManualOverride: true,
+          badgeHtml: '<span class="sem-badge sem-green" data-tooltip="' + tip + '" title="' + tip + '">✓ Elena: Aprobada</span>'
         };
       }
       const isExplicitExpired = rawElena === 'EXPIRADO_SIN_EVALUACION' || rawStatus === 'EXPIRADO_SIN_EVALUACION' ||
@@ -7204,6 +7246,14 @@
       statusEl.style.border = 'none';
       statusEl.style.padding = '0';
       statusEl.innerHTML = '<div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;">' + resultModal.badgeHtml + elenaModal.badgeHtml + '</div>';
+      if (elenaModal.counterfactual) {
+        const cf = elenaModal.counterfactual;
+        statusEl.innerHTML += '<div style="margin-top:0.5rem;font-size:0.74rem;color:#cbd5e1;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.35);border-radius:8px;padding:0.45rem 0.65rem;">' +
+          '<strong>Procedencia contrafactual (solo efectividad predictiva · no ingresa en bankroll, ROI real ni RETO ESCALERA):</strong><br>' +
+          'Origen: <code>' + cf.decision + '</code> · ID: <code>' + cf.evaluationId + '</code> · Versión Elena: <code>' + (cf.elenaVersion || '2.0.0-counterfactual') + '</code><br>' +
+          'Evaluado UTC: <code>' + (cf.evaluatedAtUtc || '-') + '</code> · Kickoff UTC: <code>' + (cf.kickoffUtc || '-') + '</code> · Estado partido: <code>' + (cf.matchStateAtEvaluation || '-') + '</code>' +
+          '</div>';
+      }
 
       document.getElementById('drawerStatOdds').textContent = pick.odds ? (typeof pick.odds === "number" ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2)) : '1.80';
       document.getElementById('drawerStatProb').textContent = (pick.real_prob || 75) + '%';
