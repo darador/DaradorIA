@@ -1,56 +1,64 @@
 {
-  "updated_at": "2026-11-23T12:18:29.817Z",
+  "updated_at": "2026-11-24T00:20:04.607Z",
   "summary": {
-    "total_bets": 58,
-    "settled_bets": 48,
-    "won_bets": 31,
-    "lost_bets": 17,
+    "total_bets": 66,
+    "settled_bets": 56,
+    "won_bets": 38,
+    "lost_bets": 18,
     "void_bets": 10,
     "pending_bets": 0,
-    "win_rate_pct": 64.6,
-    "total_staked_units": 48,
-    "net_profit_units": 6.55,
-    "roi_pct": 13.6,
+    "win_rate_pct": 67.9,
+    "total_staked_units": 56,
+    "net_profit_units": 9.53,
+    "roi_pct": 17,
     "by_market": {
-      "Remates totales": {
-        "total": 15,
-        "won": 10,
-        "lost": 2,
-        "void": 3,
-        "win_rate": "83.3%",
-        "profit": "+5.59U"
-      },
-      "Remates al arco de equipo": {
-        "total": 9,
-        "won": 3,
-        "lost": 6,
-        "void": 0,
-        "win_rate": "33.3%",
-        "profit": "-4.02U"
-      },
-      "Remates al arco": {
-        "total": 6,
-        "won": 2,
-        "lost": 1,
-        "void": 3,
-        "win_rate": "66.7%",
-        "profit": "+0.30U"
-      },
       "Córners de equipo": {
-        "total": 7,
-        "won": 4,
+        "total": 10,
+        "won": 7,
         "lost": 2,
         "void": 1,
-        "win_rate": "66.7%",
-        "profit": "+0.80U"
+        "win_rate": "77.8%",
+        "profit": "+2.50U"
+      },
+      "Faltas ganadas": {
+        "total": 2,
+        "won": 1,
+        "lost": 1,
+        "void": 0,
+        "win_rate": "50.0%",
+        "profit": "-0.43U"
       },
       "Entradas (Tackles)": {
-        "total": 4,
+        "total": 5,
         "won": 3,
-        "lost": 0,
+        "lost": 1,
         "void": 1,
-        "win_rate": "100.0%",
-        "profit": "+2.47U"
+        "win_rate": "75.0%",
+        "profit": "+1.47U"
+      },
+      "Remates al arco": {
+        "total": 7,
+        "won": 3,
+        "lost": 1,
+        "void": 3,
+        "win_rate": "75.0%",
+        "profit": "+0.87U"
+      },
+      "Remates al arco de equipo": {
+        "total": 10,
+        "won": 4,
+        "lost": 6,
+        "void": 0,
+        "win_rate": "40.0%",
+        "profit": "-3.50U"
+      },
+      "Remates totales": {
+        "total": 16,
+        "won": 11,
+        "lost": 2,
+        "void": 3,
+        "win_rate": "84.6%",
+        "profit": "+6.21U"
       },
       "Faltas cometidas": {
         "total": 5,
@@ -76,14 +84,6 @@
         "win_rate": "40.0%",
         "profit": "-1.27U"
       },
-      "Faltas ganadas": {
-        "total": 1,
-        "won": 0,
-        "lost": 1,
-        "void": 0,
-        "win_rate": "0.0%",
-        "profit": "-1.00U"
-      },
       "Tarjetas": {
         "total": 1,
         "won": 1,
@@ -103,6 +103,110 @@
     }
   },
   "picks": [
+    {
+      "id": "cand_real_statshub_20261123_gimnasia_corners",
+      "date": "2026-11-23",
+      "match": "Gimnasia y Esgrima vs Newell's Old Boys",
+      "player": "Gimnasia y Esgrima (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Menos de 5.5",
+      "odds": 1.53,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": 0.53
+    },
+    {
+      "id": "cand_real_statshub_20261123_levante_corners",
+      "date": "2026-11-23",
+      "match": "Levante UD vs Elche",
+      "player": "Levante UD (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Menos de 5.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_real_statshub_20261123_german_valera_foulswon",
+      "date": "2026-11-23",
+      "match": "Levante UD vs Elche",
+      "player": "German Valera",
+      "market": "Faltas ganadas",
+      "line": "Más de 1.5",
+      "odds": 1.57,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.57
+    },
+    {
+      "id": "cand_real_statshub_20261123_brentford_corners",
+      "date": "2026-11-23",
+      "match": "Brentford vs Everton",
+      "player": "Brentford (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Menos de 6.5",
+      "odds": 1.5,
+      "stake": 1,
+      "actual_stat": 6,
+      "status": "ACERTADA",
+      "profit": 0.5
+    },
+    {
+      "id": "cand_real_statshub_20261123_vitaly_janelt_tackles",
+      "date": "2026-11-23",
+      "match": "Brentford vs Everton",
+      "player": "Vitaly Janelt",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 1.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_real_statshub_20261123_thierno_barry_sot",
+      "date": "2026-11-23",
+      "match": "Brentford vs Everton",
+      "player": "Thierno Barry",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.57,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.57
+    },
+    {
+      "id": "cand_real_statshub_20261123_monza_sot",
+      "date": "2026-11-23",
+      "match": "Monza vs Fiorentina",
+      "player": "Monza (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.52,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "ACERTADA",
+      "profit": 0.52
+    },
+    {
+      "id": "cand_real_statshub_20261123_carlos_hernandez_shots",
+      "date": "2026-11-23",
+      "match": "AD Ceuta vs Almería",
+      "player": "Carlos Hernandez",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.62
+    },
     {
       "id": "cand_real_statshub_20261121_mctominay_1795287296256",
       "date": "2026-11-21",
@@ -1032,6 +1136,110 @@
     }
   ],
   "history": [
+    {
+      "id": "cand_real_statshub_20261123_gimnasia_corners",
+      "date": "2026-11-23",
+      "match": "Gimnasia y Esgrima vs Newell's Old Boys",
+      "player": "Gimnasia y Esgrima (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Menos de 5.5",
+      "odds": 1.53,
+      "stake": 1,
+      "actual_stat": 4,
+      "status": "ACERTADA",
+      "profit": 0.53
+    },
+    {
+      "id": "cand_real_statshub_20261123_levante_corners",
+      "date": "2026-11-23",
+      "match": "Levante UD vs Elche",
+      "player": "Levante UD (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Menos de 5.5",
+      "odds": 1.67,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "ACERTADA",
+      "profit": 0.67
+    },
+    {
+      "id": "cand_real_statshub_20261123_german_valera_foulswon",
+      "date": "2026-11-23",
+      "match": "Levante UD vs Elche",
+      "player": "German Valera",
+      "market": "Faltas ganadas",
+      "line": "Más de 1.5",
+      "odds": 1.57,
+      "stake": 1,
+      "actual_stat": 3,
+      "status": "ACERTADA",
+      "profit": 0.57
+    },
+    {
+      "id": "cand_real_statshub_20261123_brentford_corners",
+      "date": "2026-11-23",
+      "match": "Brentford vs Everton",
+      "player": "Brentford (Equipo)",
+      "market": "Córners de equipo",
+      "line": "Menos de 6.5",
+      "odds": 1.5,
+      "stake": 1,
+      "actual_stat": 6,
+      "status": "ACERTADA",
+      "profit": 0.5
+    },
+    {
+      "id": "cand_real_statshub_20261123_vitaly_janelt_tackles",
+      "date": "2026-11-23",
+      "match": "Brentford vs Everton",
+      "player": "Vitaly Janelt",
+      "market": "Entradas (Tackles)",
+      "line": "Más de 1.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "FALLADA",
+      "profit": -1
+    },
+    {
+      "id": "cand_real_statshub_20261123_thierno_barry_sot",
+      "date": "2026-11-23",
+      "match": "Brentford vs Everton",
+      "player": "Thierno Barry",
+      "market": "Remates al arco",
+      "line": "Más de 0.5",
+      "odds": 1.57,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.57
+    },
+    {
+      "id": "cand_real_statshub_20261123_monza_sot",
+      "date": "2026-11-23",
+      "match": "Monza vs Fiorentina",
+      "player": "Monza (Equipo)",
+      "market": "Remates al arco de equipo",
+      "line": "Más de 3.5",
+      "odds": 1.52,
+      "stake": 1,
+      "actual_stat": 5,
+      "status": "ACERTADA",
+      "profit": 0.52
+    },
+    {
+      "id": "cand_real_statshub_20261123_carlos_hernandez_shots",
+      "date": "2026-11-23",
+      "match": "AD Ceuta vs Almería",
+      "player": "Carlos Hernandez",
+      "market": "Remates totales",
+      "line": "Más de 0.5",
+      "odds": 1.62,
+      "stake": 1,
+      "actual_stat": 1,
+      "status": "ACERTADA",
+      "profit": 0.62
+    },
     {
       "id": "cand_real_statshub_20261121_mctominay_1795287296256",
       "date": "2026-11-21",

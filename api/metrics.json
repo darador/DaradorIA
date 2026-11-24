@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-23T03:22:37.797Z",
+  "updatedAt": "2026-11-23T04:00:07.110Z",
   "totalTrackedPicks": 58,
   "summary": {
     "total_bets": 58,
@@ -111,7 +111,7 @@
     "winRatePct": 66.7
   },
   "evaluation": {
-    "evaluatedAt": "2026-11-23T03:22:37.796Z",
+    "evaluatedAt": "2026-11-23T04:00:07.108Z",
     "sampleSize": 21,
     "financialMetrics": {
       "totalStakedUnits": 21,

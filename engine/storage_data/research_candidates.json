@@ -18838,7 +18838,7 @@
     "trendL5": "5/5 (100%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": false,
-    "status": "PENDIENTE_ALINEACION",
+    "status": "LIQUIDADO",
     "elenaDecision": "PENDIENTE_ALINEACION",
     "prediction": {
       "pProjected": 0.857,
@@ -18850,7 +18850,12 @@
     },
     "decisionReason": "StatsHub L10 90% / L15 87% (William Hill @1.57). En XI probable; sujeto a confirmación oficial T-60.",
     "createdAt": "2026-11-23T12:18:29.859Z",
-    "updatedAt": "2026-11-23T12:18:29.859Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 1,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_vitaly_janelt_tackles",
@@ -18876,7 +18881,7 @@
     "trendL5": "3/5 (60%)",
     "trendL10": "8/10 (80%)",
     "isTeamProp": false,
-    "status": "PENDIENTE_ALINEACION",
+    "status": "LIQUIDADO",
     "elenaDecision": "PENDIENTE_ALINEACION",
     "prediction": {
       "pProjected": 0.75,
@@ -18888,7 +18893,12 @@
     },
     "decisionReason": "StatsHub L10 80% / L15 73% (BoyleSports @1.62). En XI probable; sujeto a confirmación oficial T-60.",
     "createdAt": "2026-11-23T12:18:29.868Z",
-    "updatedAt": "2026-11-23T12:18:29.868Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "PERDIDA",
+    "actualStat": 1,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_german_valera_foulswon",
@@ -18914,7 +18924,7 @@
     "trendL5": "5/5 (100%)",
     "trendL10": "8/10 (80%)",
     "isTeamProp": false,
-    "status": "PENDIENTE_ALINEACION",
+    "status": "LIQUIDADO",
     "elenaDecision": "PENDIENTE_ALINEACION",
     "prediction": {
       "pProjected": 0.753,
@@ -18926,7 +18936,12 @@
     },
     "decisionReason": "StatsHub L10 80% / L15 73% (BetMGM UK @1.57). En XI probable; sujeto a confirmación oficial T-60.",
     "createdAt": "2026-11-23T12:18:29.876Z",
-    "updatedAt": "2026-11-23T12:18:29.876Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 3,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_carlos_hernandez_shots",
@@ -18952,7 +18967,7 @@
     "trendL5": "5/5 (100%)",
     "trendL10": "8/10 (80%)",
     "isTeamProp": false,
-    "status": "PENDIENTE_ALINEACION",
+    "status": "LIQUIDADO",
     "elenaDecision": "PENDIENTE_ALINEACION",
     "prediction": {
       "pProjected": 0.75,
@@ -18964,7 +18979,12 @@
     },
     "decisionReason": "StatsHub L10 80% / L15 73% (Bet365 @1.62). En XI probable; sujeto a confirmación oficial T-60.",
     "createdAt": "2026-11-23T12:18:29.885Z",
-    "updatedAt": "2026-11-23T12:18:29.885Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 1,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_monza_sot",
@@ -18989,7 +19009,7 @@
     "trendL5": "4/5 (80%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
-    "status": "APROBADO",
+    "status": "LIQUIDADO",
     "elenaDecision": "APROBADO",
     "prediction": {
       "pProjected": 0.835,
@@ -19001,7 +19021,12 @@
     },
     "decisionReason": "Mercado colectivo StatsHub L10 90% / L15 87%, rival concede L10 70% (All British Casino @1.52). Aprobado por Elena en Shadow Mode.",
     "createdAt": "2026-11-23T12:18:29.894Z",
-    "updatedAt": "2026-11-23T12:18:29.894Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 5,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_levante_corners",
@@ -19026,7 +19051,7 @@
     "trendL5": "4/5 (80%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
-    "status": "APROBADO",
+    "status": "LIQUIDADO",
     "elenaDecision": "APROBADO",
     "prediction": {
       "pProjected": 0.815,
@@ -19038,7 +19063,12 @@
     },
     "decisionReason": "Mercado colectivo StatsHub L10 90% / L15 87%, rival concede L10 60% (Bet365 @1.67). Aprobado por Elena en Shadow Mode.",
     "createdAt": "2026-11-23T12:18:29.903Z",
-    "updatedAt": "2026-11-23T12:18:29.903Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 5,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_gimnasia_corners",
@@ -19063,7 +19093,7 @@
     "trendL5": "4/5 (80%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
-    "status": "APROBADO",
+    "status": "LIQUIDADO",
     "elenaDecision": "APROBADO",
     "prediction": {
       "pProjected": 0.822,
@@ -19075,7 +19105,12 @@
     },
     "decisionReason": "Mercado colectivo StatsHub L10 90% / L15 87%, rival concede L10 60% (All British Casino @1.53). Aprobado por Elena en Shadow Mode.",
     "createdAt": "2026-11-23T12:18:29.911Z",
-    "updatedAt": "2026-11-23T12:18:29.911Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 4,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_brentford_corners",
@@ -19100,7 +19135,7 @@
     "trendL5": "5/5 (100%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
-    "status": "APROBADO",
+    "status": "LIQUIDADO",
     "elenaDecision": "APROBADO",
     "prediction": {
       "pProjected": 0.802,
@@ -19112,7 +19147,12 @@
     },
     "decisionReason": "Mercado colectivo StatsHub L10 90% / L15 80%, rival concede L10 60% (All British Casino @1.5). Aprobado por Elena en Shadow Mode.",
     "createdAt": "2026-11-23T12:18:29.920Z",
-    "updatedAt": "2026-11-23T12:18:29.920Z"
+    "updatedAt": "2026-11-24T00:20:04.583Z",
+    "isSettled": true,
+    "sportsResult": "GANADA",
+    "actualStat": 6,
+    "settledAt": "2026-11-24T00:20:04.583Z",
+    "operationalStatus": "ACEPTADO"
   },
   {
     "id": "cand_real_statshub_20261123_vitoria_cards",
