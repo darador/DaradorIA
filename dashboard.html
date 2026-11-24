@@ -2995,7 +2995,7 @@
 
 
     /* ==========================================================================
-       THE LADDER — GRAN ESCALERA (MOBILE-FIRST UX · 4 SECCIONES INTERNAS)
+       RETO ESCALERA — «La magia del interés compuesto» (MOBILE-FIRST UX · 4 SECCIONES INTERNAS)
        ========================================================================== */
     .lm-shell {
       max-width: 960px;
@@ -3023,16 +3023,29 @@
 
     .lm-title {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 1.42rem;
       font-weight: 900;
       color: #ffffff;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
     }
 
-    .lm-title-sub {
-      color: #c4b5fd;
-      font-weight: 600;
-      font-size: 1rem;
+    .lm-slogan {
+      margin-top: 0.2rem;
+      font-size: 0.94rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #c4b5fd 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.005em;
+    }
+
+    .lm-tagline {
+      margin-top: 0.14rem;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      font-weight: 500;
     }
 
     .lm-meta-line {
@@ -3607,9 +3620,9 @@
           <span>Combinadas</span>
           <span class="tab-counter is-zero" id="tabParlaysCount" aria-label="Combinadas registradas">0</span>
         </button>
-        <button class="tab-btn" id="tabLadder" onclick="switchView('ladder')" data-tooltip="THE LADDER — Gran Escalera (Módulo de progresión disciplinada · Fase Visual)" title="THE LADDER — Gran Escalera">
+        <button class="tab-btn" id="tabLadder" onclick="switchView('ladder')" data-tooltip="RETO ESCALERA — La magia del interés compuesto (DEMO — NO OPERATIVO)" title="RETO ESCALERA — La magia del interés compuesto">
           <svg class="tab-icon" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          <span>THE LADDER</span>
+          <span>RETO ESCALERA</span>
         </button>
       </nav>
 
@@ -4085,8 +4098,8 @@
       <div class="parlays-container" id="parlaysGrid"></div>
     </section>
 
-    <!-- VISTA 3B: THE LADDER — GRAN ESCALERA (FASE VISUAL / NO OPERATIVO) -->
-    <section id="viewLadder" style="display: none;" aria-label="THE LADDER — Gran Escalera"></section>
+    <!-- VISTA 3B: RETO ESCALERA — «La magia del interés compuesto» (DEMO — NO OPERATIVO) -->
+    <section id="viewLadder" style="display: none;" aria-label="RETO ESCALERA — La magia del interés compuesto"></section>
 
     <!-- VISTA 4: PANTALLA DE ESTADÍSTICAS & HISTORIAL (TRACK RECORD AUDITADO) -->
     <section id="viewHistory" style="display: none;">
@@ -7356,9 +7369,9 @@
       <span>Combinadas</span>
       <span class="m-nav-badge is-zero" id="mTabParlaysCount">0</span>
     </button>
-    <button class="m-nav-item" id="mTabLadder" onclick="switchView('ladder')" aria-label="THE LADDER — Gran Escalera">
+    <button class="m-nav-item" id="mTabLadder" onclick="switchView('ladder')" aria-label="RETO ESCALERA — La magia del interés compuesto">
       <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-      <span>Ladder</span>
+      <span>Reto Escalera</span>
     </button>
   </nav>
 

@@ -1,7 +1,7 @@
 /**
- * DARADORBET — THE LADDER (Gran Escalera)
+ * DARADORBET — RETO ESCALERA («La magia del interés compuesto»)
  * Versión v2.0 — Oportunidades Dinámicas, Ejecución Secuencial y Control de Ventanas Horarias.
- * Modo visual / experimental (NO OPERATIVO): sin apuestas reales ni ejecución automática.
+ * Modo visual / experimental (DEMO — NO OPERATIVO): sin apuestas reales ni ejecución automática.
  *
  * Secciones internas (Mobile-First):
  *   1. Principal  (Capital disponible/comprometido, Estado de escalera, Próxima oportunidad / Motivo de bloqueo, Progresión compacta)
@@ -88,7 +88,7 @@
       const { steps, actualCapital } = buildSteps([]);
       return {
         isDemo: false,
-        badgeLabel: 'Estado Base · No operativo',
+        badgeLabel: 'ESTADO BASE — NO OPERATIVO',
         ladderState: 'DISPONIBLE',
         blockReason: null,
         currentStep: 0,
@@ -119,7 +119,7 @@
       const { steps, actualCapital } = buildSteps(done);
       return {
         isDemo: true,
-        badgeLabel: 'Demo · No operativo',
+        badgeLabel: 'DEMO — NO OPERATIVO',
         ladderState: 'APUESTA_ACTIVA',
         blockReason: 'Escalón E5 comprometido ($ 86.400 ARS en juego · ventana 17:00–19:30 ART). Ninguna otra oportunidad puede ejecutarse hasta confirmar liquidación oficial.',
         currentStep: 4,
@@ -162,7 +162,7 @@
       const { steps, actualCapital } = buildSteps(done);
       return {
         isDemo: true,
-        badgeLabel: 'Demo · No operativo',
+        badgeLabel: 'DEMO — NO OPERATIVO',
         ladderState: 'DISPONIBLE',
         blockReason: null,
         currentStep: 4,
@@ -197,7 +197,7 @@
     const { steps, actualCapital } = buildSteps(done);
     return {
       isDemo: true,
-      badgeLabel: 'Demo · No operativo',
+      badgeLabel: 'DEMO — NO OPERATIVO',
       ladderState: 'DISPONIBLE',
       blockReason: null,
       currentStep: 4,
@@ -460,7 +460,7 @@
         </div>
 
         <div class="lm-principle-callout">
-          <strong>Principio de disciplina:</strong> "THE LADDER no tiene límite de oportunidades ni calendario obligatorio. Avanza cuando existe una oportunidad válida y espera cuando no existe. Nunca se fuerza una apuesta para cumplir un objetivo."
+          <strong>Principio de disciplina:</strong> "RETO ESCALERA no tiene límite de oportunidades ni calendario obligatorio. Avanza cuando existe una oportunidad válida y espera cuando no existe. Nunca se fuerza una apuesta para cumplir un objetivo."
         </div>
 
         <div class="lm-kv-list">
@@ -538,7 +538,7 @@
 
         <div class="lm-hist-mobile-list">${mobileCards}</div>
 
-        <div class="lm-hist-desktop-table daily-board-container" tabindex="0" role="region" aria-label="Tabla de historial de THE LADDER" style="margin-bottom:0;">
+        <div class="lm-hist-desktop-table daily-board-container" tabindex="0" role="region" aria-label="Tabla de historial de RETO ESCALERA" style="margin-bottom:0;">
           <table class="daily-board-table">
             <thead>
               <tr>
@@ -574,9 +574,11 @@
         <div class="lm-header">
           <div class="lm-header-main">
             <div class="lm-title-line">
-              <h2 class="lm-title">THE LADDER <span class="lm-title-sub">— Gran Escalera</span></h2>
+              <h2 class="lm-title">RETO ESCALERA</h2>
               <span class="sem-badge ${st.isDemo ? 'sem-amber' : 'sem-blue'}" style="font-size:0.62rem;">${st.badgeLabel}</span>
             </div>
+            <div class="lm-slogan">«La magia del interés compuesto»</div>
+            <div class="lm-tagline">Un objetivo. Una progresión. Cada paso cuenta.</div>
             <div class="lm-meta-line">
               <span>Base: <strong>${formatArs(CONFIG.initialCapitalArs)} ARS</strong></span>
               <span>·</span>
@@ -594,7 +596,7 @@
           </div>
         </div>
 
-        <nav class="lm-subnav" role="tablist" aria-label="Secciones de THE LADDER">
+        <nav class="lm-subnav" role="tablist" aria-label="Secciones de RETO ESCALERA">
           <button type="button" role="tab" aria-selected="${activeTab === 'principal'}" class="lm-tab ${activeTab === 'principal' ? 'active' : ''}" onclick="window.LadderModule.setTab('principal')">Principal</button>
           <button type="button" role="tab" aria-selected="${activeTab === 'escalera'}" class="lm-tab ${activeTab === 'escalera' ? 'active' : ''}" onclick="window.LadderModule.setTab('escalera')">Escalera <span class="lm-tab-num">30</span></button>
           <button type="button" role="tab" aria-selected="${activeTab === 'disciplina'}" class="lm-tab ${activeTab === 'disciplina' ? 'active' : ''}" onclick="window.LadderModule.setTab('disciplina')">Disciplina</button>

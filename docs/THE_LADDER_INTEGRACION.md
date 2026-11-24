@@ -1,4 +1,6 @@
-# DARADORBET — THE LADDER (Gran Escalera)
+# DARADORBET — RETO ESCALERA
+> **«La magia del interés compuesto»** — *Un objetivo. Una progresión. Cada paso cuenta.*
+
 ## Arquitectura v2.0: Oportunidades Dinámicas, Ejecución Secuencial y Control de Exposición
 
 ### 1. Filosofía y Reglas Operativas (v2.0)
@@ -22,7 +24,7 @@
 | `engine/ladder/ladderRiskGuard.js` | Validación aislada de exposición, superposición horaria, drift de cuota y veto vinculante | Cero cambios en `riskManager.js` productivo |
 | `engine/ladder/ladderEngine.js` | Máquina de estados secuencial con concurrencia (`stateVersion`), idempotencia y audit log | Cero cambios en motores productivos |
 | `engine/tests/test_ladder_sequential_rules.js` | 12 pruebas automatizadas obligatorias (12/12 PASS) | Solo pruebas |
-| `assets/js/ladderModule.js` | UI Mobile-First de 4 tabs (`Principal`, `Escalera`, `Disciplina`, `Historial`) con métricas reales de exposición | Solo módulo visual THE LADDER |
+| `assets/js/ladderModule.js` | UI Mobile-First de 4 tabs (`Principal`, `Escalera`, `Disciplina`, `Historial`) con métricas reales de exposición | Solo módulo visual RETO ESCALERA |
 
 ---
 
