@@ -1,5 +1,5 @@
 {
-  "generatedAtUtc": "2026-11-24T20:33:37.890Z",
+  "generatedAtUtc": "2026-11-24T23:43:25.154Z",
   "circuit": "COUNTERFACTUAL_RESEARCH_ONLY",
   "autoExecutionAllowed": false,
   "operationalIsolation": true,
@@ -16,15 +16,15 @@
     "totalApproved": 9,
     "totalRejected": 5,
     "totalInsufficientData": 0,
-    "totalSettled": 0,
-    "wonCount": 0,
-    "lostCount": 0,
-    "voidCount": 0,
-    "hitRatePct": null,
-    "virtualRoiPct": null,
-    "virtualYieldPct": null,
-    "brierScore": null,
-    "logLoss": null,
+    "totalSettled": 7,
+    "wonCount": 4,
+    "lostCount": 1,
+    "voidCount": 2,
+    "hitRatePct": 80,
+    "virtualRoiPct": 32.6,
+    "virtualYieldPct": 32.6,
+    "brierScore": 0.1568,
+    "logLoss": 0.4927,
     "byMarket": {
       "Entradas (Tackles)": {
         "evaluated": 1,
@@ -39,10 +39,10 @@
         "evaluated": 7,
         "approved": 5,
         "rejected": 2,
-        "settled": 0,
-        "won": 0,
-        "lost": 0,
-        "hitRatePct": null
+        "settled": 4,
+        "won": 3,
+        "lost": 1,
+        "hitRatePct": 75
       },
       "Faltas ganadas": {
         "evaluated": 1,
@@ -57,10 +57,10 @@
         "evaluated": 1,
         "approved": 1,
         "rejected": 0,
-        "settled": 0,
-        "won": 0,
+        "settled": 1,
+        "won": 1,
         "lost": 0,
-        "hitRatePct": null
+        "hitRatePct": 100
       },
       "Faltas cometidas": {
         "evaluated": 4,
@@ -77,28 +77,28 @@
         "evaluated": 9,
         "approved": 6,
         "rejected": 3,
-        "settled": 0,
-        "won": 0,
-        "lost": 0,
-        "hitRatePct": null
+        "settled": 3,
+        "won": 2,
+        "lost": 1,
+        "hitRatePct": 66.67
       },
       "Serie B": {
         "evaluated": 1,
         "approved": 1,
         "rejected": 0,
-        "settled": 0,
-        "won": 0,
+        "settled": 1,
+        "won": 1,
         "lost": 0,
-        "hitRatePct": null
+        "hitRatePct": 100
       },
       "Championship": {
         "evaluated": 4,
         "approved": 2,
         "rejected": 2,
-        "settled": 0,
-        "won": 0,
+        "settled": 1,
+        "won": 1,
         "lost": 0,
-        "hitRatePct": null
+        "hitRatePct": 100
       }
     },
     "byOddsRange": {
@@ -106,23 +106,23 @@
         "evaluated": 11,
         "approved": 7,
         "rejected": 4,
-        "settled": 0,
-        "won": 0,
-        "lost": 0,
-        "hitRatePct": null
+        "settled": 4,
+        "won": 3,
+        "lost": 1,
+        "hitRatePct": 75
       },
       "1.80 - 2.19": {
         "evaluated": 3,
         "approved": 2,
         "rejected": 1,
-        "settled": 0,
-        "won": 0,
+        "settled": 1,
+        "won": 1,
         "lost": 0,
-        "hitRatePct": null
+        "hitRatePct": 100
       }
     },
     "sampleSizeConclusive": false,
-    "statisticalWarning": "Muestra liquidada insuficiente (N=0 < 30). No concluyente estadísticamente."
+    "statisticalWarning": "Muestra liquidada insuficiente (N=5 < 30). No concluyente estadísticamente."
   },
   "evaluations": [
     {
@@ -213,7 +213,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "76520fdd73d0fb7d71a8e768563312a61dd4e0b41207173c77a0d0bdb31d1ed9",
       "recordHash": "65ee6a12e436cfd50ec4235472bb04aa81b5728ba0a5cca0f92fe2d5e413e07a",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805133_1",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 1,
+        "evaluationId": "cf_eval_1795552417862_2_v1",
+        "originalPickId": "cand_real_statshub_20261124_zappa_shots",
+        "matchId": null,
+        "match": "Virtus Entella vs Hellas Verona",
+        "market": "Remates totales",
+        "league": "Serie B",
+        "odds": 1.8,
+        "elenaProbability": 0.625,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_WON",
+        "actualStat": 1,
+        "profitVirtual": 0.8,
+        "settledAtUtc": "2026-11-24T23:43:25.133Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: Virtus Entella 2-1 Verona · Gabriele Zappa 90m, 1 remate (>0.5).",
+        "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "recordHash": "f1357fe69e42c588774e8be12df61954316aba599aa25d4df70430dacd7175e7"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417864_3_v1",
@@ -348,7 +370,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "fd27076798b9e845e27832508a76a0ddba7ae9a4c54f334915ea278217684c96",
       "recordHash": "0edb9be02458141a46b0278b893a48cb9ed9ea414a8951a146b5c970ed0f184a",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805137_2",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 2,
+        "evaluationId": "cf_eval_1795552417868_5_v1",
+        "originalPickId": "cand_real_statshub_20261124_bowen_sot",
+        "matchId": null,
+        "match": "Portsmouth vs West Ham United",
+        "market": "Remates al arco",
+        "league": "Championship",
+        "odds": 1.5,
+        "elenaProbability": 0.755,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_WON",
+        "actualStat": 1,
+        "profitVirtual": 0.5,
+        "settledAtUtc": "2026-11-24T23:43:25.136Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: Portsmouth 1-0 West Ham · Jarrod Bowen 90m, 1 remate al arco (>0.5).",
+        "prevHash": "f1357fe69e42c588774e8be12df61954316aba599aa25d4df70430dacd7175e7",
+        "recordHash": "8a5ff5dec7bbc34b080fdb6c6db012314039fbf4afa8451b9dbdd0dc1061db79"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417870_6_v1",
@@ -393,7 +437,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "0edb9be02458141a46b0278b893a48cb9ed9ea414a8951a146b5c970ed0f184a",
       "recordHash": "dadd3cc7a56bab92b7b1a2c7178ae8aec9361b5168ebcb37cbd66290312a7e12",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805139_3",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 3,
+        "evaluationId": "cf_eval_1795552417870_6_v1",
+        "originalPickId": "cand_real_statshub_20261124_mijnans_shots",
+        "matchId": null,
+        "match": "Real Madrid vs PSV Eindhoven",
+        "market": "Remates totales",
+        "league": "UEFA Champions League",
+        "odds": 1.6,
+        "elenaProbability": 0.738,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_WON",
+        "actualStat": 2,
+        "profitVirtual": 0.6,
+        "settledAtUtc": "2026-11-24T23:43:25.139Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: Real Madrid 5-1 PSV · Sven Mijnans 90m, 2 remates (>1.5).",
+        "prevHash": "8a5ff5dec7bbc34b080fdb6c6db012314039fbf4afa8451b9dbdd0dc1061db79",
+        "recordHash": "eaff29469ba719c47f1d4807f9253cc7e7771fafc05203b2721047a1644f54ab"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417871_7_v1",
@@ -438,7 +504,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "dadd3cc7a56bab92b7b1a2c7178ae8aec9361b5168ebcb37cbd66290312a7e12",
       "recordHash": "31077117c88b7dd74e5e9cd0adbbb33c6f6515502c744132136e7d49a4a621d1",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805150_7",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 7,
+        "evaluationId": "cf_eval_1795552417871_7_v1",
+        "originalPickId": "cand_real_statshub_20261124_aguilar_fouls",
+        "matchId": null,
+        "match": "RB Leipzig vs RC Lens",
+        "market": "Faltas cometidas",
+        "league": "UEFA Champions League",
+        "odds": 1.55,
+        "elenaProbability": 0.747,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_VOID",
+        "actualStat": 0,
+        "profitVirtual": 0,
+        "settledAtUtc": "2026-11-24T23:43:25.149Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: RB Leipzig 3-1 RC Lens · Ruben Aguilar 0m (no jugó).",
+        "prevHash": "4590ca59ab4fc48b6712231ba47ca3fd811da6a29cc319c52a4d0e7c1fe28c12",
+        "recordHash": "5e9bde84b42525722a257ab196bc4a04cf7ccbe099e9b58ff82eeea9f80d773a"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417873_8_v1",
@@ -618,7 +706,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "e695db4e30539f619090c071802e88aeb703ba4e95a846b413b234d42e044599",
       "recordHash": "bf1f5496cbdb6a6e721e1769d93f644c7e8935f8c2bfe8f51e40aa615383fe1d",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805147_6",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 6,
+        "evaluationId": "cf_eval_1795552417878_11_v1",
+        "originalPickId": "cand_real_statshub_20261124_varga_shots",
+        "matchId": null,
+        "match": "Como vs AEK Athens",
+        "market": "Remates totales",
+        "league": "UEFA Champions League",
+        "odds": 1.85,
+        "elenaProbability": 0.704,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_VOID",
+        "actualStat": 0,
+        "profitVirtual": 0,
+        "settledAtUtc": "2026-11-24T23:43:25.146Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: Como 1-0 AEK · Barnabás Varga suplente (28m, no titular). Regla void por no titular.",
+        "prevHash": "574a6ed76023bee4feaead0ddb3ae44768a415731bcd9aeeee7de1a7bc3c0f46",
+        "recordHash": "4590ca59ab4fc48b6712231ba47ca3fd811da6a29cc319c52a4d0e7c1fe28c12"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417880_12_v1",
@@ -663,7 +773,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "bf1f5496cbdb6a6e721e1769d93f644c7e8935f8c2bfe8f51e40aa615383fe1d",
       "recordHash": "1de6dae6c4cc00f41853bac921a876aeba46d00da788ea75efde421846e8b2df",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805145_5",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 5,
+        "evaluationId": "cf_eval_1795552417880_12_v1",
+        "originalPickId": "cand_real_statshub_20261124_kostic_shots",
+        "matchId": null,
+        "match": "Real Madrid vs PSV Eindhoven",
+        "market": "Remates totales",
+        "league": "UEFA Champions League",
+        "odds": 1.75,
+        "elenaProbability": 0.66,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_LOST",
+        "actualStat": 0,
+        "profitVirtual": -1,
+        "settledAtUtc": "2026-11-24T23:43:25.144Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: Real Madrid 5-1 PSV · Filip Kostić 70m, 0 remates (>0.5).",
+        "prevHash": "4c2538639a6d0c569fda30764d34053aeb0fb609a5ff5c859c863e0588bf83fd",
+        "recordHash": "574a6ed76023bee4feaead0ddb3ae44768a415731bcd9aeeee7de1a7bc3c0f46"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417882_13_v1",
@@ -708,7 +840,29 @@
       "elenaVersion": "2.0.0-counterfactual",
       "prevHash": "1de6dae6c4cc00f41853bac921a876aeba46d00da788ea75efde421846e8b2df",
       "recordHash": "bdde089fc622c6ba0fe2c451b629d9bae6719604fbece4f350ed08bc632ff144",
-      "settlement": null
+      "settlement": {
+        "settlementId": "cf_settle_1795563805142_4",
+        "circuit": "COUNTERFACTUAL_VIRTUAL_SETTLEMENT",
+        "autoExecutionAllowed": false,
+        "sequenceIndex": 4,
+        "evaluationId": "cf_eval_1795552417882_13_v1",
+        "originalPickId": "cand_real_statshub_20261124_mctominay_shots",
+        "matchId": null,
+        "match": "Manchester City vs Napoli",
+        "market": "Remates totales",
+        "league": "UEFA Champions League",
+        "odds": 1.73,
+        "elenaProbability": 0.719,
+        "stakeVirtual": 1,
+        "status": "COUNTERFACTUAL_WON",
+        "actualStat": 3,
+        "profitVirtual": 0.73,
+        "settledAtUtc": "2026-11-24T23:43:25.142Z",
+        "source": "StatsHub Oficial FT (24/11/2026)",
+        "reason": "StatsHub FT: Man City 2-2 Napoli · Scott McTominay 90m, 3 remates (>1.5).",
+        "prevHash": "eaff29469ba719c47f1d4807f9253cc7e7771fafc05203b2721047a1644f54ab",
+        "recordHash": "4c2538639a6d0c569fda30764d34053aeb0fb609a5ff5c859c863e0588bf83fd"
+      }
     },
     {
       "evaluationId": "cf_eval_1795552417885_14_v1",
