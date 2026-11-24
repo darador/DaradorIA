@@ -128,7 +128,49 @@ class StorageEngine {
   }
 
   // --- APPROVED PICKS ---
-  saveApprovedPick(pick) {
+  saveApprovedPick(pick, options = {}) {
+    const now = typeof options.now === 'number' ? options.now : Date.now();
+    const isHistorical = Boolean(pick.is_settled || pick.isSettled || options.allowHistorical);
+
+    // Guarda temporal independiente para cualquier ruta alternativa de aprobación
+    if (!isHistorical) {
+      const isExpired =
+        pick.evaluationExpired === true ||
+        pick.status === 'EXPIRADO_SIN_EVALUACION' ||
+        pick.elena_decision === 'EXPIRADO_SIN_EVALUACION' ||
+        pick.evaluationStatus === 'EXPIRED';
+      if (isExpired) {
+        throw new Error(`TEMPORAL_GUARD_BLOCKED: Selección expirada irreversiblemente (${pick.id || 'sin_id'}).`);
+      }
+
+      const isFinishedOrLive =
+        pick.is_finished === true ||
+        pick.isFinished === true ||
+        pick.isLive === true ||
+        pick.is_live === true ||
+        ['FINALIZADO', 'FINISHED', 'EN_CURSO', 'LIVE', 'IN_PLAY', 'STARTED'].includes(String(pick.matchStatus || pick.match_status || '').toUpperCase());
+
+      if (pick.circuit === 'COUNTERFACTUAL' || String(pick.status || '').startsWith('COUNTERFACTUAL_')) {
+        throw new Error(`COUNTERFACTUAL_ISOLATION_BLOCKED: Una selección contrafactual jamás puede ingresar a approved_picks (${pick.id || 'sin_id'}).`);
+      }
+
+      let kickoffTs = null;
+      if (pick.kickoffTimestamp || pick.kickoff_timestamp) {
+        const raw = pick.kickoffTimestamp || pick.kickoff_timestamp;
+        kickoffTs = raw < 10000000000 ? raw * 1000 : raw;
+      } else {
+        const iso = pick.eventDateUtc || pick.kickoffUtc || pick.kickoff_utc || pick.eventDate;
+        if (iso) {
+          const parsed = new Date(iso).getTime();
+          if (!isNaN(parsed)) kickoffTs = parsed;
+        }
+      }
+
+      if (isFinishedOrLive || (kickoffTs !== null && now >= kickoffTs)) {
+        throw new Error(`TEMPORAL_GUARD_BLOCKED: No se permite aprobar prepartido tras kickoff o partido iniciado/finalizado (${pick.id || 'sin_id'}).`);
+      }
+    }
+
     const approved = this._readCollection('approved_picks');
     const existingIndex = approved.findIndex(p => p.id === pick.id || (p.partido === pick.partido && p.seleccion === pick.seleccion && p.mercado === pick.mercado));
     

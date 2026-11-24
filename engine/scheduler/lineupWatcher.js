@@ -15,33 +15,54 @@ class LineupWatcher {
   }
 
   _getKickoffTimestamp(cand) {
-    if (cand.kickoffTimestamp) {
-      return cand.kickoffTimestamp < 10000000000 ? cand.kickoffTimestamp * 1000 : cand.kickoffTimestamp;
+    if (!cand) return null;
+    if (cand.kickoffTimestamp || cand.kickoff_timestamp) {
+      const raw = cand.kickoffTimestamp || cand.kickoff_timestamp;
+      return raw < 10000000000 ? raw * 1000 : raw;
     }
-    if (cand.eventDateUtc) {
-      const ts = new Date(cand.eventDateUtc).getTime();
-      if (!isNaN(ts)) return ts;
-    }
-    if (cand.matchTime) {
-      const ts = new Date(cand.matchTime).getTime();
+    const iso = cand.eventDateUtc || cand.kickoffUtc || cand.kickoff_utc || cand.eventDate || cand.matchTime;
+    if (iso) {
+      const ts = new Date(iso).getTime();
       if (!isNaN(ts)) return ts;
     }
     return null;
   }
 
+  _isMatchFinished(cand) {
+    if (!cand) return false;
+    if (cand.is_finished === true || cand.isFinished === true) return true;
+    if (cand.isLive === true || cand.is_live === true) return true;
+    const ms = String(cand.matchStatus || cand.match_status || cand.status || '').toUpperCase();
+    return ['FINALIZADO', 'FINISHED', 'EN_CURSO', 'LIVE', 'IN_PLAY', 'STARTED'].includes(ms);
+  }
+
+  _isAlreadyExpired(cand) {
+    if (!cand) return false;
+    return (
+      cand.evaluationExpired === true ||
+      cand.status === 'EXPIRADO_SIN_EVALUACION' ||
+      cand.elena_decision === 'EXPIRADO_SIN_EVALUACION' ||
+      cand.evaluationStatus === 'EXPIRED'
+    );
+  }
+
   /**
    * Revisa todas las selecciones pendientes de alineación oficial,
    * priorizando encuentros en la ventana T-60 a T-45 minutos.
+   * Guarda temporal estricta: si now >= kickoffTs o is_finished === true,
+   * expira irreversiblemente la evaluación (checkpoint MISSED / evaluación EXPIRED)
+   * y prohíbe promover a APROBADO.
    * @param {Object} options
    * @returns {Promise<Object>} Resumen de cambios de estado
    */
   async checkPendingLineups(options = {}) {
     console.log('[LineupWatcher] Comprobando alineaciones oficiales para candidatos condicionales...');
     const allCandidates = storage.getCandidates();
-    let pendingCandidates = allCandidates.filter(c => 
-      c.status === 'PENDIENTE' || 
-      c.status === 'PENDIENTE_ALINEACION' || 
-      c.status === 'PENDIENTE_DE_ALINEACION'
+    let pendingCandidates = allCandidates.filter(c =>
+      c.status === 'PENDIENTE' ||
+      c.status === 'PENDIENTE_ALINEACION' ||
+      c.status === 'PENDIENTE_DE_ALINEACION' ||
+      (options.candidateIds && options.candidateIds.includes(c.id) && this._isAlreadyExpired(c))
     );
 
     if (options.candidateIds && options.candidateIds.length > 0) {
@@ -51,7 +72,7 @@ class LineupWatcher {
     console.log(`[LineupWatcher] Candidatos pendientes encontrados: ${pendingCandidates.length}`);
 
     // Priorizar por proximidad al inicio del encuentro (más cercanos primero)
-    const now = Date.now();
+    const now = typeof options.now === 'number' ? options.now : Date.now();
     pendingCandidates.sort((a, b) => {
       const tsA = this._getKickoffTimestamp(a) || Infinity;
       const tsB = this._getKickoffTimestamp(b) || Infinity;
@@ -60,11 +81,39 @@ class LineupWatcher {
 
     const promoted = [];
     const vetoed = [];
+    const expired = [];
     const stillPending = [];
 
     for (const cand of pendingCandidates) {
+      // Irreversibilidad: una selección expirada jamás puede ser reevaluada ni promovida
+      if (this._isAlreadyExpired(cand)) {
+        expired.push(cand);
+        console.log(`[LineupWatcher] ⛔ Expiración irreversible preservada: ${cand.player || cand.seleccion || cand.playerOrTeam}`);
+        continue;
+      }
+
       const ts = this._getKickoffTimestamp(cand);
-      const diffMinutes = ts ? (ts - now) / 60000 : null;
+      const isFinished = this._isMatchFinished(cand);
+      const diffMinutes = ts !== null ? (ts - now) / 60000 : null;
+
+      // Guarda estricta post-kickoff / partido finalizado: prohibir promoción tardía
+      if (isFinished || (ts !== null && now >= ts)) {
+        const reason = isFinished
+          ? 'PARTIDO_FINALIZADO_SIN_EVALUACION_T60: El partido finalizó sin confirmación T-60 de XI titular.'
+          : 'KICKOFF_ALCANZADO_SIN_EVALUACION_T60: Kickoff alcanzado sin confirmación T-60 de XI titular.';
+        cand.status = 'EXPIRADO_SIN_EVALUACION';
+        cand.elena_decision = 'EXPIRADO_SIN_EVALUACION';
+        cand.evaluationExpired = true;
+        cand.checkpointStatus = 'MISSED';
+        cand.evaluationStatus = 'EXPIRED';
+        cand.expiredAtUtc = new Date(now).toISOString();
+        cand.expirationReason = reason;
+        cand.decisionReason = reason;
+        storage.saveCandidate(cand);
+        expired.push(cand);
+        console.log(`[LineupWatcher] ⊘ Expirado (checkpoint MISSED / eval EXPIRED): ${cand.player || cand.seleccion || cand.playerOrTeam} (${reason})`);
+        continue;
+      }
 
       // Si el partido está a más de 120 min, las alineaciones oficiales aún no se publican (StatsHub las emite ~60m antes)
       // Ahorrar cuota de MCP a menos que sea forzado por test suite
@@ -77,15 +126,21 @@ class LineupWatcher {
         const result = await this.evaluateCandidateLineup(cand, options.mockLineups);
         if (result.action === 'PROMOTE') {
           cand.status = 'APROBADO';
+          cand.elena_decision = 'APROBADO';
           cand.lineupStatus = 'CONFIRMADA';
+          cand.checkpointStatus = 'EXECUTED';
+          cand.evaluationStatus = 'APPROVED';
           cand.decisionReason = result.reason;
           storage.saveCandidate(cand);
-          storage.saveApprovedPick(cand);
+          storage.saveApprovedPick(cand, { now });
           promoted.push(cand);
           console.log(`[LineupWatcher] ✅ Promovido a APROBADO: ${cand.player || cand.seleccion || cand.playerOrTeam} (Titular confirmado)`);
         } else if (result.action === 'VETO') {
           cand.status = 'RECHAZADO';
+          cand.elena_decision = 'RECHAZADO';
           cand.lineupStatus = 'SUPLENTE';
+          cand.checkpointStatus = 'EXECUTED';
+          cand.evaluationStatus = 'VETOED';
           cand.decisionReason = result.reason;
           storage.saveCandidate(cand);
           storage.saveRejectedPick(cand, result.reason);
@@ -102,15 +157,19 @@ class LineupWatcher {
     }
 
     // Sincronizar cambios en picks_hoy.json
-    syncRadar.exportToPicksHoy();
+    if (!options.skipSync) {
+      syncRadar.exportToPicksHoy(null, { now });
+    }
 
     return {
       totalEvaluated: pendingCandidates.length,
       promotedCount: promoted.length,
       vetoedCount: vetoed.length,
+      expiredCount: expired.length,
       stillPendingCount: stillPending.length,
       promoted,
       vetoed,
+      expired,
       stillPending
     };
   }

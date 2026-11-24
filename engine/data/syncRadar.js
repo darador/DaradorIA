@@ -99,10 +99,80 @@ class RadarSync {
   }
 
   /**
+   * Guarda temporal para exportación: no exporta como PENDIENTE_ALINEACION
+   * una selección cuyo kickoff confirmado ya ocurrió o cuyo partido finalizó.
+   * No expira automáticamente eventos sin horario confirmado, salvo is_finished === true.
+   * Nunca modifica registros históricos liquidados (is_settled === true).
+   */
+  _applyTemporalExpirationIfNeeded(entry, now = Date.now()) {
+    if (!entry || entry.is_settled) return entry;
+
+    const rawElena = String(entry.elena_decision || '').toUpperCase();
+    const rawStatus = String(entry.status || '').toUpperCase();
+    const isPending =
+      rawElena === 'PENDIENTE_ALINEACION' ||
+      rawElena === 'PENDIENTE' ||
+      rawStatus === 'PENDIENTE_ALINEACION' ||
+      rawStatus === 'PENDIENTE' ||
+      rawStatus === 'DETECTADO';
+
+    const isAlreadyExpired =
+      entry.evaluationExpired === true ||
+      rawElena === 'EXPIRADO_SIN_EVALUACION' ||
+      rawStatus === 'EXPIRADO_SIN_EVALUACION' ||
+      String(entry.evaluationStatus || '').toUpperCase() === 'EXPIRED';
+
+    if (!isPending && !isAlreadyExpired) return entry;
+
+    const isFinished =
+      entry.is_finished === true ||
+      ['FINALIZADO', 'FINISHED'].includes(String(entry.match_status || '').toUpperCase());
+
+    let kickoffTs = null;
+    if (entry.kickoffTimestamp || entry.kickoff_timestamp) {
+      const raw = entry.kickoffTimestamp || entry.kickoff_timestamp;
+      kickoffTs = raw < 10000000000 ? raw * 1000 : raw;
+    } else {
+      const iso = entry.eventDateUtc || entry.kickoffUtc || entry.kickoff_utc;
+      if (iso) {
+        const parsed = new Date(iso).getTime();
+        if (!isNaN(parsed)) kickoffTs = parsed;
+      }
+    }
+
+    if (isAlreadyExpired || isFinished || (kickoffTs !== null && now >= kickoffTs)) {
+      const reason =
+        entry.expirationReason ||
+        (isFinished
+          ? 'PARTIDO_FINALIZADO_SIN_EVALUACION_T60: Partido finalizado sin confirmación T-60 de XI titular.'
+          : 'KICKOFF_ALCANZADO_SIN_EVALUACION_T60: Kickoff alcanzado sin confirmación T-60 de XI titular.');
+      const expiredAtUtc = entry.expiredAtUtc || new Date(now).toISOString();
+      return {
+        ...entry,
+        status: 'EXPIRADO_SIN_EVALUACION',
+        elena_decision: 'EXPIRADO_SIN_EVALUACION',
+        evaluationExpired: true,
+        evaluationStatus: 'EXPIRED',
+        checkpointStatus: entry.checkpointStatus || 'MISSED',
+        expiredAtUtc,
+        expirationReason: reason,
+        risk_verdict: {
+          ...(entry.risk_verdict || {}),
+          finalStatus: 'EXPIRADO_SIN_EVALUACION',
+          finalReason: reason
+        }
+      };
+    }
+
+    return entry;
+  }
+
+  /**
    * Sincroniza los picks aprobados, históricos y del Centro de Investigación en picks_hoy.json
    * de forma no destructiva, idempotente y ordenada cronológicamente.
    */
-  exportToPicksHoy(dateStr = null) {
+  exportToPicksHoy(dateStr = null, options = {}) {
+    const now = typeof options.now === 'number' ? options.now : Date.now();
     const today = dateStr || dateTime.toLocalDateString(new Date()) || new Date().toISOString().slice(0, 10);
     const approvedList = storage.getApprovedPicks().filter(c => !isTestFixture(c));
     const allCandidates = storage.getCandidates().filter(c => !isTestFixture(c));
@@ -495,9 +565,15 @@ class RadarSync {
       return (b.time || '').localeCompare(a.time || '');
     });
 
+    // 4B. Aplicar expiración temporal determinística a pendientes vencidos (sin alterar históricos liquidados)
+    for (let i = 0; i < allTopPicks.length; i++) {
+      allTopPicks[i] = this._applyTemporalExpirationIfNeeded(allTopPicks[i], now);
+    }
+
     // 5. Recalcular métricas resumen
     const approvedCount = allTopPicks.filter(p => !p.is_settled && p.elena_decision === 'APROBADO').length;
     const pendingCount = allTopPicks.filter(p => !p.is_settled && p.status?.includes('PENDIENTE')).length;
+    const expiredCount = allTopPicks.filter(p => !p.is_settled && p.elena_decision === 'EXPIRADO_SIN_EVALUACION').length;
     const settledCount = allTopPicks.filter(p => p.is_settled).length;
     const sumOdds = allTopPicks.reduce((acc, p) => acc + (p.odds || 0), 0);
     const sumEdge = allTopPicks.reduce((acc, p) => acc + (parseFloat(p.edge_pct) || 0), 0);
@@ -506,6 +582,7 @@ class RadarSync {
       total_picks: allTopPicks.length,
       approved_count: approvedCount,
       pending_count: pendingCount,
+      expired_count: expiredCount,
       settled_count: settledCount,
       rejected_count: rejectedList.length,
       avg_odds: allTopPicks.length > 0 ? Number((sumOdds / allTopPicks.length).toFixed(2)) : 1.70,

@@ -17,10 +17,96 @@ class RiskManager {
     this.minEV = config.prediction?.minEV || 0.07; // +7.0% EV mandatorio
   }
 
+  _extractKickoffTimestamp(candidate) {
+    if (!candidate) return null;
+    if (candidate.kickoffTimestamp || candidate.kickoff_timestamp) {
+      const raw = candidate.kickoffTimestamp || candidate.kickoff_timestamp;
+      return raw < 10000000000 ? raw * 1000 : raw;
+    }
+    const iso = candidate.eventDateUtc || candidate.kickoffUtc || candidate.kickoff_utc || candidate.eventDate || candidate.matchTime;
+    if (iso) {
+      const ts = new Date(iso).getTime();
+      if (!isNaN(ts)) return ts;
+    }
+    return null;
+  }
+
+  _isMatchStartedOrFinished(candidate) {
+    if (!candidate) return false;
+    if (candidate.is_finished === true || candidate.isFinished === true) return true;
+    if (candidate.isLive === true || candidate.is_live === true) return true;
+    const ms = String(candidate.matchStatus || candidate.match_status || '').toUpperCase();
+    return ['FINALIZADO', 'FINISHED', 'EN_CURSO', 'LIVE', 'IN_PLAY', 'STARTED'].includes(ms);
+  }
+
+  _isAlreadyExpired(candidate) {
+    if (!candidate) return false;
+    return (
+      candidate.evaluationExpired === true ||
+      candidate.status === 'EXPIRADO_SIN_EVALUACION' ||
+      candidate.elena_decision === 'EXPIRADO_SIN_EVALUACION' ||
+      candidate.evaluationStatus === 'EXPIRED'
+    );
+  }
+
   /**
    * Emite el veredicto definitivo sobre el candidato analizado
    */
-  async evaluate(candidate, prediction, agentReports = {}) {
+  async evaluate(candidate, prediction, agentReports = {}, options = {}) {
+    const now = typeof options.now === 'number' ? options.now : Date.now();
+
+    // --- REGLA 0 (IRREVERSIBILIDAD Y GUARDA TEMPORAL INDEPENDIENTE) ---
+    if (this._isAlreadyExpired(candidate)) {
+      const reason = 'VETO TEMPORAL (IRREVERSIBLE): Selección previamente expirada sin evaluación prepartido. Estado EXPIRADO_SIN_EVALUACION preservado.';
+      return {
+        agentName: this.name,
+        alias: this.alias,
+        candidateId: candidate.id,
+        finalStatus: 'EXPIRADO_SIN_EVALUACION',
+        finalReason: reason,
+        vetoApplied: true,
+        temporalVeto: true,
+        evaluationExpired: true,
+        evaluationStatus: 'EXPIRED',
+        checkpointStatus: candidate.checkpointStatus || 'MISSED',
+        expiredAtUtc: candidate.expiredAtUtc || new Date(now).toISOString(),
+        blockedApprovalAttempt: {
+          attemptedAtUtc: new Date(now).toISOString(),
+          preservedStatus: 'EXPIRADO_SIN_EVALUACION',
+          reason
+        },
+        vetoReasons: [reason],
+        pendingReasons: [],
+        approvalReasons: [],
+        decidedAt: new Date(now).toISOString()
+      };
+    }
+
+    const kickoffTs = this._extractKickoffTimestamp(candidate);
+    const isStartedOrFinished = this._isMatchStartedOrFinished(candidate);
+    if (isStartedOrFinished || (kickoffTs !== null && now >= kickoffTs)) {
+      const reason = isStartedOrFinished
+        ? 'VETO TEMPORAL POST-KICKOFF: Partido iniciado o finalizado. No se permiten aprobaciones prepartido.'
+        : `VETO TEMPORAL POST-KICKOFF: Kickoff alcanzado (${new Date(kickoffTs).toISOString()} <= ${new Date(now).toISOString()}). No se permiten aprobaciones prepartido tardías.`;
+      return {
+        agentName: this.name,
+        alias: this.alias,
+        candidateId: candidate.id,
+        finalStatus: 'RECHAZADO',
+        finalReason: `VETADO: ${reason}`,
+        vetoApplied: true,
+        temporalVeto: true,
+        evaluationExpired: true,
+        evaluationStatus: 'EXPIRED',
+        checkpointStatus: 'MISSED',
+        expiredAtUtc: new Date(now).toISOString(),
+        vetoReasons: [reason],
+        pendingReasons: [],
+        approvalReasons: [],
+        decidedAt: new Date(now).toISOString()
+      };
+    }
+
     const pAnalyst = agentReports.playerAnalyst || {};
     const tAnalyst = agentReports.teamAnalyst || {};
     const mContext = agentReports.matchContext || {};
