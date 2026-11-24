@@ -1,0 +1,122 @@
+[
+  {
+    "sequenceIndex": 0,
+    "prevEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "eventId": "snp_1795539033414_fcced3",
+    "observationId": "obs9_1795536771306_f65d12",
+    "checkpoint": "T_MINUS_60",
+    "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+    "odds": 3.33,
+    "bookmaker": "All British Casino",
+    "marketFamily": "match_1x2",
+    "selection": "1",
+    "line": null,
+    "source": "statshub:getMatchOdds",
+    "contaminated": false,
+    "clvResult": {
+      "status": "CLV_UNAVAILABLE",
+      "clvPct": null,
+      "closingOdds": null,
+      "closingBookmaker": null,
+      "closingCapturedAtUtc": null,
+      "reason": "Checkpoint no es CLOSING; no se asume como cuota de cierre."
+    },
+    "eventHash": "f217036d49af9ad29ef9f6c52d591c19231bb3771540328b92218f46089a6838"
+  },
+  {
+    "sequenceIndex": 1,
+    "prevEventHash": "f217036d49af9ad29ef9f6c52d591c19231bb3771540328b92218f46089a6838",
+    "eventId": "snp_1795539033420_4c6ef4",
+    "observationId": "obs9_1795536771312_3164a3",
+    "checkpoint": "T_MINUS_60",
+    "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+    "odds": 1.57,
+    "bookmaker": "Bet365",
+    "marketFamily": "double_chance",
+    "selection": "1X",
+    "line": null,
+    "source": "statshub:getMatchOdds",
+    "contaminated": false,
+    "clvResult": {
+      "status": "CLV_UNAVAILABLE",
+      "clvPct": null,
+      "closingOdds": null,
+      "closingBookmaker": null,
+      "closingCapturedAtUtc": null,
+      "reason": "Checkpoint no es CLOSING; no se asume como cuota de cierre."
+    },
+    "eventHash": "424ef8446c841dfd7fb47c8c56697c04fcc1a81f31c6c968dfa8aa735a054306"
+  },
+  {
+    "sequenceIndex": 2,
+    "prevEventHash": "424ef8446c841dfd7fb47c8c56697c04fcc1a81f31c6c968dfa8aa735a054306",
+    "eventId": "snp_1795539033427_e39b3f",
+    "observationId": "obs9_1795536771318_80a934",
+    "checkpoint": "T_MINUS_60",
+    "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+    "odds": 2.4,
+    "bookmaker": "Paddy Power",
+    "marketFamily": "match_goals",
+    "selection": "OVER",
+    "line": 3.5,
+    "source": "statshub:getMatchOdds",
+    "contaminated": false,
+    "clvResult": {
+      "status": "CLV_UNAVAILABLE",
+      "clvPct": null,
+      "closingOdds": null,
+      "closingBookmaker": null,
+      "closingCapturedAtUtc": null,
+      "reason": "Checkpoint no es CLOSING; no se asume como cuota de cierre."
+    },
+    "eventHash": "8ae8d13bc82da294e2778798b4f987ffb8b59a9a190acc10953f74da3529c1b9"
+  },
+  {
+    "sequenceIndex": 3,
+    "prevEventHash": "8ae8d13bc82da294e2778798b4f987ffb8b59a9a190acc10953f74da3529c1b9",
+    "eventId": "snp_1795539033433_d9ef24",
+    "observationId": "obs9_1795536771367_e244e4",
+    "checkpoint": "T_MINUS_60",
+    "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+    "odds": 1.4,
+    "bookmaker": "Bet365",
+    "marketFamily": "btts",
+    "selection": "YES",
+    "line": null,
+    "source": "statshub:getMatchOdds",
+    "contaminated": false,
+    "clvResult": {
+      "status": "CLV_UNAVAILABLE",
+      "clvPct": null,
+      "closingOdds": null,
+      "closingBookmaker": null,
+      "closingCapturedAtUtc": null,
+      "reason": "Checkpoint no es CLOSING; no se asume como cuota de cierre."
+    },
+    "eventHash": "acf8c0012d55eb4c8b8ee66449ef152c0a7195d82e2f788e89b4d78148a0756a"
+  },
+  {
+    "sequenceIndex": 4,
+    "prevEventHash": "acf8c0012d55eb4c8b8ee66449ef152c0a7195d82e2f788e89b4d78148a0756a",
+    "eventId": "snp_1795539033440_b05daa",
+    "observationId": "obs9_1795536771373_ff3ab9",
+    "checkpoint": "T_MINUS_60",
+    "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+    "odds": 1.25,
+    "bookmaker": "Bet365",
+    "marketFamily": "double_chance",
+    "selection": "12",
+    "line": null,
+    "source": "statshub:getMatchOdds",
+    "contaminated": false,
+    "clvResult": {
+      "status": "CLV_UNAVAILABLE",
+      "clvPct": null,
+      "closingOdds": null,
+      "closingBookmaker": null,
+      "closingCapturedAtUtc": null,
+      "reason": "Checkpoint no es CLOSING; no se asume como cuota de cierre."
+    },
+    "eventHash": "10800743f1cee5679150975f431958ee6b127f01274eee2ec5f245616d98aa0d"
+  }
+]

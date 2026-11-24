@@ -177,6 +177,12 @@ function auditMatchOddsCoverage(matchOddsPayload) {
   const corners = findMarket(['total corners']);
   const cards = findMarket(['total cards']);
 
+  const normBookmaker = (bk) => {
+    const s = typeof bk === 'string' ? bk.trim() : '';
+    if (!s || s.toLowerCase() === 'statshubbest' || s.toLowerCase() === 'unknown') return 'BOOKMAKER_UNAVAILABLE';
+    return s;
+  };
+
   const extract1X2 = () => {
     if (!toWin || !Array.isArray(toWin.outcomes) || toWin.outcomes.length < 3) return null;
     const draw = toWin.outcomes.find(o => String(o.label || '').toLowerCase() === 'draw');
@@ -188,6 +194,16 @@ function auditMatchOddsCoverage(matchOddsPayload) {
       away: Number(nonDraw[1]?.best?.odds),
       homeLabel: nonDraw[0]?.label,
       awayLabel: nonDraw[1]?.label,
+      bookmakers: {
+        '1': normBookmaker(nonDraw[0]?.best?.bookmaker),
+        'X': normBookmaker(draw?.best?.bookmaker),
+        '2': normBookmaker(nonDraw[1]?.best?.bookmaker)
+      },
+      ageMinutesBySelection: {
+        '1': Number(nonDraw[0]?.best?.ageMinutes || 0),
+        'X': Number(draw?.best?.ageMinutes || 0),
+        '2': Number(nonDraw[1]?.best?.ageMinutes || 0)
+      },
       ageMinutes: Math.max(
         Number(nonDraw[0]?.best?.ageMinutes || 0),
         Number(draw?.best?.ageMinutes || 0),
@@ -211,6 +227,16 @@ function auditMatchOddsCoverage(matchOddsPayload) {
       '1X': Number(o1X?.best?.odds),
       'X2': Number(oX2?.best?.odds),
       '12': Number(o12?.best?.odds),
+      bookmakers: {
+        '1X': normBookmaker(o1X?.best?.bookmaker),
+        'X2': normBookmaker(oX2?.best?.bookmaker),
+        '12': normBookmaker(o12?.best?.bookmaker)
+      },
+      ageMinutesBySelection: {
+        '1X': Number(o1X?.best?.ageMinutes || 0),
+        'X2': Number(oX2?.best?.ageMinutes || 0),
+        '12': Number(o12?.best?.ageMinutes || 0)
+      },
       ageMinutes: Math.max(
         Number(o1X?.best?.ageMinutes || 0),
         Number(oX2?.best?.ageMinutes || 0),
@@ -228,8 +254,12 @@ function auditMatchOddsCoverage(matchOddsPayload) {
     return {
       YES: Number(yes?.best?.odds),
       NO: Number(no?.best?.odds),
-      bookmakerYes: yes?.best?.bookmaker || 'Unknown',
-      bookmakerNo: no?.best?.bookmaker || 'Unknown',
+      bookmakerYes: normBookmaker(yes?.best?.bookmaker),
+      bookmakerNo: normBookmaker(no?.best?.bookmaker),
+      bookmakers: {
+        YES: normBookmaker(yes?.best?.bookmaker),
+        NO: normBookmaker(no?.best?.bookmaker)
+      },
       ageMinutes: Math.max(Number(yes?.best?.ageMinutes || 0), Number(no?.best?.ageMinutes || 0)),
       books: Math.min(Number(yes?.books || 0), Number(no?.books || 0))
     };
@@ -247,8 +277,12 @@ function auditMatchOddsCoverage(matchOddsPayload) {
       line,
       OVER: Number(over?.best?.odds),
       UNDER: Number(under?.best?.odds),
-      bookmakerOver: over?.best?.bookmaker || 'Unknown',
-      bookmakerUnder: under?.best?.bookmaker || 'Unknown',
+      bookmakerOver: normBookmaker(over?.best?.bookmaker),
+      bookmakerUnder: normBookmaker(under?.best?.bookmaker),
+      bookmakers: {
+        OVER: normBookmaker(over?.best?.bookmaker),
+        UNDER: normBookmaker(under?.best?.bookmaker)
+      },
       ageMinutes: Math.max(Number(over?.best?.ageMinutes || 0), Number(under?.best?.ageMinutes || 0)),
       books: Math.min(Number(over?.books || 0), Number(under?.books || 0))
     };
@@ -268,8 +302,12 @@ function auditMatchOddsCoverage(matchOddsPayload) {
       lineAway,
       HOME: Number(o0?.best?.odds),
       AWAY: Number(o1?.best?.odds),
-      bookmakerHome: o0?.best?.bookmaker || 'Unknown',
-      bookmakerAway: o1?.best?.bookmaker || 'Unknown',
+      bookmakerHome: normBookmaker(o0?.best?.bookmaker),
+      bookmakerAway: normBookmaker(o1?.best?.bookmaker),
+      bookmakers: {
+        HOME: normBookmaker(o0?.best?.bookmaker),
+        AWAY: normBookmaker(o1?.best?.bookmaker)
+      },
       ageMinutes: Math.max(Number(o0?.best?.ageMinutes || 0), Number(o1?.best?.ageMinutes || 0)),
       books: Math.min(Number(o0?.books || 0), Number(o1?.books || 0))
     };

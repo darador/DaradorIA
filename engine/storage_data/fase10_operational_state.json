@@ -76,22 +76,32 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T16:45:00.000Z",
-          "status": "SCHEDULED"
+          "status": "COMPLETED",
+          "idempotencyKey": "obs9_1795536771306_f65d12__T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "capturedOdds": 3.33,
+          "capturedBookmaker": "All British Casino",
+          "eventId": "snp_1795539033414_fcced3",
+          "clvStatus": "CLV_UNAVAILABLE",
+          "reason": null
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T17:15:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771306_f65d12__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T17:40:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771306_f65d12__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T17:44:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771306_f65d12__CLOSING"
         }
       ]
     },
@@ -103,22 +113,32 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T16:45:00.000Z",
-          "status": "SCHEDULED"
+          "status": "COMPLETED",
+          "idempotencyKey": "obs9_1795536771312_3164a3__T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "capturedOdds": 1.57,
+          "capturedBookmaker": "Bet365",
+          "eventId": "snp_1795539033420_4c6ef4",
+          "clvStatus": "CLV_UNAVAILABLE",
+          "reason": null
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T17:15:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771312_3164a3__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T17:40:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771312_3164a3__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T17:44:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771312_3164a3__CLOSING"
         }
       ]
     },
@@ -130,22 +150,32 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T16:45:00.000Z",
-          "status": "SCHEDULED"
+          "status": "COMPLETED",
+          "idempotencyKey": "obs9_1795536771318_80a934__T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "capturedOdds": 2.4,
+          "capturedBookmaker": "Paddy Power",
+          "eventId": "snp_1795539033427_e39b3f",
+          "clvStatus": "CLV_UNAVAILABLE",
+          "reason": null
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T17:15:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771318_80a934__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T17:40:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771318_80a934__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T17:44:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771318_80a934__CLOSING"
         }
       ]
     },
@@ -157,22 +187,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771324_a0084e__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771324_a0084e__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771324_a0084e__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771324_a0084e__CLOSING"
         }
       ]
     },
@@ -184,22 +218,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771329_ae76bc__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771329_ae76bc__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771329_ae76bc__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771329_ae76bc__CLOSING"
         }
       ]
     },
@@ -211,22 +249,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771335_4d5c7d__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771335_4d5c7d__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771335_4d5c7d__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771335_4d5c7d__CLOSING"
         }
       ]
     },
@@ -238,22 +280,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771343_d378ad__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771343_d378ad__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771343_d378ad__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771343_d378ad__CLOSING"
         }
       ]
     },
@@ -265,22 +311,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771349_9f524f__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771349_9f524f__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771349_9f524f__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771349_9f524f__CLOSING"
         }
       ]
     },
@@ -292,22 +342,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771355_263e4b__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771355_263e4b__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771355_263e4b__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771355_263e4b__CLOSING"
         }
       ]
     },
@@ -319,22 +373,26 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T19:00:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771361_042e79__T_MINUS_60"
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T19:30:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771361_042e79__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T19:55:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771361_042e79__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T19:59:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771361_042e79__CLOSING"
         }
       ]
     },
@@ -346,22 +404,32 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T16:45:00.000Z",
-          "status": "SCHEDULED"
+          "status": "COMPLETED",
+          "idempotencyKey": "obs9_1795536771367_e244e4__T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "capturedOdds": 1.4,
+          "capturedBookmaker": "Bet365",
+          "eventId": "snp_1795539033433_d9ef24",
+          "clvStatus": "CLV_UNAVAILABLE",
+          "reason": null
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T17:15:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771367_e244e4__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T17:40:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771367_e244e4__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T17:44:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771367_e244e4__CLOSING"
         }
       ]
     },
@@ -373,22 +441,32 @@
         {
           "checkpoint": "T_MINUS_60",
           "scheduledUtc": "2026-11-24T16:45:00.000Z",
-          "status": "SCHEDULED"
+          "status": "COMPLETED",
+          "idempotencyKey": "obs9_1795536771373_ff3ab9__T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "capturedOdds": 1.25,
+          "capturedBookmaker": "Bet365",
+          "eventId": "snp_1795539033440_b05daa",
+          "clvStatus": "CLV_UNAVAILABLE",
+          "reason": null
         },
         {
           "checkpoint": "T_MINUS_30",
           "scheduledUtc": "2026-11-24T17:15:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771373_ff3ab9__T_MINUS_30"
         },
         {
           "checkpoint": "T_MINUS_5",
           "scheduledUtc": "2026-11-24T17:40:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771373_ff3ab9__T_MINUS_5"
         },
         {
           "checkpoint": "CLOSING",
           "scheduledUtc": "2026-11-24T17:44:00.000Z",
-          "status": "SCHEDULED"
+          "status": "SCHEDULED",
+          "idempotencyKey": "obs9_1795536771373_ff3ab9__CLOSING"
         }
       ]
     }
@@ -456,5 +534,22 @@
         "obs9_1795536771373_ff3ab9"
       ]
     }
-  ]
+  ],
+  "snapshotWorker": {
+    "lastRunAtUtc": "2026-11-24T16:50:33.443Z",
+    "lastSummary": {
+      "startedAtUtc": "2026-11-24T16:50:33.404Z",
+      "completedAtUtc": "2026-11-24T16:50:33.443Z",
+      "nowUtcEvaluated": "2026-11-24T16:50:33.397Z",
+      "autoExecutionAllowed": false,
+      "mcpCallsUsed": 1,
+      "checkpointsEvaluated": 48,
+      "completedCount": 5,
+      "missedCount": 0,
+      "failedCount": 0,
+      "skippedFutureCount": 43,
+      "skippedIdempotentCount": 0,
+      "errors": []
+    }
+  }
 }

@@ -302,7 +302,7 @@ class ControlledPipelineRunner {
             modelConsensus: 0.80
           };
 
-          // 1) 1X2
+          // 1) 1X2 (bookmaker real por selección, nunca 'StatsHubBest')
           if (evalRes.pricing.match_1x2) {
             for (const [sel, item] of Object.entries(evalRes.pricing.match_1x2)) {
               if (!item?.available) continue;
@@ -314,9 +314,9 @@ class ControlledPipelineRunner {
                 market: 'Ganador 1X2',
                 selection: sel,
                 line: null,
-                bookmaker: oddsAudit.extractedOdds.odds1X2?.bookmaker || 'StatsHubBest',
+                bookmaker: oddsAudit.extractedOdds.odds1X2?.bookmakers?.[sel] || 'BOOKMAKER_UNAVAILABLE',
                 bookmakerOdds: item.bookmakerOdds,
-                oddsAgeMinutes: oddsAudit.extractedOdds.odds1X2?.ageMinutes ?? 0,
+                oddsAgeMinutes: oddsAudit.extractedOdds.odds1X2?.ageMinutesBySelection?.[sel] ?? oddsAudit.extractedOdds.odds1X2?.ageMinutes ?? 0,
                 modelProb: item.modelProb,
                 impliedProb: item.impliedProb,
                 noVigProb: item.noVigProb,
@@ -326,7 +326,7 @@ class ControlledPipelineRunner {
             }
           }
 
-          // 2) Doble Oportunidad
+          // 2) Doble Oportunidad (bookmaker real por selección, nunca 'StatsHubBest')
           if (evalRes.pricing.double_chance) {
             for (const [sel, item] of Object.entries(evalRes.pricing.double_chance)) {
               if (!item?.available) continue;
@@ -338,9 +338,9 @@ class ControlledPipelineRunner {
                 market: 'Doble Oportunidad',
                 selection: sel,
                 line: null,
-                bookmaker: 'StatsHubBest',
+                bookmaker: oddsAudit.extractedOdds.oddsDoubleChance?.bookmakers?.[sel] || 'BOOKMAKER_UNAVAILABLE',
                 bookmakerOdds: item.bookmakerOdds,
-                oddsAgeMinutes: oddsAudit.extractedOdds.oddsDoubleChance?.ageMinutes ?? 0,
+                oddsAgeMinutes: oddsAudit.extractedOdds.oddsDoubleChance?.ageMinutesBySelection?.[sel] ?? oddsAudit.extractedOdds.oddsDoubleChance?.ageMinutes ?? 0,
                 modelProb: item.modelProb,
                 impliedProb: item.impliedProb,
                 noVigProb: item.noVigProb,

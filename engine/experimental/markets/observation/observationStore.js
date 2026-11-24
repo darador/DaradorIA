@@ -785,8 +785,13 @@ class ObservationStore {
     if (String(closingSnap.selection).toUpperCase() !== String(obs.selection).toUpperCase()) {
       return { status: 'CLV_UNAVAILABLE', clvPct: null, reason: 'Selección no comparable para CLV.' };
     }
-    if (String(closingSnap.bookmaker).toLowerCase() !== String(obs.bookmaker).toLowerCase()) {
-      return { status: 'CLV_UNAVAILABLE', clvPct: null, reason: `Bookmaker distinto (${obs.bookmaker} vs ${closingSnap.bookmaker}).` };
+    const obsBk = String(obs.bookmaker || '').trim();
+    const closeBk = String(closingSnap.bookmaker || '').trim();
+    if (!obsBk || !closeBk || obsBk === 'BOOKMAKER_UNAVAILABLE' || closeBk === 'BOOKMAKER_UNAVAILABLE' || obsBk === 'StatsHubBest' || closeBk === 'StatsHubBest') {
+      return { status: 'CLV_UNAVAILABLE', clvPct: null, reason: `Bookmaker no identificado (${obsBk} / ${closeBk}): no comparable.` };
+    }
+    if (closeBk.toLowerCase() !== obsBk.toLowerCase()) {
+      return { status: 'CLV_UNAVAILABLE', clvPct: null, reason: `Bookmaker distinto (${obsBk} vs ${closeBk}).` };
     }
     if ((obs.line ?? null) !== (closingSnap.line ?? null)) {
       return { status: 'CLV_UNAVAILABLE', clvPct: null, reason: `Línea distinta (${obs.line} vs ${closingSnap.line}): no comparable.` };

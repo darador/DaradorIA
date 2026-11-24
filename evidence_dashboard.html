@@ -111,6 +111,11 @@
     </section>
 
     <section class="panel">
+      <h2>Observaciones Registradas — Bookmaker, Snapshots y CLV</h2>
+      <div class="table-wrap"><table id="obsDetailTable"></table></div>
+    </section>
+
+    <section class="panel">
       <h2>Alertas Locales de Calidad <span class="badge badge-amber">Solo registro local · Sin Telegram</span></h2>
       <div id="alertsBox"></div>
     </section>
@@ -181,11 +186,14 @@
         const opBadge = document.getElementById('opStatusBadge');
         opBadge.textContent = op.status || 'NOT_EXECUTED';
         opBadge.className = 'badge ' + (op.status === 'EXECUTED' ? 'badge-cyan' : (op.status === 'PROVIDER_ERROR' ? 'badge-red' : 'badge-amber'));
+        const cp = op.checkpointCounts || {};
+        const sw = op.snapshotWorker || {};
+        const stw = op.settlementWorker || {};
         document.getElementById('opTelemetryGrid').innerHTML = `
           <div class="kpi"><div class="kpi-lbl">Última Ejecución Exp.</div><div class="kpi-val" style="font-size:0.82rem;">${op.lastRunAtUtc ? op.lastRunAtUtc.replace('T',' ').slice(0,19) + 'Z' : 'Sin ejecutar'}</div><div class="kpi-sub">Últ. StatsHub: ${op.lastStatsHubQueryAtUtc ? op.lastStatsHubQueryAtUtc.slice(11,19) + 'Z' : '—'}</div></div>
           <div class="kpi"><div class="kpi-lbl">Partidos (Desc / Inv)</div><div class="kpi-val">${ls.fixturesDiscovered ?? 0} / ${ls.matchesInvestigated ?? 0}</div><div class="kpi-sub">Llamadas MCP: ${ls.mcpCallsUsed ?? 0}</div></div>
-          <div class="kpi"><div class="kpi-lbl">Predicciones / Aceptadas</div><div class="kpi-val">${ls.predictionsGenerated ?? 0} / ${ls.observationsAccepted ?? 0}</div><div class="kpi-sub">Rechazadas: ${ls.observationsRejected ?? 0} · Dup: ${ls.observationsDuplicated ?? 0}</div></div>
-          <div class="kpi"><div class="kpi-lbl">Snapshots Programados</div><div class="kpi-val">${op.scheduledSnapshotsCount ?? 0}</div><div class="kpi-sub">Errores de etapa: ${(ls.stageErrors || []).length}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Snapshots (Prog / Comp / Missed / Fail)</div><div class="kpi-val" style="font-size:0.95rem;">${cp.SCHEDULED ?? 0} / ${cp.COMPLETED ?? 0} / ${cp.MISSED ?? 0} / ${cp.FAILED ?? 0}</div><div class="kpi-sub">Worker: ${sw.lastRunAtUtc ? sw.lastRunAtUtc.slice(11,19) + 'Z' : 'Sin ejecutar'}</div></div>
+          <div class="kpi"><div class="kpi-lbl">Settlement Worker</div><div class="kpi-val" style="font-size:0.95rem;">${stw.lastSummary?.settledCount ?? 0} liq · ${stw.lastSummary?.errorCount ?? 0} err</div><div class="kpi-sub">Worker: ${stw.lastRunAtUtc ? stw.lastRunAtUtc.slice(11,19) + 'Z' : 'Sin ejecutar'}</div></div>
         `;
         const rejEntries = Object.entries(ls.rejectionReasons || {});
         document.getElementById('opReasonsBox').innerHTML = rejEntries.length > 0
@@ -253,6 +261,25 @@
               <td class="mono">${fmt(bin.observedFreq)}</td>
               <td class="mono">${fmt(bin.calibrationError)}</td>
             </tr>`).join('') + '</tbody>';
+
+        // Tabla detalle de observaciones (bookmaker, último snapshot, CLV, estado)
+        document.getElementById('obsDetailTable').innerHTML = obs.length === 0
+          ? '<tr><td class="empty">Sin observaciones registradas.</td></tr>'
+          : `<thead><tr><th>Partido</th><th>Mercado / Sel.</th><th>Cuota</th><th>Bookmaker</th><th>Últ. Snapshot</th><th>CLV</th><th>Estado</th></tr></thead><tbody>` +
+            obs.slice(-30).reverse().map(o => {
+              const snaps = o.oddsSnapshots || [];
+              const lastSnap = snaps[snaps.length - 1];
+              const clvTxt = o.clv?.status === 'CLV_AVAILABLE' ? `${o.clv.clvPct}%` : 'CLV_UNAVAILABLE';
+              return `<tr>
+                <td>${o.homeTeam} vs ${o.awayTeam}</td>
+                <td>${o.marketFamily} · <strong>${o.selection}${o.line !== null && o.line !== undefined ? ' ' + o.line : ''}</strong></td>
+                <td class="mono">${o.odds}</td>
+                <td>${o.bookmaker}</td>
+                <td class="mono">${lastSnap ? `${lastSnap.checkpoint} @ ${lastSnap.odds}` : '—'}</td>
+                <td class="mono">${clvTxt}</td>
+                <td><span class="badge ${o.status === 'PENDING' ? 'badge-cyan' : 'badge-violet'}">${o.status}</span></td>
+              </tr>`;
+            }).join('') + '</tbody>';
 
         // Alertas
         const alerts = DATA.recentAlerts || [];

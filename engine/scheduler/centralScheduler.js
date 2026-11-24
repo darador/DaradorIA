@@ -50,7 +50,9 @@ class CentralAutonomousScheduler {
       lineups: false,
       settlement: false,
       sync: false,
-      experimentalMarkets: false
+      experimentalMarkets: false,
+      experimentalSnapshots: false,
+      experimentalSettlement: false
     };
 
     // Configuración de intervalos (en milisegundos)
@@ -746,6 +748,68 @@ class CentralAutonomousScheduler {
       return { ok: false, error: err.message, autoExecutionAllowed: false };
     } finally {
       this.locks.experimentalMarkets = false;
+    }
+  }
+
+  /**
+   * Fase 10.1: Ejecuta SnapshotWorker experimental (T-60, T-30, T-5, CLOSING) con mutex independiente.
+   */
+  async runExperimentalSnapshotsJob(options = {}) {
+    if (this.locks.experimentalSnapshots) {
+      return { skipped: true, reason: 'LOCKED', autoExecutionAllowed: false };
+    }
+    this.locks.experimentalSnapshots = true;
+    const startTime = Date.now();
+    try {
+      const { SnapshotWorker } = require('../experimental/markets/observation/snapshotWorker');
+      const worker = options.worker || new SnapshotWorker(options.workerOptions);
+      const res = await worker.runCycle(options);
+      this._recordExecution('experimentalSnapshots', startTime, Date.now() - startTime, res.ok ? 'SUCCESS' : 'ERROR', {
+        recordsProcessed: res?.summary?.completedCount || 0,
+        message: `Snapshots Fase 10.1: ${res?.summary?.completedCount || 0} capturados, ${res?.summary?.missedCount || 0} MISSED, ${res?.summary?.failedCount || 0} fallidos.`,
+        error: res.ok ? null : res.error
+      });
+      return res;
+    } catch (err) {
+      this._recordExecution('experimentalSnapshots', startTime, Date.now() - startTime, 'ERROR', {
+        recordsProcessed: 0,
+        message: 'Fallo en SnapshotWorker experimental.',
+        error: err.message
+      });
+      return { ok: false, error: err.message, autoExecutionAllowed: false };
+    } finally {
+      this.locks.experimentalSnapshots = false;
+    }
+  }
+
+  /**
+   * Fase 10.1: Ejecuta SettlementWorker experimental (liquidación FT confirmada) con mutex independiente.
+   */
+  async runExperimentalSettlementJob(options = {}) {
+    if (this.locks.experimentalSettlement) {
+      return { skipped: true, reason: 'LOCKED', autoExecutionAllowed: false };
+    }
+    this.locks.experimentalSettlement = true;
+    const startTime = Date.now();
+    try {
+      const { SettlementWorker } = require('../experimental/markets/observation/settlementWorker');
+      const worker = options.worker || new SettlementWorker(options.workerOptions);
+      const res = await worker.runCycle(options);
+      this._recordExecution('experimentalSettlement', startTime, Date.now() - startTime, res.ok ? 'SUCCESS' : 'ERROR', {
+        recordsProcessed: res?.summary?.settledCount || 0,
+        message: `Settlement Fase 10.1: ${res?.summary?.settledCount || 0} liquidadas, ${res?.summary?.pendingRemainingCount || 0} pendientes.`,
+        error: res.ok ? null : res.error
+      });
+      return res;
+    } catch (err) {
+      this._recordExecution('experimentalSettlement', startTime, Date.now() - startTime, 'ERROR', {
+        recordsProcessed: 0,
+        message: 'Fallo en SettlementWorker experimental.',
+        error: err.message
+      });
+      return { ok: false, error: err.message, autoExecutionAllowed: false };
+    } finally {
+      this.locks.experimentalSettlement = false;
     }
   }
 

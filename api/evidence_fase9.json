@@ -1,5 +1,5 @@
 {
-  "generatedAtUtc": "2026-11-24T16:12:51.382Z",
+  "generatedAtUtc": "2026-11-24T16:50:33.450Z",
   "mode": "SHADOW_MODE_EXPERIMENTAL",
   "autoExecutionAllowed": false,
   "integrity": {
@@ -16,7 +16,7 @@
     },
     "snapshotsChain": {
       "ok": true,
-      "total": 0,
+      "total": 5,
       "errors": []
     },
     "settlementsChain": {
@@ -2288,6 +2288,18 @@
           "line": null,
           "source": "observation_time",
           "contaminated": false
+        },
+        {
+          "eventId": "snp_1795539033414_fcced3",
+          "checkpoint": "T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "odds": 3.33,
+          "bookmaker": "All British Casino",
+          "marketFamily": "match_1x2",
+          "selection": "1",
+          "line": null,
+          "source": "statshub:getMatchOdds",
+          "contaminated": false
         }
       ],
       "clv": {
@@ -2364,6 +2376,18 @@
           "line": null,
           "source": "observation_time",
           "contaminated": false
+        },
+        {
+          "eventId": "snp_1795539033420_4c6ef4",
+          "checkpoint": "T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "odds": 1.57,
+          "bookmaker": "Bet365",
+          "marketFamily": "double_chance",
+          "selection": "1X",
+          "line": null,
+          "source": "statshub:getMatchOdds",
+          "contaminated": false
         }
       ],
       "clv": {
@@ -2439,6 +2463,18 @@
           "selection": "OVER",
           "line": 3.5,
           "source": "observation_time",
+          "contaminated": false
+        },
+        {
+          "eventId": "snp_1795539033427_e39b3f",
+          "checkpoint": "T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "odds": 2.4,
+          "bookmaker": "Paddy Power",
+          "marketFamily": "match_goals",
+          "selection": "OVER",
+          "line": 3.5,
+          "source": "statshub:getMatchOdds",
           "contaminated": false
         }
       ],
@@ -3048,6 +3084,18 @@
           "line": null,
           "source": "observation_time",
           "contaminated": false
+        },
+        {
+          "eventId": "snp_1795539033433_d9ef24",
+          "checkpoint": "T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "odds": 1.4,
+          "bookmaker": "Bet365",
+          "marketFamily": "btts",
+          "selection": "YES",
+          "line": null,
+          "source": "statshub:getMatchOdds",
+          "contaminated": false
         }
       ],
       "clv": {
@@ -3123,6 +3171,18 @@
           "selection": "12",
           "line": null,
           "source": "observation_time",
+          "contaminated": false
+        },
+        {
+          "eventId": "snp_1795539033440_b05daa",
+          "checkpoint": "T_MINUS_60",
+          "capturedAtUtc": "2026-11-24T16:50:33.397Z",
+          "odds": 1.25,
+          "bookmaker": "Bet365",
+          "marketFamily": "double_chance",
+          "selection": "12",
+          "line": null,
+          "source": "statshub:getMatchOdds",
           "contaminated": false
         }
       ],
@@ -3213,6 +3273,32 @@
         "obs9_1795536771373_ff3ab9"
       ]
     },
-    "scheduledSnapshotsCount": 12
+    "scheduledSnapshotsCount": 12,
+    "checkpointCounts": {
+      "SCHEDULED": 43,
+      "RUNNING": 0,
+      "COMPLETED": 5,
+      "FAILED": 0,
+      "MISSED": 0,
+      "CANCELLED": 0
+    },
+    "snapshotWorker": {
+      "lastRunAtUtc": "2026-11-24T16:50:33.443Z",
+      "lastSummary": {
+        "startedAtUtc": "2026-11-24T16:50:33.404Z",
+        "completedAtUtc": "2026-11-24T16:50:33.443Z",
+        "nowUtcEvaluated": "2026-11-24T16:50:33.397Z",
+        "autoExecutionAllowed": false,
+        "mcpCallsUsed": 1,
+        "checkpointsEvaluated": 48,
+        "completedCount": 5,
+        "missedCount": 0,
+        "failedCount": 0,
+        "skippedFutureCount": 43,
+        "skippedIdempotentCount": 0,
+        "errors": []
+      }
+    },
+    "settlementWorker": null
   }
 }
