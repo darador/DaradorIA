@@ -1,12 +1,23 @@
 /**
  * DARADORBET — THE LADDER (GRAN ESCALERA)
- * Esquema conceptual y modelo de datos propuesto (Fase de Diseño Visual — NO OPERATIVO).
+ * Esquema conceptual, configuración oficial de referencia y proyección teórica (FASE VISUAL — NO OPERATIVO).
  *
- * Reglas de integridad:
- * - No duplica Prediction Engine, Elena ni Risk Manager (solo referencia sus IDs/dictámenes).
- * - No ejecuta apuestas reales ni modifica datos productivos o históricos.
- * - Datos de demostración estrictamente marcados con `isDemoData: true` y `isOperative: false`.
+ * Configuración oficial:
+ * - Capital inicial: 50.000 ARS
+ * - Objetivo final: 10.000.000 ARS
+ * - Reinversión teórica: 100% (capital_siguiente = capital_actual * cuota_obtenida)
+ * - Cuota de referencia de simulación: 1.20 (escenario teórico de 30 escalones; no es obligación operativa)
+ * - Probabilidad mínima de referencia: 95% (pendiente de validación estadística)
  */
+
+const LADDER_CONFIG = Object.freeze({
+  currency: 'ARS',
+  locale: 'es-AR',
+  initialCapitalArs: 50000,            // $ 50.000 ARS
+  targetCapitalArs: 10000000,          // $ 10.000.000 ARS
+  referenceSimulationOdds: 1.20,       // Escenario teórico de simulación (no obligación operativa)
+  theoreticalStepsCount: 30            // 50.000 * 1.20^30 ≈ 11.868.816 ARS (> 10.000.000 ARS)
+});
 
 const LADDER_RULES = Object.freeze({
   maxActiveLadders: 1,
@@ -16,7 +27,7 @@ const LADDER_RULES = Object.freeze({
   requireElenaApproval: true,
   requireRiskManagerValidation: true,
   autoExecutionAllowed: false,         // Ninguna apuesta se ejecuta automáticamente
-  noBetDayPreservesCapital: true       // Días sin apuesta no modifican capital
+  noBetDayPreservesCapital: true       // Los días sin apuesta no modifican el capital
 });
 
 const LADDER_STEP_STATUSES = Object.freeze([
@@ -35,32 +46,55 @@ const LADDER_DISCIPLINE_STATES = Object.freeze([
 ]);
 
 /**
- * Plantilla de estructura de datos propuesta para persistencia futura
- * (engine/storage_data/ladder_state.json cuando se autorice fase operativa).
+ * Calcula la progresión teórica paso a paso:
+ * capital_siguiente = capital_actual * cuota_obtenida
  */
+function buildTheoreticalProgression(
+  initialCapital = LADDER_CONFIG.initialCapitalArs,
+  simOdds = LADDER_CONFIG.referenceSimulationOdds,
+  totalSteps = LADDER_CONFIG.theoreticalStepsCount
+) {
+  const steps = [];
+  let cap = initialCapital;
+  for (let i = 1; i <= totalSteps; i++) {
+    const startCap = cap;
+    const endCap = startCap * simOdds;
+    steps.push({
+      step: i,
+      startCapitalArs: Math.round(startCap),
+      projectedOdds: simOdds,
+      endCapitalArs: Math.round(endCap),
+      reachesTarget: endCap >= LADDER_CONFIG.targetCapitalArs
+    });
+    cap = endCap;
+  }
+  return steps;
+}
+
 function createEmptyLadderState() {
   return {
-    schemaVersion: 'ladder-v1.0-design',
+    schemaVersion: 'ladder-v1.1-design',
     isOperative: false,
     isDemoData: false,
+    config: { ...LADDER_CONFIG },
     rules: { ...LADDER_RULES },
     activeSession: {
       ladderId: null,
-      status: 'NOT_INITIALIZED',
+      status: 'READY_TO_INITIALIZE',
       createdAtUtc: null,
-      initialCapital: null,     // Por definir por el usuario
-      currentCapital: null,
-      targetCapital: null,      // Por definir por el usuario
+      initialCapitalArs: LADDER_CONFIG.initialCapitalArs,
+      currentCapitalArs: LADDER_CONFIG.initialCapitalArs,
+      targetCapitalArs: LADDER_CONFIG.targetCapitalArs,
       currentStep: 0,
-      totalPlannedSteps: null,
+      totalPlannedSteps: LADDER_CONFIG.theoreticalStepsCount,
       progressPct: 0,
       daysWithoutBet: 0,
       consecutiveNoBetDays: 0,
       disciplineState: 'ESPERANDO'
     },
-    nextOpportunity: null,      // Referencia de solo lectura a pickId + dictamen Elena/Risk Manager
-    steps: [],                  // Array de LadderStep auditables
-    history: [],                // Historial cronológico inmutable de progresión y días sin apuesta
+    nextOpportunity: null,
+    steps: buildTheoreticalProgression(),
+    history: [],
     statistics: {
       totalEvaluatedDays: 0,
       daysWithSelection: 0,
@@ -75,8 +109,10 @@ function createEmptyLadderState() {
 }
 
 module.exports = {
+  LADDER_CONFIG,
   LADDER_RULES,
   LADDER_STEP_STATUSES,
   LADDER_DISCIPLINE_STATES,
+  buildTheoreticalProgression,
   createEmptyLadderState
 };

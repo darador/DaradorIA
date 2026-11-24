@@ -3000,150 +3000,167 @@
     .ladder-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      padding: 1.25rem 0 2.5rem;
+      gap: 0.95rem;
+      padding: 1rem 0 2.5rem;
     }
 
     .ladder-hero-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
+      align-items: center;
+      gap: 0.85rem;
       flex-wrap: wrap;
-      background: linear-gradient(135deg, rgba(14, 21, 42, 0.92), rgba(24, 18, 50, 0.88));
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      background: linear-gradient(135deg, rgba(14, 21, 42, 0.92), rgba(24, 18, 50, 0.85));
+      border: 1px solid rgba(139, 92, 246, 0.32);
       border-radius: var(--radius-md);
-      padding: 1.25rem 1.4rem;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      padding: 0.9rem 1.15rem;
     }
 
     .ladder-eyebrow {
-      font-size: 0.68rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      font-size: 0.67rem;
       font-weight: 800;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.08em;
       color: var(--accent-cyan);
       text-transform: uppercase;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .ladder-config-pill {
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 0.08rem 0.42rem;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+      text-transform: none;
     }
 
     .ladder-title {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.28rem;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: -0.01em;
-    }
-
-    .ladder-title-sub {
-      color: #c4b5fd;
-      font-weight: 600;
-      font-size: 1.15rem;
-    }
-
-    .ladder-desc {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-      max-width: 680px;
     }
 
     .ladder-mode-controls {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 0.55rem;
+      gap: 0.4rem;
     }
 
     .ladder-preview-switcher {
       display: inline-flex;
-      background: rgba(5, 8, 19, 0.75);
+      background: rgba(5, 8, 19, 0.78);
       border: 1px solid var(--border-terminal);
-      border-radius: 8px;
-      padding: 0.2rem;
-      gap: 0.2rem;
+      border-radius: 7px;
+      padding: 0.16rem;
+      gap: 0.16rem;
       flex-wrap: wrap;
     }
 
     .ladder-switch-btn {
       background: transparent;
-      border: none;
+      border: 1px solid transparent;
       color: #94a3b8;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 0.34rem 0.62rem;
-      border-radius: 6px;
+      padding: 0.26rem 0.55rem;
+      border-radius: 5px;
       cursor: pointer;
-      transition: all 0.18s ease;
+      transition: all 0.16s ease;
     }
 
-    .ladder-switch-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.06); }
+    .ladder-switch-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.05); }
     .ladder-switch-btn.active {
-      background: rgba(139, 92, 246, 0.28);
+      background: rgba(139, 92, 246, 0.26);
       color: #ede9fe;
-      border: 1px solid rgba(139, 92, 246, 0.55);
+      border-color: rgba(139, 92, 246, 0.55);
     }
 
     .ladder-integrity-banner {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      padding: 0.72rem 1rem;
-      border-radius: var(--radius-sm);
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      gap: 0.55rem;
+      padding: 0.52rem 0.85rem;
+      border-radius: var(--radius-xs);
+      background: rgba(56, 189, 248, 0.07);
+      border: 1px solid rgba(56, 189, 248, 0.24);
       color: #cbd5e1;
-      font-size: 0.8rem;
-      line-height: 1.4;
+      font-size: 0.75rem;
+      line-height: 1.35;
     }
 
-    .ladder-kpi-grid {
+    /* FRANJA COMPACTA DE INDICADORES SUPERIORES (~55% menos altura) */
+    .ladder-kpi-strip {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 0.85rem;
-    }
-
-    .ladder-kpi-card {
-      background: var(--bg-surface-card);
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      background: rgba(12, 18, 36, 0.88);
       border: 1px solid var(--border-terminal);
       border-radius: var(--radius-sm);
-      padding: 0.95rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.28rem;
       backdrop-filter: blur(10px);
+      overflow: hidden;
     }
 
-    .ladder-kpi-lbl {
-      font-size: 0.68rem;
+    .ladder-strip-item {
+      padding: 0.62rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.14rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .ladder-strip-item:last-child { border-right: none; }
+
+    .ladder-strip-lbl {
+      font-size: 0.64rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #94a3b8;
     }
 
-    .ladder-kpi-val {
+    .ladder-strip-val {
       font-family: var(--font-mono);
-      font-size: 1.08rem;
+      font-size: 1.02rem;
       font-weight: 800;
       color: #f8fafc;
+      white-space: nowrap;
     }
 
-    .ladder-kpi-val.accent-green { color: #4ade80; }
-    .ladder-kpi-val.accent-cyan { color: #38bdf8; }
-    .ladder-kpi-val.accent-violet { color: #c4b5fd; }
-    .ladder-kpi-val.accent-amber { color: #fbbf24; }
+    .ladder-strip-val small {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #94a3b8;
+    }
 
-    .ladder-kpi-sub {
-      font-size: 0.7rem;
-      color: #64748b;
+    .ladder-strip-val.accent-green { color: #4ade80; }
+    .ladder-strip-val.accent-cyan { color: #38bdf8; }
+    .ladder-strip-val.accent-violet { color: #c4b5fd; }
+    .ladder-strip-val.accent-amber { color: #fbbf24; }
+
+    .ladder-strip-prog {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .ladder-progress-track {
-      height: 6px;
-      background: rgba(148, 163, 184, 0.16);
+      flex: 1;
+      height: 5px;
+      background: rgba(148, 163, 184, 0.18);
       border-radius: 999px;
       overflow: hidden;
-      margin-top: 0.25rem;
+      min-width: 48px;
     }
 
     .ladder-progress-fill {
@@ -3152,141 +3169,269 @@
       border-radius: 999px;
     }
 
+    /* PROTAGONISTA: PROGRESIÓN ASCENDENTE — GRAN ESCALERA */
+    .ladder-hero-progression {
+      background: linear-gradient(180deg, rgba(14, 21, 44, 0.94), rgba(9, 14, 30, 0.94));
+      border: 1px solid rgba(139, 92, 246, 0.42);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.48);
+    }
+
+    .ladder-prog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
+
+    .ladder-prog-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .ladder-toggle-all-btn {
+      background: rgba(139, 92, 246, 0.16);
+      border: 1px solid rgba(139, 92, 246, 0.45);
+      color: #ddd6fe;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .ladder-toggle-all-btn:hover {
+      background: rgba(139, 92, 246, 0.28);
+      border-color: rgba(196, 181, 253, 0.7);
+    }
+
+    .ladder-formula-note {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      padding: 0.42rem 0.65rem;
+      background: rgba(5, 8, 19, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      margin-bottom: 0.9rem;
+    }
+
+    .ladder-formula-note code {
+      font-family: var(--font-mono);
+      color: #38bdf8;
+      font-size: 0.71rem;
+    }
+
+    .ladder-stages-track {
+      display: flex;
+      align-items: stretch;
+      gap: 0.55rem;
+      overflow-x: auto;
+      padding-bottom: 0.35rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
+    }
+
+    .ladder-stages-track.is-expanded {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      overflow-x: visible;
+    }
+
+    .ladder-step-gap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-weight: 900;
+      letter-spacing: 2px;
+      padding: 0 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .ladder-stage-card {
+      min-width: 146px;
+      flex: 1 0 146px;
+      background: rgba(8, 13, 28, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 8px;
+      padding: 0.65rem 0.62rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .ladder-stage-card:hover { transform: translateY(-2px); }
+
+    .ladder-stage-card.st-won {
+      border-color: rgba(34, 197, 94, 0.48);
+      background: linear-gradient(180deg, rgba(16, 42, 34, 0.55), rgba(8, 13, 28, 0.82));
+    }
+
+    .ladder-stage-card.st-next {
+      border: 1.5px solid rgba(167, 139, 250, 0.85);
+      background: linear-gradient(180deg, rgba(56, 30, 102, 0.48), rgba(10, 16, 36, 0.9));
+      box-shadow: 0 0 18px rgba(139, 92, 246, 0.28);
+    }
+
+    .ladder-stage-card.st-void {
+      border-color: rgba(71, 85, 105, 0.55);
+      background: rgba(15, 23, 42, 0.45);
+      opacity: 0.85;
+    }
+
+    .ladder-stage-card.st-lost {
+      border-color: rgba(239, 68, 68, 0.55);
+      background: linear-gradient(180deg, rgba(69, 18, 24, 0.45), rgba(8, 13, 28, 0.82));
+    }
+
+    .ladder-stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .ladder-stage-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .ladder-stage-date {
+      font-size: 0.65rem;
+      color: #94a3b8;
+    }
+
+    .ladder-next-tag {
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      background: rgba(139, 92, 246, 0.35);
+      color: #ede9fe;
+      border: 1px solid rgba(196, 181, 253, 0.6);
+      padding: 0.06rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    .ladder-stage-bar-wrap {
+      height: 36px;
+      display: flex;
+      align-items: flex-end;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .ladder-stage-bar {
+      width: 100%;
+      border-radius: 3px;
+      background: rgba(148, 163, 184, 0.32);
+    }
+
+    .st-won .ladder-stage-bar { background: linear-gradient(90deg, rgba(34, 197, 94, 0.65), rgba(74, 222, 128, 0.9)); }
+    .st-next .ladder-stage-bar { background: linear-gradient(90deg, rgba(139, 92, 246, 0.8), rgba(0, 242, 254, 0.85)); }
+    .st-void .ladder-stage-bar { background: rgba(71, 85, 105, 0.55); }
+    .st-lost .ladder-stage-bar { background: rgba(239, 68, 68, 0.75); }
+
+    .ladder-stage-numbers {
+      display: flex;
+      flex-direction: column;
+      gap: 0.16rem;
+    }
+
+    .ladder-stage-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.69rem;
+      color: #94a3b8;
+      gap: 0.25rem;
+    }
+
+    .ladder-stage-row strong {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #e2e8f0;
+      white-space: nowrap;
+    }
+
+    .ladder-stage-row .odds-val { color: #facc15; }
+    .ladder-stage-row.result-row {
+      padding-top: 0.16rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+    .ladder-stage-row .res-val { color: #4ade80; font-weight: 800; }
+    .st-pending .ladder-stage-row .res-val { color: #cbd5e1; }
+    .st-next .ladder-stage-row .res-val { color: #38bdf8; }
+
+    .ladder-stage-foot {
+      display: flex;
+      justify-content: center;
+      margin-top: auto;
+      padding-top: 0.15rem;
+    }
+
+    .ladder-badge-void {
+      background: rgba(51, 65, 85, 0.55);
+      color: #94a3b8;
+      border: 1px solid rgba(71, 85, 105, 0.75);
+    }
+
+    /* PANELES SECUNDARIOS: OPORTUNIDAD + DISCIPLINA + HISTORIAL */
     .ladder-panel {
       background: var(--bg-surface-card);
       border: 1px solid var(--border-terminal);
       border-radius: var(--radius-md);
-      padding: 1.15rem 1.25rem;
+      padding: 1rem 1.15rem;
       backdrop-filter: blur(12px);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
     }
 
     .ladder-panel-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 0.75rem;
+      gap: 0.65rem;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .ladder-panel-title {
-      font-size: 1rem;
+      font-size: 0.96rem;
       font-weight: 800;
       color: #ffffff;
     }
 
     .ladder-panel-sub {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       color: #94a3b8;
-      margin-top: 0.15rem;
-    }
-
-    .ladder-progression-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 0.75rem;
-      align-items: end;
-    }
-
-    .ladder-step-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(8, 13, 30, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      padding: 0.65rem 0.5rem;
-    }
-
-    .ladder-step-odds {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: #facc15;
-    }
-
-    .ladder-step-bar-track {
-      width: 100%;
-      height: 110px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 0 0.5rem;
-    }
-
-    .ladder-step-bar {
-      width: 100%;
-      max-width: 58px;
-      border-radius: 6px 6px 2px 2px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 0.35rem;
-      transition: transform 0.2s ease;
-    }
-
-    .ladder-step-bar.won {
-      background: linear-gradient(180deg, rgba(34, 197, 94, 0.82), rgba(16, 185, 129, 0.28));
-      border: 1px solid rgba(74, 222, 128, 0.6);
-    }
-
-    .ladder-step-bar.active {
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.85), rgba(0, 242, 254, 0.25));
-      border: 1px solid rgba(196, 181, 253, 0.75);
-      box-shadow: 0 0 18px rgba(139, 92, 246, 0.35);
-    }
-
-    .ladder-step-bar.void {
-      background: linear-gradient(180deg, rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.12));
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-    }
-
-    .ladder-step-bar.pending {
-      background: rgba(30, 41, 59, 0.55);
-      border: 1px dashed rgba(100, 116, 139, 0.45);
-    }
-
-    .ladder-step-num {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .ladder-step-foot {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-      text-align: center;
-    }
-
-    .ladder-step-cap {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: #f8fafc;
-    }
-
-    .ladder-step-date {
-      font-size: 0.66rem;
-      color: #64748b;
+      margin-top: 0.12rem;
     }
 
     .ladder-two-col {
       display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 1.15rem;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1rem;
     }
 
-    .ladder-opp-main {
+    .ladder-opp-compact {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.62rem;
     }
 
     .ladder-opp-match-row {
@@ -3299,40 +3444,40 @@
 
     .ladder-opp-time {
       font-family: var(--font-mono);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       color: #38bdf8;
       font-weight: 700;
     }
 
     .ladder-opp-match {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 800;
       color: #ffffff;
     }
 
     .ladder-opp-selection {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: #cbd5e1;
     }
 
-    .ladder-opp-metrics-grid {
+    .ladder-opp-metrics-3 {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.6rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
     }
 
     .ladder-mini-kpi {
       background: rgba(8, 13, 30, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 7px;
-      padding: 0.6rem 0.7rem;
+      border-radius: 6px;
+      padding: 0.5rem 0.62rem;
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }
 
     .ladder-mini-lbl {
-      font-size: 0.64rem;
+      font-size: 0.62rem;
       text-transform: uppercase;
       font-weight: 700;
       color: #94a3b8;
@@ -3340,7 +3485,7 @@
 
     .ladder-mini-val {
       font-family: var(--font-mono);
-      font-size: 0.96rem;
+      font-size: 0.92rem;
       font-weight: 800;
       color: #ffffff;
     }
@@ -3348,49 +3493,75 @@
     .ladder-gates-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.6rem;
+      gap: 0.55rem;
     }
 
     .ladder-gate-item {
       background: rgba(15, 23, 42, 0.55);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 7px;
-      padding: 0.55rem 0.7rem;
+      border-radius: 6px;
+      padding: 0.48rem 0.6rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.3rem;
+      gap: 0.26rem;
     }
 
-    .ladder-gate-item .sem-badge { white-space: normal; line-height: 1.3; }
+    .ladder-gate-item .sem-badge { white-space: normal; line-height: 1.28; }
+
     .ladder-gate-lbl {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 700;
       text-transform: uppercase;
       color: #94a3b8;
     }
 
-    .ladder-manual-note {
+    .ladder-consensus-details {
+      background: rgba(8, 13, 30, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.48rem 0.7rem;
       font-size: 0.76rem;
-      color: #94a3b8;
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.25);
-      border-radius: 7px;
-      padding: 0.6rem 0.8rem;
+      color: #cbd5e1;
     }
 
-    .ladder-discipline-callout {
+    .ladder-consensus-details summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #38bdf8;
+      user-select: none;
+    }
+
+    .ladder-consensus-details p {
+      margin-top: 0.42rem;
+      color: #94a3b8;
+      line-height: 1.45;
+    }
+
+    .ladder-manual-note {
+      font-size: 0.73rem;
+      color: #94a3b8;
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      border-radius: 6px;
+      padding: 0.5rem 0.72rem;
+    }
+
+    .ladder-philosophy-box {
       background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: 8px;
-      padding: 0.8rem 0.9rem;
-      margin-bottom: 0.85rem;
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 4px 6px 6px 4px;
+      padding: 0.6rem 0.78rem;
+      margin-bottom: 0.72rem;
+      font-size: 0.77rem;
+      color: #cbd5e1;
+      line-height: 1.4;
     }
 
     .ladder-stats-list {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
+      gap: 0.3rem;
     }
 
     .ladder-stat-row {
@@ -3398,33 +3569,34 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #cbd5e1;
-      padding: 0.4rem 0.15rem;
+      padding: 0.34rem 0.1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .ladder-stat-row:last-child { border-bottom: none; }
-    .ladder-stat-row strong { font-family: var(--font-mono); color: #f8fafc; }
+    .ladder-stat-row strong { font-family: var(--font-mono); color: #f8fafc; text-align: right; }
 
     .ladder-empty-box {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       color: #94a3b8;
       background: rgba(8, 13, 30, 0.45);
       border: 1px dashed rgba(148, 163, 184, 0.25);
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
 
     @media (max-width: 1180px) {
-      .ladder-kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .ladder-kpi-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .ladder-strip-item { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
       .ladder-two-col { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 680px) {
-      .ladder-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .ladder-opp-metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ladder-kpi-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ladder-opp-metrics-3 { grid-template-columns: 1fr; }
       .ladder-gates-grid { grid-template-columns: 1fr; }
       .ladder-mode-controls { align-items: flex-start; }
     }
