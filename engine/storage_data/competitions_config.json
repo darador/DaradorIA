@@ -215,7 +215,7 @@
       "name": "UEFA Europa League",
       "country": "Europe",
       "tier": 2,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "uefa-europa-league.11wsie0",
       "stageId": "uefa-europa-league.1bssu49",
       "supportedMarkets": [
@@ -225,14 +225,15 @@
         "cards",
         "goals"
       ],
-      "coverageNotes": "Disponible en catálogo. Verificación de cuotas sujeta a fixture."
+      "coverageNotes": "Disponible en catálogo. Verificación de cuotas sujeta a fixture.",
+      "updatedAt": "2026-11-24T00:37:39.061Z"
     },
     {
       "id": "uefa-conference-league",
       "name": "UEFA Conference League",
       "country": "Europe",
       "tier": 3,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "uefa-conference-league.157707k",
       "stageId": "uefa-conference-league.05kqrsf",
       "supportedMarkets": [
@@ -242,14 +243,15 @@
         "cards",
         "goals"
       ],
-      "coverageNotes": "Disponible en catálogo. Props de jugadores limitados a fase final."
+      "coverageNotes": "Disponible en catálogo. Props de jugadores limitados a fase final.",
+      "updatedAt": "2026-11-24T00:37:39.063Z"
     },
     {
       "id": "liga-portugal",
       "name": "Liga Portugal Betclic",
       "country": "Portugal",
       "tier": 1,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "liga-portugal-betclic.0q4vd91",
       "stageId": "liga-portugal-betclic.08twh9o",
       "supportedMarkets": [
@@ -259,7 +261,8 @@
         "cards",
         "goals"
       ],
-      "coverageNotes": "Excelente cobertura de mercados colectivos; props individuales en los tres grandes (Benfica, Porto, Sporting)."
+      "coverageNotes": "Excelente cobertura de mercados colectivos; props individuales en los tres grandes (Benfica, Porto, Sporting).",
+      "updatedAt": "2026-11-24T00:37:39.064Z"
     },
     {
       "id": "pro-league-belgium",
@@ -293,14 +296,14 @@
         "goals"
       ],
       "coverageNotes": "Disponible en catálogo. Props individuales concentrados en Celtic y Rangers.",
-      "updatedAt": "2026-11-22T14:42:00.354Z"
+      "updatedAt": "2026-11-24T00:37:54.475Z"
     },
     {
       "id": "super-lig-turkey",
       "name": "Trendyol Süper Lig",
       "country": "Turkey",
       "tier": 1,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "trendyol-super-lig.1onxznz",
       "stageId": "trendyol-super-lig.01t3c53",
       "supportedMarkets": [
@@ -310,14 +313,15 @@
         "goals",
         "fouls"
       ],
-      "coverageNotes": "Disponible en catálogo. Foco en tarjetas y faltas por alta intensidad disciplinaria."
+      "coverageNotes": "Disponible en catálogo. Foco en tarjetas y faltas por alta intensidad disciplinaria.",
+      "updatedAt": "2026-11-24T00:37:39.067Z"
     },
     {
       "id": "league-one",
       "name": "League One",
       "country": "England",
       "tier": 3,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "league-one.11gsq3d",
       "stageId": "league-one.0ga5az7",
       "supportedMarkets": [
@@ -325,7 +329,8 @@
         "cards",
         "goals"
       ],
-      "coverageNotes": "Disponible en catálogo. Foco en team props (corners y goles)."
+      "coverageNotes": "Disponible en catálogo. Foco en team props (corners y goles).",
+      "updatedAt": "2026-11-24T00:37:39.052Z"
     },
     {
       "id": "league-two",
@@ -347,7 +352,7 @@
       "name": "2. Bundesliga",
       "country": "Germany",
       "tier": 2,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "2-bundesliga.01t3c53",
       "stageId": "2-bundesliga.194ah9h",
       "supportedMarkets": [
@@ -357,14 +362,15 @@
         "cards",
         "goals"
       ],
-      "coverageNotes": "Disponible en catálogo. Cobertura de equipo y tiros."
+      "coverageNotes": "Disponible en catálogo. Cobertura de equipo y tiros.",
+      "updatedAt": "2026-11-24T00:37:39.060Z"
     },
     {
       "id": "serie-b",
       "name": "Serie B",
       "country": "Italy",
       "tier": 2,
-      "status": "CATALOG_DISCOVERED",
+      "status": "ENABLED",
       "competitionId": "serie-b.0hy1oe0",
       "stageId": "serie-b.0dosh0x",
       "supportedMarkets": [
@@ -372,7 +378,8 @@
         "cards",
         "goals"
       ],
-      "coverageNotes": "Disponible en catálogo. Foco en tarjetas y goles."
+      "coverageNotes": "Disponible en catálogo. Foco en tarjetas y goles.",
+      "updatedAt": "2026-11-24T00:37:39.058Z"
     },
     {
       "id": "laliga-2",
