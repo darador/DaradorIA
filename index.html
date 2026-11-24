@@ -2781,7 +2781,7 @@
       /* Show mobile bottom nav */
       .mobile-bottom-nav {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         position: fixed;
         bottom: 0;
         left: 0;
@@ -2993,6 +2993,441 @@
       }
     }
 
+
+    /* ==========================================================================
+       THE LADDER — GRAN ESCALERA (MÓDULO PREMIUM DE INTELIGENCIA FINANCIERA)
+       ========================================================================== */
+    .ladder-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 1.25rem 0 2.5rem;
+    }
+
+    .ladder-hero-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, rgba(14, 21, 42, 0.92), rgba(24, 18, 50, 0.88));
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .ladder-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .ladder-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .ladder-title-sub {
+      color: #c4b5fd;
+      font-weight: 600;
+      font-size: 1.15rem;
+    }
+
+    .ladder-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      max-width: 680px;
+    }
+
+    .ladder-mode-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.55rem;
+    }
+
+    .ladder-preview-switcher {
+      display: inline-flex;
+      background: rgba(5, 8, 19, 0.75);
+      border: 1px solid var(--border-terminal);
+      border-radius: 8px;
+      padding: 0.2rem;
+      gap: 0.2rem;
+      flex-wrap: wrap;
+    }
+
+    .ladder-switch-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.34rem 0.62rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .ladder-switch-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.06); }
+    .ladder-switch-btn.active {
+      background: rgba(139, 92, 246, 0.28);
+      color: #ede9fe;
+      border: 1px solid rgba(139, 92, 246, 0.55);
+    }
+
+    .ladder-integrity-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.72rem 1rem;
+      border-radius: var(--radius-sm);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #cbd5e1;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .ladder-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .ladder-kpi-card {
+      background: var(--bg-surface-card);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-sm);
+      padding: 0.95rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .ladder-kpi-lbl {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+    }
+
+    .ladder-kpi-val {
+      font-family: var(--font-mono);
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .ladder-kpi-val.accent-green { color: #4ade80; }
+    .ladder-kpi-val.accent-cyan { color: #38bdf8; }
+    .ladder-kpi-val.accent-violet { color: #c4b5fd; }
+    .ladder-kpi-val.accent-amber { color: #fbbf24; }
+
+    .ladder-kpi-sub {
+      font-size: 0.7rem;
+      color: #64748b;
+    }
+
+    .ladder-progress-track {
+      height: 6px;
+      background: rgba(148, 163, 184, 0.16);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.25rem;
+    }
+
+    .ladder-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #8b5cf6, #00f2fe, #4ade80);
+      border-radius: 999px;
+    }
+
+    .ladder-panel {
+      background: var(--bg-surface-card);
+      border: 1px solid var(--border-terminal);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .ladder-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ladder-panel-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .ladder-panel-sub {
+      font-size: 0.76rem;
+      color: #94a3b8;
+      margin-top: 0.15rem;
+    }
+
+    .ladder-progression-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.75rem;
+      align-items: end;
+    }
+
+    .ladder-step-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(8, 13, 30, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 0.65rem 0.5rem;
+    }
+
+    .ladder-step-odds {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #facc15;
+    }
+
+    .ladder-step-bar-track {
+      width: 100%;
+      height: 110px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0 0.5rem;
+    }
+
+    .ladder-step-bar {
+      width: 100%;
+      max-width: 58px;
+      border-radius: 6px 6px 2px 2px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.35rem;
+      transition: transform 0.2s ease;
+    }
+
+    .ladder-step-bar.won {
+      background: linear-gradient(180deg, rgba(34, 197, 94, 0.82), rgba(16, 185, 129, 0.28));
+      border: 1px solid rgba(74, 222, 128, 0.6);
+    }
+
+    .ladder-step-bar.active {
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.85), rgba(0, 242, 254, 0.25));
+      border: 1px solid rgba(196, 181, 253, 0.75);
+      box-shadow: 0 0 18px rgba(139, 92, 246, 0.35);
+    }
+
+    .ladder-step-bar.void {
+      background: linear-gradient(180deg, rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.12));
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+    }
+
+    .ladder-step-bar.pending {
+      background: rgba(30, 41, 59, 0.55);
+      border: 1px dashed rgba(100, 116, 139, 0.45);
+    }
+
+    .ladder-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .ladder-step-foot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      text-align: center;
+    }
+
+    .ladder-step-cap {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .ladder-step-date {
+      font-size: 0.66rem;
+      color: #64748b;
+    }
+
+    .ladder-two-col {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 1.15rem;
+    }
+
+    .ladder-opp-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .ladder-opp-match-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .ladder-opp-time {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .ladder-opp-match {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .ladder-opp-selection {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    .ladder-opp-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .ladder-mini-kpi {
+      background: rgba(8, 13, 30, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 7px;
+      padding: 0.6rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .ladder-mini-lbl {
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .ladder-mini-val {
+      font-family: var(--font-mono);
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .ladder-gates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .ladder-gate-item {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 7px;
+      padding: 0.55rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+    }
+
+    .ladder-gate-item .sem-badge { white-space: normal; line-height: 1.3; }
+    .ladder-gate-lbl {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+
+    .ladder-manual-note {
+      font-size: 0.76rem;
+      color: #94a3b8;
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 7px;
+      padding: 0.6rem 0.8rem;
+    }
+
+    .ladder-discipline-callout {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 0.8rem 0.9rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .ladder-stats-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .ladder-stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      padding: 0.4rem 0.15rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .ladder-stat-row:last-child { border-bottom: none; }
+    .ladder-stat-row strong { font-family: var(--font-mono); color: #f8fafc; }
+
+    .ladder-empty-box {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #94a3b8;
+      background: rgba(8, 13, 30, 0.45);
+      border: 1px dashed rgba(148, 163, 184, 0.25);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 1180px) {
+      .ladder-kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .ladder-two-col { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .ladder-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ladder-opp-metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ladder-gates-grid { grid-template-columns: 1fr; }
+      .ladder-mode-controls { align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -3074,6 +3509,10 @@
           <svg class="tab-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <span>Combinadas</span>
           <span class="tab-counter is-zero" id="tabParlaysCount" aria-label="Combinadas registradas">0</span>
+        </button>
+        <button class="tab-btn" id="tabLadder" onclick="switchView('ladder')" data-tooltip="THE LADDER — Gran Escalera (Módulo de progresión disciplinada · Fase Visual)" title="THE LADDER — Gran Escalera">
+          <svg class="tab-icon" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          <span>THE LADDER</span>
         </button>
       </nav>
 
@@ -3548,6 +3987,9 @@
     <section id="viewParlays" style="display: none;">
       <div class="parlays-container" id="parlaysGrid"></div>
     </section>
+
+    <!-- VISTA 3B: THE LADDER — GRAN ESCALERA (FASE VISUAL / NO OPERATIVO) -->
+    <section id="viewLadder" style="display: none;" aria-label="THE LADDER — Gran Escalera"></section>
 
     <!-- VISTA 4: PANTALLA DE ESTADÍSTICAS & HISTORIAL (TRACK RECORD AUDITADO) -->
     <section id="viewHistory" style="display: none;">
@@ -6362,6 +6804,7 @@
       if (document.getElementById('tabParlays')) document.getElementById('tabParlays').classList.toggle('active', view === 'parlays');
       if (document.getElementById('tabHistory')) document.getElementById('tabHistory').classList.toggle('active', view === 'history');
       if (document.getElementById('tabResearch')) document.getElementById('tabResearch').classList.toggle('active', view === 'research');
+      if (document.getElementById('tabLadder')) document.getElementById('tabLadder').classList.toggle('active', view === 'ladder');
 
       // Mobile bottom navigation items
       if (document.getElementById('mTabPicks')) document.getElementById('mTabPicks').classList.toggle('active', view === 'picks');
@@ -6369,6 +6812,7 @@
       if (document.getElementById('mTabParlays')) document.getElementById('mTabParlays').classList.toggle('active', view === 'parlays');
       if (document.getElementById('mTabHistory')) document.getElementById('mTabHistory').classList.toggle('active', view === 'history');
       if (document.getElementById('mTabResearch')) document.getElementById('mTabResearch').classList.toggle('active', view === 'research');
+      if (document.getElementById('mTabLadder')) document.getElementById('mTabLadder').classList.toggle('active', view === 'ladder');
 
       // Main views
       document.getElementById('viewPicks').style.display = view === 'picks' ? 'block' : 'none';
@@ -6380,11 +6824,16 @@
       if (document.getElementById('viewResearch')) {
         document.getElementById('viewResearch').style.display = view === 'research' ? 'block' : 'none';
       }
+      if (document.getElementById('viewLadder')) {
+        document.getElementById('viewLadder').style.display = view === 'ladder' ? 'block' : 'none';
+      }
 
       if (view === 'history' && globalHistoryData) {
         applyHistoryFiltersAndRender();
       } else if (view === 'research') {
         renderResearchCenter();
+      } else if (view === 'ladder' && window.LadderModule) {
+        window.LadderModule.render();
       } else if (view === 'picks' && globalPicksData) {
         renderPicks();
       }
@@ -6810,7 +7259,12 @@
       <span>Combinadas</span>
       <span class="m-nav-badge is-zero" id="mTabParlaysCount">0</span>
     </button>
+    <button class="m-nav-item" id="mTabLadder" onclick="switchView('ladder')" aria-label="THE LADDER — Gran Escalera">
+      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      <span>Ladder</span>
+    </button>
   </nav>
 
+  <script src="assets/js/ladderModule.js"></script>
 </body>
 </html>
