@@ -84,6 +84,13 @@
 
   function applyLocalOverride(l) {
     if (!l) return l;
+
+    // Si la propuesta guardada en el cliente corresponde a un pick que ya fue liquidado en el historial, descartarla
+    if (selectedProposal && l.stepHistory && l.stepHistory.some(h => (h.snapshotId && h.snapshotId === selectedProposal.snapshotId) || (h.opportunityKey && h.opportunityKey === selectedProposal.opportunityKey) || (h.match === selectedProposal.match && h.selection === selectedProposal.selection))) {
+      selectedProposal = null;
+      saveSelectedProposal(null);
+    }
+
     const ov = loadLocalOverride();
     if (!ov) return l;
 
