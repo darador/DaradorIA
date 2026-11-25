@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
   "mode": "SIMULACIÓN — DINERO VIRTUAL",
   "simulationOnly": true,
   "realCapitalAllowed": false,
@@ -11,24 +11,8 @@
   "referenceOdds": 1.2,
   "currentStep": 1,
   "currentCycle": 1,
-  "openBet": {
-    "betId": "ladder_bet_1795567787202_1",
-    "cycle": 1,
-    "step": 1,
-    "snapshotId": "prosp_1795567787201_9_v1",
-    "opportunityKey": "cand_real_statshub_20261125_sk_slavia_praha_corners_over",
-    "match": "SK Slavia Praha vs Villarreal",
-    "competition": "UEFA Champions League",
-    "market": "Córners de equipo",
-    "selection": "SK Slavia Praha (Equipo)",
-    "line": "Más de 4.5",
-    "odds": 1.85,
-    "stake": 50000,
-    "potentialReturn": 92500,
-    "openedAtUtc": "2026-11-25T00:49:47.202Z",
-    "status": "OPEN"
-  },
-  "committedStake": 50000,
+  "openBet": null,
+  "committedStake": 0,
   "cumulativeProfit": 0,
   "lastSettlement": null,
   "stepHistory": [],
@@ -409,5 +393,32 @@
         "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
       ]
     }
-  ]
+  ],
+  "legacyBets": [
+    {
+      "betId": "ladder_bet_1795567787202_1",
+      "cycle": 1,
+      "step": 1,
+      "snapshotId": "prosp_1795567787201_9_v1",
+      "opportunityKey": "cand_real_statshub_20261125_sk_slavia_praha_corners_over",
+      "match": "SK Slavia Praha vs Villarreal",
+      "competition": "UEFA Champions League",
+      "market": "Córners de equipo",
+      "selection": "SK Slavia Praha (Equipo)",
+      "line": "Más de 4.5",
+      "odds": 1.85,
+      "stake": 50000,
+      "potentialReturn": 92500,
+      "openedAtUtc": "2026-11-25T00:49:47.202Z",
+      "status": "OPEN",
+      "legacyStatus": "LEGACY_OUT_OF_RULES",
+      "excludedFromProgression": true,
+      "legacyReason": "Abierta bajo reglas anteriores (cuota 1.85 fuera del rango oficial [1.10, 1.25]). Preservada íntegramente; no avanza ni reinicia el nuevo ciclo.",
+      "archivedAtUtc": "2026-11-25T03:29:12.003Z"
+    }
+  ],
+  "objectiveStatus": "IN_PROGRESS",
+  "minOdds": 1.1,
+  "maxOdds": 1.25,
+  "minEvPct": 7
 }
