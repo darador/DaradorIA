@@ -135,30 +135,45 @@
   }
 
   function renderOportunidades(l) {
-    const evals = (l.evaluatedOpportunities || []).slice().reverse();
-    if (evals.length === 0) {
-      return '<div style="padding:1rem; color:#94a3b8; font-size:0.82rem;">Sin oportunidades evaluadas aún en el circuito prospectivo de RETO ESCALERA.</div>';
+    const minO = l.minOdds || OFFICIAL.minOdds;
+    const maxO = l.maxOdds || OFFICIAL.maxOdds;
+    const minEv = l.minEvPct || OFFICIAL.minEvPct;
+    const eligible = (l.eligibleOpportunities || []).filter(e =>
+      Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
+      (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
+    );
+    if (eligible.length === 0) {
+      return `
+        <div style="background:rgba(14,21,42,0.85); border:1px dashed rgba(148,163,184,0.35); border-radius:12px; padding:1rem;">
+          <strong style="color:#f8fafc; font-size:0.92rem;">⏳ Esperando oportunidad válida</strong>
+          <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.3rem;">
+            Ninguna oportunidad actual del Daily Board cumple simultáneamente las reglas oficiales de RETO ESCALERA (cuota <strong>[${minO.toFixed(2)} – ${maxO.toFixed(2)}]</strong>, <strong>EV ≥ +${minEv}%</strong>, calibración suficiente, Elena APROBADO y Risk Manager sin veto).
+          </p>
+        </div>
+      `;
     }
     return `
       <div style="overflow-x:auto;">
         <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
           <thead>
             <tr style="border-bottom:1px solid #1c2744; color:#94a3b8; text-align:left;">
+              <th style="padding:0.5rem;">Rank</th>
               <th style="padding:0.5rem;">Partido</th>
               <th style="padding:0.5rem;">Selección / Mercado</th>
               <th style="padding:0.5rem;">Cuota</th>
-              <th style="padding:0.5rem;">Decisión</th>
-              <th style="padding:0.5rem;">Motivo</th>
+              <th style="padding:0.5rem;">Prob / EV</th>
+              <th style="padding:0.5rem;">Score</th>
             </tr>
           </thead>
           <tbody>
-            ${evals.map(e => `
-              <tr style="border-bottom:1px solid rgba(28,39,68,0.6);">
-                <td style="padding:0.5rem;"><strong>${e.match || '-'}</strong></td>
-                <td style="padding:0.5rem;">${e.selection || '-'}<div style="color:#94a3b8;font-size:0.7rem;">${e.market || ''}</div></td>
-                <td style="padding:0.5rem; font-family:var(--font-mono);">@${e.odds ?? 'N/D'}</td>
-                <td style="padding:0.5rem;"><span class="sem-badge ${e.enteredLadder ? 'sem-green' : 'sem-gray'}">${e.enteredLadder ? 'INGRESÓ' : 'DESCARTADA'}</span></td>
-                <td style="padding:0.5rem; color:#cbd5e1;">${(e.reasons || []).join(' | ')}</td>
+            ${eligible.map(e => `
+              <tr style="border-bottom:1px solid rgba(28,39,68,0.6); ${e.isTopRecommended ? 'background:rgba(34,197,94,0.08);' : ''}">
+                <td style="padding:0.5rem;">${e.isTopRecommended ? '<span class="sem-badge sem-green">★ #1 TOP</span>' : '#' + e.rank}</td>
+                <td style="padding:0.5rem;"><strong>${e.match || '-'}</strong><div style="color:#94a3b8;font-size:0.7rem;">${e.competition || ''}</div></td>
+                <td style="padding:0.5rem;">${e.selection || '-'}<div style="color:#94a3b8;font-size:0.7rem;">${e.market || ''} · ${e.line || ''}</div></td>
+                <td style="padding:0.5rem; font-family:var(--font-mono); color:#fde047; font-weight:700;">@${Number(e.odds).toFixed(2)}</td>
+                <td style="padding:0.5rem; font-family:var(--font-mono);">${e.modelProbability ? (e.modelProbability * 100).toFixed(1) + '%' : 'N/D'} · <strong style="color:#4ade80;">+${e.expectedValuePct}%</strong></td>
+                <td style="padding:0.5rem; font-family:var(--font-mono); color:#38bdf8;">${e.compositeScore}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -239,7 +254,7 @@
 
     const tabs = [
       ['principal', 'Principal'],
-      ['oportunidades', `Oportunidades (${(l.evaluatedOpportunities || []).length})`],
+      ['oportunidades', `Oportunidades (${(l.eligibleOpportunities || []).length})`],
       ['historial', `Historial (${(l.stepHistory || []).length})`],
       ['reglas', 'Reglas Oficiales']
     ];

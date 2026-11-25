@@ -145,7 +145,8 @@ class ProspectiveLadderEngine {
     if (st.objectiveStatus === 'OBJECTIVE_REACHED' || st.currentCapital >= st.targetCapital) {
       reasons.push('OBJECTIVE_REACHED_LOCKED: Objetivo de $10.000.000 ARS alcanzado. Nuevas apuestas bloqueadas automáticamente.');
     }
-    if (st.openBet !== null) {
+    const hasActiveOpenBet = Boolean(st.openBet && st.openBet.legacyStatus !== 'LEGACY_OUT_OF_RULES');
+    if (hasActiveOpenBet) {
       reasons.push(`OPEN_BET_LOCKED: Ya existe una apuesta abierta (${st.openBet.betId}). Solo 1 apuesta abierta a la vez.`);
     }
     if (snapshot.circuit === 'CONTRAFACTUAL') {
@@ -196,6 +197,42 @@ class ProspectiveLadderEngine {
       : -Infinity;
 
     return { valid: reasons.length === 0, reasons, evPct, prob, odds, calInfo, compositeScore };
+  }
+
+  /**
+   * Devuelve únicamente las oportunidades elegibles que cumplen TODAS las reglas oficiales
+   * de RETO ESCALERA, ordenadas por el ranking calibrado (EV * confiabilidad * prob).
+   * Nunca incluye descartadas ni legacyBets.
+   */
+  getEligibleRankedOpportunities(snapshots) {
+    const state = this._loadState();
+    const eligible = [];
+    for (const snap of (snapshots || [])) {
+      const check = this.validateOpportunity(snap, state);
+      if (check.valid) {
+        eligible.push({
+          snapshotId: snap.snapshotId,
+          opportunityKey: snap.opportunityKey,
+          match: snap.match,
+          competition: snap.competition,
+          market: snap.market,
+          selection: snap.selection,
+          line: snap.line,
+          odds: check.odds,
+          modelProbability: check.prob,
+          expectedValuePct: check.evPct,
+          elenaDecision: snap.elenaDecision,
+          riskManagerDecision: snap.riskManagerDecision,
+          compositeScore: check.compositeScore
+        });
+      }
+    }
+    eligible.sort((a, b) => b.compositeScore - a.compositeScore);
+    return eligible.map((item, idx) => ({
+      ...item,
+      rank: idx + 1,
+      isTopRecommended: idx === 0
+    }));
   }
 
   /**

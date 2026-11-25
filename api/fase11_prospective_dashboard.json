@@ -1,5 +1,5 @@
 {
-  "generatedAtUtc": "2026-11-25T03:29:12.012Z",
+  "generatedAtUtc": "2026-11-25T03:37:07.415Z",
   "phase": "FASE_11_PROSPECTIVE_OBSERVATION",
   "mode": "SIMULACIÓN — DINERO VIRTUAL",
   "autoExecutionAllowed": false,
@@ -990,7 +990,8 @@
     "minOdds": 1.1,
     "maxOdds": 1.25,
     "minEvPct": 7,
-    "progressPct": 0.5
+    "progressPct": 0.5,
+    "eligibleOpportunities": []
   },
   "historicalReplayReference": {
     "label": "REPLAY HISTÓRICO SIMULADO (SEPARADO — NO SUMADO AL BALANCE PROSPECTIVO)",
