@@ -1,0 +1,583 @@
+{
+  "generatedAtUtc": "2026-11-25T00:41:58.911Z",
+  "mode": "READ_ONLY_CALIBRATION_AUDIT",
+  "overall": {
+    "n": 63,
+    "won": 43,
+    "lost": 20,
+    "observedWinRate": 68.3,
+    "meanPredProb": 79.1,
+    "overconfidenceGapPct": 10.8,
+    "brier": 0.2274,
+    "brierBaseline": 0.2248,
+    "logLoss": 0.7643,
+    "logLossBaseline": 0.6421,
+    "ece": 0.1363,
+    "extremeLossPenalties": 10,
+    "bins": [
+      {
+        "bucket": "60-69%",
+        "n": 4,
+        "meanPredPct": 66.3,
+        "observedWinPct": 75,
+        "gapPct": -8.7
+      },
+      {
+        "bucket": "70-79%",
+        "n": 40,
+        "meanPredPct": 74.7,
+        "observedWinPct": 62.5,
+        "gapPct": 12.2
+      },
+      {
+        "bucket": "80-89%",
+        "n": 9,
+        "meanPredPct": 83,
+        "observedWinPct": 88.9,
+        "gapPct": -5.9
+      },
+      {
+        "bucket": ">=90%",
+        "n": 10,
+        "meanPredPct": 98.4,
+        "observedWinPct": 70,
+        "gapPct": 28.4
+      }
+    ]
+  },
+  "byGroup": {
+    "TEAM_PROPS": {
+      "n": 35,
+      "won": 20,
+      "lost": 15,
+      "observedWinRate": 57.1,
+      "meanPredProb": 78.5,
+      "overconfidenceGapPct": 21.3,
+      "brier": 0.2893,
+      "brierBaseline": 0.2365,
+      "logLoss": 0.9776,
+      "logLossBaseline": 0.6658,
+      "ece": 0.2184,
+      "extremeLossPenalties": 7,
+      "bins": [
+        {
+          "bucket": "60-69%",
+          "n": 3,
+          "meanPredPct": 66.4,
+          "observedWinPct": 66.7,
+          "gapPct": -0.3
+        },
+        {
+          "bucket": "70-79%",
+          "n": 21,
+          "meanPredPct": 74.2,
+          "observedWinPct": 47.6,
+          "gapPct": 26.6
+        },
+        {
+          "bucket": "80-89%",
+          "n": 6,
+          "meanPredPct": 82,
+          "observedWinPct": 83.3,
+          "gapPct": -1.4
+        },
+        {
+          "bucket": ">=90%",
+          "n": 5,
+          "meanPredPct": 99.5,
+          "observedWinPct": 60,
+          "gapPct": 39.5
+        }
+      ]
+    },
+    "PLAYER_PROPS": {
+      "n": 28,
+      "won": 23,
+      "lost": 5,
+      "observedWinRate": 82.1,
+      "meanPredProb": 79.9,
+      "overconfidenceGapPct": -2.2,
+      "brier": 0.15,
+      "brierBaseline": 0.2102,
+      "logLoss": 0.4976,
+      "logLossBaseline": 0.6125,
+      "ece": 0.0842,
+      "extremeLossPenalties": 3,
+      "bins": [
+        {
+          "bucket": "60-69%",
+          "n": 1,
+          "meanPredPct": 66,
+          "observedWinPct": 100,
+          "gapPct": -34
+        },
+        {
+          "bucket": "70-79%",
+          "n": 19,
+          "meanPredPct": 75.2,
+          "observedWinPct": 78.9,
+          "gapPct": -3.7
+        },
+        {
+          "bucket": "80-89%",
+          "n": 3,
+          "meanPredPct": 85.1,
+          "observedWinPct": 100,
+          "gapPct": -14.9
+        },
+        {
+          "bucket": ">=90%",
+          "n": 5,
+          "meanPredPct": 97.3,
+          "observedWinPct": 80,
+          "gapPct": 17.3
+        }
+      ]
+    }
+  },
+  "byMarket": {
+    "Remates al arco de equipo": {
+      "n": 11,
+      "won": 6,
+      "lost": 5,
+      "observedWinRate": 54.5,
+      "meanPredProb": 78.5,
+      "overconfidenceGapPct": 23.9,
+      "brier": 0.3123,
+      "brierBaseline": 0.2355,
+      "logLoss": 1.2321,
+      "logLossBaseline": 0.6634,
+      "ece": 0.3278,
+      "extremeLossPenalties": 1,
+      "bins": [
+        {
+          "bucket": "60-69%",
+          "n": 1,
+          "meanPredPct": 67.8,
+          "observedWinPct": 100,
+          "gapPct": -32.2
+        },
+        {
+          "bucket": "70-79%",
+          "n": 7,
+          "meanPredPct": 73.2,
+          "observedWinPct": 42.9,
+          "gapPct": 30.3
+        },
+        {
+          "bucket": "80-89%",
+          "n": 1,
+          "meanPredPct": 83.5,
+          "observedWinPct": 100,
+          "gapPct": -16.5
+        },
+        {
+          "bucket": ">=90%",
+          "n": 2,
+          "meanPredPct": 99.9,
+          "observedWinPct": 50,
+          "gapPct": 49.9
+        }
+      ]
+    },
+    "Remates de equipo": {
+      "n": 6,
+      "won": 3,
+      "lost": 3,
+      "observedWinRate": 50,
+      "meanPredProb": 72.5,
+      "overconfidenceGapPct": 22.5,
+      "brier": 0.3017,
+      "brierBaseline": 0.2454,
+      "logLoss": 0.8142,
+      "logLossBaseline": 0.6838,
+      "ece": 0.2247,
+      "extremeLossPenalties": 1,
+      "bins": [
+        {
+          "bucket": "60-69%",
+          "n": 2,
+          "meanPredPct": 65.7,
+          "observedWinPct": 50,
+          "gapPct": 15.7
+        },
+        {
+          "bucket": "70-79%",
+          "n": 4,
+          "meanPredPct": 75.8,
+          "observedWinPct": 50,
+          "gapPct": 25.8
+        }
+      ]
+    },
+    "Goles de equipo": {
+      "n": 5,
+      "won": 2,
+      "lost": 3,
+      "observedWinRate": 40,
+      "meanPredProb": 77,
+      "overconfidenceGapPct": 37,
+      "brier": 0.3546,
+      "brierBaseline": 0.3007,
+      "logLoss": 0.9261,
+      "logLossBaseline": 0.7983,
+      "ece": 0.4392,
+      "extremeLossPenalties": 2,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 4,
+          "meanPredPct": 75.6,
+          "observedWinPct": 25,
+          "gapPct": 50.6
+        },
+        {
+          "bucket": "80-89%",
+          "n": 1,
+          "meanPredPct": 82.8,
+          "observedWinPct": 100,
+          "gapPct": -17.2
+        }
+      ]
+    },
+    "Córners de equipo": {
+      "n": 11,
+      "won": 8,
+      "lost": 3,
+      "observedWinRate": 72.7,
+      "meanPredProb": 82.8,
+      "overconfidenceGapPct": 10,
+      "brier": 0.2143,
+      "brierBaseline": 0.2004,
+      "logLoss": 0.8287,
+      "logLossBaseline": 0.5923,
+      "ece": 0.2025,
+      "extremeLossPenalties": 2,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 5,
+          "meanPredPct": 73.7,
+          "observedWinPct": 60,
+          "gapPct": 13.7
+        },
+        {
+          "bucket": "80-89%",
+          "n": 3,
+          "meanPredPct": 81.3,
+          "observedWinPct": 100,
+          "gapPct": -18.7
+        },
+        {
+          "bucket": ">=90%",
+          "n": 3,
+          "meanPredPct": 99.3,
+          "observedWinPct": 66.7,
+          "gapPct": 32.6
+        }
+      ]
+    },
+    "Tarjetas de equipo": {
+      "n": 2,
+      "won": 1,
+      "lost": 1,
+      "observedWinRate": 50,
+      "meanPredProb": 76.2,
+      "overconfidenceGapPct": 26.2,
+      "brier": 0.3745,
+      "brierBaseline": 0.2525,
+      "logLoss": 1.0156,
+      "logLossBaseline": 0.6979,
+      "ece": 0.553,
+      "extremeLossPenalties": 1,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 1,
+          "meanPredPct": 70.9,
+          "observedWinPct": 100,
+          "gapPct": -29.1
+        },
+        {
+          "bucket": "80-89%",
+          "n": 1,
+          "meanPredPct": 81.5,
+          "observedWinPct": 0,
+          "gapPct": 81.5
+        }
+      ]
+    },
+    "Faltas ganadas": {
+      "n": 2,
+      "won": 1,
+      "lost": 1,
+      "observedWinRate": 50,
+      "meanPredProb": 85.9,
+      "overconfidenceGapPct": 35.9,
+      "brier": 0.4961,
+      "brierBaseline": 0.2564,
+      "logLoss": 1.818,
+      "logLossBaseline": 0.7058,
+      "ece": 0.606,
+      "extremeLossPenalties": 1,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 1,
+          "meanPredPct": 75.3,
+          "observedWinPct": 100,
+          "gapPct": -24.7
+        },
+        {
+          "bucket": ">=90%",
+          "n": 1,
+          "meanPredPct": 96.5,
+          "observedWinPct": 0,
+          "gapPct": 96.5
+        }
+      ]
+    },
+    "Entradas (Tackles)": {
+      "n": 4,
+      "won": 3,
+      "lost": 1,
+      "observedWinRate": 75,
+      "meanPredProb": 79.9,
+      "overconfidenceGapPct": 4.9,
+      "brier": 0.1679,
+      "brierBaseline": 0.2474,
+      "logLoss": 0.501,
+      "logLossBaseline": 0.6886,
+      "ece": 0.201,
+      "extremeLossPenalties": 1,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 2,
+          "meanPredPct": 75,
+          "observedWinPct": 50,
+          "gapPct": 25
+        },
+        {
+          "bucket": "80-89%",
+          "n": 2,
+          "meanPredPct": 84.8,
+          "observedWinPct": 100,
+          "gapPct": -15.2
+        }
+      ]
+    },
+    "Remates al arco": {
+      "n": 4,
+      "won": 3,
+      "lost": 1,
+      "observedWinRate": 75,
+      "meanPredProb": 78.8,
+      "overconfidenceGapPct": 3.8,
+      "brier": 0.1718,
+      "brierBaseline": 0.1877,
+      "logLoss": 0.5141,
+      "logLossBaseline": 0.5657,
+      "ece": 0.1098,
+      "extremeLossPenalties": 1,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 3,
+          "meanPredPct": 76.5,
+          "observedWinPct": 66.7,
+          "gapPct": 9.9
+        },
+        {
+          "bucket": "80-89%",
+          "n": 1,
+          "meanPredPct": 85.7,
+          "observedWinPct": 100,
+          "gapPct": -14.3
+        }
+      ]
+    },
+    "Remates totales": {
+      "n": 13,
+      "won": 11,
+      "lost": 2,
+      "observedWinRate": 84.6,
+      "meanPredProb": 77.3,
+      "overconfidenceGapPct": -7.3,
+      "brier": 0.129,
+      "brierBaseline": 0.2081,
+      "logLoss": 0.4142,
+      "logLossBaseline": 0.6087,
+      "ece": 0.0728,
+      "extremeLossPenalties": 0,
+      "bins": [
+        {
+          "bucket": "60-69%",
+          "n": 1,
+          "meanPredPct": 66,
+          "observedWinPct": 100,
+          "gapPct": -34
+        },
+        {
+          "bucket": "70-79%",
+          "n": 10,
+          "meanPredPct": 74.6,
+          "observedWinPct": 80,
+          "gapPct": -5.4
+        },
+        {
+          "bucket": ">=90%",
+          "n": 2,
+          "meanPredPct": 96.8,
+          "observedWinPct": 100,
+          "gapPct": -3.2
+        }
+      ]
+    },
+    "Faltas cometidas": {
+      "n": 4,
+      "won": 4,
+      "lost": 0,
+      "observedWinRate": 100,
+      "meanPredProb": 81.3,
+      "overconfidenceGapPct": -18.7,
+      "brier": 0.0428,
+      "brierBaseline": 0.1873,
+      "logLoss": 0.2123,
+      "logLossBaseline": 0.5653,
+      "ece": 0.1868,
+      "extremeLossPenalties": 0,
+      "bins": [
+        {
+          "bucket": "70-79%",
+          "n": 3,
+          "meanPredPct": 76.3,
+          "observedWinPct": 100,
+          "gapPct": -23.7
+        },
+        {
+          "bucket": ">=90%",
+          "n": 1,
+          "meanPredPct": 96.5,
+          "observedWinPct": 100,
+          "gapPct": -3.5
+        }
+      ]
+    },
+    "Tarjetas": {
+      "n": 1,
+      "won": 1,
+      "lost": 0,
+      "observedWinRate": 100,
+      "meanPredProb": 99.9,
+      "overconfidenceGapPct": -0.1,
+      "brier": 0,
+      "brierBaseline": 0.1781,
+      "logLoss": 0.001,
+      "logLossBaseline": 0.5481,
+      "ece": 0.001,
+      "extremeLossPenalties": 0,
+      "bins": [
+        {
+          "bucket": ">=90%",
+          "n": 1,
+          "meanPredPct": 99.9,
+          "observedWinPct": 100,
+          "gapPct": -0.1
+        }
+      ]
+    }
+  },
+  "worstLogLossPenalties": [
+    {
+      "id": "cand_1795110774831_9ip2qz",
+      "match": "Red Bull Bragantino vs Vitória",
+      "market": "Remates al arco de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 1.82,
+      "predProbPct": 99.9,
+      "logLossContribution": 6.908
+    },
+    {
+      "id": "cand_1795110774831_9pw61t",
+      "match": "Arsenal vs Olympique Lyonnais",
+      "market": "Córners de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 2.07,
+      "predProbPct": 99.3,
+      "logLossContribution": 4.962
+    },
+    {
+      "id": "cand_1795110774831_w9sj8j",
+      "match": "Red Bull Bragantino vs Vitória",
+      "market": "Faltas ganadas",
+      "group": "PLAYER_PROPS",
+      "odds": 1.62,
+      "predProbPct": 96.5,
+      "logLossContribution": 3.352
+    },
+    {
+      "id": "cand_real_statshub_20261123_vitoria_cards",
+      "match": "Internacional vs Vitória",
+      "market": "Tarjetas de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 1.67,
+      "predProbPct": 81.5,
+      "logLossContribution": 1.687
+    },
+    {
+      "id": "cand_1795110774831_xxa5io",
+      "match": "Internacional vs Vasco da Gama",
+      "market": "Remates de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 1.83,
+      "predProbPct": 78.6,
+      "logLossContribution": 1.542
+    },
+    {
+      "id": "cand_real_statshub_20261124_aek_goals_over",
+      "match": "Como vs AEK Athens",
+      "market": "Goles de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 1.57,
+      "predProbPct": 77.2,
+      "logLossContribution": 1.478
+    },
+    {
+      "id": "cand_real_statshub_20261122_albacete_goals",
+      "match": "Burgos CF vs Albacete Balompié",
+      "market": "Goles de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 1.53,
+      "predProbPct": 77.2,
+      "logLossContribution": 1.478
+    },
+    {
+      "id": "cand_real_statshub_20261123_vitaly_janelt_tackles",
+      "match": "Brentford vs Everton",
+      "market": "Entradas (Tackles)",
+      "group": "PLAYER_PROPS",
+      "odds": 1.62,
+      "predProbPct": 75,
+      "logLossContribution": 1.386
+    },
+    {
+      "id": "cand_real_statshub_20261121_leeds_corners",
+      "match": "Chelsea vs Leeds United",
+      "market": "Córners de equipo",
+      "group": "TEAM_PROPS",
+      "odds": 1.7,
+      "predProbPct": 75,
+      "logLossContribution": 1.386
+    },
+    {
+      "id": "cand_real_statshub_20261121_mbappe_1795287296253",
+      "match": "Real Madrid vs Celta Vigo",
+      "market": "Remates al arco",
+      "group": "PLAYER_PROPS",
+      "odds": 1.8,
+      "predProbPct": 75,
+      "logLossContribution": 1.386
+    }
+  ]
+}

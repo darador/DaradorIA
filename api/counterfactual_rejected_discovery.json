@@ -1,0 +1,33 @@
+{
+  "generatedAtUtc": "2026-11-25T00:41:58.493Z",
+  "circuit": "COUNTERFACTUAL_REJECTED_AND_DISCOVERY",
+  "autoExecutionAllowed": false,
+  "operationalIsolation": true,
+  "evaluatorVersion": "1.0.0-post-audit-cf",
+  "integrity": {
+    "ok": true,
+    "totalRecords": 97,
+    "violations": []
+  },
+  "summary": {
+    "totalIdentified": 97,
+    "appendedNew": 97,
+    "skippedDuplicate": 0,
+    "byOrigin": {
+      "REJECTED_BY_ELENA": 1,
+      "REJECTED_BY_RISK_MANAGER": 1,
+      "REJECTED_BY_QUALITY": 1,
+      "REJECTED_BY_EV": 15,
+      "DISCOVERY_NO_DECISION": 79,
+      "DISCOVERY_INSUFFICIENT_DATA": 0
+    },
+    "byOutcome": {
+      "WON": 4,
+      "LOST": 1,
+      "VOID": 4,
+      "UNAVAILABLE": 88
+    },
+    "roiCalculableCount": 5,
+    "limitationNote": "Solo se liquidan registros con resultado oficial verificado localmente; nunca se inventan cuotas ni resultados históricos."
+  }
+}
