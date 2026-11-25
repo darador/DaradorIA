@@ -11,8 +11,30 @@
   "referenceOdds": 1.2,
   "currentStep": 2,
   "currentCycle": 1,
-  "openBet": null,
-  "committedStake": 0,
+  "openBet": {
+    "betId": "ladder_manual_1795642354586_step2",
+    "cycle": 1,
+    "step": 2,
+    "snapshotId": "manual_live_1795642354586",
+    "opportunityKey": "manual_1795642354586",
+    "match": "Atlético Madrid vs Viking FK",
+    "competition": "UEFA Champions League",
+    "market": "Ganador del partido (1X2)",
+    "selection": "Atlético Madrid",
+    "line": "Gana Atlético Madrid",
+    "odds": 1.13,
+    "modelProbability": null,
+    "expectedValuePct": null,
+    "elenaDecision": "APROBADO_MANUAL",
+    "riskManagerDecision": "APROBADO_MANUAL",
+    "origin": "MANUAL_LIVE",
+    "manualNotes": "Pick manual en vivo cargado por el usuario: Gana Atlético de Madrid a 1.13.",
+    "stake": 57500,
+    "potentialReturn": 64975,
+    "openedAtUtc": "2026-11-25T21:32:34.585Z",
+    "status": "OPEN"
+  },
+  "committedStake": 57500,
   "cumulativeProfit": 7500,
   "lastSettlement": {
     "betId": "ladder_bet_1795628640000_1",
@@ -498,6 +520,20 @@
       "betId": "ladder_bet_1795628640000_1",
       "reasons": [
         "ENTERED_LADDER_RECOVERY_AT_KICKOFF"
+      ]
+    },
+    {
+      "evaluatedAtUtc": "2026-11-25T21:32:34.585Z",
+      "snapshotId": "manual_live_1795642354586",
+      "opportunityKey": "manual_1795642354586",
+      "match": "Atlético Madrid vs Viking FK",
+      "market": "Ganador del partido (1X2)",
+      "selection": "Atlético Madrid",
+      "odds": 1.13,
+      "enteredLadder": true,
+      "betId": "ladder_manual_1795642354586_step2",
+      "reasons": [
+        "ENTERED_LADDER_MANUAL_LIVE"
       ]
     }
   ],

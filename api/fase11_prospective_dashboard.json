@@ -1,5 +1,5 @@
 {
-  "generatedAtUtc": "2026-11-25T19:57:46.341Z",
+  "generatedAtUtc": "2026-11-25T21:32:34.631Z",
   "phase": "FASE_11_PROSPECTIVE_OBSERVATION",
   "mode": "SIMULACIÓN — DINERO VIRTUAL",
   "autoExecutionAllowed": false,
@@ -809,8 +809,30 @@
     "referenceOdds": 1.2,
     "currentStep": 2,
     "currentCycle": 1,
-    "openBet": null,
-    "committedStake": 0,
+    "openBet": {
+      "betId": "ladder_manual_1795642354586_step2",
+      "cycle": 1,
+      "step": 2,
+      "snapshotId": "manual_live_1795642354586",
+      "opportunityKey": "manual_1795642354586",
+      "match": "Atlético Madrid vs Viking FK",
+      "competition": "UEFA Champions League",
+      "market": "Ganador del partido (1X2)",
+      "selection": "Atlético Madrid",
+      "line": "Gana Atlético Madrid",
+      "odds": 1.13,
+      "modelProbability": null,
+      "expectedValuePct": null,
+      "elenaDecision": "APROBADO_MANUAL",
+      "riskManagerDecision": "APROBADO_MANUAL",
+      "origin": "MANUAL_LIVE",
+      "manualNotes": "Pick manual en vivo cargado por el usuario: Gana Atlético de Madrid a 1.13.",
+      "stake": 57500,
+      "potentialReturn": 64975,
+      "openedAtUtc": "2026-11-25T21:32:34.585Z",
+      "status": "OPEN"
+    },
+    "committedStake": 57500,
     "cumulativeProfit": 7500,
     "lastSettlement": {
       "betId": "ladder_bet_1795628640000_1",
@@ -1297,6 +1319,20 @@
         "reasons": [
           "ENTERED_LADDER_RECOVERY_AT_KICKOFF"
         ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T21:32:34.585Z",
+        "snapshotId": "manual_live_1795642354586",
+        "opportunityKey": "manual_1795642354586",
+        "match": "Atlético Madrid vs Viking FK",
+        "market": "Ganador del partido (1X2)",
+        "selection": "Atlético Madrid",
+        "odds": 1.13,
+        "enteredLadder": true,
+        "betId": "ladder_manual_1795642354586_step2",
+        "reasons": [
+          "ENTERED_LADDER_MANUAL_LIVE"
+        ]
       }
     ],
     "legacyBets": [
@@ -1379,98 +1415,7 @@
       }
     },
     "progressPct": 0.575,
-    "eligibleOpportunities": [
-      {
-        "snapshotId": "prosp_1795578304062_43_v1",
-        "opportunityKey": "ladder_20261126_lyon_corners_under_9_5",
-        "match": "Olympique Lyonnais vs Lillestrøm SK",
-        "competition": "UEFA Europa League",
-        "kickoffUtc": "2026-11-26T20:00:00.000Z",
-        "market": "Córners de equipo",
-        "selection": "Olympique Lyonnais (Equipo)",
-        "line": "Menos de 9.5",
-        "odds": 1.24,
-        "modelProbability": 0.903,
-        "expectedValuePct": 12,
-        "elenaDecision": "APROBADO",
-        "riskManagerDecision": "APROBADO",
-        "compositeScore": 8.6363,
-        "rank": 1,
-        "isTopRecommended": true
-      },
-      {
-        "snapshotId": "prosp_1795610218355_52_v1",
-        "opportunityKey": "cand_real_statshub_20261125_jorne_spileers_fouls_0.5",
-        "match": "Club Brugge KV vs Liverpool",
-        "competition": "UEFA Champions League",
-        "kickoffUtc": "2026-11-25T20:00:00Z",
-        "market": "Faltas cometidas",
-        "selection": "Jorne Spileers",
-        "line": "Más de 0.5",
-        "odds": 1.25,
-        "modelProbability": 0.88,
-        "expectedValuePct": 10,
-        "elenaDecision": "APROBADO",
-        "riskManagerDecision": "APROBADO",
-        "compositeScore": 7.1544,
-        "rank": 2,
-        "isTopRecommended": false
-      },
-      {
-        "snapshotId": "prosp_1795578304065_44_v1",
-        "opportunityKey": "ladder_20261126_jagiellonia_corners_over_1_5",
-        "match": "Sunderland vs Jagiellonia Białystok",
-        "competition": "UEFA Europa League",
-        "kickoffUtc": "2026-11-26T20:00:00.000Z",
-        "market": "Córners de equipo",
-        "selection": "Jagiellonia Białystok (Equipo)",
-        "line": "Más de 1.5",
-        "odds": 1.19,
-        "modelProbability": 0.92,
-        "expectedValuePct": 9.5,
-        "elenaDecision": "APROBADO",
-        "riskManagerDecision": "APROBADO",
-        "compositeScore": 6.9658,
-        "rank": 3,
-        "isTopRecommended": false
-      },
-      {
-        "snapshotId": "prosp_1795578304068_45_v1",
-        "opportunityKey": "ladder_20261125_slavia_corners_over_2_5",
-        "match": "SK Slavia Praha vs Villarreal",
-        "competition": "UEFA Champions League",
-        "kickoffUtc": "2026-11-25T17:45:00.000Z",
-        "market": "Córners de equipo",
-        "selection": "SK Slavia Praha (Equipo)",
-        "line": "Más de 2.5",
-        "odds": 1.15,
-        "modelProbability": 0.935,
-        "expectedValuePct": 7.5,
-        "elenaDecision": "APROBADO",
-        "riskManagerDecision": "APROBADO",
-        "compositeScore": 5.589,
-        "rank": 4,
-        "isTopRecommended": false
-      },
-      {
-        "snapshotId": "prosp_1795610218359_53_v1",
-        "opportunityKey": "cand_real_statshub_20261125_jaydon_banel_foulswon_0.5",
-        "match": "Burnley vs Birmingham City",
-        "competition": "Championship",
-        "kickoffUtc": "2026-11-25T19:45:00Z",
-        "market": "Faltas ganadas",
-        "selection": "Jaydon Banel",
-        "line": "Más de 0.5",
-        "odds": 1.21,
-        "modelProbability": 0.896,
-        "expectedValuePct": 8.4,
-        "elenaDecision": "APROBADO",
-        "riskManagerDecision": "APROBADO",
-        "compositeScore": 3.0106,
-        "rank": 5,
-        "isTopRecommended": false
-      }
-    ],
+    "eligibleOpportunities": [],
     "pendingLineupOpportunities": [
       {
         "snapshotId": "prosp_1795610216964_51_v1",
