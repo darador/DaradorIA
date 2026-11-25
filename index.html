@@ -1913,7 +1913,7 @@
 
     .market-row-item {
       display: grid;
-      grid-template-columns: minmax(180px, 2fr) 140px 1.4fr 80px 85px;
+      grid-template-columns: minmax(170px, 1.8fr) minmax(200px, auto) minmax(140px, 1.6fr) 65px 75px;
       align-items: center;
       gap: 0.75rem;
       padding: 0.45rem 0.75rem;
@@ -1941,12 +1941,15 @@
     .sample-pill {
       font-size: 10px;
       font-weight: 600;
-      padding: 0.15rem 0.5rem;
+      padding: 0.18rem 0.6rem;
       border-radius: 999px;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       white-space: nowrap;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .sample-pill.limited {
@@ -2977,8 +2980,21 @@
       }
       .market-row-item {
         grid-template-columns: 1fr auto !important;
-        gap: 0.35rem 0.65rem !important;
-        padding: 0.55rem 0.65rem !important;
+        gap: 0.45rem 0.65rem !important;
+        padding: 0.6rem 0.75rem !important;
+      }
+      .market-row-item > div:nth-child(2) {
+        justify-self: end;
+      }
+      .market-row-item .market-ratio-box {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+      .market-row-item .market-rate-val {
+        justify-self: start;
+      }
+      .market-row-item .market-profit-val {
+        justify-self: end;
       }
       
       .btn-reset-filters {
@@ -6970,7 +6986,7 @@
         return `
           <div class="market-row-item" onclick="syncHistoryFilterChange('market', '${marketName}')" title="Filtrar por ${marketName}">
             <div class="market-name">${marketName}</div>
-            <div>${sampleTag}</div>
+            <div style="white-space:nowrap; display:flex; align-items:center; min-width:0;">${sampleTag}</div>
             <div class="market-ratio-box">
               <span>${won}/${total}</span>
               <div class="market-bar-track">
