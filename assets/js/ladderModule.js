@@ -258,7 +258,8 @@
           </div>
           <div style="display:flex; gap:0.6rem; margin-top:0.9rem; flex-wrap:wrap;">
             <button type="button" onclick="window.LadderModule.confirmSelection()" style="background:#22c55e; color:#052e16; border:none; border-radius:8px; padding:0.5rem 0.95rem; font-weight:800; font-size:0.8rem; cursor:pointer;">✓ Confirmar selección</button>
-            <button type="button" onclick="window.LadderModule.backToOpportunities()" style="background:rgba(148,163,184,0.16); color:#e2e8f0; border:1px solid rgba(148,163,184,0.35); border-radius:8px; padding:0.5rem 0.95rem; font-weight:700; font-size:0.8rem; cursor:pointer;">← Volver a oportunidades</button>
+            <button type="button" onclick="window.LadderModule.cancelSelection()" style="background:rgba(239,68,68,0.16); color:#fca5a5; border:1px solid rgba(239,68,68,0.4); border-radius:8px; padding:0.5rem 0.95rem; font-weight:700; font-size:0.8rem; cursor:pointer;">✕ Devolver selección</button>
+            <button type="button" onclick="window.LadderModule.backToOpportunities()" style="background:rgba(148,163,184,0.16); color:#e2e8f0; border:1px solid rgba(148,163,184,0.35); border-radius:8px; padding:0.5rem 0.95rem; font-weight:700; font-size:0.8rem; cursor:pointer;">← Ver otras oportunidades</button>
           </div>
         </div>
       `;

@@ -6185,10 +6185,10 @@
                       <button class="btn-audit" style="padding:0.2rem 0.5rem; font-size:0.72rem;" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">👁️ Ver</button>
                     </div>
                   </div>
-                  <div style="display:flex; align-items:center; gap:0.55rem; margin-top:0.45rem;">
+                  ${isVoid ? '' : `<div style="display:flex; align-items:center; gap:0.55rem; margin-top:0.45rem;">
                     <div style="flex:1; height:4px; border-radius:999px; background:${barColor};"></div>
                     <span style="min-width:34px; text-align:center; padding:0.1rem 0.45rem; border-radius:999px; background:${pillBg}; color:${pillText}; font-family:var(--font-mono); font-size:0.74rem; font-weight:800;">${pillVal}</span>
-                  </div>
+                  </div>`}
                 </div>
               </div>
             `;
@@ -6318,10 +6318,10 @@
                     <span class="board-edge-badge" style="font-size:0.68rem;">${edgeDisplay}</span>
                     ${isVoid && sportsRes.isNoTitular ? sportsRes.badgeHtml : elenaDec.badgeHtml}
                   </div>
-                  <div style="display:flex; align-items:center; gap:0.45rem; margin-top:0.4rem;">
+                  ${isVoid ? '' : `<div style="display:flex; align-items:center; gap:0.45rem; margin-top:0.4rem;">
                     <div style="flex:1; height:4px; border-radius:999px; background:${barColor};"></div>
                     <span style="min-width:32px; text-align:center; padding:0.08rem 0.4rem; border-radius:999px; background:${pillBg}; color:${pillText}; font-family:var(--font-mono); font-size:0.72rem; font-weight:800;">${pillVal}</span>
-                  </div>
+                  </div>`}
                 </div>
               </div>
             `;
