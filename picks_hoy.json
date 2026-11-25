@@ -541,10 +541,10 @@
       "rationale": "StatsHub L10 100% @1.18. Evaluado por comité IA 2.0.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.1,
@@ -554,8 +554,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -762,7 +762,10 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Rio Ngumoha."
           }
         }
-      }
+      },
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_jaydon_banel_foulswon_0.5",
@@ -792,10 +795,10 @@
       "edge_pct": 8.4,
       "confidence": "90%",
       "rationale": "StatsHub L10 100% @1.21. Evaluado por comité IA 2.0.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -807,8 +810,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -1015,7 +1018,8 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Jaydon Banel."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_jorne_spileers_fouls_0.5",
@@ -1045,10 +1049,10 @@
       "edge_pct": 10,
       "confidence": "88%",
       "rationale": "StatsHub L10 100% @1.25. Evaluado por comité IA 2.0.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -1060,8 +1064,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -1268,7 +1272,8 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Jorne Spileers."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_peter_christiansen_shots_0.5",
@@ -1300,10 +1305,10 @@
       "rationale": "StatsHub L10 100% @1.22. Evaluado por comité IA 2.0.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.12,
@@ -1313,8 +1318,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -1521,7 +1526,10 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Peter Christiansen."
           }
         }
-      }
+      },
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_jay_stansfield_shots_1.5",
@@ -1551,10 +1559,10 @@
       "edge_pct": 9.7,
       "confidence": "80%",
       "rationale": "StatsHub L10 90% @1.38. Evaluado por comité IA 2.0.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -1566,8 +1574,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -1774,7 +1782,8 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Jay Stansfield."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_atakan_karazor_fouls_0.5",
@@ -1806,10 +1815,10 @@
       "rationale": "StatsHub L10 100% @1.33. Evaluado por comité IA 2.0.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.17,
@@ -1819,8 +1828,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -2027,7 +2036,10 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Atakan Karazor."
           }
         }
-      }
+      },
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_tomoki_iwata_fouls_0.5",
@@ -2057,10 +2069,10 @@
       "edge_pct": 15.1,
       "confidence": "75%",
       "rationale": "StatsHub L10 90% @1.53. Evaluado por comité IA 2.0.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -2072,8 +2084,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -2280,7 +2292,8 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Tomoki Iwata."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_jeff_chabot_foulswon_0.5",
@@ -2310,10 +2323,10 @@
       "edge_pct": 20,
       "confidence": "80%",
       "rationale": "StatsHub L10 100% @1.5. Evaluado por comité IA 2.0.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -2325,8 +2338,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -2533,7 +2546,8 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Jeff Chabot."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_callum_styles_shots_0.5",
@@ -2563,10 +2577,10 @@
       "edge_pct": 19.2,
       "confidence": "81%",
       "rationale": "StatsHub L10 100% @1.48. Evaluado por comité IA 2.0.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -2578,8 +2592,8 @@
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {
         "playerAnalyst": {
@@ -2786,7 +2800,8 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Callum Styles."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_mason_greenwood_shots",
@@ -2816,10 +2831,10 @@
       "edge_pct": 14.9,
       "confidence": "69%",
       "rationale": "StatsHub L5 60% / L10 80% / L15 80% @1.67. Sujeto a confirmación XI titular T-60.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -2831,10 +2846,11 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +14.9%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_obed_vargas_tackles",
@@ -2866,10 +2882,10 @@
       "rationale": "StatsHub L5 80% / L10 90% / L15 80% @2.1. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.55,
@@ -2879,10 +2895,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +35.8%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_niccolo_pisilli_shots",
@@ -2912,10 +2931,10 @@
       "edge_pct": 14.8,
       "confidence": "77%",
       "rationale": "StatsHub L5 80% / L10 90% / L15 87% @1.5. Sujeto a confirmación XI titular T-60.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -2927,10 +2946,11 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +14.8%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_thomas_berenbruch_shots",
@@ -2962,10 +2982,10 @@
       "rationale": "StatsHub L5 100% / L10 90% / L15 87% @1.67. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.37,
@@ -2978,7 +2998,9 @@
         "finalStatus": "PENDIENTE_ALINEACION",
         "finalReason": "EV +21.5%. Supeditado a confirmación de XI titular T-60."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_romano_postema_shots",
@@ -3010,10 +3032,10 @@
       "rationale": "StatsHub L5 100% / L10 90% / L15 93% @1.91. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.44,
@@ -3023,10 +3045,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +33%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_mikulas_konecny_fouls",
@@ -3109,10 +3134,10 @@
       "rationale": "StatsHub L5 100% / L10 100% / L15 87% @2.2. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.48,
@@ -3122,10 +3147,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +48.2%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_robin_le_normand_fouls",
@@ -3155,10 +3183,10 @@
       "edge_pct": 18.8,
       "confidence": "79%",
       "rationale": "StatsHub L5 100% / L10 100% / L15 87% @1.5. Sujeto a confirmación XI titular T-60.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -3170,10 +3198,11 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +18.8%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_peter_christiansen_shots",
@@ -3205,10 +3234,10 @@
       "rationale": "StatsHub L5 100% / L10 100% / L15 93% @1.95. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.39,
@@ -3218,10 +3247,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +39.8%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_jorne_spileers_fouls",
@@ -3251,10 +3283,10 @@
       "edge_pct": 24.4,
       "confidence": "80%",
       "rationale": "StatsHub L5 100% / L10 100% / L15 100% @1.55. Sujeto a confirmación XI titular T-60.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -3266,10 +3298,11 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "EV +24.4%. Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_shakhtar_donetsk_corners_over",
@@ -3541,10 +3574,10 @@
       "rationale": "StatsHub L5 80% / L10 80% / L15 87% @1.62 (Bet365). Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.41,
@@ -3554,10 +3587,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "Aprobado cuantitativamente (EV +15.2%). Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_tellur_mutallimov_shots",
@@ -3638,10 +3674,10 @@
       "edge_pct": 17.5,
       "confidence": "73%",
       "rationale": "StatsHub L5 100% / L10 90% / L15 80% @1.62 (Bet365). Sujeto a confirmación XI titular T-60.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -3653,10 +3689,11 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "Aprobado cuantitativamente (EV +17.5%). Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261125_marvin_ducksch_shotsontarget",
@@ -3688,10 +3725,10 @@
       "rationale": "StatsHub L5 80% / L10 90% / L15 80% @1.5 (Bet365). Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.33,
@@ -3701,10 +3738,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "Aprobado cuantitativamente (EV +12.9%). Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_ethan_laird_shots",
@@ -3736,10 +3776,10 @@
       "rationale": "StatsHub L5 100% / L10 90% / L15 80% @1.55 (BetVictor). Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.35,
@@ -3749,10 +3789,13 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "Aprobado cuantitativamente (EV +14.8%). Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "VETADO_NO_TITULAR",
+        "finalReason": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_alexsander_gomes_da_costa_tackles",
@@ -3830,10 +3873,10 @@
       "edge_pct": 21.7,
       "confidence": "80%",
       "rationale": "StatsHub L5 100% / L10 100% / L15 93% @1.53 (Coral). Sujeto a confirmación XI titular T-60.",
-      "elena_decision": "PENDIENTE_ALINEACION",
+      "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -3845,10 +3888,11 @@
       "sample_size": 15,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
       "risk_verdict": {
-        "finalStatus": "PENDIENTE_ALINEACION",
-        "finalReason": "Aprobado cuantitativamente (EV +21.7%). Supeditado a confirmación de XI titular T-60."
+        "finalStatus": "APROBADO",
+        "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "CONFIRMADA"
     },
     {
       "id": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
@@ -5806,9 +5850,9 @@
       "rationale": "Serie B StatsHub L5 100% / L10 80% / L20 65% (0.88 remates al arco/90, 81.9 min prom) @2.10. Sujeto a XI titular T-60 min (Shadow Mode).",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.77,
@@ -5821,7 +5865,10 @@
         "finalStatus": "PENDIENTE_ALINEACION",
         "finalReason": "Serie B StatsHub L5 100% / L10 80% / L20 65% (0.88 remates al arco/90, 81.9 min prom) @2.10. Sujeto a XI titular T-60 min (Shadow Mode)."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "is_finished": true,
+      "notes": "Alineación oficial T-60 confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261126_marseille_sot",
