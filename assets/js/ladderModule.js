@@ -134,8 +134,10 @@
   }
 
   function renderKpis(l) {
-    const available = l.openBet ? 0 : (l.currentCapital ?? OFFICIAL.initialCapital);
-    const committed = l.committedStake ?? (l.openBet ? l.openBet.stake : 0);
+    const confirmedLocal = !l.openBet && selectedProposal && selectedProposal.status === 'CONFIRMED';
+    const cap = l.currentCapital ?? OFFICIAL.initialCapital;
+    const available = (l.openBet || confirmedLocal) ? 0 : cap;
+    const committed = l.committedStake ?? (l.openBet ? l.openBet.stake : (confirmedLocal ? (selectedProposal.stake || cap) : 0));
     const kpis = [
       ['Capital Inicial', formatArs(l.initialCapital ?? OFFICIAL.initialCapital)],
       ['Capital Actual', formatArs(l.currentCapital ?? OFFICIAL.initialCapital)],
@@ -196,6 +198,37 @@
           <div style="display:flex; gap:0.5rem; margin-top:0.6rem; flex-wrap:wrap;">
             <span class="sem-badge sem-green">✓ Elena: ${bet.elenaDecision || 'APROBADO'}</span>
             <span class="sem-badge sem-green">✓ Risk Manager: ${bet.riskManagerDecision || 'APROBADO'}</span>
+          </div>
+        </div>
+      `;
+    } else if (selectedProposal && selectedProposal.status === 'CONFIRMED') {
+      const cap = selectedProposal.stake ?? l.currentCapital ?? OFFICIAL.initialCapital;
+      const potReturn = selectedProposal.potentialReturn ?? Number((cap * Number(selectedProposal.odds)).toFixed(2));
+      const stepNum = selectedProposal.step || l.currentStep || 1;
+      const cycleNum = selectedProposal.cycle || l.currentCycle || 1;
+      betCard = `
+        <div style="background:rgba(11,18,36,0.94); border:1px solid rgba(34,197,94,0.55); border-radius:12px; padding:1.05rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.55rem;">
+            <span class="sem-badge sem-green">✓ APUESTA ELEGIDA · ESCALÓN ${stepNum} (CICLO ${cycleNum})</span>
+            <span style="font-size:0.72rem; color:#94a3b8; font-family:var(--font-mono);">Snapshot: ${selectedProposal.snapshotId}</span>
+          </div>
+          <div style="font-size:1.05rem; font-weight:800; color:#ffffff;">${selectedProposal.match} <span style="font-size:0.78rem; color:#38bdf8;">(${selectedProposal.competition || ''})</span></div>
+          <div style="font-size:0.78rem; color:#38bdf8; margin-top:0.2rem; font-family:var(--font-mono);">${formatKickoffArt(selectedProposal.kickoffUtc)}</div>
+          <div style="font-size:0.9rem; color:#e2e8f0; margin-top:0.35rem;">${selectedProposal.selection} — <strong>${selectedProposal.market}</strong> · ${selectedProposal.line || ''}</div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.85rem; margin-top:0.65rem; font-size:0.82rem; font-family:var(--font-mono);">
+            <span>Cuota: <strong style="color:#fde047;">@${Number(selectedProposal.odds).toFixed(2)}</strong></span>
+            <span>Prob.: <strong>${selectedProposal.modelProbability ? (selectedProposal.modelProbability * 100).toFixed(1) + '%' : 'N/D'}</strong></span>
+            <span>EV: <strong style="color:#4ade80;">+${selectedProposal.expectedValuePct}%</strong></span>
+            <span>Stake comprometido: <strong>${formatArs(cap)}</strong></span>
+            <span>Retorno potencial: <strong style="color:#38bdf8;">${formatArs(potReturn)}</strong></span>
+          </div>
+          <div style="display:flex; gap:0.5rem; margin-top:0.6rem; flex-wrap:wrap;">
+            <span class="sem-badge sem-green">✓ Elena: ${selectedProposal.elenaDecision || 'APROBADO'}</span>
+            <span class="sem-badge sem-green">✓ Risk Manager: ${selectedProposal.riskManagerDecision || 'APROBADO'}</span>
+            <span class="sem-badge sem-blue">Confirmada: ${formatKickoffArt(selectedProposal.confirmedAtUtc)}</span>
+          </div>
+          <div style="display:flex; gap:0.6rem; margin-top:0.9rem; flex-wrap:wrap;">
+            <button type="button" onclick="window.LadderModule.cancelSelection()" style="background:rgba(239,68,68,0.14); color:#fca5a5; border:1px solid rgba(239,68,68,0.4); border-radius:8px; padding:0.45rem 0.9rem; font-weight:700; font-size:0.78rem; cursor:pointer;">✕ Liberar / cambiar selección</button>
           </div>
         </div>
       `;
@@ -426,6 +459,12 @@
   function selectOpportunity(snapshotId) {
     const l = cachedPayload && cachedPayload.prospectiveLadder;
     if (!l) return;
+    if (selectedProposal && selectedProposal.status === 'CONFIRMED') {
+      uiNotice = { type: 'err', text: 'Ya tenés una apuesta elegida y confirmada para el escalón actual. Liberalá primero si querés cambiarla.' };
+      activeTab = 'principal';
+      paint();
+      return;
+    }
     const opp = (l.eligibleOpportunities || []).find(o => o.snapshotId === snapshotId);
     const check = revalidateCandidate(opp, l);
     if (!check.ok) {
@@ -434,7 +473,7 @@
       paint();
       return;
     }
-    selectedProposal = { ...opp, selectedAtUtc: new Date().toISOString() };
+    selectedProposal = { ...opp, status: 'PENDING_CONFIRMATION', selectedAtUtc: new Date().toISOString() };
     saveSelectedProposal(selectedProposal);
     uiNotice = { type: 'ok', text: `✓ Propuesta guardada para el Escalón ${l.currentStep || 1}: ${opp.match} (${opp.selection} @${Number(opp.odds).toFixed(2)}). Pendiente de confirmación explícita.` };
     activeTab = 'principal';
@@ -457,10 +496,31 @@
       paint();
       return;
     }
+    const cap = l.currentCapital ?? OFFICIAL.initialCapital;
+    const potReturn = Number((cap * Number(latestOpp.odds)).toFixed(2));
+    selectedProposal = {
+      ...latestOpp,
+      status: 'CONFIRMED',
+      step: l.currentStep || 1,
+      cycle: l.currentCycle || 1,
+      stake: cap,
+      potentialReturn: potReturn,
+      selectedAtUtc: selectedProposal.selectedAtUtc || new Date().toISOString(),
+      confirmedAtUtc: new Date().toISOString()
+    };
+    saveSelectedProposal(selectedProposal);
     uiNotice = {
       type: 'ok',
-      text: `✓ Revalidación superada (${latestOpp.match} @${Number(latestOpp.odds).toFixed(2)}, EV +${latestOpp.expectedValuePct}%, Elena APROBADO, Risk Manager sin veto). Lista para registro oficial del Escalón ${l.currentStep || 1} sin ejecución automática.`
+      text: `✓ Apuesta confirmada para el Escalón ${selectedProposal.step} (Ciclo ${selectedProposal.cycle}): ${latestOpp.match} — ${latestOpp.selection} @${Number(latestOpp.odds).toFixed(2)} (Stake ${formatArs(cap)} → Retorno potencial ${formatArs(potReturn)}).`
     };
+    activeTab = 'principal';
+    paint();
+  }
+
+  function cancelSelection() {
+    selectedProposal = null;
+    saveSelectedProposal(null);
+    uiNotice = { type: 'ok', text: 'Selección liberada. Podés elegir otra oportunidad en la pestaña Oportunidades.' };
     paint();
   }
 
@@ -496,6 +556,7 @@
     setTab,
     selectOpportunity,
     confirmSelection,
+    cancelSelection,
     backToOpportunities,
     _formatKickoffArt: formatKickoffArt,
     _revalidateCandidate: revalidateCandidate
