@@ -6021,7 +6021,7 @@
         };
 
         tableBody.innerHTML = grouped.map(group => {
-          if (group.picks.length === 1) return renderSingleRow(group.picks[0]);
+          // Diseño unificado de tarjeta de partido para 1 o más selecciones
 
           const firstPick = group.picks[0].pick;
           const firstMeta = group.picks[0].meta;
@@ -6077,8 +6077,9 @@
           }).join('');
 
           return `
-            <tr class="match-group-row" style="background:rgba(11,18,36,0.72);">
-              <td colspan="10" style="padding:0.85rem 1rem; border-bottom:1px solid rgba(56,189,248,0.22);">
+            <tr class="match-group-row" style="background:transparent;">
+              <td colspan="10" style="padding:0.5rem 0.25rem; border:none;">
+                <div style="background:rgba(11,18,36,0.88); border:1px solid rgba(56,189,248,0.22); border-radius:12px; padding:0.9rem 1.05rem; box-shadow:0 4px 16px rgba(0,0,0,0.32);">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.65rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(255,255,255,0.06);">
                   <div style="display:flex; align-items:center; gap:0.55rem; flex-wrap:wrap;">
                     <span class="board-match-league">${flag} ${group.league || 'Competición'}</span>
@@ -6087,10 +6088,11 @@
                     <span style="font-size:0.72rem; color:#e2e8f0; font-family:var(--font-mono); font-weight:700;">${firstMeta.timeStrArt}</span>
                     ${matchPhase.badgeHtml}
                   </div>
-                  <span class="sem-badge sem-blue">${group.picks.length} selecciones agrupadas</span>
+                  <span class="sem-badge ${group.picks.length > 1 ? 'sem-blue' : 'sem-gray'}">${group.picks.length === 1 ? '1 selección' : group.picks.length + ' selecciones'}</span>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:0.15rem;">
                   ${legsHtml}
+                </div>
                 </div>
               </td>
             </tr>
