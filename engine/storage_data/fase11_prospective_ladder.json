@@ -420,5 +420,57 @@
   "objectiveStatus": "IN_PROGRESS",
   "minOdds": 1.1,
   "maxOdds": 1.25,
-  "minEvPct": 7
+  "minEvPct": 7,
+  "lastSearchAtUtc": "2026-11-25T03:45:04.058Z",
+  "searchCoverageByMarket": {
+    "Córners de equipo": {
+      "matchesAnalyzed": 18,
+      "opportunitiesAnalyzed": 25,
+      "eligibleCount": 3,
+      "rejectedCount": 22,
+      "status": "ELIGIBLE_FOUND"
+    },
+    "Remates totales": {
+      "matchesAnalyzed": 12,
+      "opportunitiesAnalyzed": 15,
+      "eligibleCount": 0,
+      "rejectedCount": 15,
+      "status": "ONLY_REJECTED"
+    },
+    "Entradas (Tackles)": {
+      "matchesAnalyzed": 8,
+      "opportunitiesAnalyzed": 9,
+      "eligibleCount": 0,
+      "rejectedCount": 9,
+      "status": "ONLY_REJECTED"
+    },
+    "Faltas cometidas": {
+      "matchesAnalyzed": 10,
+      "opportunitiesAnalyzed": 12,
+      "eligibleCount": 0,
+      "rejectedCount": 12,
+      "status": "ONLY_REJECTED"
+    },
+    "Faltas ganadas": {
+      "matchesAnalyzed": 4,
+      "opportunitiesAnalyzed": 4,
+      "eligibleCount": 0,
+      "rejectedCount": 4,
+      "status": "ONLY_REJECTED"
+    },
+    "Ganador del partido (1X2)": {
+      "matchesAnalyzed": 5,
+      "opportunitiesAnalyzed": 15,
+      "eligibleCount": 0,
+      "rejectedCount": 15,
+      "status": "ONLY_REJECTED"
+    },
+    "Doble oportunidad": {
+      "matchesAnalyzed": 5,
+      "opportunitiesAnalyzed": 15,
+      "eligibleCount": 0,
+      "rejectedCount": 15,
+      "status": "ONLY_REJECTED"
+    }
+  }
 }

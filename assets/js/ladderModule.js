@@ -138,21 +138,44 @@
     const minO = l.minOdds || OFFICIAL.minOdds;
     const maxO = l.maxOdds || OFFICIAL.maxOdds;
     const minEv = l.minEvPct || OFFICIAL.minEvPct;
+    const cov = l.searchCoverageByMarket || null;
+    let covHtml = '';
+    if (cov && Object.keys(cov).length > 0) {
+      const statusBadge = (st) => {
+        if (st === 'ELIGIBLE_FOUND') return '<span class="sem-badge sem-green">Elegibles</span>';
+        if (st === 'ONLY_REJECTED') return '<span class="sem-badge sem-amber">Rechazados</span>';
+        if (st === 'NO_OPPORTUNITIES') return '<span class="sem-badge sem-gray">Sin oportunidades</span>';
+        return '<span class="sem-badge sem-gray">No investigado</span>';
+      };
+      covHtml = `
+        <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:0.85rem; padding:0.6rem 0.75rem; background:rgba(14,21,42,0.72); border:1px solid #1c2744; border-radius:10px; font-size:0.74rem; align-items:center;">
+          <strong style="color:#94a3b8; margin-right:0.25rem;">Búsqueda por mercado:</strong>
+          ${Object.entries(cov).map(([mkt, info]) =>
+            `<span style="display:inline-flex; align-items:center; gap:0.3rem; background:rgba(15,23,42,0.85); border:1px solid rgba(148,163,184,0.2); padding:0.2rem 0.45rem; border-radius:6px; color:#e2e8f0;">
+              <span>${mkt}</span>
+              <span style="color:#94a3b8; font-family:var(--font-mono);">(${info.opportunitiesAnalyzed} eval. / ${info.eligibleCount} eleg.)</span>
+              ${statusBadge(info.status)}
+            </span>`
+          ).join('')}
+        </div>
+      `;
+    }
+
     const eligible = (l.eligibleOpportunities || []).filter(e =>
       Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
       (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
     );
     if (eligible.length === 0) {
-      return `
+      return covHtml + `
         <div style="background:rgba(14,21,42,0.85); border:1px dashed rgba(148,163,184,0.35); border-radius:12px; padding:1rem;">
           <strong style="color:#f8fafc; font-size:0.92rem;">⏳ Esperando oportunidad válida</strong>
           <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.3rem;">
-            Ninguna oportunidad actual del Daily Board cumple simultáneamente las reglas oficiales de RETO ESCALERA (cuota <strong>[${minO.toFixed(2)} – ${maxO.toFixed(2)}]</strong>, <strong>EV ≥ +${minEv}%</strong>, calibración suficiente, Elena APROBADO y Risk Manager sin veto).
+            Ninguna oportunidad actual cumple simultáneamente las reglas oficiales de RETO ESCALERA (cuota <strong>[${minO.toFixed(2)} – ${maxO.toFixed(2)}]</strong>, <strong>EV ≥ +${minEv}%</strong>, calibración suficiente, Elena APROBADO y Risk Manager sin veto).
           </p>
         </div>
       `;
     }
-    return `
+    return covHtml + `
       <div style="overflow-x:auto;">
         <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
           <thead>
