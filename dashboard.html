@@ -5468,7 +5468,7 @@
       if (status === 'FALLADA' || status === 'PERDIDA' || res === 'FALLADA' || res === 'PERDIDA') {
         return { code: 'FALLADA', label: 'FALLADA', badgeHtml: '<span class="sem-badge sem-red" title="Resultado deportivo verificado: Fallada">✖ FALLADA</span>' };
       }
-      if (['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(status) || res === 'ANULADA' || res === 'VOID') {
+      if (['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(status) || ['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(res)) {
         return { code: 'ANULADA', label: 'ANULADA', badgeHtml: '<span class="sem-badge sem-gray" title="Selección anulada (Void / No titular)">⊘ ANULADA</span>' };
       }
       if (status === 'PENDIENTE_DE_LIQUIDACION' || res === 'PENDIENTE_DE_LIQUIDACION' || m.proximityCategory === 'pending_settlement') {
