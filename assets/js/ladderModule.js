@@ -104,14 +104,28 @@
     const ov = loadLocalOverride();
     if (!ov) return l;
 
-    // Si hay una apuesta abierta guardada en el override local (ej. pick en vivo), fusionarla siempre
+    // Si el backend/archivo ya está en el mismo escalón o más avanzado que el override local y ya tiene una apuesta abierta oficial, el override local ya fue absorbido
+    if (l.currentStep >= ov.currentStep && l.openBet) {
+      saveLocalOverride(null);
+      return l;
+    }
+
+    // Si el backend ya registró el mismo escalón alcanzado por el override y no hay apuesta abierta en ninguno de los dos, descartar override
+    if (l.currentStep >= ov.currentStep && !ov.openBet && !l.openBet) {
+      saveLocalOverride(null);
+      return l;
+    }
+
     const merged = { ...l, ...ov };
 
     if (ov.openBet) {
       merged.openBet = ov.openBet;
       merged.committedStake = ov.openBet.stake || ov.committedStake || l.currentCapital;
+    } else if (l.openBet) {
+      // Si el servidor tiene una apuesta abierta oficial y el override no la tenía, preservar la del servidor
+      merged.openBet = l.openBet;
+      merged.committedStake = l.openBet.stake || l.committedStake || l.currentCapital;
     } else if (ov.stepHistory && l.openBet && ov.stepHistory.some(h => h.betId === l.openBet.betId)) {
-      // Si la apuesta abierta del payload ya fue liquidada en el override, limpiarla
       merged.openBet = null;
       merged.committedStake = 0;
     }
