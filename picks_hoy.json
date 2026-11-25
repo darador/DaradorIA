@@ -797,10 +797,10 @@
       "rationale": "StatsHub L10 100% @1.21. Evaluado por comité IA 2.0.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.12,
@@ -1019,7 +1019,9 @@
           }
         }
       },
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 1,
+      "notes": "Oficial StatsHub: Jaydon Banel recibió 1 falta ganada en 75 min titular ante Birmingham. ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_jorne_spileers_fouls_0.5",
@@ -1051,10 +1053,10 @@
       "rationale": "StatsHub L10 100% @1.25. Evaluado por comité IA 2.0.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.14,
@@ -1273,7 +1275,9 @@
           }
         }
       },
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 0,
+      "notes": "Oficial StatsHub: Jorne Spileers disputó 90 min como titular ante Liverpool y registró 0 faltas cometidas. FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_peter_christiansen_shots_0.5",
@@ -3185,10 +3189,10 @@
       "rationale": "StatsHub L5 100% / L10 100% / L15 87% @1.5. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.26,
@@ -3202,7 +3206,9 @@
         "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {},
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 0,
+      "notes": "Oficial StatsHub: Robin Le Normand completó 90 min como titular con 0 faltas cometidas vs Viking FK. FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_peter_christiansen_shots",
@@ -3285,10 +3291,10 @@
       "rationale": "StatsHub L5 100% / L10 100% / L15 100% @1.55. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.25,
@@ -3302,7 +3308,9 @@
         "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {},
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 0,
+      "notes": "Oficial StatsHub: Jorne Spileers completó 90 min con 0 faltas cometidas ante Liverpool. FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_shakhtar_donetsk_corners_over",
@@ -4404,10 +4412,10 @@
       "rationale": "StatsHub L10 100% / Rival 100% / L15 93% @1.67 (Bet365). Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.25,
@@ -4420,7 +4428,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +33.5% en mercado de equipo (L10 100% / Rival 100%)."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 2,
+      "notes": "Oficial StatsHub: Atlético Madrid marcó 2 goles en el 2-0 vs Viking FK. Menos de 3.5 goles ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261124_wan_bissaka_tackles",
