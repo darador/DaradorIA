@@ -105,6 +105,7 @@ class ProspectiveAnalyticsExporter {
     const chain = this.store.verifyChain();
     const ladderState = this.ladder.getState();
     ladderState.eligibleOpportunities = this.ladder.getEligibleRankedOpportunities(prospectiveOnly);
+    ladderState.pendingLineupOpportunities = this.ladder.getPendingLineupOpportunities(prospectiveOnly);
     const historicalReplay = readJson(REPLAY_PATH, null);
 
     const overall = computeStats(prospectiveOnly, settleMap);

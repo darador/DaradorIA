@@ -237,6 +237,54 @@ class ProspectiveLadderEngine {
   }
 
   /**
+   * Devuelve candidatos prometedores que cumplen cuotas [1.10 - 1.25] y EV >= +7.0%
+   * pero están pausados a la espera de confirmación oficial de alineación (T-60).
+   */
+  getPendingLineupOpportunities(snapshots) {
+    const pending = [];
+    for (const snap of (snapshots || [])) {
+      if (snap.circuit === 'CONTRAFACTUAL') continue;
+      const odds = Number(snap.odds);
+      if (!Number.isFinite(odds) || odds < this.minOdds || odds > this.maxOdds) continue;
+      const prob = snap.modelProbability != null ? Number(snap.modelProbability) : null;
+      const evPct = snap.expectedValuePct != null
+        ? Number(snap.expectedValuePct)
+        : (Number.isFinite(odds) && prob ? Number(((prob * odds - 1) * 100).toFixed(2)) : null);
+      if (evPct === null || evPct < this.minEvPct) continue;
+
+      const isPlayerMarket = PLAYER_T60_MARKETS.has(snap.market);
+      const isPendingLineup = isPlayerMarket && String(snap.lineupStatus || '').toUpperCase() !== 'CONFIRMADA';
+
+      if (isPendingLineup) {
+        const calInfo = this._getMarketCalibrationFactor(snap.market);
+        const compositeScore = (evPct !== null && prob !== null)
+          ? Number((evPct * calInfo.reliabilityWeight * prob).toFixed(4))
+          : 0;
+        pending.push({
+          snapshotId: snap.snapshotId,
+          opportunityKey: snap.opportunityKey,
+          match: snap.match,
+          competition: snap.competition,
+          kickoffUtc: snap.kickoffUtc || null,
+          market: snap.market,
+          selection: snap.selection,
+          line: snap.line,
+          odds,
+          modelProbability: prob,
+          expectedValuePct: evPct,
+          elenaDecision: snap.elenaDecision,
+          riskManagerDecision: snap.riskManagerDecision,
+          lineupStatus: snap.lineupStatus || 'PROBABLE',
+          statusBadge: 'ESPERANDO FORMACIÓN DE EQUIPO',
+          compositeScore
+        });
+      }
+    }
+    pending.sort((a, b) => b.compositeScore - a.compositeScore);
+    return pending;
+  }
+
+  /**
    * Evalúa un conjunto de oportunidades elegibles, elige una única definitiva por
    * EV + calibración/confiabilidad, y registra los descartes con su motivo.
    */

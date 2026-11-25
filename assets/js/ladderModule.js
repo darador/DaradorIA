@@ -311,8 +311,14 @@
       Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
       (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
     );
-    if (eligible.length === 0) {
-      return covHtml + `
+    const pendingLineup = (l.pendingLineupOpportunities || []).filter(e =>
+      Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
+      (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
+    );
+
+    let contentHtml = '';
+    if (eligible.length === 0 && pendingLineup.length === 0) {
+      contentHtml = `
         <div style="background:rgba(14,21,42,0.85); border:1px dashed rgba(148,163,184,0.35); border-radius:12px; padding:1rem;">
           <strong style="color:#f8fafc; font-size:0.92rem;">⏳ Esperando oportunidad válida</strong>
           <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.3rem;">
@@ -320,43 +326,82 @@
           </p>
         </div>
       `;
-    }
-    return covHtml + `
-      <div style="overflow-x:auto;">
-        <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
-          <thead>
-            <tr style="border-bottom:1px solid #1c2744; color:#94a3b8; text-align:left;">
-              <th style="padding:0.5rem;">Rank</th>
-              <th style="padding:0.5rem;">Partido y Horario (ART)</th>
-              <th style="padding:0.5rem;">Selección / Mercado</th>
-              <th style="padding:0.5rem;">Cuota</th>
-              <th style="padding:0.5rem;">Prob / EV</th>
-              <th style="padding:0.5rem;">Score</th>
-              <th style="padding:0.5rem; text-align:right;">Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${eligible.map(e => `
-              <tr style="border-bottom:1px solid rgba(28,39,68,0.6); ${e.isTopRecommended ? 'background:rgba(34,197,94,0.08);' : ''}">
-                <td style="padding:0.5rem;">${e.isTopRecommended ? '<span class="sem-badge sem-green">★ #1 TOP</span>' : '#' + e.rank}</td>
-                <td style="padding:0.5rem;">
-                  <strong>${e.match || '-'}</strong>
-                  <div style="color:#38bdf8;font-size:0.71rem;font-family:var(--font-mono);margin-top:0.1rem;">${formatKickoffArt(e.kickoffUtc)}</div>
-                  <div style="color:#94a3b8;font-size:0.68rem;">${e.competition || ''}</div>
-                </td>
-                <td style="padding:0.5rem;">${e.selection || '-'}<div style="color:#94a3b8;font-size:0.7rem;">${e.market || ''} · ${e.line || ''}</div></td>
-                <td style="padding:0.5rem; font-family:var(--font-mono); color:#fde047; font-weight:700;">@${Number(e.odds).toFixed(2)}</td>
-                <td style="padding:0.5rem; font-family:var(--font-mono);">${e.modelProbability ? (e.modelProbability * 100).toFixed(1) + '%' : 'N/D'} · <strong style="color:#4ade80;">+${e.expectedValuePct}%</strong></td>
-                <td style="padding:0.5rem; font-family:var(--font-mono); color:#38bdf8;">${e.compositeScore}</td>
-                <td style="padding:0.5rem; text-align:right; white-space:nowrap;">
-                  <button type="button" onclick="window.LadderModule.selectOpportunity('${e.snapshotId}')" style="background:rgba(56,189,248,0.18); color:#38bdf8; border:1px solid rgba(56,189,248,0.5); border-radius:8px; padding:0.35rem 0.65rem; font-size:0.74rem; font-weight:700; cursor:pointer;">Elegir para el reto</button>
-                </td>
+    } else {
+      const allRows = [
+        ...eligible.map(e => ({ ...e, isPendingLineup: false })),
+        ...pendingLineup.map(p => ({ ...p, isPendingLineup: true }))
+      ];
+
+      contentHtml = `
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
+            <thead>
+              <tr style="border-bottom:1px solid #1c2744; color:#94a3b8; text-align:left;">
+                <th style="padding:0.5rem;">Estado / Rank</th>
+                <th style="padding:0.5rem;">Partido y Horario (ART)</th>
+                <th style="padding:0.5rem;">Selección / Mercado</th>
+                <th style="padding:0.5rem;">Cuota</th>
+                <th style="padding:0.5rem;">Prob / EV</th>
+                <th style="padding:0.5rem;">Score</th>
+                <th style="padding:0.5rem; text-align:right;">Acción</th>
               </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-    `;
+            </thead>
+            <tbody>
+              ${allRows.map(e => {
+                const isPending = e.isPendingLineup;
+                let statusBadgeCol = '';
+                if (isPending) {
+                  statusBadgeCol = `<span class="sem-badge sem-amber" style="background:rgba(245,158,11,0.18); color:#fbbf24; border:1px solid rgba(245,158,11,0.45); font-weight:800; font-size:0.65rem; padding:0.2rem 0.5rem; letter-spacing:0.5px;">⏳ ESPERANDO FORMACIÓN DE EQUIPO</span>`;
+                } else if (e.isTopRecommended) {
+                  statusBadgeCol = '<span class="sem-badge sem-green">★ #1 TOP</span>';
+                } else {
+                  statusBadgeCol = '#' + (e.rank || '-');
+                }
+
+                let actionButton = '';
+                if (isPending) {
+                  actionButton = `
+                    <button type="button" disabled style="background:rgba(148,163,184,0.1); color:#94a3b8; border:1px solid rgba(148,163,184,0.25); border-radius:8px; padding:0.35rem 0.65rem; font-size:0.72rem; font-weight:700; cursor:not-allowed;" title="Alineación oficial (T-60) pendiente">
+                      Gated T-60
+                    </button>
+                  `;
+                } else {
+                  actionButton = `
+                    <button type="button" onclick="window.LadderModule.selectOpportunity('${e.snapshotId}')" style="background:rgba(56,189,248,0.18); color:#38bdf8; border:1px solid rgba(56,189,248,0.5); border-radius:8px; padding:0.35rem 0.65rem; font-size:0.74rem; font-weight:700; cursor:pointer;">Elegir para el reto</button>
+                  `;
+                }
+
+                const rowBg = isPending
+                  ? 'background:rgba(30,41,59,0.3); opacity:0.92;'
+                  : (e.isTopRecommended ? 'background:rgba(34,197,94,0.08);' : '');
+
+                return `
+                  <tr style="border-bottom:1px solid rgba(28,39,68,0.6); ${rowBg}">
+                    <td style="padding:0.5rem; white-space:nowrap;">${statusBadgeCol}</td>
+                    <td style="padding:0.5rem;">
+                      <strong>${e.match || '-'}</strong>
+                      <div style="color:#38bdf8;font-size:0.71rem;font-family:var(--font-mono);margin-top:0.1rem;">${formatKickoffArt(e.kickoffUtc)}</div>
+                      <div style="color:#94a3b8;font-size:0.68rem;">${e.competition || ''}</div>
+                    </td>
+                    <td style="padding:0.5rem;">
+                      <div style="font-weight:700; color:#f8fafc;">${e.selection || '-'}</div>
+                      <div style="color:#94a3b8;font-size:0.7rem;">${e.market || ''} · ${e.line || ''}</div>
+                    </td>
+                    <td style="padding:0.5rem; font-family:var(--font-mono); color:#fde047; font-weight:700;">@${Number(e.odds).toFixed(2)}</td>
+                    <td style="padding:0.5rem; font-family:var(--font-mono);">${e.modelProbability ? (e.modelProbability * 100).toFixed(1) + '%' : 'N/D'} · <strong style="color:#4ade80;">+${e.expectedValuePct}%</strong></td>
+                    <td style="padding:0.5rem; font-family:var(--font-mono); color:#38bdf8;">${e.compositeScore}</td>
+                    <td style="padding:0.5rem; text-align:right; white-space:nowrap;">
+                      ${actionButton}
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+    return covHtml + contentHtml;
   }
 
   function renderHistorial(l) {
@@ -429,9 +474,10 @@
       return;
     }
 
+    const oppCount = (l.eligibleOpportunities || []).length + (l.pendingLineupOpportunities || []).length;
     const tabs = [
       ['principal', 'Principal'],
-      ['oportunidades', `Oportunidades (${(l.eligibleOpportunities || []).length})`],
+      ['oportunidades', `Oportunidades (${oppCount})`],
       ['historial', `Historial (${(l.stepHistory || []).length})`],
       ['reglas', 'Reglas Oficiales']
     ];
