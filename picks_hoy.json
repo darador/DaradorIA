@@ -1163,9 +1163,9 @@
       "rationale": "Championship StatsHub L10 90% / L20 65% (0.98 remates/90, 82.4 min prom) @1.60. Sujeto a confirmación de XI titular T-60 min (Shadow Mode).",
       "elena_decision": "EXPIRADO_SIN_EVALUACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
+      "sports_result": "ACERTADA",
       "status": "EXPIRADO_SIN_EVALUACION",
-      "is_settled": false,
+      "is_settled": true,
       "category": "finalizados",
       "proximity_badge": "Finalizado",
       "fair_odds": 1.6,
@@ -1193,7 +1193,8 @@
       "manualOverrideAtUtc": "2026-11-24T20:58:57.243Z",
       "manualOverrideScope": "2026-11-24_EXCEPTIONAL_ONLY",
       "approvalCategory": "MANUAL_OVERRIDE_EXCEPTIONAL",
-      "is_finished": true
+      "is_finished": true,
+      "actual_stat": 1
     },
     {
       "id": "cand_real_statshub_20261124_mcconville_foulswon",
@@ -1223,7 +1224,7 @@
       "rationale": "Championship StatsHub L10 90% / L20 55% (89.8 min prom) @1.87. Sujeto a XI titular T-60.",
       "elena_decision": "EXPIRADO_SIN_EVALUACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
+      "sports_result": "PENDIENTE_DE_LIQUIDACION",
       "status": "EXPIRADO_SIN_EVALUACION",
       "is_settled": false,
       "category": "finalizados",
@@ -1466,7 +1467,7 @@
       "rationale": "UCL StatsHub L10 90% / L20 65% (0.80 faltas/90, 84.0 min prom) @1.62. Sujeto a confirmación de XI titular T-60 min (Shadow Mode).",
       "elena_decision": "EXPIRADO_SIN_EVALUACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
+      "sports_result": "PENDIENTE_DE_LIQUIDACION",
       "status": "EXPIRADO_SIN_EVALUACION",
       "is_settled": false,
       "category": "finalizados",
@@ -1526,9 +1527,9 @@
       "rationale": "UCL StatsHub L10 90% / L20 70% (1.28 remates/90, 84.7 min prom) @1.55. Sujeto a confirmación de XI titular T-60 min (Shadow Mode).",
       "elena_decision": "EXPIRADO_SIN_EVALUACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
+      "sports_result": "FALLADA",
       "status": "EXPIRADO_SIN_EVALUACION",
-      "is_settled": false,
+      "is_settled": true,
       "category": "finalizados",
       "proximity_badge": "Finalizado",
       "fair_odds": 1.51,
@@ -1556,7 +1557,8 @@
       "manualOverrideAtUtc": "2026-11-24T20:58:57.243Z",
       "manualOverrideScope": "2026-11-24_EXCEPTIONAL_ONLY",
       "approvalCategory": "MANUAL_OVERRIDE_EXCEPTIONAL",
-      "is_finished": true
+      "is_finished": true,
+      "actual_stat": 0
     },
     {
       "id": "cand_real_statshub_20261124_mowatt_fouls",
@@ -1586,7 +1588,7 @@
       "rationale": "Championship StatsHub L10 90% / L20 80% (1.28 faltas/90, 84.2 min prom) @1.53. Sujeto a confirmación de XI titular T-60 min (Shadow Mode).",
       "elena_decision": "EXPIRADO_SIN_EVALUACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
+      "sports_result": "PENDIENTE_DE_LIQUIDACION",
       "status": "EXPIRADO_SIN_EVALUACION",
       "is_settled": false,
       "category": "finalizados",
@@ -1976,7 +1978,7 @@
       "rationale": "UCL StatsHub L5 100% / L20 80% (1.15 faltas/90, 86.3 min prom) @1.70. Sujeto a XI titular T-60.",
       "elena_decision": "EXPIRADO_SIN_EVALUACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
+      "sports_result": "PENDIENTE_DE_LIQUIDACION",
       "status": "EXPIRADO_SIN_EVALUACION",
       "is_settled": false,
       "category": "finalizados",
@@ -6905,7 +6907,7 @@
   "total_analyzed": 174,
   "shadow_mode": true,
   "is_operative_recommendation": false,
-  "updated_at": "2026-11-25T00:04:26.401Z",
+  "updated_at": "2026-11-25T00:57:14.028Z",
   "research_center": [
     {
       "id": "cand_1795110774831_w9sj8j",
