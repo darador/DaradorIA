@@ -7452,5 +7452,36 @@
 
 
 
+
+    <!-- SECCIÓN FASE 11: OBSERVACIÓN PROSPECTIVA & RETO ESCALERA -->
+    <section id="prospectiveObservationSection" class="card" style="margin-top: 1.25rem; border: 1px solid rgba(0, 242, 254, 0.35); background: rgba(14, 21, 42, 0.88); border-radius: 14px; padding: 1.15rem;">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.75rem;">
+        <div>
+          <span class="sem-badge sem-blue" style="margin-right:0.4rem;">FASE 11 · OBSERVACIÓN PROSPECTIVA</span>
+          <span class="sem-badge sem-amber">SIMULACIÓN — DINERO VIRTUAL</span>
+          <h2 style="font-size:1.1rem; margin-top:0.45rem; color:#f8fafc;">Observación Prospectiva & RETO ESCALERA</h2>
+          <p id="prospWidgetSummary" style="font-size:0.8rem; color:#94a3b8; margin-top:0.2rem;">Cargando estado prospectivo...</p>
+        </div>
+        <a href="/prospective_dashboard" style="background:rgba(0,242,254,0.16); color:#38bdf8; border:1px solid rgba(0,242,254,0.45); padding:0.5rem 0.9rem; border-radius:8px; font-size:0.8rem; font-weight:700; text-decoration:none;">Abrir Dashboard Prospectivo →</a>
+      </div>
+    </section>
+    <script>
+      (async function loadProspectiveSummary() {
+        const el = document.getElementById('prospWidgetSummary');
+        if (!el) return;
+        try {
+          const r = await fetch('./api/fase11_prospective_dashboard.json', { cache: 'no-store' });
+          if (!r.ok) return;
+          const d = await r.json();
+          const s = d.summary || {};
+          const l = d.prospectiveLadder || {};
+          el.textContent = 'Detectadas: ' + (s.detectedCount || 0) + ' · Aprobadas Elena: ' + (s.approvedCount || 0) +
+            ' · Pendientes T-60: ' + (s.pendingEvalCount || 0) + ' · RETO ESCALERA (Virtual): $' +
+            Number(l.currentCapital || 50000).toLocaleString('es-AR') + ' ARS (Paso ' + (l.currentStep || 1) +
+            (l.openBet ? ' · 1 apuesta virtual abierta' : ' · Sin apuesta abierta') + ')';
+        } catch (_) {}
+      })();
+    </script>
+
 </body>
 </html>

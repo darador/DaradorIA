@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaradorBET — Fase 11: Observación Prospectiva & RETO ESCALERA</title>
+  <style>
+    :root {
+      --bg: #050813; --card: rgba(14,21,42,0.88); --border: #1c2744;
+      --text: #f8fafc; --muted: #94a3b8; --green: #22c55e; --red: #ef4444;
+      --amber: #f59e0b; --cyan: #00f2fe; --violet: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 1.5rem; max-width: 1400px; margin: 0 auto; }
+    .sim-banner { background: rgba(245,158,11,0.16); border: 1px solid rgba(245,158,11,0.5); color: #fde047; padding: 0.65rem 1rem; border-radius: 10px; font-weight: 700; font-size: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    h1 { font-size: 1.45rem; margin-bottom: 0.35rem; }
+    h2 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--cyan); }
+    .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+    .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem; }
+    .kpi .lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; }
+    .kpi .val { font-size: 1.25rem; font-weight: 700; margin-top: 0.2rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.15rem; margin-bottom: 1.25rem; }
+    .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    select { background: #0b1226; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td { padding: 0.55rem; border-bottom: 1px solid rgba(28,39,68,0.7); text-align: left; }
+    th { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; }
+    .badge { display: inline-block; padding: 0.18rem 0.5rem; border-radius: 6px; font-size: 0.72rem; font-weight: 700; }
+    .b-green { background: rgba(34,197,94,0.18); color: #4ade80; }
+    .b-red { background: rgba(239,68,68,0.18); color: #f87171; }
+    .b-amber { background: rgba(245,158,11,0.18); color: #fbbf24; }
+    .b-blue { background: rgba(0,242,254,0.16); color: #38bdf8; }
+    .b-gray { background: rgba(148,163,184,0.16); color: #cbd5e1; }
+    .warn { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.35); color: #fbbf24; padding: 0.55rem 0.8rem; border-radius: 8px; font-size: 0.8rem; margin-bottom: 1rem; }
+    pre { background: #080e20; padding: 0.75rem; border-radius: 8px; font-size: 0.72rem; overflow-x: auto; color: #cbd5e1; }
+    a { color: var(--cyan); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="sim-banner">
+    <span>⚠ SIMULACIÓN — DINERO VIRTUAL · FASE 11 OBSERVACIÓN PROSPECTIVA (0 APUESTAS REALES)</span>
+    <a href="/">← Volver al Daily Board</a>
+  </div>
+
+  <h1>Observación Prospectiva & Panel RETO ESCALERA</h1>
+  <p class="sub" id="metaLine">Cargando datos prospectivos...</p>
+
+  <div class="card">
+    <h2>RETO ESCALERA — Simulación Prospectiva (SIMULACIÓN — DINERO VIRTUAL)</h2>
+    <div class="grid" id="ladderKpis"></div>
+    <div id="openBetBox" style="margin-bottom:0.75rem;font-size:0.82rem;"></div>
+    <div id="replayRefBox" style="font-size:0.78rem;color:var(--muted);border-top:1px solid var(--border);padding-top:0.65rem;"></div>
+  </div>
+
+  <div class="card">
+    <h2>Rendimiento Prospectivo (Aislado de Contrafactuales e Históricos)</h2>
+    <div id="statWarn" class="warn" style="display:none;"></div>
+    <div class="grid" id="perfKpis"></div>
+    <div id="marketBreakdown" style="font-size:0.8rem;color:#cbd5e1;"></div>
+  </div>
+
+  <div class="card">
+    <h2>Oportunidades Prospectivas Registradas</h2>
+    <div class="filters">
+      <select id="fDate"><option value="all">Todas las fechas</option></select>
+      <select id="fLeague"><option value="all">Todas las ligas</option></select>
+      <select id="fMarket"><option value="all">Todos los mercados</option></select>
+      <select id="fElena"><option value="all">Todas decisiones Elena</option></select>
+      <select id="fCircuit"><option value="all">Todos los circuitos</option></select>
+    </div>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Circuito</th><th>Fecha / Partido</th><th>Mercado / Selección</th><th>Cuota / Prob / EV</th>
+            <th>Elena / RM</th><th>Alineación</th><th>Estado</th><th>Detalle</th>
+          </tr>
+        </thead>
+        <tbody id="oppBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" id="detailCard" style="display:none;">
+    <h2>Snapshot Inmutable Original</h2>
+    <pre id="detailPre"></pre>
+  </div>
+
+  <script>
+    let DATA = null;
+    const fmtARS = (n) => '$' + Number(n || 0).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ARS';
+
+    function fillSelect(id, vals, label) {
+      const el = document.getElementById(id);
+      const uniq = [...new Set(vals.filter(Boolean))].sort();
+      el.innerHTML = `<option value="all">${label}</option>` + uniq.map(v => `<option value="${v}">${v}</option>`).join('');
+    }
+
+    function renderTable() {
+      const opps = (DATA.opportunities || []).filter(o => {
+        const d = (o.kickoffUtc || '').slice(0, 10);
+        if (fDate.value !== 'all' && d !== fDate.value) return false;
+        if (fLeague.value !== 'all' && o.competition !== fLeague.value) return false;
+        if (fMarket.value !== 'all' && o.market !== fMarket.value) return false;
+        if (fElena.value !== 'all' && o.elenaDecision !== fElena.value) return false;
+        if (fCircuit.value !== 'all' && o.circuit !== fCircuit.value) return false;
+        return true;
+      });
+      document.getElementById('oppBody').innerHTML = opps.map((o, idx) => `
+        <tr>
+          <td><span class="badge b-blue">${o.circuit}</span></td>
+          <td><strong>${o.match || '-'}</strong><div style="color:var(--muted);font-size:0.72rem;">${(o.kickoffUtc || '').slice(0, 16).replace('T', ' ')} UTC · ${o.competition || ''}</div></td>
+          <td>${o.selection || '-'}<div style="color:var(--muted);font-size:0.72rem;">${o.market || ''} · ${o.line || ''}</div></td>
+          <td>@${o.odds ?? 'N/D'} · ${o.modelProbability ? (o.modelProbability * 100).toFixed(1) + '%' : 'N/D'} · EV ${o.expectedValuePct != null ? '+' + o.expectedValuePct + '%' : 'N/D'}</td>
+          <td><span class="badge ${o.elenaDecision === 'APROBADO' ? 'b-green' : (o.elenaDecision === 'RECHAZADO' ? 'b-red' : 'b-amber')}">${o.elenaDecision}</span></td>
+          <td><span class="badge b-gray">${o.lineupStatus || '-'}</span></td>
+          <td><span class="badge b-gray">${o.settlement ? o.settlement.outcome : 'PENDIENTE'}</span></td>
+          <td><button onclick="showSnap('${o.snapshotId}')" style="background:#1c2744;color:#f8fafc;border:none;border-radius:6px;padding:0.25rem 0.5rem;cursor:pointer;font-size:0.72rem;">Ver snapshot</button></td>
+        </tr>
+      `).join('') || '<tr><td colspan="8" style="color:var(--muted);">Sin oportunidades para los filtros seleccionados.</td></tr>';
+    }
+
+    window.showSnap = (id) => {
+      const found = (DATA.opportunities || []).find(o => o.snapshotId === id);
+      if (!found) return;
+      document.getElementById('detailCard').style.display = 'block';
+      document.getElementById('detailPre').textContent = JSON.stringify(found, null, 2);
+      document.getElementById('detailCard').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    async function init() {
+      const res = await fetch('api/fase11_prospective_dashboard.json', { cache: 'no-store' });
+      DATA = await res.json();
+      const s = DATA.summary || {};
+      const l = DATA.prospectiveLadder || {};
+      const r = DATA.historicalReplayReference;
+
+      document.getElementById('metaLine').textContent =
+        `Actualizado: ${DATA.generatedAtUtc} · Cadena SHA-256: ${DATA.integrity?.ok ? 'INTACTA' : 'ALERTA'} (${DATA.integrity?.totalSnapshots || 0} snapshots)`;
+
+      document.getElementById('ladderKpis').innerHTML = [
+        ['Capital Inicial', fmtARS(l.initialCapital)],
+        ['Capital Actual', fmtARS(l.currentCapital)],
+        ['Objetivo', fmtARS(l.targetCapital)],
+        ['Progreso', (l.progressPct || 0) + '%'],
+        ['Escalón Actual', `Ciclo ${l.currentCycle || 1} · Paso ${l.currentStep || 1}`],
+        ['Stake Comprometido', fmtARS(l.committedStake)],
+        ['Beneficio Acumulado', fmtARS(l.cumulativeProfit)]
+      ].map(([k, v]) => `<div class="kpi"><div class="lbl">${k}</div><div class="val">${v}</div></div>`).join('');
+
+      document.getElementById('openBetBox').innerHTML = l.openBet
+        ? `<strong>Apuesta virtual abierta:</strong> ${l.openBet.match} — ${l.openBet.selection} (${l.openBet.market}) @${l.openBet.odds} · Stake: ${fmtARS(l.openBet.stake)} · Retorno potencial: ${fmtARS(l.openBet.potentialReturn)}`
+        : '<strong>Apuesta virtual abierta:</strong> Ninguna (capital 100% disponible esperando oportunidad elegible).';
+
+      if (r) {
+        document.getElementById('replayRefBox').innerHTML =
+          `<strong>${r.label}:</strong> ${r.eligiblePicksReplayed} picks evaluados · ${r.cyclesCompleted} ciclo completado · Beneficio simulado histórico: ${fmtARS(r.netSimulatedProfit)} <em>(NO sumado al balance prospectivo actual).</em>`;
+      }
+
+      if (s.statisticalWarning) {
+        const w = document.getElementById('statWarn');
+        w.style.display = 'block';
+        w.textContent = '⚠ ' + s.statisticalWarning;
+      }
+
+      document.getElementById('perfKpis').innerHTML = [
+        ['Detectadas', s.detectedCount ?? 0],
+        ['Aprobadas Elena', s.approvedCount ?? 0],
+        ['Rechazadas', s.rejectedCount ?? 0],
+        ['Liquidadas (N)', s.settled ?? 0],
+        ['Hit Rate', s.hitRatePct != null ? s.hitRatePct + '%' : 'N/D'],
+        ['ROI / Yield', s.roiPct != null ? s.roiPct + '%' : 'N/D'],
+        ['Brier / LogLoss', s.brierScore != null ? `${s.brierScore} / ${s.logLoss}` : 'N/D']
+      ].map(([k, v]) => `<div class="kpi"><div class="lbl">${k}</div><div class="val">${v}</div></div>`).join('');
+
+      const mkts = Object.entries(DATA.breakdowns?.byMarket || {}).map(([k, v]) =>
+        `<span class="badge b-gray" style="margin:0.15rem;">${k} (N=${v.n}, liq=${v.settled})</span>`
+      ).join(' ');
+      document.getElementById('marketBreakdown').innerHTML = `<strong>Por mercado:</strong> ${mkts || 'Sin datos'}`;
+
+      const opps = DATA.opportunities || [];
+      fillSelect('fDate', opps.map(o => (o.kickoffUtc || '').slice(0, 10)), 'Todas las fechas');
+      fillSelect('fLeague', opps.map(o => o.competition), 'Todas las ligas');
+      fillSelect('fMarket', opps.map(o => o.market), 'Todos los mercados');
+      fillSelect('fElena', opps.map(o => o.elenaDecision), 'Todas decisiones Elena');
+      fillSelect('fCircuit', opps.map(o => o.circuit), 'Todos los circuitos');
+      ['fDate','fLeague','fMarket','fElena','fCircuit'].forEach(id => document.getElementById(id).addEventListener('change', renderTable));
+      renderTable();
+    }
+    init();
+  </script>
+</body>
+</html>
