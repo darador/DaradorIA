@@ -45,8 +45,8 @@ class AgentOrchestrator {
    * Coordina el análisis individual de los 6 agentes para un candidato
    */
   async evaluateSingleCandidate(candidate, prediction) {
-    // 1. Ejecución concurrente de los 5 analistas
-    const [pReport, tReport, mContextReport, oReport, mIntelReport] = await Promise.all([
+    // 1. Ejecución concurrente de los 4 analistas base (Sofía, Valentina, Camila, Renata)
+    const [pReport, tReport, mContextReport, oReport] = await Promise.all([
       playerAnalyst.analyze(candidate, prediction).catch(err => ({
         agentName: 'Player Analyst',
         error: err.message,
@@ -66,13 +66,22 @@ class AgentOrchestrator {
         agentName: 'Odds Analyst',
         error: err.message,
         recommendation: 'NEUTRAL'
-      })),
-      matchIntelligenceAnalyst.analyze(candidate, prediction).catch(err => ({
-        agentName: 'Match Intelligence Analyst',
-        error: err.message,
-        recommendation: 'NEUTRAL'
       }))
     ]);
+
+    // 1B. Lucía 2.0 analiza con los informes de los 4 agentes como contexto (sin modificarlos)
+    const mIntelReport = await matchIntelligenceAnalyst.analyze(candidate, prediction, {
+      otherAgentReports: {
+        playerAnalyst: pReport,
+        teamAnalyst: tReport,
+        matchContext: mContextReport,
+        oddsAnalyst: oReport
+      }
+    }).catch(err => ({
+      agentName: 'Match Intelligence Analyst',
+      error: err.message,
+      recommendation: 'NEUTRAL'
+    }));
 
     const agentReports = {
       playerAnalyst: pReport,

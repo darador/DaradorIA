@@ -110,12 +110,12 @@ async function runAgentTests() {
   assert(oReport.recommendation === 'FAVORABLE', 'Odds Analyst detecta valor de cuota 1.80 frente a cuota justa 1.38');
   assert(oReport.fairOdds === 1.38, 'Odds Analyst preserva la cuota justa matemática');
 
-  // 5. Match Intelligence Analyst
+  // 5. Match Intelligence Analyst (Lucía 2.0)
   console.log('\n--- 5. Match Intelligence Analyst ---');
-  const mIntelReport = await matchIntelligenceAnalyst.analyze(mockCandidate, mockPrediction);
-  assert(mIntelReport.hasFindings === true, 'Match Intelligence detecta duelos tácticos directos de la selección');
-  assert(mIntelReport.tacticalDuels.length >= 1, 'Match Intelligence modela el duelo Delantero vs Línea Defensiva');
-  assert(mIntelReport.findings[0]?.status === 'CONFIRMADO', 'Match Intelligence califica fuentes con estado CONFIRMADO');
+  const mIntelReport = await matchIntelligenceAnalyst.analyze(mockCandidate, mockPrediction, { persistHistory: false });
+  assert(mIntelReport.version === '2.0.0', 'Match Intelligence Analyst opera en versión 2.0.0');
+  assert(mIntelReport.structuredSignals && typeof mIntelReport.structuredSignals.newsRiskDetected === 'boolean', 'Match Intelligence emite structuredSignals válidos');
+  assert(Array.isArray(mIntelReport.findings) && Array.isArray(mIntelReport.tacticalDuels), 'Match Intelligence preserva compatibilidad estructural de arrays sin inventar hallazgos');
 
   // 6. Risk Manager (Veto y Consenso)
   console.log('\n--- 6. Risk Manager (Veredicto y Veto) ---');

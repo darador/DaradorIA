@@ -190,7 +190,17 @@ class RiskManager {
     }
 
     if (mIntel.structuredSignals?.newsRiskDetected === true) {
-      vetoReasons.push('VETO DE NOTICIAS: Match Intelligence Analyst detectó novedad de última hora adversa.');
+      const sig = mIntel.structuredSignals;
+      const isLegacyFormat = !sig.riskSeverity && !sig.recommendation;
+      const isHighConfidenceVeto =
+        sig.recommendation === 'VETO' ||
+        (['HIGH', 'CRITICAL'].includes(String(sig.riskSeverity || '').toUpperCase()) && Number(sig.newsConfidence || 0) >= 0.75);
+
+      if (isLegacyFormat || isHighConfidenceVeto) {
+        vetoReasons.push(`VETO DE NOTICIAS: Match Intelligence Analyst (Lucía) detectó riesgo ${sig.riskSeverity || 'ALTO'} (${sig.reasoning || 'novedad de última hora adversa'}).`);
+      } else {
+        pendingReasons.push(`REVISIÓN DE NOTICIAS (${sig.riskSeverity || 'MEDIUM'}, conf. ${Math.round(Number(sig.newsConfidence || 0) * 100)}%): ${sig.reasoning || 'Señal no confirmada para revisión de Elena.'}`);
+      }
     }
 
     // --- REGLA 4: ANÁLISIS DE CUOTA (ODDS ANALYST) ---
