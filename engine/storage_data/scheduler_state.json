@@ -1,21 +1,142 @@
 {
-  "isRunning": true,
-  "startedAt": "2026-11-23T02:50:27.299Z",
-  "lastStoppedAt": "2026-11-23T01:29:56.204Z",
+  "isRunning": false,
+  "startedAt": "2026-11-24T20:33:19.108Z",
+  "lastStoppedAt": "2026-11-24T20:33:19.153Z",
   "lastRunTimes": {
     "pipeline": "2026-11-23T01:29:56.091Z",
-    "lineups": "2026-11-23T03:20:46.579Z",
-    "settlement": "2026-11-23T03:20:30.358Z"
+    "lineups": "2026-11-24T01:09:59.534Z",
+    "settlement": "2026-11-23T03:50:27.358Z",
+    "discovery": "2026-11-23T04:01:02.110Z",
+    "experimentalMarkets": "2026-11-24T16:12:51.400Z",
+    "experimentalSnapshots": "2026-11-24T16:50:33.467Z",
+    "experimentalRescan": "2026-11-24T17:39:36.629Z"
   },
   "nextScheduledRuns": {
-    "discovery": "2026-11-23T04:00:00.000Z",
-    "discoveryArt": "23/11/2026, 01:00:00 hs (ART)",
-    "lineups": "2026-11-23T03:35:46.579Z",
-    "lineupsArt": "23/11/2026, 00:35:46 hs (ART)",
-    "settlement": "2026-11-23T03:50:30.358Z",
-    "settlementArt": "23/11/2026, 00:50:30 hs (ART)"
+    "discovery": "2026-11-25T00:00:00.000Z",
+    "discoveryArt": "24/11/2026, 21:00:00 hs (ART)",
+    "lineups": "2026-11-24T20:48:19.125Z",
+    "lineupsArt": "24/11/2026, 17:48:19 hs (ART)",
+    "settlement": "2026-11-24T21:03:19.125Z",
+    "settlementArt": "24/11/2026, 18:03:19 hs (ART)"
   },
   "executionHistory": [
+    {
+      "id": "exec_1795541976616_3q3q9",
+      "task": "experimentalRescan",
+      "startedAt": "2026-11-24T17:39:36.326Z",
+      "startedAtArt": "24/11/2026, 14:39:36 hs (ART)",
+      "completedAt": "2026-11-24T17:39:36.629Z",
+      "completedAtArt": "24/11/2026, 14:39:36 hs (ART)",
+      "durationSeconds": 0.29,
+      "status": "SUCCESS",
+      "recordsProcessed": 40,
+      "message": "Rescan Fase 10.2: 3 eventos, 40 mercados, 13 nuevas, 0 cambios.",
+      "error": null
+    },
+    {
+      "id": "exec_1795539033454_n8euj",
+      "task": "experimentalSnapshots",
+      "startedAt": "2026-11-24T16:50:33.397Z",
+      "startedAtArt": "24/11/2026, 13:50:33 hs (ART)",
+      "completedAt": "2026-11-24T16:50:33.467Z",
+      "completedAtArt": "24/11/2026, 13:50:33 hs (ART)",
+      "durationSeconds": 0.06,
+      "status": "SUCCESS",
+      "recordsProcessed": 5,
+      "message": "Snapshots Fase 10.1: 5 capturados, 0 MISSED, 0 fallidos.",
+      "error": null
+    },
+    {
+      "id": "exec_1795536771387_995c0",
+      "task": "experimentalMarkets",
+      "startedAt": "2026-11-24T16:12:51.281Z",
+      "startedAtArt": "24/11/2026, 13:12:51 hs (ART)",
+      "completedAt": "2026-11-24T16:12:51.400Z",
+      "completedAtArt": "24/11/2026, 13:12:51 hs (ART)",
+      "durationSeconds": 0.11,
+      "status": "SUCCESS",
+      "recordsProcessed": 12,
+      "message": "Fase 10 (EXECUTED): 3 partidos investigados, 30 predicciones, 12 obs registradas.",
+      "error": null
+    },
+    {
+      "id": "exec_1795482599534_qre74",
+      "task": "lineups",
+      "startedAt": "2026-11-24T01:09:59.509Z",
+      "startedAtArt": "23/11/2026, 22:09:59 hs (ART)",
+      "completedAt": "2026-11-24T01:09:59.534Z",
+      "completedAtArt": "23/11/2026, 22:09:59 hs (ART)",
+      "durationSeconds": 0.03,
+      "status": "SUCCESS",
+      "recordsProcessed": 9,
+      "message": "Alineaciones: 9 evaluadas. Promovidos: 0, Vetados: 0.",
+      "error": null
+    },
+    {
+      "id": "exec_1795407283954_b37mg",
+      "task": "lineups",
+      "startedAt": "2026-11-23T04:14:43.932Z",
+      "startedAtArt": "23/11/2026, 01:14:43 hs (ART)",
+      "completedAt": "2026-11-23T04:14:43.954Z",
+      "completedAtArt": "23/11/2026, 01:14:43 hs (ART)",
+      "durationSeconds": 0.02,
+      "status": "SUCCESS",
+      "recordsProcessed": 0,
+      "message": "Alineaciones: 0 evaluadas. Promovidos: 0, Vetados: 0.",
+      "error": null
+    },
+    {
+      "id": "exec_1795406462110_7ifoj",
+      "task": "discovery",
+      "startedAt": "2026-11-23T04:00:43.929Z",
+      "startedAtArt": "23/11/2026, 01:00:43 hs (ART)",
+      "completedAt": "2026-11-23T04:01:02.110Z",
+      "completedAtArt": "23/11/2026, 01:01:02 hs (ART)",
+      "durationSeconds": 18.18,
+      "status": "SUCCESS",
+      "recordsProcessed": 0,
+      "message": "0 partidos escaneados (48h). 0 nuevos candidatos detectados.",
+      "error": null
+    },
+    {
+      "id": "exec_1795405845471_nlpwn",
+      "task": "lineups",
+      "startedAt": "2026-11-23T03:50:27.359Z",
+      "startedAtArt": "23/11/2026, 00:50:27 hs (ART)",
+      "completedAt": "2026-11-23T03:50:45.471Z",
+      "completedAtArt": "23/11/2026, 00:50:45 hs (ART)",
+      "durationSeconds": 18.11,
+      "status": "SUCCESS",
+      "recordsProcessed": 6,
+      "message": "Alineaciones: 6 evaluadas. Promovidos: 0, Vetados: 0.",
+      "error": null
+    },
+    {
+      "id": "exec_1795405827358_4gqtg",
+      "task": "settlement",
+      "startedAt": "2026-11-23T03:50:27.332Z",
+      "startedAtArt": "23/11/2026, 00:50:27 hs (ART)",
+      "completedAt": "2026-11-23T03:50:27.358Z",
+      "completedAtArt": "23/11/2026, 00:50:27 hs (ART)",
+      "durationSeconds": 0.03,
+      "status": "SUCCESS",
+      "recordsProcessed": 0,
+      "message": "Liquidación: 1 evaluados. 0 liquidados oficialmente.",
+      "error": null
+    },
+    {
+      "id": "exec_1795404945452_agmtl",
+      "task": "lineups",
+      "startedAt": "2026-11-23T03:35:27.347Z",
+      "startedAtArt": "23/11/2026, 00:35:27 hs (ART)",
+      "completedAt": "2026-11-23T03:35:45.453Z",
+      "completedAtArt": "23/11/2026, 00:35:45 hs (ART)",
+      "durationSeconds": 18.11,
+      "status": "SUCCESS",
+      "recordsProcessed": 6,
+      "message": "Alineaciones: 6 evaluadas. Promovidos: 0, Vetados: 0.",
+      "error": null
+    },
     {
       "id": "exec_1795404046579_6oveq",
       "task": "lineups",
@@ -239,9 +360,10 @@
     }
   ],
   "errorLog": [],
-  "totalRunsCompleted": 17,
+  "totalRunsCompleted": 26,
   "totalErrorsCaught": 0,
-  "startedAtArt": "22/11/2026, 23:50:27 hs (ART)",
-  "updatedAt": "2026-11-23T03:20:46.579Z",
-  "updatedAtArt": "23/11/2026, 00:20:46 hs (ART)"
+  "startedAtArt": "24/11/2026, 17:33:19 hs (ART)",
+  "lastStoppedAtArt": "24/11/2026, 17:33:19 hs (ART)",
+  "updatedAt": "2026-11-24T20:33:19.153Z",
+  "updatedAtArt": "24/11/2026, 17:33:19 hs (ART)"
 }

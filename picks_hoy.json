@@ -289,7 +289,7 @@
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "APROBADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -509,7 +509,9 @@
             "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Matheus Bidu."
           }
         }
-      }
+      },
+      "lineupStatus": "CONFIRMADA",
+      "notes": "Alineación oficial confirmada: titular como extremo izquierdo (LW) ante Atlético Mineiro."
     },
     {
       "id": "cand_real_statshub_20261125_rio_ngumoha_foulswon_0.5",
@@ -1565,10 +1567,10 @@
       "rationale": "StatsHub L10 90% @1.38. Evaluado por comité IA 2.0.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.26,
@@ -1787,7 +1789,9 @@
           }
         }
       },
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 0,
+      "notes": "Oficial EFL/WhoScored: Jay Stansfield aportó 1 asistencia en 75 min pero no registró remates ante Burnley. FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_atakan_karazor_fouls_0.5",
@@ -2075,10 +2079,10 @@
       "rationale": "StatsHub L10 90% @1.53. Evaluado por comité IA 2.0.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.33,
@@ -2297,7 +2301,9 @@
           }
         }
       },
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 0,
+      "notes": "Oficial EFL/WhoScored: Tomoki Iwata completó el partido con 0 faltas cometidas ante Burnley. FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_jeff_chabot_foulswon_0.5",
@@ -2329,10 +2335,10 @@
       "rationale": "StatsHub L10 100% @1.5. Evaluado por comité IA 2.0.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.25,
@@ -2551,7 +2557,9 @@
           }
         }
       },
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 1,
+      "notes": "Oficial StatsHub: Jeff Chabot recibió 1 falta ganada en 90 min de titular ante Inter. ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_callum_styles_shots_0.5",
@@ -2583,10 +2591,10 @@
       "rationale": "StatsHub L10 100% @1.48. Evaluado por comité IA 2.0.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.24,
@@ -2805,7 +2813,9 @@
           }
         }
       },
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 0,
+      "notes": "Oficial StatsHub: Callum Styles disputó 90 min sin registrar remates ante Bolton. FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_mason_greenwood_shots",
@@ -2837,10 +2847,10 @@
       "rationale": "StatsHub L5 60% / L10 80% / L15 80% @1.67. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.45,
@@ -2854,7 +2864,9 @@
         "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {},
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 3,
+      "notes": "Oficial StatsHub: Mason Greenwood completó 3 remates totales (2 al arco) en 78 min de titular ante Shakhtar. ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_obed_vargas_tackles",
@@ -2937,10 +2949,10 @@
       "rationale": "StatsHub L5 80% / L10 90% / L15 87% @1.5. Sujeto a confirmación XI titular T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.31,
@@ -2954,7 +2966,9 @@
         "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {},
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 1,
+      "notes": "Oficial StatsHub: Niccolò Pisilli completó 1 remate al arco en 90 min de titular ante PSG. ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_thomas_berenbruch_shots",
@@ -3342,10 +3356,10 @@
       "rationale": "StatsHub L10 70% / Rival 70% / L15 53% @1.79. Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.59,
@@ -3358,7 +3372,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +12.7% en mercado de equipo."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 3,
+      "notes": "Oficial StatsHub: Shakhtar Donetsk completó 3 córners ante Fenerbahçe. Más de 4.5 FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_pisa_cards_over",
@@ -3390,10 +3406,10 @@
       "rationale": "StatsHub L10 70% / Rival 100% / L15 60% @1.67. Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.41,
@@ -3406,7 +3422,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +18.5% en mercado de equipo."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 4,
+      "notes": "Oficial Serie B / StatsHub: Pisa recibió 4 tarjetas amarillas (Caracciolo, Pittarello, Léris, Loyola) ante Modena. Más de 1.5 ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_birmingham_city_cards_under",
@@ -3438,10 +3456,10 @@
       "rationale": "StatsHub L10 80% / Rival 80% / L15 73% @1.57. Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.39,
@@ -3454,7 +3472,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +12.8% en mercado de equipo."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 0,
+      "notes": "Oficial EFL / StatsHub: Birmingham City no recibió tarjetas en su victoria 0-2 en Turf Moor (0 tarjetas). Menos de 2.5 ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_roma_corners_over",
@@ -3486,10 +3506,10 @@
       "rationale": "StatsHub L10 80% / Rival 80% / L15 80% @1.67. Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.43,
@@ -3502,7 +3522,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +16.8% en mercado de equipo."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 4,
+      "notes": "Oficial StatsHub/WhoScored: Roma completó 4 córners ante Paris Saint-Germain. Superó la línea Más de 2.5."
     },
     {
       "id": "cand_real_statshub_20261125_inter_corners_under",
@@ -3534,10 +3556,10 @@
       "rationale": "StatsHub L10 90% / Rival 80% / L15 73% @1.54. Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.33,
@@ -3550,7 +3572,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +16.2% en mercado de equipo."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 11,
+      "notes": "Oficial StatsHub/SofaScore: Inter ejecutó 11 córners ante VfB Stuttgart. Menos de 6.5 FALLADA."
     },
     {
       "id": "cand_real_statshub_20261125_isaac_price_shotsontarget",
@@ -3684,10 +3708,10 @@
       "rationale": "StatsHub L5 100% / L10 90% / L15 80% @1.62 (Bet365). Sujeto a confirmación XI titular T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.38,
@@ -3701,7 +3725,9 @@
         "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {},
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 1,
+      "notes": "Oficial StatsHub: Luke Graham registró 1 falta cometida en 90 min de titular ante Millwall. ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261125_marvin_ducksch_shotsontarget",
@@ -3835,10 +3861,10 @@
       "rationale": "StatsHub L5 80% / L10 90% / L15 87% @1.53 (Betway). Sujeto a confirmación XI titular T-60.",
       "elena_decision": "PENDIENTE_ALINEACION",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ANULADA_NO_TITULAR",
+      "status": "ANULADA_NO_TITULAR",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.32,
@@ -3851,7 +3877,10 @@
         "finalStatus": "PENDIENTE_ALINEACION",
         "finalReason": "Aprobado cuantitativamente (EV +15.9%). Supeditado a confirmación de XI titular T-60."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "lineupStatus": "SUPLENTE_NO_INICIA",
+      "actual_stat": 0,
+      "notes": "Alineación oficial confirmada: no figura en el XI titular inicial. Selección anulada (reembolso)."
     },
     {
       "id": "cand_real_statshub_20261125_dayot_upamecano_fouls",
@@ -3883,10 +3912,10 @@
       "rationale": "StatsHub L5 100% / L10 100% / L15 93% @1.53 (Coral). Sujeto a confirmación XI titular T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.26,
@@ -3900,7 +3929,9 @@
         "finalReason": "Alineación oficial T-60 confirmada: TITULAR en el XI inicial."
       },
       "agent_reports": {},
-      "lineupStatus": "CONFIRMADA"
+      "lineupStatus": "CONFIRMADA",
+      "actual_stat": 1,
+      "notes": "Oficial StatsHub: Dayot Upamecano completó 1 falta cometida en 90 min de titular en Lille vs Bayern München. ACERTADA."
     },
     {
       "id": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
@@ -3980,10 +4011,10 @@
       "rationale": "StatsHub L10 90% / Rival 70% / L15 93% @1.85 (Paddy Power). Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "ACERTADA",
+      "status": "ACERTADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.47,
@@ -3996,7 +4027,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +25.8% en mercado de equipo (L10 90% / Rival 70%)."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 13,
+      "notes": "Oficial StatsHub/MundoDeportivo: SK Slavia Praha registró 13 córners ante Villarreal. Superó ampliamente la línea Más de 4.5."
     },
     {
       "id": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
@@ -4220,10 +4253,10 @@
       "rationale": "StatsHub L10 100% / Rival 60% / L15 93% @1.67 (Bet365). Mercado colectivo sin riesgo T-60.",
       "elena_decision": "APROBADO",
       "operational_status": "ACEPTADO",
-      "sports_result": "PENDIENTE",
-      "status": "APROBADO",
-      "is_settled": false,
-      "is_finished": false,
+      "sports_result": "FALLADA",
+      "status": "FALLADA",
+      "is_settled": true,
+      "is_finished": true,
       "category": "proximos",
       "proximity_badge": "Próximo",
       "fair_odds": 1.39,
@@ -4236,7 +4269,9 @@
         "finalStatus": "APROBADO",
         "finalReason": "Aprobado por Elena: EV +20.1% en mercado de equipo (L10 100% / Rival 60%)."
       },
-      "agent_reports": {}
+      "agent_reports": {},
+      "actual_stat": 2,
+      "notes": "Oficial StatsHub/SofaScore: VfB Stuttgart registró 2 remates al arco ante Inter. Más de 3.5 FALLADA."
     },
     {
       "id": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",

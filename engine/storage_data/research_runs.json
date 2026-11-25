@@ -1,5 +1,27 @@
 [
   {
+    "id": "run_1795406462103",
+    "timestamp": "2026-11-23T04:01:02.103Z",
+    "fixturesScanned": 0,
+    "candidatesFound": 25,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado (48h): 25 candidatos priorizados (0 nuevos)."
+  },
+  {
+    "id": "run_1795406453059",
+    "timestamp": "2026-11-23T04:00:53.059Z",
+    "fixturesScanned": 0,
+    "candidatesFound": 25,
+    "approvedCount": 0,
+    "rejectedCount": 0,
+    "mcpCallsUsed": 5,
+    "status": "DISCOVERY_COMPLETED",
+    "notes": "Discovery completado (48h): 25 candidatos priorizados (8 nuevos)."
+  },
+  {
     "id": "run_1795393549229",
     "timestamp": "2026-11-23T00:25:49.229Z",
     "fixturesScanned": 25,

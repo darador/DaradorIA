@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-24T03:33:19.631Z",
+  "updatedAt": "2026-11-24T13:32:15.197Z",
   "totalTrackedPicks": 68,
   "summary": {
     "total_bets": 68,
@@ -113,28 +113,28 @@
     }
   },
   "portfolioElena": {
-    "totalTracked": 66,
-    "settled": 56,
-    "won": 38,
-    "winRatePct": 67.9
+    "totalTracked": 68,
+    "settled": 58,
+    "won": 39,
+    "winRatePct": 67.2
   },
   "evaluation": {
-    "evaluatedAt": "2026-11-24T01:23:09.283Z",
-    "sampleSize": 35,
+    "evaluatedAt": "2026-11-24T13:32:15.196Z",
+    "sampleSize": 37,
     "financialMetrics": {
-      "totalStakedUnits": 35,
-      "netProfitUnits": 2.48,
-      "yieldPct": 7.1,
-      "winRatePct": 62.9,
-      "wonBets": 22,
-      "lostBets": 13,
+      "totalStakedUnits": 37,
+      "netProfitUnits": 2.15,
+      "yieldPct": 5.8,
+      "winRatePct": 62.2,
+      "wonBets": 23,
+      "lostBets": 14,
       "maxDrawdownUnits": 4.63
     },
     "probabilisticMetrics": {
-      "brierScore": 0.2335,
+      "brierScore": 0.2352,
       "brierEvaluation": "Aceptable",
-      "logLoss": 0.6597,
-      "evaluatedPicksWithProb": 35
+      "logLoss": 0.6633,
+      "evaluatedPicksWithProb": 37
     },
     "calibrationByDecile": [
       {
@@ -146,10 +146,10 @@
       },
       {
         "range": "60% - 70%",
-        "sampleSize": 35,
+        "sampleSize": 37,
         "avgPredictedProb": 62.5,
-        "actualHitRate": 62.9,
-        "calibrationGap": 0.4
+        "actualHitRate": 62.2,
+        "calibrationGap": -0.3
       },
       {
         "range": "70% - 80%",
@@ -218,10 +218,10 @@
       },
       {
         "market": "Goles de equipo",
-        "total": 4,
-        "winRate": 50,
-        "netProfit": -0.13,
-        "yieldPct": -3.2
+        "total": 5,
+        "winRate": 60,
+        "netProfit": 0.54,
+        "yieldPct": 10.8
       },
       {
         "market": "Remates totales",
@@ -243,6 +243,13 @@
         "winRate": 66.7,
         "netProfit": 0.17,
         "yieldPct": 5.7
+      },
+      {
+        "market": "Tarjetas de equipo",
+        "total": 1,
+        "winRate": 0,
+        "netProfit": -1,
+        "yieldPct": -100
       }
     ]
   }

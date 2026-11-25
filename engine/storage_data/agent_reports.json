@@ -4263,5 +4263,1432 @@
     },
     "id": "rep_1795356397418_rzwky",
     "timestamp": "2026-11-22T14:06:37.418Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-24T20:25:08.917Z",
+            "eventDate": "2026-11-24T20:25:08.917Z",
+            "queryDate": "2026-11-24T20:25:08.917Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795551908919_rrg7j",
+    "timestamp": "2026-11-24T20:25:08.919Z"
+  },
+  {
+    "candidateId": "cand_test_vetoed_isolation_01",
+    "playerOrTeam": "Jugador Vetado Test",
+    "match": "Test vs Isolated",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "target": "Jugador Vetado Test",
+        "summary": "Jugador Vetado Test proyecta 0 min con una tasa de 0 por 90 min en Remates.",
+        "favorableFindings": [],
+        "risks": [
+          "Muestra corta de titularidades (0 partidos), susceptible a varianza.",
+          "Minutos promedio reducidos (0 min), alto riesgo de sustitución temprana.",
+          "Tasa de producción ajustada (0 por 90 min) respecto a la línea (Más de 2.5)."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.6,
+        "recommendation": "DESFAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "tacticalSummary": "Matchup táctico entre Equipo y Rival. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "Equipo juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "contextSummary": "Contexto del partido Test vs Isolated. Alineación: PROBABLE. ",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "marketAnalysis": "Análisis de mercado para Remates @ 2.1 (bet365). Cuota justa: 1.39. EV: +33.2%.",
+        "referenceOdds": 2.1,
+        "bestOdds": 2.1,
+        "fairOdds": 1.39,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_vetoed_isolation_01",
+        "match": "Test vs Isolated",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates respalda la selección en Test vs Isolated.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Jugador Vetado Test vs bloque defensivo de ",
+            "tacticalContext": "El planteo de  suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Test%20vs%20Isolated",
+            "publishedDate": "2026-11-24T20:25:09.068Z",
+            "eventDate": "2026-11-24T20:25:09.068Z",
+            "queryDate": "2026-11-24T20:25:09.068Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Jugador Vetado Test mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795551909070_8hnw9",
+    "timestamp": "2026-11-24T20:25:09.070Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "hasFindings": true,
+        "summary": "Inteligencia táctica favorable: duelo individual directo en Remates totales respalda la selección en Coritiba vs Santos.",
+        "tacticalDuels": [
+          {
+            "duelType": "Delantero vs Centrales / Línea defensiva",
+            "actors": "Gabriel Barbosa vs bloque defensivo de Coritiba",
+            "tacticalContext": "El planteo de Coritiba suele ceder metros en la frontal ante delanteros con movilidad, lo que propicia remates de media distancia.",
+            "impact": "FAVORABLE_AL_REMATE",
+            "confidence": 0.85
+          }
+        ],
+        "findings": [
+          {
+            "source": "Boletín Táctico y Deportivo Pre-Match",
+            "url": "https://sports-intelligence.local/matches/Coritiba%20vs%20Santos",
+            "publishedDate": "2026-11-24T20:33:18.967Z",
+            "eventDate": "2026-11-24T20:33:18.967Z",
+            "queryDate": "2026-11-24T20:33:18.967Z",
+            "status": "CONFIRMADO",
+            "confidence": 0.85,
+            "impact": "ALTO: Refuerza la tesis de volumen estadístico del mercado analizado.",
+            "explanation": "Se confirmó en los entrenamientos recientes que Gabriel Barbosa mantiene su posición habitual y rol protagónico en el esquema táctico."
+          }
+        ],
+        "structuredSignals": {
+          "tacticalEdgeIdentified": true,
+          "duelImpact": "FAVORABLE_AL_REMATE",
+          "newsRiskDetected": false
+        },
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      }
+    },
+    "id": "rep_1795552398969_p7eaq",
+    "timestamp": "2026-11-24T20:33:18.969Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "StatsHub Lineups",
+          "Official Match Schedule"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-25T04:32:46.840Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Gabriel Barbosa",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-25T04:32:46.840Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Gabriel Barbosa",
+          "affectedMarket": "PLAYER_SHOTS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Gabriel Barbosa",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-25T04:32:46.840Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa."
+        }
+      }
+    },
+    "id": "rep_1795581166842_qkbcc",
+    "timestamp": "2026-11-25T04:32:46.842Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:07:25.142Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Alineación oficial verificada: el jugador está confirmado en el once inicial.",
+          "Árbitro Wilton Sampaio registrado (impacto indirecto en Remates totales)."
+        ],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.9,
+          "refereeProfile": {
+            "refereeId": null,
+            "refereeName": "Wilton Sampaio",
+            "avgFouls": 27.5,
+            "avgCards": null,
+            "foulStrictnessRatio": null,
+            "favorsOvers": true,
+            "source": "legacy:researchData"
+          },
+          "refereeCoverage": "LEGADO",
+          "lineupStatus": "CONFIRMADA",
+          "venue": null,
+          "kickoffUtc": null,
+          "affectedMarket": "remates_totales",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación CONFIRMADA, árbitro Wilton Sampaio."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "candidateId": "cand_test_agent_01",
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE"
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-25T12:07:25.143Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Gabriel Barbosa",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-25T12:07:25.143Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Gabriel Barbosa",
+          "affectedMarket": "PLAYER_SHOTS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Gabriel Barbosa",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-25T12:07:25.143Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa."
+        }
+      }
+    },
+    "id": "rep_1795608445144_u8lpf",
+    "timestamp": "2026-11-25T12:07:25.144Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular en la temporada).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE"
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE"
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:08:56.459Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Alineación oficial verificada: el jugador está confirmado en el once inicial.",
+          "Árbitro Wilton Sampaio registrado (impacto indirecto en Remates totales)."
+        ],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.9,
+          "refereeProfile": {
+            "refereeId": null,
+            "refereeName": "Wilton Sampaio",
+            "avgFouls": 27.5,
+            "avgCards": null,
+            "foulStrictnessRatio": null,
+            "favorsOvers": true,
+            "source": "legacy:researchData"
+          },
+          "refereeCoverage": "LEGADO",
+          "lineupStatus": "CONFIRMADA",
+          "venue": null,
+          "kickoffUtc": null,
+          "affectedMarket": "remates_totales",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación CONFIRMADA, árbitro Wilton Sampaio."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:08:56.459Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.8,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.80 vs justa @1.38 (EV +30.5%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-25T12:08:56.459Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Gabriel Barbosa",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-25T12:08:56.459Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Gabriel Barbosa",
+          "affectedMarket": "PLAYER_SHOTS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Gabriel Barbosa",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-25T12:08:56.459Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa."
+        }
+      }
+    },
+    "id": "rep_1795608536461_w2hy1",
+    "timestamp": "2026-11-25T12:08:56.461Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.88,
+          "sampleSize": 18,
+          "statPer90": 4.8,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0 (SOLO_CONTEXTO_LOCAL): Gabriel Barbosa (4.8 p90, 79.5 min, 18 titularidades)."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "LOW",
+          "teamConfidence": 0.85,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "away",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Santos vs Coritiba (away), ratio concesión 1.18x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Alineación oficial verificada: el jugador está confirmado en el once inicial.",
+          "Árbitro Wilton Sampaio registrado (impacto indirecto en Remates totales)."
+        ],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.9,
+          "refereeProfile": {
+            "refereeId": null,
+            "refereeName": "Wilton Sampaio",
+            "avgFouls": 27.5,
+            "avgCards": null,
+            "foulStrictnessRatio": null,
+            "favorsOvers": true,
+            "source": "legacy:researchData"
+          },
+          "refereeCoverage": "LEGADO",
+          "lineupStatus": "CONFIRMADA",
+          "venue": null,
+          "kickoffUtc": null,
+          "affectedMarket": "remates_totales",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación CONFIRMADA, árbitro Wilton Sampaio."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.8,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.80 vs justa @1.38 (EV +30.5%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Gabriel Barbosa",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Gabriel Barbosa",
+          "affectedMarket": "PLAYER_SHOTS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Gabriel Barbosa",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-25T12:13:50.883Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa."
+        }
+      }
+    },
+    "id": "rep_1795608830886_x16pg",
+    "timestamp": "2026-11-25T12:13:50.886Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.88,
+          "sampleSize": 18,
+          "statPer90": 4.8,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0 (SOLO_CONTEXTO_LOCAL): Gabriel Barbosa (4.8 p90, 79.5 min, 18 titularidades)."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "LOW",
+          "teamConfidence": 0.85,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "away",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Santos vs Coritiba (away), ratio concesión 1.18x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Alineación oficial verificada: el jugador está confirmado en el once inicial.",
+          "Árbitro Wilton Sampaio registrado (impacto indirecto en Remates totales)."
+        ],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.9,
+          "refereeProfile": {
+            "refereeId": null,
+            "refereeName": "Wilton Sampaio",
+            "avgFouls": 27.5,
+            "avgCards": null,
+            "foulStrictnessRatio": null,
+            "favorsOvers": true,
+            "source": "legacy:researchData"
+          },
+          "refereeCoverage": "LEGADO",
+          "lineupStatus": "CONFIRMADA",
+          "venue": null,
+          "kickoffUtc": null,
+          "affectedMarket": "remates_totales",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación CONFIRMADA, árbitro Wilton Sampaio."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.8,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.80 vs justa @1.38 (EV +30.5%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Gabriel Barbosa",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Gabriel Barbosa",
+          "affectedMarket": "PLAYER_SHOTS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Gabriel Barbosa",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-25T13:33:25.944Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa."
+        }
+      }
+    },
+    "id": "rep_1795613605946_4q5bg",
+    "timestamp": "2026-11-25T13:33:25.946Z"
+  },
+  {
+    "candidateId": "cand_test_agent_01",
+    "playerOrTeam": "Gabriel Barbosa",
+    "match": "Coritiba vs Santos",
+    "reports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "target": "Gabriel Barbosa",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Gabriel Barbosa proyecta 80 min con una tasa de 4.8 por 90 min en Remates totales.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (18 partidos de titular).",
+          "Volumen de minutos elevado (promedia 79.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (4.8 por 90 min) superando holgadamente la línea exigida (Más de 3.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.88,
+          "sampleSize": 18,
+          "statPer90": 4.8,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0 (SOLO_CONTEXTO_LOCAL): Gabriel Barbosa (4.8 p90, 79.5 min, 18 titularidades)."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Santos y Coritiba. Ratio de concesión del rival: 1.18x (VULNERABLE (Percentil bajo)).",
+        "advantages": [
+          "Vulnerabilidad defensiva marcada de Coritiba: concede un 18.0% más de Remates totales que la media del torneo.",
+          "El planteo defensivo del rival concede espacios para transiciones y disparos de media distancia."
+        ],
+        "risks": [
+          "Santos juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "LOW",
+          "teamConfidence": 0.85,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "away",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Santos vs Coritiba (away), ratio concesión 1.18x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "match": "Coritiba vs Santos",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Coritiba vs Santos. Alineación: CONFIRMADA. Árbitro: Wilton Sampaio.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Alineación oficial verificada: el jugador está confirmado en el once inicial.",
+          "Árbitro Wilton Sampaio registrado (impacto indirecto en Remates totales)."
+        ],
+        "impactAnalysis": "Bajo riesgo de rotación.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.9,
+          "refereeProfile": {
+            "refereeId": null,
+            "refereeName": "Wilton Sampaio",
+            "avgFouls": 27.5,
+            "avgCards": null,
+            "foulStrictnessRatio": null,
+            "favorsOvers": true,
+            "source": "legacy:researchData"
+          },
+          "refereeCoverage": "LEGADO",
+          "lineupStatus": "CONFIRMADA",
+          "venue": null,
+          "kickoffUtc": null,
+          "affectedMarket": "remates_totales",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación CONFIRMADA, árbitro Wilton Sampaio."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates totales @ 1.8 (bet365). Cuota justa: 1.38. EV: +30.5%.",
+        "referenceOdds": 1.8,
+        "bestOdds": 1.8,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.8,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.80 vs justa @1.38 (EV +30.5%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_test_agent_01",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Gabriel Barbosa",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Gabriel Barbosa",
+          "affectedMarket": "PLAYER_SHOTS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Gabriel Barbosa",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-25T14:02:41.494Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Gabriel Barbosa."
+        }
+      }
+    },
+    "id": "rep_1795615361496_b1d77",
+    "timestamp": "2026-11-25T14:02:41.496Z"
   }
 ]
