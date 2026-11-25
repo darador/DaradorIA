@@ -5479,7 +5479,17 @@
         return { code: 'FALLADA', label: 'FALLADA', badgeHtml: '<span class="sem-badge sem-red" title="Resultado deportivo verificado: Fallada">✖ FALLADA</span>' };
       }
       if (['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(status) || ['ANULADA_NO_TITULAR', 'ANULADA', 'CANCELADA', 'VOID'].includes(res)) {
-        return { code: 'ANULADA', label: 'ANULADA', badgeHtml: '<span class="sem-badge sem-gray" title="Selección anulada (Void / No titular)">⊘ ANULADA</span>' };
+        const isTeam = String(pick.player || '').includes('(Equipo)');
+        const isNonStarterVoid = !isTeam || status === 'ANULADA_NO_TITULAR' || res === 'ANULADA_NO_TITULAR';
+        if (isNonStarterVoid) {
+          return {
+            code: 'ANULADA',
+            label: 'ANULADA - NO TITULAR',
+            isNoTitular: true,
+            badgeHtml: '<span class="sem-badge sem-gray" style="background:rgba(148,163,184,0.18); color:#cbd5e1; border:1px solid rgba(148,163,184,0.45); font-weight:800; letter-spacing:0.3px;" title="Selección anulada por no jugar o no ser titular (Void / Cuota reembolsada)">⊘ ANULADA - NO TITULAR</span>'
+          };
+        }
+        return { code: 'ANULADA', label: 'ANULADA', isNoTitular: false, badgeHtml: '<span class="sem-badge sem-gray" title="Selección anulada (Void)">⊘ ANULADA</span>' };
       }
       if (status === 'PENDIENTE_DE_LIQUIDACION' || res === 'PENDIENTE_DE_LIQUIDACION' || m.proximityCategory === 'pending_settlement') {
         return { code: 'PENDIENTE_LIQUIDACION', label: 'PENDIENTE DE LIQUIDACIÓN', badgeHtml: '<span class="sem-badge sem-amber" title="Partido finalizado, esperando acta oficial para liquidar">⏳ PEND. LIQUIDACIÓN</span>' };
@@ -6155,7 +6165,7 @@
                     <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
                       <span class="board-odds" style="font-size:0.82rem;">${(typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
                       <span class="board-edge-badge" style="font-size:0.72rem;">${edgeDisplay}</span>
-                      ${elenaDec.badgeHtml}
+                      ${isVoid && sportsRes.isNoTitular ? sportsRes.badgeHtml : elenaDec.badgeHtml}
                       <button class="btn-audit" style="padding:0.2rem 0.5rem; font-size:0.72rem;" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">👁️ Ver</button>
                     </div>
                   </div>
@@ -6290,7 +6300,7 @@
                   <div style="display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; margin-top:0.3rem;">
                     <span class="board-odds" style="font-size:0.76rem;">${(typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
                     <span class="board-edge-badge" style="font-size:0.68rem;">${edgeDisplay}</span>
-                    ${elenaDec.badgeHtml}
+                    ${isVoid && sportsRes.isNoTitular ? sportsRes.badgeHtml : elenaDec.badgeHtml}
                   </div>
                   <div style="display:flex; align-items:center; gap:0.45rem; margin-top:0.4rem;">
                     <div style="flex:1; height:4px; border-radius:999px; background:${barColor};"></div>
