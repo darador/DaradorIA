@@ -215,6 +215,7 @@ class ProspectiveLadderEngine {
           opportunityKey: snap.opportunityKey,
           match: snap.match,
           competition: snap.competition,
+          kickoffUtc: snap.kickoffUtc || null,
           market: snap.market,
           selection: snap.selection,
           line: snap.line,

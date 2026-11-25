@@ -16,15 +16,51 @@
     reinvestmentPct: 100
   });
 
+  const PROPOSAL_STORAGE_KEY = 'darador_reto_escalera_selected_proposal_v1';
+  const TIMEZONE_ART = 'America/Argentina/Buenos_Aires';
+
   const arsFmt = new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   function formatArs(val) {
     if (val === null || val === undefined || isNaN(Number(val))) return '—';
     return '$ ' + arsFmt.format(Number(val)) + ' ARS';
   }
 
+  function formatKickoffArt(kickoffUtc) {
+    if (!kickoffUtc) return 'Horario pendiente';
+    const d = new Date(kickoffUtc);
+    if (isNaN(d.getTime())) return 'Horario pendiente';
+    const datePart = new Intl.DateTimeFormat('es-AR', {
+      timeZone: TIMEZONE_ART, day: '2-digit', month: '2-digit', year: 'numeric'
+    }).format(d);
+    const timePart = new Intl.DateTimeFormat('es-AR', {
+      timeZone: TIMEZONE_ART, hour: '2-digit', minute: '2-digit', hour12: false
+    }).format(d);
+    return `${datePart} · ${timePart} ART`;
+  }
+
   let activeTab = 'principal'; // 'principal' | 'oportunidades' | 'historial' | 'reglas'
   let cachedPayload = null;
   let loadError = null;
+  let uiNotice = null; // { type: 'ok' | 'err', text: string }
+
+  function loadSelectedProposal() {
+    try {
+      const raw = global.localStorage ? global.localStorage.getItem(PROPOSAL_STORAGE_KEY) : null;
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function saveSelectedProposal(proposal) {
+    try {
+      if (!global.localStorage) return;
+      if (!proposal) global.localStorage.removeItem(PROPOSAL_STORAGE_KEY);
+      else global.localStorage.setItem(PROPOSAL_STORAGE_KEY, JSON.stringify(proposal));
+    } catch {}
+  }
+
+  let selectedProposal = loadSelectedProposal();
 
   async function fetchLiveState() {
     try {
@@ -37,6 +73,46 @@
     }
   }
 
+  function revalidateCandidate(opp, l, nowMs = Date.now()) {
+    const reasons = [];
+    if (!opp) return { ok: false, reasons: ['Oportunidad no encontrada.'] };
+    const minO = l.minOdds || OFFICIAL.minOdds;
+    const maxO = l.maxOdds || OFFICIAL.maxOdds;
+    const minEv = l.minEvPct || OFFICIAL.minEvPct;
+
+    if (l.objectiveStatus === 'OBJECTIVE_REACHED') {
+      reasons.push('El objetivo de $ 10.000.000 ARS ya fue alcanzado.');
+    }
+    if (l.openBet && l.openBet.legacyStatus !== 'LEGACY_OUT_OF_RULES') {
+      reasons.push('Ya existe una apuesta abierta en el ciclo vigente.');
+    }
+    const odds = Number(opp.odds);
+    if (!Number.isFinite(odds) || odds < minO || odds > maxO) {
+      reasons.push(`Cuota ${odds || 'N/D'} fuera del rango oficial [${minO.toFixed(2)}, ${maxO.toFixed(2)}].`);
+    }
+    const ev = Number(opp.expectedValuePct);
+    if (!Number.isFinite(ev) || ev < minEv) {
+      reasons.push(`EV (${Number.isFinite(ev) ? '+' + ev + '%' : 'N/D'}) inferior al mínimo oficial (+${minEv}%).`);
+    }
+    const prob = Number(opp.modelProbability);
+    if (!Number.isFinite(prob) || prob <= (1 / odds)) {
+      reasons.push('Probabilidad estimada insuficiente frente al punto de equilibrio.');
+    }
+    if (String(opp.elenaDecision || '').toUpperCase() !== 'APROBADO') {
+      reasons.push(`Elena no aprueba esta selección (${opp.elenaDecision || 'PENDIENTE'}).`);
+    }
+    if (['RECHAZADO', 'VETADO'].includes(String(opp.riskManagerDecision || '').toUpperCase())) {
+      reasons.push(`Veto activo de Risk Manager (${opp.riskManagerDecision}).`);
+    }
+    if (opp.kickoffUtc) {
+      const koTs = new Date(opp.kickoffUtc).getTime();
+      if (!isNaN(koTs) && nowMs >= koTs) {
+        reasons.push('El partido ya comenzó o superó su horario de kickoff.');
+      }
+    }
+    return { ok: reasons.length === 0, reasons };
+  }
+
   function renderHeader(l) {
     const objBadge = l.objectiveStatus === 'OBJECTIVE_REACHED'
       ? '<span class="sem-badge sem-green">🏆 OBJECTIVE_REACHED</span>'
@@ -45,12 +121,11 @@
       <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.75rem; margin-bottom:1.1rem;">
         <div>
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.4rem;">
-            <span class="sem-badge sem-amber">SIMULACIÓN — DINERO VIRTUAL</span>
             ${objBadge}
           </div>
           <h2 style="font-size:1.35rem; font-weight:800; color:#f8fafc;">RETO ESCALERA — La magia del interés compuesto</h2>
           <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.2rem;">
-            Estado conectado en vivo al motor oficial (<code>prospectiveLadderEngine.js</code>) · Sin datos ficticios ni ejecución automática.
+            Estado conectado al motor oficial (<code>prospectiveLadderEngine.js</code>) · Sin apertura automática.
           </p>
         </div>
         <button type="button" class="btn-audit" onclick="window.LadderModule.reload()" style="padding:0.45rem 0.85rem;">↻ Actualizar estado</button>
@@ -85,6 +160,14 @@
 
   function renderPrincipal(l) {
     const bet = l.openBet;
+    let noticeHtml = '';
+    if (uiNotice) {
+      const bg = uiNotice.type === 'ok' ? 'rgba(34,197,94,0.14)' : 'rgba(239,68,68,0.14)';
+      const bd = uiNotice.type === 'ok' ? 'rgba(34,197,94,0.45)' : 'rgba(239,68,68,0.45)';
+      const fg = uiNotice.type === 'ok' ? '#4ade80' : '#f87171';
+      noticeHtml = `<div style="margin-bottom:0.85rem; padding:0.65rem 0.85rem; border-radius:10px; background:${bg}; border:1px solid ${bd}; color:${fg}; font-size:0.8rem; font-weight:700;">${uiNotice.text}</div>`;
+    }
+
     let betCard = '';
     if (l.objectiveStatus === 'OBJECTIVE_REACHED') {
       betCard = `
@@ -97,10 +180,11 @@
       betCard = `
         <div style="background:rgba(11,18,36,0.9); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:1rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-            <span class="sem-badge sem-blue">APUESTA VIRTUAL ABIERTA · PASO ${bet.step} (CICLO ${bet.cycle})</span>
+            <span class="sem-badge sem-blue">APUESTA ABIERTA · PASO ${bet.step} (CICLO ${bet.cycle})</span>
             <span style="font-size:0.74rem; color:#94a3b8; font-family:var(--font-mono);">ID: ${bet.betId}</span>
           </div>
           <div style="font-size:1.05rem; font-weight:800; color:#ffffff;">${bet.match} <span style="font-size:0.78rem; color:#38bdf8;">(${bet.competition || ''})</span></div>
+          <div style="font-size:0.76rem; color:#94a3b8; margin-top:0.15rem; font-family:var(--font-mono);">${formatKickoffArt(bet.kickoffUtc)}</div>
           <div style="font-size:0.88rem; color:#e2e8f0; margin-top:0.25rem;">${bet.selection} — <strong>${bet.market}</strong> · ${bet.line || ''}</div>
           <div style="display:flex; flex-wrap:wrap; gap:0.85rem; margin-top:0.65rem; font-size:0.82rem; font-family:var(--font-mono);">
             <span>Cuota: <strong style="color:#fde047;">@${Number(bet.odds).toFixed(2)}</strong></span>
@@ -112,7 +196,36 @@
           <div style="display:flex; gap:0.5rem; margin-top:0.6rem; flex-wrap:wrap;">
             <span class="sem-badge sem-green">✓ Elena: ${bet.elenaDecision || 'APROBADO'}</span>
             <span class="sem-badge sem-green">✓ Risk Manager: ${bet.riskManagerDecision || 'APROBADO'}</span>
-            <span class="sem-badge sem-gray">Estado: ${bet.status}</span>
+          </div>
+        </div>
+      `;
+    } else if (selectedProposal) {
+      const cap = l.currentCapital ?? OFFICIAL.initialCapital;
+      const potReturn = Number((cap * Number(selectedProposal.odds)).toFixed(2));
+      betCard = `
+        <div style="background:rgba(14,21,42,0.92); border:1px solid rgba(250,204,21,0.45); border-radius:12px; padding:1.05rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.55rem;">
+            <span class="sem-badge sem-amber">PICK SELECCIONADO — PENDIENTE DE CONFIRMACIÓN</span>
+            <span style="font-size:0.72rem; color:#94a3b8; font-family:var(--font-mono);">Snapshot: ${selectedProposal.snapshotId}</span>
+          </div>
+          <div style="font-size:1.05rem; font-weight:800; color:#ffffff;">${selectedProposal.match} <span style="font-size:0.78rem; color:#38bdf8;">(${selectedProposal.competition || ''})</span></div>
+          <div style="font-size:0.78rem; color:#38bdf8; margin-top:0.2rem; font-family:var(--font-mono);">${formatKickoffArt(selectedProposal.kickoffUtc)}</div>
+          <div style="font-size:0.9rem; color:#e2e8f0; margin-top:0.35rem;">${selectedProposal.selection} — <strong>${selectedProposal.market}</strong> · ${selectedProposal.line || ''}</div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.85rem; margin-top:0.65rem; font-size:0.82rem; font-family:var(--font-mono);">
+            <span>Cuota: <strong style="color:#fde047;">@${Number(selectedProposal.odds).toFixed(2)}</strong></span>
+            <span>Prob.: <strong>${selectedProposal.modelProbability ? (selectedProposal.modelProbability * 100).toFixed(1) + '%' : 'N/D'}</strong></span>
+            <span>EV: <strong style="color:#4ade80;">+${selectedProposal.expectedValuePct}%</strong></span>
+            <span>Stake previsto: <strong>${formatArs(cap)}</strong></span>
+            <span>Retorno potencial: <strong style="color:#38bdf8;">${formatArs(potReturn)}</strong></span>
+          </div>
+          <div style="display:flex; gap:0.5rem; margin-top:0.6rem; flex-wrap:wrap;">
+            <span class="sem-badge sem-green">✓ Elena: ${selectedProposal.elenaDecision || 'APROBADO'}</span>
+            <span class="sem-badge sem-green">✓ Risk Manager: ${selectedProposal.riskManagerDecision || 'APROBADO'}</span>
+            <span class="sem-badge sem-gray">Capital aún NO comprometido</span>
+          </div>
+          <div style="display:flex; gap:0.6rem; margin-top:0.9rem; flex-wrap:wrap;">
+            <button type="button" onclick="window.LadderModule.confirmSelection()" style="background:#22c55e; color:#052e16; border:none; border-radius:8px; padding:0.5rem 0.95rem; font-weight:800; font-size:0.8rem; cursor:pointer;">✓ Confirmar selección</button>
+            <button type="button" onclick="window.LadderModule.backToOpportunities()" style="background:rgba(148,163,184,0.16); color:#e2e8f0; border:1px solid rgba(148,163,184,0.35); border-radius:8px; padding:0.5rem 0.95rem; font-weight:700; font-size:0.8rem; cursor:pointer;">← Volver a oportunidades</button>
           </div>
         </div>
       `;
@@ -121,7 +234,7 @@
         <div style="background:rgba(14,21,42,0.85); border:1px dashed rgba(148,163,184,0.35); border-radius:12px; padding:1rem;">
           <strong style="color:#f8fafc; font-size:0.95rem;">⏳ Esperando oportunidad válida</strong>
           <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.3rem;">
-            No hay ninguna apuesta abierta. El motor abrirá un único escalón cuando exista una oportunidad del Daily Board con cuota en <strong>[1.10 – 1.25]</strong>, <strong>EV ≥ +7%</strong>, aprobación de Elena y sin veto del Risk Manager.
+            No hay ninguna apuesta abierta. Seleccioná un candidato en la pestaña <strong>Oportunidades</strong> para proponer el Escalón ${l.currentStep || 1}.
           </p>
         </div>
       `;
@@ -131,7 +244,7 @@
       ? `<div style="margin-top:0.85rem; font-size:0.8rem; color:#cbd5e1;"><strong>Última liquidación:</strong> ${l.lastSettlement.match} (${l.lastSettlement.status}) · Capital tras liquidación: ${formatArs(l.lastSettlement.capAfter)}</div>`
       : '';
 
-    return betCard + lastSettle;
+    return noticeHtml + betCard + lastSettle;
   }
 
   function renderOportunidades(l) {
@@ -181,22 +294,30 @@
           <thead>
             <tr style="border-bottom:1px solid #1c2744; color:#94a3b8; text-align:left;">
               <th style="padding:0.5rem;">Rank</th>
-              <th style="padding:0.5rem;">Partido</th>
+              <th style="padding:0.5rem;">Partido y Horario (ART)</th>
               <th style="padding:0.5rem;">Selección / Mercado</th>
               <th style="padding:0.5rem;">Cuota</th>
               <th style="padding:0.5rem;">Prob / EV</th>
               <th style="padding:0.5rem;">Score</th>
+              <th style="padding:0.5rem; text-align:right;">Acción</th>
             </tr>
           </thead>
           <tbody>
             ${eligible.map(e => `
               <tr style="border-bottom:1px solid rgba(28,39,68,0.6); ${e.isTopRecommended ? 'background:rgba(34,197,94,0.08);' : ''}">
                 <td style="padding:0.5rem;">${e.isTopRecommended ? '<span class="sem-badge sem-green">★ #1 TOP</span>' : '#' + e.rank}</td>
-                <td style="padding:0.5rem;"><strong>${e.match || '-'}</strong><div style="color:#94a3b8;font-size:0.7rem;">${e.competition || ''}</div></td>
+                <td style="padding:0.5rem;">
+                  <strong>${e.match || '-'}</strong>
+                  <div style="color:#38bdf8;font-size:0.71rem;font-family:var(--font-mono);margin-top:0.1rem;">${formatKickoffArt(e.kickoffUtc)}</div>
+                  <div style="color:#94a3b8;font-size:0.68rem;">${e.competition || ''}</div>
+                </td>
                 <td style="padding:0.5rem;">${e.selection || '-'}<div style="color:#94a3b8;font-size:0.7rem;">${e.market || ''} · ${e.line || ''}</div></td>
                 <td style="padding:0.5rem; font-family:var(--font-mono); color:#fde047; font-weight:700;">@${Number(e.odds).toFixed(2)}</td>
                 <td style="padding:0.5rem; font-family:var(--font-mono);">${e.modelProbability ? (e.modelProbability * 100).toFixed(1) + '%' : 'N/D'} · <strong style="color:#4ade80;">+${e.expectedValuePct}%</strong></td>
                 <td style="padding:0.5rem; font-family:var(--font-mono); color:#38bdf8;">${e.compositeScore}</td>
+                <td style="padding:0.5rem; text-align:right; white-space:nowrap;">
+                  <button type="button" onclick="window.LadderModule.selectOpportunity('${e.snapshotId}')" style="background:rgba(56,189,248,0.18); color:#38bdf8; border:1px solid rgba(56,189,248,0.5); border-radius:8px; padding:0.35rem 0.65rem; font-size:0.74rem; font-weight:700; cursor:pointer;">Elegir para el reto</button>
+                </td>
               </tr>
             `).join('')}
           </tbody>
@@ -208,7 +329,7 @@
   function renderHistorial(l) {
     const hist = (l.stepHistory || []).slice().reverse();
     if (hist.length === 0) {
-      return '<div style="padding:1rem; color:#94a3b8; font-size:0.82rem;">Aún no hay escalones liquidados en el circuito prospectivo actual.</div>';
+      return '<div style="padding:1rem; color:#94a3b8; font-size:0.82rem;">Aún no hay escalones liquidados en el ciclo vigente.</div>';
     }
     return `
       <div style="overflow-x:auto;">
@@ -302,6 +423,53 @@
     `;
   }
 
+  function selectOpportunity(snapshotId) {
+    const l = cachedPayload && cachedPayload.prospectiveLadder;
+    if (!l) return;
+    const opp = (l.eligibleOpportunities || []).find(o => o.snapshotId === snapshotId);
+    const check = revalidateCandidate(opp, l);
+    if (!check.ok) {
+      uiNotice = { type: 'err', text: 'Selección bloqueada: ' + check.reasons.join(' | ') };
+      activeTab = 'principal';
+      paint();
+      return;
+    }
+    selectedProposal = { ...opp, selectedAtUtc: new Date().toISOString() };
+    saveSelectedProposal(selectedProposal);
+    uiNotice = { type: 'ok', text: `✓ Propuesta guardada para el Escalón ${l.currentStep || 1}: ${opp.match} (${opp.selection} @${Number(opp.odds).toFixed(2)}). Pendiente de confirmación explícita.` };
+    activeTab = 'principal';
+    paint();
+  }
+
+  async function confirmSelection() {
+    await fetchLiveState();
+    const l = cachedPayload && cachedPayload.prospectiveLadder;
+    if (!l || !selectedProposal) return;
+    const latestOpp = (l.eligibleOpportunities || []).find(o => o.snapshotId === selectedProposal.snapshotId);
+    const check = revalidateCandidate(latestOpp || selectedProposal, l);
+    if (!latestOpp) {
+      uiNotice = { type: 'err', text: 'Confirmación bloqueada: la oportunidad ya no está disponible en la bandeja elegible.' };
+      paint();
+      return;
+    }
+    if (!check.ok) {
+      uiNotice = { type: 'err', text: 'Confirmación bloqueada: ' + check.reasons.join(' | ') };
+      paint();
+      return;
+    }
+    uiNotice = {
+      type: 'ok',
+      text: `✓ Revalidación superada (${latestOpp.match} @${Number(latestOpp.odds).toFixed(2)}, EV +${latestOpp.expectedValuePct}%, Elena APROBADO, Risk Manager sin veto). Lista para registro oficial del Escalón ${l.currentStep || 1} sin ejecución automática.`
+    };
+    paint();
+  }
+
+  function backToOpportunities() {
+    uiNotice = null;
+    activeTab = 'oportunidades';
+    paint();
+  }
+
   async function render() {
     paint();
     if (!cachedPayload) {
@@ -312,6 +480,7 @@
 
   async function reload() {
     cachedPayload = null;
+    uiNotice = null;
     await fetchLiveState();
     paint();
   }
@@ -321,5 +490,14 @@
     paint();
   }
 
-  global.LadderModule = { render, reload, setTab };
+  global.LadderModule = {
+    render,
+    reload,
+    setTab,
+    selectOpportunity,
+    confirmSelection,
+    backToOpportunities,
+    _formatKickoffArt: formatKickoffArt,
+    _revalidateCandidate: revalidateCandidate
+  };
 })(window);
