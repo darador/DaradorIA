@@ -1,31 +1,56 @@
 /**
- * DARADORBET — FASE 11: MOTOR PROSPECTIVO DE RETO ESCALERA (SIMULACIÓN — DINERO VIRTUAL)
+ * DARADORBET — MOTOR OFICIAL DE RETO ESCALERA (SIMULACIÓN — DINERO VIRTUAL)
  *
- * Parámetros:
- * - Capital virtual inicial: $50.000 ARS
+ * Parámetros oficiales:
+ * - Capital inicial: $50.000 ARS
  * - Objetivo: $10.000.000 ARS
- * - Reinversión teórica: 100%
- * - Cuota de referencia: 1.20
- * - Modalidad: SIMULACIÓN — DINERO VIRTUAL (realCapitalAllowed: false, autoExecutionAllowed: false)
- *
- * Reglas estrictas:
- * - Una sola apuesta abierta a la vez (bloquea segunda apuesta hasta liquidar la anterior).
- * - Requiere aprobación de Elena y ausencia de veto de Risk Manager.
- * - Mercados iniciales permitidos: "Remates totales" (con alineación T-60 CONFIRMADA) y "Córners de equipo".
- * - Excluye explícitamente: "Remates al arco de equipo", "Goles de equipo", "Remates de equipo".
- * - Registra TODAS las oportunidades evaluadas, incluyendo las descartadas con su motivo explícito.
- * - Separación absoluta respecto del replay histórico (+205.480,31 ARS jamás se suma al balance prospectivo).
+ * - Reinversión: 100%
+ * - Rango de cuotas inclusivo: [1.10, 1.25] (objetivo: 1.20)
+ * - EV mínimo: +7.0%
+ * - Una apuesta abierta a la vez; sin obligación diaria.
+ * - Al alcanzar o superar $10.000.000 -> OBJECTIVE_REACHED (bloquea nuevas apuestas, sin reinicio automático).
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const SD = path.join(__dirname, '..', '..', 'storage_data');
+const ROOT = path.join(__dirname, '..', '..', '..');
+const SD = path.join(ROOT, 'engine', 'storage_data');
 const DEFAULT_LADDER_STATE_PATH = path.join(SD, 'fase11_prospective_ladder.json');
+const CALIBRATION_REPORT_PATH = path.join(ROOT, 'api', 'calibration_audit_report.json');
 
-const ALLOWED_LADDER_MARKETS = new Set(['Remates totales', 'Córners de equipo']);
-const OBSERVATION_ONLY_LADDER_MARKETS = new Set(['Ganador del partido (1X2)', 'Doble oportunidad']);
-const EXCLUDED_LADDER_MARKETS = new Set(['Remates al arco de equipo', 'Goles de equipo', 'Remates de equipo']);
+const OFFICIAL_PARAMS = {
+  initialCapital: 50000,
+  targetCapital: 10000000,
+  reinvestmentPct: 100,
+  minOdds: 1.10,
+  targetOdds: 1.20,
+  maxOdds: 1.25,
+  minEvPct: 7.0
+};
+
+const ALLOWED_LADDER_MARKETS = new Set([
+  'Remates totales',
+  'Córners de equipo',
+  'Ganador del partido (1X2)',
+  'Doble oportunidad',
+  'Entradas (Tackles)',
+  'Faltas cometidas',
+  'Faltas ganadas'
+]);
+
+const PLAYER_T60_MARKETS = new Set([
+  'Remates totales',
+  'Entradas (Tackles)',
+  'Faltas cometidas',
+  'Faltas ganadas'
+]);
+
+const EXCLUDED_LADDER_MARKETS = new Set([
+  'Remates al arco de equipo',
+  'Goles de equipo',
+  'Remates de equipo'
+]);
 
 function atomicWriteJson(filePath, data) {
   const dir = path.dirname(filePath);
@@ -35,27 +60,42 @@ function atomicWriteJson(filePath, data) {
   fs.renameSync(tmp, filePath);
 }
 
+function loadCalibrationMetrics() {
+  try {
+    return JSON.parse(fs.readFileSync(CALIBRATION_REPORT_PATH, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
 class ProspectiveLadderEngine {
   constructor(options = {}) {
     this.statePath = options.statePath || DEFAULT_LADDER_STATE_PATH;
-    this.initialCapital = options.initialCapital ?? 50000;
-    this.targetCapital = options.targetCapital ?? 10000000;
-    this.referenceOdds = options.referenceOdds ?? 1.20;
+    this.initialCapital = options.initialCapital ?? OFFICIAL_PARAMS.initialCapital;
+    this.targetCapital = options.targetCapital ?? OFFICIAL_PARAMS.targetCapital;
+    this.minOdds = options.minOdds ?? OFFICIAL_PARAMS.minOdds;
+    this.targetOdds = options.targetOdds ?? OFFICIAL_PARAMS.targetOdds;
+    this.maxOdds = options.maxOdds ?? OFFICIAL_PARAMS.maxOdds;
+    this.minEvPct = options.minEvPct ?? OFFICIAL_PARAMS.minEvPct;
   }
 
   _loadState() {
     if (!fs.existsSync(this.statePath)) {
       return {
-        schemaVersion: '1.0.0',
+        schemaVersion: '2.0.0',
         mode: 'SIMULACIÓN — DINERO VIRTUAL',
         simulationOnly: true,
         realCapitalAllowed: false,
         autoExecutionAllowed: false,
+        objectiveStatus: 'IN_PROGRESS', // IN_PROGRESS | OBJECTIVE_REACHED
         initialCapital: this.initialCapital,
         currentCapital: this.initialCapital,
         targetCapital: this.targetCapital,
         reinvestmentPct: 100,
-        referenceOdds: this.referenceOdds,
+        minOdds: this.minOdds,
+        referenceOdds: this.targetOdds,
+        maxOdds: this.maxOdds,
+        minEvPct: this.minEvPct,
         currentStep: 1,
         currentCycle: 1,
         openBet: null,
@@ -66,7 +106,11 @@ class ProspectiveLadderEngine {
         evaluatedOpportunities: []
       };
     }
-    return JSON.parse(fs.readFileSync(this.statePath, 'utf8'));
+    const st = JSON.parse(fs.readFileSync(this.statePath, 'utf8'));
+    if (!st.objectiveStatus) {
+      st.objectiveStatus = st.currentCapital >= (st.targetCapital || this.targetCapital) ? 'OBJECTIVE_REACHED' : 'IN_PROGRESS';
+    }
+    return st;
   }
 
   getState() {
@@ -76,42 +120,158 @@ class ProspectiveLadderEngine {
   }
 
   /**
-   * Evalúa si un snapshot prospectivo puede ingresar a RETO ESCALERA.
-   * Si cumple todas las reglas y no hay apuesta abierta, abre la apuesta virtual.
-   * Si no cumple, registra el motivo explícito en evaluatedOpportunities.
+   * Obtiene el factor de confiabilidad de calibración del mercado desde api/calibration_audit_report.json.
+   * No inventa un margen universal; reutiliza ECE y Brier/LogLoss reales disponibles.
    */
-  considerOpportunity(snapshot) {
-    const state = this._loadState();
-    const nowIso = new Date().toISOString();
+  _getMarketCalibrationFactor(market) {
+    const cal = loadCalibrationMetrics();
+    const mStats = cal?.byMarket?.[market];
+    if (!mStats || !mStats.n) {
+      return { reliabilityWeight: 0.75, requiredProbMargin: 0.03, hasCalibrationEvidence: false };
+    }
+    const ece = typeof mStats.ece === 'number' ? mStats.ece : 0.15;
+    const reliabilityWeight = Number(Math.max(0.4, 1 - ece).toFixed(3));
+    const requiredProbMargin = Number(Math.max(0.02, Math.min(0.06, ece * 0.3)).toFixed(4));
+    return { reliabilityWeight, requiredProbMargin, hasCalibrationEvidence: true, ece };
+  }
+
+  /**
+   * Valida las 7 reglas oficiales de elegibilidad antes de abrir una apuesta.
+   */
+  validateOpportunity(snapshot, state = null) {
+    const st = state || this._loadState();
     const reasons = [];
 
+    if (st.objectiveStatus === 'OBJECTIVE_REACHED' || st.currentCapital >= st.targetCapital) {
+      reasons.push('OBJECTIVE_REACHED_LOCKED: Objetivo de $10.000.000 ARS alcanzado. Nuevas apuestas bloqueadas automáticamente.');
+    }
+    if (st.openBet !== null) {
+      reasons.push(`OPEN_BET_LOCKED: Ya existe una apuesta abierta (${st.openBet.betId}). Solo 1 apuesta abierta a la vez.`);
+    }
     if (snapshot.circuit === 'CONTRAFACTUAL') {
-      reasons.push('CIRCUIT_BLOCKED: Oportunidad contrafactual no elegible para RETO ESCALERA prospectivo.');
+      reasons.push('CIRCUIT_BLOCKED: Oportunidad contrafactual no elegible para RETO ESCALERA.');
     }
     if (String(snapshot.elenaDecision || '').toUpperCase() !== 'APROBADO') {
       reasons.push(`ELENA_NOT_APPROVED: Decisión de Elena = ${snapshot.elenaDecision || 'PENDIENTE'}.`);
     }
-    if (String(snapshot.riskManagerDecision || '').toUpperCase() === 'RECHAZADO' || String(snapshot.riskManagerDecision || '').toUpperCase() === 'VETADO') {
+    if (['RECHAZADO', 'VETADO'].includes(String(snapshot.riskManagerDecision || '').toUpperCase())) {
       reasons.push(`RISK_MANAGER_VETO: Risk Manager = ${snapshot.riskManagerDecision}.`);
     }
-    if (OBSERVATION_ONLY_LADDER_MARKETS.has(snapshot.market)) {
-      reasons.push(`MARKET_OBSERVATION_ONLY_LADDER: Mercado "${snapshot.market}" en observación para RETO ESCALERA (no habilitado automáticamente; requiere validación previa).`);
-    } else if (EXCLUDED_LADDER_MARKETS.has(snapshot.market)) {
+    if (EXCLUDED_LADDER_MARKETS.has(snapshot.market)) {
       reasons.push(`MARKET_EXCLUDED_LADDER: Mercado "${snapshot.market}" excluido de RETO ESCALERA.`);
     } else if (!ALLOWED_LADDER_MARKETS.has(snapshot.market)) {
-      reasons.push(`MARKET_NOT_PRIORITY_LADDER: Mercado "${snapshot.market}" fuera de mercados iniciales de RETO ESCALERA.`);
+      reasons.push(`MARKET_NOT_ALLOWED_LADDER: Mercado "${snapshot.market}" fuera de mercados habilitados.`);
     }
-    if (snapshot.market === 'Remates totales' && String(snapshot.lineupStatus || '').toUpperCase() !== 'CONFIRMADA') {
-      reasons.push(`T60_LINEUP_REQUIRED: Remates totales requiere alineación T-60 CONFIRMADA (actual: ${snapshot.lineupStatus || 'PENDIENTE_T60'}).`);
-    }
-    if (state.openBet !== null) {
-      reasons.push(`OPEN_BET_LOCKED: Ya existe una apuesta abierta (${state.openBet.betId}). Solo se permite 1 apuesta activa a la vez.`);
-    }
-    if (!Number.isFinite(Number(snapshot.odds)) || Number(snapshot.odds) < 1.05) {
-      reasons.push('INVALID_ODDS: Cuota no válida para simulación.');
+    if (PLAYER_T60_MARKETS.has(snapshot.market) && String(snapshot.lineupStatus || '').toUpperCase() !== 'CONFIRMADA') {
+      reasons.push(`T60_LINEUP_REQUIRED: "${snapshot.market}" requiere alineación T-60 CONFIRMADA (actual: ${snapshot.lineupStatus || 'PENDIENTE_T60'}).`);
     }
 
-    if (reasons.length > 0) {
+    const odds = Number(snapshot.odds);
+    if (!Number.isFinite(odds) || odds < this.minOdds || odds > this.maxOdds) {
+      reasons.push(`ODDS_OUT_OF_RANGE: Cuota ${odds || 'N/D'} fuera del rango oficial [${this.minOdds.toFixed(2)}, ${this.maxOdds.toFixed(2)}].`);
+    }
+
+    const prob = snapshot.modelProbability != null ? Number(snapshot.modelProbability) : null;
+    const evPct = snapshot.expectedValuePct != null
+      ? Number(snapshot.expectedValuePct)
+      : (Number.isFinite(odds) && prob ? Number(((prob * odds - 1) * 100).toFixed(2)) : null);
+
+    if (prob === null || !Number.isFinite(prob) || prob <= 0 || prob >= 1) {
+      reasons.push('INSUFFICIENT_DATA: Falta probabilidad estimada verificable.');
+    }
+    if (evPct === null || evPct < this.minEvPct) {
+      reasons.push(`EV_BELOW_THRESHOLD: EV (${evPct !== null ? evPct + '%' : 'N/D'}) inferior al mínimo oficial (+${this.minEvPct}%).`);
+    }
+
+    const calInfo = this._getMarketCalibrationFactor(snapshot.market);
+    if (Number.isFinite(odds) && odds > 1 && prob !== null) {
+      const breakEven = 1 / odds;
+      if (prob < breakEven + calInfo.requiredProbMargin) {
+        reasons.push(`INSUFFICIENT_PROB_MARGIN: Prob. ${(prob * 100).toFixed(1)}% sin margen suficiente sobre equilibrio ${(breakEven * 100).toFixed(1)}% (+${(calInfo.requiredProbMargin * 100).toFixed(1)}% por calibración).`);
+      }
+    }
+
+    const compositeScore = (evPct !== null && prob !== null)
+      ? Number((evPct * calInfo.reliabilityWeight * prob).toFixed(4))
+      : -Infinity;
+
+    return { valid: reasons.length === 0, reasons, evPct, prob, odds, calInfo, compositeScore };
+  }
+
+  /**
+   * Evalúa un conjunto de oportunidades elegibles, elige una única definitiva por
+   * EV + calibración/confiabilidad, y registra los descartes con su motivo.
+   */
+  selectAndOpenBestOpportunity(snapshots) {
+    const state = this._loadState();
+    const validCandidates = [];
+    const discarded = [];
+
+    for (const snap of (snapshots || [])) {
+      const check = this.validateOpportunity(snap, state);
+      if (check.valid) {
+        validCandidates.push({ snap, check });
+      } else {
+        discarded.push({ snap, reasons: check.reasons });
+      }
+    }
+
+    // Registrar descartes
+    const nowIso = new Date().toISOString();
+    for (const d of discarded) {
+      state.evaluatedOpportunities.push({
+        evaluatedAtUtc: nowIso,
+        snapshotId: d.snap.snapshotId,
+        opportunityKey: d.snap.opportunityKey,
+        match: d.snap.match,
+        market: d.snap.market,
+        selection: d.snap.selection,
+        odds: d.snap.odds,
+        evPct: d.snap.expectedValuePct ?? null,
+        enteredLadder: false,
+        reasons: d.reasons
+      });
+    }
+
+    if (validCandidates.length === 0) {
+      atomicWriteJson(this.statePath, state);
+      return { entered: false, selected: null, discardedCount: discarded.length };
+    }
+
+    // Ordenar por score compuesto (EV * confiabilidad calibrada * prob)
+    validCandidates.sort((a, b) => b.check.compositeScore - a.check.compositeScore);
+    const winner = validCandidates[0];
+
+    // Registrar los elegibles no seleccionados como desplazados por ranking
+    for (let i = 1; i < validCandidates.length; i++) {
+      const loser = validCandidates[i].snap;
+      state.evaluatedOpportunities.push({
+        evaluatedAtUtc: nowIso,
+        snapshotId: loser.snapshotId,
+        opportunityKey: loser.opportunityKey,
+        match: loser.match,
+        market: loser.market,
+        selection: loser.selection,
+        odds: loser.odds,
+        evPct: loser.expectedValuePct ?? null,
+        enteredLadder: false,
+        reasons: [`RANKED_BELOW_SELECTED: Superada en EV/calibración por ${winner.snap.selection} (${winner.snap.match}).`]
+      });
+    }
+
+    atomicWriteJson(this.statePath, state);
+    return this.considerOpportunity(winner.snap);
+  }
+
+  /**
+   * Confirma todos los requisitos en el instante de apertura y abre la apuesta virtual.
+   */
+  considerOpportunity(snapshot) {
+    const state = this._loadState();
+    const nowIso = new Date().toISOString();
+    const check = this.validateOpportunity(snapshot, state);
+
+    if (!check.valid) {
       const entry = {
         evaluatedAtUtc: nowIso,
         snapshotId: snapshot.snapshotId,
@@ -120,17 +280,17 @@ class ProspectiveLadderEngine {
         market: snapshot.market,
         selection: snapshot.selection,
         odds: snapshot.odds,
+        evPct: check.evPct,
         enteredLadder: false,
-        reasons
+        reasons: check.reasons
       };
       state.evaluatedOpportunities.push(entry);
       atomicWriteJson(this.statePath, state);
-      return { entered: false, reasons, entry };
+      return { entered: false, reasons: check.reasons, entry };
     }
 
-    // Ingreso aprobado a RETO ESCALERA (100% reinversión virtual)
     const stake = Number(state.currentCapital.toFixed(2));
-    const potentialReturn = Number((stake * Number(snapshot.odds)).toFixed(2));
+    const potentialReturn = Number((stake * check.odds).toFixed(2));
     const bet = {
       betId: `ladder_bet_${Date.now()}_${state.stepHistory.length + 1}`,
       cycle: state.currentCycle,
@@ -142,11 +302,16 @@ class ProspectiveLadderEngine {
       market: snapshot.market,
       selection: snapshot.selection,
       line: snapshot.line,
-      odds: Number(snapshot.odds),
+      odds: check.odds,
+      modelProbability: check.prob,
+      expectedValuePct: check.evPct,
+      elenaDecision: snapshot.elenaDecision,
+      riskManagerDecision: snapshot.riskManagerDecision,
       stake,
       potentialReturn,
       openedAtUtc: nowIso,
-      status: 'OPEN'
+      status: 'OPEN',
+      definitiveSnapshot: { ...snapshot, confirmedAtUtc: nowIso }
     };
 
     state.openBet = bet;
@@ -158,7 +323,8 @@ class ProspectiveLadderEngine {
       match: snapshot.match,
       market: snapshot.market,
       selection: snapshot.selection,
-      odds: snapshot.odds,
+      odds: check.odds,
+      evPct: check.evPct,
       enteredLadder: true,
       betId: bet.betId,
       reasons: ['ENTERED_LADDER_SIMULATION']
@@ -170,7 +336,7 @@ class ProspectiveLadderEngine {
 
   /**
    * Liquida la apuesta virtual abierta de forma idempotente.
-   * No libera capital si confirmed !== true o si el estado es PENDING.
+   * Si el capital alcanza o supera $10.000.000 -> OBJECTIVE_REACHED y bloquea nuevas apuestas.
    */
   settleOpenBet(betId, settlementInput) {
     const state = this._loadState();
@@ -220,6 +386,10 @@ class ProspectiveLadderEngine {
       return { settled: false, reason: `UNSUPPORTED_OUTCOME: ${outcome}` };
     }
 
+    if (state.currentCapital >= state.targetCapital) {
+      state.objectiveStatus = 'OBJECTIVE_REACHED';
+    }
+
     const settledRecord = {
       ...bet,
       status: outcome,
@@ -243,7 +413,9 @@ class ProspectiveLadderEngine {
 
 module.exports = {
   ProspectiveLadderEngine,
+  OFFICIAL_PARAMS,
   ALLOWED_LADDER_MARKETS,
+  PLAYER_T60_MARKETS,
   EXCLUDED_LADDER_MARKETS,
   DEFAULT_LADDER_STATE_PATH
 };

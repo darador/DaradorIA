@@ -140,18 +140,20 @@
         `Actualizado: ${DATA.generatedAtUtc} · Cadena SHA-256: ${DATA.integrity?.ok ? 'INTACTA' : 'ALERTA'} (${DATA.integrity?.totalSnapshots || 0} snapshots)`;
 
       document.getElementById('ladderKpis').innerHTML = [
+        ['Estado Objetivo', l.objectiveStatus === 'OBJECTIVE_REACHED' ? '🏆 OBJECTIVE_REACHED' : 'EN PROGRESO'],
         ['Capital Inicial', fmtARS(l.initialCapital)],
         ['Capital Actual', fmtARS(l.currentCapital)],
         ['Objetivo', fmtARS(l.targetCapital)],
         ['Progreso', (l.progressPct || 0) + '%'],
-        ['Escalón Actual', `Ciclo ${l.currentCycle || 1} · Paso ${l.currentStep || 1}`],
+        ['Ciclo / Escalón', `Ciclo ${l.currentCycle || 1} · Paso ${l.currentStep || 1}`],
+        ['Rango Cuota Oficial', `${(l.minOdds || 1.10).toFixed(2)} – ${(l.maxOdds || 1.25).toFixed(2)} (Obj. 1.20)`],
         ['Stake Comprometido', fmtARS(l.committedStake)],
         ['Beneficio Acumulado', fmtARS(l.cumulativeProfit)]
       ].map(([k, v]) => `<div class="kpi"><div class="lbl">${k}</div><div class="val">${v}</div></div>`).join('');
 
       document.getElementById('openBetBox').innerHTML = l.openBet
-        ? `<strong>Apuesta virtual abierta:</strong> ${l.openBet.match} — ${l.openBet.selection} (${l.openBet.market}) @${l.openBet.odds} · Stake: ${fmtARS(l.openBet.stake)} · Retorno potencial: ${fmtARS(l.openBet.potentialReturn)}`
-        : '<strong>Apuesta virtual abierta:</strong> Ninguna (capital 100% disponible esperando oportunidad elegible).';
+        ? `<strong>Apuesta virtual abierta:</strong> ${l.openBet.match} — ${l.openBet.selection} (${l.openBet.market}) @<strong>${l.openBet.odds}</strong> · EV: <strong>${l.openBet.expectedValuePct != null ? '+' + l.openBet.expectedValuePct + '%' : 'N/D'}</strong> · Prob: <strong>${l.openBet.modelProbability ? (l.openBet.modelProbability * 100).toFixed(1) + '%' : 'N/D'}</strong> · Elena: <strong>${l.openBet.elenaDecision || 'APROBADO'}</strong> · RM: <strong>${l.openBet.riskManagerDecision || 'APROBADO'}</strong> · Stake: ${fmtARS(l.openBet.stake)} · Retorno potencial: ${fmtARS(l.openBet.potentialReturn)}`
+        : '<strong>Apuesta virtual abierta:</strong> Ninguna (capital 100% disponible esperando oportunidad elegible dentro de [1.10 – 1.25] con EV ≥ +7%).';
 
       if (r) {
         document.getElementById('replayRefBox').innerHTML =

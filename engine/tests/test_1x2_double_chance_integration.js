@@ -110,23 +110,23 @@ test('7. Métricas separadas para 1X2 vs Doble oportunidad (nunca combinadas)', 
   assert.strictEqual(m[MARKET_1X2].sampleConclusive, false);
 });
 
-test('8. Protección de RETO ESCALERA: 1X2 y Doble oportunidad en observación (no ingresan automáticamente)', () => {
+test('8. Protección de RETO ESCALERA: 1X2 y Doble oportunidad respetan rango [1.10-1.25] y EV>=7%', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'darador_1x2_lad_'));
   const ladder = new ProspectiveLadderEngine({ statePath: path.join(dir, 'ladder.json') });
   const r1 = ladder.considerOpportunity({
     snapshotId: 's1', opportunityKey: 'k1', circuit: 'RETO_ESCALERA',
     match: 'Inter vs Stuttgart', market: MARKET_1X2, selection: 'Inter (1)', odds: 2.1,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    modelProbability: 0.55, expectedValuePct: 15.5, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
   const r2 = ladder.considerOpportunity({
     snapshotId: 's2', opportunityKey: 'k2', circuit: 'RETO_ESCALERA',
     match: 'Inter vs Stuttgart', market: MARKET_DC, selection: '1X', odds: 1.38,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    modelProbability: 0.80, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
   assert.strictEqual(r1.entered, false);
   assert.strictEqual(r2.entered, false);
-  assert.ok(r1.reasons.some(x => x.includes('MARKET_OBSERVATION_ONLY_LADDER')));
-  assert.ok(r2.reasons.some(x => x.includes('MARKET_OBSERVATION_ONLY_LADDER')));
+  assert.ok(r1.reasons.some(x => x.includes('ODDS_OUT_OF_RANGE')));
+  assert.ok(r2.reasons.some(x => x.includes('ODDS_OUT_OF_RANGE')));
   assert.strictEqual(ladder.getState().openBet, null);
   assert.strictEqual(ladder.getState().currentCapital, 50000);
 });

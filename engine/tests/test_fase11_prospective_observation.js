@@ -112,48 +112,56 @@ test('6. Bloqueo de aprobación contrafactual en circuito OPERATIVO', () => {
   }, /CIRCUIT_ISOLATION_VIOLATION/);
 });
 
-test('7. Ingreso correcto a RETO ESCALERA con mercado permitido y bloqueo de excluidos', () => {
+test('7. Ingreso correcto a RETO ESCALERA [1.10-1.25] con EV>=7% y bloqueo fuera de rango/excluidos', () => {
   const { ladder } = makeTmp();
-  const rej = ladder.considerOpportunity({
+  const rejExcl = ladder.considerOpportunity({
     snapshotId: 's_excl', opportunityKey: 'k_excl', circuit: 'RETO_ESCALERA',
-    match: 'M1', market: 'Remates al arco de equipo', selection: 'T1', odds: 1.7,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    match: 'M1', market: 'Remates al arco de equipo', selection: 'T1', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
-  assert.strictEqual(rej.entered, false);
-  assert.ok(rej.reasons.some(r => r.includes('MARKET_EXCLUDED_LADDER')));
+  assert.strictEqual(rejExcl.entered, false);
+  assert.ok(rejExcl.reasons.some(r => r.includes('MARKET_EXCLUDED_LADDER')));
+
+  const rejOdds = ladder.considerOpportunity({
+    snapshotId: 's_high', opportunityKey: 'k_high', circuit: 'RETO_ESCALERA',
+    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.50,
+    modelProbability: 0.80, expectedValuePct: 20.0, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+  });
+  assert.strictEqual(rejOdds.entered, false);
+  assert.ok(rejOdds.reasons.some(r => r.includes('ODDS_OUT_OF_RANGE')));
 
   const ok = ladder.considerOpportunity({
     snapshotId: 's_ok', opportunityKey: 'k_ok', circuit: 'RETO_ESCALERA',
-    match: 'M2', market: 'Córners de equipo', selection: 'Slavia', odds: 1.50,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    match: 'M2', market: 'Córners de equipo', selection: 'Slavia', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
   assert.strictEqual(ok.entered, true);
   assert.strictEqual(ok.bet.stake, 50000);
-  assert.strictEqual(ok.bet.potentialReturn, 75000);
+  assert.strictEqual(ok.bet.potentialReturn, 60000);
 });
 
 test('8. Bloqueo de segunda apuesta abierta en RETO ESCALERA', () => {
   const { ladder } = makeTmp();
   ladder.considerOpportunity({
     snapshotId: 's1', opportunityKey: 'k1', circuit: 'RETO_ESCALERA',
-    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.40,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
   const second = ladder.considerOpportunity({
     snapshotId: 's2', opportunityKey: 'k2', circuit: 'RETO_ESCALERA',
-    match: 'M2', market: 'Remates totales', selection: 'P1', odds: 1.50,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO', lineupStatus: 'CONFIRMADA'
+    match: 'M2', market: 'Remates totales', selection: 'P1', odds: 1.25,
+    modelProbability: 0.90, expectedValuePct: 12.5, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO', lineupStatus: 'CONFIRMADA'
   });
   assert.strictEqual(second.entered, false);
   assert.ok(second.reasons.some(r => r.includes('OPEN_BET_LOCKED')));
 });
 
-test('9. Liquidación y liberación de capital (bloquea si no confirmado)', () => {
+test('9. Liquidación, liberación de capital y OBJECTIVE_REACHED al alcanzar $10.000.000', () => {
   const { ladder } = makeTmp();
   const { bet } = ladder.considerOpportunity({
     snapshotId: 's1', opportunityKey: 'k1', circuit: 'RETO_ESCALERA',
-    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.50,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
   const unconf = ladder.settleOpenBet(bet.betId, { outcome: 'WON', confirmed: false });
   assert.strictEqual(unconf.settled, false);
@@ -163,8 +171,27 @@ test('9. Liquidación y liberación de capital (bloquea si no confirmado)', () =
   assert.strictEqual(settled.settled, true);
   assert.strictEqual(settled.state.openBet, null);
   assert.strictEqual(settled.state.committedStake, 0);
-  assert.strictEqual(settled.state.currentCapital, 75000);
+  assert.strictEqual(settled.state.currentCapital, 60000);
   assert.strictEqual(settled.state.currentStep, 2);
+
+  // Verificar OBJECTIVE_REACHED y bloqueo automático al superar $10.000.000
+  const dir2 = fs.mkdtempSync(path.join(os.tmpdir(), 'darador_obj_'));
+  const ladObj = new ProspectiveLadderEngine({ statePath: path.join(dir2, 'l.json'), initialCapital: 9000000, targetCapital: 10000000 });
+  const { bet: bObj } = ladObj.considerOpportunity({
+    snapshotId: 'so', opportunityKey: 'ko', circuit: 'RETO_ESCALERA',
+    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+  });
+  const fin = ladObj.settleOpenBet(bObj.betId, { outcome: 'WON', confirmed: true });
+  assert.strictEqual(fin.state.objectiveStatus, 'OBJECTIVE_REACHED');
+  assert.strictEqual(fin.state.currentCapital, 10800000);
+  const afterObj = ladObj.considerOpportunity({
+    snapshotId: 'so2', opportunityKey: 'ko2', circuit: 'RETO_ESCALERA',
+    match: 'M2', market: 'Córners de equipo', selection: 'T2', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+  });
+  assert.strictEqual(afterObj.entered, false);
+  assert.ok(afterObj.reasons.some(r => r.includes('OBJECTIVE_REACHED_LOCKED')));
 });
 
 test('10. Idempotencia en liquidación prospectiva y de RETO ESCALERA', () => {
@@ -178,8 +205,8 @@ test('10. Idempotencia en liquidación prospectiva y de RETO ESCALERA', () => {
 
   const { bet } = ladder.considerOpportunity({
     snapshotId: 's1', opportunityKey: 'k1', circuit: 'RETO_ESCALERA',
-    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.50,
-    elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
+    match: 'M1', market: 'Córners de equipo', selection: 'T1', odds: 1.20,
+    modelProbability: 0.92, expectedValuePct: 10.4, elenaDecision: 'APROBADO', riskManagerDecision: 'APROBADO'
   });
   const l1 = ladder.settleOpenBet(bet.betId, { outcome: 'WON', confirmed: true });
   const l2 = ladder.settleOpenBet(bet.betId, { outcome: 'WON', confirmed: true });
