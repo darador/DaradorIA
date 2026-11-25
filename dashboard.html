@@ -6131,21 +6131,26 @@
               ? String(pick.actual_stat)
               : ('@' + (typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2)));
             const isTeam = String(pick.player || '').includes('(Equipo)');
-            const subLabel = (isTeam ? 'Equipo' : 'Jugador') + ' - ' + (pick.market || '');
+            const catLabel = isTeam ? 'EQUIPO' : 'JUGADOR';
+            const mktLabel = String(pick.market || '').toUpperCase();
             const edgeNum = pick.edge_pct != null ? parseFloat(pick.edge_pct) : 0;
             const edgeDisplay = (edgeNum >= 0 ? '+' : '') + edgeNum.toFixed(1) + '%';
 
             return `
-              <div onclick="openAuditModal('${pick.id || pick.player}')" style="display:flex; gap:0.85rem; cursor:pointer; padding:0.45rem 0.25rem; border-radius:8px; transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
-                <div style="display:flex; flex-direction:column; align-items:center; width:20px; flex-shrink:0; padding-top:0.15rem;">
+              <div onclick="openAuditModal('${pick.id || pick.player}')" style="display:flex; gap:0.85rem; cursor:pointer; padding:0.5rem 0.35rem; border-radius:8px; transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
+                <div style="display:flex; flex-direction:column; align-items:center; width:20px; flex-shrink:0; padding-top:0.25rem;">
                   <div style="width:18px; height:18px; border-radius:50%; background:${nodeBg}; color:#04111d; font-size:0.68rem; font-weight:900; display:flex; align-items:center; justify-content:center; box-shadow:0 0 8px ${nodeBg}55;">${nodeIcon}</div>
                   ${isLast ? '' : '<div style="width:2px; flex:1; min-height:28px; background:rgba(148,163,184,0.35); margin-top:4px;"></div>'}
                 </div>
                 <div style="flex:1; min-width:0;">
                   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
                     <div>
-                      <div style="font-size:0.92rem; font-weight:800; color:#f8fafc;">${pick.player}: <span style="color:#e2e8f0; font-weight:700;">${pick.line}</span></div>
-                      <div style="font-size:0.75rem; color:#94a3b8; margin-top:0.08rem;">${subLabel}</div>
+                      <div style="font-size:0.95rem; font-weight:800; color:#f8fafc; letter-spacing:-0.2px;">${pick.player}: <span style="color:#e2e8f0; font-weight:700;">${pick.line}</span></div>
+                      <div style="margin-top:0.35rem; display:inline-flex; align-items:center; gap:0.4rem; padding:0.25rem 0.65rem; border-radius:6px; background:linear-gradient(90deg, rgba(56,189,248,0.14) 0%, rgba(30,41,59,0.7) 100%); border:1px solid rgba(56,189,248,0.4); box-shadow:0 1px 4px rgba(0,0,0,0.25);">
+                        <span style="font-size:0.65rem; font-weight:900; letter-spacing:0.8px; color:#38bdf8; font-family:var(--font-mono); text-shadow:0 0 8px rgba(56,189,248,0.45);">${catLabel}</span>
+                        <span style="color:rgba(148,163,184,0.6); font-size:0.65rem;">·</span>
+                        <span style="font-size:0.75rem; font-weight:800; letter-spacing:0.4px; color:#f1f5f9; text-transform:uppercase;">${mktLabel}</span>
+                      </div>
                     </div>
                     <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
                       <span class="board-odds" style="font-size:0.82rem;">${(typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
@@ -6264,19 +6269,24 @@
               ? String(pick.actual_stat)
               : ('@' + (typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2)));
             const isTeam = String(pick.player || '').includes('(Equipo)');
-            const subLabel = (isTeam ? 'Equipo' : 'Jugador') + ' - ' + (pick.market || '');
+            const catLabel = isTeam ? 'EQUIPO' : 'JUGADOR';
+            const mktLabel = String(pick.market || '').toUpperCase();
             const edgeNum = pick.edge_pct != null ? parseFloat(pick.edge_pct) : 0;
             const edgeDisplay = (edgeNum >= 0 ? '+' : '') + edgeNum.toFixed(1) + '%';
 
             return `
-              <div onclick="openAuditModal('${pick.id || pick.player}')" style="display:flex; gap:0.65rem; cursor:pointer; padding:0.4rem 0.1rem;">
-                <div style="display:flex; flex-direction:column; align-items:center; width:18px; flex-shrink:0; padding-top:0.15rem;">
+              <div onclick="openAuditModal('${pick.id || pick.player}')" style="display:flex; gap:0.65rem; cursor:pointer; padding:0.45rem 0.15rem;">
+                <div style="display:flex; flex-direction:column; align-items:center; width:18px; flex-shrink:0; padding-top:0.25rem;">
                   <div style="width:17px; height:17px; border-radius:50%; background:${nodeBg}; color:#04111d; font-size:0.65rem; font-weight:900; display:flex; align-items:center; justify-content:center;">${nodeIcon}</div>
                   ${isLast ? '' : '<div style="width:2px; flex:1; min-height:24px; background:rgba(148,163,184,0.35); margin-top:4px;"></div>'}
                 </div>
                 <div style="flex:1; min-width:0;">
-                  <div style="font-size:0.88rem; font-weight:800; color:#f8fafc; line-height:1.25;">${pick.player}: <span style="color:#e2e8f0; font-weight:700;">${pick.line}</span></div>
-                  <div style="font-size:0.72rem; color:#94a3b8; margin-top:0.1rem;">${subLabel}</div>
+                  <div style="font-size:0.9rem; font-weight:800; color:#f8fafc; line-height:1.25;">${pick.player}: <span style="color:#e2e8f0; font-weight:700;">${pick.line}</span></div>
+                  <div style="margin-top:0.35rem; display:inline-flex; align-items:center; gap:0.35rem; padding:0.2rem 0.55rem; border-radius:6px; background:linear-gradient(90deg, rgba(56,189,248,0.14) 0%, rgba(30,41,59,0.7) 100%); border:1px solid rgba(56,189,248,0.4); box-shadow:0 1px 4px rgba(0,0,0,0.25);">
+                    <span style="font-size:0.62rem; font-weight:900; letter-spacing:0.8px; color:#38bdf8; font-family:var(--font-mono);">${catLabel}</span>
+                    <span style="color:rgba(148,163,184,0.6); font-size:0.65rem;">·</span>
+                    <span style="font-size:0.72rem; font-weight:800; letter-spacing:0.3px; color:#f1f5f9; text-transform:uppercase;">${mktLabel}</span>
+                  </div>
                   <div style="display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; margin-top:0.3rem;">
                     <span class="board-odds" style="font-size:0.76rem;">${(typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
                     <span class="board-edge-badge" style="font-size:0.68rem;">${edgeDisplay}</span>
