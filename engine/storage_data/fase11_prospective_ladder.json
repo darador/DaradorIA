@@ -11,8 +11,30 @@
   "referenceOdds": 1.2,
   "currentStep": 3,
   "currentCycle": 1,
-  "openBet": null,
-  "committedStake": 0,
+  "openBet": {
+    "betId": "ladder_manual_1795649201249_step3",
+    "cycle": 1,
+    "step": 3,
+    "snapshotId": "manual_live_1795649201249",
+    "opportunityKey": "manual_1795649201250",
+    "match": "Atlético Mineiro vs Corinthians",
+    "competition": "Brasileirão Série A",
+    "market": "Remates totales",
+    "selection": "Matheus Bidu",
+    "line": "Más de 0.5",
+    "odds": 1.1,
+    "modelProbability": null,
+    "expectedValuePct": null,
+    "elenaDecision": "APROBADO_MANUAL",
+    "riskManagerDecision": "APROBADO_MANUAL",
+    "origin": "MANUAL_LIVE",
+    "manualNotes": "Pick manual en vivo para Escalón 3 (@1.10)",
+    "stake": 64975,
+    "potentialReturn": 71472.5,
+    "openedAtUtc": "2026-11-25T23:26:41.249Z",
+    "status": "OPEN"
+  },
+  "committedStake": 64975,
   "cumulativeProfit": 14975,
   "lastSettlement": {
     "betId": "ladder_manual_1795642354586_step2",
@@ -524,6 +546,20 @@
       "odds": 1.13,
       "enteredLadder": true,
       "betId": "ladder_manual_1795642354586_step2",
+      "reasons": [
+        "ENTERED_LADDER_MANUAL_LIVE"
+      ]
+    },
+    {
+      "evaluatedAtUtc": "2026-11-25T23:26:41.249Z",
+      "snapshotId": "manual_live_1795649201249",
+      "opportunityKey": "manual_1795649201250",
+      "match": "Atlético Mineiro vs Corinthians",
+      "market": "Remates totales",
+      "selection": "Matheus Bidu",
+      "odds": 1.1,
+      "enteredLadder": true,
+      "betId": "ladder_manual_1795649201249_step3",
       "reasons": [
         "ENTERED_LADDER_MANUAL_LIVE"
       ]
