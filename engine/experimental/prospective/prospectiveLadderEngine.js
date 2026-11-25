@@ -24,6 +24,7 @@ const SD = path.join(__dirname, '..', '..', 'storage_data');
 const DEFAULT_LADDER_STATE_PATH = path.join(SD, 'fase11_prospective_ladder.json');
 
 const ALLOWED_LADDER_MARKETS = new Set(['Remates totales', 'Córners de equipo']);
+const OBSERVATION_ONLY_LADDER_MARKETS = new Set(['Ganador del partido (1X2)', 'Doble oportunidad']);
 const EXCLUDED_LADDER_MARKETS = new Set(['Remates al arco de equipo', 'Goles de equipo', 'Remates de equipo']);
 
 function atomicWriteJson(filePath, data) {
@@ -93,7 +94,9 @@ class ProspectiveLadderEngine {
     if (String(snapshot.riskManagerDecision || '').toUpperCase() === 'RECHAZADO' || String(snapshot.riskManagerDecision || '').toUpperCase() === 'VETADO') {
       reasons.push(`RISK_MANAGER_VETO: Risk Manager = ${snapshot.riskManagerDecision}.`);
     }
-    if (EXCLUDED_LADDER_MARKETS.has(snapshot.market)) {
+    if (OBSERVATION_ONLY_LADDER_MARKETS.has(snapshot.market)) {
+      reasons.push(`MARKET_OBSERVATION_ONLY_LADDER: Mercado "${snapshot.market}" en observación para RETO ESCALERA (no habilitado automáticamente; requiere validación previa).`);
+    } else if (EXCLUDED_LADDER_MARKETS.has(snapshot.market)) {
       reasons.push(`MARKET_EXCLUDED_LADDER: Mercado "${snapshot.market}" excluido de RETO ESCALERA.`);
     } else if (!ALLOWED_LADDER_MARKETS.has(snapshot.market)) {
       reasons.push(`MARKET_NOT_PRIORITY_LADDER: Mercado "${snapshot.market}" fuera de mercados iniciales de RETO ESCALERA.`);
