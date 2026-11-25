@@ -4849,45 +4849,55 @@
         return pad(d.getHours()) + ':' + pad(d.getMinutes());
       };
 
-      // 1. Lucía alineaciones
-      items.push({
-        time: getTimeAgo(35),
-        tagClass: 'stream-tag-green',
-        agent: '📰 LUCÍA',
-        text: 'Verificó alineaciones oficiales de Brasileirão (confirmadas)'
-      });
+      // Actividad en vivo 100% dinámica a partir de globalPicksData (sin textos históricos fijos)
+      const allPicksLive = (globalPicksData && Array.isArray(globalPicksData.top_picks)) ? globalPicksData.top_picks : [];
+      const nowMs = Date.now();
+      const upcomingLive = allPicksLive.filter(p => !p.is_settled && !p.is_finished && (!p.eventDateUtc || new Date(p.eventDateUtc).getTime() > nowMs));
+      const approvedUpcoming = upcomingLive.filter(p => p.elena_decision === 'APROBADO' || p.status === 'APROBADO');
+      const pendingT60 = upcomingLive.filter(p => p.status === 'PENDIENTE_ALINEACION');
+      const topEvPick = [...upcomingLive].sort((a, b) => (parseFloat(b.edge_pct) || 0) - (parseFloat(a.edge_pct) || 0))[0];
+      const topTeamPick = approvedUpcoming.find(p => String(p.player || '').includes('(Equipo)'));
+      const topPlayerPick = pendingT60.find(p => String(p.market || '').toLowerCase().includes('remates')) || pendingT60[0];
+      const recentWon = allPicksLive.filter(p => p.is_settled && (p.status === 'ACERTADA' || p.sports_result === 'ACERTADA')).slice(0, 3);
 
-      // 2. Elena levantó condición
-      items.push({
-        time: getTimeAgo(20),
-        tagClass: 'stream-tag-gold',
-        agent: '👑 ELENA',
-        text: 'Levantó condición en Jamerson, Gustavo Marques y Bruno Gomes'
-      });
-
-      // 3. Renata cuota justa Calleri
-      items.push({
-        time: getTimeAgo(12),
-        tagClass: 'stream-tag-cyan',
-        agent: '📊 RENATA',
-        text: 'Detectó +27.0% EV en Jonathan Calleri (São Paulo vs Fluminense)'
-      });
-
-      // 4. Valentina córners
-      items.push({
-        time: getTimeAgo(7),
-        tagClass: 'stream-tag-green',
-        agent: '⚽ VALENTINA',
-        text: 'Validó cuota justa (1.31) en Córners Más de 4.5 de São Paulo'
-      });
-
-      // 5. Elena supervisión
       items.push({
         time: getTimeAgo(2),
         tagClass: 'stream-tag-gold',
         agent: '👑 ELENA',
-        text: 'Supervisando 14 selecciones aprobadas y control de riesgo'
+        text: 'Supervisando ' + approvedUpcoming.length + ' aprobadas y ' + pendingT60.length + ' pendientes T-60 para próximas jornadas'
       });
+      if (topEvPick) {
+        items.push({
+          time: getTimeAgo(6),
+          tagClass: 'stream-tag-cyan',
+          agent: '📊 RENATA',
+          text: 'Detectó +' + (parseFloat(topEvPick.edge_pct) || 0).toFixed(1) + '% EV en ' + topEvPick.player + ' (' + topEvPick.match + ')'
+        });
+      }
+      if (topTeamPick) {
+        items.push({
+          time: getTimeAgo(11),
+          tagClass: 'stream-tag-green',
+          agent: '⚽ VALENTINA',
+          text: 'Validó cuota justa (' + (topTeamPick.fair_odds || '-') + ') en ' + topTeamPick.player + ' · ' + topTeamPick.market + ' ' + topTeamPick.line
+        });
+      }
+      if (topPlayerPick) {
+        items.push({
+          time: getTimeAgo(16),
+          tagClass: 'stream-tag-green',
+          agent: '📰 LUCÍA',
+          text: 'Monitoreando planilla T-60 para ' + topPlayerPick.player + ' (' + topPlayerPick.match + ')'
+        });
+      }
+      if (recentWon.length > 0) {
+        items.push({
+          time: getTimeAgo(22),
+          tagClass: 'stream-tag-cyan',
+          agent: '📊 SOFÍA',
+          text: 'Últimos aciertos liquidados: ' + recentWon.map(r => r.player).join(', ')
+        });
+      }
 
       container.innerHTML = items.map(item => 
         '<div class="stream-item">' +
