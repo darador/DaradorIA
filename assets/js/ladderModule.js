@@ -104,16 +104,19 @@
     const ov = loadLocalOverride();
     if (!ov) return l;
 
-    // Si el override local tiene un timestamp o paso más avanzado que el payload estático, aplicarlo
-    if (ov.currentStep > (l.currentStep || 1) || (ov.stepHistory && ov.stepHistory.length > (l.stepHistory || []).length)) {
-      const merged = { ...l, ...ov };
+    // Si hay una apuesta abierta guardada en el override local (ej. pick en vivo), fusionarla siempre
+    const merged = { ...l, ...ov };
+
+    if (ov.openBet) {
+      merged.openBet = ov.openBet;
+      merged.committedStake = ov.openBet.stake || ov.committedStake || l.currentCapital;
+    } else if (ov.stepHistory && l.openBet && ov.stepHistory.some(h => h.betId === l.openBet.betId)) {
       // Si la apuesta abierta del payload ya fue liquidada en el override, limpiarla
-      if (ov.stepHistory && l.openBet && ov.stepHistory.some(h => h.betId === l.openBet.betId)) {
-        merged.openBet = ov.openBet || null;
-      }
-      return merged;
+      merged.openBet = null;
+      merged.committedStake = 0;
     }
-    return l;
+
+    return merged;
   }
 
   async function fetchLiveState() {
