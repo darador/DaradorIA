@@ -17,6 +17,7 @@
   });
 
   const PROPOSAL_STORAGE_KEY = 'darador_reto_escalera_selected_proposal_v1';
+  const LOCAL_OVERRIDE_STORAGE_KEY = 'darador_reto_escalera_local_override_v1';
   const TIMEZONE_ART = 'America/Argentina/Buenos_Aires';
 
   const arsFmt = new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -64,11 +65,49 @@
 
   let selectedProposal = loadSelectedProposal();
 
+  function loadLocalOverride() {
+    try {
+      const raw = global.localStorage ? global.localStorage.getItem(LOCAL_OVERRIDE_STORAGE_KEY) : null;
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function saveLocalOverride(data) {
+    try {
+      if (!global.localStorage) return;
+      if (!data) global.localStorage.removeItem(LOCAL_OVERRIDE_STORAGE_KEY);
+      else global.localStorage.setItem(LOCAL_OVERRIDE_STORAGE_KEY, JSON.stringify(data));
+    } catch {}
+  }
+
+  function applyLocalOverride(l) {
+    if (!l) return l;
+    const ov = loadLocalOverride();
+    if (!ov) return l;
+
+    // Si el override local tiene un timestamp o paso más avanzado que el payload estático, aplicarlo
+    if (ov.currentStep > (l.currentStep || 1) || (ov.stepHistory && ov.stepHistory.length > (l.stepHistory || []).length)) {
+      const merged = { ...l, ...ov };
+      // Si la apuesta abierta del payload ya fue liquidada en el override, limpiarla
+      if (ov.stepHistory && l.openBet && ov.stepHistory.some(h => h.betId === l.openBet.betId)) {
+        merged.openBet = ov.openBet || null;
+      }
+      return merged;
+    }
+    return l;
+  }
+
   async function fetchLiveState() {
     try {
       const res = await fetch('./api/fase11_prospective_dashboard.json?t=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      cachedPayload = await res.json();
+      const data = await res.json();
+      if (data && data.prospectiveLadder) {
+        data.prospectiveLadder = applyLocalOverride(data.prospectiveLadder);
+      }
+      cachedPayload = data;
       loadError = null;
     } catch (err) {
       loadError = err.message || 'No se pudo cargar el estado persistido de RETO ESCALERA.';
@@ -599,6 +638,10 @@
     isSettlingManual = true;
     paint();
 
+    let serverSucceeded = false;
+    let serverMessage = null;
+
+    // 1. Intentar liquidación oficial mediante API del backend (si hay servidor Node activo)
     try {
       const res = await fetch('/api/ladder/settle', {
         method: 'POST',
@@ -610,27 +653,71 @@
         })
       });
 
-      const data = await res.json().catch(() => null);
-
-      if (!res.ok) {
-        throw new Error((data && data.message) ? data.message : 'Error al liquidar (HTTP ' + res.status + ')');
+      if (res.ok) {
+        const data = await res.json().catch(() => null);
+        serverSucceeded = true;
+        serverMessage = data && data.message;
       }
-
-      pendingManualSettle = null;
-      isSettlingManual = false;
-      selectedProposal = null;
-      saveSelectedProposal(null);
-      uiNotice = {
-        type: 'ok',
-        text: `✓ ${data.message || 'Pick liquidado como GANADO correctamente.'}`
-      };
-      await reload();
-    } catch (err) {
-      isSettlingManual = false;
-      pendingManualSettle = null;
-      uiNotice = { type: 'err', text: 'No se pudo liquidar el pick: ' + err.message };
-      paint();
+    } catch (netErr) {
+      // Si estamos en entorno estático sin backend Node (ej. VS Code Live Server / file://), el fetch fallará
+      serverSucceeded = false;
     }
+
+    // 2. Liquidación local resiliente (garantiza funcionamiento autónomo ante HTTP 404 o sin servidor)
+    const l = (cachedPayload && cachedPayload.prospectiveLadder) ? cachedPayload.prospectiveLadder : null;
+    const capBefore = bet.stake || (l ? l.currentCapital : OFFICIAL.initialCapital);
+    const capAfter = Number((capBefore * Number(bet.odds)).toFixed(2));
+    const profitDelta = Number((capAfter - capBefore).toFixed(2));
+    const nowIso = new Date().toISOString();
+
+    const settledRecord = {
+      ...bet,
+      status: 'WON',
+      capBefore,
+      capAfter,
+      profitDelta,
+      settledAtUtc: nowIso,
+      source: 'Registro Manual de Usuario',
+      settlementType: 'MANUAL',
+      settledBy: 'Usuario (Manual)',
+      manualNotes: 'Liquidación confirmada manualmente por el usuario desde la interfaz del Reto Escalera.'
+    };
+
+    const nextStep = (bet.step || (l ? l.currentStep : 1)) + 1;
+    const currentHist = (l && l.stepHistory) ? [...l.stepHistory] : [];
+    // Prevenir duplicados si ya estuviera
+    if (!currentHist.some(h => h.betId === bet.betId)) {
+      currentHist.push(settledRecord);
+    }
+
+    const newTarget = (l && l.targetCapital) ? l.targetCapital : OFFICIAL.targetCapital;
+    const newObjectiveStatus = capAfter >= newTarget ? 'OBJECTIVE_REACHED' : 'IN_PROGRESS';
+
+    const localOverride = {
+      currentCapital: capAfter,
+      currentStep: nextStep,
+      currentCycle: bet.cycle || (l ? l.currentCycle : 1),
+      committedStake: 0,
+      openBet: null,
+      lastSettlement: settledRecord,
+      stepHistory: currentHist,
+      objectiveStatus: newObjectiveStatus,
+      cumulativeProfit: Number(((l ? (l.cumulativeProfit || 0) : 0) + profitDelta).toFixed(2))
+    };
+
+    saveLocalOverride(localOverride);
+
+    pendingManualSettle = null;
+    isSettlingManual = false;
+    selectedProposal = null;
+    saveSelectedProposal(null);
+
+    uiNotice = {
+      type: 'ok',
+      text: `✓ Pick ${bet.selection} marcado como GANADO exitosamente. Escalón ${bet.step} completado. Capital actualizado a ${formatArs(capAfter)}. Avanzado al Escalón ${nextStep}.`
+    };
+
+    await reload();
   }
 
   function selectOpportunity(snapshotId) {

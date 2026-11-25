@@ -90,7 +90,8 @@ const server = http.createServer((req, res) => {
         // Sincronizar api/fase11_prospective_dashboard.json
         let dashExport = null;
         try {
-          dashExport = ProspectiveAnalyticsExporter.export();
+          const exporter = new ProspectiveAnalyticsExporter();
+          dashExport = exporter.export();
         } catch (expErr) {
           console.warn('[Server] Error sincronizando export analítico:', expErr.message);
         }
