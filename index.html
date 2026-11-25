@@ -6140,93 +6140,86 @@
         }).join('');
       }
 
-      // Render Mobile Opportunity Cards List
+      // Render Mobile Opportunity Cards List — Diseño unificado estilo Bet Builder por partido
       if (mobileListContainer) {
-        mobileListContainer.innerHTML = filtered.map((pick, idx) => {
-          const pickKey = 'pick_' + (pick.id ? pick.id.replace(/[^a-zA-Z0-9]/g, '_') : idx);
+        const mobGrouped = [];
+        const mobGroupMap = new Map();
+        for (const pick of filtered) {
           const meta = getPickKickoffMeta(pick);
-          const matchPhase = resolveMatchPhase(pick, meta);
-          const sportsRes = resolveSportsResult(pick, meta);
-          const elenaDec = resolveElenaDecision(pick);
+          const gKey = (meta.dateStrArt || '') + '|' + String(pick.match || '').trim().toLowerCase();
+          if (!mobGroupMap.has(gKey)) {
+            const g = { key: gKey, match: pick.match, league: pick.league, meta, picks: [] };
+            mobGroupMap.set(gKey, g);
+            mobGrouped.push(g);
+          }
+          mobGroupMap.get(gKey).picks.push({ pick, meta });
+        }
 
-          const realProb = pick.real_prob != null ? Number(pick.real_prob).toFixed(1) : (pick.implied_prob ? (pick.implied_prob * 1.2).toFixed(1) : '75.0');
-          const impliedProb = pick.implied_prob != null ? Number(pick.implied_prob).toFixed(1) : (pick.odds ? (100 / pick.odds).toFixed(1) : '55.0');
-          const edgeNum = pick.edge_pct != null ? parseFloat(pick.edge_pct) : 0;
-          const edgeDisplay = (edgeNum >= 0 ? '+' : '') + edgeNum.toFixed(1) + '%';
-          const edgeClass = edgeNum < 0 ? 'board-edge-badge neg' : 'board-edge-badge';
-          const fairOddsDisplay = pick.fair_odds ? Number(pick.fair_odds).toFixed(2) : (pick.real_prob ? (100 / pick.real_prob).toFixed(2) : '1.30');
-          const flag = getLeagueFlag(pick.league);
+        mobileListContainer.innerHTML = mobGrouped.map(group => {
+          const firstPick = group.picks[0].pick;
+          const firstMeta = group.picks[0].meta;
+          const matchPhase = resolveMatchPhase(firstPick, firstMeta);
+          const flag = getLeagueFlag(group.league);
+
+          const legsHtml = group.picks.map(({ pick, meta }, idx) => {
+            const sportsRes = resolveSportsResult(pick, meta);
+            const elenaDec = resolveElenaDecision(pick, meta);
+            const isLast = idx === group.picks.length - 1;
+            const isWon = sportsRes.code === 'ACERTADA';
+            const isLost = sportsRes.code === 'FALLADA';
+            const isVoid = sportsRes.code === 'ANULADA';
+            const nodeBg = isWon ? '#10b981' : (isLost ? '#ef4444' : (isVoid ? '#64748b' : '#38bdf8'));
+            const nodeIcon = isWon ? '✓' : (isLost ? '✕' : (isVoid ? '⊘' : '●'));
+            const barColor = isWon ? '#22f59e' : (isLost ? '#ef4444' : (isVoid ? '#475569' : 'rgba(56, 189, 248, 0.55)'));
+            const pillBg = isWon ? '#22f59e' : (isLost ? '#ef4444' : (isVoid ? '#475569' : '#1e293b'));
+            const pillText = isWon ? '#042f1c' : '#f8fafc';
+            const pillVal = (pick.actual_stat !== undefined && pick.actual_stat !== null)
+              ? String(pick.actual_stat)
+              : ('@' + (typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2)));
+            const isTeam = String(pick.player || '').includes('(Equipo)');
+            const subLabel = (isTeam ? 'Equipo' : 'Jugador') + ' - ' + (pick.market || '');
+            const edgeNum = pick.edge_pct != null ? parseFloat(pick.edge_pct) : 0;
+            const edgeDisplay = (edgeNum >= 0 ? '+' : '') + edgeNum.toFixed(1) + '%';
+
+            return `
+              <div onclick="openAuditModal('${pick.id || pick.player}')" style="display:flex; gap:0.65rem; cursor:pointer; padding:0.4rem 0.1rem;">
+                <div style="display:flex; flex-direction:column; align-items:center; width:18px; flex-shrink:0; padding-top:0.15rem;">
+                  <div style="width:17px; height:17px; border-radius:50%; background:${nodeBg}; color:#04111d; font-size:0.65rem; font-weight:900; display:flex; align-items:center; justify-content:center;">${nodeIcon}</div>
+                  ${isLast ? '' : '<div style="width:2px; flex:1; min-height:24px; background:rgba(148,163,184,0.35); margin-top:4px;"></div>'}
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:0.88rem; font-weight:800; color:#f8fafc; line-height:1.25;">${pick.player}: <span style="color:#e2e8f0; font-weight:700;">${pick.line}</span></div>
+                  <div style="font-size:0.72rem; color:#94a3b8; margin-top:0.1rem;">${subLabel}</div>
+                  <div style="display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; margin-top:0.3rem;">
+                    <span class="board-odds" style="font-size:0.76rem;">${(typeof pick.odds === 'number' ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
+                    <span class="board-edge-badge" style="font-size:0.68rem;">${edgeDisplay}</span>
+                    ${elenaDec.badgeHtml}
+                  </div>
+                  <div style="display:flex; align-items:center; gap:0.45rem; margin-top:0.4rem;">
+                    <div style="flex:1; height:4px; border-radius:999px; background:${barColor};"></div>
+                    <span style="min-width:32px; text-align:center; padding:0.08rem 0.4rem; border-radius:999px; background:${pillBg}; color:${pillText}; font-family:var(--font-mono); font-size:0.72rem; font-weight:800;">${pillVal}</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
 
           return `
-            <div class="mob-pick-card" id="mobCard_${pickKey}">
-              <!-- Línea 1: Torneo, fecha/hora y fase del partido -->
-              <div class="mob-card-line1" onclick="toggleMobileCard('${pickKey}')">
-                <span class="mob-card-tournament">${flag} ${pick.league || 'Competición'} · ${meta.dateStrArt} ${meta.timeStrArt}</span>
-                ${matchPhase.badgeHtml}
+            <div style="background:rgba(11,18,36,0.9); border:1px solid rgba(56,189,248,0.22); border-radius:12px; padding:0.8rem 0.85rem; margin-bottom:0.75rem; box-shadow:0 4px 14px rgba(0,0,0,0.3);">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:0.4rem; margin-bottom:0.55rem; padding-bottom:0.45rem; border-bottom:1px solid rgba(255,255,255,0.07);">
+                <div style="min-width:0;">
+                  <div style="font-size:0.68rem; color:var(--accent-cyan); font-weight:700; text-transform:uppercase;">${flag} ${group.league || 'Competición'}</div>
+                  <div style="font-size:0.9rem; font-weight:800; color:#ffffff; margin-top:0.1rem;">${group.match}</div>
+                  <div style="display:flex; align-items:center; gap:0.35rem; margin-top:0.2rem; flex-wrap:wrap;">
+                    <span style="font-size:0.68rem; color:var(--accent-cyan); font-family:var(--font-mono);">${firstMeta.dateStrArt}</span>
+                    <span style="font-size:0.68rem; color:#e2e8f0; font-family:var(--font-mono); font-weight:700;">${firstMeta.timeStrArt}</span>
+                    ${matchPhase.badgeHtml}
+                  </div>
+                </div>
+                <span class="sem-badge ${group.picks.length > 1 ? 'sem-blue' : 'sem-gray'}" style="flex-shrink:0;">${group.picks.length === 1 ? '1 sel.' : group.picks.length + ' sel.'}</span>
               </div>
-
-              <!-- Línea 2: Partido -->
-              <div class="mob-card-line2" onclick="toggleMobileCard('${pickKey}')">
-                <span>⚽ ${pick.match}</span>
-              </div>
-
-              <!-- Línea 3: Selección y Mercado -->
-              <div class="mob-card-line3" onclick="toggleMobileCard('${pickKey}')" style="flex-direction: column; align-items: flex-start; gap: 0.22rem;">
-                <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
-                  <span class="mob-card-player">${String(pick.player || '').includes('(Equipo)') ? '🛡️' : '👤'} ${pick.player}</span>
-                  <span class="mob-card-market">${pick.market}: <strong>${pick.line}</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.15rem;">
-                  ${sportsRes.badgeHtml}
-                  ${elenaDec.badgeHtml}
-                </div>
-              </div>
-
-              <!-- Línea 4: Cuota, EV y Probabilidad Proyectada + Indicador de expansión -->
-              <div class="mob-card-line4" onclick="toggleMobileCard('${pickKey}')">
-                <div class="mob-metric-group" style="align-items: center;">
-                  <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">Cuota</span>
-                    <span class="mob-metric-val odds">${(typeof pick.odds === "number" ? pick.odds.toFixed(2) : Number(pick.odds || 1.75).toFixed(2))}</span>
-                  </div>
-                  <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">Prob. Proy.</span>
-                    <span class="mob-metric-val prob">${realProb}% <small style="color:#94a3b8;font-weight:500;">(Imp. ${impliedProb}%)</small></span>
-                  </div>
-                  <div class="mob-metric-item">
-                    <span class="mob-metric-lbl">EV</span>
-                    <span class="${edgeClass}">${edgeDisplay}</span>
-                  </div>
-                </div>
-                <div class="mob-card-chevron">
-                  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </div>
-
-              <!-- Expansión al tocar: Cuota justa, racha L5/L10, dictamen y auditoría completa -->
-              <div class="mob-card-expanded-content">
-                <div class="mob-expanded-grid">
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Cuota Justa</span>
-                    <span class="mob-expanded-val" style="color: var(--accent-cyan);">${fairOddsDisplay}</span>
-                  </div>
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Racha L5</span>
-                    <span class="mob-expanded-val" style="color: var(--neon-turf);">${pick.hit_rate_l5 || '4/5 (80%)'}</span>
-                  </div>
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Prob. Implícita</span>
-                    <span class="mob-expanded-val" style="color: var(--text-dim);">${impliedProb}%</span>
-                  </div>
-                  <div class="mob-expanded-box">
-                    <span class="mob-expanded-lbl">Muestra L10</span>
-                    <span class="mob-expanded-val">10 Partidos Oficiales</span>
-                  </div>
-                </div>
-                ${pick.rationale ? `<div class="mob-card-rationale"><strong>Elena (Risk Manager):</strong> ${pick.rationale}</div>` : ''}
-                <button class="btn-audit mob-card-action-btn" onclick="event.stopPropagation(); openAuditModal('${pick.id || pick.player}')">
-                  <span>👁️</span> Auditar Selección & IA Completa
-                </button>
+              <div style="display:flex; flex-direction:column; gap:0.15rem;">
+                ${legsHtml}
               </div>
             </div>
           `;
