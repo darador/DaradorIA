@@ -537,6 +537,21 @@
       return;
     }
 
+    // SANITIZACIÓN ESTRICTA: Si la propuesta almacenada localmente ya fue liquidada en el historial oficial,
+    // o su paso/ciclo no coinciden con el escalón activo, purgarla de inmediato para no mostrar botones residuales confusos.
+    if (selectedProposal) {
+      const isAlreadySettled = (l.stepHistory || []).some(h =>
+        (h.betId && selectedProposal.betId && h.betId === selectedProposal.betId) ||
+        (h.snapshotId && selectedProposal.snapshotId && h.snapshotId === selectedProposal.snapshotId) ||
+        (h.opportunityKey && selectedProposal.opportunityKey && h.opportunityKey === selectedProposal.opportunityKey) ||
+        (h.match === selectedProposal.match && h.selection === selectedProposal.selection)
+      );
+      if (isAlreadySettled || (selectedProposal.step && selectedProposal.step < (l.currentStep || 1))) {
+        selectedProposal = null;
+        saveSelectedProposal(null);
+      }
+    }
+
     const oppCount = (l.eligibleOpportunities || []).length + (l.pendingLineupOpportunities || []).length;
     const tabs = [
       ['principal', 'Principal'],
