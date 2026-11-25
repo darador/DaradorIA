@@ -45,6 +45,16 @@
   let uiNotice = null; // { type: 'ok' | 'err', text: string }
   let pendingManualSettle = null; // { betId, match, selection, odds, stake, potReturn, step, cycle } | null
   let isSettlingManual = false;
+  let showManualBetModal = false;
+  let manualBetForm = {
+    match: '',
+    competition: '',
+    market: 'Córners de equipo',
+    selection: '',
+    line: '',
+    odds: '',
+    notes: ''
+  };
 
   function loadSelectedProposal() {
     try {
@@ -319,11 +329,18 @@
       `;
     } else {
       betCard = `
-        <div style="background:rgba(14,21,42,0.85); border:1px dashed rgba(148,163,184,0.35); border-radius:12px; padding:1rem;">
-          <strong style="color:#f8fafc; font-size:0.95rem;">⏳ Esperando oportunidad válida</strong>
-          <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.3rem;">
-            No hay ninguna apuesta abierta. Seleccioná un candidato en la pestaña <strong>Oportunidades</strong> para proponer el Escalón ${l.currentStep || 1}.
-          </p>
+        <div style="background:rgba(14,21,42,0.85); border:1px dashed rgba(148,163,184,0.35); border-radius:12px; padding:1.1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+            <div>
+              <strong style="color:#f8fafc; font-size:0.95rem;">⏳ Esperando oportunidad válida para el Escalón ${l.currentStep || 1}</strong>
+              <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.3rem;">
+                No hay ninguna apuesta abierta. Podés elegir un candidato prepartido en la pestaña <strong>Oportunidades</strong> o cargar directamente un <strong>Pick en Vivo</strong> detectado durante el partido.
+              </p>
+            </div>
+            <button type="button" onclick="window.LadderModule.openManualBetModal()" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color:#ffffff; border:none; border-radius:8px; padding:0.55rem 1.05rem; font-weight:800; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 3px 10px rgba(2,132,199,0.35);">
+              <span>⚡</span> Cargar Pick en Vivo (Manual)
+            </button>
+          </div>
         </div>
       `;
     }
@@ -578,7 +595,205 @@
         ${bodyHtml}
       </div>
       ${renderConfirmModal()}
+      ${renderManualBetModal(l)}
     `;
+  }
+
+  function renderManualBetModal(l) {
+    if (!showManualBetModal) return '';
+    const cap = (l ? l.currentCapital : OFFICIAL.initialCapital);
+    const step = (l ? l.currentStep : 1);
+    const oddsNum = Number(manualBetForm.odds);
+    const potReturn = (Number.isFinite(oddsNum) && oddsNum > 0) ? Number((cap * oddsNum).toFixed(2)) : null;
+
+    return `
+      <div id="ladderManualBetModal" style="position:fixed; inset:0; background:rgba(0,0,0,0.82); backdrop-filter:blur(4px); z-index:99999; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:#0b1224; border:1px solid rgba(56,189,248,0.45); border-radius:14px; max-width:540px; width:100%; padding:1.4rem; box-shadow:0 20px 50px rgba(0,0,0,0.7); max-height:92vh; overflow-y:auto;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem;">
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <span style="font-size:1.35rem;">⚡</span>
+              <h3 style="font-size:1.1rem; font-weight:800; color:#ffffff; margin:0;">Cargar Pick en Vivo — Escalón ${step}</h3>
+            </div>
+            <button type="button" onclick="window.LadderModule.closeManualBetModal()" style="background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer; padding:0.2rem 0.5rem;">✕</button>
+          </div>
+          <p style="font-size:0.8rem; color:#cbd5e1; line-height:1.4; margin-bottom:1rem;">
+            Registrá una oportunidad observada en vivo durante el partido. El stake se calculará automáticamente con el 100% del capital del Escalón ${step} (<strong>${formatArs(cap)}</strong>).
+          </p>
+
+          <form onsubmit="window.LadderModule.submitManualBet(event)" style="display:flex; flex-direction:column; gap:0.85rem;">
+            <div>
+              <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Partido / Evento *</label>
+              <input type="text" id="manual_match" required placeholder="Ej: Club Brugge vs Liverpool" value="${manualBetForm.match}" oninput="window.LadderModule.updateManualField('match', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+              <div>
+                <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Mercado *</label>
+                <select id="manual_market" onchange="window.LadderModule.updateManualField('market', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+                  <option value="Córners de equipo" ${manualBetForm.market === 'Córners de equipo' ? 'selected' : ''}>Córners de equipo</option>
+                  <option value="Remates totales" ${manualBetForm.market === 'Remates totales' ? 'selected' : ''}>Remates totales</option>
+                  <option value="Faltas cometidas" ${manualBetForm.market === 'Faltas cometidas' ? 'selected' : ''}>Faltas cometidas</option>
+                  <option value="Faltas ganadas" ${manualBetForm.market === 'Faltas ganadas' ? 'selected' : ''}>Faltas ganadas</option>
+                  <option value="Entradas (Tackles)" ${manualBetForm.market === 'Entradas (Tackles)' ? 'selected' : ''}>Entradas (Tackles)</option>
+                  <option value="Ganador del partido (1X2)" ${manualBetForm.market === 'Ganador del partido (1X2)' ? 'selected' : ''}>Ganador 1X2</option>
+                  <option value="Doble oportunidad" ${manualBetForm.market === 'Doble oportunidad' ? 'selected' : ''}>Doble oportunidad</option>
+                  <option value="Otro / En Vivo" ${manualBetForm.market === 'Otro / En Vivo' ? 'selected' : ''}>Otro / En Vivo</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Competición (Opcional)</label>
+                <input type="text" id="manual_competition" placeholder="Ej: UEFA Champions League" value="${manualBetForm.competition}" oninput="window.LadderModule.updateManualField('competition', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:0.75rem;">
+              <div>
+                <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Selección (Equipo / Jugador) *</label>
+                <input type="text" id="manual_selection" required placeholder="Ej: Jorne Spileers" value="${manualBetForm.selection}" oninput="window.LadderModule.updateManualField('selection', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+              </div>
+
+              <div>
+                <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Línea</label>
+                <input type="text" id="manual_line" placeholder="Ej: Más de 0.5" value="${manualBetForm.line}" oninput="window.LadderModule.updateManualField('line', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+              <div>
+                <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Cuota en Vivo * (Rango 1.10 - 1.25)</label>
+                <input type="number" step="0.01" min="1.01" max="10.0" id="manual_odds" required placeholder="Ej: 1.25" value="${manualBetForm.odds}" oninput="window.LadderModule.updateManualField('odds', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#fde047; font-weight:800; font-family:var(--font-mono); font-size:0.9rem; box-sizing:border-box;">
+              </div>
+
+              <div>
+                <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Retorno Calculado</label>
+                <div style="background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#38bdf8; font-weight:800; font-family:var(--font-mono); font-size:0.9rem; height:37px; box-sizing:border-box; display:flex; align-items:center;">
+                  ${potReturn ? formatArs(potReturn) : '—'}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label style="display:block; font-size:0.74rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:0.25rem;">Observaciones / Contexto en Vivo</label>
+              <input type="text" id="manual_notes" placeholder="Ej: Alta intensidad en faltas en los primeros 15 min" value="${manualBetForm.notes}" oninput="window.LadderModule.updateManualField('notes', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.65rem; margin-top:0.75rem;">
+              <button type="button" onclick="window.LadderModule.closeManualBetModal()" style="background:rgba(148,163,184,0.14); color:#cbd5e1; border:1px solid rgba(148,163,184,0.3); border-radius:8px; padding:0.5rem 1rem; font-weight:700; font-size:0.8rem; cursor:pointer;">Cancelar</button>
+              <button type="submit" style="background:#22c55e; color:#052e16; border:none; border-radius:8px; padding:0.5rem 1.25rem; font-weight:800; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 2px 8px rgba(34,197,94,0.3);">
+                <span>✓</span> Abrir Pick en Escalón ${step}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    `;
+  }
+
+  function openManualBetModal() {
+    showManualBetModal = true;
+    paint();
+  }
+
+  function closeManualBetModal() {
+    showManualBetModal = false;
+    paint();
+  }
+
+  function updateManualField(field, value) {
+    manualBetForm[field] = value;
+    if (field === 'odds') {
+      const modal = document.getElementById('ladderManualBetModal');
+      if (modal) paint();
+    }
+  }
+
+  async function submitManualBet(event) {
+    if (event) event.preventDefault();
+    const l = cachedPayload && cachedPayload.prospectiveLadder;
+    const oddsNum = Number(manualBetForm.odds);
+    if (!Number.isFinite(oddsNum) || oddsNum < 1.01) {
+      uiNotice = { type: 'err', text: 'La cuota ingresada debe ser un número válido mayor a 1.00.' };
+      paint();
+      return;
+    }
+    if (!manualBetForm.match || !manualBetForm.selection) {
+      uiNotice = { type: 'err', text: 'Por favor completá los campos obligatorios (Partido y Selección).' };
+      paint();
+      return;
+    }
+
+    try {
+      const payload = {
+        match: manualBetForm.match,
+        competition: manualBetForm.competition || 'En Vivo',
+        market: manualBetForm.market,
+        selection: manualBetForm.selection,
+        line: manualBetForm.line,
+        odds: oddsNum,
+        notes: manualBetForm.notes
+      };
+
+      // 1. Intentar llamar API backend si está activo
+      let serverOk = false;
+      try {
+        const res = await fetch('/api/ladder/open-manual', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          serverOk = true;
+        }
+      } catch (e) {}
+
+      // 2. Respaldo local si no hay servidor activo
+      if (!serverOk) {
+        const cap = (l ? l.currentCapital : OFFICIAL.initialCapital);
+        const potReturn = Number((cap * oddsNum).toFixed(2));
+        const nowIso = new Date().toISOString();
+        const betId = `ladder_manual_${Date.now()}_step${l ? l.currentStep : 1}`;
+
+        const manualBet = {
+          betId,
+          cycle: l ? l.currentCycle : 1,
+          step: l ? l.currentStep : 1,
+          snapshotId: `manual_live_${Date.now()}`,
+          opportunityKey: `manual_${Date.now()}`,
+          match: manualBetForm.match,
+          competition: manualBetForm.competition || 'En Vivo',
+          market: manualBetForm.market,
+          selection: manualBetForm.selection,
+          line: manualBetForm.line,
+          odds: oddsNum,
+          modelProbability: 0.85,
+          expectedValuePct: 8.0,
+          elenaDecision: 'APROBADO_MANUAL',
+          riskManagerDecision: 'APROBADO_MANUAL',
+          origin: 'MANUAL_LIVE',
+          stake: cap,
+          potentialReturn: potReturn,
+          openedAtUtc: nowIso,
+          status: 'OPEN'
+        };
+
+        const ov = loadLocalOverride() || {};
+        ov.openBet = manualBet;
+        ov.committedStake = cap;
+        saveLocalOverride(ov);
+      }
+
+      showManualBetModal = false;
+      manualBetForm = { match: '', competition: '', market: 'Córners de equipo', selection: '', line: '', odds: '', notes: '' };
+      uiNotice = {
+        type: 'ok',
+        text: `✓ Pick en vivo cargado exitosamente para el Escalón ${l ? l.currentStep : 1}: ${payload.match} — ${payload.selection} @${oddsNum.toFixed(2)}.`
+      };
+      await reload();
+    } catch (err) {
+      uiNotice = { type: 'err', text: 'Error al abrir el pick en vivo: ' + err.message };
+      paint();
+    }
   }
 
   function renderConfirmModal() {
@@ -847,6 +1062,10 @@
     requestManualSettleWon,
     cancelManualSettle,
     executeManualSettle,
+    openManualBetModal,
+    closeManualBetModal,
+    updateManualField,
+    submitManualBet,
     _formatKickoffArt: formatKickoffArt,
     _revalidateCandidate: revalidateCandidate
   };

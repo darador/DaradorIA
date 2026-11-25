@@ -108,6 +108,47 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+
+  // API Reto Escalera: Agregar pick manual en vivo
+  if (reqPath === '/api/ladder/open-manual' && req.method === 'POST') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
+
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = body ? JSON.parse(body) : {};
+        const { ProspectiveLadderEngine } = require('./engine/experimental/prospective/prospectiveLadderEngine');
+        const { ProspectiveAnalyticsExporter } = require('./engine/experimental/prospective/prospectiveAnalyticsExporter');
+        const engine = new ProspectiveLadderEngine();
+
+        const result = engine.openManualBet(payload);
+
+        let dashExport = null;
+        try {
+          const exporter = new ProspectiveAnalyticsExporter();
+          dashExport = exporter.export();
+        } catch (expErr) {
+          console.warn('[Server] Error sincronizando export analítico:', expErr.message);
+        }
+
+        res.end(JSON.stringify({
+          status: 'ok',
+          message: `Pick manual abierto con éxito para el Escalón ${result.bet.step}: ${result.bet.match} — ${result.bet.selection} @${result.bet.odds}.`,
+          bet: result.bet,
+          state: result.state
+        }, null, 2));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'error', message: err.message }));
+      }
+    });
+    return;
+  }
   if (reqPath === '/api/health') {
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf-8',

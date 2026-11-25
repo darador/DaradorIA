@@ -350,6 +350,82 @@ class ProspectiveLadderEngine {
   }
 
   /**
+   * Abre manualmente una apuesta en vivo/personalizada para el escalón activo.
+   * Valida cuotas, capital disponible y que no exista otra apuesta abierta.
+   */
+  openManualBet(input) {
+    const state = this._loadState();
+    const nowIso = new Date().toISOString();
+
+    if (state.objectiveStatus === 'OBJECTIVE_REACHED' || state.currentCapital >= state.targetCapital) {
+      throw new Error('OBJECTIVE_REACHED_LOCKED: Meta de $10.000.000 ARS alcanzada. Nuevas apuestas bloqueadas.');
+    }
+    const hasActiveOpenBet = Boolean(state.openBet && state.openBet.legacyStatus !== 'LEGACY_OUT_OF_RULES');
+    if (hasActiveOpenBet) {
+      throw new Error(`OPEN_BET_LOCKED: Ya existe una apuesta abierta (${state.openBet.betId}) para el Escalón ${state.currentStep}. Solo 1 apuesta abierta a la vez.`);
+    }
+
+    const odds = Number(input.odds);
+    if (!Number.isFinite(odds) || odds < 1.01) {
+      throw new Error(`ODDS_INVALID: Cuota inválida (${input.odds}). Debe ser mayor a 1.00.`);
+    }
+
+    const match = (input.match || '').trim();
+    if (!match) throw new Error('MATCH_REQUIRED: Debe especificarse el partido o evento.');
+    const selection = (input.selection || '').trim();
+    if (!selection) throw new Error('SELECTION_REQUIRED: Debe especificarse la selección o jugador.');
+    const market = (input.market || 'Apuesta en Vivo').trim();
+    const line = (input.line || '').trim();
+    const competition = (input.competition || 'En Vivo').trim();
+
+    const stake = Number(state.currentCapital.toFixed(2));
+    const potentialReturn = Number((stake * odds).toFixed(2));
+    const betId = `ladder_manual_${Date.now()}_step${state.currentStep}`;
+
+    const bet = {
+      betId,
+      cycle: state.currentCycle,
+      step: state.currentStep,
+      snapshotId: `manual_live_${Date.now()}`,
+      opportunityKey: `manual_${Date.now()}`,
+      match,
+      competition,
+      market,
+      selection,
+      line,
+      odds,
+      modelProbability: input.modelProbability ? Number(input.modelProbability) : null,
+      expectedValuePct: input.expectedValuePct ? Number(input.expectedValuePct) : null,
+      elenaDecision: 'APROBADO_MANUAL',
+      riskManagerDecision: 'APROBADO_MANUAL',
+      origin: 'MANUAL_LIVE',
+      manualNotes: input.notes || 'Pick agregado manualmente por el usuario en vivo.',
+      stake,
+      potentialReturn,
+      openedAtUtc: nowIso,
+      status: 'OPEN'
+    };
+
+    state.openBet = bet;
+    state.committedStake = stake;
+    state.evaluatedOpportunities.push({
+      evaluatedAtUtc: nowIso,
+      snapshotId: bet.snapshotId,
+      opportunityKey: bet.opportunityKey,
+      match,
+      market,
+      selection,
+      odds,
+      enteredLadder: true,
+      betId,
+      reasons: ['ENTERED_LADDER_MANUAL_LIVE']
+    });
+
+    atomicWriteJson(this.statePath, state);
+    return { entered: true, bet, state: this.getState() };
+  }
+
+  /**
    * Confirma todos los requisitos en el instante de apertura y abre la apuesta virtual.
    */
   considerOpportunity(snapshot) {
