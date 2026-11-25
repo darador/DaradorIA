@@ -20,7 +20,93 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
   let reqPath = req.url.split('?')[0];
 
-  // API de salud rápida
+  // Manejo de CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400'
+    });
+    res.end();
+    return;
+  }
+
+  // API Reto Escalera: Liquidación manual de la apuesta abierta
+  if (reqPath === '/api/ladder/settle' && req.method === 'POST') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
+
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = body ? JSON.parse(body) : {};
+        const { ProspectiveLadderEngine } = require('./engine/experimental/prospective/prospectiveLadderEngine');
+        const { ProspectiveAnalyticsExporter } = require('./engine/experimental/prospective/prospectiveAnalyticsExporter');
+        const engine = new ProspectiveLadderEngine();
+        const state = engine.getState();
+
+        const betId = payload.betId || (state.openBet ? state.openBet.betId : null);
+        if (!betId) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ status: 'error', message: 'No hay ninguna apuesta abierta para liquidar en el Reto Escalera.' }));
+          return;
+        }
+
+        // Verificar si ya fue liquidada
+        const alreadySettled = (state.stepHistory || []).find(h => h.betId === betId);
+        if (alreadySettled) {
+          res.writeHead(409, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({
+            status: 'error',
+            message: `El pick ya fue liquidado previamente como ${alreadySettled.status} (${alreadySettled.settlementType || 'AUTOMATIC'}). No se permite doble liquidación.`,
+            record: alreadySettled
+          }));
+          return;
+        }
+
+        const outcome = String(payload.outcome || 'WON').toUpperCase();
+        if (outcome !== 'WON') {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ status: 'error', message: 'Por el momento esta acción solo permite registrar resultado WON.' }));
+          return;
+        }
+
+        const nowIso = new Date().toISOString();
+        const result = engine.settleOpenBet(betId, {
+          confirmed: true,
+          outcome: 'WON',
+          settledAtUtc: nowIso,
+          source: 'Registro Manual de Usuario',
+          settlementType: 'MANUAL',
+          settledBy: payload.settledBy || 'Usuario (Manual)',
+          manualNotes: payload.notes || 'Liquidación confirmada manualmente por el usuario desde la interfaz del Reto Escalera.'
+        });
+
+        // Sincronizar api/fase11_prospective_dashboard.json
+        let dashExport = null;
+        try {
+          dashExport = ProspectiveAnalyticsExporter.export();
+        } catch (expErr) {
+          console.warn('[Server] Error sincronizando export analítico:', expErr.message);
+        }
+
+        res.end(JSON.stringify({
+          status: 'ok',
+          message: `Pick ${result.record.selection} marcado como GANADO exitosamente. Escalón ${result.record.step} completado. Avanzado al Escalón ${result.state.currentStep}.`,
+          result
+        }, null, 2));
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ status: 'error', message: err.message }));
+      }
+    });
+    return;
+  }
   if (reqPath === '/api/health') {
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf-8',

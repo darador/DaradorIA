@@ -42,6 +42,8 @@
   let cachedPayload = null;
   let loadError = null;
   let uiNotice = null; // { type: 'ok' | 'err', text: string }
+  let pendingManualSettle = null; // { betId, match, selection, odds, stake, potReturn, step, cycle } | null
+  let isSettlingManual = false;
 
   function loadSelectedProposal() {
     try {
@@ -198,6 +200,12 @@
           <div style="display:flex; gap:0.5rem; margin-top:0.6rem; flex-wrap:wrap;">
             <span class="sem-badge sem-green">✓ Elena: ${bet.elenaDecision || 'APROBADO'}</span>
             <span class="sem-badge sem-green">✓ Risk Manager: ${bet.riskManagerDecision || 'APROBADO'}</span>
+          </div>
+          <div style="display:flex; gap:0.65rem; margin-top:0.95rem; flex-wrap:wrap; align-items:center; border-top:1px solid rgba(56,189,248,0.2); padding-top:0.85rem;">
+            <button type="button" onclick="window.LadderModule.requestManualSettleWon('${bet.betId}')" style="background:#22c55e; color:#052e16; border:none; border-radius:8px; padding:0.5rem 1rem; font-weight:800; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 2px 8px rgba(34,197,94,0.25);">
+              <span>🏆</span> Marcar como GANADO
+            </button>
+            <span style="font-size:0.75rem; color:#94a3b8;">Liquidación manual con verificación y avance inmediato al siguiente escalón.</span>
           </div>
         </div>
       `;
@@ -420,18 +428,26 @@
               <th style="padding:0.5rem;">Cuota</th>
               <th style="padding:0.5rem;">Capital Antes → Después</th>
               <th style="padding:0.5rem;">Resultado</th>
+              <th style="padding:0.5rem;">Tipo / Fecha</th>
             </tr>
           </thead>
           <tbody>
-            ${hist.map(h => `
+            ${hist.map(h => {
+              const settleTypeBadge = h.settlementType === 'MANUAL'
+                ? '<span class="sem-badge sem-amber" style="background:rgba(245,158,11,0.16); color:#fde047; border:1px solid rgba(245,158,11,0.4); font-size:0.68rem;">MANUAL</span>'
+                : '<span class="sem-badge sem-gray" style="font-size:0.68rem;">AUTO</span>';
+              const settleDateStr = h.settledAtUtc ? formatKickoffArt(h.settledAtUtc) : '—';
+              return `
               <tr style="border-bottom:1px solid rgba(28,39,68,0.6);">
                 <td style="padding:0.5rem;">C${h.cycle} · E${h.step}</td>
                 <td style="padding:0.5rem;"><strong>${h.match}</strong> — ${h.selection}</td>
                 <td style="padding:0.5rem; font-family:var(--font-mono);">@${Number(h.odds).toFixed(2)}</td>
                 <td style="padding:0.5rem; font-family:var(--font-mono);">${formatArs(h.capBefore)} → ${formatArs(h.capAfter)}</td>
                 <td style="padding:0.5rem;"><span class="sem-badge ${h.status === 'WON' ? 'sem-green' : (h.status === 'LOST' ? 'sem-red' : 'sem-gray')}">${h.status}</span></td>
+                <td style="padding:0.5rem; font-size:0.72rem; color:#94a3b8;">${settleTypeBadge} <span style="font-family:var(--font-mono);">${settleDateStr}</span></td>
               </tr>
-            `).join('')}
+              `;
+            }).join('')}
           </tbody>
         </table>
       </div>
@@ -500,7 +516,121 @@
         </div>
         ${bodyHtml}
       </div>
+      ${renderConfirmModal()}
     `;
+  }
+
+  function renderConfirmModal() {
+    if (!pendingManualSettle) return '';
+    const p = pendingManualSettle;
+    return `
+      <div id="ladderConfirmModal" style="position:fixed; inset:0; background:rgba(0,0,0,0.78); backdrop-filter:blur(4px); z-index:99999; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:#0b1224; border:1px solid rgba(34,197,94,0.45); border-radius:14px; max-width:500px; width:100%; padding:1.4rem; box-shadow:0 20px 40px rgba(0,0,0,0.6);">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+            <span style="font-size:1.4rem;">🏆</span>
+            <h3 style="font-size:1.1rem; font-weight:800; color:#ffffff; margin:0;">Confirmar liquidación manual como GANADO</h3>
+          </div>
+          <p style="font-size:0.84rem; color:#cbd5e1; line-height:1.5; margin-bottom:1rem;">
+            ¿Confirmás que la selección del <strong>Escalón ${p.step} (Ciclo ${p.cycle})</strong> resultó acertada en el evento oficial?
+          </p>
+          <div style="background:rgba(15,23,42,0.85); border:1px solid #1c2744; border-radius:10px; padding:0.85rem; font-size:0.8rem; margin-bottom:1.1rem;">
+            <div style="font-weight:700; color:#f8fafc; font-size:0.92rem;">${p.match}</div>
+            <div style="color:#94a3b8; margin-top:0.2rem;">${p.selection} — <strong>${p.market}</strong> · ${p.line || ''}</div>
+            <div style="display:flex; justify-content:space-between; margin-top:0.6rem; font-family:var(--font-mono); font-size:0.82rem; border-top:1px dashed #1e293b; padding-top:0.5rem;">
+              <span>Cuota: <strong style="color:#fde047;">@${Number(p.odds).toFixed(2)}</strong></span>
+              <span>Stake: <strong>${formatArs(p.stake)}</strong></span>
+              <span>Retorno: <strong style="color:#4ade80;">${formatArs(p.potentialReturn)}</strong></span>
+            </div>
+            <div style="margin-top:0.55rem; font-size:0.76rem; color:#38bdf8;">
+              ➜ El nuevo capital pasará a <strong>${formatArs(p.potentialReturn)}</strong> y se avanzará al <strong>Escalón ${p.step + 1}</strong>.
+            </div>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:0.65rem;">
+            <button type="button" onclick="window.LadderModule.cancelManualSettle()" ${isSettlingManual ? 'disabled' : ''} style="background:rgba(148,163,184,0.14); color:#cbd5e1; border:1px solid rgba(148,163,184,0.3); border-radius:8px; padding:0.5rem 1rem; font-weight:700; font-size:0.8rem; cursor:pointer;">Cancelar</button>
+            <button type="button" onclick="window.LadderModule.executeManualSettle()" ${isSettlingManual ? 'disabled' : ''} style="background:#22c55e; color:#052e16; border:none; border-radius:8px; padding:0.5rem 1.15rem; font-weight:800; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem;">
+              ${isSettlingManual ? '<span>⏳</span> Registrando...' : '<span>✓</span> Sí, registrar GANADO'}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function requestManualSettleWon(betId) {
+    const l = cachedPayload && cachedPayload.prospectiveLadder;
+    if (!l) return;
+    const bet = l.openBet;
+    if (!bet || bet.betId !== betId) {
+      uiNotice = { type: 'err', text: 'No se encontró la apuesta abierta activa para liquidar.' };
+      paint();
+      return;
+    }
+    // Verificar si ya figura en el historial
+    const already = (l.stepHistory || []).find(h => h.betId === betId);
+    if (already) {
+      uiNotice = { type: 'err', text: `Este pick ya fue liquidado como ${already.status}. No se permite liquidación duplicada.` };
+      paint();
+      return;
+    }
+    pendingManualSettle = {
+      betId: bet.betId,
+      match: bet.match,
+      selection: bet.selection,
+      market: bet.market,
+      line: bet.line,
+      odds: bet.odds,
+      stake: bet.stake,
+      potentialReturn: bet.potentialReturn,
+      step: bet.step,
+      cycle: bet.cycle
+    };
+    paint();
+  }
+
+  function cancelManualSettle() {
+    if (isSettlingManual) return;
+    pendingManualSettle = null;
+    paint();
+  }
+
+  async function executeManualSettle() {
+    if (!pendingManualSettle || isSettlingManual) return;
+    const bet = pendingManualSettle;
+    isSettlingManual = true;
+    paint();
+
+    try {
+      const res = await fetch('/api/ladder/settle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          betId: bet.betId,
+          outcome: 'WON',
+          settledBy: 'Usuario (Manual)'
+        })
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error((data && data.message) ? data.message : 'Error al liquidar (HTTP ' + res.status + ')');
+      }
+
+      pendingManualSettle = null;
+      isSettlingManual = false;
+      selectedProposal = null;
+      saveSelectedProposal(null);
+      uiNotice = {
+        type: 'ok',
+        text: `✓ ${data.message || 'Pick liquidado como GANADO correctamente.'}`
+      };
+      await reload();
+    } catch (err) {
+      isSettlingManual = false;
+      pendingManualSettle = null;
+      uiNotice = { type: 'err', text: 'No se pudo liquidar el pick: ' + err.message };
+      paint();
+    }
   }
 
   function selectOpportunity(snapshotId) {
@@ -605,6 +735,9 @@
     confirmSelection,
     cancelSelection,
     backToOpportunities,
+    requestManualSettleWon,
+    cancelManualSettle,
+    executeManualSettle,
     _formatKickoffArt: formatKickoffArt,
     _revalidateCandidate: revalidateCandidate
   };

@@ -483,7 +483,10 @@ class ProspectiveLadderEngine {
       capAfter,
       profitDelta,
       settledAtUtc: settlementInput.settledAtUtc || new Date().toISOString(),
-      source: settlementInput.source || 'StatsHub Oficial'
+      source: settlementInput.source || 'StatsHub Oficial',
+      settlementType: settlementInput.settlementType || (settlementInput.source?.toLowerCase().includes('manual') ? 'MANUAL' : 'AUTOMATIC'),
+      settledBy: settlementInput.settledBy || (settlementInput.source?.toLowerCase().includes('manual') ? 'Usuario (Manual)' : 'Motor Automático'),
+      manualNotes: settlementInput.manualNotes || null
     };
 
     state.openBet = null;
