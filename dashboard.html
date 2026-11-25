@@ -5929,15 +5929,92 @@
       }
 
       function getLeagueFlag(league) {
-        if (!league) return '⚽';
-        if (league.includes('Bundesliga')) return '🇩🇪';
-        if (league.includes('Premier')) return '🏴󠁧󠁢󠁥󠁮󠁧󠁿';
-        if (league.includes('Serie A') || league.includes('Italia') || league.includes('Serie B')) return '🇮🇹';
-        if (league.includes('Brasileir') || league.includes('Brasil')) return '🇧🇷';
-        if (league.includes('LaLiga') || league.includes('España')) return '🇪🇸';
-        if (league.includes('Eredivisie') || league.includes('Netherlands') || league.includes('Países Bajos')) return '🇳🇱';
-        if (league.includes('Champions')) return '🏆';
-        return '⚽';
+        const l = String(league || '').toLowerCase();
+        const img = (cc, alt) => '<img src="https://flagcdn.com/w20/' + cc + '.png" alt="' + alt + '" style="width:16px;height:12px;border-radius:2px;object-fit:cover;vertical-align:-1px;margin-right:4px;box-shadow:0 0 3px rgba(0,0,0,0.4);" onerror="this.style.display=\'none\'">';
+        if (l.includes('champions')) return '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#38bdf8);color:#fff;font-size:10px;margin-right:4px;">★</span>';
+        if (l.includes('europa')) return '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#ea580c,#facc15);color:#111;font-size:10px;font-weight:900;margin-right:4px;">E</span>';
+        if (l.includes('conference')) return '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#4ade80);color:#052e16;font-size:10px;font-weight:900;margin-right:4px;">C</span>';
+        if (l.includes('serie a') || l.includes('serie b') || l.includes('ital')) return img('it', 'IT');
+        if (l.includes('premier') || l.includes('championship') || l.includes('england') || l.includes('league one') || l.includes('league two')) return img('gb-eng', 'ENG');
+        if (l.includes('brasileir') || l.includes('brazil') || l.includes('brasil')) return img('br', 'BR');
+        if (l.includes('bundesliga') || l.includes('german')) return img('de', 'DE');
+        if (l.includes('laliga') || l.includes('spain') || l.includes('espa')) return img('es', 'ES');
+        if (l.includes('ligue') || l.includes('france')) return img('fr', 'FR');
+        if (l.includes('eredivisie') || l.includes('netherlands')) return img('nl', 'NL');
+        if (l.includes('scottish')) return img('gb-sct', 'SCO');
+        if (l.includes('argentin')) return img('ar', 'AR');
+        return img('eu', 'EU');
+      }
+
+      function renderTeamCrest(teamName) {
+        const name = String(teamName || '').trim();
+        const low = name.toLowerCase();
+        const CLUB_COLORS = [
+          ['barcelona', ['#a50044', '#004d98', '#ffed02']],
+          ['real madrid', ['#f8fafc', '#cbd5e1', '#d97706']],
+          ['atlético madrid', ['#cb3524', '#ffffff', '#1e3a8a']],
+          ['atletico madrid', ['#cb3524', '#ffffff', '#1e3a8a']],
+          ['inter', ['#0068a8', '#0f172a', '#facc15']],
+          ['stuttgart', ['#ffffff', '#dc2626', '#dc2626']],
+          ['paris saint-germain', ['#004170', '#da291c', '#ffffff']],
+          ['roma', ['#8e1f2f', '#f0bc42', '#ffffff']],
+          ['liverpool', ['#c8102e', '#991b1b', '#f6eb61']],
+          ['bayern', ['#dc052d', '#0066b2', '#ffffff']],
+          ['manchester city', ['#6cabdd', '#1c2c5b', '#ffffff']],
+          ['manchester united', ['#da291c', '#111827', '#fbe122']],
+          ['arsenal', ['#ef0107', '#ffffff', '#d4af37']],
+          ['dortmund', ['#fde100', '#111827', '#111827']],
+          ['napoli', ['#12a0d7', '#003c82', '#ffffff']],
+          ['psv', ['#ed1c24', '#ffffff', '#111827']],
+          ['leipzig', ['#dd0741', '#ffffff', '#001f47']],
+          ['lens', ['#facc15', '#dc2626', '#111827']],
+          ['porto', ['#00428c', '#ffffff', '#facc15']],
+          ['feyenoord', ['#e11d48', '#ffffff', '#111827']],
+          ['galatasaray', ['#a90432', '#fdb912', '#ffffff']],
+          ['aston villa', ['#670e36', '#95bfe5', '#fee505']],
+          ['burnley', ['#6c1d45', '#99d6ea', '#facc15']],
+          ['birmingham', ['#1d4ed8', '#ffffff', '#93c5fd']],
+          ['west brom', ['#1e3a8a', '#ffffff', '#e2e8f0']],
+          ['bolton', ['#f8fafc', '#1e3a8a', '#dc2626']],
+          ['stoke', ['#dc2626', '#ffffff', '#1e293b']],
+          ['millwall', ['#1d4ed8', '#0f172a', '#ffffff']],
+          ['palmeiras', ['#006437', '#15803d', '#ffffff']],
+          ['atlético mineiro', ['#111827', '#f8fafc', '#facc15']],
+          ['corinthians', ['#f8fafc', '#111827', '#dc2626']],
+          ['são paulo', ['#dc2626', '#111827', '#ffffff']],
+          ['cremonese', ['#64748b', '#dc2626', '#ffffff']],
+          ['pisa', ['#1d4ed8', '#111827', '#ffffff']],
+          ['modena', ['#facc15', '#1d4ed8', '#111827']],
+          ['palermo', ['#f472b6', '#111827', '#ffffff']],
+          ['slavia', ['#dc2626', '#ffffff', '#facc15']],
+          ['villarreal', ['#facc15', '#1d4ed8', '#1e3a8a']],
+          ['shakhtar', ['#f97316', '#111827', '#ffffff']],
+          ['fenerbahçe', ['#facc15', '#1e3a8a', '#ffffff']],
+          ['club brugge', ['#1d4ed8', '#111827', '#ffffff']],
+          ['sporting', ['#15803d', '#ffffff', '#facc15']]
+        ];
+        let colors = null;
+        for (const [k, c] of CLUB_COLORS) {
+          if (low.includes(k)) { colors = c; break; }
+        }
+        if (!colors) {
+          let h = 0;
+          for (let i = 0; i < low.length; i++) h = (h * 31 + low.charCodeAt(i)) % 360;
+          colors = ['hsl(' + h + ',72%,42%)', 'hsl(' + ((h + 35) % 360) + ',65%,28%)', '#f8fafc'];
+        }
+        const words = name.replace(/\(Equipo\)/gi, '').trim().split(/\s+/).filter(Boolean);
+        const abbr = words.length >= 2 ? (words[0][0] + words[1][0]).toUpperCase() : name.slice(0, 2).toUpperCase();
+        return '<span title="' + name.replace(/"/g, '') + '" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50% 50% 45% 45%;background:linear-gradient(135deg,' + colors[0] + ' 50%,' + colors[1] + ' 50%);border:1.5px solid ' + colors[2] + ';color:' + colors[2] + ';font-size:8px;font-weight:900;letter-spacing:-0.3px;text-shadow:0 1px 2px rgba(0,0,0,0.85);flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.45);">' + abbr + '</span>';
+      }
+
+      function renderMatchWithCrests(matchStr) {
+        const parts = String(matchStr || '').split(/\s+vs\s+|\s+v\s+/i);
+        if (parts.length !== 2) return matchStr || '';
+        return '<span style="display:inline-flex;align-items:center;gap:0.35rem;flex-wrap:wrap;">' +
+          renderTeamCrest(parts[0]) + '<span>' + parts[0] + '</span>' +
+          '<span style="color:#64748b;font-size:0.75rem;font-weight:600;">vs</span>' +
+          renderTeamCrest(parts[1]) + '<span>' + parts[1] + '</span>' +
+          '</span>';
       }
 
       // Render Table Rows (Escritorio) — Agrupado estilo Bet Builder cuando un partido tiene 2+ picks
@@ -6093,7 +6170,7 @@
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.65rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(255,255,255,0.06);">
                   <div style="display:flex; align-items:center; gap:0.55rem; flex-wrap:wrap;">
                     <span class="board-match-league">${flag} ${group.league || 'Competición'}</span>
-                    <span class="board-match-teams" style="font-size:0.95rem;">${group.match}</span>
+                    <span class="board-match-teams" style="font-size:0.95rem;">${renderMatchWithCrests(group.match)}</span>
                     <span style="font-size:0.72rem; color:var(--accent-cyan); font-family:var(--font-mono);">${firstMeta.dateStrArt}</span>
                     <span style="font-size:0.72rem; color:#e2e8f0; font-family:var(--font-mono); font-weight:700;">${firstMeta.timeStrArt}</span>
                     ${matchPhase.badgeHtml}
@@ -6219,7 +6296,7 @@
               <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:0.4rem; margin-bottom:0.55rem; padding-bottom:0.45rem; border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="min-width:0;">
                   <div style="font-size:0.68rem; color:var(--accent-cyan); font-weight:700; text-transform:uppercase;">${flag} ${group.league || 'Competición'}</div>
-                  <div style="font-size:0.9rem; font-weight:800; color:#ffffff; margin-top:0.1rem;">${group.match}</div>
+                  <div style="font-size:0.9rem; font-weight:800; color:#ffffff; margin-top:0.15rem;">${renderMatchWithCrests(group.match)}</div>
                   <div style="display:flex; align-items:center; gap:0.35rem; margin-top:0.2rem; flex-wrap:wrap;">
                     <span style="font-size:0.68rem; color:var(--accent-cyan); font-family:var(--font-mono);">${firstMeta.dateStrArt}</span>
                     <span style="font-size:0.68rem; color:#e2e8f0; font-family:var(--font-mono); font-weight:700;">${firstMeta.timeStrArt}</span>
