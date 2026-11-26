@@ -1446,6 +1446,24 @@
     "eligibleOpportunities": [],
     "pendingLineupOpportunities": [
       {
+        "snapshotId": "prosp_20261126_brobbey_foulswon_v1",
+        "opportunityKey": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "competition": "UEFA Europa League",
+        "kickoffUtc": "2026-11-26T20:00:00Z",
+        "market": "Faltas ganadas",
+        "selection": "Brian Brobbey",
+        "line": "Más de 0.5",
+        "odds": 1.17,
+        "modelProbability": 0.912,
+        "expectedValuePct": 6.7,
+        "elenaDecision": "PENDIENTE_ALINEACION",
+        "riskManagerDecision": "PENDIENTE_ALINEACION",
+        "lineupStatus": "PROBABLE_TITULAR",
+        "statusBadge": "ESPERANDO FORMACIÓN DE EQUIPO (T-60)",
+        "compositeScore": 7.95
+      },
+      {
         "snapshotId": "prosp_1795610216964_51_v1",
         "opportunityKey": "cand_real_statshub_20261125_peter_christiansen_shots_0.5",
         "match": "Atlético Madrid vs Viking FK",
