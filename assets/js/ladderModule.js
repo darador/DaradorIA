@@ -920,11 +920,13 @@ function renderPrincipal(l) {
       `;
     }
 
-    const eligible = (l.eligibleOpportunities || []).filter(e =>
+    const nowOppsMs = Date.now();
+    const isUpcoming = item => !item.kickoffUtc || new Date(item.kickoffUtc).getTime() > nowOppsMs;
+    const eligible = (l.eligibleOpportunities || []).filter(e => isUpcoming(e) &&
       Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
       (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
     );
-    const pendingLineup = (l.pendingLineupOpportunities || []).filter(e =>
+    const pendingLineup = (l.pendingLineupOpportunities || []).filter(e => isUpcoming(e) &&
       Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
       (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
     );
@@ -1110,7 +1112,9 @@ function renderPrincipal(l) {
       }
     }
 
-    const oppCount = (l.eligibleOpportunities || []).length + (l.pendingLineupOpportunities || []).length;
+    const nowMs = Date.now();
+    const isFuture = item => !item.kickoffUtc || new Date(item.kickoffUtc).getTime() > nowMs;
+    const oppCount = (l.eligibleOpportunities || []).filter(isFuture).length + (l.pendingLineupOpportunities || []).filter(isFuture).length;
     const tabs = [
       ['principal', 'Principal'],
       ['oportunidades', `Oportunidades (${oppCount})`],
