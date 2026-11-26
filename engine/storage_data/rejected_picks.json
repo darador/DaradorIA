@@ -2312,5 +2312,217 @@
     },
     "id": "rej_1795187910275_uwadu",
     "rejectedAt": "2026-11-20T15:18:30.275Z"
+  },
+  {
+    "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+    "partido": "Sunderland vs Jagiellonia Białystok",
+    "seleccion": "Brian Brobbey",
+    "mercado": "Faltas ganadas",
+    "cuota": 1.17,
+    "reason": "VETADO: VETO MATEMÁTICO: EV insuficiente (+7.5% < +7.0%).",
+    "vetoApplied": true,
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "target": "Brian Brobbey",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:27:11.169Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Brian Brobbey proyecta 79 min con una tasa de 1.7 por 90 min en Faltas ganadas.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (10 partidos de titular).",
+          "Volumen de minutos elevado (promedia 78.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (1.7 por 90 min) superando holgadamente la línea exigida (Más de 0.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.88,
+          "sampleSize": 10,
+          "statPer90": 1.7,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0 (SOLO_CONTEXTO_LOCAL): Brian Brobbey (1.7 p90, 78.5 min, 10 titularidades)."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:27:11.169Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Sunderland y Jagiellonia Białystok. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Sunderland ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.85,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Sunderland vs Jagiellonia Białystok (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "matchId": null,
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:27:11.169Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Sunderland vs Jagiellonia Białystok. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "advantages": [],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.7,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": null,
+          "affectedMarket": "faltas_ganadas",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:27:11.170Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Faltas ganadas @ 1.17 (Paddy Power / Bet365). Cuota justa: 1.10. EV: +7.5%.",
+        "referenceOdds": 1.17,
+        "bestOdds": 1.17,
+        "fairOdds": 1.1,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.84,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.84,
+          "isPriced": true,
+          "bestOdds": 1.17,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.17 vs justa @1.10 (EV +7.5%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:27:11.170Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Brian Brobbey.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Brian Brobbey",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:27:11.170Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Brian Brobbey",
+          "affectedMarket": "PLAYER_FOULS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Brian Brobbey",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:27:11.170Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Brian Brobbey."
+        }
+      }
+    },
+    "id": "rej_1795696031188_0x70w",
+    "rejectedAt": "2026-11-26T12:27:11.188Z"
   }
 ]

@@ -19916,7 +19916,7 @@
     "line": "Menos de 5.5",
     "rawLine": 5.5,
     "bookmakerOdds": 2,
-    "bookmaker": "BetMGM UK",
+    "bookmaker": "bet365",
     "trendL5": "5/5 (100%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
@@ -19932,10 +19932,258 @@
     },
     "decisionReason": "UEL mercado colectivo StatsHub L5 100% / L10 90% / L15 87%, rival concede L10 60% (@2.00). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T00:43:47.373Z",
-    "updatedAt": "2026-11-24T00:43:47.373Z"
+    "updatedAt": "2026-11-26T12:28:34.740Z",
+    "kickoffUtc": "2026-11-26T17:45:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "Olympique de Marseille",
+        "opponentName": "Levski Sofia",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T17:45:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 2,
+        "fairOdds": 1.49,
+        "evPercentage": 33.8
+      }
+    },
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_marseille_sot",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +33.8% (Cuota: 2), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.736Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_marseille_sot",
+        "target": "Olympique de Marseille (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Remates al arco de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Remates al arco de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_marseille_sot",
+        "match": "Olympique de Marseille vs Levski Sofia",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Olympique de Marseille y Levski Sofia. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Olympique de Marseille ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Olympique de Marseille vs Levski Sofia (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_marseille_sot",
+        "matchId": null,
+        "match": "Olympique de Marseille vs Levski Sofia",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Olympique de Marseille vs Levski Sofia. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T17:45:00.000Z",
+          "affectedMarket": "remates_al_arco_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_marseille_sot",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates al arco de equipo @ 2 (bet365). Cuota justa: 1.49. EV: +33.8%.",
+        "referenceOdds": 2,
+        "bestOdds": 2,
+        "fairOdds": 1.49,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 2,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @2.00 vs justa @1.49 (EV +33.8%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_marseille_sot",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Olympique de Marseille (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Olympique de Marseille (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Olympique de Marseille (Equipo)",
+          "affectedMarket": "TEAM_MARKET",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Olympique de Marseille (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.731Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Olympique de Marseille (Equipo)."
+        }
+      }
+    }
   },
   {
-    "id": "cand_real_statshub_20261126_braga_goals",
+    "id": "cand_real_statshub_20261126_sporting_braga_goals_under",
     "matchId": "sporting-braga-v-kups.1ohofnk",
     "teamId": "sporting-braga.1ucahyj",
     "competition": "UEFA Conference League",
@@ -19953,7 +20201,7 @@
     "market": "Goles de equipo",
     "line": "Menos de 2.5",
     "rawLine": 2.5,
-    "bookmakerOdds": 2.12,
+    "bookmakerOdds": 2.18,
     "bookmaker": "BetMGM UK",
     "trendL5": "4/5 (80%)",
     "trendL10": "9/10 (90%)",
@@ -19971,10 +20219,258 @@
     },
     "decisionReason": "UECL mercado colectivo StatsHub L10 90% / L20 90%, rival concede L10 90% (Under 2.5 goles equipo @2.12). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T00:43:47.383Z",
-    "updatedAt": "2026-11-24T00:43:47.383Z"
+    "updatedAt": "2026-11-26T12:28:34.653Z",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "Sporting Braga",
+        "opponentName": "KuPS",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 2.18,
+        "fairOdds": 1.47,
+        "evPercentage": 48.1
+      }
+    },
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_sporting_braga_goals_under",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +48.1% (Cuota: 2.18), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.649Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sporting_braga_goals_under",
+        "target": "Sporting Braga (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Goles de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Goles de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sporting_braga_goals_under",
+        "match": "Sporting Braga vs KuPS",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Sporting Braga y KuPS. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Sporting Braga ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Sporting Braga vs KuPS (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sporting_braga_goals_under",
+        "matchId": null,
+        "match": "Sporting Braga vs KuPS",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Sporting Braga vs KuPS. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "goles_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sporting_braga_goals_under",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Goles de equipo @ 2.18 (BetMGM UK). Cuota justa: 1.47. EV: +48.1%.",
+        "referenceOdds": 2.18,
+        "bestOdds": 2.18,
+        "fairOdds": 1.47,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 2.18,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @2.18 vs justa @1.47 (EV +48.1%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sporting_braga_goals_under",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Sporting Braga (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Sporting Braga (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Sporting Braga (Equipo)",
+          "affectedMarket": "TEAM_GOALS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Sporting Braga (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.644Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Sporting Braga (Equipo)."
+        }
+      }
+    }
   },
   {
-    "id": "cand_real_statshub_20261126_cska_sofia_sot",
+    "id": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
     "matchId": "cska-sofia-v-trabzonspor.125d57j",
     "teamId": "cska-sofia.1usxz4z",
     "competition": "UEFA Conference League",
@@ -19992,7 +20488,7 @@
     "market": "Remates al arco de equipo",
     "line": "Más de 3.5",
     "rawLine": 3.5,
-    "bookmakerOdds": 1.83,
+    "bookmakerOdds": 1.61,
     "bookmaker": "BetMGM UK",
     "trendL5": "5/5 (100%)",
     "trendL10": "10/10 (100%)",
@@ -20009,7 +20505,255 @@
     },
     "decisionReason": "UECL mercado colectivo StatsHub L5/L10/L15 100%, rival concede L10 60% (@1.83). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T00:43:47.394Z",
-    "updatedAt": "2026-11-24T00:43:47.394Z"
+    "updatedAt": "2026-11-26T12:28:34.675Z",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "CSKA Sofia",
+        "opponentName": "Trabzonspor",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.61,
+        "fairOdds": 1.37,
+        "evPercentage": 17.6
+      }
+    },
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +17.6% (Cuota: 1.61), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.670Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+        "target": "CSKA Sofia (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Remates al arco de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Remates al arco de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+        "match": "CSKA Sofia vs Trabzonspor",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre CSKA Sofia y Trabzonspor. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "CSKA Sofia ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup CSKA Sofia vs Trabzonspor (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+        "matchId": null,
+        "match": "CSKA Sofia vs Trabzonspor",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido CSKA Sofia vs Trabzonspor. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "remates_al_arco_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates al arco de equipo @ 1.61 (BetMGM UK). Cuota justa: 1.37. EV: +17.6%.",
+        "referenceOdds": 1.61,
+        "bestOdds": 1.61,
+        "fairOdds": 1.37,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.84,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.84,
+          "isPriced": true,
+          "bestOdds": 1.61,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.61 vs justa @1.37 (EV +17.6%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para CSKA Sofia (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "CSKA Sofia (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "CSKA Sofia (Equipo)",
+          "affectedMarket": "TEAM_MARKET",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "CSKA Sofia (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.666Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para CSKA Sofia (Equipo)."
+        }
+      }
+    }
   },
   {
     "id": "cand_real_statshub_20261126_juventus_goals",
@@ -20031,7 +20775,7 @@
     "line": "Menos de 2.5",
     "rawLine": 2.5,
     "bookmakerOdds": 2,
-    "bookmaker": "Bet365",
+    "bookmaker": "bet365",
     "trendL5": "4/5 (80%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
@@ -20048,10 +20792,258 @@
     },
     "decisionReason": "UEL mercado colectivo StatsHub L10 90% / L20 90%, rival concede L10 80% (Under 2.5 goles equipo @2.00). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T00:43:47.405Z",
-    "updatedAt": "2026-11-24T00:43:47.405Z"
+    "updatedAt": "2026-11-26T12:28:34.764Z",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "Juventus",
+        "opponentName": "Omonia Nicosia",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 2,
+        "fairOdds": 1.4,
+        "evPercentage": 43.2
+      }
+    },
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_juventus_goals",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +43.2% (Cuota: 2), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.759Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_juventus_goals",
+        "target": "Juventus (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Goles de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Goles de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_juventus_goals",
+        "match": "Juventus vs Omonia Nicosia",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Juventus y Omonia Nicosia. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Juventus ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Juventus vs Omonia Nicosia (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_juventus_goals",
+        "matchId": null,
+        "match": "Juventus vs Omonia Nicosia",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Juventus vs Omonia Nicosia. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "goles_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_juventus_goals",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Goles de equipo @ 2 (bet365). Cuota justa: 1.40. EV: +43.2%.",
+        "referenceOdds": 2,
+        "bestOdds": 2,
+        "fairOdds": 1.4,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 2,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @2.00 vs justa @1.40 (EV +43.2%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_juventus_goals",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Juventus (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Juventus (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Juventus (Equipo)",
+          "affectedMarket": "TEAM_GOALS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Juventus (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.755Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Juventus (Equipo)."
+        }
+      }
+    }
   },
   {
-    "id": "cand_real_statshub_20261126_crvena_sot",
+    "id": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
     "matchId": "kaa-gent-v-fk-crvena-zvezda.06zvhzr",
     "teamId": "fk-crvena-zvezda.1iq7ndn",
     "competition": "UEFA Conference League",
@@ -20069,7 +21061,7 @@
     "market": "Remates al arco de equipo",
     "line": "Más de 3.5",
     "rawLine": 3.5,
-    "bookmakerOdds": 1.79,
+    "bookmakerOdds": 1.57,
     "bookmaker": "BetMGM UK",
     "trendL5": "5/5 (100%)",
     "trendL10": "10/10 (100%)",
@@ -20086,7 +21078,255 @@
     },
     "decisionReason": "UECL mercado colectivo StatsHub L5/L10 100% / L15 87%, rival concede L10 70% (@1.79). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T00:43:47.416Z",
-    "updatedAt": "2026-11-24T00:43:47.416Z"
+    "updatedAt": "2026-11-26T12:28:34.696Z",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "FK Crvena zvezda",
+        "opponentName": "KAA Gent",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.57,
+        "fairOdds": 1.32,
+        "evPercentage": 19.1
+      }
+    },
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +19.1% (Cuota: 1.57), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.692Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+        "target": "FK Crvena zvezda (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Remates al arco de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Remates al arco de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Remates al arco de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+        "match": "KAA Gent vs FK Crvena zvezda",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre FK Crvena zvezda y KAA Gent. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "FK Crvena zvezda juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "LOW",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "away",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup FK Crvena zvezda vs KAA Gent (away), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+        "matchId": null,
+        "match": "KAA Gent vs FK Crvena zvezda",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido KAA Gent vs FK Crvena zvezda. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "remates_al_arco_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates al arco de equipo @ 1.57 (BetMGM UK). Cuota justa: 1.32. EV: +19.1%.",
+        "referenceOdds": 1.57,
+        "bestOdds": 1.57,
+        "fairOdds": 1.32,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.84,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.84,
+          "isPriced": true,
+          "bestOdds": 1.57,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.57 vs justa @1.32 (EV +19.1%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para FK Crvena zvezda (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "FK Crvena zvezda (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "FK Crvena zvezda (Equipo)",
+          "affectedMarket": "TEAM_MARKET",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "FK Crvena zvezda (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.688Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para FK Crvena zvezda (Equipo)."
+        }
+      }
+    }
   },
   {
     "id": "cand_real_statshub_20261126_sunderland_goals",
@@ -20108,7 +21348,7 @@
     "line": "Menos de 2.5",
     "rawLine": 2.5,
     "bookmakerOdds": 1.73,
-    "bookmaker": "Bet365",
+    "bookmaker": "bet365",
     "trendL5": "4/5 (80%)",
     "trendL10": "9/10 (90%)",
     "isTeamProp": true,
@@ -20125,7 +21365,255 @@
     },
     "decisionReason": "UEL mercado colectivo StatsHub L10 90% / L20 85%, rival concede L10 70% (Under 2.5 goles equipo @1.73). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T00:43:47.428Z",
-    "updatedAt": "2026-11-24T00:43:47.428Z"
+    "updatedAt": "2026-11-26T12:28:34.787Z",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "Sunderland",
+        "opponentName": "Jagiellonia Białystok",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.73,
+        "fairOdds": 1.39,
+        "evPercentage": 24.4
+      }
+    },
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_sunderland_goals",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +24.4% (Cuota: 1.73), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.782Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sunderland_goals",
+        "target": "Sunderland (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Goles de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Goles de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sunderland_goals",
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Sunderland y Jagiellonia Białystok. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Sunderland ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Sunderland vs Jagiellonia Białystok (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sunderland_goals",
+        "matchId": null,
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Sunderland vs Jagiellonia Białystok. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "goles_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sunderland_goals",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Goles de equipo @ 1.73 (bet365). Cuota justa: 1.39. EV: +24.4%.",
+        "referenceOdds": 1.73,
+        "bestOdds": 1.73,
+        "fairOdds": 1.39,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.73,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.73 vs justa @1.39 (EV +24.4%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sunderland_goals",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Sunderland (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Sunderland (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Sunderland (Equipo)",
+          "affectedMarket": "TEAM_GOALS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Sunderland (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.776Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Sunderland (Equipo)."
+        }
+      }
+    }
   },
   {
     "id": "cand_real_statshub_20261124_varga_shots",
@@ -20552,5 +22040,1618 @@
     "decisionReason": "UCL mercado colectivo StatsHub L10 90% / L15 87%, Man City concede L10 90% (@1.57). Aprobado en Shadow Mode.",
     "createdAt": "2026-11-24T11:41:28.470Z",
     "updatedAt": "2026-11-24T11:41:28.470Z"
+  },
+  {
+    "id": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+    "playerOrTeam": "Brian Brobbey",
+    "isTeamProp": false,
+    "match": "Sunderland vs Jagiellonia Białystok",
+    "team": "Sunderland",
+    "opponent": "Jagiellonia Białystok",
+    "competition": "UEFA Europa League",
+    "market": "Faltas ganadas",
+    "line": "Más de 0.5",
+    "rawLine": 0.5,
+    "bookmakerOdds": 1.17,
+    "bookmaker": "Paddy Power / Bet365",
+    "date": "2026-11-26",
+    "researchData": {
+      "playerData": {
+        "playerName": "Brian Brobbey",
+        "starts": 10,
+        "avgMinutes": 78.5,
+        "projectedMinutes": 78.5,
+        "statPer90": 1.7,
+        "historicalValues": [
+          2,
+          1,
+          3,
+          1,
+          2,
+          0,
+          2,
+          1,
+          2,
+          3
+        ]
+      },
+      "teamData": {
+        "teamName": "Sunderland",
+        "opponentName": "Jagiellonia Białystok",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00Z",
+        "lineupStatus": "PENDIENTE_CONFIRMACION",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.17,
+        "fairOdds": 1.1,
+        "evPercentage": 7.5
+      }
+    },
+    "status": "PENDIENTE",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+      "finalStatus": "PENDIENTE",
+      "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min).",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [
+        "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
+      ],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.538Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "target": "Brian Brobbey",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.530Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Brian Brobbey proyecta 78.5 min con una tasa de 1.7 por 90 min en Faltas ganadas.",
+        "favorableFindings": [
+          "Muestra sólida de titularidades (10 partidos de titular).",
+          "Volumen de minutos elevado (promedia 78.5 min por titularidad, titular indiscutido).",
+          "Tasa de producción destacada (1.7 por 90 min) superando holgadamente la línea exigida (Más de 0.5)."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.88,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.88,
+          "sampleSize": 10,
+          "statPer90": 1.7,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0 (SOLO_CONTEXTO_LOCAL): Brian Brobbey (1.7 p90, 78.5 min, 10 titularidades)."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.530Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Sunderland y Jagiellonia Białystok. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Sunderland ejerce la localía, condición donde su volumen estadístico suele incrementarse.",
+          "Partido con fricción proyectada en zonas de disputa de balón."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.85,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Sunderland vs Jagiellonia Białystok (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "matchId": null,
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.530Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Sunderland vs Jagiellonia Białystok. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [
+          "Alineación previa (proyectada): aún no se cuenta con la planilla oficial del colegiado (T-60 min)."
+        ],
+        "advantages": [],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.7,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.7,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00Z",
+          "affectedMarket": "faltas_ganadas",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.531Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Faltas ganadas @ 1.17 (Paddy Power / Bet365). Cuota justa: 1.10. EV: +7.5%.",
+        "referenceOdds": 1.17,
+        "bestOdds": 1.17,
+        "fairOdds": 1.1,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "BAJO: margen muy ajustado respecto a la línea de cierre probable.",
+        "confidenceScore": 0.84,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.84,
+          "isPriced": true,
+          "bestOdds": 1.17,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.17 vs justa @1.10 (EV +7.5%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.531Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Brian Brobbey.",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Brian Brobbey",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.531Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Brian Brobbey",
+          "affectedMarket": "PLAYER_FOULS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Brian Brobbey",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.531Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Brian Brobbey."
+        }
+      }
+    },
+    "updatedAt": "2026-11-26T12:28:34.543Z",
+    "createdAt": "2026-11-26T12:27:11.181Z",
+    "kickoffUtc": "2026-11-26T20:00:00Z"
+  },
+  {
+    "id": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+    "playerOrTeam": "SK Sturm Graz (Equipo)",
+    "isTeamProp": true,
+    "match": "TSG Hoffenheim vs SK Sturm Graz",
+    "team": "SK Sturm Graz",
+    "opponent": "TSG Hoffenheim",
+    "competition": "UEFA Europa League",
+    "market": "Remates de equipo",
+    "line": "Más de 9.5",
+    "rawLine": 9.5,
+    "bookmakerOdds": 1.71,
+    "bookmaker": "BetMGM UK",
+    "date": "2026-11-26",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "SK Sturm Graz",
+        "opponentName": "TSG Hoffenheim",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.71,
+        "fairOdds": 1.42,
+        "evPercentage": 20.1
+      }
+    },
+    "status": "APROBADO",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +20.1% (Cuota: 1.71), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.559Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+        "target": "SK Sturm Graz (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Remates de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Remates de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Remates de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+        "match": "TSG Hoffenheim vs SK Sturm Graz",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre SK Sturm Graz y TSG Hoffenheim. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "SK Sturm Graz juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "LOW",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "away",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup SK Sturm Graz vs TSG Hoffenheim (away), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+        "matchId": null,
+        "match": "TSG Hoffenheim vs SK Sturm Graz",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido TSG Hoffenheim vs SK Sturm Graz. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "remates_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates de equipo @ 1.71 (BetMGM UK). Cuota justa: 1.42. EV: +20.1%.",
+        "referenceOdds": 1.71,
+        "bestOdds": 1.71,
+        "fairOdds": 1.42,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.71,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.71 vs justa @1.42 (EV +20.1%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para SK Sturm Graz (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "SK Sturm Graz (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "SK Sturm Graz (Equipo)",
+          "affectedMarket": "TEAM_MARKET",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "SK Sturm Graz (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.555Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para SK Sturm Graz (Equipo)."
+        }
+      }
+    },
+    "updatedAt": "2026-11-26T12:28:34.564Z",
+    "createdAt": "2026-11-26T12:28:34.564Z"
+  },
+  {
+    "id": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+    "playerOrTeam": "Lillestrøm SK (Equipo)",
+    "isTeamProp": true,
+    "match": "Olympique Lyonnais vs Lillestrøm SK",
+    "team": "Lillestrøm SK",
+    "opponent": "Olympique Lyonnais",
+    "competition": "UEFA Europa League",
+    "market": "Córners de equipo",
+    "line": "Más de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 1.83,
+    "bookmaker": "Bet365",
+    "date": "2026-11-26",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "Lillestrøm SK",
+        "opponentName": "Olympique Lyonnais",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.83,
+        "fairOdds": 1.38,
+        "evPercentage": 32.3
+      }
+    },
+    "status": "APROBADO",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +32.3% (Cuota: 1.83), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.581Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+        "target": "Lillestrøm SK (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Córners de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Córners de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Córners de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+        "match": "Olympique Lyonnais vs Lillestrøm SK",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Lillestrøm SK y Olympique Lyonnais. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [],
+        "risks": [
+          "Lillestrøm SK juega como visitante, donde la producción ofensiva y el dominio de posesión tienden a reducirse."
+        ],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "LOW",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "away",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Lillestrøm SK vs Olympique Lyonnais (away), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+        "matchId": null,
+        "match": "Olympique Lyonnais vs Lillestrøm SK",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Olympique Lyonnais vs Lillestrøm SK. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "córners_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Córners de equipo @ 1.83 (Bet365). Cuota justa: 1.38. EV: +32.3%.",
+        "referenceOdds": 1.83,
+        "bestOdds": 1.83,
+        "fairOdds": 1.38,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.83,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.83 vs justa @1.38 (EV +32.3%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Lillestrøm SK (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Lillestrøm SK (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Lillestrøm SK (Equipo)",
+          "affectedMarket": "TEAM_CORNERS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Lillestrøm SK (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.576Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Lillestrøm SK (Equipo)."
+        }
+      }
+    },
+    "updatedAt": "2026-11-26T12:28:34.586Z",
+    "createdAt": "2026-11-26T12:28:34.586Z"
+  },
+  {
+    "id": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+    "playerOrTeam": "Kairat Almaty (Equipo)",
+    "isTeamProp": true,
+    "match": "Kairat Almaty vs Mjällby AIF",
+    "team": "Kairat Almaty",
+    "opponent": "Mjällby AIF",
+    "competition": "UEFA Conference League",
+    "market": "Goles de equipo",
+    "line": "Menos de 1.5",
+    "rawLine": 1.5,
+    "bookmakerOdds": 1.68,
+    "bookmaker": "BetMGM UK",
+    "date": "2026-11-26",
+    "kickoffUtc": "2026-11-26T15:30:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "Kairat Almaty",
+        "opponentName": "Mjällby AIF",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T15:30:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.68,
+        "fairOdds": 1.34,
+        "evPercentage": 25.6
+      }
+    },
+    "status": "APROBADO",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +25.6% (Cuota: 1.68), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.603Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+        "target": "Kairat Almaty (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Goles de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Goles de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+        "match": "Kairat Almaty vs Mjällby AIF",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre Kairat Almaty y Mjällby AIF. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "Kairat Almaty ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup Kairat Almaty vs Mjällby AIF (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+        "matchId": null,
+        "match": "Kairat Almaty vs Mjällby AIF",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido Kairat Almaty vs Mjällby AIF. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T15:30:00.000Z",
+          "affectedMarket": "goles_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Goles de equipo @ 1.68 (BetMGM UK). Cuota justa: 1.34. EV: +25.6%.",
+        "referenceOdds": 1.68,
+        "bestOdds": 1.68,
+        "fairOdds": 1.34,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.9,
+          "isPriced": true,
+          "bestOdds": 1.68,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.68 vs justa @1.34 (EV +25.6%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Kairat Almaty (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "Kairat Almaty (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "Kairat Almaty (Equipo)",
+          "affectedMarket": "TEAM_GOALS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "Kairat Almaty (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.599Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Kairat Almaty (Equipo)."
+        }
+      }
+    },
+    "updatedAt": "2026-11-26T12:28:34.608Z",
+    "createdAt": "2026-11-26T12:28:34.608Z"
+  },
+  {
+    "id": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+    "playerOrTeam": "TSG Hoffenheim (Equipo)",
+    "isTeamProp": true,
+    "match": "TSG Hoffenheim vs SK Sturm Graz",
+    "team": "TSG Hoffenheim",
+    "opponent": "SK Sturm Graz",
+    "competition": "UEFA Europa League",
+    "market": "Remates de equipo",
+    "line": "Menos de 20.5",
+    "rawLine": 20.5,
+    "bookmakerOdds": 1.6,
+    "bookmaker": "BetMGM UK",
+    "date": "2026-11-26",
+    "kickoffUtc": "2026-11-26T20:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "TSG Hoffenheim",
+        "opponentName": "SK Sturm Graz",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T20:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.6,
+        "fairOdds": 1.31,
+        "evPercentage": 22
+      }
+    },
+    "status": "APROBADO",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +22% (Cuota: 1.6), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.625Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+        "target": "TSG Hoffenheim (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Remates de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Remates de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Remates de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+        "match": "TSG Hoffenheim vs SK Sturm Graz",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre TSG Hoffenheim y SK Sturm Graz. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "TSG Hoffenheim ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup TSG Hoffenheim vs SK Sturm Graz (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+        "matchId": null,
+        "match": "TSG Hoffenheim vs SK Sturm Graz",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido TSG Hoffenheim vs SK Sturm Graz. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T20:00:00.000Z",
+          "affectedMarket": "remates_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Remates de equipo @ 1.6 (BetMGM UK). Cuota justa: 1.31. EV: +22%.",
+        "referenceOdds": 1.6,
+        "bestOdds": 1.6,
+        "fairOdds": 1.31,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.84,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.84,
+          "isPriced": true,
+          "bestOdds": 1.6,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.60 vs justa @1.31 (EV +22%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para TSG Hoffenheim (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "TSG Hoffenheim (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "TSG Hoffenheim (Equipo)",
+          "affectedMarket": "TEAM_MARKET",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "TSG Hoffenheim (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.621Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para TSG Hoffenheim (Equipo)."
+        }
+      }
+    },
+    "updatedAt": "2026-11-26T12:28:34.631Z",
+    "createdAt": "2026-11-26T12:28:34.631Z"
+  },
+  {
+    "id": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+    "playerOrTeam": "São Paulo (Equipo)",
+    "isTeamProp": true,
+    "match": "São Paulo vs Remo",
+    "team": "São Paulo",
+    "opponent": "Remo",
+    "competition": "Brasileirão Série A",
+    "market": "Goles de equipo",
+    "line": "Menos de 2.5",
+    "rawLine": 2.5,
+    "bookmakerOdds": 1.53,
+    "bookmaker": "BetMGM UK",
+    "date": "2026-11-26",
+    "kickoffUtc": "2026-11-26T23:00:00.000Z",
+    "researchData": {
+      "playerData": null,
+      "teamData": {
+        "teamName": "São Paulo",
+        "opponentName": "Remo",
+        "concessionRatio": 1.15,
+        "isHome": true,
+        "historicalValues": [
+          12,
+          10,
+          11,
+          14,
+          9,
+          13,
+          11,
+          10,
+          12,
+          15
+        ]
+      },
+      "contextData": {
+        "kickoffUtc": "2026-11-26T23:00:00.000Z",
+        "lineupStatus": "NO_APLICA_EQUIPO",
+        "referee": "Por confirmar"
+      },
+      "oddsData": {
+        "observedOdds": 1.53,
+        "fairOdds": 1.27,
+        "evPercentage": 20.4
+      }
+    },
+    "status": "APROBADO",
+    "riskVerdict": {
+      "agentName": "Risk Manager",
+      "alias": "Elena",
+      "candidateId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+      "finalStatus": "APROBADO",
+      "finalReason": "UNANIMIDAD DEL COMITÉ DE IA: Aprobado con EV +20.4% (Cuota: 1.53), baja incertidumbre (14.0%) y consenso favorable de los analistas.",
+      "vetoApplied": false,
+      "vetoReasons": [],
+      "pendingReasons": [],
+      "approvalReasons": [],
+      "decidedAt": "2026-11-26T12:28:34.715Z"
+    },
+    "agentReports": {
+      "playerAnalyst": {
+        "agentName": "Player Analyst",
+        "alias": "Sofía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+        "target": "São Paulo (Equipo)",
+        "investigationStatus": "NO_APLICA_EQUIPO",
+        "queriedAtUtc": "2026-11-26T12:28:34.708Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "summary": "Mercado colectivo (Goles de equipo). La contribución se evalúa como bloque de equipo.",
+        "favorableFindings": [
+          "Mercado no dependiente de la sustitución o rendimiento de un único jugador."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.9,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "playerRiskDetected": false,
+          "riskSeverity": "NONE",
+          "playerConfidence": 0.9,
+          "sampleSize": null,
+          "statPer90": null,
+          "hitRateLast10": null,
+          "mirageTrendDetected": false,
+          "evidence": [
+            {
+              "source": "local",
+              "classification": "CONFIRMADO",
+              "summary": "Mercado colectivo (Goles de equipo); no requiere evaluación individual."
+            }
+          ],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Sofía 2.0: mercado colectivo (Goles de equipo), contribución evaluada como bloque de equipo."
+        }
+      },
+      "teamAnalyst": {
+        "agentName": "Team Analyst",
+        "alias": "Valentina",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+        "match": "São Paulo vs Remo",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.708Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "tacticalSummary": "Matchup táctico entre São Paulo y Remo. Ratio de concesión del rival: 1x (Estándar).",
+        "advantages": [
+          "São Paulo ejerce la localía, condición donde su volumen estadístico suele incrementarse."
+        ],
+        "risks": [],
+        "missingData": [],
+        "confidenceScore": 0.75,
+        "recommendation": "NEUTRAL",
+        "structuredSignals": {
+          "teamRiskDetected": false,
+          "riskSeverity": "NONE",
+          "teamConfidence": 0.75,
+          "teamForm": null,
+          "opponentConcession": null,
+          "venueSplit": "home",
+          "evidence": [],
+          "recommendation": "NEUTRAL",
+          "reasoning": "Valentina 2.0 (SOLO_CONTEXTO_LOCAL): matchup São Paulo vs Remo (home), ratio concesión 1x."
+        }
+      },
+      "matchContext": {
+        "agentName": "Match Context Analyst",
+        "alias": "Camila",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+        "matchId": null,
+        "match": "São Paulo vs Remo",
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.708Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "contextSummary": "Contexto del partido São Paulo vs Remo. Alineación: NO_DISPONIBLE. Árbitro pendiente de designación.",
+        "confirmedAbsences": [],
+        "probableAbsences": [],
+        "rotationRisks": [],
+        "advantages": [
+          "Mercado colectivo: alineación individual no compromete la selección."
+        ],
+        "impactAnalysis": "Riesgo moderado a la espera de confirmación de planilla.",
+        "sources": [
+          "Contexto local del candidato"
+        ],
+        "confidenceScore": 0.85,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "contextRiskDetected": false,
+          "riskSeverity": "NONE",
+          "contextConfidence": 0.85,
+          "refereeProfile": null,
+          "refereeCoverage": "SIN_DATOS",
+          "lineupStatus": "NO_DISPONIBLE",
+          "venue": null,
+          "kickoffUtc": "2026-11-26T23:00:00.000Z",
+          "affectedMarket": "goles_de_equipo",
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Camila 2.0 (SOLO_CONTEXTO_LOCAL): alineación NO_DISPONIBLE, árbitro no designado/no disponible."
+        }
+      },
+      "oddsAnalyst": {
+        "agentName": "Odds Analyst",
+        "alias": "Renata",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+        "matchId": null,
+        "investigationStatus": "SOLO_CONTEXTO_LOCAL",
+        "queriedAtUtc": "2026-11-26T12:28:34.709Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpCallsCount": 0,
+        "mcpErrors": [],
+        "marketAnalysis": "Análisis de mercado para Goles de equipo @ 1.53 (BetMGM UK). Cuota justa: 1.27. EV: +20.4%.",
+        "referenceOdds": 1.53,
+        "bestOdds": 1.53,
+        "fairOdds": 1.27,
+        "observedDiscrepancies": [],
+        "risks": [],
+        "clvAssessment": "MODERADO",
+        "confidenceScore": 0.84,
+        "recommendation": "FAVORABLE",
+        "structuredSignals": {
+          "oddsRiskDetected": false,
+          "riskSeverity": "NONE",
+          "marketConfidence": 0.84,
+          "isPriced": true,
+          "bestOdds": 1.53,
+          "averageOdds": null,
+          "booksCount": null,
+          "ageMinutes": null,
+          "noVigConsensus": null,
+          "clvMovement": null,
+          "outlierEdgePct": null,
+          "evidence": [],
+          "recommendation": "FAVORABLE",
+          "reasoning": "Renata 2.0 (SOLO_CONTEXTO_LOCAL): cuota @1.53 vs justa @1.27 (EV +20.4%)."
+        }
+      },
+      "matchIntel": {
+        "agentName": "Match Intelligence Analyst",
+        "alias": "Lucía",
+        "version": "2.0.0",
+        "candidateId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+        "matchId": null,
+        "playerId": null,
+        "teamId": null,
+        "investigationStatus": "COMPLETA",
+        "queriedAtUtc": "2026-11-26T12:28:34.709Z",
+        "sourcesConsulted": [],
+        "fromCacheCount": 0,
+        "mcpErrors": [],
+        "recommendation": "NEUTRAL",
+        "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para São Paulo (Equipo).",
+        "hasFindings": true,
+        "findings": [
+          {
+            "source": "StatsHub:getTeamNews",
+            "entity": "São Paulo (Equipo)",
+            "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+            "publishedAtUtc": null,
+            "queriedAtUtc": "2026-11-26T12:28:34.709Z",
+            "verificationStatus": "SIN_INFORMACION",
+            "confidence": 0,
+            "stale": false
+          }
+        ],
+        "tacticalDuels": [],
+        "structuredSignals": {
+          "newsRiskDetected": false,
+          "riskSeverity": "LOW",
+          "newsConfidence": 0,
+          "affectedEntity": "São Paulo (Equipo)",
+          "affectedMarket": "TEAM_GOALS",
+          "evidence": [
+            {
+              "source": "StatsHub:getTeamNews",
+              "entity": "São Paulo (Equipo)",
+              "info": "Sin información de noticias disponible (sin matchId/teamId o respuesta vacía).",
+              "publishedAtUtc": null,
+              "queriedAtUtc": "2026-11-26T12:28:34.709Z",
+              "verificationStatus": "SIN_INFORMACION",
+              "confidence": 0,
+              "stale": false
+            }
+          ],
+          "contradictions": [],
+          "recommendation": "INFORM",
+          "reasoning": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para São Paulo (Equipo)."
+        }
+      }
+    },
+    "updatedAt": "2026-11-26T12:28:34.719Z",
+    "createdAt": "2026-11-26T12:28:34.719Z"
   }
 ]
