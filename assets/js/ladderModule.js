@@ -104,30 +104,27 @@
     const ov = loadLocalOverride();
     if (!ov) return l;
 
-    // Si el backend/archivo ya está en el mismo escalón o más avanzado que el override local y ya tiene una apuesta abierta oficial, el override local ya fue absorbido
-    if (l.currentStep >= ov.currentStep && l.openBet) {
+    // Si el backend ya alcanzó o superó el escalón del override local con el mismo capital o mayor, el override ya fue absorbido
+    if (l.currentStep > ov.currentStep || (l.currentStep === ov.currentStep && l.stepHistory && l.stepHistory.length >= (ov.stepHistory || []).length && (!ov.openBet || l.openBet))) {
       saveLocalOverride(null);
       return l;
     }
 
-    // Si el backend ya registró el mismo escalón alcanzado por el override y no hay apuesta abierta en ninguno de los dos, descartar override
-    if (l.currentStep >= ov.currentStep && !ov.openBet && !l.openBet) {
-      saveLocalOverride(null);
-      return l;
-    }
-
+    // Fusión donde el override local del cliente tiene prioridad (evita revertir un paso ganado o pick en vivo)
     const merged = { ...l, ...ov };
 
     if (ov.openBet) {
       merged.openBet = ov.openBet;
       merged.committedStake = ov.openBet.stake || ov.committedStake || l.currentCapital;
-    } else if (l.openBet) {
-      // Si el servidor tiene una apuesta abierta oficial y el override no la tenía, preservar la del servidor
-      merged.openBet = l.openBet;
-      merged.committedStake = l.openBet.stake || l.committedStake || l.currentCapital;
-    } else if (ov.stepHistory && l.openBet && ov.stepHistory.some(h => h.betId === l.openBet.betId)) {
+    } else {
+      // Si el override local liquidó el paso y dejó openBet = null, se respeta estrictamente null
       merged.openBet = null;
       merged.committedStake = 0;
+    }
+
+    // Unir historiales asegurando que no se pierdan los registros recién ganados
+    if (ov.stepHistory && ov.stepHistory.length > 0) {
+      merged.stepHistory = [...ov.stepHistory];
     }
 
     return merged;
@@ -208,6 +205,18 @@
 
   let showAvatarSelector = false;
   let showFullLadderModal = false;
+  let activeDetailStep = null; // Escalón expandido interactivamente en la escalera
+  let lastWonStepAnim = null; // Para micro-animación de victoria en el escalón
+
+  function toggleStepDetail(stepNum) {
+    if (activeDetailStep === stepNum) {
+      activeDetailStep = null;
+    } else {
+      activeDetailStep = stepNum;
+    }
+    paint();
+  }
+
 
   function selectAvatar(id) {
     if (!AVATARS.some(a => a.id === id)) return;
@@ -485,99 +494,244 @@
     const targetOdds = Number((l.referenceOdds || OFFICIAL.targetOdds || 1.15).toFixed(2));
     const projections = calculateTargetProjections(initialCap, targetCap, targetOdds);
 
+    // Si no hay escalón expandido manualmente, por defecto abrimos el escalón activo
+    if (activeDetailStep === null) {
+      activeDetailStep = currentStep;
+    }
+
     const startIdx = Math.max(0, currentStep - 3);
     const visibleSteps = projections.slice(startIdx, startIdx + 6);
     const av = getAvatar(currentAvatarId);
 
+    // Animación de victoria si acaba de liquidarse un paso
+    const wonBanner = lastWonStepAnim ? `
+      <div style="margin-bottom:1rem; padding:0.85rem 1.1rem; border-radius:14px; background:linear-gradient(135deg, rgba(34,197,94,0.3) 0%, rgba(15,23,42,0.95) 100%); border:2px solid #22c55e; box-shadow:0 0 25px rgba(34,197,94,0.5); display:flex; align-items:center; justify-content:space-between; animation:pulse 1s infinite alternate;">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <span style="font-size:1.8rem;">🎉</span>
+          <div>
+            <div style="font-weight:900; color:#4ade80; font-size:1.05rem; letter-spacing:0.02em;">¡ESCALÓN ${lastWonStepAnim} SUPERADO CON ÉXITO!</div>
+            <div style="font-size:0.78rem; color:#cbd5e1;">Nivel desbloqueado. Capital acumulado y avance directo al Escalón ${currentStep}.</div>
+          </div>
+        </div>
+        <button type="button" onclick="window.LadderModule.dismissWonAnim()" style="background:rgba(255,255,255,0.15); border:none; color:#ffffff; font-size:0.8rem; font-weight:800; border-radius:8px; padding:0.35rem 0.65rem; cursor:pointer;">✕</button>
+      </div>
+    ` : '';
+
+    // Renderizar Bloques Interactivos
+    const blocksHtml = `
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:0.75rem; margin-bottom:1.1rem;">
+        ${visibleSteps.map(st => {
+          const isWon = st.step < currentStep;
+          const isCurrent = st.step === currentStep;
+          const isFuture = st.step > currentStep;
+          const isSelected = activeDetailStep === st.step;
+          const histItem = history.find(h => h.step === st.step);
+
+          let borderCol = isSelected ? '#a855f7' : 'rgba(255,255,255,0.1)';
+          let bgCol = 'rgba(15,23,42,0.65)';
+          let badgeHtml = '';
+          let boxShadow = isSelected ? '0 0 16px rgba(168,85,247,0.5)' : 'none';
+
+          if (isWon) {
+            borderCol = isSelected ? '#22c55e' : 'rgba(34,197,94,0.45)';
+            bgCol = isSelected ? 'linear-gradient(180deg, rgba(34,197,94,0.25) 0%, rgba(15,23,42,0.95) 100%)' : 'linear-gradient(180deg, rgba(34,197,94,0.12) 0%, rgba(15,23,42,0.85) 100%)';
+            if (isSelected) boxShadow = '0 0 20px rgba(34,197,94,0.45)';
+            badgeHtml = `
+              <span style="background:rgba(34,197,94,0.25); color:#4ade80; border:1px solid rgba(34,197,94,0.45); font-size:0.65rem; font-weight:900; padding:0.15rem 0.45rem; border-radius:999px;">
+                ✓ GANADO
+              </span>
+            `;
+          } else if (isCurrent) {
+            borderCol = '#eab308';
+            bgCol = 'linear-gradient(180deg, rgba(234,179,8,0.25) 0%, rgba(30,27,75,0.98) 100%)';
+            boxShadow = '0 0 22px rgba(234,179,8,0.45)';
+            badgeHtml = `
+              <span style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000000; font-size:0.68rem; font-weight:900; padding:0.15rem 0.5rem; border-radius:999px; box-shadow:0 0 10px rgba(234,179,8,0.6);">
+                ⚡ EN JUEGO
+              </span>
+            `;
+          } else {
+            badgeHtml = `
+              <span style="background:rgba(255,255,255,0.06); color:#64748b; font-size:0.65rem; font-weight:700; padding:0.15rem 0.45rem; border-radius:999px;">
+                ESCALÓN ${st.step}
+              </span>
+            `;
+          }
+
+          return `
+            <div onclick="window.LadderModule.toggleStepDetail(${st.step})" style="background:${bgCol}; border:2px solid ${borderCol}; border-radius:14px; padding:0.85rem; cursor:pointer; position:relative; box-shadow:${boxShadow}; transform:${isCurrent || isSelected ? 'scale(1.02)' : 'scale(1)'}; transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1); user-select:none;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                <span style="font-weight:900; font-size:0.82rem; color:#ffffff;">Paso ${st.step}</span>
+                ${badgeHtml}
+              </div>
+
+              <div style="font-size:0.7rem; color:#94a3b8; font-weight:700; text-transform:uppercase;">
+                ${isWon ? 'Logrado:' : (isCurrent ? 'Capital Activo:' : 'Previsto:')}
+              </div>
+
+              <div style="font-size:1.02rem; font-weight:900; color:${isWon ? '#4ade80' : (isCurrent ? '#ffffff' : '#94a3b8')}; font-family:var(--font-mono); margin:0.15rem 0 0.35rem 0;">
+                ${formatArs(isWon && histItem ? histItem.capAfter : (isCurrent ? (l.currentCapital ?? st.capital) : st.capital))}
+              </div>
+
+              <div style="border-top:1px dashed rgba(255,255,255,0.12); padding-top:0.4rem; font-size:0.7rem; color:${isWon ? '#86efac' : (isCurrent ? '#fde047' : '#64748b')}; display:flex; justify-content:space-between; align-items:center;">
+                <span>Meta:</span>
+                <strong style="font-family:var(--font-mono); font-size:0.78rem;">${formatArs(isWon && histItem ? histItem.capAfter : (isCurrent && l.openBet ? l.openBet.potentialReturn : st.potentialCapital))}</strong>
+              </div>
+
+              ${isSelected ? '<div style="position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); width:12px; height:12px; background:' + borderCol + '; clip-path:polygon(50% 100%, 0 0, 100% 0);"></div>' : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    // Renderizar Panel Desplegable de Detalle del Escalón Seleccionado
+    const selectedStepNum = activeDetailStep || currentStep;
+    const isDetailCurrent = selectedStepNum === currentStep;
+    const isDetailWon = selectedStepNum < currentStep;
+    const histItem = history.find(h => h.step === selectedStepNum);
+    const projItem = projections.find(p => p.step === selectedStepNum) || projections[0];
+
+    let drawerContent = '';
+
+    if (isDetailCurrent) {
+      const bet = l.openBet;
+      if (bet) {
+        drawerContent = `
+          <div style="background:linear-gradient(135deg, rgba(234,179,8,0.12) 0%, rgba(15,23,42,0.98) 100%); border:2px solid #eab308; border-radius:16px; padding:1.25rem 1.4rem; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.6);">
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
+              <div style="display:flex; align-items:center; gap:0.55rem;">
+                <span style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000000; font-size:0.72rem; font-weight:900; padding:0.25rem 0.65rem; border-radius:999px;">
+                  ⚡ ESCALÓN ${bet.step} (CICLO ${bet.cycle}) — APUESTA ACTIVA
+                </span>
+                <span style="font-size:0.74rem; color:#94a3b8; font-family:var(--font-mono);">ID: ${bet.betId}</span>
+              </div>
+              <span style="font-size:0.76rem; color:#38bdf8; font-weight:700;">${bet.competition || 'Competición Oficial'}</span>
+            </div>
+
+            <div style="font-size:1.2rem; font-weight:900; color:#ffffff; margin-bottom:0.25rem;">
+              ${bet.match}
+            </div>
+            <div style="font-size:0.95rem; color:#e2e8f0; margin-bottom:0.85rem;">
+              🎯 Selección: <strong style="color:#fde047;">${bet.selection}</strong> — ${bet.market} · <strong>${bet.line || ''}</strong>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(135px, 1fr)); gap:0.65rem; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:0.85rem; margin-bottom:1rem; font-family:var(--font-mono);">
+              <div>
+                <div style="font-size:0.68rem; color:#94a3b8; text-transform:uppercase;">Cuota Oficial</div>
+                <div style="font-size:1.1rem; font-weight:900; color:#fde047; margin-top:0.2rem;">@${Number(bet.odds).toFixed(2)}</div>
+              </div>
+              <div>
+                <div style="font-size:0.68rem; color:#94a3b8; text-transform:uppercase;">Stake en Riesgo</div>
+                <div style="font-size:1.05rem; font-weight:900; color:#ffffff; margin-top:0.2rem;">${formatArs(bet.stake)}</div>
+              </div>
+              <div>
+                <div style="font-size:0.68rem; color:#94a3b8; text-transform:uppercase;">Retorno Potencial</div>
+                <div style="font-size:1.15rem; font-weight:900; color:#4ade80; margin-top:0.2rem;">${formatArs(bet.potentialReturn)}</div>
+              </div>
+              <div>
+                <div style="font-size:0.68rem; color:#94a3b8; text-transform:uppercase;">Elena / Risk</div>
+                <div style="font-size:0.82rem; font-weight:800; color:#38bdf8; margin-top:0.35rem;">✓ APROBADO</div>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.85rem; border-top:1px solid rgba(234,179,8,0.25); padding-top:1rem;">
+              <div>
+                <button type="button" onclick="window.LadderModule.requestManualSettleWon('${bet.betId}')" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color:#ffffff; border:none; border-radius:10px; padding:0.65rem 1.4rem; font-weight:900; font-size:0.92rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 18px rgba(34,197,94,0.45); transition:all 0.2s;">
+                  <span style="font-size:1.2rem;">🏆</span> Marcar como GANADO
+                </button>
+              </div>
+              <div style="font-size:0.76rem; color:#cbd5e1; max-width:380px;">
+                Al marcar como ganado, se calcula el retorno y se avanza inmediatamente al <strong>Escalón ${bet.step + 1}</strong>.
+              </div>
+            </div>
+
+          </div>
+        `;
+      } else {
+        drawerContent = `
+          <div style="background:rgba(15,23,42,0.9); border:2px dashed #eab308; border-radius:16px; padding:1.25rem 1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+              <div>
+                <h4 style="margin:0; font-size:1.05rem; font-weight:900; color:#ffffff; display:flex; align-items:center; gap:0.5rem;">
+                  <span>⏳</span> Escalón ${selectedStepNum} listo para jugar
+                </h4>
+                <p style="margin:0.3rem 0 0 0; font-size:0.82rem; color:#94a3b8;">
+                  Capital disponible para este nivel: <strong style="color:#4ade80; font-family:var(--font-mono);">${formatArs(l.currentCapital)}</strong>. Podés elegir un pick prepartido o cargar una oportunidad en vivo.
+                </p>
+              </div>
+              <button type="button" onclick="window.LadderModule.openManualBetModal()" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color:#ffffff; border:none; border-radius:10px; padding:0.6rem 1.2rem; font-weight:900; font-size:0.84rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem; box-shadow:0 3px 12px rgba(2,132,199,0.35);">
+                <span>⚡</span> Cargar Pick en Vivo (Manual)
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    } else if (isDetailWon && histItem) {
+      drawerContent = `
+        <div style="background:linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(15,23,42,0.95) 100%); border:2px solid rgba(34,197,94,0.45); border-radius:16px; padding:1.25rem 1.4rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+            <span style="background:rgba(34,197,94,0.25); color:#4ade80; font-size:0.72rem; font-weight:900; padding:0.25rem 0.65rem; border-radius:999px;">
+              ✓ ESCALÓN ${histItem.step} (CICLO ${histItem.cycle}) — CONQUISTADO (WON)
+            </span>
+            <span style="font-size:0.74rem; color:#94a3b8; font-family:var(--font-mono);">Liquidado: ${histItem.settledAtUtc ? formatKickoffArt(histItem.settledAtUtc) : 'Oficial'}</span>
+          </div>
+
+          <div style="font-size:1.15rem; font-weight:900; color:#ffffff; margin-bottom:0.25rem;">
+            ${histItem.match}
+          </div>
+          <div style="font-size:0.9rem; color:#cbd5e1; margin-bottom:0.75rem;">
+            Pick: <strong style="color:#86efac;">${histItem.selection}</strong> — ${histItem.market} · ${histItem.line || ''}
+          </div>
+
+          <div style="display:flex; gap:1.2rem; flex-wrap:wrap; font-family:var(--font-mono); font-size:0.84rem; background:rgba(15,23,42,0.7); padding:0.75rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+            <span>Cuota: <strong style="color:#fde047;">@${Number(histItem.odds).toFixed(2)}</strong></span>
+            <span>Capital Antes: <strong>${formatArs(histItem.capBefore)}</strong></span>
+            <span>Capital Después: <strong style="color:#4ade80;">${formatArs(histItem.capAfter)}</strong></span>
+            <span>Ganancia: <strong style="color:#4ade80;">+${formatArs(histItem.profitDelta || (histItem.capAfter - histItem.capBefore))}</strong></span>
+          </div>
+        </div>
+      `;
+    } else {
+      drawerContent = `
+        <div style="background:rgba(15,23,42,0.7); border:1.5px solid #1e293b; border-radius:16px; padding:1.25rem 1.4rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+            <span style="background:rgba(255,255,255,0.08); color:#94a3b8; font-size:0.72rem; font-weight:900; padding:0.25rem 0.65rem; border-radius:999px;">
+              🔒 ESCALÓN ${projItem.step} — BLOQUEADO
+            </span>
+            <span style="font-size:0.76rem; color:#64748b;">Nivel futuro en la ruta de los $10.000.000 ARS</span>
+          </div>
+          <div style="font-size:0.85rem; color:#cbd5e1;">
+            Capital de entrada proyectado: <strong style="color:#ffffff; font-family:var(--font-mono);">${formatArs(projItem.capital)}</strong> · Cuota objetivo: <strong style="color:#fde047;">@${targetOdds.toFixed(2)}</strong> · Retorno potencial estimado: <strong style="color:#38bdf8; font-family:var(--font-mono);">${formatArs(projItem.potentialCapital)}</strong>
+          </div>
+        </div>
+      `;
+    }
+
     return `
-      <!-- COMPONENTE PRINCIPAL: ESCALERA VISUAL GAMIFICADA -->
-      <div style="margin-bottom:1.35rem; background:linear-gradient(180deg, rgba(15,23,42,0.8) 0%, rgba(9,14,26,0.95) 100%); border:1px solid rgba(168,85,247,0.3); border-radius:16px; padding:1.25rem; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+      <!-- COMPONENTE: ESCALERA VISUAL INTERACTIVA -->
+      <div style="margin-bottom:1.35rem; background:linear-gradient(180deg, rgba(15,23,42,0.85) 0%, rgba(9,14,26,0.98) 100%); border:1px solid rgba(168,85,247,0.3); border-radius:18px; padding:1.25rem; box-shadow:0 8px 32px rgba(0,0,0,0.5);">
         
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
           <div style="display:flex; align-items:center; gap:0.55rem;">
-            <span style="font-size:1.2rem; filter:drop-shadow(0 0 6px #eab308);">🪜</span>
+            <span style="font-size:1.25rem; filter:drop-shadow(0 0 6px #eab308);">🪜</span>
             <h3 style="margin:0; font-size:1.05rem; font-weight:900; color:#ffffff; text-transform:uppercase; letter-spacing:0.04em;">
-              Camino de Progresión — Escalón Actual vs Próximos Niveles
+              Progresión de Niveles — Hacé clic en cualquier escalón para ver detalles
             </h3>
           </div>
-          <button type="button" onclick="window.LadderModule.toggleFullLadderModal()" style="background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.4); color:#d8b4fe; font-size:0.76rem; font-weight:800; padding:0.35rem 0.75rem; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
-            🗺️ Ver Mapa Completo (${projections.length} escalones)
+          <button type="button" onclick="window.LadderModule.toggleFullLadderModal()" style="background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.4); color:#d8b4fe; font-size:0.76rem; font-weight:800; padding:0.35rem 0.75rem; border-radius:8px; cursor:pointer;">
+            🗺️ Ver Ruta Completa ($10M)
           </button>
         </div>
 
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:0.85rem;">
-          ${visibleSteps.map(st => {
-            const isWon = st.step < currentStep;
-            const isCurrent = st.step === currentStep;
-            const isFuture = st.step > currentStep;
-            const histItem = history.find(h => h.step === st.step);
-
-            let cardBorder = 'rgba(255,255,255,0.08)';
-            let cardBg = 'rgba(15,23,42,0.6)';
-            let badgeHtml = '';
-
-            if (isWon) {
-              cardBorder = 'rgba(34,197,94,0.5)';
-              cardBg = 'linear-gradient(180deg, rgba(34,197,94,0.14) 0%, rgba(15,23,42,0.85) 100%)';
-              badgeHtml = `
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
-                  <span style="background:rgba(34,197,94,0.25); color:#4ade80; border:1px solid rgba(34,197,94,0.45); font-size:0.65rem; font-weight:900; padding:0.15rem 0.45rem; border-radius:999px;">
-                    ✓ GANADO
-                  </span>
-                  <span style="font-size:0.68rem; color:#94a3b8; font-family:var(--font-mono);">
-                    @${histItem ? Number(histItem.odds).toFixed(2) : '1.15'}
-                  </span>
-                </div>
-              `;
-            } else if (isCurrent) {
-              cardBorder = '#eab308';
-              cardBg = 'linear-gradient(180deg, rgba(234,179,8,0.22) 0%, rgba(30,27,75,0.95) 100%)';
-              badgeHtml = `
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
-                  <span style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000000; font-size:0.68rem; font-weight:900; padding:0.15rem 0.5rem; border-radius:999px; box-shadow:0 0 10px rgba(234,179,8,0.6);">
-                    ⚡ EN JUEGO
-                  </span>
-                  <div style="display:flex; align-items:center; gap:0.25rem;">
-                    <img src="${av.img}" alt="${av.name}" style="width:24px; height:24px; border-radius:50%; border:1.5px solid #eab308; box-shadow:0 0 8px rgba(234,179,8,0.6);">
-                  </div>
-                </div>
-              `;
-            } else {
-              badgeHtml = `
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
-                  <span style="background:rgba(255,255,255,0.06); color:#64748b; font-size:0.65rem; font-weight:700; padding:0.15rem 0.45rem; border-radius:999px;">
-                    ESCALÓN ${st.step}
-                  </span>
-                  <span style="font-size:0.68rem; color:#64748b; font-family:var(--font-mono);">Obj. @${targetOdds.toFixed(2)}</span>
-                </div>
-              `;
-            }
-
-            return `
-              <div style="background:${cardBg}; border:2px solid ${cardBorder}; border-radius:14px; padding:0.85rem; position:relative; box-shadow:${isCurrent ? '0 0 20px rgba(234,179,8,0.35)' : 'none'}; transform:${isCurrent ? 'scale(1.02)' : 'none'}; transition:all 0.25s ease;">
-                ${badgeHtml}
-                
-                <div style="font-size:0.72rem; color:#94a3b8; font-weight:700; text-transform:uppercase;">
-                  ${isWon ? 'Capital Logrado:' : (isCurrent ? 'Capital Activo:' : 'Capital Entrada:')}
-                </div>
-                
-                <div style="font-size:1.05rem; font-weight:900; color:${isWon ? '#4ade80' : (isCurrent ? '#ffffff' : '#cbd5e1')}; font-family:var(--font-mono); margin:0.15rem 0 0.35rem 0;">
-                  ${formatArs(isWon && histItem ? histItem.capAfter : (isCurrent ? (l.currentCapital ?? st.capital) : st.capital))}
-                </div>
-
-                <div style="border-top:1px dashed rgba(255,255,255,0.12); padding-top:0.45rem; font-size:0.72rem; color:${isWon ? '#86efac' : (isCurrent ? '#fde047' : '#94a3b8')}; display:flex; justify-content:space-between; align-items:center;">
-                  <span>Meta:</span>
-                  <strong style="font-family:var(--font-mono); font-size:0.8rem;">${formatArs(isWon && histItem ? histItem.capAfter : (isCurrent && l.openBet ? l.openBet.potentialReturn : st.potentialCapital))}</strong>
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
+        ${wonBanner}
+        ${blocksHtml}
+        ${drawerContent}
       </div>
     `;
   }
-
-  function renderKpis(l) {
+function renderKpis(l) {
     const confirmedLocal = !l.openBet && selectedProposal && selectedProposal.status === 'CONFIRMED';
     const cap = l.currentCapital ?? OFFICIAL.initialCapital;
     const available = (l.openBet || confirmedLocal) ? 0 : cap;
@@ -1341,7 +1495,11 @@ function renderPrincipal(l) {
       text: `✓ Pick ${bet.selection} marcado como GANADO exitosamente. Escalón ${bet.step} completado. Capital actualizado a ${formatArs(capAfter)}. Avanzado al Escalón ${nextStep}.`
     };
 
+    
+    lastWonStepAnim = bet.step;
+    activeDetailStep = nextStep;
     await reload();
+
   }
 
   function selectOpportunity(snapshotId) {
@@ -1418,7 +1576,11 @@ function renderPrincipal(l) {
     paint();
   }
 
-  async function render() {
+  function dismissWonAnim() {
+    lastWonStepAnim = null;
+    paint();
+  }
+async function render() {
     paint();
     if (!cachedPayload) {
       await fetchLiveState();
@@ -1439,6 +1601,9 @@ function renderPrincipal(l) {
   }
 
   global.LadderModule = {
+    toggleStepDetail,
+    dismissWonAnim,
+
     selectAvatar,
     toggleAvatarSelector,
     toggleFullLadderModal,
