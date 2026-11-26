@@ -1966,7 +1966,7 @@
     "pickId": "cand_test_agent_01",
     "eventId": "coritiba__santos",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -2016,13 +2016,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": "StatsHub MCP Oficial FT",
-    "verificationReason": "Auditoría Fase 9",
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:31.448Z",
+    "verificationSource": "StatsHub MCP",
+    "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
     "stateHistory": [
       {
         "fromState": null,
@@ -2030,6 +2030,13 @@
         "timestamp": "2026-11-19T17:56:55.341Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:31.448Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
       }
     ]
   },
@@ -8848,7 +8855,7 @@
     "pickId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
     "eventId": "sk sturm graz__tsg hoffenheim",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -8898,13 +8905,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:31.460Z",
+    "verificationSource": "StatsHub MCP",
+    "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para TSG Hoffenheim vs SK Sturm Graz).",
     "stateHistory": [
       {
         "fromState": null,
@@ -8912,6 +8919,13 @@
         "timestamp": "2026-11-26T12:28:34.572Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:31.460Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para TSG Hoffenheim vs SK Sturm Graz).",
+        "source": "StatsHub MCP"
       }
     ]
   },
@@ -8919,7 +8933,7 @@
     "pickId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
     "eventId": "lillestrøm sk__olympique lyonnais",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -8969,13 +8983,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:31.468Z",
+    "verificationSource": "StatsHub MCP",
+    "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Olympique Lyonnais vs Lillestrøm SK).",
     "stateHistory": [
       {
         "fromState": null,
@@ -8983,6 +8997,13 @@
         "timestamp": "2026-11-26T12:28:34.594Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:31.468Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Olympique Lyonnais vs Lillestrøm SK).",
+        "source": "StatsHub MCP"
       }
     ]
   },
@@ -8990,7 +9011,7 @@
     "pickId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
     "eventId": "kairat almaty__mjällby aif",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9040,13 +9061,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:31.476Z",
+    "verificationSource": "StatsHub MCP",
+    "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Kairat Almaty vs Mjällby AIF).",
     "stateHistory": [
       {
         "fromState": null,
@@ -9054,6 +9075,13 @@
         "timestamp": "2026-11-26T12:28:34.617Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:31.476Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Kairat Almaty vs Mjällby AIF).",
+        "source": "StatsHub MCP"
       }
     ]
   },
@@ -9061,7 +9089,7 @@
     "pickId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
     "eventId": "sk sturm graz__tsg hoffenheim",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9111,13 +9139,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:31.483Z",
+    "verificationSource": "StatsHub MCP",
+    "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para TSG Hoffenheim vs SK Sturm Graz).",
     "stateHistory": [
       {
         "fromState": null,
@@ -9125,6 +9153,13 @@
         "timestamp": "2026-11-26T12:28:34.639Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:31.483Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para TSG Hoffenheim vs SK Sturm Graz).",
+        "source": "StatsHub MCP"
       }
     ]
   },
@@ -9132,7 +9167,7 @@
     "pickId": "cand_real_statshub_20261126_sporting_braga_goals_under",
     "eventId": "kups__sporting braga",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9183,12 +9218,12 @@
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
     "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:38.537Z",
+    "verificationSource": "StatsHub Oficial (sporting-braga-v-kups.1ohofnk)",
+    "verificationReason": "Partido pendiente de inicio o sin datos consolidados.",
     "stateHistory": [
       {
         "fromState": null,
@@ -9196,6 +9231,13 @@
         "timestamp": "2026-11-26T12:28:34.662Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:38.537Z",
+        "reason": "Partido pendiente de inicio o sin datos consolidados.",
+        "source": "StatsHub Oficial (sporting-braga-v-kups.1ohofnk)"
       }
     ]
   },
@@ -9203,7 +9245,7 @@
     "pickId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
     "eventId": "cska sofia__trabzonspor",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9254,12 +9296,12 @@
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
     "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:42.554Z",
+    "verificationSource": "StatsHub Oficial (cska-sofia-v-trabzonspor.125d57j)",
+    "verificationReason": "Partido pendiente de inicio o sin datos consolidados.",
     "stateHistory": [
       {
         "fromState": null,
@@ -9267,6 +9309,13 @@
         "timestamp": "2026-11-26T12:28:34.684Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:42.554Z",
+        "reason": "Partido pendiente de inicio o sin datos consolidados.",
+        "source": "StatsHub Oficial (cska-sofia-v-trabzonspor.125d57j)"
       }
     ]
   },
@@ -9274,7 +9323,7 @@
     "pickId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
     "eventId": "fk crvena zvezda__kaa gent",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9325,12 +9374,12 @@
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
     "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:46.564Z",
+    "verificationSource": "StatsHub Oficial (kaa-gent-v-fk-crvena-zvezda.06zvhzr)",
+    "verificationReason": "Partido pendiente de inicio o sin datos consolidados.",
     "stateHistory": [
       {
         "fromState": null,
@@ -9338,6 +9387,13 @@
         "timestamp": "2026-11-26T12:28:34.705Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:46.564Z",
+        "reason": "Partido pendiente de inicio o sin datos consolidados.",
+        "source": "StatsHub Oficial (kaa-gent-v-fk-crvena-zvezda.06zvhzr)"
       }
     ]
   },
@@ -9345,7 +9401,7 @@
     "pickId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
     "eventId": "remo__são paulo",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9395,13 +9451,13 @@
     "elenaVetoApplied": false,
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
-    "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "verificationStatus": "PENDIENTE_DE_LIQUIDACION",
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:46.573Z",
+    "verificationSource": "StatsHub MCP",
+    "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para São Paulo vs Remo).",
     "stateHistory": [
       {
         "fromState": null,
@@ -9409,6 +9465,13 @@
         "timestamp": "2026-11-26T12:28:34.727Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:46.573Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para São Paulo vs Remo).",
+        "source": "StatsHub MCP"
       }
     ]
   },
@@ -9416,7 +9479,7 @@
     "pickId": "cand_real_statshub_20261126_marseille_sot",
     "eventId": "levski sofia__olympique de marseille",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9467,12 +9530,12 @@
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
     "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:50.589Z",
+    "verificationSource": "StatsHub Oficial (olympique-de-marseille-v-levski-sofia.0eek9xa)",
+    "verificationReason": "Partido pendiente de inicio o sin datos consolidados.",
     "stateHistory": [
       {
         "fromState": null,
@@ -9480,6 +9543,13 @@
         "timestamp": "2026-11-26T12:28:34.751Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:50.589Z",
+        "reason": "Partido pendiente de inicio o sin datos consolidados.",
+        "source": "StatsHub Oficial (olympique-de-marseille-v-levski-sofia.0eek9xa)"
       }
     ]
   },
@@ -9487,7 +9557,7 @@
     "pickId": "cand_real_statshub_20261126_juventus_goals",
     "eventId": "juventus__omonia nicosia",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9538,12 +9608,12 @@
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
     "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:54.605Z",
+    "verificationSource": "StatsHub Oficial (juventus-v-omonia-nicosia.0zmydq8)",
+    "verificationReason": "Partido pendiente de inicio o sin datos consolidados.",
     "stateHistory": [
       {
         "fromState": null,
@@ -9551,6 +9621,13 @@
         "timestamp": "2026-11-26T12:28:34.772Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:54.605Z",
+        "reason": "Partido pendiente de inicio o sin datos consolidados.",
+        "source": "StatsHub Oficial (juventus-v-omonia-nicosia.0zmydq8)"
       }
     ]
   },
@@ -9558,7 +9635,7 @@
     "pickId": "cand_real_statshub_20261126_sunderland_goals",
     "eventId": "jagiellonia białystok__sunderland",
     "stage": "DISCOVERED",
-    "currentState": "DISCOVERED",
+    "currentState": "SETTLED",
     "rejectionStage": null,
     "rejectionCategory": null,
     "engineVersion": "v2.0-shadow-mode",
@@ -9609,12 +9686,12 @@
     "elenaVetoReasons": [],
     "elenaVetoRule": null,
     "verificationStatus": "PENDIENTE",
-    "finalResultConfirmed": null,
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
-    "profitUnits": null,
-    "settledAt": null,
-    "verificationSource": null,
-    "verificationReason": null,
+    "profitUnits": 0,
+    "settledAt": "2026-11-26T23:45:58.616Z",
+    "verificationSource": "StatsHub Oficial (sunderland-v-jagiellonia-bialystok.1v9a9zn)",
+    "verificationReason": "Partido pendiente de inicio o sin datos consolidados.",
     "stateHistory": [
       {
         "fromState": null,
@@ -9622,6 +9699,13 @@
         "timestamp": "2026-11-26T12:28:34.796Z",
         "reason": "Candidato detectado por Discovery Engine",
         "source": "DiscoveryEngine"
+      },
+      {
+        "fromState": "DISCOVERED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-26T23:45:58.616Z",
+        "reason": "Partido pendiente de inicio o sin datos consolidados.",
+        "source": "StatsHub Oficial (sunderland-v-jagiellonia-bialystok.1v9a9zn)"
       }
     ]
   }

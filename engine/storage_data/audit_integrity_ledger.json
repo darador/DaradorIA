@@ -1459,132 +1459,154 @@
     "pickId": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
     "sealedAt": "2026-11-26T12:28:34.575Z",
     "preMatchHash": "930146b782950c41476d0d1c2f1f80ff2f5821852798117ea5d2650bd1b97673",
-    "settlementHash": "390e254b141f86bbf9fe4834a0d76ed553e59f1646b9b83320fe7b8b8297088c",
+    "settlementHash": "c0ff943682edcbfc50d10b757b9d39e88c3774c31b66995c6ad87f855fad94be",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.71,
     "probModelB": 0.7020000000000001,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:31.460Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_lillestr_m_sk_corners_over": {
     "pickId": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
     "sealedAt": "2026-11-26T12:28:34.598Z",
     "preMatchHash": "1f2c188c66bbc3e4569c5370701eb8bb84eb92682365627125d8c56344d1c038",
-    "settlementHash": "8ef045770963702aa94c2b400b4e038d57efef141dcc600ae0ffe888c8781bc6",
+    "settlementHash": "e7f29f362451beaa7e8ac25372c2dd9cc6971ddcd8839341c458458ae5355b3a",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.83,
     "probModelB": 0.723,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:31.468Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_kairat_almaty_goals_under": {
     "pickId": "cand_real_statshub_20261126_kairat_almaty_goals_under",
     "sealedAt": "2026-11-26T12:28:34.620Z",
     "preMatchHash": "5327580331e860d7d05a1736f29d683124fd04d2ebe559529c84841211710615",
-    "settlementHash": "a1082b1df48e086cf81e39f57d127a14549ef4ef00c60ba95e72370cd9c906ca",
+    "settlementHash": "5688577556c378ed6ad859217eeec64f03e34cdf5dc624dc6e00e9565a46f67b",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.68,
     "probModelB": 0.748,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:31.476Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_tsg_hoffenheim_shots_under": {
     "pickId": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
     "sealedAt": "2026-11-26T12:28:34.643Z",
     "preMatchHash": "e8d9248ca14965dc7c82b2e7bc1210a9b477fcab092caaf20fc3d4db0cd61676",
-    "settlementHash": "6c7136b704100ac1fd6b4b0b90fabd1cb44ada5c2cae1f0ee7b6ed9f7a846e50",
+    "settlementHash": "ed5d8a357534d79b6ce403f1dc20a5601a70784ed4c78fe04c17f66b4c55f36b",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.6,
     "probModelB": 0.763,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:31.483Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_sporting_braga_goals_under": {
     "pickId": "cand_real_statshub_20261126_sporting_braga_goals_under",
     "sealedAt": "2026-11-26T12:28:34.665Z",
     "preMatchHash": "fb23a6c2319a59c849ed95aa6bd6db3cdacae0df22729a9dff7e9cdfba79d37a",
-    "settlementHash": "c46d7f7b5db7418d7d9246cabe23229ebeefc6530e06dfe84c7b2d2353ecd3c0",
+    "settlementHash": "5431279c10eda669b52012356dc52ff1ffedd2f9e81df65753c262977ce7f38a",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 2.18,
     "probModelB": 0.679,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:38.537Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_cska_sofia_shotsontarget_over": {
     "pickId": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
     "sealedAt": "2026-11-26T12:28:34.687Z",
     "preMatchHash": "5856dc658086e9ad3a70b8a62b412074b2a476d07d15e7b154a4e532756f6cb3",
-    "settlementHash": "d252fcdb264288b427a98407c6151487621fb083b91a88b175a9d148472c29dc",
+    "settlementHash": "39a5d632c43f58079c3d7edd785c66e084db80913742ee3725fda29477422f2e",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.61,
     "probModelB": 0.731,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:42.554Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over": {
     "pickId": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
     "sealedAt": "2026-11-26T12:28:34.708Z",
     "preMatchHash": "f575de1e901f641384f3b9979c827d7e67f4a8cfd571c4c98e0e682e261cc082",
-    "settlementHash": "fc57779cc5fa4895327547127248816c9e6ca179247af344b82eb6ebc99b3677",
+    "settlementHash": "8214c63fedf1d6cfd77e483d766b0805e6802f3a9942a4604a0309e60a3a2a6b",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.57,
     "probModelB": 0.758,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:46.564Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_s_o_paulo_goals_under": {
     "pickId": "cand_real_statshub_20261126_s_o_paulo_goals_under",
     "sealedAt": "2026-11-26T12:28:34.731Z",
     "preMatchHash": "840eae065a45f12823ea1d8fdb0df0769fbad3eef88f7021ac394beeece5d392",
-    "settlementHash": "e56b1ed4e57967dd772c50a216a6864d6463914440b3ab0204649196e4552f34",
+    "settlementHash": "23512cc5405cdd0c5410e2d49fadd4b0f72f747022db85ae6f40356b1ab021af",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.53,
     "probModelB": 0.787,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:46.573Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_marseille_sot": {
     "pickId": "cand_real_statshub_20261126_marseille_sot",
     "sealedAt": "2026-11-26T12:28:34.754Z",
     "preMatchHash": "24fd3cfc2100ff8e3fee84e9ef29c61ab5fe3f92e4d9db0d0f6e3410266f1c7c",
-    "settlementHash": "1aece058cb98ad93b3a83d7910f81e4f067ced408a8061d2cf27653b06784d65",
+    "settlementHash": "d6cfde9b6cc8115d051872b3105c82667862150d6d8fe11f77715e31e6dae076",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 2,
     "probModelB": 0.669,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:50.589Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_juventus_goals": {
     "pickId": "cand_real_statshub_20261126_juventus_goals",
     "sealedAt": "2026-11-26T12:28:34.776Z",
     "preMatchHash": "d25f5a18da6d7e8af5fecafba85fbff6b932679c6d6b2712383e08d89298c90b",
-    "settlementHash": "dd399881d5e3df2c45e0465521bafbf328b15d8d9ea8b35eedffd9c4cd8fe0c8",
+    "settlementHash": "2d005a40534025e20831901000c121482a9fefb13065d898a5ea76d16179bc57",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 2,
     "probModelB": 0.716,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:54.605Z",
+    "actualStat": null
   },
   "cand_real_statshub_20261126_sunderland_goals": {
     "pickId": "cand_real_statshub_20261126_sunderland_goals",
     "sealedAt": "2026-11-26T12:28:34.799Z",
     "preMatchHash": "b64b40390b33e45bd0807b6ef91ee654f92e614382c5db59278470800f454334",
-    "settlementHash": "f063a68f2da031ac0939b79f3b2612da2d1739976f32838b4c78a9e77cda2c75",
+    "settlementHash": "a105b51186d8f80c2ebc8782fc10c4ef95d6a6555e55b80456cb162b64c76fe2",
     "modelVersionB": "Model-B-L10",
     "modelVersionC": "Model-C-L15-L20",
     "odds": 1.73,
     "probModelB": 0.7190000000000001,
     "probModelC": null,
-    "finalResultConfirmed": null
+    "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
+    "settledAt": "2026-11-26T23:45:58.616Z",
+    "actualStat": null
   }
 }
