@@ -188,22 +188,391 @@
     return { ok: reasons.length === 0, reasons };
   }
 
+  
+  // ================= GAMIFICATION & AVATAR SYSTEM =================
+  const AVATAR_STORAGE_KEY = 'darador_ladder_avatar_v1';
+  const AVATARS = [
+    { id: 'elena', name: 'Elena', role: 'Risk Boss', img: 'assets/agents/elena.jpg?v=2', title: 'Comandante de Riesgo', badge: 'BOSS', unlockStep: 1, color: '#f43f5e' },
+    { id: 'sofia', name: 'Sofía', role: 'Player Hunter', img: 'assets/agents/sofia.jpg?v=2', title: 'Cazadora de Props', badge: 'SNIPER', unlockStep: 1, color: '#a855f7' },
+    { id: 'renata', name: 'Renata', role: 'Odds Master', img: 'assets/agents/renata.jpg?v=2', title: 'Maestra de Cuotas', badge: 'SHARP', unlockStep: 1, color: '#eab308' },
+    { id: 'valentina', name: 'Valentina', role: 'Team Tactician', img: 'assets/agents/valentina.jpg?v=2', title: 'Estratega de Equipos', badge: 'TACTIC', unlockStep: 2, color: '#38bdf8' },
+    { id: 'lucia', name: 'Lucía', role: 'Match Intel', img: 'assets/agents/lucia.jpg?v=2', title: 'Espía de Líneas', badge: 'INTEL', unlockStep: 3, color: '#10b981' },
+    { id: 'camila', name: 'Camila', role: 'Context Scout', img: 'assets/agents/camila.jpg?v=2', title: 'Exploradora de Contexto', badge: 'SCOUT', unlockStep: 4, color: '#ec4899' }
+  ];
+
+  let currentAvatarId = 'elena';
+  try {
+    const savedAv = global.localStorage ? global.localStorage.getItem(AVATAR_STORAGE_KEY) : null;
+    if (savedAv && AVATARS.some(a => a.id === savedAv)) currentAvatarId = savedAv;
+  } catch {}
+
+  let showAvatarSelector = false;
+  let showFullLadderModal = false;
+
+  function selectAvatar(id) {
+    if (!AVATARS.some(a => a.id === id)) return;
+    currentAvatarId = id;
+    try {
+      if (global.localStorage) global.localStorage.setItem(AVATAR_STORAGE_KEY, id);
+    } catch {}
+    showAvatarSelector = false;
+    paint();
+  }
+
+  function toggleAvatarSelector() {
+    showAvatarSelector = !showAvatarSelector;
+    paint();
+  }
+
+  function toggleFullLadderModal() {
+    showFullLadderModal = !showFullLadderModal;
+    paint();
+  }
+
+  function getAvatar(id) {
+    return AVATARS.find(a => a.id === id) || AVATARS[0];
+  }
+
+  function getMilestoneReward(step) {
+    if (step <= 1) return { title: 'Bautismo de Fuego', desc: 'Completar el 1er escalón del desafío', badge: '🥉 Rango Bronce', color: '#cd7f32' };
+    if (step === 2) return { title: 'Paso Firme', desc: 'Avatar Valentina desbloqueada', badge: '🥈 Rango Plata', color: '#94a3b8' };
+    if (step === 3) return { title: 'Racha Dorada', desc: 'Avatar Lucía desbloqueada', badge: '🥇 Rango Oro', color: '#eab308' };
+    if (step <= 5) return { title: 'Especialista en Valor', desc: 'Avatar Camila desbloqueada', badge: '💎 Rango Platino', color: '#38bdf8' };
+    if (step <= 10) return { title: 'Club del Millón', desc: 'Camino a los $1.000.000 ARS', badge: '👑 Rango Diamante', color: '#a855f7' };
+    if (step <= 20) return { title: 'Maestro del Compuesto', desc: 'Superar $5.000.000 ARS', badge: '🌟 Rango Maestro', color: '#ec4899' };
+    return { title: 'Leyenda de los $10M', desc: '¡Meta de $10.000.000 ARS alcanzada!', badge: '🚀 Rango Titán', color: '#22c55e' };
+  }
+
+  function calculateTargetProjections(initialCap, targetCap, targetOdds = 1.15) {
+    const list = [];
+    let c = initialCap;
+    let s = 1;
+    while (c < targetCap && s <= 45) {
+      const nextCap = Math.round(c * targetOdds);
+      list.push({
+        step: s,
+        capital: c,
+        targetOdds: targetOdds,
+        potentialCapital: nextCap,
+        potentialProfit: nextCap - c
+      });
+      c = nextCap;
+      s++;
+    }
+    return list;
+  }
+
   function renderHeader(l) {
-    const objBadge = l.objectiveStatus === 'OBJECTIVE_REACHED'
-      ? '<span class="sem-badge sem-green">🏆 OBJECTIVE_REACHED</span>'
-      : '<span class="sem-badge sem-blue">EN PROGRESO</span>';
+    const av = getAvatar(currentAvatarId);
+    const step = l.currentStep || 1;
+    const cycle = l.currentCycle || 1;
+    const reward = getMilestoneReward(step);
+    const progress = Math.min(100, Math.max(0, Number(l.progressPct || 0)));
+    const cap = l.currentCapital ?? OFFICIAL.initialCapital;
+    const target = l.targetCapital ?? OFFICIAL.targetCapital;
+    const isCompleted = l.objectiveStatus === 'OBJECTIVE_REACHED' || cap >= target;
+
     return `
-      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.75rem; margin-bottom:1.1rem;">
-        <div>
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.4rem;">
-            ${objBadge}
+      <!-- HEADER GAMING PRINCIPAL -->
+      <div style="background:linear-gradient(135deg, rgba(30,27,75,0.7) 0%, rgba(15,23,42,0.95) 50%, rgba(24,15,48,0.8) 100%); border:1px solid rgba(168,85,247,0.35); border-radius:18px; padding:1.25rem 1.4rem; margin-bottom:1.25rem; position:relative; overflow:hidden; box-shadow:0 12px 36px rgba(0,0,0,0.45);">
+        
+        <!-- Efecto resplandor neon ambiental -->
+        <div style="position:absolute; top:-60px; right:-60px; width:180px; height:180px; background:radial-gradient(circle, rgba(168,85,247,0.25) 0%, transparent 70%); pointer-events:none;"></div>
+        <div style="position:absolute; bottom:-60px; left:-60px; width:180px; height:180px; background:radial-gradient(circle, rgba(234,179,8,0.2) 0%, transparent 70%); pointer-events:none;"></div>
+
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.2rem; position:relative; z-index:1;">
+          
+          <!-- Avatar + Título del jugador -->
+          <div style="display:flex; align-items:center; gap:1.1rem;">
+            <!-- Avatar interactivo -->
+            <div style="position:relative; cursor:pointer;" onclick="window.LadderModule.toggleAvatarSelector()" title="Cambiar Avatar del Reto">
+              <div style="width:72px; height:72px; border-radius:50%; padding:3px; background:linear-gradient(135deg, #a855f7, #eab308, #ec4899); box-shadow:0 0 18px rgba(168,85,247,0.5); position:relative;">
+                <img src="${av.img}" alt="${av.name}" style="width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; background:#0f172a;">
+              </div>
+              <span style="position:absolute; bottom:-4px; right:-2px; background:linear-gradient(135deg, #a855f7, #7c3aed); color:#ffffff; font-size:0.62rem; font-weight:900; padding:0.15rem 0.4rem; border-radius:999px; border:1px solid rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.04em;">
+                ${av.badge}
+              </span>
+            </div>
+
+            <div>
+              <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                <span style="background:rgba(168,85,247,0.2); border:1px solid rgba(168,85,247,0.45); color:#d8b4fe; font-size:0.7rem; font-weight:800; padding:0.2rem 0.55rem; border-radius:999px; text-transform:uppercase; letter-spacing:0.06em; display:inline-flex; align-items:center; gap:0.35rem;">
+                  <span style="width:6px; height:6px; background:#a855f7; border-radius:50%; box-shadow:0 0 6px #a855f7;"></span>
+                  CICLO ${cycle} · ESCALÓN ${step}
+                </span>
+                <span style="background:rgba(234,179,8,0.18); border:1px solid rgba(234,179,8,0.4); color:#fde047; font-size:0.7rem; font-weight:800; padding:0.2rem 0.55rem; border-radius:999px;">
+                  ${reward.badge}
+                </span>
+                ${isCompleted ? '<span style="background:#22c55e; color:#052e16; font-size:0.7rem; font-weight:900; padding:0.2rem 0.55rem; border-radius:999px;">🏆 OBJETIVO ALCANZADO</span>' : ''}
+              </div>
+
+              <h1 style="font-size:1.55rem; font-weight:900; color:#ffffff; margin:0.35rem 0 0.15rem 0; letter-spacing:-0.02em; display:flex; align-items:center; gap:0.5rem;">
+                RETO ESCALERA
+                <span style="font-size:0.88rem; font-weight:700; color:#a855f7; text-shadow:0 0 12px rgba(168,85,247,0.5);">⚡ PRO</span>
+              </h1>
+              <div style="font-size:0.8rem; color:#cbd5e1;">
+                Jugador activo: <strong style="color:#ffffff;">${av.name}</strong> (${av.title}) · <button type="button" onclick="window.LadderModule.toggleAvatarSelector()" style="background:none; border:none; color:#38bdf8; text-decoration:underline; font-size:0.76rem; cursor:pointer; padding:0;">Cambiar avatar</button>
+              </div>
+            </div>
           </div>
-          <h2 style="font-size:1.35rem; font-weight:800; color:#f8fafc;">RETO ESCALERA — La magia del interés compuesto</h2>
-          <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.2rem;">
-            Estado conectado al motor oficial (<code>prospectiveLadderEngine.js</code>) · Sin apertura automática.
-          </p>
+
+          <!-- Botones de Acción Rápida -->
+          <div style="display:flex; align-items:center; gap:0.55rem; flex-wrap:wrap;">
+            <button type="button" onclick="window.LadderModule.toggleFullLadderModal()" style="background:rgba(168,85,247,0.18); color:#d8b4fe; border:1px solid rgba(168,85,247,0.45); border-radius:10px; padding:0.55rem 0.95rem; font-weight:800; font-size:0.78rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; transition:all 0.2s; box-shadow:0 0 15px rgba(168,85,247,0.25);">
+              <span>🗺️</span> Ver Mapa Completo ($10M)
+            </button>
+            <button type="button" onclick="window.LadderModule.reload()" style="background:rgba(30,41,59,0.85); color:#94a3b8; border:1px solid #334155; border-radius:10px; padding:0.55rem 0.85rem; font-weight:700; font-size:0.78rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.35rem;">
+              <span>↻</span> Sincronizar
+            </button>
+          </div>
         </div>
-        <button type="button" class="btn-audit" onclick="window.LadderModule.reload()" style="padding:0.45rem 0.85rem;">↻ Actualizar estado</button>
+
+        <!-- Barra de Progreso XP hacia los $10.000.000 ARS -->
+        <div style="margin-top:1.2rem; background:rgba(15,23,42,0.85); border:1px solid rgba(168,85,247,0.25); border-radius:14px; padding:0.85rem 1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.76rem; margin-bottom:0.45rem; flex-wrap:wrap; gap:0.4rem;">
+            <span style="color:#94a3b8; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Progreso hacia la Meta Legendaria</span>
+            <span style="color:#fde047; font-weight:900; font-family:var(--font-mono); font-size:0.84rem;">
+              ${formatArs(cap)} / ${formatArs(target)} (${progress.toFixed(2)}%)
+            </span>
+          </div>
+          <div style="height:12px; background:#0f172a; border-radius:999px; overflow:hidden; position:relative; border:1px solid rgba(255,255,255,0.08); box-shadow:inset 0 2px 4px rgba(0,0,0,0.5);">
+            <div style="height:100%; width:${progress}%; background:linear-gradient(90deg, #7c3aed 0%, #a855f7 50%, #eab308 100%); border-radius:999px; transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1); box-shadow:0 0 12px rgba(234,179,8,0.6); position:relative;">
+              <div style="position:absolute; inset:0; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation:shimmer 2s infinite;"></div>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:#94a3b8; margin-top:0.4rem;">
+            <span>Capital Base: <strong style="color:#ffffff;">${formatArs(l.initialCapital ?? OFFICIAL.initialCapital)}</strong></span>
+            <span>Próxima Recompensa: <strong style="color:#a855f7;">${reward.title}</strong> (${reward.desc})</span>
+            <span>Objetivo: <strong style="color:#eab308;">${formatArs(target)}</strong></span>
+          </div>
+        </div>
+
+        ${renderAvatarModal()}
+        ${renderFullLadderMapModal(l)}
+      </div>
+    `;
+  }
+
+  function renderAvatarModal() {
+    if (!showAvatarSelector) return '';
+    return `
+      <div style="position:fixed; inset:0; background:rgba(0,0,0,0.82); backdrop-filter:blur(6px); z-index:999999; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:#0f172a; border:2px solid #a855f7; border-radius:20px; max-width:640px; width:100%; padding:1.5rem; box-shadow:0 25px 50px rgba(0,0,0,0.8);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.1rem;">
+            <div>
+              <h3 style="margin:0; font-size:1.25rem; font-weight:900; color:#ffffff; display:flex; align-items:center; gap:0.5rem;">
+                <span>🎭</span> Elegir Avatar del Reto
+              </h3>
+              <p style="margin:0.2rem 0 0 0; font-size:0.78rem; color:#94a3b8;">Seleccioná tu heroína táctica para subir la escalera del interés compuesto.</p>
+            </div>
+            <button type="button" onclick="window.LadderModule.toggleAvatarSelector()" style="background:rgba(255,255,255,0.1); border:none; color:#ffffff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:0.85rem; max-height:420px; overflow-y:auto; padding-right:0.3rem;">
+            ${AVATARS.map(a => {
+              const isSelected = a.id === currentAvatarId;
+              return `
+                <div onclick="window.LadderModule.selectAvatar('${a.id}')" style="background:${isSelected ? 'linear-gradient(135deg, rgba(168,85,247,0.3), rgba(30,27,75,0.9))' : 'rgba(15,23,42,0.9)'}; border:2px solid ${isSelected ? '#a855f7' : '#1e293b'}; border-radius:14px; padding:0.85rem; cursor:pointer; text-align:center; transition:all 0.2s; box-shadow:${isSelected ? '0 0 16px rgba(168,85,247,0.4)' : 'none'};">
+                  <div style="width:68px; height:68px; border-radius:50%; margin:0 auto 0.6rem auto; padding:2px; background:linear-gradient(135deg, ${a.color}, #ffffff); box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+                    <img src="${a.img}" alt="${a.name}" style="width:100%; height:100%; border-radius:50%; object-fit:cover; display:block;">
+                  </div>
+                  <div style="font-weight:900; color:#ffffff; font-size:0.95rem;">${a.name}</div>
+                  <div style="font-size:0.72rem; color:${a.color}; font-weight:800; margin-top:0.15rem;">${a.role}</div>
+                  <div style="font-size:0.68rem; color:#94a3b8; margin-top:0.3rem;">${a.title}</div>
+                  <div style="margin-top:0.65rem;">
+                    <span style="background:${isSelected ? '#a855f7' : 'rgba(255,255,255,0.08)'}; color:${isSelected ? '#ffffff' : '#94a3b8'}; font-size:0.68rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:999px;">
+                      ${isSelected ? '✓ SELECCIONADO' : 'ELEGIR'}
+                    </span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderFullLadderMapModal(l) {
+    if (!showFullLadderModal) return '';
+    const initialCap = l.initialCapital ?? OFFICIAL.initialCapital;
+    const targetCap = l.targetCapital ?? OFFICIAL.targetCapital;
+    const currentStep = l.currentStep || 1;
+    const currentCap = l.currentCapital ?? initialCap;
+    const targetOdds = Number((l.referenceOdds || OFFICIAL.targetOdds || 1.15).toFixed(2));
+    const projections = calculateTargetProjections(initialCap, targetCap, targetOdds);
+
+    return `
+      <div style="position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); z-index:999999; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:#090d16; border:2px solid #eab308; border-radius:20px; max-width:850px; width:100%; max-height:85vh; display:flex; flex-direction:column; box-shadow:0 25px 60px rgba(0,0,0,0.9); overflow:hidden;">
+          
+          <!-- Modal Header -->
+          <div style="padding:1.25rem 1.5rem; background:linear-gradient(135deg, rgba(234,179,8,0.2) 0%, rgba(15,23,42,0.95) 100%); border-bottom:1px solid rgba(234,179,8,0.3); display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-size:1.3rem;">🗺️</span>
+                <h3 style="margin:0; font-size:1.25rem; font-weight:900; color:#fde047;">MAPA DE EXPEDICIÓN — RUTA DE LOS $10.000.000 ARS</h3>
+              </div>
+              <p style="margin:0.25rem 0 0 0; font-size:0.78rem; color:#94a3b8;">
+                Proyección secuencial reinvirtiendo el 100% a cuota promedio @${targetOdds.toFixed(2)}. Cada escalón multiplica el capital previo.
+              </p>
+            </div>
+            <button type="button" onclick="window.LadderModule.toggleFullLadderModal()" style="background:rgba(255,255,255,0.1); border:none; color:#ffffff; width:34px; height:34px; border-radius:50%; font-size:1.1rem; cursor:pointer;">✕</button>
+          </div>
+
+          <!-- Modal Scroll Body -->
+          <div style="padding:1.25rem 1.5rem; overflow-y:auto; flex:1;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.85rem;">
+              ${projections.map(p => {
+                const isPassed = p.step < currentStep;
+                const isCurrent = p.step === currentStep;
+                const isTarget = p.potentialCapital >= targetCap;
+
+                let cardBg = 'rgba(15,23,42,0.7)';
+                let borderCol = '#1e293b';
+                let stepBadge = '<span style="color:#64748b;">PENDIENTE</span>';
+
+                if (isPassed) {
+                  cardBg = 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(15,23,42,0.9))';
+                  borderCol = 'rgba(34,197,94,0.5)';
+                  stepBadge = '<span style="color:#4ade80; font-weight:800;">✓ CONQUISTADO</span>';
+                } else if (isCurrent) {
+                  cardBg = 'linear-gradient(135deg, rgba(168,85,247,0.3), rgba(234,179,8,0.2))';
+                  borderCol = '#eab308';
+                  stepBadge = '<span style="color:#fde047; font-weight:900; animation:pulse 1.5s infinite;">⚡ EN JUEGO AHORA</span>';
+                } else if (isTarget) {
+                  cardBg = 'linear-gradient(135deg, rgba(234,179,8,0.25), rgba(30,27,75,0.9))';
+                  borderCol = '#eab308';
+                  stepBadge = '<span style="color:#fde047; font-weight:900;">👑 META FINAL $10M</span>';
+                }
+
+                return `
+                  <div style="background:${cardBg}; border:1.5px solid ${borderCol}; border-radius:14px; padding:0.85rem 1rem; position:relative; box-shadow:${isCurrent ? '0 0 18px rgba(234,179,8,0.3)' : 'none'};">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                      <span style="font-weight:900; font-size:0.85rem; color:#ffffff;">ESCALÓN ${p.step}</span>
+                      <span style="font-size:0.68rem;">${stepBadge}</span>
+                    </div>
+                    <div style="font-size:0.75rem; color:#94a3b8;">
+                      Capital Entrada: <strong style="color:#cbd5e1; font-family:var(--font-mono);">${formatArs(p.capital)}</strong>
+                    </div>
+                    <div style="font-size:0.88rem; font-weight:800; color:${isTarget ? '#fde047' : '#38bdf8'}; font-family:var(--font-mono); margin-top:0.25rem;">
+                      ➜ Retorno: ${formatArs(p.potentialCapital)}
+                    </div>
+                    <div style="font-size:0.7rem; color:#4ade80; margin-top:0.2rem; font-family:var(--font-mono);">
+                      +${formatArs(p.potentialProfit)} ARS ganancia
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- Modal Footer -->
+          <div style="padding:1rem 1.5rem; background:#0b101d; border-top:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <span style="font-size:0.8rem; color:#94a3b8;">Total proyectado: <strong>${projections.length} escalones</strong> para alcanzar los $10.000.000 ARS</span>
+            <button type="button" onclick="window.LadderModule.toggleFullLadderModal()" style="background:#a855f7; color:#ffffff; border:none; border-radius:8px; padding:0.5rem 1.2rem; font-weight:800; font-size:0.8rem; cursor:pointer;">Entendido</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderVisualStairs(l) {
+    const currentStep = l.currentStep || 1;
+    const history = l.stepHistory || [];
+    const initialCap = l.initialCapital ?? OFFICIAL.initialCapital;
+    const targetCap = l.targetCapital ?? OFFICIAL.targetCapital;
+    const targetOdds = Number((l.referenceOdds || OFFICIAL.targetOdds || 1.15).toFixed(2));
+    const projections = calculateTargetProjections(initialCap, targetCap, targetOdds);
+
+    const startIdx = Math.max(0, currentStep - 3);
+    const visibleSteps = projections.slice(startIdx, startIdx + 6);
+    const av = getAvatar(currentAvatarId);
+
+    return `
+      <!-- COMPONENTE PRINCIPAL: ESCALERA VISUAL GAMIFICADA -->
+      <div style="margin-bottom:1.35rem; background:linear-gradient(180deg, rgba(15,23,42,0.8) 0%, rgba(9,14,26,0.95) 100%); border:1px solid rgba(168,85,247,0.3); border-radius:16px; padding:1.25rem; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <div style="display:flex; align-items:center; gap:0.55rem;">
+            <span style="font-size:1.2rem; filter:drop-shadow(0 0 6px #eab308);">🪜</span>
+            <h3 style="margin:0; font-size:1.05rem; font-weight:900; color:#ffffff; text-transform:uppercase; letter-spacing:0.04em;">
+              Camino de Progresión — Escalón Actual vs Próximos Niveles
+            </h3>
+          </div>
+          <button type="button" onclick="window.LadderModule.toggleFullLadderModal()" style="background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.4); color:#d8b4fe; font-size:0.76rem; font-weight:800; padding:0.35rem 0.75rem; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
+            🗺️ Ver Mapa Completo (${projections.length} escalones)
+          </button>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:0.85rem;">
+          ${visibleSteps.map(st => {
+            const isWon = st.step < currentStep;
+            const isCurrent = st.step === currentStep;
+            const isFuture = st.step > currentStep;
+            const histItem = history.find(h => h.step === st.step);
+
+            let cardBorder = 'rgba(255,255,255,0.08)';
+            let cardBg = 'rgba(15,23,42,0.6)';
+            let badgeHtml = '';
+
+            if (isWon) {
+              cardBorder = 'rgba(34,197,94,0.5)';
+              cardBg = 'linear-gradient(180deg, rgba(34,197,94,0.14) 0%, rgba(15,23,42,0.85) 100%)';
+              badgeHtml = `
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
+                  <span style="background:rgba(34,197,94,0.25); color:#4ade80; border:1px solid rgba(34,197,94,0.45); font-size:0.65rem; font-weight:900; padding:0.15rem 0.45rem; border-radius:999px;">
+                    ✓ GANADO
+                  </span>
+                  <span style="font-size:0.68rem; color:#94a3b8; font-family:var(--font-mono);">
+                    @${histItem ? Number(histItem.odds).toFixed(2) : '1.15'}
+                  </span>
+                </div>
+              `;
+            } else if (isCurrent) {
+              cardBorder = '#eab308';
+              cardBg = 'linear-gradient(180deg, rgba(234,179,8,0.22) 0%, rgba(30,27,75,0.95) 100%)';
+              badgeHtml = `
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
+                  <span style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000000; font-size:0.68rem; font-weight:900; padding:0.15rem 0.5rem; border-radius:999px; box-shadow:0 0 10px rgba(234,179,8,0.6);">
+                    ⚡ EN JUEGO
+                  </span>
+                  <div style="display:flex; align-items:center; gap:0.25rem;">
+                    <img src="${av.img}" alt="${av.name}" style="width:24px; height:24px; border-radius:50%; border:1.5px solid #eab308; box-shadow:0 0 8px rgba(234,179,8,0.6);">
+                  </div>
+                </div>
+              `;
+            } else {
+              badgeHtml = `
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
+                  <span style="background:rgba(255,255,255,0.06); color:#64748b; font-size:0.65rem; font-weight:700; padding:0.15rem 0.45rem; border-radius:999px;">
+                    ESCALÓN ${st.step}
+                  </span>
+                  <span style="font-size:0.68rem; color:#64748b; font-family:var(--font-mono);">Obj. @${targetOdds.toFixed(2)}</span>
+                </div>
+              `;
+            }
+
+            return `
+              <div style="background:${cardBg}; border:2px solid ${cardBorder}; border-radius:14px; padding:0.85rem; position:relative; box-shadow:${isCurrent ? '0 0 20px rgba(234,179,8,0.35)' : 'none'}; transform:${isCurrent ? 'scale(1.02)' : 'none'}; transition:all 0.25s ease;">
+                ${badgeHtml}
+                
+                <div style="font-size:0.72rem; color:#94a3b8; font-weight:700; text-transform:uppercase;">
+                  ${isWon ? 'Capital Logrado:' : (isCurrent ? 'Capital Activo:' : 'Capital Entrada:')}
+                </div>
+                
+                <div style="font-size:1.05rem; font-weight:900; color:${isWon ? '#4ade80' : (isCurrent ? '#ffffff' : '#cbd5e1')}; font-family:var(--font-mono); margin:0.15rem 0 0.35rem 0;">
+                  ${formatArs(isWon && histItem ? histItem.capAfter : (isCurrent ? (l.currentCapital ?? st.capital) : st.capital))}
+                </div>
+
+                <div style="border-top:1px dashed rgba(255,255,255,0.12); padding-top:0.45rem; font-size:0.72rem; color:${isWon ? '#86efac' : (isCurrent ? '#fde047' : '#94a3b8')}; display:flex; justify-content:space-between; align-items:center;">
+                  <span>Meta:</span>
+                  <strong style="font-family:var(--font-mono); font-size:0.8rem;">${formatArs(isWon && histItem ? histItem.capAfter : (isCurrent && l.openBet ? l.openBet.potentialReturn : st.potentialCapital))}</strong>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
       </div>
     `;
   }
@@ -213,29 +582,30 @@
     const cap = l.currentCapital ?? OFFICIAL.initialCapital;
     const available = (l.openBet || confirmedLocal) ? 0 : cap;
     const committed = l.committedStake ?? (l.openBet ? l.openBet.stake : (confirmedLocal ? (selectedProposal.stake || cap) : 0));
+    const profit = l.cumulativeProfit ?? (cap - (l.initialCapital ?? OFFICIAL.initialCapital));
+
     const kpis = [
-      ['Capital Inicial', formatArs(l.initialCapital ?? OFFICIAL.initialCapital)],
-      ['Capital Actual', formatArs(l.currentCapital ?? OFFICIAL.initialCapital)],
-      ['Disponible / Comprometido', `${formatArs(available)} / ${formatArs(committed)}`],
-      ['Objetivo Oficial', formatArs(l.targetCapital ?? OFFICIAL.targetCapital)],
-      ['Progreso', `${Number(l.progressPct ?? 0).toFixed(2)}%`],
-      ['Ciclo / Escalón', `Ciclo ${l.currentCycle || 1} · Escalón ${l.currentStep || 1}`],
-      ['Rango Cuotas', `${(l.minOdds || OFFICIAL.minOdds).toFixed(2)} – ${(l.maxOdds || OFFICIAL.maxOdds).toFixed(2)} (Obj. ${(l.referenceOdds || OFFICIAL.targetOdds).toFixed(2)})`],
-      ['EV Mínimo / Reinv.', `+${l.minEvPct || OFFICIAL.minEvPct}% · ${l.reinvestmentPct || OFFICIAL.reinvestmentPct}%`]
+      ['Capital Base', formatArs(l.initialCapital ?? OFFICIAL.initialCapital), '#94a3b8'],
+      ['Capital Actual', formatArs(l.currentCapital ?? OFFICIAL.initialCapital), '#38bdf8'],
+      ['En Apuesta Activa', formatArs(committed), committed > 0 ? '#fde047' : '#94a3b8'],
+      ['Beneficio Acumulado', (profit >= 0 ? '+' : '') + formatArs(profit), profit >= 0 ? '#4ade80' : '#f87171'],
+      ['Meta Oficial', formatArs(l.targetCapital ?? OFFICIAL.targetCapital), '#eab308'],
+      ['Rango Cuotas', `${(l.minOdds || OFFICIAL.minOdds).toFixed(2)} – ${(l.maxOdds || OFFICIAL.maxOdds).toFixed(2)}`, '#cbd5e1']
     ];
+
     return `
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px, 1fr)); gap:0.75rem; margin-bottom:1.1rem;">
-        ${kpis.map(([lbl, val]) => `
-          <div style="background:rgba(14,21,42,0.88); border:1px solid #1c2744; border-radius:10px; padding:0.75rem 0.85rem;">
-            <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; font-weight:700;">${lbl}</div>
-            <div style="font-size:1.02rem; font-weight:800; color:#f8fafc; margin-top:0.25rem; font-family:var(--font-mono);">${val}</div>
+      <!-- INDICADORES FINANCIEROS (ORGANIZACIÓN SECUNDARIA ELEGANTE) -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:0.65rem; margin-bottom:1.15rem;">
+        ${kpis.map(([lbl, val, col]) => `
+          <div style="background:rgba(15,23,42,0.7); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:0.65rem 0.75rem;">
+            <div style="font-size:0.66rem; color:#94a3b8; text-transform:uppercase; font-weight:700; letter-spacing:0.04em;">${lbl}</div>
+            <div style="font-size:0.95rem; font-weight:900; color:${col}; margin-top:0.2rem; font-family:var(--font-mono);">${val}</div>
           </div>
         `).join('')}
       </div>
     `;
   }
-
-  function renderPrincipal(l) {
+function renderPrincipal(l) {
     const bet = l.openBet;
     let noticeHtml = '';
     if (uiNotice) {
@@ -366,7 +736,7 @@
       ? `<div style="margin-top:0.85rem; font-size:0.8rem; color:#cbd5e1;"><strong>Última liquidación:</strong> ${l.lastSettlement.match} (${l.lastSettlement.status}) · Capital tras liquidación: ${formatArs(l.lastSettlement.capAfter)}</div>`
       : '';
 
-    return noticeHtml + betCard + lastSettle;
+    return noticeHtml + renderVisualStairs(l) + betCard + lastSettle;
   }
 
   function renderOportunidades(l) {
@@ -1069,6 +1439,10 @@
   }
 
   global.LadderModule = {
+    selectAvatar,
+    toggleAvatarSelector,
+    toggleFullLadderModal,
+
     render,
     reload,
     setTab,
