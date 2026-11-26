@@ -544,11 +544,11 @@
       "real_prob": 91.2,
       "edge_pct": 7.5,
       "confidence": "92%",
-      "rationale": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min).",
-      "elena_decision": "PENDIENTE",
-      "operational_status": "ACEPTADO",
+      "rationale": "VETO T-60: Brian Brobbey arranca como suplente en Sunderland. Elena aplica veto estricto para proteger el capital.",
+      "elena_decision": "VETADO",
+      "operational_status": "ANULADA_LINEUP",
       "sports_result": "PENDIENTE",
-      "status": "PENDIENTE_ALINEACION",
+      "status": "VETADO",
       "is_settled": false,
       "is_finished": false,
       "category": "proximos",
@@ -559,8 +559,8 @@
       "minutes_expected": 78.5,
       "sample_size": 10,
       "model_applied": "Beta-Binomial (m=15) + Shadow v2.3",
-      "lineupStatus": "PENDIENTE_CONFIRMACION",
-      "notes": "Candidato formal para Reto Escalera. A la espera de confirmación de planilla oficial (T-60 min).",
+      "lineupStatus": "SUPLENTE_CONFIRMADO",
+      "notes": "VETADO T-60: Brian Brobbey no es titular en Sunderland (titular en ST: T. Tuterov #57). Regla de preservación de capital activa.",
       "agent_reports": {
         "playerAnalyst": {
           "agentName": "Player Analyst",
@@ -722,8 +722,8 @@
           "sourcesConsulted": [],
           "fromCacheCount": 0,
           "mcpErrors": [],
-          "recommendation": "NEUTRAL",
-          "summary": "Lucía 2.0 completó investigación (COMPLETA) sin alertas críticas confirmadas para Brian Brobbey.",
+          "recommendation": "VETO",
+          "summary": "Lucía 2.0 verificó planilla oficial: Brian Brobbey NO es titular (ST titular: T. Tuterov #57). Riesgo CRÍTICO de minutos.",
           "hasFindings": true,
           "findings": [
             {
@@ -766,10 +766,12 @@
         "agentName": "Risk Manager",
         "alias": "Elena",
         "candidateId": "cand_real_statshub_20261126_brian_brobbey_foulswon_0.5",
-        "finalStatus": "PENDIENTE",
-        "finalReason": "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min).",
-        "vetoApplied": false,
-        "vetoReasons": [],
+        "finalStatus": "VETADO",
+        "finalReason": "VETO POR SUPLENCIA T-60: Brian Brobbey no inicia como titular.",
+        "vetoApplied": true,
+        "vetoReasons": [
+          "VETO POR SUPLENCIA T-60: Jugador no figura en el XI inicial confirmado."
+        ],
         "pendingReasons": [
           "ALINEACIÓN PENDIENTE: Selección aprobada cuantitativamente, supeditada a la confirmación de la planilla oficial (T-60 min)."
         ],
