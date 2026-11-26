@@ -927,8 +927,7 @@ function renderPrincipal(l) {
       (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
     );
     const pendingLineup = (l.pendingLineupOpportunities || []).filter(e => isUpcoming(e) &&
-      Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
-      (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
+      Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO
     );
 
     let contentHtml = '';

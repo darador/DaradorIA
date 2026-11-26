@@ -1390,55 +1390,41 @@
     "minOdds": 1.1,
     "maxOdds": 1.25,
     "minEvPct": 7,
-    "lastSearchAtUtc": "2026-11-25T03:45:04.058Z",
+    "lastSearchAtUtc": "2026-11-26T01:21:47.421Z",
     "searchCoverageByMarket": {
-      "Córners de equipo": {
-        "matchesAnalyzed": 18,
-        "opportunitiesAnalyzed": 25,
-        "eligibleCount": 3,
-        "rejectedCount": 22,
+      "Faltas ganadas": {
+        "matchesAnalyzed": 1,
+        "opportunitiesAnalyzed": 1,
+        "eligibleCount": 1,
+        "rejectedCount": 0,
         "status": "ELIGIBLE_FOUND"
       },
-      "Remates totales": {
-        "matchesAnalyzed": 12,
-        "opportunitiesAnalyzed": 15,
-        "eligibleCount": 0,
-        "rejectedCount": 15,
-        "status": "ONLY_REJECTED"
-      },
-      "Entradas (Tackles)": {
-        "matchesAnalyzed": 8,
-        "opportunitiesAnalyzed": 9,
-        "eligibleCount": 0,
-        "rejectedCount": 9,
-        "status": "ONLY_REJECTED"
-      },
-      "Faltas cometidas": {
-        "matchesAnalyzed": 10,
-        "opportunitiesAnalyzed": 12,
-        "eligibleCount": 0,
-        "rejectedCount": 12,
-        "status": "ONLY_REJECTED"
-      },
-      "Faltas ganadas": {
+      "Córners de equipo": {
         "matchesAnalyzed": 4,
         "opportunitiesAnalyzed": 4,
         "eligibleCount": 0,
         "rejectedCount": 4,
         "status": "ONLY_REJECTED"
       },
-      "Ganador del partido (1X2)": {
-        "matchesAnalyzed": 5,
-        "opportunitiesAnalyzed": 15,
+      "Remates totales": {
+        "matchesAnalyzed": 6,
+        "opportunitiesAnalyzed": 6,
         "eligibleCount": 0,
-        "rejectedCount": 15,
+        "rejectedCount": 6,
+        "status": "ONLY_REJECTED"
+      },
+      "Ganador del partido (1X2)": {
+        "matchesAnalyzed": 8,
+        "opportunitiesAnalyzed": 8,
+        "eligibleCount": 0,
+        "rejectedCount": 8,
         "status": "ONLY_REJECTED"
       },
       "Doble oportunidad": {
-        "matchesAnalyzed": 5,
-        "opportunitiesAnalyzed": 15,
+        "matchesAnalyzed": 8,
+        "opportunitiesAnalyzed": 8,
         "eligibleCount": 0,
-        "rejectedCount": 15,
+        "rejectedCount": 8,
         "status": "ONLY_REJECTED"
       }
     },
@@ -1456,12 +1442,14 @@
         "line": "Más de 0.5",
         "odds": 1.17,
         "modelProbability": 0.912,
-        "expectedValuePct": 6.7,
+        "expectedValuePct": 7.5,
         "elenaDecision": "PENDIENTE_ALINEACION",
         "riskManagerDecision": "PENDIENTE_ALINEACION",
         "lineupStatus": "PROBABLE_TITULAR",
         "statusBadge": "ESPERANDO FORMACIÓN DE EQUIPO (T-60)",
-        "compositeScore": 7.95
+        "compositeScore": 7.95,
+        "ev_pct": "+7.5%",
+        "edge_pct": 7.5
       }
     ]
   },
