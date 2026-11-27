@@ -675,7 +675,9 @@
       "isTopRecommended": true,
       "rank": 1,
       "elenaVerdict": "APROBADO",
-      "rationale": "Fuerte localía de Werder Bremen (@1.70 victoria). Gladbach vulnerable defensivamente. Cobertura 1X matemáticamente perfecta dentro de la ventana de Escalón 6 (1.10 - 1.25)."
+      "rationale": "Fuerte localía de Werder Bremen (@1.70 victoria). Gladbach vulnerable defensivamente. Cobertura 1X matemáticamente perfecta dentro de la ventana de Escalón 6 (1.10 - 1.25).",
+      "elenaDecision": "APROBADO",
+      "riskManagerDecision": "APROBADO"
     }
   ]
 }

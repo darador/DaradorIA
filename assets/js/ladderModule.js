@@ -956,6 +956,7 @@ function renderPrincipal(l) {
                 <th style="padding:0.5rem;">Selección / Mercado</th>
                 <th style="padding:0.5rem;">Cuota</th>
                 <th style="padding:0.5rem;">Prob / EV</th>
+                <th style="padding:0.5rem;">Elena / Riesgo</th>
                 <th style="padding:0.5rem;">Score</th>
                 <th style="padding:0.5rem; text-align:right;">Acción</th>
               </tr>
@@ -1003,6 +1004,11 @@ function renderPrincipal(l) {
                     </td>
                     <td style="padding:0.5rem; font-family:var(--font-mono); color:#fde047; font-weight:700;">@${Number(e.odds).toFixed(2)}</td>
                     <td style="padding:0.5rem; font-family:var(--font-mono);">${e.modelProbability ? (e.modelProbability * 100).toFixed(1) + '%' : 'N/D'} · <strong style="color:#4ade80;">+${e.expectedValuePct}%</strong></td>
+                    <td style="padding:0.5rem; white-space:nowrap;">
+                      <span class="sem-badge sem-green" style="background:rgba(34,197,94,0.18); color:#4ade80; border:1px solid rgba(34,197,94,0.4); font-size:0.68rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:6px; display:inline-flex; align-items:center; gap:0.25rem;">
+                        <span>👑 Elena:</span> <strong>${e.elenaDecision || e.elenaVerdict || 'APROBADO'}</strong>
+                      </span>
+                    </td>
                     <td style="padding:0.5rem; font-family:var(--font-mono); color:#38bdf8;">${e.compositeScore}</td>
                     <td style="padding:0.5rem; text-align:right; white-space:nowrap;">
                       ${actionButton}
