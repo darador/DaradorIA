@@ -658,12 +658,17 @@
                   <span>⏳</span> Escalón ${selectedStepNum} listo para jugar
                 </h4>
                 <p style="margin:0.3rem 0 0 0; font-size:0.82rem; color:#94a3b8;">
-                  Capital disponible para este nivel: <strong style="color:#4ade80; font-family:var(--font-mono);">${formatArs(l.currentCapital)}</strong>. Podés elegir un pick prepartido o cargar una oportunidad en vivo.
+                  Capital disponible para este nivel: <strong style="color:#4ade80; font-family:var(--font-mono);">${formatArs(l.currentCapital)}</strong>. Podés elegir un pick prepartido, cargar una oportunidad en vivo o liquidar directamente el escalón si ya lo jugaste.
                 </p>
               </div>
-              <button type="button" onclick="window.LadderModule.openManualBetModal()" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color:#ffffff; border:none; border-radius:10px; padding:0.6rem 1.2rem; font-weight:900; font-size:0.84rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem; box-shadow:0 3px 12px rgba(2,132,199,0.35);">
-                <span>⚡</span> Cargar Pick en Vivo (Manual)
-              </button>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button type="button" onclick="window.LadderModule.openManualBetModal()" style="background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color:#ffffff; border:none; border-radius:10px; padding:0.6rem 1.2rem; font-weight:900; font-size:0.84rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem; box-shadow:0 3px 12px rgba(2,132,199,0.35);">
+                  <span>⚡</span> Cargar Pick en Vivo
+                </button>
+                <button type="button" onclick="window.LadderModule.openDirectSettleModal(${selectedStepNum})" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color:#ffffff; border:none; border-radius:10px; padding:0.6rem 1.2rem; font-weight:900; font-size:0.84rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.45rem; box-shadow:0 3px 12px rgba(34,197,94,0.4);">
+                  <span>🏆</span> Liquidar Escalón Manual (Ganado)
+                </button>
+              </div>
             </div>
           </div>
         `;
@@ -1228,16 +1233,115 @@ function renderPrincipal(l) {
               <input type="text" id="manual_notes" placeholder="Ej: Alta intensidad en faltas en los primeros 15 min" value="${manualBetForm.notes}" oninput="window.LadderModule.updateManualField('notes', this.value)" style="width:100%; background:#0f172a; border:1px solid #1e293b; border-radius:8px; padding:0.55rem 0.75rem; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
             </div>
 
-            <div style="display:flex; justify-content:flex-end; gap:0.65rem; margin-top:0.75rem;">
+            <div style="display:flex; justify-content:flex-end; gap:0.65rem; margin-top:0.75rem; flex-wrap:wrap;">
               <button type="button" onclick="window.LadderModule.closeManualBetModal()" style="background:rgba(148,163,184,0.14); color:#cbd5e1; border:1px solid rgba(148,163,184,0.3); border-radius:8px; padding:0.5rem 1rem; font-weight:700; font-size:0.8rem; cursor:pointer;">Cancelar</button>
-              <button type="submit" style="background:#22c55e; color:#052e16; border:none; border-radius:8px; padding:0.5rem 1.25rem; font-weight:800; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 2px 8px rgba(34,197,94,0.3);">
-                <span>✓</span> Abrir Pick en Escalón ${step}
+              <button type="submit" style="background:#0284c7; color:#ffffff; border:none; border-radius:8px; padding:0.5rem 1.15rem; font-weight:800; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 2px 8px rgba(2,132,199,0.35);">
+                <span>⚡</span> Abrir como Apuesta Activa
+              </button>
+              <button type="button" onclick="window.LadderModule.submitDirectSettleWon()" style="background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color:#ffffff; border:none; border-radius:8px; padding:0.5rem 1.25rem; font-weight:900; font-size:0.84rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 3px 12px rgba(34,197,94,0.45);">
+                <span>🏆</span> Marcar como GANADO Directo
               </button>
             </div>
           </form>
         </div>
       </div>
     `;
+  }
+
+  async function submitDirectSettleWon() {
+    const l = cachedPayload && cachedPayload.prospectiveLadder;
+    const oddsNum = Number(manualBetForm.odds);
+    if (!Number.isFinite(oddsNum) || oddsNum < 1.01) {
+      uiNotice = { type: 'err', text: 'La cuota ingresada debe ser un número válido mayor a 1.00.' };
+      paint();
+      return;
+    }
+    if (!manualBetForm.match || !manualBetForm.selection) {
+      uiNotice = { type: 'err', text: 'Por favor completá los campos obligatorios (Partido y Selección).' };
+      paint();
+      return;
+    }
+
+    const currentCap = (l ? l.currentCapital : OFFICIAL.initialCapital);
+    const stepNum = (l ? l.currentStep : 6);
+    const cycleNum = (l ? l.currentCycle : 1);
+    const returnCap = Number((currentCap * oddsNum).toFixed(2));
+    const profit = Number((returnCap - currentCap).toFixed(2));
+    const nowIso = new Date().toISOString();
+
+    const wonItem = {
+      betId: `bet_manual_won_${Date.now()}`,
+      step: stepNum,
+      cycle: cycleNum,
+      match: manualBetForm.match,
+      competition: manualBetForm.competition || 'Manual',
+      market: manualBetForm.market || 'Manual',
+      selection: manualBetForm.selection,
+      line: manualBetForm.line || 'Manual',
+      odds: oddsNum,
+      stake: currentCap,
+      potentialReturn: returnCap,
+      returnCapital: returnCap,
+      profit: profit,
+      outcome: 'WON',
+      settlementType: 'MANUAL',
+      settledAtUtc: nowIso,
+      rationale: manualBetForm.notes || 'Liquidación manual directa ganada.'
+    };
+
+    // Actualizar override local inmediatamente para respuesta instantánea en UI
+    const prevHistory = (l && l.stepHistory) ? l.stepHistory.slice() : [];
+    const newStep = stepNum + 1;
+    const newCap = returnCap;
+    const newCumulative = Number(((l ? l.cumulativeProfit : 0) + profit).toFixed(2));
+
+    saveLocalOverride({
+      currentStep: newStep,
+      currentCapital: newCap,
+      cumulativeProfit: newCumulative,
+      committedStake: 0,
+      openBet: null,
+      lastSettlement: wonItem,
+      stepHistory: [...prevHistory, wonItem]
+    });
+
+    // Intentar persistir en servidor si está disponible
+    try {
+      await fetch('/api/ladder/settle-direct', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(wonItem)
+      });
+    } catch(e) {}
+
+    showManualBetModal = false;
+    uiNotice = {
+      type: 'ok',
+      text: `🏆 ¡Escalón ${stepNum} liquidado con éxito! Capital alcanzado: ${formatArs(newCap)} (+${formatArs(profit)}). Avanzando al Escalón ${newStep}.`
+    };
+
+    await fetchLiveState();
+    paint();
+  }
+
+  function openDirectSettleModal(stepNum) {
+    const l = cachedPayload && cachedPayload.prospectiveLadder;
+    const currentCap = l ? l.currentCapital : 143059.36;
+    const defaultMatch = (l && l.eligibleOpportunities && l.eligibleOpportunities[0]) ? l.eligibleOpportunities[0].match : 'SV Werder Bremen vs Borussia M\'gladbach';
+    const defaultSelection = (l && l.eligibleOpportunities && l.eligibleOpportunities[0]) ? l.eligibleOpportunities[0].selection : 'SV Werder Bremen o Empate (1X)';
+    const defaultOdds = (l && l.eligibleOpportunities && l.eligibleOpportunities[0]) ? l.eligibleOpportunities[0].odds : 1.23;
+
+    manualModalState = {
+      isOpen: true,
+      isDirectSettle: true,
+      step: stepNum,
+      match: defaultMatch,
+      selection: defaultSelection,
+      odds: defaultOdds,
+      stake: currentCap,
+      errorMsg: null
+    };
+    paint();
   }
 
   function openManualBetModal() {
@@ -1629,6 +1733,8 @@ async function render() {
     executeManualSettle,
     openManualBetModal,
     closeManualBetModal,
+    openDirectSettleModal,
+    submitDirectSettleWon,
     updateManualField,
     submitManualBet,
     _formatKickoffArt: formatKickoffArt,
