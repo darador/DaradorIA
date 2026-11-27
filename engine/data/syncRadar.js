@@ -598,7 +598,38 @@ class RadarSync {
     currentData.research_center = researchCenterCandidates;
 
     fs.writeFileSync(this.picksFile, JSON.stringify(currentData, null, 2), 'utf8');
+
+    // Sincronizar automáticamente en tiempo real con dashboard.html e index.html
+    try {
+      this._syncHtmlEmbeddedPicks(currentData);
+    } catch (err) {
+      console.warn('[SyncRadar] Advertencia al sincronizar HTMLs embebidos:', err.message);
+    }
+
     return currentData;
+  }
+
+  /**
+   * Actualiza window.EMBEDDED_PICKS_DATA en index.html y dashboard.html
+   */
+  _syncHtmlEmbeddedPicks(picksData) {
+    const htmlFiles = ['index.html', 'dashboard.html'];
+    const picksJson = JSON.stringify(picksData);
+    const marker = 'window.EMBEDDED_PICKS_DATA = ';
+
+    for (const f of htmlFiles) {
+      const fullPath = path.resolve(f);
+      if (!fs.existsSync(fullPath)) continue;
+      let html = fs.readFileSync(fullPath, 'utf8');
+      const startIdx = html.indexOf(marker);
+      if (startIdx !== -1) {
+        const endIdx = html.indexOf(';\n', startIdx) !== -1 ? html.indexOf(';\n', startIdx) : html.indexOf(';\r\n', startIdx);
+        if (endIdx !== -1) {
+          html = html.slice(0, startIdx + marker.length) + picksJson + html.slice(endIdx);
+          fs.writeFileSync(fullPath, html, 'utf8');
+        }
+      }
+    }
   }
 
   /**
