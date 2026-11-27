@@ -14,7 +14,7 @@ files.forEach(f => {
   const picksMarker = 'window.EMBEDDED_PICKS_DATA = ';
   const pIdx = content.indexOf(picksMarker);
   if (pIdx !== -1) {
-    const pEnd = content.indexOf(';\n', pIdx);
+    const pEnd = content.indexOf(';\n', pIdx) !== -1 ? content.indexOf(';\n', pIdx) : content.indexOf(';\r\n', pIdx);
     if (pEnd !== -1) {
       content = content.slice(0, pIdx + picksMarker.length) + JSON.stringify(picksHoy) + content.slice(pEnd);
       console.log(`[${f}] window.EMBEDDED_PICKS_DATA actualizado`);
@@ -25,7 +25,7 @@ files.forEach(f => {
   const histMarker = 'window.EMBEDDED_HISTORY_DATA = ';
   const hIdx = content.indexOf(histMarker);
   if (hIdx !== -1) {
-    const hEnd = content.indexOf(';\n', hIdx);
+    const hEnd = content.indexOf(';\n', hIdx) !== -1 ? content.indexOf(';\n', hIdx) : content.indexOf(';\r\n', hIdx);
     if (hEnd !== -1) {
       content = content.slice(0, hIdx + histMarker.length) + JSON.stringify(historial) + content.slice(hEnd);
       console.log(`[${f}] window.EMBEDDED_HISTORY_DATA actualizado`);

@@ -4718,18 +4718,19 @@
       return new Intl.DateTimeFormat('en-CA', { timeZone: TIMEZONE_ARGENTINA }).format(d);
     }
 
-        function getTodayStr() {
+    function getTodayStr() {
       const clientToday = getLocalDateStr(new Date());
       if (globalPicksData && globalPicksData.top_picks && globalPicksData.top_picks.length > 0) {
         const hasClientDate = globalPicksData.top_picks.some(p => getPickDateKey(p) === clientToday);
-        if (!hasClientDate) {
-          const datasetDates = globalPicksData.top_picks.map(p => getPickDateKey(p)).filter(Boolean);
-          if (datasetDates.includes('2026-11-22')) {
-            return '2026-11-22';
-          }
+        if (hasClientDate) {
+          return clientToday;
+        }
+        const datasetDates = globalPicksData.top_picks.map(p => getPickDateKey(p)).filter(Boolean).sort().reverse();
+        if (datasetDates.length > 0) {
+          return datasetDates[0];
         }
       }
-      return clientToday || '2026-11-22';
+      return clientToday || '2026-11-27';
     }
 
     function getTodayDateObj() {
@@ -6383,7 +6384,7 @@
 
         if (periodF === 'today') {
           const t = getTodayStr();
-          if (item.date !== t && item.date !== '2026-11-22') return false;
+          if (item.date !== t) return false;
         } else if (periodF === '7d') {
           const cutoff = new Date();
           cutoff.setDate(cutoff.getDate() - 7);
