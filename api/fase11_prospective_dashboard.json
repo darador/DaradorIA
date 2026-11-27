@@ -1436,46 +1436,46 @@
     "minOdds": 1.1,
     "maxOdds": 1.25,
     "minEvPct": 7,
-    "lastSearchAtUtc": "2026-11-26T01:21:47.421Z",
+    "lastSearchAtUtc": "2026-11-27T17:51:42.204Z",
     "searchCoverageByMarket": {
-      "Faltas ganadas": {
-        "matchesAnalyzed": 1,
-        "opportunitiesAnalyzed": 1,
+      "Doble Oportunidad": {
+        "opportunitiesAnalyzed": 18,
         "eligibleCount": 1,
-        "rejectedCount": 0,
         "status": "ELIGIBLE_FOUND"
       },
-      "Córners de equipo": {
-        "matchesAnalyzed": 4,
-        "opportunitiesAnalyzed": 4,
+      "Total de Goles": {
+        "opportunitiesAnalyzed": 24,
         "eligibleCount": 0,
-        "rejectedCount": 4,
         "status": "ONLY_REJECTED"
       },
-      "Remates totales": {
-        "matchesAnalyzed": 6,
-        "opportunitiesAnalyzed": 6,
+      "Goles de Equipo": {
+        "opportunitiesAnalyzed": 14,
         "eligibleCount": 0,
-        "rejectedCount": 6,
-        "status": "ONLY_REJECTED"
-      },
-      "Ganador del partido (1X2)": {
-        "matchesAnalyzed": 8,
-        "opportunitiesAnalyzed": 8,
-        "eligibleCount": 0,
-        "rejectedCount": 8,
-        "status": "ONLY_REJECTED"
-      },
-      "Doble oportunidad": {
-        "matchesAnalyzed": 8,
-        "opportunitiesAnalyzed": 8,
-        "eligibleCount": 0,
-        "rejectedCount": 8,
         "status": "ONLY_REJECTED"
       }
     },
     "progressPct": 0.6497,
-    "eligibleOpportunities": [],
+    "eligibleOpportunities": [
+      {
+        "snapshotId": "opp_wer_bmg_1x_20261127",
+        "matchId": "sv-werder-bremen-v-borussia-m-gladbach.0kvt13i",
+        "match": "SV Werder Bremen vs Borussia M'gladbach",
+        "competition": "Bundesliga (Alemania)",
+        "kickoffUtc": "2026-11-27T19:30:00.000Z",
+        "selection": "SV Werder Bremen o Empate (1X)",
+        "market": "Doble Oportunidad",
+        "line": "1X",
+        "odds": 1.23,
+        "bookmaker": "All British Casino",
+        "modelProbability": 0.845,
+        "expectedValuePct": 3.9,
+        "compositeScore": 92.4,
+        "isTopRecommended": true,
+        "rank": 1,
+        "elenaVerdict": "APROBADO",
+        "rationale": "Fuerte localía de Werder Bremen (@1.70 victoria). Gladbach vulnerable defensivamente. Cobertura 1X matemáticamente perfecta dentro de la ventana de Escalón 6 (1.10 - 1.25)."
+      }
+    ],
     "pendingLineupOpportunities": []
   },
   "historicalReplayReference": {
