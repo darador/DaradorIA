@@ -895,7 +895,11 @@ function renderPrincipal(l) {
       ? `<div style="margin-top:0.85rem; font-size:0.8rem; color:#cbd5e1;"><strong>Última liquidación:</strong> ${l.lastSettlement.match} (${l.lastSettlement.status}) · Capital tras liquidación: ${formatArs(l.lastSettlement.capAfter)}</div>`
       : '';
 
-    return noticeHtml + renderVisualStairs(l) + betCard + lastSettle;
+    // Si la apuesta abierta ya se está mostrando en el panel interactivo superior (drawerContent de renderVisualStairs),
+    // no duplicar la tarjeta inferior para evitar renderizarla dos veces.
+    const isShowingInDrawer = isDetailCurrent && Boolean(bet);
+
+    return noticeHtml + renderVisualStairs(l) + (isShowingInDrawer ? '' : betCard) + lastSettle;
   }
 
   function renderOportunidades(l) {
