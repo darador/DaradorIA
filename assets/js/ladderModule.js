@@ -897,7 +897,8 @@ function renderPrincipal(l) {
 
     // Si la apuesta abierta ya se está mostrando en el panel interactivo superior (drawerContent de renderVisualStairs),
     // no duplicar la tarjeta inferior para evitar renderizarla dos veces.
-    const isShowingInDrawer = isDetailCurrent && Boolean(bet);
+    const selectedStepNum = activeDetailStep || (l ? l.currentStep : 1);
+    const isShowingInDrawer = Boolean(bet) && selectedStepNum === (l ? l.currentStep : 1);
 
     return noticeHtml + renderVisualStairs(l) + (isShowingInDrawer ? '' : betCard) + lastSettle;
   }
