@@ -1,0 +1,51 @@
+{
+  "cohortId": "SHADOW_V2.2_LIVE_PROSPECTIVE",
+  "protocolStartedAt": "2026-11-27T03:03:18.715Z",
+  "lastReportAt": "2026-11-27T03:03:18.721Z",
+  "milestonesConfig": [
+    {
+      "matches": 10,
+      "name": "AUDITORIA_OPERATIVA_10",
+      "status": "PENDING"
+    },
+    {
+      "matches": 25,
+      "name": "AUDITORIA_SNAPSHOTS_RESULTADOS_25",
+      "status": "PENDING"
+    },
+    {
+      "matches": 50,
+      "name": "REVISION_INTEGRIDAD_CALIDAD_50",
+      "status": "PENDING"
+    },
+    {
+      "matches": 100,
+      "name": "EVALUACION_ESTADISTICA_FORMAL_100",
+      "status": "PENDING"
+    },
+    {
+      "matches": 200,
+      "name": "ANALISIS_POR_MERCADOS_200",
+      "status": "PENDING"
+    },
+    {
+      "matches": 300,
+      "name": "EVALUACION_ESTABILIDAD_300",
+      "status": "PENDING"
+    },
+    {
+      "matches": 500,
+      "name": "EVALUACION_ESTABILIDAD_500",
+      "status": "PENDING"
+    }
+  ],
+  "checkpoints": [
+    {
+      "timestamp": "2026-11-27T03:03:18.721Z",
+      "uniqueMatchesCount": 1,
+      "uniqueCandidateCount": 2,
+      "settledCount": 0,
+      "pendingCount": 2
+    }
+  ]
+}
