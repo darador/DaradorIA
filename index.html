@@ -4771,8 +4771,8 @@
             if (!globalHistoryData) globalHistoryData = {};
             globalHistoryData.picks = histData.picks || histData.history;
             globalHistoryData.history = histData.picks || histData.history;
-            if (!globalHistoryData.summary) globalHistoryData.summary = histData.summary;
-            if (loadedFrom === 'none') loadedFrom = 'file';
+            globalHistoryData.summary = histData.summary || globalHistoryData.summary;
+            loadedFrom = 'file';
           }
         }
       } catch (err) {

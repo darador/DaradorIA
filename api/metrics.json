@@ -1,17 +1,16 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-26T00:10:02.832Z",
-  "totalTrackedPicks": 114,
+  "updated_at": "2026-11-27T00:03:13.279Z",
   "summary": {
-    "total_bets": 114,
-    "settled_bets": 88,
-    "won_bets": 57,
-    "lost_bets": 31,
-    "void_bets": 26,
+    "total_bets": 126,
+    "settled_bets": 99,
+    "won_bets": 64,
+    "lost_bets": 35,
+    "void_bets": 27,
     "pending_bets": 0,
-    "win_rate_pct": 64.8,
-    "total_staked_units": 88,
-    "net_profit_units": 8.51,
+    "win_rate_pct": 64.6,
+    "total_staked_units": 99,
+    "net_profit_units": 9.6,
     "roi_pct": 9.7,
     "by_market": {
       "Faltas cometidas": {
@@ -20,17 +19,15 @@
         "lost": 4,
         "void": 4,
         "win_rate": "60.0%",
-        "profit": "+0.23U",
-        "net_profit": 0.2300000000000002
+        "profit": "+0.23U"
       },
       "Faltas ganadas": {
-        "total": 5,
+        "total": 6,
         "won": 3,
         "lost": 1,
-        "void": 1,
+        "void": 2,
         "win_rate": "75.0%",
-        "profit": "+0.28U",
-        "net_profit": 0.28
+        "profit": "+0.28U"
       },
       "Remates totales": {
         "total": 26,
@@ -38,8 +35,7 @@
         "lost": 4,
         "void": 9,
         "win_rate": "76.5%",
-        "profit": "+5.38U",
-        "net_profit": 5.379999999999999
+        "profit": "+5.38U"
       },
       "Entradas (Tackles)": {
         "total": 8,
@@ -47,17 +43,15 @@
         "lost": 1,
         "void": 4,
         "win_rate": "75.0%",
-        "profit": "+1.47U",
-        "net_profit": 1.47
+        "profit": "+1.47U"
       },
       "Córners de equipo": {
-        "total": 17,
-        "won": 11,
+        "total": 18,
+        "won": 12,
         "lost": 5,
         "void": 1,
-        "win_rate": "68.8%",
-        "profit": "+2.36U",
-        "net_profit": 2.36
+        "win_rate": "70.6%",
+        "profit": "+3.19U"
       },
       "Tarjetas de equipo": {
         "total": 4,
@@ -65,8 +59,7 @@
         "lost": 1,
         "void": 0,
         "win_rate": "75.0%",
-        "profit": "+0.86U",
-        "net_profit": 0.8599999999999999
+        "profit": "+0.86U"
       },
       "Remates al arco": {
         "total": 10,
@@ -74,35 +67,31 @@
         "lost": 1,
         "void": 6,
         "win_rate": "75.0%",
-        "profit": "+0.87U",
-        "net_profit": 0.8700000000000001
+        "profit": "+0.87U"
       },
       "Remates al arco de equipo": {
-        "total": 13,
-        "won": 6,
-        "lost": 7,
-        "void": 0,
-        "win_rate": "46.2%",
-        "profit": "-3.00U",
-        "net_profit": -3
-      },
-      "Goles de equipo": {
-        "total": 9,
-        "won": 5,
-        "lost": 4,
-        "void": 0,
-        "win_rate": "55.6%",
-        "profit": "-0.23U",
-        "net_profit": -0.22999999999999998
-      },
-      "Remates de equipo": {
-        "total": 6,
-        "won": 3,
-        "lost": 3,
+        "total": 16,
+        "won": 8,
+        "lost": 8,
         "void": 0,
         "win_rate": "50.0%",
-        "profit": "-0.44U",
-        "net_profit": -0.43999999999999995
+        "profit": "-2.39U"
+      },
+      "Goles de equipo": {
+        "total": 14,
+        "won": 8,
+        "lost": 6,
+        "void": 0,
+        "win_rate": "57.1%",
+        "profit": "-0.29U"
+      },
+      "Remates de equipo": {
+        "total": 8,
+        "won": 4,
+        "lost": 4,
+        "void": 0,
+        "win_rate": "50.0%",
+        "profit": "-0.73U"
       },
       "Tarjetas": {
         "total": 1,
@@ -110,8 +99,7 @@
         "lost": 0,
         "void": 0,
         "win_rate": "100.0%",
-        "profit": "+0.73U",
-        "net_profit": 0.73
+        "profit": "+0.73U"
       },
       "Faltas recibidas": {
         "total": 1,
@@ -119,156 +107,106 @@
         "lost": 0,
         "void": 1,
         "win_rate": "0.0%",
-        "profit": "+0.00U",
-        "net_profit": 0
+        "profit": "+0.00U"
       }
-    },
-    "won": 57,
-    "lost": 31,
-    "total_profit_units": 8.51
+    }
   },
-  "portfolioElena": {
-    "totalTracked": 114,
-    "settled": 88,
-    "won": 57,
-    "lost": 31,
-    "winRatePct": 64.8,
-    "netProfitUnits": 8.51,
-    "roiPct": 9.7
-  },
-  "evaluation": {
-    "evaluatedAt": "2026-11-24T13:32:15.196Z",
-    "sampleSize": 37,
-    "financialMetrics": {
-      "totalStakedUnits": 37,
-      "netProfitUnits": 2.15,
-      "yieldPct": 5.8,
-      "winRatePct": 62.2,
-      "wonBets": 23,
-      "lostBets": 14,
-      "maxDrawdownUnits": 4.63
+  "by_market": {
+    "Faltas cometidas": {
+      "total": 14,
+      "won": 6,
+      "lost": 4,
+      "void": 4,
+      "win_rate": "60.0%",
+      "profit": "+0.23U"
     },
-    "probabilisticMetrics": {
-      "brierScore": 0.2352,
-      "brierEvaluation": "Aceptable",
-      "logLoss": 0.6633,
-      "evaluatedPicksWithProb": 37
+    "Faltas ganadas": {
+      "total": 6,
+      "won": 3,
+      "lost": 1,
+      "void": 2,
+      "win_rate": "75.0%",
+      "profit": "+0.28U"
     },
-    "calibrationByDecile": [
-      {
-        "range": "50% - 60%",
-        "sampleSize": 0,
-        "avgPredictedProb": 0,
-        "actualHitRate": 0,
-        "calibrationGap": 0
-      },
-      {
-        "range": "60% - 70%",
-        "sampleSize": 37,
-        "avgPredictedProb": 62.5,
-        "actualHitRate": 62.2,
-        "calibrationGap": -0.3
-      },
-      {
-        "range": "70% - 80%",
-        "sampleSize": 0,
-        "avgPredictedProb": 0,
-        "actualHitRate": 0,
-        "calibrationGap": 0
-      },
-      {
-        "range": "80% - 90%",
-        "sampleSize": 0,
-        "avgPredictedProb": 0,
-        "actualHitRate": 0,
-        "calibrationGap": 0
-      },
-      {
-        "range": "90% - 100%",
-        "sampleSize": 0,
-        "avgPredictedProb": 0,
-        "actualHitRate": 0,
-        "calibrationGap": 0
-      }
-    ],
-    "byMarket": [
-      {
-        "market": "Córners de equipo",
-        "total": 8,
-        "winRate": 87.5,
-        "netProfit": 3.5,
-        "yieldPct": 43.8
-      },
-      {
-        "market": "Tarjetas",
-        "total": 1,
-        "winRate": 100,
-        "netProfit": 0.73,
-        "yieldPct": 73
-      },
-      {
-        "market": "Faltas ganadas",
-        "total": 2,
-        "winRate": 50,
-        "netProfit": -0.43,
-        "yieldPct": -21.5
-      },
-      {
-        "market": "Faltas cometidas",
-        "total": 1,
-        "winRate": 100,
-        "netProfit": 0.65,
-        "yieldPct": 65
-      },
-      {
-        "market": "Remates al arco de equipo",
-        "total": 6,
-        "winRate": 33.3,
-        "netProfit": -2.76,
-        "yieldPct": -46
-      },
-      {
-        "market": "Remates de equipo",
-        "total": 3,
-        "winRate": 33.3,
-        "netProfit": -1,
-        "yieldPct": -33.3
-      },
-      {
-        "market": "Goles de equipo",
-        "total": 5,
-        "winRate": 60,
-        "netProfit": 0.54,
-        "yieldPct": 10.8
-      },
-      {
-        "market": "Remates totales",
-        "total": 5,
-        "winRate": 80,
-        "netProfit": 1.95,
-        "yieldPct": 39
-      },
-      {
-        "market": "Entradas (Tackles)",
-        "total": 2,
-        "winRate": 50,
-        "netProfit": -0.2,
-        "yieldPct": -10
-      },
-      {
-        "market": "Remates al arco",
-        "total": 3,
-        "winRate": 66.7,
-        "netProfit": 0.17,
-        "yieldPct": 5.7
-      },
-      {
-        "market": "Tarjetas de equipo",
-        "total": 1,
-        "winRate": 0,
-        "netProfit": -1,
-        "yieldPct": -100
-      }
-    ]
+    "Remates totales": {
+      "total": 26,
+      "won": 13,
+      "lost": 4,
+      "void": 9,
+      "win_rate": "76.5%",
+      "profit": "+5.38U"
+    },
+    "Entradas (Tackles)": {
+      "total": 8,
+      "won": 3,
+      "lost": 1,
+      "void": 4,
+      "win_rate": "75.0%",
+      "profit": "+1.47U"
+    },
+    "Córners de equipo": {
+      "total": 18,
+      "won": 12,
+      "lost": 5,
+      "void": 1,
+      "win_rate": "70.6%",
+      "profit": "+3.19U"
+    },
+    "Tarjetas de equipo": {
+      "total": 4,
+      "won": 3,
+      "lost": 1,
+      "void": 0,
+      "win_rate": "75.0%",
+      "profit": "+0.86U"
+    },
+    "Remates al arco": {
+      "total": 10,
+      "won": 3,
+      "lost": 1,
+      "void": 6,
+      "win_rate": "75.0%",
+      "profit": "+0.87U"
+    },
+    "Remates al arco de equipo": {
+      "total": 16,
+      "won": 8,
+      "lost": 8,
+      "void": 0,
+      "win_rate": "50.0%",
+      "profit": "-2.39U"
+    },
+    "Goles de equipo": {
+      "total": 14,
+      "won": 8,
+      "lost": 6,
+      "void": 0,
+      "win_rate": "57.1%",
+      "profit": "-0.29U"
+    },
+    "Remates de equipo": {
+      "total": 8,
+      "won": 4,
+      "lost": 4,
+      "void": 0,
+      "win_rate": "50.0%",
+      "profit": "-0.73U"
+    },
+    "Tarjetas": {
+      "total": 1,
+      "won": 1,
+      "lost": 0,
+      "void": 0,
+      "win_rate": "100.0%",
+      "profit": "+0.73U"
+    },
+    "Faltas recibidas": {
+      "total": 1,
+      "won": 0,
+      "lost": 0,
+      "void": 1,
+      "win_rate": "0.0%",
+      "profit": "+0.00U"
+    }
   }
 }
