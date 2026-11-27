@@ -1,7 +1,7 @@
 {
   "cohortId": "SHADOW_V2.2_LIVE_PROSPECTIVE",
   "protocolStartedAt": "2026-11-27T03:03:18.715Z",
-  "lastReportAt": "2026-11-27T03:03:18.721Z",
+  "lastReportAt": "2026-11-27T03:11:28.270Z",
   "milestonesConfig": [
     {
       "matches": 10,
@@ -46,6 +46,13 @@
       "uniqueCandidateCount": 2,
       "settledCount": 0,
       "pendingCount": 2
+    },
+    {
+      "timestamp": "2026-11-27T03:11:28.270Z",
+      "uniqueMatchesCount": 5,
+      "uniqueCandidateCount": 6,
+      "settledCount": 0,
+      "pendingCount": 6
     }
   ]
 }
