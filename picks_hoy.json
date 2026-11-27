@@ -72,7 +72,8 @@
           "vote": "APROBADO",
           "comment": "Opción conservadora complementaria para el Daily Board."
         }
-      }
+      },
+      "player": "Chelsea (Equipo)"
     },
     {
       "id": "cand_statshub_20261127_not_che_o25_goals",
@@ -144,7 +145,8 @@
           "vote": "APROBADO",
           "comment": "Selección principal de la jornada de viernes aprobada para Daily Board."
         }
-      }
+      },
+      "player": "Chelsea / Nottingham Forest (Equipo)"
     },
     {
       "id": "cand_real_statshub_20261125_matheus_bidu_shots_0.5",
