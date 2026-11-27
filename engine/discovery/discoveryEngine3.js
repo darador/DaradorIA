@@ -312,28 +312,66 @@ class DiscoveryEngine3 {
   }
 
   /**
-   * Consulta Player Props vía getPropScreener
+   * Consulta Player Props vía getPropScreener con escaneo multi-horizonte:
+   * 1. Tendencias consolidadas L15 (>= 70% acierto, titulares previstos, SuperSub activado)
+   * 2. Racha reciente L10 / L5 (>= 75% acierto)
    */
   async _screenPlayerProps(dateStr) {
     this._recordMarketRequested('getPropScreener');
+    const allProps = [];
+
+    // Estrategia 1: Tendencias L15 robustas (tipo StatsHub Elite / Twitter)
     try {
-      const res = await mcpClient.callTool('getPropScreener', {
+      const resL15 = await mcpClient.callTool('getPropScreener', {
         selectedDates: [dateStr],
         oddsFrom: this.minOdds,
-        oddsTo: this.maxOdds
+        oddsTo: this.maxOdds,
+        hitRateOption: 'L15',
+        hitRateFrom: 70,
+        lineupFilterType: 'predicted',
+        useSupersub: true,
+        pageSize: 50
       });
-      const list = res?.data || res?.props || res || [];
-      const props = Array.isArray(list) ? list : (list.props || []);
-      this._recordMarketReturned('getPropScreener', props.length);
-
-      return props.map(p => ({
-        ...p,
-        source: 'StatsHub:getPropScreener'
-      }));
+      const listL15 = resL15?.data || resL15?.props || resL15 || [];
+      const propsL15 = Array.isArray(listL15) ? listL15 : (listL15.props || []);
+      propsL15.forEach(p => {
+        allProps.push({
+          ...p,
+          odds: p.bestOdds || p.odds,
+          source: 'StatsHub:getPropScreener:L15_SuperSub'
+        });
+      });
     } catch (err) {
-      this._recordMarketNoCoverage('getPropScreener', err.message);
-      return [];
+      console.warn('[Discovery 3.0] Error en screener L15:', err.message);
     }
+
+    // Estrategia 2: Rachas L10 de alta frecuencia (>= 75%)
+    try {
+      const resL10 = await mcpClient.callTool('getPropScreener', {
+        selectedDates: [dateStr],
+        oddsFrom: this.minOdds,
+        oddsTo: this.maxOdds,
+        hitRateOption: 'L10',
+        hitRateFrom: 75,
+        lineupFilterType: 'predicted',
+        useSupersub: true,
+        pageSize: 50
+      });
+      const listL10 = resL10?.data || resL10?.props || resL10 || [];
+      const propsL10 = Array.isArray(listL10) ? listL10 : (listL10.props || []);
+      propsL10.forEach(p => {
+        allProps.push({
+          ...p,
+          odds: p.bestOdds || p.odds,
+          source: 'StatsHub:getPropScreener:L10_Hot'
+        });
+      });
+    } catch (err) {
+      console.warn('[Discovery 3.0] Error en screener L10:', err.message);
+    }
+
+    this._recordMarketReturned('getPropScreener', allProps.length);
+    return allProps;
   }
 
   /**

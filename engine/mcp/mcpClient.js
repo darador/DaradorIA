@@ -178,7 +178,7 @@ class StatsHubMCPClient {
    * Invoca una herramienta MCP con caché automático y control de cuotas
    */
   async callTool(toolName, args = {}, options = {}) {
-    const { bypassCache = false, entityId = null, timeoutMs = 4000 } = options;
+    const { bypassCache = false, entityId = null, timeoutMs = 15000 } = options;
 
     // 1. Revisar Caché
     if (!bypassCache) {

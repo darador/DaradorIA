@@ -41,6 +41,11 @@ class CandidateNormalizer {
     const home = raw.homeTeam || (raw.match ? raw.match.split(' vs ')[0] : 'Local');
     const away = raw.awayTeam || (raw.match ? raw.match.split(' vs ')[1] : 'Visitante');
 
+    const playerName = raw.playerName || raw.player || (raw.isPlayerProp ? raw.playerOrTeam : null);
+    const statType = raw.statType || raw.market || 'General';
+    const lineVal = raw.line !== undefined ? (raw.oddsType ? `${raw.oddsType === 'over' ? 'Más de' : 'Menos de'} ${raw.line}` : raw.line) : (raw.selection || 'General');
+    const marketLabel = raw.statType ? this._mapStatTypeToMarket(raw.statType) : (raw.market || 'General');
+
     const normalized = {
       candidateId: canonicalId,
       id: raw.id || canonicalId,
@@ -50,27 +55,31 @@ class CandidateNormalizer {
       competitionId: raw.competitionId || 'unknown_competition',
       competition: raw.competition || raw.league || 'Liga General',
       league: raw.league || raw.competition || 'Liga General',
-      match: raw.match || `${home} vs ${away}`,
-      homeTeam: home,
-      awayTeam: away,
-      player: raw.player || (raw.isPlayerProp ? raw.playerOrTeam : null),
-      team: raw.team || raw.playerOrTeam || home,
-      playerOrTeam: raw.player || raw.team || raw.playerOrTeam || home,
-      market: raw.market || 'General',
-      selection: raw.selection || raw.line || 'General',
-      line: raw.line || raw.selection || 'General',
+      match: raw.match || (raw.teamName && raw.opponentTeamName ? (raw.venue === 'away' ? `${raw.opponentTeamName} vs ${raw.teamName}` : `${raw.teamName} vs ${raw.opponentTeamName}`) : `${home} vs ${away}`),
+      homeTeam: raw.venue === 'away' ? (raw.opponentTeamName || home) : (raw.teamName || home),
+      awayTeam: raw.venue === 'away' ? (raw.teamName || away) : (raw.opponentTeamName || away),
+      player: playerName,
+      team: raw.teamName || raw.team || raw.playerOrTeam || home,
+      playerOrTeam: playerName || raw.teamName || raw.team || home,
+      market: marketLabel,
+      selection: playerName ? `${playerName} ${lineVal}` : (raw.selection || lineVal),
+      line: String(lineVal),
       odds: oddsNum,
-      bookmaker: raw.bookmaker || 'Consensus',
+      bookmaker: raw.bestBookmakerName || raw.bookmaker || 'Consensus',
+      hit_rate_l5: raw.hitRateL5 !== undefined ? `${raw.hitRateL5}%` : (raw.hit_rate_l5 || null),
+      hit_rate_l10: raw.hitRateL10 !== undefined ? `${raw.hitRateL10}%` : (raw.hit_rate_l10 || null),
+      hit_rate_l15: raw.hitRateL15 !== undefined ? `${raw.hitRateL15}%` : null,
+      inPredictedLineup: raw.inPredictedLineup !== undefined ? raw.inPredictedLineup : null,
       origin: raw.origin || (raw.policy === 'EXPERIMENTAL_ODDS_V24' ? 'EXPERIMENTAL_V24' : (raw.shadow_mode ? 'SHADOW' : 'PRODUCTION')),
       shadow_mode: raw.shadow_mode !== undefined ? raw.shadow_mode : true,
       is_operative_recommendation: false,
       source: raw.source || 'Discovery3.0',
-      sourceEventTimestamp: raw.sourceEventTimestamp || raw.eventDateUtc || raw.kickoffUtc || nowIso,
+      sourceEventTimestamp: raw.sourceEventTimestamp || raw.kickoff || raw.eventDateUtc || raw.kickoffUtc || nowIso,
       dataCutoffTimestamp: raw.dataCutoffTimestamp || nowIso,
       ingestedAt: nowIso,
       snapshotVersion: 1,
       status: raw.status || 'UNDER_RESEARCH',
-      preliminaryScore: raw.hitRate || raw.hit_rate_l5 ? parseFloat(raw.hitRate || raw.hit_rate_l5) : 50,
+      preliminaryScore: raw.hitRateL10 || raw.hitRateL5 || (raw.hit_rate_l5 ? parseFloat(raw.hit_rate_l5) : 50),
       
       // Historial de ofertas de precio y snapshots de cuotas
       priceAlternatives: [
@@ -88,6 +97,22 @@ class CandidateNormalizer {
     };
 
     return normalized;
+  }
+
+  _mapStatTypeToMarket(statType) {
+    const map = {
+      shots: 'Remates',
+      shotsOnTarget: 'Remates al arco',
+      fouls: 'Faltas',
+      foulsWon: 'Faltas recibidas',
+      tackles: 'Entradas',
+      scoredOrAssisted: 'Gol o Asistencia',
+      goals: 'Goles',
+      assists: 'Asistencias',
+      passes: 'Pases',
+      cards: 'Tarjetas'
+    };
+    return map[statType] || statType;
   }
 
   /**
