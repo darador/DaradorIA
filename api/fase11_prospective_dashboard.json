@@ -3527,5 +3527,703 @@
       "recordHash": "80a58194116675f7041862258de79fa060a5e2a22b3c26e3c8fdcc7d6c9e6d68",
       "settlement": null
     }
-  ]
+  ],
+  "ladder": {
+    "schemaVersion": "2.0.0",
+    "mode": "SIMULACIÓN — DINERO VIRTUAL",
+    "simulationOnly": true,
+    "realCapitalAllowed": false,
+    "autoExecutionAllowed": false,
+    "initialCapital": 50000,
+    "currentCapital": 175963.01,
+    "targetCapital": 10000000,
+    "reinvestmentPct": 100,
+    "referenceOdds": 1.2,
+    "currentStep": 7,
+    "currentCycle": 1,
+    "openBet": null,
+    "committedStake": 0,
+    "cumulativeProfit": 125963.01,
+    "lastSettlement": {
+      "betId": "bet_ladder_c1_s6_wer_bmg",
+      "cycle": 1,
+      "step": 6,
+      "match": "SV Werder Bremen vs Borussia M'gladbach",
+      "competition": "Bundesliga (Alemania)",
+      "market": "Doble Oportunidad",
+      "selection": "SV Werder Bremen o Empate (1X)",
+      "line": "1X",
+      "odds": 1.23,
+      "stake": 143059.36,
+      "potentialReturn": 175963.01,
+      "openedAtUtc": "2026-11-27T19:30:00.000Z",
+      "status": "WON",
+      "capBefore": 143059.36,
+      "capAfter": 175963.01,
+      "profitDelta": 32903.65,
+      "settledAtUtc": "2026-11-27T22:55:58.979Z",
+      "source": "StatsHub Oficial (Bremen 3-3 M'gladbach FT)",
+      "settlementType": "WON_CONFIRMED",
+      "settledBy": "StatsHub API / Elena Risk Engine"
+    },
+    "stepHistory": [
+      {
+        "betId": "ladder_bet_1795628640000_1",
+        "cycle": 1,
+        "step": 1,
+        "snapshotId": "prosp_1795578304068_45_v1",
+        "opportunityKey": "ladder_20261125_slavia_corners_over_2_5",
+        "match": "SK Slavia Praha vs Villarreal",
+        "competition": "UEFA Champions League",
+        "kickoffUtc": "2026-11-25T17:45:00.000Z",
+        "market": "Córners de equipo",
+        "selection": "SK Slavia Praha (Equipo)",
+        "line": "Más de 2.5",
+        "odds": 1.15,
+        "modelProbability": 0.935,
+        "expectedValuePct": 7.5,
+        "elenaDecision": "APROBADO",
+        "riskManagerDecision": "APROBADO",
+        "stake": 50000,
+        "potentialReturn": 57500,
+        "openedAtUtc": "2026-11-25T17:44:00.000Z",
+        "status": "WON",
+        "capBefore": 50000,
+        "capAfter": 57500,
+        "profitDelta": 7500,
+        "settledAtUtc": "2026-11-25T19:57:28.000Z",
+        "source": "Registro Manual / StatsHub Oficial",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario (Manual)"
+      },
+      {
+        "betId": "ladder_manual_1795642354586_step2",
+        "cycle": 1,
+        "step": 2,
+        "snapshotId": "manual_live_1795642354586",
+        "opportunityKey": "manual_1795642354586",
+        "match": "Atlético Madrid vs Viking FK",
+        "competition": "UEFA Champions League",
+        "market": "Ganador del partido (1X2)",
+        "selection": "Atlético Madrid",
+        "line": "Gana Atlético Madrid",
+        "odds": 1.13,
+        "modelProbability": null,
+        "expectedValuePct": null,
+        "elenaDecision": "APROBADO_MANUAL",
+        "riskManagerDecision": "APROBADO_MANUAL",
+        "origin": "MANUAL_LIVE",
+        "stake": 57500,
+        "potentialReturn": 64975,
+        "openedAtUtc": "2026-11-25T21:32:34.585Z",
+        "status": "WON",
+        "capBefore": 57500,
+        "capAfter": 64975,
+        "profitDelta": 7475,
+        "settledAtUtc": "2026-11-25T22:48:05.000Z",
+        "source": "StatsHub Oficial (Atlético Madrid 2-0 Viking FK FT)",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario / StatsHub Oficial"
+      },
+      {
+        "betId": "ladder_manual_1795649201249_step3",
+        "cycle": 1,
+        "step": 3,
+        "snapshotId": "manual_live_1795649201249",
+        "opportunityKey": "manual_1795649201250",
+        "match": "Atlético Mineiro vs Corinthians",
+        "competition": "Brasileirão Série A",
+        "market": "Remates totales",
+        "selection": "Matheus Bidu",
+        "line": "Más de 0.5",
+        "odds": 1.1,
+        "modelProbability": null,
+        "expectedValuePct": null,
+        "elenaDecision": "APROBADO_MANUAL",
+        "riskManagerDecision": "APROBADO_MANUAL",
+        "origin": "MANUAL_LIVE",
+        "stake": 64975,
+        "potentialReturn": 71472.5,
+        "openedAtUtc": "2026-11-25T23:26:41.249Z",
+        "status": "WON",
+        "capBefore": 64975,
+        "capAfter": 71472.5,
+        "profitDelta": 6497.5,
+        "settledAtUtc": "2026-11-26T00:25:00.000Z",
+        "source": "StatsHub Oficial (Matheus Bidu titular cumplió >0.5 remates)",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario / StatsHub Oficial"
+      },
+      {
+        "betId": "ladder_manual_1795698000000_step4",
+        "cycle": 1,
+        "step": 4,
+        "snapshotId": "manual_live_1795698000000",
+        "opportunityKey": "manual_1795698000001",
+        "match": "Besiktas vs Hapoel Be'er Sheva",
+        "competition": "UEFA Europa League",
+        "market": "Ganador del partido (1X2)",
+        "selection": "Besiktas",
+        "line": "Gana Besiktas",
+        "odds": 1.44,
+        "modelProbability": null,
+        "expectedValuePct": null,
+        "elenaDecision": "APROBADO_MANUAL",
+        "riskManagerDecision": "APROBADO_MANUAL",
+        "origin": "MANUAL_LIVE",
+        "stake": 71472.5,
+        "potentialReturn": 102920.4,
+        "openedAtUtc": "2026-11-26T18:00:00.000Z",
+        "status": "WON",
+        "capBefore": 71472.5,
+        "capAfter": 102920.4,
+        "profitDelta": 31447.9,
+        "settledAtUtc": "2026-11-26T20:10:00.000Z",
+        "source": "StatsHub Oficial (Besiktas WON FT)",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario / StatsHub Oficial"
+      },
+      {
+        "betId": "ladder_manual_1795715000000_step5",
+        "cycle": 1,
+        "step": 5,
+        "snapshotId": "manual_live_1795715000000",
+        "opportunityKey": "manual_1795715000001",
+        "match": "Sao Paulo vs Remo",
+        "competition": "Brasileirão Série A",
+        "market": "Ganador del partido (1X2)",
+        "selection": "Sao Paulo",
+        "line": "Gana Sao Paulo",
+        "odds": 1.39,
+        "modelProbability": null,
+        "expectedValuePct": null,
+        "elenaDecision": "APROBADO_MANUAL",
+        "riskManagerDecision": "APROBADO_MANUAL",
+        "origin": "MANUAL_LIVE",
+        "stake": 102920.4,
+        "potentialReturn": 143059.36,
+        "openedAtUtc": "2026-11-26T22:30:00.000Z",
+        "status": "WON",
+        "capBefore": 102920.4,
+        "capAfter": 143059.36,
+        "profitDelta": 40138.96,
+        "settledAtUtc": "2026-11-27T01:01:00.000Z",
+        "source": "StatsHub Oficial (Sao Paulo WON FT)",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario / StatsHub Oficial"
+      },
+      {
+        "betId": "bet_ladder_c1_s6_wer_bmg",
+        "cycle": 1,
+        "step": 6,
+        "match": "SV Werder Bremen vs Borussia M'gladbach",
+        "competition": "Bundesliga (Alemania)",
+        "market": "Doble Oportunidad",
+        "selection": "SV Werder Bremen o Empate (1X)",
+        "line": "1X",
+        "odds": 1.23,
+        "stake": 143059.36,
+        "potentialReturn": 175963.01,
+        "openedAtUtc": "2026-11-27T19:30:00.000Z",
+        "status": "WON",
+        "capBefore": 143059.36,
+        "capAfter": 175963.01,
+        "profitDelta": 32903.65,
+        "settledAtUtc": "2026-11-27T22:55:58.979Z",
+        "source": "StatsHub Oficial (Bremen 3-3 M'gladbach FT)",
+        "settlementType": "WON_CONFIRMED",
+        "settledBy": "StatsHub API / Elena Risk Engine"
+      }
+    ],
+    "evaluatedOpportunities": [
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.176Z",
+        "snapshotId": "prosp_1795567787174_1_v1",
+        "opportunityKey": "cand_real_statshub_20261125_isaac_price_shotsontarget",
+        "match": "Bolton Wanderers vs West Bromwich Albion",
+        "market": "Remates al arco",
+        "selection": "Isaac Price",
+        "odds": 1.62,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "MARKET_NOT_PRIORITY_LADDER: Mercado \"Remates al arco\" fuera de mercados iniciales de RETO ESCALERA."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.180Z",
+        "snapshotId": "prosp_1795567787178_2_v1",
+        "opportunityKey": "cand_real_statshub_20261125_tellur_mutallimov_shots",
+        "match": "Sabah FK vs Barcelona",
+        "market": "Remates totales",
+        "selection": "Tellur Mutallimov",
+        "odds": 2,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "T60_LINEUP_REQUIRED: Remates totales requiere alineación T-60 CONFIRMADA (actual: PENDIENTE_T60)."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.183Z",
+        "snapshotId": "prosp_1795567787181_3_v1",
+        "opportunityKey": "cand_real_statshub_20261125_luke_graham_fouls",
+        "match": "Stoke City vs Millwall",
+        "market": "Faltas cometidas",
+        "selection": "Luke Graham",
+        "odds": 1.62,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "MARKET_NOT_PRIORITY_LADDER: Mercado \"Faltas cometidas\" fuera de mercados iniciales de RETO ESCALERA."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.186Z",
+        "snapshotId": "prosp_1795567787184_4_v1",
+        "opportunityKey": "cand_real_statshub_20261125_marvin_ducksch_shotsontarget",
+        "match": "Burnley vs Birmingham City",
+        "market": "Remates al arco",
+        "selection": "Marvin Ducksch",
+        "odds": 1.5,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "MARKET_NOT_PRIORITY_LADDER: Mercado \"Remates al arco\" fuera de mercados iniciales de RETO ESCALERA."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.190Z",
+        "snapshotId": "prosp_1795567787188_5_v1",
+        "opportunityKey": "cand_real_statshub_20261125_ethan_laird_shots",
+        "match": "Burnley vs Birmingham City",
+        "market": "Remates totales",
+        "selection": "Ethan Laird",
+        "odds": 1.55,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "T60_LINEUP_REQUIRED: Remates totales requiere alineación T-60 CONFIRMADA (actual: PENDIENTE_T60)."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.193Z",
+        "snapshotId": "prosp_1795567787191_6_v1",
+        "opportunityKey": "cand_real_statshub_20261125_alexsander_gomes_da_costa_tackles",
+        "match": "Atlético Mineiro vs Corinthians",
+        "market": "Entradas (Tackles)",
+        "selection": "Alexsander Gomes da Costa",
+        "odds": 1.53,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "MARKET_NOT_PRIORITY_LADDER: Mercado \"Entradas (Tackles)\" fuera de mercados iniciales de RETO ESCALERA."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.196Z",
+        "snapshotId": "prosp_1795567787194_7_v1",
+        "opportunityKey": "cand_real_statshub_20261125_dayot_upamecano_fouls",
+        "match": "Lille vs FC Bayern München",
+        "market": "Faltas cometidas",
+        "selection": "Dayot Upamecano",
+        "odds": 1.53,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "MARKET_NOT_PRIORITY_LADDER: Mercado \"Faltas cometidas\" fuera de mercados iniciales de RETO ESCALERA."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.199Z",
+        "snapshotId": "prosp_1795567787197_8_v1",
+        "opportunityKey": "cand_real_statshub_20261126_sk_sturm_graz_shots_over",
+        "match": "TSG Hoffenheim vs SK Sturm Graz",
+        "market": "Remates de equipo",
+        "selection": "SK Sturm Graz (Equipo)",
+        "odds": 1.71,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates de equipo\" excluido de RETO ESCALERA."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.202Z",
+        "snapshotId": "prosp_1795567787201_9_v1",
+        "opportunityKey": "cand_real_statshub_20261125_sk_slavia_praha_corners_over",
+        "match": "SK Slavia Praha vs Villarreal",
+        "market": "Córners de equipo",
+        "selection": "SK Slavia Praha (Equipo)",
+        "odds": 1.85,
+        "enteredLadder": true,
+        "betId": "ladder_bet_1795567787202_1",
+        "reasons": [
+          "ENTERED_LADDER_SIMULATION"
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.206Z",
+        "snapshotId": "prosp_1795567787204_10_v1",
+        "opportunityKey": "cand_real_statshub_20261126_lillestr_m_sk_corners_over",
+        "match": "Olympique Lyonnais vs Lillestrøm SK",
+        "market": "Córners de equipo",
+        "selection": "Lillestrøm SK (Equipo)",
+        "odds": 1.83,
+        "enteredLadder": false,
+        "reasons": [
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.209Z",
+        "snapshotId": "prosp_1795567787208_11_v1",
+        "opportunityKey": "cand_real_statshub_20261126_kairat_almaty_goals_under",
+        "match": "Kairat Almaty vs Mjällby AIF",
+        "market": "Goles de equipo",
+        "selection": "Kairat Almaty (Equipo)",
+        "odds": 1.68,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.212Z",
+        "snapshotId": "prosp_1795567787211_12_v1",
+        "opportunityKey": "cand_real_statshub_20261126_tsg_hoffenheim_shots_under",
+        "match": "TSG Hoffenheim vs SK Sturm Graz",
+        "market": "Remates de equipo",
+        "selection": "TSG Hoffenheim (Equipo)",
+        "odds": 1.6,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.216Z",
+        "snapshotId": "prosp_1795567787214_13_v1",
+        "opportunityKey": "cand_real_statshub_20261126_sporting_braga_goals_under",
+        "match": "Sporting Braga vs KuPS",
+        "market": "Goles de equipo",
+        "selection": "Sporting Braga (Equipo)",
+        "odds": 2.18,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.220Z",
+        "snapshotId": "prosp_1795567787218_14_v1",
+        "opportunityKey": "cand_real_statshub_20261125_vfb_stuttgart_shotsontarget_over",
+        "match": "Inter vs VfB Stuttgart",
+        "market": "Remates al arco de equipo",
+        "selection": "VfB Stuttgart (Equipo)",
+        "odds": 1.67,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates al arco de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.224Z",
+        "snapshotId": "prosp_1795567787222_15_v1",
+        "opportunityKey": "cand_real_statshub_20261126_cska_sofia_shotsontarget_over",
+        "match": "CSKA Sofia vs Trabzonspor",
+        "market": "Remates al arco de equipo",
+        "selection": "CSKA Sofia (Equipo)",
+        "odds": 1.61,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates al arco de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.228Z",
+        "snapshotId": "prosp_1795567787226_16_v1",
+        "opportunityKey": "cand_real_statshub_20261126_fk_crvena_zvezda_shotsontarget_over",
+        "match": "KAA Gent vs FK Crvena zvezda",
+        "market": "Remates al arco de equipo",
+        "selection": "FK Crvena zvezda (Equipo)",
+        "odds": 1.57,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates al arco de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.231Z",
+        "snapshotId": "prosp_1795567787229_17_v1",
+        "opportunityKey": "cand_real_statshub_20261126_s_o_paulo_goals_under",
+        "match": "São Paulo vs Remo",
+        "market": "Goles de equipo",
+        "selection": "São Paulo (Equipo)",
+        "odds": 1.53,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.234Z",
+        "snapshotId": "prosp_1795567787233_18_v1",
+        "opportunityKey": "cand_real_statshub_20261125_atl_tico_madrid_goals_under",
+        "match": "Atlético Madrid vs Viking FK",
+        "market": "Goles de equipo",
+        "selection": "Atlético Madrid (Equipo)",
+        "odds": 1.67,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.238Z",
+        "snapshotId": "prosp_1795567787236_19_v1",
+        "opportunityKey": "cand_real_statshub_20261125_slavia_corners",
+        "match": "SK Slavia Praha vs Villarreal",
+        "market": "Córners de equipo",
+        "selection": "SK Slavia Praha (Equipo)",
+        "odds": 1.8,
+        "enteredLadder": false,
+        "reasons": [
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.241Z",
+        "snapshotId": "prosp_1795567787239_20_v1",
+        "opportunityKey": "cand_real_statshub_20261125_russo_sot",
+        "match": "Cremonese vs Avellino",
+        "market": "Remates al arco",
+        "selection": "Raffaele Russo",
+        "odds": 2.1,
+        "enteredLadder": false,
+        "reasons": [
+          "ELENA_NOT_APPROVED: Decisión de Elena = PENDIENTE_ALINEACION.",
+          "MARKET_NOT_PRIORITY_LADDER: Mercado \"Remates al arco\" fuera de mercados iniciales de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.244Z",
+        "snapshotId": "prosp_1795567787243_21_v1",
+        "opportunityKey": "cand_real_statshub_20261125_atletico_goals_under",
+        "match": "Atlético Madrid vs Viking FK",
+        "market": "Goles de equipo",
+        "selection": "Atlético Madrid (Equipo)",
+        "odds": 1.67,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.248Z",
+        "snapshotId": "prosp_1795567787246_22_v1",
+        "opportunityKey": "cand_real_statshub_20261126_marseille_sot",
+        "match": "Olympique de Marseille vs Levski Sofia",
+        "market": "Remates al arco de equipo",
+        "selection": "Olympique de Marseille (Equipo)",
+        "odds": 2,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates al arco de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.251Z",
+        "snapshotId": "prosp_1795567787249_23_v1",
+        "opportunityKey": "cand_real_statshub_20261126_braga_goals",
+        "match": "Sporting Braga vs KuPS",
+        "market": "Goles de equipo",
+        "selection": "Sporting Braga (Equipo)",
+        "odds": 2.12,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.255Z",
+        "snapshotId": "prosp_1795567787253_24_v1",
+        "opportunityKey": "cand_real_statshub_20261126_cska_sofia_sot",
+        "match": "CSKA Sofia vs Trabzonspor",
+        "market": "Remates al arco de equipo",
+        "selection": "CSKA Sofia (Equipo)",
+        "odds": 1.83,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates al arco de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.260Z",
+        "snapshotId": "prosp_1795567787257_25_v1",
+        "opportunityKey": "cand_real_statshub_20261126_juventus_goals",
+        "match": "Juventus vs Omonia Nicosia",
+        "market": "Goles de equipo",
+        "selection": "Juventus (Equipo)",
+        "odds": 2,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.263Z",
+        "snapshotId": "prosp_1795567787261_26_v1",
+        "opportunityKey": "cand_real_statshub_20261126_crvena_sot",
+        "match": "KAA Gent vs FK Crvena zvezda",
+        "market": "Remates al arco de equipo",
+        "selection": "FK Crvena zvezda (Equipo)",
+        "odds": 1.79,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Remates al arco de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T00:49:47.267Z",
+        "snapshotId": "prosp_1795567787265_27_v1",
+        "opportunityKey": "cand_real_statshub_20261126_sunderland_goals",
+        "match": "Sunderland vs Jagiellonia Białystok",
+        "market": "Goles de equipo",
+        "selection": "Sunderland (Equipo)",
+        "odds": 1.73,
+        "enteredLadder": false,
+        "reasons": [
+          "MARKET_EXCLUDED_LADDER: Mercado \"Goles de equipo\" excluido de RETO ESCALERA.",
+          "OPEN_BET_LOCKED: Ya existe una apuesta abierta (ladder_bet_1795567787202_1). Solo se permite 1 apuesta activa a la vez."
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T17:44:00.000Z",
+        "snapshotId": "prosp_1795578304068_45_v1",
+        "opportunityKey": "ladder_20261125_slavia_corners_over_2_5",
+        "match": "SK Slavia Praha vs Villarreal",
+        "market": "Córners de equipo",
+        "selection": "SK Slavia Praha (Equipo)",
+        "odds": 1.15,
+        "evPct": 7.5,
+        "enteredLadder": true,
+        "betId": "ladder_bet_1795628640000_1",
+        "reasons": [
+          "ENTERED_LADDER_RECOVERY_AT_KICKOFF"
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T21:32:34.585Z",
+        "snapshotId": "manual_live_1795642354586",
+        "opportunityKey": "manual_1795642354586",
+        "match": "Atlético Madrid vs Viking FK",
+        "market": "Ganador del partido (1X2)",
+        "selection": "Atlético Madrid",
+        "odds": 1.13,
+        "enteredLadder": true,
+        "betId": "ladder_manual_1795642354586_step2",
+        "reasons": [
+          "ENTERED_LADDER_MANUAL_LIVE"
+        ]
+      },
+      {
+        "evaluatedAtUtc": "2026-11-25T23:26:41.249Z",
+        "snapshotId": "manual_live_1795649201249",
+        "opportunityKey": "manual_1795649201250",
+        "match": "Atlético Mineiro vs Corinthians",
+        "market": "Remates totales",
+        "selection": "Matheus Bidu",
+        "odds": 1.1,
+        "enteredLadder": true,
+        "betId": "ladder_manual_1795649201249_step3",
+        "reasons": [
+          "ENTERED_LADDER_MANUAL_LIVE"
+        ]
+      }
+    ],
+    "legacyBets": [
+      {
+        "betId": "ladder_bet_1795567787202_1",
+        "cycle": 1,
+        "step": 1,
+        "snapshotId": "prosp_1795567787201_9_v1",
+        "opportunityKey": "cand_real_statshub_20261125_sk_slavia_praha_corners_over",
+        "match": "SK Slavia Praha vs Villarreal",
+        "competition": "UEFA Champions League",
+        "market": "Córners de equipo",
+        "selection": "SK Slavia Praha (Equipo)",
+        "line": "Más de 4.5",
+        "odds": 1.85,
+        "stake": 50000,
+        "potentialReturn": 92500,
+        "openedAtUtc": "2026-11-25T00:49:47.202Z",
+        "status": "OPEN",
+        "legacyStatus": "LEGACY_OUT_OF_RULES",
+        "excludedFromProgression": true,
+        "legacyReason": "Abierta bajo reglas anteriores (cuota 1.85 fuera del rango oficial [1.10, 1.25]). Preservada íntegramente; no avanza ni reinicia el nuevo ciclo.",
+        "archivedAtUtc": "2026-11-25T03:29:12.003Z"
+      }
+    ],
+    "objectiveStatus": "IN_PROGRESS",
+    "minOdds": 1.1,
+    "maxOdds": 1.25,
+    "minEvPct": 3,
+    "lastSearchAtUtc": "2026-11-27T17:51:42.204Z",
+    "searchCoverageByMarket": {
+      "Doble Oportunidad": {
+        "opportunitiesAnalyzed": 18,
+        "eligibleCount": 1,
+        "status": "ELIGIBLE_FOUND"
+      },
+      "Total de Goles": {
+        "opportunitiesAnalyzed": 24,
+        "eligibleCount": 0,
+        "status": "ONLY_REJECTED"
+      },
+      "Goles de Equipo": {
+        "opportunitiesAnalyzed": 14,
+        "eligibleCount": 0,
+        "status": "ONLY_REJECTED"
+      }
+    },
+    "pendingLineupOpportunities": [],
+    "eligibleOpportunities": [
+      {
+        "snapshotId": "opp_wer_bmg_1x_20261127",
+        "matchId": "sv-werder-bremen-v-borussia-m-gladbach.0kvt13i",
+        "match": "SV Werder Bremen vs Borussia M'gladbach",
+        "competition": "Bundesliga (Alemania)",
+        "kickoffUtc": "2026-11-27T19:30:00.000Z",
+        "selection": "SV Werder Bremen o Empate (1X)",
+        "market": "Doble Oportunidad",
+        "line": "1X",
+        "odds": 1.23,
+        "bookmaker": "All British Casino",
+        "modelProbability": 0.845,
+        "expectedValuePct": 3.9,
+        "compositeScore": 92.4,
+        "isTopRecommended": true,
+        "rank": 1,
+        "elenaVerdict": "APROBADO",
+        "rationale": "Fuerte localía de Werder Bremen (@1.70 victoria). Gladbach vulnerable defensivamente. Cobertura 1X matemáticamente perfecta dentro de la ventana de Escalón 6 (1.10 - 1.25).",
+        "elenaDecision": "APROBADO",
+        "riskManagerDecision": "APROBADO"
+      }
+    ]
+  }
 }
