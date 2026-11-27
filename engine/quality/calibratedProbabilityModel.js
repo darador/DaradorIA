@@ -260,7 +260,8 @@ class CalibratedProbabilityModel {
         contractType: 'BINARY_HISTORY',
         modelApplied: 'V2.2_BETA_BINOMIAL_SHRINKAGE_ONLY',
         predictionEligible: true,
-        status: 'LIMITED',
+        // Si el contrato binario fue validado con n >= 5 y sin inconsistencias, es VALID
+        status: (resolvedContract.status === 'VALID' || (binaryHistory.sampleSize >= 5 && !binaryHistory.hasInconsistencies)) ? 'VALID' : 'LIMITED',
         ineligibleModels: ['POISSON', 'NEGATIVE_BINOMIAL'],
         weightsUsed: {
           weightBeta: 1.0,

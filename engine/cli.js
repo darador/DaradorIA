@@ -10,7 +10,8 @@
  *   node engine/cli.js --daemon
  */
 const scheduler = require('./scheduler/scheduler');
-const discoveryEngine = require('./discovery/discoveryEngine');
+// DISCOVERY ENGINE 3.0 (Conmutado como motor operativo único)
+const { discoveryEngine3: discoveryEngine } = require('./discovery/discoveryEngine3');
 const rateGovernor = require('./mcp/rateGovernor');
 const storage = require('./data/storage');
 const syncRadar = require('./data/syncRadar');

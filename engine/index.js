@@ -9,7 +9,8 @@ const cache = require('./mcp/cache');
 const storage = require('./data/storage');
 const radarSync = require('./data/syncRadar');
 const supabaseClient = require('./data/supabaseClient');
-const discoveryEngine = require('./discovery/discoveryEngine');
+// DISCOVERY ENGINE 3.0 (Conmutado como motor operativo único)
+const { discoveryEngine3: discoveryEngine } = require('./discovery/discoveryEngine3');
 const deepResearchEngine = require('./research/deepResearchEngine');
 const predictionEngine = require('./prediction/predictionEngine');
 

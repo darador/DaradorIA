@@ -109,11 +109,26 @@ class LineupWatcher {
         cand.expiredAtUtc = new Date(now).toISOString();
         cand.expirationReason = reason;
         cand.decisionReason = reason;
+        cand.lineupCheckpoint = 'EXPIRED_LINEUP';
         storage.saveCandidate(cand);
         expired.push(cand);
         console.log(`[LineupWatcher] ⊘ Expirado (checkpoint MISSED / eval EXPIRED): ${cand.player || cand.seleccion || cand.playerOrTeam} (${reason})`);
         continue;
       }
+
+      // Checkpoints automáticos: T-60 (60 min), T-50 (50 min), T-45 (45 min)
+      let currentCheckpoint = 'T_MONITOR';
+      if (diffMinutes !== null) {
+        if (diffMinutes <= 45) {
+          currentCheckpoint = 'T-45';
+        } else if (diffMinutes <= 50) {
+          currentCheckpoint = 'T-50';
+        } else if (diffMinutes <= 60) {
+          currentCheckpoint = 'T-60';
+        }
+      }
+      cand.lineupCheckpoint = currentCheckpoint;
+      cand.lineupCheckpointCheckedAt = new Date(now).toISOString();
 
       // Si el partido está a más de 120 min, las alineaciones oficiales aún no se publican (StatsHub las emite ~60m antes)
       // Ahorrar cuota de MCP a menos que sea forzado por test suite

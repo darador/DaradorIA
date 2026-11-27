@@ -25,7 +25,8 @@ const config = require('../config');
 const storage = require('../data/storage');
 const dateTimeUtils = require('../utils/dateTime');
 
-const discoveryEngine = require('../discovery/discoveryEngine');
+// DISCOVERY ENGINE 3.0 (Conmutado como motor operativo único)
+const { discoveryEngine3: discoveryEngine } = require('../discovery/discoveryEngine3');
 const deepResearchEngine = require('../research/deepResearchEngine');
 const predictionEngine = require('../prediction/predictionEngine');
 const agentOrchestrator = require('../agents/orchestrator');

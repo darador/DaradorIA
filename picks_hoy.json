@@ -19,8 +19,8 @@
       "line": "Empate o Chelsea (X2)",
       "odds": 1.44,
       "bookmaker": "Bet365",
-      "shadow_mode": false,
-      "is_operative_recommendation": true,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
       "hit_rate_l5": "80%",
       "hit_rate_l10": "80%",
       "avg_per_game": null,
@@ -92,8 +92,8 @@
       "line": "Más de 2.5",
       "odds": 1.81,
       "bookmaker": "All British Casino / Bet365",
-      "shadow_mode": false,
-      "is_operative_recommendation": true,
+      "shadow_mode": true,
+      "is_operative_recommendation": false,
       "hit_rate_l5": "80%",
       "hit_rate_l10": "70%",
       "avg_per_game": 2.8,
@@ -13124,20 +13124,20 @@
     }
   ],
   "summary_metrics": {
-    "total_picks": 144,
-    "approved_count": 2,
+    "total_picks": 146,
+    "approved_count": 4,
     "pending_count": 2,
     "expired_count": 1,
     "settled_count": 141,
     "rejected_count": 22,
     "avg_odds": 1.69,
     "avg_hit_rate_l5": "88.0%",
-    "avg_edge_pct": "25.6%"
+    "avg_edge_pct": "25.4%"
   },
   "total_analyzed": 180,
   "shadow_mode": true,
   "is_operative_recommendation": false,
-  "updated_at": "2026-11-26T23:48:45.179Z",
+  "updated_at": "2026-11-27T16:43:22.557Z",
   "research_center": [
     {
       "id": "cand_1795110774831_w9sj8j",

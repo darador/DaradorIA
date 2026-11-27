@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARADOR IA — Dashboard Experimental V2.4 (Cuotas Bajas 1.45–2.20)</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(22, 28, 45, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-green: #4ade80;
+      --accent-red: #f87171;
+      --accent-amber: #fbbf24;
+      --text: #f1f5f9;
+      --text-dim: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.5; }
+    .header { margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .badge-purple { background: rgba(192, 132, 252, 0.2); color: var(--accent-purple); border: 1px solid rgba(192, 132, 252, 0.4); }
+    .badge-green { background: rgba(74, 222, 128, 0.2); color: var(--accent-green); border: 1px solid rgba(74, 222, 128, 0.4); }
+    .badge-red { background: rgba(248, 113, 113, 0.2); color: var(--accent-red); border: 1px solid rgba(248, 113, 113, 0.4); }
+    .badge-cyan { background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.4); }
+    .badge-gray { background: rgba(148, 163, 184, 0.2); color: var(--text-dim); border: 1px solid rgba(148, 163, 184, 0.3); }
+
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .kpi-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+    .kpi-title { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem; }
+    .kpi-value { font-size: 1.75rem; font-weight: 800; color: #fff; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; background: var(--card-bg); padding: 1rem; border-radius: 12px; border: 1px solid var(--border); }
+    .filter-group { display: flex; flex-direction: column; gap: 0.25rem; }
+    .filter-group label { font-size: 0.75rem; color: var(--text-dim); font-weight: 600; }
+    select, input { background: #0f172a; border: 1px solid var(--border); color: #fff; padding: 0.45rem 0.75rem; border-radius: 6px; font-size: 0.85rem; outline: none; }
+
+    table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    th, td { padding: 0.85rem 1rem; text-align: left; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+    th { background: #0f172a; color: var(--text-dim); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; }
+    tr:hover { background: rgba(255, 255, 255, 0.02); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h1>🧪 Panel Experimental V2.4 — Embudo de Cuotas Bajas</h1>
+      <span class="badge badge-purple">Entorno Aislado V2.4</span>
+    </div>
+    <p style="color: var(--text-dim); font-size: 0.9rem;">
+      Monitoreo e investigación de candidatos con cuotas en el rango <strong>[1.45, 2.20]</strong> y <strong>EV &ge; +8.0%</strong>. Producción intocable.
+    </p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi-card">
+      <div class="kpi-title">Total Evaluados</div>
+      <div class="kpi-value" id="kpiTotal">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Aprobados Exp. V2.4</div>
+      <div class="kpi-value" style="color: var(--accent-purple);" id="kpiApproved">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Rechazados Risk (Elena)</div>
+      <div class="kpi-value" style="color: var(--accent-red);" id="kpiRejectedRisk">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Rechazados Math (EV)</div>
+      <div class="kpi-value" style="color: var(--accent-amber);" id="kpiRejectedMath">0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Expirados / Finalizados</div>
+      <div class="kpi-value" style="color: var(--text-dim);" id="kpiExpired">0</div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label>Estado Canónico</label>
+      <select id="filterState" onchange="renderTable()">
+        <option value="all">Todos los estados</option>
+        <option value="EXPERIMENTAL_APPROVED">Aprobados Experimental</option>
+        <option value="EXPERIMENTAL_REJECTED_BY_RISK_MANAGER">Rechazados por Elena</option>
+        <option value="REJECTED">Rechazo Matemático</option>
+        <option value="EXPIRED">Expirados prepartido</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Rango de Cuota</label>
+      <select id="filterOdds" onchange="renderTable()">
+        <option value="all">Todas las cuotas</option>
+        <option value="low">1.45 – 1.59 (Zona Expandida)</option>
+        <option value="std">1.60 – 2.20 (Zona Estándar)</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Mercado</label>
+      <select id="filterMarket" onchange="renderTable()">
+        <option value="all">Todos los mercados</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Buscar Selección / Partido</label>
+      <input type="text" id="filterSearch" placeholder="Ej: Chelsea, Faltas..." oninput="renderTable()">
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Partido</th>
+        <th>Selección</th>
+        <th>Mercado / Línea</th>
+        <th>Cuota</th>
+        <th>Prob. V2.2</th>
+        <th>EV%</th>
+        <th>Estado Canónico</th>
+        <th>SHA-256</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <tr><td colspan="8" style="text-align: center; color: var(--text-dim);">Cargando registros de la cohorte...</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    let cohortData = [];
+
+    async function loadData() {
+      try {
+        const res = await fetch('./engine/storage_data/experimental_odds_policy_v24.json?t=' + Date.now());
+        if (!res.ok) throw new Error('No se pudo cargar experimental_odds_policy_v24.json');
+        const json = await res.json();
+        cohortData = json.records || [];
+
+        // KPIs
+        document.getElementById('kpiTotal').textContent = cohortData.length;
+        document.getElementById('kpiApproved').textContent = cohortData.filter(r => r.finalState === 'EXPERIMENTAL_APPROVED').length;
+        document.getElementById('kpiRejectedRisk').textContent = cohortData.filter(r => r.finalState === 'EXPERIMENTAL_REJECTED_BY_RISK_MANAGER').length;
+        document.getElementById('kpiRejectedMath').textContent = cohortData.filter(r => r.finalState === 'REJECTED').length;
+        document.getElementById('kpiExpired').textContent = cohortData.filter(r => r.finalState === 'EXPIRED').length;
+
+        // Populate markets
+        const markets = [...new Set(cohortData.map(r => r.market))].filter(Boolean);
+        const sel = document.getElementById('filterMarket');
+        markets.forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m;
+          opt.textContent = m;
+          sel.appendChild(opt);
+        });
+
+        renderTable();
+      } catch (e) {
+        document.getElementById('tableBody').innerHTML = `<tr><td colspan="8" style="color:var(--accent-red);text-align:center;">Error: ${e.message}</td></tr>`;
+      }
+    }
+
+    function renderTable() {
+      const stateF = document.getElementById('filterState').value;
+      const oddsF = document.getElementById('filterOdds').value;
+      const marketF = document.getElementById('filterMarket').value;
+      const searchF = document.getElementById('filterSearch').value.toLowerCase().trim();
+
+      const filtered = cohortData.filter(r => {
+        if (stateF !== 'all' && r.finalState !== stateF) return false;
+        if (oddsF === 'low' && (r.odds < 1.45 || r.odds >= 1.60)) return false;
+        if (oddsF === 'std' && (r.odds < 1.60 || r.odds > 2.20)) return false;
+        if (marketF !== 'all' && r.market !== marketF) return false;
+        if (searchF) {
+          const txt = `${r.match} ${r.selection} ${r.market} ${r.line}`.toLowerCase();
+          if (!txt.includes(searchF)) return false;
+        }
+        return true;
+      });
+
+      const tbody = document.getElementById('tableBody');
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-dim); padding: 2rem;">No se encontraron candidatos con los filtros seleccionados.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(r => {
+        let stateBadge = `<span class="badge badge-gray">${r.finalState}</span>`;
+        if (r.finalState === 'EXPERIMENTAL_APPROVED') stateBadge = `<span class="badge badge-purple">✓ Exp Aprobado</span>`;
+        else if (r.finalState === 'EXPERIMENTAL_REJECTED_BY_RISK_MANAGER') stateBadge = `<span class="badge badge-red">✕ Veto Elena</span>`;
+        else if (r.finalState === 'REJECTED') stateBadge = `<span class="badge badge-red">✕ Rechazo Math</span>`;
+        else if (r.finalState === 'EXPIRED') stateBadge = `<span class="badge badge-gray">⊘ Expirado</span>`;
+
+        const shortHash = r.sha256 ? r.sha256.substring(0, 8) + '...' : '-';
+
+        return `
+          <tr>
+            <td><strong>${r.match || '-'}</strong><div style="font-size:0.75rem;color:var(--text-dim);">${r.league || ''}</div></td>
+            <td><strong>${r.selection || '-'}</strong></td>
+            <td>${r.market || '-'} <span style="color:var(--accent-cyan);font-weight:600;">${r.line || ''}</span></td>
+            <td class="mono" style="font-weight:700;color:#fff;">@${Number(r.odds).toFixed(2)}</td>
+            <td class="mono">${(Number(r.probabilityV22) * 100).toFixed(1)}%</td>
+            <td class="mono" style="font-weight:700;color:${r.evPercentage >= 8 ? 'var(--accent-green)' : 'var(--text-dim)'};">${r.evPercentage >= 0 ? '+' : ''}${r.evPercentage}%</td>
+            <td>${stateBadge}</td>
+            <td class="mono" style="font-size:0.75rem;color:var(--text-dim);">${shortHash}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
