@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "updatedAt": "2026-11-27T18:20:32.693Z",
-  "totalTrackedPicks": 114,
+  "updatedAt": "2026-11-27T19:39:06.562Z",
+  "totalTrackedPicks": 126,
   "summary": {
     "total_bets": 126,
     "settled_bets": 99,
@@ -11,8 +11,8 @@
     "pending_bets": 0,
     "win_rate_pct": 64.6,
     "total_staked_units": 99,
-    "net_profit_units": 9.6,
-    "roi_pct": 9.7,
+    "net_profit_units": 10.29,
+    "roi_pct": 10.4,
     "by_market": {
       "Faltas cometidas": {
         "total": 14,
@@ -20,7 +20,7 @@
         "lost": 4,
         "void": 4,
         "win_rate": "60.0%",
-        "profit": "+0.23U"
+        "profit": "+3.08U"
       },
       "Faltas ganadas": {
         "total": 6,
@@ -28,7 +28,7 @@
         "lost": 1,
         "void": 2,
         "win_rate": "75.0%",
-        "profit": "+0.28U"
+        "profit": "-0.43U"
       },
       "Remates totales": {
         "total": 26,
@@ -36,7 +36,7 @@
         "lost": 4,
         "void": 9,
         "win_rate": "76.5%",
-        "profit": "+5.38U"
+        "profit": "+6.21U"
       },
       "Entradas (Tackles)": {
         "total": 8,
@@ -52,7 +52,7 @@
         "lost": 5,
         "void": 1,
         "win_rate": "70.6%",
-        "profit": "+3.19U"
+        "profit": "+3.33U"
       },
       "Tarjetas de equipo": {
         "total": 4,
@@ -60,7 +60,7 @@
         "lost": 1,
         "void": 0,
         "win_rate": "75.0%",
-        "profit": "+0.86U"
+        "profit": "-1.00U"
       },
       "Remates al arco": {
         "total": 10,
@@ -76,7 +76,7 @@
         "lost": 8,
         "void": 0,
         "win_rate": "50.0%",
-        "profit": "-2.39U"
+        "profit": "-2.89U"
       },
       "Goles de equipo": {
         "total": 14,
@@ -84,7 +84,7 @@
         "lost": 6,
         "void": 0,
         "win_rate": "57.1%",
-        "profit": "-0.29U"
+        "profit": "+0.48U"
       },
       "Remates de equipo": {
         "total": 8,
@@ -92,7 +92,7 @@
         "lost": 4,
         "void": 0,
         "win_rate": "50.0%",
-        "profit": "-0.73U"
+        "profit": "-1.56U"
       },
       "Tarjetas": {
         "total": 1,
@@ -113,13 +113,13 @@
     }
   },
   "portfolioElena": {
-    "totalTracked": 114,
-    "settled": 88,
-    "won": 57,
-    "winRatePct": 64.8
+    "totalTracked": 126,
+    "settled": 99,
+    "won": 64,
+    "winRatePct": 64.6
   },
   "evaluation": {
-    "evaluatedAt": "2026-11-27T18:20:32.691Z",
+    "evaluatedAt": "2026-11-27T19:12:57.674Z",
     "sampleSize": 50,
     "financialMetrics": {
       "totalStakedUnits": 50,
