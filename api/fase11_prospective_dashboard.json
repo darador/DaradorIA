@@ -1435,7 +1435,7 @@
     "objectiveStatus": "IN_PROGRESS",
     "minOdds": 1.1,
     "maxOdds": 1.25,
-    "minEvPct": 7,
+    "minEvPct": 3,
     "lastSearchAtUtc": "2026-11-27T17:51:42.204Z",
     "searchCoverageByMarket": {
       "Doble Oportunidad": {
