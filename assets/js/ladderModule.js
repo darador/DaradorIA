@@ -932,9 +932,12 @@ function renderPrincipal(l) {
 
     const nowOppsMs = Date.now();
     const isUpcoming = item => !item.kickoffUtc || new Date(item.kickoffUtc).getTime() > nowOppsMs;
-    const eligible = (l.eligibleOpportunities || []).filter(e => isUpcoming(e) &&
+    const rawOpps = (l.eligibleOpportunities && l.eligibleOpportunities.length > 0)
+      ? l.eligibleOpportunities
+      : (l.opportunities || []);
+    const eligible = rawOpps.filter(e => isUpcoming(e) &&
       Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO &&
-      (e.expectedValuePct == null || Number(e.expectedValuePct) >= minEv)
+      (e.expectedValuePct == null || Number(e.expectedValuePct) >= (minEv > 3 ? 0.5 : minEv))
     );
     const pendingLineup = (l.pendingLineupOpportunities || []).filter(e => isUpcoming(e) &&
       Number.isFinite(Number(e.odds)) && Number(e.odds) >= minO && Number(e.odds) <= maxO
