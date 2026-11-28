@@ -803,35 +803,35 @@
     "realCapitalAllowed": false,
     "autoExecutionAllowed": false,
     "initialCapital": 50000,
-    "currentCapital": 225232.65,
+    "currentCapital": 254512.89,
     "targetCapital": 10000000,
     "reinvestmentPct": 100,
     "referenceOdds": 1.2,
-    "currentStep": 8,
+    "currentStep": 9,
     "currentCycle": 1,
     "openBet": null,
     "committedStake": 0,
-    "cumulativeProfit": 175232.65,
+    "cumulativeProfit": 204512.89,
     "lastSettlement": {
-      "betId": "ladder_c1_s7_luqueno_olimpia",
+      "betId": "ladder_c1_s8_hertha_karlsruher",
       "cycle": 1,
-      "step": 7,
-      "match": "Sportivo Luqueño vs Olimpia",
-      "competition": "Primera División (Paraguay)",
+      "step": 8,
+      "match": "Hertha Berlín vs Karlsruher",
+      "competition": "2. Bundesliga (Alemania)",
       "market": "Doble Oportunidad",
-      "selection": "Empate o Olimpia (X2)",
-      "line": "Empate o Olimpia",
-      "odds": 1.28,
-      "stake": 175963.01,
-      "potentialReturn": 225232.65,
-      "openedAtUtc": "2026-11-28T00:44:00.000Z",
+      "selection": "Hertha Berlín o Empate (1X)",
+      "line": "Hertha Berlín o Empate",
+      "odds": 1.13,
+      "stake": 225232.65,
+      "potentialReturn": 254512.89,
+      "openedAtUtc": "2026-11-28T13:41:00.000Z",
       "status": "WON",
-      "capBefore": 175963.01,
-      "capAfter": 225232.65,
-      "profitDelta": 49269.64,
-      "settledAtUtc": "2026-11-28T00:44:00.000Z",
-      "dateFormatted": "27/11/2026 · 21:44 ART",
-      "source": "MANUAL 27/11/2026 · 21:44 ART",
+      "capBefore": 225232.65,
+      "capAfter": 254512.89,
+      "profitDelta": 29280.24,
+      "settledAtUtc": "2026-11-28T13:41:00.000Z",
+      "dateFormatted": "28/11/2026 · 10:41 ART",
+      "source": "MANUAL 28/11/2026 · 10:41 ART",
       "settlementType": "MANUAL",
       "settledBy": "Usuario"
     },
@@ -1023,6 +1023,29 @@
         "settledAtUtc": "2026-11-28T00:44:00.000Z",
         "dateFormatted": "27/11/2026 · 21:44 ART",
         "source": "MANUAL 27/11/2026 · 21:44 ART",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario"
+      },
+      {
+        "betId": "ladder_c1_s8_hertha_karlsruher",
+        "cycle": 1,
+        "step": 8,
+        "match": "Hertha Berlín vs Karlsruher",
+        "competition": "2. Bundesliga (Alemania)",
+        "market": "Doble Oportunidad",
+        "selection": "Hertha Berlín o Empate (1X)",
+        "line": "Hertha Berlín o Empate",
+        "odds": 1.13,
+        "stake": 225232.65,
+        "potentialReturn": 254512.89,
+        "openedAtUtc": "2026-11-28T13:41:00.000Z",
+        "status": "WON",
+        "capBefore": 225232.65,
+        "capAfter": 254512.89,
+        "profitDelta": 29280.24,
+        "settledAtUtc": "2026-11-28T13:41:00.000Z",
+        "dateFormatted": "28/11/2026 · 10:41 ART",
+        "source": "MANUAL 28/11/2026 · 10:41 ART",
         "settlementType": "MANUAL",
         "settledBy": "Usuario"
       }
@@ -1515,7 +1538,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Palmeiras define de local en Allianz Parque con invicto y fortaleza defensiva. Máxima cobertura para Paso 8."
+        "rationale": "Palmeiras define de local en Allianz Parque con invicto y fortaleza defensiva. Máxima cobertura para Paso 8.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_1",
@@ -1537,7 +1561,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Bayern promedia 2.8 goles fuera de casa y Hamburgo encaja con frecuencia ante ataques de élite."
+        "rationale": "Bayern promedia 2.8 goles fuera de casa y Hamburgo encaja con frecuencia ante ataques de élite.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_2",
@@ -1559,7 +1584,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Inter en San Siro presenta dominancia estructural total frente al Genoa."
+        "rationale": "Inter en San Siro presenta dominancia estructural total frente al Genoa.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_3",
@@ -1581,7 +1607,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Vinícius registra remates al arco en el 90% de local en LaLiga frente a rivales de bloque bajo."
+        "rationale": "Vinícius registra remates al arco en el 90% de local en LaLiga frente a rivales de bloque bajo.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_4",
@@ -1603,7 +1630,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "PSG en Parque de los Príncipes es ampliamente superior ante Lorient."
+        "rationale": "PSG en Parque de los Príncipes es ampliamente superior ante Lorient.",
+        "step": 9
       }
     ],
     "opportunities": [
@@ -1731,7 +1759,8 @@
       "elenaVerdict": "APROBADO",
       "elenaDecision": "APROBADO",
       "riskManagerDecision": "APROBADO",
-      "rationale": "Palmeiras define de local en Allianz Parque con invicto y fortaleza defensiva. Máxima cobertura para Paso 8."
+      "rationale": "Palmeiras define de local en Allianz Parque con invicto y fortaleza defensiva. Máxima cobertura para Paso 8.",
+      "step": 9
     },
     {
       "snapshotId": "opp_20261128_1",
@@ -1753,7 +1782,8 @@
       "elenaVerdict": "APROBADO",
       "elenaDecision": "APROBADO",
       "riskManagerDecision": "APROBADO",
-      "rationale": "Bayern promedia 2.8 goles fuera de casa y Hamburgo encaja con frecuencia ante ataques de élite."
+      "rationale": "Bayern promedia 2.8 goles fuera de casa y Hamburgo encaja con frecuencia ante ataques de élite.",
+      "step": 9
     },
     {
       "snapshotId": "opp_20261128_2",
@@ -1775,7 +1805,8 @@
       "elenaVerdict": "APROBADO",
       "elenaDecision": "APROBADO",
       "riskManagerDecision": "APROBADO",
-      "rationale": "Inter en San Siro presenta dominancia estructural total frente al Genoa."
+      "rationale": "Inter en San Siro presenta dominancia estructural total frente al Genoa.",
+      "step": 9
     },
     {
       "snapshotId": "opp_20261128_3",
@@ -1797,7 +1828,8 @@
       "elenaVerdict": "APROBADO",
       "elenaDecision": "APROBADO",
       "riskManagerDecision": "APROBADO",
-      "rationale": "Vinícius registra remates al arco en el 90% de local en LaLiga frente a rivales de bloque bajo."
+      "rationale": "Vinícius registra remates al arco en el 90% de local en LaLiga frente a rivales de bloque bajo.",
+      "step": 9
     },
     {
       "snapshotId": "opp_20261128_4",
@@ -1819,7 +1851,8 @@
       "elenaVerdict": "APROBADO",
       "elenaDecision": "APROBADO",
       "riskManagerDecision": "APROBADO",
-      "rationale": "PSG en Parque de los Príncipes es ampliamente superior ante Lorient."
+      "rationale": "PSG en Parque de los Príncipes es ampliamente superior ante Lorient.",
+      "step": 9
     }
   ],
   "ladder": {
@@ -1829,35 +1862,35 @@
     "realCapitalAllowed": false,
     "autoExecutionAllowed": false,
     "initialCapital": 50000,
-    "currentCapital": 225232.65,
+    "currentCapital": 254512.89,
     "targetCapital": 10000000,
     "reinvestmentPct": 100,
     "referenceOdds": 1.2,
-    "currentStep": 8,
+    "currentStep": 9,
     "currentCycle": 1,
     "openBet": null,
     "committedStake": 0,
-    "cumulativeProfit": 175232.65,
+    "cumulativeProfit": 204512.89,
     "lastSettlement": {
-      "betId": "ladder_c1_s7_luqueno_olimpia",
+      "betId": "ladder_c1_s8_hertha_karlsruher",
       "cycle": 1,
-      "step": 7,
-      "match": "Sportivo Luqueño vs Olimpia",
-      "competition": "Primera División (Paraguay)",
+      "step": 8,
+      "match": "Hertha Berlín vs Karlsruher",
+      "competition": "2. Bundesliga (Alemania)",
       "market": "Doble Oportunidad",
-      "selection": "Empate o Olimpia (X2)",
-      "line": "Empate o Olimpia",
-      "odds": 1.28,
-      "stake": 175963.01,
-      "potentialReturn": 225232.65,
-      "openedAtUtc": "2026-11-28T00:44:00.000Z",
+      "selection": "Hertha Berlín o Empate (1X)",
+      "line": "Hertha Berlín o Empate",
+      "odds": 1.13,
+      "stake": 225232.65,
+      "potentialReturn": 254512.89,
+      "openedAtUtc": "2026-11-28T13:41:00.000Z",
       "status": "WON",
-      "capBefore": 175963.01,
-      "capAfter": 225232.65,
-      "profitDelta": 49269.64,
-      "settledAtUtc": "2026-11-28T00:44:00.000Z",
-      "dateFormatted": "27/11/2026 · 21:44 ART",
-      "source": "MANUAL 27/11/2026 · 21:44 ART",
+      "capBefore": 225232.65,
+      "capAfter": 254512.89,
+      "profitDelta": 29280.24,
+      "settledAtUtc": "2026-11-28T13:41:00.000Z",
+      "dateFormatted": "28/11/2026 · 10:41 ART",
+      "source": "MANUAL 28/11/2026 · 10:41 ART",
       "settlementType": "MANUAL",
       "settledBy": "Usuario"
     },
@@ -2049,6 +2082,29 @@
         "settledAtUtc": "2026-11-28T00:44:00.000Z",
         "dateFormatted": "27/11/2026 · 21:44 ART",
         "source": "MANUAL 27/11/2026 · 21:44 ART",
+        "settlementType": "MANUAL",
+        "settledBy": "Usuario"
+      },
+      {
+        "betId": "ladder_c1_s8_hertha_karlsruher",
+        "cycle": 1,
+        "step": 8,
+        "match": "Hertha Berlín vs Karlsruher",
+        "competition": "2. Bundesliga (Alemania)",
+        "market": "Doble Oportunidad",
+        "selection": "Hertha Berlín o Empate (1X)",
+        "line": "Hertha Berlín o Empate",
+        "odds": 1.13,
+        "stake": 225232.65,
+        "potentialReturn": 254512.89,
+        "openedAtUtc": "2026-11-28T13:41:00.000Z",
+        "status": "WON",
+        "capBefore": 225232.65,
+        "capAfter": 254512.89,
+        "profitDelta": 29280.24,
+        "settledAtUtc": "2026-11-28T13:41:00.000Z",
+        "dateFormatted": "28/11/2026 · 10:41 ART",
+        "source": "MANUAL 28/11/2026 · 10:41 ART",
         "settlementType": "MANUAL",
         "settledBy": "Usuario"
       }
@@ -2541,7 +2597,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Palmeiras define de local en Allianz Parque con invicto y fortaleza defensiva. Máxima cobertura para Paso 8."
+        "rationale": "Palmeiras define de local en Allianz Parque con invicto y fortaleza defensiva. Máxima cobertura para Paso 8.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_1",
@@ -2563,7 +2620,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Bayern promedia 2.8 goles fuera de casa y Hamburgo encaja con frecuencia ante ataques de élite."
+        "rationale": "Bayern promedia 2.8 goles fuera de casa y Hamburgo encaja con frecuencia ante ataques de élite.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_2",
@@ -2585,7 +2643,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Inter en San Siro presenta dominancia estructural total frente al Genoa."
+        "rationale": "Inter en San Siro presenta dominancia estructural total frente al Genoa.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_3",
@@ -2607,7 +2666,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "Vinícius registra remates al arco en el 90% de local en LaLiga frente a rivales de bloque bajo."
+        "rationale": "Vinícius registra remates al arco en el 90% de local en LaLiga frente a rivales de bloque bajo.",
+        "step": 9
       },
       {
         "snapshotId": "opp_20261128_4",
@@ -2629,7 +2689,8 @@
         "elenaVerdict": "APROBADO",
         "elenaDecision": "APROBADO",
         "riskManagerDecision": "APROBADO",
-        "rationale": "PSG en Parque de los Príncipes es ampliamente superior ante Lorient."
+        "rationale": "PSG en Parque de los Príncipes es ampliamente superior ante Lorient.",
+        "step": 9
       }
     ],
     "opportunities": [
