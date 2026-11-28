@@ -2020,7 +2020,7 @@
     "finalResultConfirmed": "PENDIENTE_DE_LIQUIDACION",
     "actualStat": null,
     "profitUnits": 0,
-    "settledAt": "2026-11-26T23:45:31.448Z",
+    "settledAt": "2026-11-27T22:42:35.456Z",
     "verificationSource": "StatsHub MCP",
     "verificationReason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
     "stateHistory": [
@@ -2035,6 +2035,62 @@
         "fromState": "DISCOVERED",
         "toState": "SETTLED",
         "timestamp": "2026-11-26T23:45:31.448Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T18:46:30.370Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T19:42:35.407Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T20:12:35.406Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T20:42:35.416Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T21:12:35.423Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T21:42:35.434Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T22:12:35.446Z",
+        "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
+        "source": "StatsHub MCP"
+      },
+      {
+        "fromState": "SETTLED",
+        "toState": "SETTLED",
+        "timestamp": "2026-11-27T22:42:35.456Z",
         "reason": "Sin fixture verificable (matchId ausente o sin respuesta de StatsHub para Coritiba vs Santos).",
         "source": "StatsHub MCP"
       }
